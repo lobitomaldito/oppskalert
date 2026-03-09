@@ -39,7 +39,7 @@ const Navbar = () => {
   return (
     <nav ref={navRef} className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-6 py-3 rounded-full border border-transparent transition-all duration-300 w-[90%] max-w-5xl text-white">
       <div className="flex items-center gap-3">
-        <img src="/logo.png" alt="Oppskalert Logo" className="nav-logo h-12 md:h-14 w-auto object-contain invert opacity-90" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'block'; }} />
+        <img src="/logo.png" alt="Oppskalert Logo" className="nav-logo h-14 md:h-16 w-auto object-contain invert opacity-90" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'block'; }} />
         <span className="hidden font-sans font-bold text-xl tracking-tight">OPPSKALERT</span>
       </div>
       <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
@@ -429,7 +429,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
         <div className="max-w-sm">
           <div className="flex items-center gap-3 mb-6">
-            <img src="/logo.png" alt="Oppskalert Logo" className="h-16 md:h-20 w-auto invert opacity-90 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'block'; }} />
+            <img src="/logo.png" alt="Oppskalert Logo" className="h-20 md:h-24 w-auto invert opacity-90 object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'block'; }} />
             <span className="hidden font-sans font-bold text-xl tracking-tight">OPPSKALERT</span>
           </div>
           <p className="font-mono text-white/50 text-sm leading-relaxed mb-8">
