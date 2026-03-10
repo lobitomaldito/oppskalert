@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor } from 'lucide-react';
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import WavingCanvas from './components/ShaderWaving';
 
 function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -103,46 +104,14 @@ const Hero = () => {
 };
 
 const CardShuffler = () => {
-  const [items, setItems] = useState([
-    { id: 1, label: "Automatisert lead-gen", icon: <Server className="w-4 h-4" /> },
-    { id: 2, label: "Sømløs Integrasjon", icon: <Settings2 className="w-4 h-4" /> },
-    { id: 3, label: "Trafikk-konvertering", icon: <BarChart3 className="w-4 h-4" /> }
-  ]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setItems(prev => {
-        const _new = [...prev];
-        const last = _new.pop();
-        _new.unshift(last);
-        return _new;
-      });
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="bg-surface border border-primary/10 rounded-[2rem] p-8 shadow-sm h-[320px] flex flex-col justify-between relative overflow-hidden group hover:-translate-y-[2px] transition-transform duration-500">
       <div>
-        <h3 className="font-sans font-bold text-2xl mb-2">Skaler.</h3>
-        <p className="text-sm font-mono text-primary/60">Systemer bygget for volum.</p>
+        <h3 className="font-sans font-bold text-2xl mb-2">Automatisert.</h3>
+        <p className="text-sm font-mono text-primary/60">Uendelige vekstloops.</p>
       </div>
-      <div className="relative h-24 w-full mt-8">
-        {items.map((item, index) => (
-          <div
-            key={item.id}
-            className="absolute left-0 right-0 bg-background border border-primary/5 rounded-xl p-4 flex items-center gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
-            style={{
-              top: `${index * 12}px`,
-              transform: `scale(${1 - (index * 0.05)})`,
-              opacity: 1 - (index * 0.3),
-              zIndex: 10 - index
-            }}
-          >
-            <div className="bg-primary/5 p-2 rounded-lg">{item.icon}</div>
-            <span className="font-mono text-xs font-semibold uppercase">{item.label}</span>
-          </div>
-        ))}
+      <div className="absolute bottom-0 left-0 right-0 h-40 opacity-80 mix-blend-difference pointer-events-none">
+        <WavingCanvas />
       </div>
     </div>
   );
