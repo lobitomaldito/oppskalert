@@ -105,7 +105,7 @@ const Hero = () => {
 const CardShuffler = () => {
   const [items, setItems] = useState([
     { id: 1, label: "Automatisert lead-gen", icon: <Server className="w-4 h-4" /> },
-    { id: 2, label: "CRM Integrasjon", icon: <Settings2 className="w-4 h-4" /> },
+    { id: 2, label: "Sømløs Integrasjon", icon: <Settings2 className="w-4 h-4" /> },
     { id: 3, label: "Trafikk-konvertering", icon: <BarChart3 className="w-4 h-4" /> }
   ]);
 
@@ -406,7 +406,7 @@ const Pricing = () => {
           <h4 className="font-sans text-4xl font-bold mb-6">Vekstpakke</h4>
           <ul className="flex flex-col gap-4 font-mono text-sm mb-12 text-white/80">
             <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Full Custom Nettside</li>
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> CRM & Integrasjoner</li>
+            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Sømløse Integrasjoner</li>
             <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Konverteringsoptimalisering</li>
             <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Driftsavtale & Support</li>
           </ul>
