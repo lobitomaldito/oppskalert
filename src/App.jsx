@@ -160,7 +160,7 @@ const MeetUs = () => {
       role: "CTO",
       sub: "Grunnlegger",
       image: "/founders/aleksander.png",
-      pos: "center 25%"
+      pos: "center 65%"
     },
     {
       name: "Francisus Drake",
