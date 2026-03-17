@@ -130,7 +130,7 @@ const MeetUs = () => {
       name: "Aleksander MacKee",
       role: "CTO",
       sub: "Grunnlegger",
-      image: null
+      image: "/founders/aleksander.jpg"
     },
     {
       name: "Francisus Drake",
