@@ -137,7 +137,7 @@ const MeetUs = () => {
       name: "Francisus Drake",
       role: "CEO",
       sub: "Grunnlegger",
-      image: "/founders/franciscus.jpg",
+      image: "/founders/franciscus.JPG",
       pos: "center 20%"
     }
   ];
