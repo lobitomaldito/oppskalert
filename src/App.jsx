@@ -381,9 +381,9 @@ const Protocol = () => {
 const Pricing = () => {
   return (
     <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-surface relative z-40">
-      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center justify-center">
+      <div className="max-w-md mx-auto flex flex-col items-center justify-center">
 
-        <div className="bg-background border border-primary/10 rounded-[2rem] p-12 flex-1 w-full relative group hover:-translate-y-2 transition-transform duration-500">
+        <div className="bg-background border border-primary/10 rounded-[2rem] p-12 w-full relative group hover:-translate-y-2 transition-transform duration-500 shadow-sm">
           <h3 className="font-mono text-sm tracking-widest text-primary/60 mb-4">FASE 1</h3>
           <h4 className="font-sans text-4xl font-bold mb-6">Gratis Demo</h4>
           <ul className="flex flex-col gap-4 font-mono text-sm mb-12">
@@ -391,24 +391,12 @@ const Pricing = () => {
             <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-primary" /> Analyse av Plattform</li>
             <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-primary" /> Teknisk Audit</li>
           </ul>
-          <button className="w-full py-4 rounded-full border border-primary font-sans font-medium text-sm hover:bg-primary hover:text-white transition-colors duration-300">
+          <a 
+            href="mailto:team@oppskalert.no"
+            className="block w-full py-4 rounded-full border border-primary font-sans font-medium text-sm text-center hover:bg-primary hover:text-white transition-colors duration-300"
+          >
             Book Samtale
-          </button>
-        </div>
-
-        <div className="bg-primary text-white border border-primary rounded-[2.5rem] p-12 flex-1 relative w-full hover:-translate-y-2 transition-transform duration-500 shadow-2xl scale-105">
-          <div className="absolute -top-4 right-8 bg-white text-primary text-xs font-mono font-bold px-3 py-1 rounded-full">POPULÆR</div>
-          <h3 className="font-mono text-sm tracking-widest text-white/50 mb-4">FASE 2</h3>
-          <h4 className="font-sans text-4xl font-bold mb-6">Vekstpakke</h4>
-          <ul className="flex flex-col gap-4 font-mono text-sm mb-12 text-white/80">
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Full Custom Nettside</li>
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Sømløse Integrasjoner</li>
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Konverteringsoptimalisering</li>
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-white" /> Driftsavtale & Support</li>
-          </ul>
-          <button className="w-full py-4 rounded-full bg-white text-primary font-sans font-bold text-sm hover:scale-[1.02] transition-transform duration-300 shadow-lg">
-            Bestill Vekstpakke
-          </button>
+          </a>
         </div>
 
       </div>
