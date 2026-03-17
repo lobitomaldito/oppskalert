@@ -25,7 +25,7 @@ const Navbar = () => {
         toggleClass: { className: 'scrolled-nav', targets: navRef.current },
         onUpdate: (self) => {
           if (self.isActive) {
-            gsap.to(navRef.current, { backgroundColor: 'rgba(255, 255, 255, 0.90)', backdropFilter: 'blur(16px)', color: '#111111', borderColor: 'rgba(0,0,0,0.1)', duration: 0.3 });
+            gsap.to(navRef.current, { backgroundColor: 'rgba(255, 255, 255, 0.90)', backdropFilter: 'blur(8px)', color: '#111111', borderColor: 'rgba(0,0,0,0.1)', duration: 0.3 });
           } else {
             gsap.to(navRef.current, { backgroundColor: 'transparent', backdropFilter: 'blur(0px)', color: '#FFFFFF', borderColor: 'transparent', duration: 0.3 });
           }
@@ -291,7 +291,7 @@ const Philosophy = () => {
         <img
           src="https://images.unsplash.com/photo-1541888086225-ee808aae1b8c?q=80&w=2000&auto=format&fit=crop"
           alt="Concrete Texture"
-          className="parallax-bg w-full h-[120%] object-cover grayscale"
+          className="parallax-bg w-full h-[120%] object-cover grayscale will-change-transform"
         />
       </div>
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-12">
@@ -309,7 +309,7 @@ const Philosophy = () => {
 const ProtocolStep = ({ num, title, desc, animType, index }) => {
   return (
     <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center p-6" style={{ zIndex: index }}>
-      <div className="protocol-card w-full max-w-6xl bg-surface rounded-[3rem] h-[80vh] shadow-xl border border-primary/10 overflow-hidden flex flex-col md:flex-row relative">
+      <div className="protocol-card w-full max-w-6xl bg-surface rounded-[3rem] h-[80vh] shadow-xl border border-primary/10 overflow-hidden flex flex-col md:flex-row relative will-change-[transform,opacity]">
         <div className="flex-1 p-12 md:p-24 flex flex-col justify-center">
           <span className="font-mono text-2xl font-bold text-primary/20 mb-6">0{num}</span>
           <h2 className="font-sans font-bold text-4xl md:text-6xl mb-6 tracking-tight">{title}</h2>
@@ -356,7 +356,6 @@ const Protocol = () => {
           gsap.to(card, {
             scale: 0.9,
             opacity: 0.5,
-            filter: "blur(10px)",
             scrollTrigger: {
               trigger: cards[i + 1],
               start: "top bottom",

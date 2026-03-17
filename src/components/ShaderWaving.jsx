@@ -37,7 +37,7 @@ float map(vec3 p) {
 	return d*.5;
 }
 bool march(inout vec3 p, vec3 rd) {
-	for (int i=0; i<400; i++) {
+	for (int i=0; i<80; i++) {
 		float d=map(p);
 		if (abs(d)<1e-2) return true;
 		if (d>40.) return false;
@@ -97,17 +97,9 @@ vec3 render(vec2 uv) {
 	}
 	return col;
 }
-#define AA
 void main() {
 	vec2 uv=(FC-.5*R)/MN;
 	vec3 col=render(uv);
-	#ifdef AA
-	for (float x=.0; x<=1.; x++) {
-		for (float y=.0; y<=1.; y++)
-			col+=render(uv+(vec2(x,y)-.5)/R);
-	}
-	col/=5.;
-	#endif
 	col=S(1.2,-.2,col);
     O=vec4(col,1);
 }
@@ -217,7 +209,7 @@ const WavingCanvas = ({ className = "" }) => {
         <canvas
             ref={canvasRef}
             className={`w-full h-full block ${className}`}
-            style={{ touchAction: 'none' }}
+            style={{ touchAction: 'none', willChange: 'transform' }}
         />
     );
 };
