@@ -5,6 +5,7 @@ import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, C
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import WavingCanvas from './components/ShaderWaving';
+import LiquidGlass from './components/LiquidGlass';
 
 function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -172,8 +173,11 @@ const MeetUs = () => {
   ];
 
   return (
-    <section id="team" ref={container} className="py-32 px-6 md:px-12 lg:px-24">
-      <div className="max-w-5xl mx-auto">
+    <section id="team" ref={container} className="relative py-32 px-6 md:px-12 lg:px-24 overflow-hidden min-h-screen flex items-center">
+      {/* Liquid Glass Background */}
+      <LiquidGlass className="opacity-80" />
+      
+      <div className="max-w-5xl mx-auto relative z-10 w-full">
         <div className="flex flex-col items-center mb-24">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Ekspertisen bak</span>
           <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center">Møt oss.</h2>
