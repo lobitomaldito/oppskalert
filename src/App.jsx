@@ -105,157 +105,68 @@ const Hero = () => {
   );
 };
 
-const CardShuffler = () => {
-  const [items, setItems] = useState([
-    { id: 1, label: "Automatisert lead-gen", icon: <Server className="w-4 h-4" /> },
-    { id: 2, label: "Sømløs Integrasjon", icon: <Settings2 className="w-4 h-4" /> },
-    { id: 3, label: "Trafikk-konvertering", icon: <BarChart3 className="w-4 h-4" /> }
-  ]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setItems(prev => {
-        const _new = [...prev];
-        const last = _new.pop();
-        _new.unshift(last);
-        return _new;
-      });
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="bg-surface border border-primary/10 rounded-[2rem] p-8 shadow-sm h-[320px] flex flex-col justify-between relative overflow-hidden group hover:-translate-y-[2px] transition-transform duration-500">
-      <div>
-        <h3 className="font-sans font-bold text-2xl mb-2">Skaler.</h3>
-        <p className="text-sm font-mono text-primary/60">Systemer bygget for volum.</p>
-      </div>
-      <div className="relative h-24 w-full mt-8">
-        {items.map((item, index) => (
-          <div
-            key={item.id}
-            className="absolute left-0 right-0 bg-background border border-primary/5 rounded-xl p-4 flex items-center gap-3 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
-            style={{
-              top: `${index * 12}px`,
-              transform: `scale(${1 - (index * 0.05)})`,
-              opacity: 1 - (index * 0.3),
-              zIndex: 10 - index
-            }}
-          >
-            <div className="bg-primary/5 p-2 rounded-lg">{item.icon}</div>
-            <span className="font-mono text-xs font-semibold uppercase">{item.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const CardTypewriter = () => {
-  const [text, setText] = useState("");
-  const fullText = "Implementer løsninger som bygger din bedrift fra grunnen.";
-  const [cursor, setCursor] = useState(true);
-
-  useEffect(() => {
-    let i = 0;
-    const typing = setInterval(() => {
-      setText(fullText.slice(0, i));
-      i++;
-      if (i > fullText.length) {
-        clearInterval(typing);
-      }
-    }, 50);
-
-    const blink = setInterval(() => setCursor(c => !c), 500);
-
-    return () => { clearInterval(typing); clearInterval(blink); };
-  }, []);
-
-  return (
-    <div className="bg-surface border border-primary/10 rounded-[2rem] p-8 shadow-sm h-[320px] flex flex-col justify-between group hover:-translate-y-[2px] transition-transform duration-500">
-      <div>
-        <div className="flex items-center gap-2 mb-4">
-          <div className="w-2 h-2 rounded-full bg-highlight animate-ping"></div>
-          <span className="font-mono text-xs uppercase text-primary/50 tracking-widest">Live Feed</span>
-        </div>
-        <h3 className="font-sans font-bold text-2xl mb-2">Implementer.</h3>
-      </div>
-      <div className="bg-primary text-white p-6 rounded-2xl h-32 font-mono text-sm leading-relaxed relative">
-        <Terminal className="w-4 h-4 absolute top-4 right-4 text-white/20" />
-        <span className="text-accent">{'> '}</span>
-        {text}
-        <span className={clsx("inline-block w-2.h-4 bg-white ml-1", cursor ? "opacity-100" : "opacity-0")}>_</span>
-      </div>
-    </div>
-  );
-};
-
-const CardScheduler = () => {
-  const days = ['M', 'T', 'O', 'T', 'F', 'L', 'S'];
-  const [activeDay, setActiveDay] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveDay(prev => (prev + 1) % 5); // Just cycle weekdays
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="bg-surface border border-primary/10 rounded-[2rem] p-8 shadow-sm h-[320px] flex flex-col justify-between group hover:-translate-y-[2px] transition-transform duration-500">
-      <div>
-        <h3 className="font-sans font-bold text-2xl mb-2">Invester.</h3>
-        <p className="text-sm font-mono text-primary/60">Kontinuerlig vekstrate.</p>
-      </div>
-      <div className="mt-8">
-        <div className="flex justify-between items-center mb-4">
-          <Calendar className="w-4 h-4 text-primary/40" />
-          <span className="font-mono text-xs uppercase text-primary/60">Q3 SPRINT</span>
-        </div>
-        <div className="flex gap-2">
-          {days.map((day, i) => (
-            <div
-              key={i}
-              className={clsx(
-                "flex-1 aspect-square rounded-lg flex items-center justify-center font-mono text-xs transition-all duration-300",
-                i === activeDay ? "bg-primary text-white scale-110 shadow-md" : "bg-background text-primary/40"
-              )}
-            >
-              {day}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const Features = () => {
+const MeetUs = () => {
   const container = useRef(null);
 
   useEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.from(".feature-card", {
+      gsap.from(".member-card", {
         scrollTrigger: {
           trigger: container.current,
           start: "top 75%",
         },
-        y: 50,
+        y: 40,
         opacity: 0,
         duration: 0.8,
-        stagger: 0.15,
+        stagger: 0.2,
         ease: "power2.out"
       });
     }, container);
     return () => ctx.revert();
   }, []);
 
+  const members = [
+    {
+      name: "Aleksander MacKee",
+      role: "CTO",
+      sub: "Grunnlegger",
+      image: null
+    },
+    {
+      name: "Francisus Drake",
+      role: "CEO",
+      sub: "Grunnlegger",
+      image: null
+    }
+  ];
+
   return (
-    <section id="features" ref={container} className="py-32 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="feature-card"><CardShuffler /></div>
-        <div className="feature-card"><CardTypewriter /></div>
-        <div className="feature-card"><CardScheduler /></div>
+    <section id="team" ref={container} className="py-32 px-6 md:px-12 lg:px-24">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col items-center mb-24">
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Ekspertisen bak</span>
+          <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center">Møt oss.</h2>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
+          {members.map((member, i) => (
+            <div key={i} className="member-card flex flex-col items-center text-center">
+              <div className="w-64 h-64 rounded-full border border-primary/10 bg-surface/30 backdrop-blur-sm relative overflow-hidden mb-8 group">
+                {/* Photo Placeholder */}
+                <div className="absolute inset-0 flex items-center justify-center bg-background/50">
+                  <Fingerprint className="w-12 h-12 text-primary/10 group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                {/* Visual ring */}
+                <div className="absolute inset-0 border-[8px] border-background pointer-events-none rounded-full"></div>
+              </div>
+              <h3 className="font-sans font-bold text-3xl mb-1">{member.name}</h3>
+              <div className="font-mono text-sm uppercase tracking-widest text-accent flex flex-col gap-1">
+                <span>{member.role}</span>
+                <span className="opacity-50 text-xs italic">{member.sub}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -456,7 +367,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Features />
+        <MeetUs />
         <Philosophy />
         <Protocol />
         <Pricing />
