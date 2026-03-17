@@ -47,10 +47,10 @@ const Navbar = () => {
       </div>
       <a 
         href="mailto:team@oppskalert.no"
-        className="group relative overflow-hidden bg-primary text-white border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center"
+        className="group relative overflow-hidden bg-surface text-primary border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center"
       >
-        <span className="relative z-10 group-hover:text-primary transition-colors duration-300">Bestill Demo</span>
-        <div className="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
+        <span className="relative z-10 group-hover:text-white transition-colors duration-300">Bestill Demo</span>
+        <div className="absolute inset-0 bg-primary translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
       </a>
     </nav>
   );
@@ -74,11 +74,11 @@ const Hero = () => {
   }, []);
 
   return (
-    <section ref={container} className="relative h-[100dvh] w-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24 overflow-hidden bg-primary">
+    <section ref={container} className="relative h-[100dvh] w-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
       {/* Background Image / Shader */}
-      <div className="absolute inset-0 z-0 bg-primary">
+      <div className="absolute inset-0 z-0 bg-background">
         <WavingCanvas className="w-full h-full object-cover opacity-60 mix-blend-screen" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none"></div>
       </div>
 
       <div className="relative z-10 max-w-5xl text-white">
@@ -92,12 +92,12 @@ const Hero = () => {
         <div className="hero-elem mt-10 flex gap-4">
           <a 
             href="mailto:team@oppskalert.no"
-            className="group relative overflow-hidden bg-primary text-white border border-white/10 px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300 text-center"
+            className="group relative overflow-hidden bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300 text-center"
           >
-            <span className="relative z-10 group-hover:text-primary transition-colors duration-300 flex items-center gap-2">
+            <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </span>
-            <div className="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
+            <div className="absolute inset-0 bg-surface translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
           </a>
         </div>
       </div>
@@ -292,7 +292,7 @@ const Philosophy = () => {
   }, []);
 
   return (
-    <section ref={container} id="philosophy" className="relative py-48 px-6 md:px-12 overflow-hidden bg-primary text-white">
+    <section ref={container} id="philosophy" className="relative py-48 px-6 md:px-12 overflow-hidden bg-background text-white">
       <div className="absolute inset-0 z-0 opacity-10">
         <img
           src="https://images.unsplash.com/photo-1541888086225-ee808aae1b8c?q=80&w=2000&auto=format&fit=crop"
@@ -412,7 +412,7 @@ const Pricing = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-primary text-white pt-24 pb-8 px-6 md:px-12 lg:px-24 rounded-t-[4rem] relative z-40 mt-[-4rem]">
+    <footer className="bg-background text-white pt-24 pb-8 px-6 md:px-12 lg:px-24 rounded-t-[4rem] relative z-40 mt-[-4rem]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
         <div className="max-w-sm">
           <div className="flex items-center gap-3 mb-6">
