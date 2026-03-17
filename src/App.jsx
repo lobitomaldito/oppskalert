@@ -105,6 +105,35 @@ const Hero = () => {
   );
 };
 
+const ImageWithPlaceholder = ({ src, alt, pos }) => {
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setError(false);
+  }, [src]);
+
+  if (!src || error) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center bg-background/50">
+        <Fingerprint className="w-12 h-12 text-primary/10 group-hover:scale-110 transition-transform duration-500" />
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src={src} 
+      alt={alt}
+      className="w-full h-full object-cover"
+      style={{ objectPosition: pos }}
+      onError={() => {
+        console.error("Image load error:", src);
+        setError(true);
+      }}
+    />
+  );
+};
+
 const MeetUs = () => {
   const container = useRef(null);
 
@@ -130,14 +159,14 @@ const MeetUs = () => {
       name: "Aleksander MacKee",
       role: "CTO",
       sub: "Grunnlegger",
-      image: "/founders/aleksander.png",
+      image: "founders/aleksander.png",
       pos: "center 15%"
     },
     {
       name: "Francisus Drake",
       role: "CEO",
       sub: "Grunnlegger",
-      image: "/founders/franciscus.JPG",
+      image: "founders/franciscus.JPG",
       pos: "center 20%"
     }
   ];
@@ -173,28 +202,6 @@ const MeetUs = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const ImageWithPlaceholder = ({ src, alt, pos }) => {
-  const [error, setError] = useState(false);
-
-  if (!src || error) {
-    return (
-      <div className="absolute inset-0 flex items-center justify-center bg-background/50">
-        <Fingerprint className="w-12 h-12 text-primary/10 group-hover:scale-110 transition-transform duration-500" />
-      </div>
-    );
-  }
-
-  return (
-    <img 
-      src={src} 
-      alt={alt}
-      className="w-full h-full object-cover"
-      style={{ objectPosition: pos }}
-      onError={() => setError(true)}
-    />
   );
 };
 
