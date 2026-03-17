@@ -460,8 +460,3 @@ const LiquidGlass = ({ className }) => {
 };
 
 export default LiquidGlass;
-
-  return <div ref={containerRef} className={`absolute inset-0 z-0 h-full overflow-hidden ${className}`} />;
-};
-
-export default LiquidGlass;
