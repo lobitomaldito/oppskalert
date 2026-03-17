@@ -45,10 +45,13 @@ const Navbar = () => {
         <a href="#philosophy" className="hover:-translate-y-[1px] transition-transform">Filosofi</a>
         <a href="#protocol" className="hover:-translate-y-[1px] transition-transform">Protokoll</a>
       </div>
-      <button className="group relative overflow-hidden bg-white text-primary px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md">
-        <span className="relative z-10 group-hover:text-white transition-colors duration-300">Bestill Demo</span>
-        <div className="absolute inset-0 bg-primary translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
-      </button>
+      <a 
+        href="mailto:team@oppskalert.no"
+        className="group relative overflow-hidden bg-primary text-white border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center"
+      >
+        <span className="relative z-10 group-hover:text-primary transition-colors duration-300">Bestill Demo</span>
+        <div className="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
+      </a>
     </nav>
   );
 };
@@ -87,12 +90,15 @@ const Hero = () => {
           Vi bygger nettsider og systemer som skalerer norske bedrifter. Ingen kompromisser, kun presisjon.
         </p>
         <div className="hero-elem mt-10 flex gap-4">
-          <button className="group relative overflow-hidden bg-white text-primary px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
+          <a 
+            href="mailto:team@oppskalert.no"
+            className="group relative overflow-hidden bg-primary text-white border border-white/10 px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300 text-center"
+          >
+            <span className="relative z-10 group-hover:text-primary transition-colors duration-300 flex items-center gap-2">
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </span>
-            <div className="absolute inset-0 bg-primary translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
-          </button>
+            <div className="absolute inset-0 bg-white translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
+          </a>
         </div>
       </div>
     </section>
