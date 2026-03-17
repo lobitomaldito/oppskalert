@@ -130,13 +130,15 @@ const MeetUs = () => {
       name: "Aleksander MacKee",
       role: "CTO",
       sub: "Grunnlegger",
-      image: "/founders/aleksander.jpg"
+      image: "/founders/aleksander.jpg",
+      pos: "center 15%"
     },
     {
       name: "Francisus Drake",
       role: "CEO",
       sub: "Grunnlegger",
-      image: "/founders/franciscus.jpg"
+      image: "/founders/franciscus.jpg",
+      pos: "center 20%"
     }
   ];
 
@@ -153,18 +155,11 @@ const MeetUs = () => {
             <div key={i} className="member-card flex flex-col items-center text-center">
               <div className="w-64 h-64 rounded-full border border-primary/10 bg-surface/30 backdrop-blur-sm relative overflow-hidden mb-8 group">
                 {/* Photo or Placeholder */}
-                {member.image ? (
-                  <img 
-                    src={member.image} 
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: 'center 20%' }}
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center bg-background/50">
-                    <Fingerprint className="w-12 h-12 text-primary/10 group-hover:scale-110 transition-transform duration-500" />
-                  </div>
-                )}
+                <ImageWithPlaceholder 
+                  src={member.image} 
+                  alt={member.name} 
+                  pos={member.pos}
+                />
                 {/* Visual ring */}
                 <div className="absolute inset-0 border-[8px] border-background pointer-events-none rounded-full"></div>
               </div>
@@ -178,6 +173,28 @@ const MeetUs = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const ImageWithPlaceholder = ({ src, alt, pos }) => {
+  const [error, setError] = useState(false);
+
+  if (!src || error) {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center bg-background/50">
+        <Fingerprint className="w-12 h-12 text-primary/10 group-hover:scale-110 transition-transform duration-500" />
+      </div>
+    );
+  }
+
+  return (
+    <img 
+      src={src} 
+      alt={alt}
+      className="w-full h-full object-cover"
+      style={{ objectPosition: pos }}
+      onError={() => setError(true)}
+    />
   );
 };
 
