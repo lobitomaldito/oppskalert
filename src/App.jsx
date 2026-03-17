@@ -159,14 +159,14 @@ const MeetUs = () => {
       name: "Aleksander MacKee",
       role: "CTO",
       sub: "Grunnlegger",
-      image: "founders/aleksander.png",
+      image: "/founders/aleksander.png",
       pos: "center 15%"
     },
     {
       name: "Francisus Drake",
       role: "CEO",
       sub: "Grunnlegger",
-      image: "founders/franciscus.JPG",
+      image: "/founders/franciscus.JPG",
       pos: "center 20%"
     }
   ];
@@ -237,13 +237,7 @@ const Philosophy = () => {
 
   return (
     <section ref={container} id="philosophy" className="relative py-48 px-6 md:px-12 overflow-hidden bg-background text-white">
-      <div className="absolute inset-0 z-0 opacity-10">
-        <img
-          src="https://images.unsplash.com/photo-1541888086225-ee808aae1b8c?q=80&w=2000&auto=format&fit=crop"
-          alt="Concrete Texture"
-          className="parallax-bg w-full h-[120%] object-cover grayscale will-change-transform"
-        />
-      </div>
+      <div className="absolute inset-0 z-0 opacity-5 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:24px_24px]"></div>
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-12">
         <p className="phil-text font-mono text-sm md:text-xl text-white/50 uppercase tracking-widest leading-relaxed">
           De fleste byråer fokuserer på: standardiserte maler og kortsiktig støy.
