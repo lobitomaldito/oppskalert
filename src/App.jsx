@@ -25,9 +25,9 @@ const Navbar = () => {
         toggleClass: { className: 'scrolled-nav', targets: navRef.current },
         onUpdate: (self) => {
           if (self.isActive) {
-            gsap.to(navRef.current, { backgroundColor: 'rgba(255, 255, 255, 0.90)', backdropFilter: 'blur(8px)', color: '#111111', borderColor: 'rgba(0,0,0,0.1)', duration: 0.3 });
+            gsap.to(navRef.current, { backgroundColor: 'rgba(79, 71, 137, 0.90)', backdropFilter: 'blur(8px)', color: '#fffded', borderColor: 'rgba(255, 255, 255, 0.1)', duration: 0.3 });
           } else {
-            gsap.to(navRef.current, { backgroundColor: 'transparent', backdropFilter: 'blur(0px)', color: '#FFFFFF', borderColor: 'transparent', duration: 0.3 });
+            gsap.to(navRef.current, { backgroundColor: 'transparent', backdropFilter: 'blur(0px)', color: '#fffded', borderColor: 'transparent', duration: 0.3 });
           }
         }
       });
@@ -169,7 +169,7 @@ const CardTypewriter = () => {
     <div className="bg-surface border border-primary/10 rounded-[2rem] p-8 shadow-sm h-[320px] flex flex-col justify-between group hover:-translate-y-[2px] transition-transform duration-500">
       <div>
         <div className="flex items-center gap-2 mb-4">
-          <div className="w-2 h-2 rounded-full bg-accent animate-ping"></div>
+          <div className="w-2 h-2 rounded-full bg-highlight animate-ping"></div>
           <span className="font-mono text-xs uppercase text-primary/50 tracking-widest">Live Feed</span>
         </div>
         <h3 className="font-sans font-bold text-2xl mb-2">Implementer.</h3>
@@ -416,7 +416,7 @@ const Footer = () => {
             Vi bygger nettsider og systemer som skalerer norske bedrifter. Ingen kompromisser, kun presisjon.
           </p>
           <div className="flex items-center gap-3 font-mono text-sm font-semibold bg-white/5 w-fit px-4 py-2 rounded-full border border-white/10">
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+            <div className="w-2 h-2 rounded-full bg-highlight animate-pulse"></div>
             SYSTEM OPERATIONAL
           </div>
         </div>

@@ -7,12 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#F9F9F9',
-        surface: '#FFFFFF',
-        primary: '#111111',
-        accent: '#333333',
-        dark: '#111111',
-        darkText: '#FFFFFF',
+        background: '#201335', // Midnight Violet
+        surface: '#4f4789',    // Dusty Grape
+        primary: '#fffded',    // Ivory
+        accent: '#ffb17a',     // Sandy Brown
+        highlight: '#fce762',  // Banana Cream
+        darkText: '#fffded',
       },
       fontFamily: {
         sans: ['"Space Grotesk"', 'sans-serif'],

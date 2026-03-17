@@ -101,6 +101,10 @@ void main() {
 	vec2 uv=(FC-.5*R)/MN;
 	vec3 col=render(uv);
 	col=S(1.2,-.2,col);
+    // Mix with theme colors (Ivory and Sandy Brown)
+    vec3 ivory = vec3(1.0, 0.99, 0.93);
+    vec3 sandy = vec3(1.0, 0.69, 0.48);
+    col = mix(ivory * col, sandy * col, col.r * 0.5);
     O=vec4(col,1);
 }
 `;
