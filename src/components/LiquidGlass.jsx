@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 const MAX_DROPLETS = 40;
@@ -104,8 +104,8 @@ void main(){
 
 const LiquidGlass = ({ className }) => {
   const containerRef = useRef();
-  const canvasRef = useRef();
   const requestRef = useRef();
+  const [isMobile, setIsMobile] = useState(false);
   
   // Physics state
   const dropsRef = useRef([]);
@@ -115,7 +115,20 @@ const LiquidGlass = ({ className }) => {
   const uidRef = useRef(0);
   const aspectRef = useRef(1);
 
+  // Check for mobile on mount and resize
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Skip Three.js initialization on mobile
+    if (isMobile) return;
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -140,9 +153,6 @@ const LiquidGlass = ({ className }) => {
       bgCanvas.width = w;
       bgCanvas.height = h;
 
-      // Match Midnight Violet Palette
-      // Background: #201335
-      // Dusty Grape: #4f4789
       const grd = bgCtx.createLinearGradient(0, 0, w * 0.6, h);
       grd.addColorStop(0, "#201335");
       grd.addColorStop(0.35, "#201335");
@@ -151,14 +161,12 @@ const LiquidGlass = ({ className }) => {
       bgCtx.fillStyle = grd;
       bgCtx.fillRect(0, 0, w, h);
 
-      // Decorative colour waves
       bgCtx.save();
       bgCtx.globalAlpha = 0.2;
       for (let i = 0; i < 5; i++) {
         const cx = w * (0.2 + i * 0.18);
         const cy = h * (0.3 + Math.sin(i * 1.3) * 0.25);
         const rg = bgCtx.createRadialGradient(cx, cy, 0, cx, cy, w * 0.35);
-        // Sandy Brown: #ffb17a, Banana Cream: #fce762
         const colors = ["#ffb17a", "#4f4789", "#fce762", "#ffb17a", "#4f4789"];
         rg.addColorStop(0, colors[i % colors.length]);
         rg.addColorStop(1, "rgba(32, 19, 53, 0)");
@@ -205,13 +213,11 @@ const LiquidGlass = ({ className }) => {
     const spawn = (x, y, r, vx = 0, vy = 0) => {
       if (dropsRef.current.length >= MAX_DROPLETS) return null;
       const area = Math.PI * r * r;
-      const angle = Math.random() * Math.PI * 2;
-      const spd = 0.0003 + Math.random() * 0.0008;
       const d = {
         id: uidRef.current++,
         x, y, r, area,
-        vx: vx || Math.cos(angle) * spd,
-        vy: vy || Math.sin(angle) * spd,
+        vx: vx || (Math.random() - 0.5) * 0.001,
+        vy: vy || (Math.random() - 0.5) * 0.001,
         alive: true,
         wanderAngle: Math.random() * Math.PI * 2,
         wanderSpeed: 0.3 + Math.random() * 0.5,
@@ -223,49 +229,33 @@ const LiquidGlass = ({ className }) => {
       return d;
     };
 
-    // Physics parameters
-    const DAMP = 0.993;
-    const MOUSE_R = 0.18;
-    const MOUSE_F = 0.004;
-    const TENSION_RANGE = 0.12;
-    const TENSION_F = 0.0004;
-    const MERGE_RATIO = 0.62;
-    const SPLIT_SPEED = 0.013;
-    const SPLIT_MIN_R = 0.04;
-    const MAX_SPEED = 0.015;
-    const BOUNCE = 0.4;
-    const WANDER_F = 0.00004;
-    const CENTER_PULL = 0.000008;
-
     const fixedUpdate = () => {
       const drops = dropsRef.current;
       const mouse = mouseRef.current;
       const aspect = aspectRef.current;
 
-      // Forces
       for (const d of drops) {
         d.wanderAngle += (Math.random() - 0.5) * d.wanderSpeed;
-        d.vx += Math.cos(d.wanderAngle) * WANDER_F;
-        d.vy += Math.sin(d.wanderAngle) * WANDER_F;
-        d.vx -= d.x * CENTER_PULL;
-        d.vy -= d.y * CENTER_PULL;
+        d.vx += Math.cos(d.wanderAngle) * 0.00004;
+        d.vy += Math.sin(d.wanderAngle) * 0.00004;
+        d.vx -= d.x * 0.000008;
+        d.vy -= d.y * 0.000008;
 
         if (mouse.active) {
           const dx = d.x - mouse.x;
           const dy = d.y - mouse.y;
           const dSq = dx * dx + dy * dy;
-          const rr = MOUSE_R + d.r;
+          const rr = 0.18 + d.r;
           if (dSq < rr * rr && dSq > 1e-5) {
             const dist = Math.sqrt(dSq);
             const s = 1 - dist / rr;
-            const f = s * s * MOUSE_F;
+            const f = s * s * 0.004;
             d.vx += (dx / dist) * f;
             d.vy += (dy / dist) * f;
           }
         }
       }
 
-      // Tension
       for (let i = 0; i < drops.length; i++) {
         const a = drops[i];
         for (let j = i + 1; j < drops.length; j++) {
@@ -273,11 +263,11 @@ const LiquidGlass = ({ className }) => {
           const dx = b.x - a.x;
           const dy = b.y - a.y;
           const dSq = dx * dx + dy * dy;
-          const rng = TENSION_RANGE + a.r + b.r;
+          const rng = 0.12 + a.r + b.r;
           if (dSq < rng * rng && dSq > 1e-5) {
             const dist = Math.sqrt(dSq);
             const s = 1 - dist / rng;
-            const f = s * TENSION_F;
+            const f = s * 0.0004;
             a.vx += (dx / dist) * f;
             a.vy += (dy / dist) * f;
             b.vx -= (dx / dist) * f;
@@ -286,25 +276,23 @@ const LiquidGlass = ({ className }) => {
         }
       }
 
-      // Integration
       for (const d of drops) {
         const sp = Math.sqrt(d.vx * d.vx + d.vy * d.vy);
-        if (sp > MAX_SPEED) {
-          const s = MAX_SPEED / sp;
+        if (sp > 0.015) {
+          const s = 0.015 / sp;
           d.vx *= s; d.vy *= s;
         }
         d.x += d.vx; d.y += d.vy;
-        d.vx *= DAMP; d.vy *= DAMP;
+        d.vx *= 0.993; d.vy *= 0.993;
 
         const wx = aspect * 0.5;
         const wy = 0.5;
-        if (d.x - d.r < -wx) { d.x = -wx + d.r; d.vx = Math.abs(d.vx) * BOUNCE; }
-        if (d.x + d.r > wx) { d.x = wx - d.r; d.vx = -Math.abs(d.vx) * BOUNCE; }
-        if (d.y - d.r < -wy) { d.y = -wy + d.r; d.vy = Math.abs(d.vy) * BOUNCE; }
-        if (d.y + d.r > wy) { d.y = wy - d.r; d.vy = -Math.abs(d.vy) * BOUNCE; }
+        if (d.x - d.r < -wx) { d.x = -wx + d.r; d.vx = Math.abs(d.vx) * 0.4; }
+        if (d.x + d.r > wx) { d.x = wx - d.r; d.vx = -Math.abs(d.vx) * 0.4; }
+        if (d.y - d.r < -wy) { d.y = -wy + d.r; d.vy = Math.abs(d.vy) * 0.4; }
+        if (d.y + d.r > wy) { d.y = wy - d.r; d.vy = -Math.abs(d.vy) * 0.4; }
       }
 
-      // Merge
       for (let i = 0; i < drops.length; i++) {
         const a = drops[i];
         if (!a.alive) continue;
@@ -314,7 +302,7 @@ const LiquidGlass = ({ className }) => {
           const dx = b.x - a.x;
           const dy = b.y - a.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < (a.r + b.r) * MERGE_RATIO) {
+          if (dist < (a.r + b.r) * 0.62) {
             const na = a.area + b.area;
             a.x = (a.x * a.area + b.x * b.area) / na;
             a.y = (a.y * a.area + b.y * b.area) / na;
@@ -328,12 +316,11 @@ const LiquidGlass = ({ className }) => {
       }
       dropsRef.current = dropsRef.current.filter(d => d.alive);
 
-      // Split
       const add = [];
       for (const d of dropsRef.current) {
-        if (d.r < SPLIT_MIN_R) continue;
+        if (d.r < 0.04) continue;
         const sp = Math.sqrt(d.vx * d.vx + d.vy * d.vy);
-        if (sp < SPLIT_SPEED) continue;
+        if (sp < 0.013) continue;
         const ha = d.area * 0.5;
         const nr = Math.sqrt(ha / Math.PI);
         const nx = -d.vy / sp;
@@ -353,7 +340,6 @@ const LiquidGlass = ({ className }) => {
       }
       for (const a of add) if (dropsRef.current.length < MAX_DROPLETS) dropsRef.current.push(a);
 
-      // Soft body
       for (const d of dropsRef.current) {
         const dx = d.x - d.softPrevX;
         const dy = d.y - d.softPrevY;
@@ -388,7 +374,6 @@ const LiquidGlass = ({ className }) => {
       mat.uniforms.uCount.value = n * 2;
     };
 
-    // Initial seed
     for (let i = 0; i < 12; i++) {
       spawn((Math.random() - 0.5) * 0.7, (Math.random() - 0.5) * 0.5, 0.03 + Math.random() * 0.05);
     }
@@ -450,12 +435,31 @@ const LiquidGlass = ({ className }) => {
       mat.dispose();
       bgTexture.dispose();
       dropletTex.dispose();
-      // Only remove if it's still a child
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
     };
-  }, []);
+  }, [isMobile]);
+
+  if (isMobile) {
+    return (
+      <div 
+        className={`absolute inset-0 z-0 h-full overflow-hidden ${className}`}
+        style={{
+          background: "linear-gradient(135deg, #201335 0%, #201335 35%, #4f4789 60%, #201335 100%)",
+        }}
+      >
+        {/* Subtle decorative "blobs" via CSS to mimic the look without the physics engine */}
+        <div className="absolute top-[20%] left-[10%] w-64 h-64 rounded-full blur-[100px] opacity-20 bg-[#ffb17a]" />
+        <div className="absolute bottom-[20%] right-[10%] w-80 h-80 rounded-full blur-[120px] opacity-10 bg-[#fce762]" />
+      </div>
+    );
+  }
+
+  return <div ref={containerRef} className={`absolute inset-0 z-0 h-full overflow-hidden ${className}`} />;
+};
+
+export default LiquidGlass;
 
   return <div ref={containerRef} className={`absolute inset-0 z-0 h-full overflow-hidden ${className}`} />;
 };
