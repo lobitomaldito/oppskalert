@@ -155,9 +155,10 @@ const Portfolio = () => {
   // URL er klargjort (project.url), men foreløpig navigerer vi ikke dit.
   const projects = [
     { title: "Irmelin Drake", sub: "irmelindrake.no", image: "/websider/irmelin-drake.png", url: "https://irmelindrake.no", icon: Monitor },
-    { title: "Cécile Moroni", sub: "cecilemoroni.com", image: "/websider/cecile-moroni.png", url: "https://cecilemoroni.com", icon: Terminal },
+    { title: "Cécile Moroni", sub: "cecilemoroni.com", image: "/websider/cecil-moroni.png", url: "https://cecilemoroni.com", icon: Terminal },
     { title: "Mona Steenberg", sub: "monasteenberg.no", image: "/websider/mona-steenberg.png", url: "https://monasteenberggran.netlify.app", icon: Code },
-    { title: "Mirakelmannen", sub: "troels.no", image: "/websider/troels-mirakelmannen.png", url: "https://troelsmirakelmannen.netlify.app", icon: Globe }
+    { title: "Mirakelmannen", sub: "troels.no", image: "/websider/troels-mirakelmannen.png", url: "https://troelsmirakelmannen.netlify.app", icon: Globe },
+    { title: "Tore S. Rasmussen", sub: "tsr.no", image: "/websider/Tore Sund Rasmussen.png", url: "#", icon: Server }
   ];
 
   const handleProjectClick = (idx, url) => {
