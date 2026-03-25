@@ -103,57 +103,7 @@ const ImageWithPlaceholder = ({ src, alt, pos }) => {
   }
   return <img src={src} alt={alt} className="w-full h-full object-cover" style={{ objectPosition: pos }} onError={() => setError(true)} />;
 };
-
-const Statistics = () => {
-  const container = useRef(null);
-  
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.from(".stat-box", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 70%",
-          toggleActions: "play none none none"
-        },
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        ease: "expo.out"
-      });
-    }, container);
-    return () => ctx.revert();
-  }, []);
-
-  const stats = [
-    { icon: Eye, text: "94% av førsteinntrykket til hjemmesider er relatert til design" },
-    { icon: TextSearch, text: "74% av mennesker som søker etter bedrifter, starter på en søketjeneste" },
-    { icon: Smartphone, text: "Google favoriserer bedrifter med mobiltilpassede hjemmesider" }
-  ];
-
-  return (
-    <section ref={container} className="py-24 px-6 md:px-12 lg:px-24 bg-background relative z-20 overflow-hidden border-t border-primary/5">
-      {/* Background Decorative Element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
-
-      <div className="max-w-4xl mx-auto w-full flex flex-col gap-8 relative z-10 pt-12">
-        {stats.map((stat, idx) => {
-          const Icon = stat.icon;
-          return (
-            <div key={idx} className="stat-box opacity-0 flex items-center gap-6 md:gap-12 bg-white/5 backdrop-blur-sm border border-white/10 p-6 md:p-8 rounded-[2.5rem] transition-all duration-500 hover:bg-white/10">
-              <div className="bg-highlight text-background p-5 md:p-6 rounded-[1.5rem] flex-shrink-0 shadow-[0_0_40px_rgba(252,231,98,0.15)] group">
-                <Icon className="w-8 h-8 md:w-10 md:h-10 stroke-[1.5]" />
-              </div>
-              <p className="font-sans font-bold text-primary text-xl md:text-3xl tracking-tight leading-[1.1]">
-                {stat.text}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-};
+// Removed Statistics component as per user request to move content to Protocol steps.
 
 const MeetUs = () => {
   const container = useRef(null);
@@ -289,39 +239,11 @@ const Portfolio = () => {
   );
 };
 
-const Philosophy = () => {
-  const container = useRef(null);
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.from(".phil-text", {
-        scrollTrigger: { trigger: container.current, start: "top 60%" },
-        y: 20, opacity: 0, duration: 1, stagger: 0.3, ease: "power3.out"
-      });
-    }, container);
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <section ref={container} id="philosophy" className="relative py-48 px-6 md:px-12 overflow-hidden bg-background text-white">
-      <div className="absolute inset-0 z-0 opacity-5 bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:24px_24px]"></div>
-      <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-12">
-        <p className="phil-text font-mono text-sm md:text-xl text-white/50 uppercase tracking-widest leading-relaxed">
-          De fleste byråer fokuserer på: standardiserte maler og kortsiktig støy.
-        </p>
-        <p className="phil-text font-serif italic text-4xl md:text-7xl leading-tight">
-          Vi fokuserer på: digitale systemer som <span className="text-white not-italic font-sans font-bold uppercase tracking-tighter mix-blend-difference">konverterer</span> trafikk til kapital.
-        </p>
-      </div>
-    </section>
-  );
-};
-
-const ProtocolStep = ({ num, title, desc, animType, index }) => {
+const PhilosophyCard = ({ title, desc, animType, index }) => {
   return (
     <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center p-6" style={{ zIndex: index }}>
       <div className="protocol-card w-full max-w-6xl bg-surface rounded-[3rem] h-[80vh] shadow-xl border border-primary/10 overflow-hidden flex flex-col md:flex-row relative">
         <div className="flex-1 p-12 md:p-24 flex flex-col justify-center">
-          <span className="font-mono text-2xl font-bold text-primary/20 mb-6">0{num}</span>
           <h2 className="font-sans font-bold text-4xl md:text-6xl mb-6 tracking-tight">{title}</h2>
           <p className="font-mono text-primary/60 text-sm md:text-base leading-relaxed max-w-md">{desc}</p>
         </div>
@@ -352,7 +274,7 @@ const ProtocolStep = ({ num, title, desc, animType, index }) => {
   );
 };
 
-const Protocol = () => {
+const Philosophy = () => {
   const container = useRef(null);
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -365,15 +287,28 @@ const Protocol = () => {
           });
         }
       });
+      gsap.from(".phil-header", {
+        scrollTrigger: { trigger: container.current, start: "top 80%" },
+        y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+      });
     }, container);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="protocol" ref={container} className="relative bg-background">
-      <ProtocolStep num={1} title="Strategi & Analyse." desc="Vi kartlegger bedriftens flaskehalser og designer en skalerbar arkitektur." animType={1} index={10} />
-      <ProtocolStep num={2} title="Utvikling & Setup." desc="Implementering av robuste systemer med pixel-perfekt presisjon." animType={2} index={20} />
-      <ProtocolStep num={3} title="Skalering & Drift." desc="Lansering og kontinuerlig optimalisering." animType={3} index={30} />
+    <section id="facts" ref={container} className="relative bg-background">
+      <div className="py-48 px-6 md:px-12 max-w-5xl mx-auto flex flex-col gap-12 relative z-10">
+        <p className="phil-header font-mono text-sm md:text-xl text-white/50 uppercase tracking-widest leading-relaxed">
+          De fleste byråer fokuserer på: standardiserte maler og kortsiktig støy.
+        </p>
+        <h2 className="phil-header font-serif italic text-4xl md:text-7xl leading-tight text-white mb-24">
+          Vi fokuserer på: digitale systemer som <span className="text-white not-italic font-sans font-bold uppercase tracking-tighter mix-blend-difference">konverterer</span> trafikk til kapital.
+        </h2>
+      </div>
+      
+      <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." animType={1} index={10} />
+      <PhilosophyCard title="Synlighet." desc="74% av de som søker etter bedrifter starter på Google. Vi sørger for at de finner deg." animType={2} index={20} />
+      <PhilosophyCard title="Mobilitet." desc="Google favoriserer mobiltilpassede sider. Vi bygger for alle skjermer, uten kompromiss." animType={3} index={30} />
     </section>
   );
 };
@@ -412,10 +347,9 @@ const Footer = () => {
         <div className="flex gap-16 font-mono text-sm">
           <div className="flex flex-col gap-4">
             <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Navigasjon</span>
-            <a href="#features" className="hover:text-white/70 transition-colors">Løsninger</a>
+            <a href="#facts" className="hover:text-white/70 transition-colors">Visste du at?</a>
             <a href="#portfolio" className="hover:text-white/70 transition-colors">Det vi driver med</a>
-            <a href="#philosophy" className="hover:text-white/70 transition-colors">Filosofi</a>
-            <a href="#protocol" className="hover:text-white/70 transition-colors">Protokoll</a>
+            <a href="#faq" className="hover:text-white/70 transition-colors">FAQ</a>
             <a href="#pricing" className="hover:text-white/70 transition-colors">Tjenester</a>
           </div>
         </div>
@@ -433,12 +367,10 @@ const Home = () => (
     <Navbar />
     <main>
       <Hero />
-      <Statistics />
       <MeetUs />
       <OppskalertFAQ />
       <Portfolio />
       <Philosophy />
-      <Protocol />
       <Pricing />
     </main>
     <Footer />
