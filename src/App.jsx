@@ -118,12 +118,12 @@ const MeetUs = () => {
   }, []);
 
   const members = [
-    { name: "Aleksander MacKee", role: "CTO", sub: "Grunnlegger", image: "/founders/aleksander.png", pos: "center 55%" },
-    { name: "Franciscus Drake", role: "CEO", sub: "Grunnlegger", image: "/founders/franciscus.jpg", pos: "center 25%" }
+    { name: "Aleksander MacKee", role: "CTO", sub: "AI Engineer\nMaster i Fintech og BA", image: "/founders/aleksander.png", pos: "center 55%" },
+    { name: "Franciscus Drake", role: "CEO", sub: "Markedsføring\nProduct development\nBachelor i Markedsføring", image: "/founders/franciscus.jpg", pos: "center 25%" }
   ];
 
   return (
-    <section id="team" ref={container} className="relative py-32 px-6 md:px-12 lg:px-24 overflow-hidden min-h-screen flex items-center bg-background">
+    <section id="team" ref={container} className="relative py-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
       {/* LiquidGlass removed as per user request to remove bubble animations */}
       <div className="max-w-5xl mx-auto relative z-10 w-full">
         <div className="flex flex-col items-center mb-24">
@@ -133,14 +133,14 @@ const MeetUs = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
           {members.map((member, i) => (
             <div key={i} className="member-card flex flex-col items-center text-center text-white">
-              <div className="w-64 h-64 rounded-full border border-primary/10 bg-surface/30 backdrop-blur-sm relative overflow-hidden mb-8 group">
+              <div className="w-80 h-80 rounded-full border border-primary/10 bg-surface/30 backdrop-blur-sm relative overflow-hidden mb-8 group">
                 <ImageWithPlaceholder src={member.image} alt={member.name} pos={member.pos} />
                 <div className="absolute inset-0 border-[8px] border-background pointer-events-none rounded-full"></div>
               </div>
               <h3 className="font-sans font-bold text-3xl mb-1">{member.name}</h3>
               <div className="font-mono text-sm uppercase tracking-widest text-accent flex flex-col gap-1">
                 <span>{member.role}</span>
-                <span className="opacity-50 text-sm md:text-base italic">{member.sub}</span>
+                <span className="opacity-50 text-sm md:text-lg italic whitespace-pre-line leading-relaxed">{member.sub}</span>
               </div>
             </div>
           ))}
