@@ -283,16 +283,26 @@ const Philosophy = () => {
   );
 };
 
-const PricingCard = ({ months, price, color, title, subtext, features }) => (
-  <div className="bg-white text-background rounded-[2.5rem] p-8 flex flex-col shadow-xl border border-black/5 relative overflow-hidden h-full">
-    <div className={cn("inline-block w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-8 border", color)}>
-      {months ? `${months} mnd.` : title}
+const PricingCard = ({ months, price, color, title, subtitle, features, isPopular }) => (
+  <div className={cn(
+    "bg-white text-background rounded-[2.5rem] p-8 flex flex-col shadow-xl border relative overflow-hidden h-full transition-all duration-300",
+    isPopular ? "border-accent ring-1 ring-accent/20 scale-[1.02]" : "border-black/5"
+  )}>
+    {isPopular && (
+      <div className="absolute top-0 right-0 bg-accent text-background px-6 py-1.5 rounded-bl-3xl font-sans font-bold text-[10px] uppercase tracking-wider z-10 shadow-sm">
+        Mest populær
+      </div>
+    )}
+    <div className={cn("inline-block w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2 border", color)}>
+      {title}
     </div>
-    <div className="flex items-baseline gap-2 mb-4">
+    <div className="font-serif italic text-sm text-black/50 mb-6 leading-tight min-h-[3rem]">
+      {subtitle}
+    </div>
+    <div className="flex items-baseline gap-2 mb-8">
       <span className="text-4xl md:text-5xl font-bold tracking-tighter">{price} kr</span>
       {months && <span className="text-black/40 font-medium text-lg">/måned</span>}
     </div>
-    <p className="text-black/40 text-xs font-mono mb-8 leading-relaxed">{subtext}</p>
     
     <div className="flex flex-col gap-4 mb-10 bg-black/[0.03] p-6 rounded-3xl">
       {features.map((item, i) => (
@@ -321,15 +331,53 @@ const Pricing = () => {
           Våre pakker er skreddersydd for deg og kommer med en lavere månedlig kostnad i stedet for høye engangsbeløp, slik at du kan spre utbetalingene.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mb-16">
-          <PricingCard title="Demo" price="0" color="text-gray-500 border-gray-200" subtext="Helt uforpliktende" features={[ "Enkel demo", "Se potensialet", "Tilpasset deg" ]} />
-          <PricingCard months="6" price="1239" color="text-purple-500 border-purple-200" subtext="Faktureres månedlig med en bindingstid på 6 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
-          <PricingCard months="12" price="1059" color="text-orange-500 border-orange-200" subtext="Faktureres månedlig med en bindingstid på 12 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
-          <PricingCard months="24" price="809" color="text-green-600 border-green-200" subtext="Faktureres månedlig med en bindingstid på 24 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
-        </div>
-        
-        <div className="text-center font-serif italic text-2xl text-background/90">
-          Eller en engangssum fra 10 999 kr.
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-16 max-w-6xl">
+          <PricingCard 
+            title="Visitkort" 
+            subtitle="For deg som vil ha en profesjonell tilstedeværelse på nett"
+            price="9 900" 
+            color="text-gray-500 border-gray-200" 
+            features={[ 
+              "Én side mobiltilpasset", 
+              "Hero med bilde og tagline", 
+              "Kort bio og om-seksjon", 
+              "Kontaktskjema", 
+              "SEO-grunnoppsett med ditt navn som domene", 
+              "Levert på 5 virkedager" 
+            ]} 
+          />
+          <PricingCard 
+            title="Presentasjonsside" 
+            subtitle="For deg som aktivt booker foredrag og vil konvertere besøkende"
+            price="17 900" 
+            isPopular={true}
+            color="text-purple-500 border-purple-200" 
+            features={[ 
+              'Alt i Visitkort', 
+              '3–5 sider', 
+              'Foredragstemaer og målgrupper', 
+              'Testimonials fra arrangører', 
+              'Videointegrering', 
+              'Cookie-samtykke', 
+              'CMS så du kan redigere selv', 
+              'Levert på 10 virkedager' 
+            ]} 
+          />
+          <PricingCard 
+            title="Full salgside" 
+            subtitle="For deg som er profilert taler og vil ha en side som matcher statusen din"
+            price="27 900" 
+            color="text-orange-500 border-orange-200" 
+            features={[ 
+              'Alt i Presentasjonsside', 
+              'Profesjonelt copywriting', 
+              'Pressepakke og mediaseksjon', 
+              'Google Analytics-oppsett', 
+              'Bookingforespørsel med kalender', 
+              'Prioritert support i 3 måneder', 
+              'Levert på 15 virkedager' 
+            ]} 
+          />
         </div>
       </div>
     </section>
