@@ -268,24 +268,13 @@ const Philosophy = () => {
           });
         }
       });
-      gsap.from(".phil-header", {
-        scrollTrigger: { trigger: container.current, start: "top 80%" },
-        y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
-      });
     }, container);
     return () => ctx.revert();
   }, []);
 
   return (
     <section id="facts" ref={container} className="relative bg-background">
-      <div className="py-48 px-6 md:px-12 max-w-5xl mx-auto flex flex-col gap-12 relative z-10">
-        <p className="phil-header font-mono text-sm md:text-xl text-white/50 uppercase tracking-widest leading-relaxed">
-          De fleste byråer fokuserer på: standardiserte maler og kortsiktig støy.
-        </p>
-        <h2 className="phil-header font-serif italic text-4xl md:text-7xl leading-tight text-white mb-24">
-          Vi fokuserer på: digitale systemer som <span className="text-white not-italic font-sans font-bold uppercase tracking-tighter mix-blend-difference">konverterer</span> trafikk til kapital.
-        </h2>
-      </div>
+
       
       <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." index={10} icon={Eye} />
       <PhilosophyCard title="Synlighet." desc="74% av de som søker etter bedrifter starter på Google. Vi sørger for at de finner deg." index={20} icon={TextSearch} />

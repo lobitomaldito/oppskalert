@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Plus } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
@@ -50,7 +53,13 @@ export default function OppskalertFAQ() {
     return () => ctx.revert();
   }, []);
 
-  const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
+  const toggle = (i) => {
+    setOpenIndex(openIndex === i ? null : i);
+    // Refresh ScrollTrigger after the transition is mostly done to avoid "lag" and sync sticky elements
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 350);
+  };
 
   return (
     <section id="faq" ref={container} className="relative py-32 px-6 md:px-12 lg:px-24 overflow-hidden bg-background text-white border-t border-primary/5">
