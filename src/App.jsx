@@ -325,10 +325,10 @@ const PricingCard = ({ months, price, color }) => (
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-primary relative z-40 rounded-[4rem] text-white overflow-hidden">
+    <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-primary relative z-40 rounded-[4rem] text-background overflow-hidden">
       <div className="max-w-7xl mx-auto flex flex-col items-center">
         <h2 className="font-sans text-4xl md:text-6xl font-bold text-center mb-6 tracking-tight">Vi tilpasser prisene våre</h2>
-        <p className="font-mono text-sm md:text-base text-white/70 text-center max-w-2xl mb-24 leading-relaxed">
+        <p className="font-mono text-sm md:text-base text-background/70 text-center max-w-2xl mb-24 leading-relaxed">
           Våre pakker er skreddersydd for deg og kommer med en lavere månedlig kostnad i stedet for høye engangsbeløp, slik at du kan spre utbetalingene.
         </p>
         
@@ -338,7 +338,7 @@ const Pricing = () => {
           <PricingCard months="24" price="809" color="text-green-600 border-green-200" />
         </div>
         
-        <div className="text-center font-serif italic text-2xl text-white/90">
+        <div className="text-center font-serif italic text-2xl text-background/90">
           Eller en engangssum fra 10 999 kr.
         </div>
       </div>
