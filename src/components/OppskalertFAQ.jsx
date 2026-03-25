@@ -83,13 +83,15 @@ export default function OppskalertFAQ() {
               </button>
 
               <div
-                className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                  openIndex === i ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+                className={`grid transition-all duration-300 ease-in-out ${
+                  openIndex === i ? "grid-rows-[1fr] opacity-100 mt-2" : "grid-rows-[0fr] opacity-0 mt-0"
                 }`}
               >
-                <p className="font-mono text-sm md:text-base leading-relaxed text-white/50 pb-8 pr-12">
-                  {item.a}
-                </p>
+                <div className="overflow-hidden">
+                  <p className="font-mono text-sm md:text-base leading-relaxed text-white/50 pb-8 pr-12">
+                    {item.a}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
