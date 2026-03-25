@@ -322,7 +322,7 @@ const Pricing = () => {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mb-16">
-          <PricingCard title="Demo" price="0" color="text-gray-500 border-gray-200" subtext="Helt uforpliktende" features={[ "Se en forhåndsvisning av hvordan siden din kan se ut, helt uten forpliktelser" ]} />
+          <PricingCard title="Demo" price="0" color="text-gray-500 border-gray-200" subtext="Helt uforpliktende" features={[ "Enkel demo", "Se potensialet", "Tilpasset deg" ]} />
           <PricingCard months="6" price="1239" color="text-purple-500 border-purple-200" subtext="Faktureres månedlig med en bindingstid på 6 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
           <PricingCard months="12" price="1059" color="text-orange-500 border-orange-200" subtext="Faktureres månedlig med en bindingstid på 12 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
           <PricingCard months="24" price="809" color="text-green-600 border-green-200" subtext="Faktureres månedlig med en bindingstid på 24 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
