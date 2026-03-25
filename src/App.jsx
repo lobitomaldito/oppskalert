@@ -75,7 +75,7 @@ const Hero = () => {
           <span className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase">Skaler din</span>
           <span className="hero-elem font-serif italic text-7xl md:text-9xl tracking-tighter leading-none mt-2">Bedrift.</span>
         </h1>
-        <p className="hero-elem mt-8 font-mono text-sm md:text-base text-white/70 max-w-md leading-relaxed">
+        <p className="hero-elem mt-8 font-mono text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
           Vi bygger nettsider og systemer som skalerer norske bedrifter. Ingen kompromisser, kun presisjon.
         </p>
         <div className="hero-elem mt-10 flex gap-4">
@@ -123,8 +123,8 @@ const MeetUs = () => {
   ];
 
   return (
-    <section id="team" ref={container} className="relative py-32 px-6 md:px-12 lg:px-24 overflow-hidden min-h-screen flex items-center">
-      <LiquidGlass className="opacity-80" />
+    <section id="team" ref={container} className="relative py-32 px-6 md:px-12 lg:px-24 overflow-hidden min-h-screen flex items-center bg-background">
+      {/* LiquidGlass removed as per user request to remove bubble animations */}
       <div className="max-w-5xl mx-auto relative z-10 w-full">
         <div className="flex flex-col items-center mb-24">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Ekspertisen bak</span>
@@ -140,7 +140,7 @@ const MeetUs = () => {
               <h3 className="font-sans font-bold text-3xl mb-1">{member.name}</h3>
               <div className="font-mono text-sm uppercase tracking-widest text-accent flex flex-col gap-1">
                 <span>{member.role}</span>
-                <span className="opacity-50 text-xs italic">{member.sub}</span>
+                <span className="opacity-50 text-sm md:text-base italic">{member.sub}</span>
               </div>
             </div>
           ))}
@@ -228,7 +228,7 @@ const Portfolio = () => {
                   isActive ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-10 pointer-events-none absolute hidden md:flex scale-90"
                 )}>
                   <div className="font-sans font-bold text-2xl md:text-3xl tracking-tight leading-none mb-1 shadow-black drop-shadow-lg">{project.title}</div>
-                  <div className="font-mono text-sm tracking-wide opacity-90 drop-shadow-md">{project.sub}</div>
+                  <div className="font-mono text-base md:text-lg tracking-wide opacity-90 drop-shadow-md">{project.sub}</div>
                 </div>
               </div>
             </div>
@@ -239,38 +239,16 @@ const Portfolio = () => {
   );
 };
 
-const PhilosophyCard = ({ title, desc, animType, index, icon: Icon }) => {
+const PhilosophyCard = ({ title, desc, index, icon: Icon }) => {
   return (
     <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center p-6" style={{ zIndex: index }}>
-      <div className="protocol-card w-full max-w-6xl bg-surface rounded-[3rem] h-[80vh] shadow-xl border border-primary/10 overflow-hidden flex flex-col md:flex-row relative">
-        <div className="flex-1 p-12 md:p-24 flex flex-col justify-center">
-          <div className="bg-highlight text-background p-4 rounded-2xl w-fit mb-8 shadow-[0_0_30px_rgba(252,231,98,0.2)]">
-            {Icon && <Icon className="w-8 h-8" />}
+      <div className="protocol-card w-full max-w-5xl bg-surface rounded-[3rem] shadow-xl border border-primary/10 overflow-hidden relative">
+        <div className="p-12 md:p-24 flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
+          <div className="bg-highlight text-background p-6 rounded-3xl w-fit mb-12 shadow-[0_0_40px_rgba(252,231,98,0.25)]">
+            {Icon && <Icon className="w-10 h-10" />}
           </div>
-          <h2 className="font-sans font-bold text-4xl md:text-6xl mb-6 tracking-tight">{title}</h2>
-          <p className="font-mono text-primary/60 text-sm md:text-base leading-relaxed max-w-md">{desc}</p>
-        </div>
-        <div className="flex-1 bg-background relative flex items-center justify-center p-12 overflow-hidden border-l border-primary/5">
-          {animType === 1 && (
-            <div className="w-64 h-64 border border-primary relative rounded-full animate-[spin_20s_linear_infinite] flex items-center justify-center">
-              <div className="w-48 h-48 border border-primary/50 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-            </div>
-          )}
-          {animType === 2 && (
-            <div className="w-full max-w-md grid grid-cols-10 gap-2 relative">
-              <div className="absolute top-0 bottom-0 w-full bg-primary/5 z-0 animate-[pulse_4s_ease-in-out_infinite]"></div>
-              {Array.from({ length: 100 }).map((_, i) => (
-                <div key={i} className="aspect-square bg-primary/10 rounded-sm"></div>
-              ))}
-            </div>
-          )}
-          {animType === 3 && (
-            <svg viewBox="0 0 200 100" className="w-full max-w-md stroke-primary fill-transparent stroke-2">
-              <path d="M 0 50 L 50 50 L 60 20 L 70 80 L 80 50 L 200 50" strokeDasharray="300" strokeDashoffset="300" className="animate-[dash_3s_linear_infinite]">
-                <animate attributeName="stroke-dashoffset" from="300" to="0" dur="2s" repeatCount="indefinite" />
-              </path>
-            </svg>
-          )}
+          <h2 className="font-sans font-bold text-5xl md:text-7xl mb-10 tracking-tight">{title}</h2>
+          <p className="font-mono text-primary/70 text-xl md:text-3xl leading-relaxed max-w-3xl">{desc}</p>
         </div>
       </div>
     </div>
@@ -309,9 +287,9 @@ const Philosophy = () => {
         </h2>
       </div>
       
-      <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." animType={1} index={10} icon={Eye} />
-      <PhilosophyCard title="Synlighet." desc="74% av de som søker etter bedrifter starter på Google. Vi sørger for at de finner deg." animType={2} index={20} icon={TextSearch} />
-      <PhilosophyCard title="Mobilitet." desc="Google favoriserer mobiltilpassede sider. Vi bygger for alle skjermer, uten kompromiss." animType={3} index={30} icon={Smartphone} />
+      <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." index={10} icon={Eye} />
+      <PhilosophyCard title="Synlighet." desc="74% av de som søker etter bedrifter starter på Google. Vi sørger for at de finner deg." index={20} icon={TextSearch} />
+      <PhilosophyCard title="Mobilitet." desc="Google favoriserer mobiltilpassede sider. Vi bygger for alle skjermer, uten kompromiss." index={30} icon={Smartphone} />
     </section>
   );
 };
