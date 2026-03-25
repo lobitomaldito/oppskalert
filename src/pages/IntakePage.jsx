@@ -10,6 +10,7 @@ import SuccessScreen from '../components/intake/SuccessScreen';
 import { validateStep1, validateStep2, validateStep3, validateStep4, validateStep5 } from '../lib/validation';
 import { submitIntake } from '../lib/submitIntake';
 import { ArrowLeft, ArrowRight, Loader2 } from 'lucide-react';
+import ShaderWaving from '../components/ShaderWaving';
 
 const IntakePage = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -90,8 +91,14 @@ const IntakePage = () => {
   const ActiveStepComponent = steps[currentStep - 1].component;
 
   return (
-    <div className="min-h-screen bg-background text-primary font-sans flex flex-col md:flex-row">
-      <div className="hidden md:block w-[280px] shrink-0 sticky top-0 h-screen border-r border-primary/10 p-8">
+    <div className="min-h-screen bg-background text-primary font-sans flex flex-col md:flex-row relative overflow-hidden">
+      {/* Background Animation */}
+      <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
+        <ShaderWaving className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+      </div>
+
+      <div className="hidden md:block w-[280px] shrink-0 sticky top-0 h-screen border-r border-primary/10 p-8 z-10 backdrop-blur-sm bg-background/20">
         <StepSidebar 
           current={currentStep} 
           onStepClick={(s) => setCurrentStep(s)} 
@@ -102,7 +109,7 @@ const IntakePage = () => {
         <StepProgressBar current={currentStep} />
       </div>
 
-      <main className="flex-1 overflow-y-auto pb-32">
+      <main className="flex-1 overflow-y-auto pb-32 relative z-10">
         <div className="max-w-[680px] mx-auto w-full p-6 md:p-12 lg:p-24">
           <ActiveStepComponent 
             data={formData} 
