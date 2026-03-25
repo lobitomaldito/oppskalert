@@ -72,8 +72,8 @@ const Hero = () => {
       </div>
       <div className="relative z-10 max-w-5xl text-white">
         <h1 className="flex flex-col gap-2">
-          <span className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase">Skaler din</span>
-          <span className="hero-elem font-serif italic text-7xl md:text-9xl tracking-tighter leading-none mt-2">Bedrift.</span>
+          <span className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase">Vi bygger nettsiden din —</span>
+          <span className="hero-elem font-serif italic text-6xl md:text-8xl tracking-tighter leading-tight mt-2">ingen risiko, ingen binding.</span>
         </h1>
         <p className="hero-elem mt-8 font-mono text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
           Vi bygger nettsider og systemer som skalerer norske bedrifter. Ingen kompromisser, kun presisjon.
@@ -294,19 +294,52 @@ const Philosophy = () => {
   );
 };
 
+const PricingCard = ({ months, price, color }) => (
+  <div className="bg-white text-background rounded-[2.5rem] p-10 flex flex-col shadow-xl border border-black/5 relative overflow-hidden h-full">
+    <div className={cn("inline-block w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-8 border", color)}>
+      {months} mnd.
+    </div>
+    <div className="flex items-baseline gap-2 mb-4">
+      <span className="text-5xl font-bold tracking-tighter">{price} kr</span>
+      <span className="text-black/40 font-medium text-lg">/måned</span>
+    </div>
+    <p className="text-black/40 text-xs font-mono mb-8 leading-relaxed">Faktureres månedlig med en bindingstid på {months} måneder</p>
+    
+    <div className="flex flex-col gap-4 mb-10 bg-black/[0.03] p-6 rounded-3xl">
+      {[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ].map((item, i) => (
+        <div key={i} className="flex items-center gap-3">
+          <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
+            <CheckSquare className="w-3 h-3 text-primary" />
+          </div>
+          <span className="font-sans text-sm font-semibold">{item}</span>
+        </div>
+      ))}
+    </div>
+    
+    <div className="mt-auto flex flex-col gap-3">
+      <Link to="/kom-i-gang" className="w-full py-4 rounded-2xl bg-[#1a2d2a] text-white font-sans font-bold text-sm text-center hover:bg-black transition-colors duration-300">Bestill rådgivning</Link>
+      <Link to="/kom-i-gang" className="w-full py-4 rounded-2xl border border-black/10 font-sans font-bold text-sm text-center hover:bg-black/5 transition-colors duration-300">Bestill nå</Link>
+    </div>
+  </div>
+);
+
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-surface relative z-40">
-      <div className="max-w-md mx-auto">
-        <div className="bg-background border border-primary/10 rounded-[2rem] p-12 w-full relative group hover:-translate-y-2 transition-transform duration-500 shadow-sm">
-          <h3 className="font-mono text-sm tracking-widest text-primary/60 mb-4 uppercase">Fase 1</h3>
-          <h4 className="font-sans text-4xl font-bold mb-6">Gratis Demo</h4>
-          <ul className="flex flex-col gap-4 font-mono text-sm mb-12">
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-primary" /> Strategisk Kartlegging</li>
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-primary" /> Analyse av Plattform</li>
-            <li className="flex items-center gap-3"><CheckSquare className="w-4 h-4 text-primary" /> Teknisk Audit</li>
-          </ul>
-          <Link to="/kom-i-gang" className="block w-full py-4 rounded-full border border-primary font-sans font-medium text-sm text-center hover:bg-primary hover:text-white transition-colors duration-300">Book Samtale</Link>
+    <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-primary relative z-40 rounded-[4rem] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col items-center">
+        <h2 className="font-sans text-4xl md:text-6xl font-bold text-center mb-6 tracking-tight">Vi tilpasser prisene våre</h2>
+        <p className="font-mono text-sm md:text-base text-white/70 text-center max-w-2xl mb-24 leading-relaxed">
+          Våre pakker er skreddersydd for deg og kommer med en lavere månedlig kostnad i stedet for høye engangsbeløp, slik at du kan spre utbetalingene.
+        </p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-16">
+          <PricingCard months="6" price="1239" color="text-purple-500 border-purple-200" />
+          <PricingCard months="12" price="1059" color="text-orange-500 border-orange-200" />
+          <PricingCard months="24" price="809" color="text-green-600 border-green-200" />
+        </div>
+        
+        <div className="text-center font-serif italic text-2xl text-white/90">
+          Eller en engangssum fra 10 999 kr.
         </div>
       </div>
     </section>
