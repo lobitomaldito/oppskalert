@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor, Code, Globe, Smartphone, Eye, ListSearch } from 'lucide-react';
+import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor, Code, Globe, Smartphone, Eye, TextSearch } from 'lucide-react';
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
@@ -126,7 +126,7 @@ const Statistics = () => {
 
   const stats = [
     { icon: Eye, text: "94% av førsteinntrykket til hjemmesider er relatert til design" },
-    { icon: ListSearch, text: "74% av mennesker som søker etter bedrifter, starter på en søketjeneste" },
+    { icon: TextSearch, text: "74% av mennesker som søker etter bedrifter, starter på en søketjeneste" },
     { icon: Smartphone, text: "Google favoriserer bedrifter med mobiltilpassede hjemmesider" }
   ];
 
