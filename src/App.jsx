@@ -119,7 +119,7 @@ const MeetUs = () => {
 
   const members = [
     { name: "Aleksander MacKee", role: "CTO", sub: "Grunnlegger", image: "/founders/aleksander.png", pos: "center 55%" },
-    { name: "Francisus Drake", role: "CEO", sub: "Grunnlegger", image: "/founders/franciscus.jpg", pos: "center 25%" }
+    { name: "Franciscus Drake", role: "CEO", sub: "Grunnlegger", image: "/founders/franciscus.jpg", pos: "center 25%" }
   ];
 
   return (
@@ -239,11 +239,14 @@ const Portfolio = () => {
   );
 };
 
-const PhilosophyCard = ({ title, desc, animType, index }) => {
+const PhilosophyCard = ({ title, desc, animType, index, icon: Icon }) => {
   return (
     <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center p-6" style={{ zIndex: index }}>
       <div className="protocol-card w-full max-w-6xl bg-surface rounded-[3rem] h-[80vh] shadow-xl border border-primary/10 overflow-hidden flex flex-col md:flex-row relative">
         <div className="flex-1 p-12 md:p-24 flex flex-col justify-center">
+          <div className="bg-highlight text-background p-4 rounded-2xl w-fit mb-8 shadow-[0_0_30px_rgba(252,231,98,0.2)]">
+            {Icon && <Icon className="w-8 h-8" />}
+          </div>
           <h2 className="font-sans font-bold text-4xl md:text-6xl mb-6 tracking-tight">{title}</h2>
           <p className="font-mono text-primary/60 text-sm md:text-base leading-relaxed max-w-md">{desc}</p>
         </div>
@@ -306,9 +309,9 @@ const Philosophy = () => {
         </h2>
       </div>
       
-      <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." animType={1} index={10} />
-      <PhilosophyCard title="Synlighet." desc="74% av de som søker etter bedrifter starter på Google. Vi sørger for at de finner deg." animType={2} index={20} />
-      <PhilosophyCard title="Mobilitet." desc="Google favoriserer mobiltilpassede sider. Vi bygger for alle skjermer, uten kompromiss." animType={3} index={30} />
+      <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." animType={1} index={10} icon={Eye} />
+      <PhilosophyCard title="Synlighet." desc="74% av de som søker etter bedrifter starter på Google. Vi sørger for at de finner deg." animType={2} index={20} icon={TextSearch} />
+      <PhilosophyCard title="Mobilitet." desc="Google favoriserer mobiltilpassede sider. Vi bygger for alle skjermer, uten kompromiss." animType={3} index={30} icon={Smartphone} />
     </section>
   );
 };
