@@ -112,13 +112,14 @@ const Statistics = () => {
       gsap.from(".stat-box", {
         scrollTrigger: {
           trigger: container.current,
-          start: "top 85%",
+          start: "top 70%",
+          toggleActions: "play none none none"
         },
-        y: 40,
+        y: 60,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out"
+        duration: 1,
+        stagger: 0.3,
+        ease: "expo.out"
       });
     }, container);
     return () => ctx.revert();
@@ -135,15 +136,15 @@ const Statistics = () => {
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div className="max-w-4xl mx-auto w-full flex flex-col gap-6 relative z-10">
+      <div className="max-w-4xl mx-auto w-full flex flex-col gap-8 relative z-10 pt-12">
         {stats.map((stat, idx) => {
           const Icon = stat.icon;
           return (
-            <div key={idx} className="stat-box bg-surface/10 backdrop-blur-md border border-primary/10 rounded-[2rem] p-4 pr-10 flex items-center gap-8 transition-all duration-300 hover:bg-surface/20 group">
-              <div className="bg-highlight text-background p-6 rounded-[1.5rem] flex-shrink-0 shadow-[0_0_30px_rgba(252,231,98,0.2)] group-hover:scale-105 transition-transform duration-500">
-                <Icon className="w-8 h-8 stroke-[1.8]" />
+            <div key={idx} className="stat-box opacity-0 flex items-center gap-6 md:gap-12 bg-white/5 backdrop-blur-sm border border-white/10 p-6 md:p-8 rounded-[2.5rem] transition-all duration-500 hover:bg-white/10">
+              <div className="bg-highlight text-background p-5 md:p-6 rounded-[1.5rem] flex-shrink-0 shadow-[0_0_40px_rgba(252,231,98,0.15)] group">
+                <Icon className="w-8 h-8 md:w-10 md:h-10 stroke-[1.5]" />
               </div>
-              <p className="font-sans font-bold text-primary text-xl md:text-2xl leading-tight tracking-tight">
+              <p className="font-sans font-bold text-primary text-xl md:text-3xl tracking-tight leading-[1.1]">
                 {stat.text}
               </p>
             </div>
