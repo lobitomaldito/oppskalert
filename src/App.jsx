@@ -283,24 +283,24 @@ const Philosophy = () => {
   );
 };
 
-const PricingCard = ({ months, price, color }) => (
-  <div className="bg-white text-background rounded-[2.5rem] p-10 flex flex-col shadow-xl border border-black/5 relative overflow-hidden h-full">
+const PricingCard = ({ months, price, color, title, subtext, features }) => (
+  <div className="bg-white text-background rounded-[2.5rem] p-8 flex flex-col shadow-xl border border-black/5 relative overflow-hidden h-full">
     <div className={cn("inline-block w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-8 border", color)}>
-      {months} mnd.
+      {months ? `${months} mnd.` : title}
     </div>
     <div className="flex items-baseline gap-2 mb-4">
-      <span className="text-5xl font-bold tracking-tighter">{price} kr</span>
-      <span className="text-black/40 font-medium text-lg">/måned</span>
+      <span className="text-4xl md:text-5xl font-bold tracking-tighter">{price} kr</span>
+      {months && <span className="text-black/40 font-medium text-lg">/måned</span>}
     </div>
-    <p className="text-black/40 text-xs font-mono mb-8 leading-relaxed">Faktureres månedlig med en bindingstid på {months} måneder</p>
+    <p className="text-black/40 text-xs font-mono mb-8 leading-relaxed">{subtext}</p>
     
     <div className="flex flex-col gap-4 mb-10 bg-black/[0.03] p-6 rounded-3xl">
-      {[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ].map((item, i) => (
-        <div key={i} className="flex items-center gap-3">
-          <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
+      {features.map((item, i) => (
+        <div key={i} className="flex items-start gap-3">
+          <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
             <CheckSquare className="w-3 h-3 text-primary" />
           </div>
-          <span className="font-sans text-sm font-semibold">{item}</span>
+          <span className="font-sans text-sm font-semibold leading-tight">{item}</span>
         </div>
       ))}
     </div>
@@ -321,10 +321,11 @@ const Pricing = () => {
           Våre pakker er skreddersydd for deg og kommer med en lavere månedlig kostnad i stedet for høye engangsbeløp, slik at du kan spre utbetalingene.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-16">
-          <PricingCard months="6" price="1239" color="text-purple-500 border-purple-200" />
-          <PricingCard months="12" price="1059" color="text-orange-500 border-orange-200" />
-          <PricingCard months="24" price="809" color="text-green-600 border-green-200" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full mb-16">
+          <PricingCard title="Demo" price="0" color="text-gray-500 border-gray-200" subtext="Helt uforpliktende" features={[ "Se en forhåndsvisning av hvordan siden din kan se ut, helt uten forpliktelser" ]} />
+          <PricingCard months="6" price="1239" color="text-purple-500 border-purple-200" subtext="Faktureres månedlig med en bindingstid på 6 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
+          <PricingCard months="12" price="1059" color="text-orange-500 border-orange-200" subtext="Faktureres månedlig med en bindingstid på 12 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
+          <PricingCard months="24" price="809" color="text-green-600 border-green-200" subtext="Faktureres månedlig med en bindingstid på 24 måneder" features={[ 'Responsiv design', 'Cookie-samtykke', 'SEO-tilpasset CMS' ]} />
         </div>
         
         <div className="text-center font-serif italic text-2xl text-background/90">
