@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor, Code, Globe, Smartphone } from 'lucide-react';
+import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor, Code, Globe, Smartphone, Eye, ListSearch } from 'lucide-react';
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import IntakePage from './pages/IntakePage';
 import WavingCanvas from './components/ShaderWaving';
 import LiquidGlass from './components/LiquidGlass';
+import OppskalertFAQ from './components/OppskalertFAQ';
 
 function cn(...inputs) {
   return twMerge(clsx(inputs));
@@ -101,6 +102,53 @@ const ImageWithPlaceholder = ({ src, alt, pos }) => {
     );
   }
   return <img src={src} alt={alt} className="w-full h-full object-cover" style={{ objectPosition: pos }} onError={() => setError(true)} />;
+};
+
+const Statistics = () => {
+  const container = useRef(null);
+  
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.from(".stat-box", {
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 85%",
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out"
+      });
+    }, container);
+    return () => ctx.revert();
+  }, []);
+
+  const stats = [
+    { icon: Eye, text: "94% av førsteinntrykket til hjemmesider er relatert til design" },
+    { icon: ListSearch, text: "74% av mennesker som søker etter bedrifter, starter på en søketjeneste" },
+    { icon: Smartphone, text: "Google favoriserer bedrifter med mobiltilpassede hjemmesider" }
+  ];
+
+  return (
+    <section ref={container} className="py-24 px-6 md:px-12 lg:px-24 bg-[#ECEBE4] relative z-20">
+      <div className="max-w-3xl mx-auto w-full flex flex-col gap-5">
+        {stats.map((stat, idx) => {
+          const Icon = stat.icon;
+          return (
+            <div key={idx} className="stat-box bg-white rounded-[1.5rem] p-3 pr-8 flex items-center gap-6 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-1">
+              <div className="bg-[#daff73] text-[#1a1a1a] p-5 rounded-[1.25rem] flex-shrink-0">
+                <Icon className="w-8 h-8 stroke-[1.5]" />
+              </div>
+              <p className="font-sans font-bold text-[#1a1a1a] text-lg md:text-xl leading-snug">
+                {stat.text}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
 };
 
 const MeetUs = () => {
@@ -381,7 +429,9 @@ const Home = () => (
     <Navbar />
     <main>
       <Hero />
+      <Statistics />
       <MeetUs />
+      <OppskalertFAQ />
       <Portfolio />
       <Philosophy />
       <Protocol />
