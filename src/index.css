@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply bg-primary text-background antialiased;
+    @apply bg-background text-primary antialiased;
     overflow-x: hidden;
   }
 }

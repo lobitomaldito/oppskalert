@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor, Code, Globe, Smartphone, Eye, TextSearch, Check } from 'lucide-react';
+import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor, Code, Globe, Smartphone, Eye, TextSearch } from 'lucide-react';
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
@@ -23,11 +23,12 @@ const Navbar = () => {
       ScrollTrigger.create({
         start: 'top -50',
         end: 99999,
+        toggleClass: { className: 'scrolled-nav', targets: navRef.current },
         onUpdate: (self) => {
           if (self.isActive) {
-            gsap.to(navRef.current, { backgroundColor: 'rgba(79, 71, 137, 0.95)', backdropFilter: 'blur(8px)', duration: 0.3 });
+            gsap.to(navRef.current, { backgroundColor: 'rgba(79, 71, 137, 0.90)', backdropFilter: 'blur(8px)', color: '#fffded', borderColor: 'rgba(255, 255, 255, 0.1)', duration: 0.3 });
           } else {
-            gsap.to(navRef.current, { backgroundColor: 'rgba(79, 71, 137, 0.85)', backdropFilter: 'blur(4px)', duration: 0.3 });
+            gsap.to(navRef.current, { backgroundColor: 'transparent', backdropFilter: 'blur(0px)', color: '#fffded', borderColor: 'transparent', duration: 0.3 });
           }
         }
       });
@@ -36,15 +37,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav ref={navRef} className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-6 py-3 rounded-full border border-white/10 transition-all duration-300 w-[90%] max-w-5xl text-primary bg-surface/80 backdrop-blur-sm shadow-lg">
+    <nav ref={navRef} className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-between px-6 py-3 rounded-full border border-transparent transition-all duration-300 w-[90%] max-w-5xl text-white">
       <div className="flex items-center gap-3">
         <span className="font-sans font-bold text-2xl tracking-tight lowercase">oppskalert.</span>
       </div>
       <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
-        <a href="#hero" className="hover:-translate-y-[1px] transition-transform">Hjem</a>
+        <a href="#features" className="hover:-translate-y-[1px] transition-transform">Løsninger</a>
         <a href="#portfolio" className="hover:-translate-y-[1px] transition-transform">Det vi driver med</a>
         <a href="#philosophy" className="hover:-translate-y-[1px] transition-transform">Filosofi</a>
-        <a href="#pricing" className="hover:-translate-y-[1px] transition-transform">Priser</a>
+        <a href="#protocol" className="hover:-translate-y-[1px] transition-transform">Protokoll</a>
       </div>
       <Link to="/kom-i-gang" className="group relative overflow-hidden bg-surface text-primary border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center">
         <span className="relative z-10 group-hover:text-white transition-colors duration-300">Bestill Demo</span>
@@ -64,13 +65,13 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="hero" ref={container} className="relative h-[100dvh] w-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24 overflow-hidden bg-primary">
-      <div className="absolute inset-0 z-0 bg-primary">
-        <WavingCanvas className="w-full h-full object-cover opacity-40 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-transparent pointer-events-none"></div>
+    <section ref={container} className="relative h-[100dvh] w-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
+      <div className="absolute inset-0 z-0 bg-background">
+        <WavingCanvas className="w-full h-full object-cover opacity-60 mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none"></div>
       </div>
-      <div className="relative z-10 max-w-5xl text-background">
-        <h1 id="hero" className="flex flex-col gap-2">
+      <div className="relative z-10 max-w-5xl text-white">
+        <h1 className="flex flex-col gap-2">
           <span className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase">Vi bygger nettsiden din —</span>
           <span className="hero-elem font-serif italic text-6xl md:text-8xl tracking-tighter leading-tight mt-2">ingen risiko, ingen binding.</span>
         </h1>
@@ -122,24 +123,24 @@ const MeetUs = () => {
   ];
 
   return (
-    <section id="team" ref={container} className="relative py-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-primary">
+    <section id="team" ref={container} className="relative py-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
       {/* LiquidGlass removed as per user request to remove bubble animations */}
       <div className="max-w-5xl mx-auto relative z-10 w-full">
         <div className="flex flex-col items-center mb-24">
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Ekspertisen bak</span>
-          <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center text-background">Møt oss.</h2>
+          <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center">Møt oss.</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
           {members.map((member, i) => (
-            <div key={i} className="member-card flex flex-col items-center text-center text-background">
-              <div className="w-80 h-80 rounded-full border border-background/10 bg-surface/10 backdrop-blur-sm relative overflow-hidden mb-8 group">
+            <div key={i} className="member-card flex flex-col items-center text-center text-white">
+              <div className="w-80 h-80 rounded-full border border-primary/10 bg-surface/30 backdrop-blur-sm relative overflow-hidden mb-8 group">
                 <ImageWithPlaceholder src={member.image} alt={member.name} pos={member.pos} />
-                <div className="absolute inset-0 border-[8px] border-primary pointer-events-none rounded-full"></div>
+                <div className="absolute inset-0 border-[8px] border-background pointer-events-none rounded-full"></div>
               </div>
-              <h3 className="font-sans font-bold text-3xl mb-1 text-background">{member.name}</h3>
+              <h3 className="font-sans font-bold text-3xl mb-1">{member.name}</h3>
               <div className="font-mono text-sm uppercase tracking-widest text-accent flex flex-col gap-1">
                 <span>{member.role}</span>
-                <span className="opacity-70 text-sm md:text-lg italic whitespace-pre-line leading-relaxed text-background/60">{member.sub}</span>
+                <span className="opacity-50 text-sm md:text-lg italic whitespace-pre-line leading-relaxed">{member.sub}</span>
               </div>
             </div>
           ))}
@@ -172,10 +173,10 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="relative py-32 px-6 md:px-12 lg:px-24 bg-primary flex flex-col items-center overflow-hidden z-10">
+    <section id="portfolio" className="relative py-32 px-6 md:px-12 lg:px-24 bg-background flex flex-col items-center overflow-hidden z-10 border-t border-primary/5">
       <div className="flex flex-col items-center mb-16 relative z-10 w-full max-w-5xl">
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Case Studies</span>
-        <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center text-background">Det vi driver med.</h2>
+        <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center text-white">Det vi driver med.</h2>
       </div>
 
       <div className="flex flex-row items-stretch overflow-hidden w-full max-w-5xl h-[400px] md:h-[500px] relative z-10 mt-8">
@@ -272,7 +273,7 @@ const Philosophy = () => {
   }, []);
 
   return (
-    <section id="philosophy" ref={container} className="relative bg-primary">
+    <section id="facts" ref={container} className="relative bg-background">
 
       
       <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." index={10} icon={Eye} />
@@ -306,8 +307,8 @@ const PricingCard = ({ months, price, color, title, subtitle, features, isPopula
     <div className="flex flex-col gap-4 mb-10 bg-black/[0.03] p-6 rounded-3xl">
       {features.map((item, i) => (
         <div key={i} className="flex items-start gap-3">
-          <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
-            <Check className="w-3.5 h-3.5 text-primary" />
+          <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+            <CheckSquare className="w-3 h-3 text-primary" />
           </div>
           <span className="font-sans text-sm font-semibold leading-tight">{item}</span>
         </div>
@@ -414,7 +415,7 @@ const Footer = () => {
 };
 
 const Home = () => (
-  <div className="bg-primary text-background min-h-screen selection:bg-background selection:text-white">
+  <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
     <Navbar />
     <main>
       <Hero />
