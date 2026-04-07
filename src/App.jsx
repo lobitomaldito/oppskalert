@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Server, Terminal, Settings2, BarChart3, Fingerprint, Cpu, Calendar, CheckSquare, Activity, Monitor, Code, Globe, Smartphone, Eye, TextSearch } from 'lucide-react';
+import { ArrowRight, Fingerprint, CheckSquare, Smartphone, Eye, TextSearch } from 'lucide-react';
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
@@ -43,7 +43,6 @@ const Navbar = () => {
       </div>
       <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
         <a href="#features" className="hover:-translate-y-[1px] transition-transform">Løsninger</a>
-        <a href="#portfolio" className="hover:-translate-y-[1px] transition-transform">Det vi driver med</a>
         <a href="#philosophy" className="hover:-translate-y-[1px] transition-transform">Filosofi</a>
         <a href="#protocol" className="hover:-translate-y-[1px] transition-transform">Protokoll</a>
       </div>
@@ -150,94 +149,6 @@ const MeetUs = () => {
   );
 };
 
-const Portfolio = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Bytt ut bildene med faktiske screenshots av nettsidene deres når de er klare.
-  // URL er klargjort (project.url), men foreløpig navigerer vi ikke dit.
-  const projects = [
-    { title: "Irmelin Drake", sub: "irmelindrake.no", image: "/websider/irmelin-drake.png", url: "https://irmelindrake.no", icon: Monitor },
-    { title: "Cécile Moroni", sub: "cecilemoroni.com", image: "/websider/cecil-moroni.png", url: "https://cecilemoroni.com", icon: Terminal },
-    { title: "Mona Steenberg", sub: "monasteenberg.no", image: "/websider/mona-steenberg.png", url: "https://monasteenberggran.netlify.app", icon: Code },
-    { title: "Mirakelmannen", sub: "troels.no", image: "/websider/troels-mirakelmannen.png", url: "https://troelsmirakelmannen.netlify.app", icon: Globe },
-    { title: "Tore S. Rasmussen", sub: "tsr.no", image: "/websider/Tore Sund Rasmussen.png", url: "#", icon: Server }
-  ];
-
-  const handleProjectClick = (idx, url) => {
-    // Når dere vil skru på klikkbare prosjekter til eksterne nettsider:
-    // if (activeIndex === idx && url) {
-    //    window.open(url, '_blank');
-    // } else {
-    setActiveIndex(idx);
-    // }
-  };
-
-  return (
-    <section id="portfolio" className="relative py-32 px-6 md:px-12 lg:px-24 bg-background flex flex-col items-center overflow-hidden z-10 border-t border-primary/5">
-      <div className="flex flex-col items-center mb-16 relative z-10 w-full max-w-5xl">
-        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Case Studies</span>
-        <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center text-white">Det vi driver med.</h2>
-      </div>
-
-      <div className="flex flex-row items-stretch overflow-hidden w-full max-w-5xl h-[400px] md:h-[500px] relative z-10 mt-8">
-        {projects.map((project, idx) => {
-          const isActive = activeIndex === idx;
-          const IconComponent = project.icon;
-          return (
-            <div
-              key={idx}
-              onClick={() => handleProjectClick(idx, project.url)}
-              className={cn(
-                "group relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.05,0.61,0.41,0.95)]",
-                isActive 
-                  ? "flex-[1000] max-w-full mx-0 rounded-[40px]" 
-                  : "flex-[1] min-w-[70px] max-w-[100px] mx-1 md:mx-3 rounded-[35px]"
-              )}
-            >
-              {/* Background Image */}
-              <div 
-                className={cn(
-                  "absolute inset-0 bg-no-repeat transition-[background-position,background-size,transform]",
-                  !isActive && "duration-700 ease-[cubic-bezier(0.05,0.61,0.41,0.95)] group-hover:scale-105 bg-[length:auto_120%] bg-top",
-                  isActive && "duration-1000 ease-out bg-[length:100%_auto] bg-top hover:bg-bottom hover:duration-[8000ms] hover:ease-linear"
-                )}
-                style={{ backgroundImage: `url(${project.image})` }}
-              />
-
-              {/* Shadow overlay */}
-              <div className={cn(
-                "absolute left-0 right-0 transition-all duration-700 ease-[cubic-bezier(0.05,0.61,0.41,0.95)]",
-                isActive
-                  ? "bottom-0 h-[160px] bg-gradient-to-t from-black/90 via-black/50 to-transparent"
-                  : "bottom-0 h-[80px] bg-gradient-to-t from-black/80 to-transparent"
-              )}></div>
-
-              <div className={cn(
-                "absolute flex h-[40px] transition-all duration-700 ease-[cubic-bezier(0.05,0.61,0.41,0.95)]",
-                isActive ? "bottom-6 left-6 md:bottom-10 md:left-10 right-0 items-center" : "bottom-5 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-[50%] items-center justify-center flex-col"
-              )}>
-                <div className={cn(
-                  "flex items-center justify-center rounded-full bg-white text-background z-10 shrink-0 transition-all duration-700",
-                  isActive ? "min-w-[48px] max-w-[48px] h-[48px]" : "min-w-[40px] max-w-[40px] h-[40px] md:-translate-x-1/2"
-                )}>
-                  <IconComponent className={cn("transition-transform duration-700", isActive ? "w-6 h-6" : "w-5 h-5")} /> 
-                </div>
-                
-                <div className={cn(
-                  "flex flex-col justify-center ml-4 text-white whitespace-nowrap transition-all duration-700 ease-out origin-left",
-                  isActive ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-10 pointer-events-none absolute hidden md:flex scale-90"
-                )}>
-                  <div className="font-sans font-bold text-2xl md:text-3xl tracking-tight leading-none mb-1 shadow-black drop-shadow-lg">{project.title}</div>
-                  <div className="font-mono text-base md:text-lg tracking-wide opacity-90 drop-shadow-md">{project.sub}</div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-};
 
 const PhilosophyCard = ({ title, desc, index, icon: Icon }) => {
   return (
@@ -400,7 +311,6 @@ const Footer = () => {
           <div className="flex flex-col gap-4">
             <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Navigasjon</span>
             <a href="#facts" className="hover:text-white/70 transition-colors">Visste du at?</a>
-            <a href="#portfolio" className="hover:text-white/70 transition-colors">Det vi driver med</a>
             <a href="#faq" className="hover:text-white/70 transition-colors">FAQ</a>
             <a href="#pricing" className="hover:text-white/70 transition-colors">Tjenester</a>
           </div>
@@ -421,7 +331,6 @@ const Home = () => (
       <Hero />
       <MeetUs />
       <OppskalertFAQ />
-      <Portfolio />
       <Philosophy />
       <Pricing />
     </main>
