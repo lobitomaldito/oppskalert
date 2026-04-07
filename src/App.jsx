@@ -4,8 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Fingerprint, CheckSquare, Smartphone, Eye, TextSearch } from 'lucide-react';
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import IntakePage from './pages/IntakePage';
+import { Link } from 'react-router-dom';
 import WavingCanvas from './components/ShaderWaving';
 import LiquidGlass from './components/LiquidGlass';
 import OppskalertFAQ from './components/OppskalertFAQ';
@@ -339,14 +338,7 @@ const Home = () => (
 );
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/kom-i-gang" element={<IntakePage />} />
-      </Routes>
-    </Router>
-  );
+  return <Home />;
 }
 
 export default App;
