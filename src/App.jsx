@@ -44,6 +44,7 @@ const Navbar = () => {
         <a href="#features" className="hover:-translate-y-[1px] transition-transform">Løsninger</a>
         <a href="#philosophy" className="hover:-translate-y-[1px] transition-transform">Filosofi</a>
         <a href="#protocol" className="hover:-translate-y-[1px] transition-transform">Protokoll</a>
+        <a href="#contact" className="hover:-translate-y-[1px] transition-transform">Kontakt</a>
       </div>
       <Link to="/kom-i-gang" className="group relative overflow-hidden bg-surface text-primary border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center">
         <span className="relative z-10 group-hover:text-white transition-colors duration-300">Bestill Demo</span>
@@ -296,7 +297,7 @@ const Pricing = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-background text-white pt-24 pb-8 px-6 md:px-12 lg:px-24 rounded-t-[4rem] relative z-40 mt-[-4rem]">
+    <footer id="contact" className="bg-background text-white pt-24 pb-8 px-6 md:px-12 lg:px-24 rounded-t-[4rem] relative z-40 mt-[-4rem]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 text-white">
         <div className="max-w-sm">
           <span className="font-sans font-bold text-3xl tracking-tight lowercase mb-2 block">oppskalert.</span>
@@ -315,10 +316,10 @@ const Footer = () => {
             <a href="#pricing" className="hover:text-white/70 transition-colors">Tjenester</a>
           </div>
           <div className="flex flex-col gap-4">
-            <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Kontakt</span>
-            <a href="tel:+4797409897" className="hover:text-white/70 transition-colors">974 09 897</a>
-            <a href="tel:+4747910461" className="hover:text-white/70 transition-colors">479 10 461</a>
-            <a href="mailto:hei@oppskalert.no" className="hover:text-white/70 transition-colors">hei@oppskalert.no</a>
+            <span className="text-white/60 uppercase tracking-widest mb-2 font-semibold">Kontakt</span>
+            <a href="tel:+4797409897" className="text-white hover:text-accent transition-colors font-semibold">974 09 897</a>
+            <a href="tel:+4747910461" className="text-white hover:text-accent transition-colors font-semibold">479 10 461</a>
+            <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors font-semibold">team@oppskalert.no</a>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Selskap</span>
