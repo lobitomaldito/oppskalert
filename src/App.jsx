@@ -299,7 +299,8 @@ const Footer = () => {
     <footer className="bg-background text-white pt-24 pb-8 px-6 md:px-12 lg:px-24 rounded-t-[4rem] relative z-40 mt-[-4rem]">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 text-white">
         <div className="max-w-sm">
-          <span className="font-sans font-bold text-3xl tracking-tight lowercase mb-6 block">oppskalert.</span>
+          <span className="font-sans font-bold text-3xl tracking-tight lowercase mb-2 block">oppskalert.</span>
+          <p className="font-mono text-white/30 text-xs mb-6">et datterselskap av PotentialAIze AS</p>
           <p className="font-mono text-white/50 text-sm leading-relaxed mb-8">Vi bygger nettsider og systemer som skalerer norske bedrifter.</p>
           <div className="flex items-center gap-3 font-mono text-sm font-semibold bg-white/5 w-fit px-4 py-2 rounded-full border border-white/10">
             <div className="w-2 h-2 rounded-full bg-highlight animate-pulse"></div>
@@ -313,10 +314,22 @@ const Footer = () => {
             <a href="#faq" className="hover:text-white/70 transition-colors">FAQ</a>
             <a href="#pricing" className="hover:text-white/70 transition-colors">Tjenester</a>
           </div>
+          <div className="flex flex-col gap-4">
+            <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Kontakt</span>
+            <a href="tel:+4797409897" className="hover:text-white/70 transition-colors">974 09 897</a>
+            <a href="tel:+4747910461" className="hover:text-white/70 transition-colors">479 10 461</a>
+            <a href="mailto:hei@oppskalert.no" className="hover:text-white/70 transition-colors">hei@oppskalert.no</a>
+          </div>
+          <div className="flex flex-col gap-4">
+            <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Selskap</span>
+            <span className="text-white/50">Orgnr: 935 067 049</span>
+            <span className="text-white/50">Ostadalsveien 66</span>
+            <span className="text-white/50">0753 Oslo</span>
+          </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-white/10 flex justify-between items-center font-mono text-xs text-white/30">
-        <p>&copy; {new Date().getFullYear()} Oppskalert. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} PotentialAIze AS. All rights reserved.</p>
         <p>Built with precision in Norway.</p>
       </div>
     </footer>
