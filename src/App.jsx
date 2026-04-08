@@ -117,8 +117,8 @@ const MeetUs = () => {
   }, []);
 
   const members = [
-    { name: "Aleksander MacKee", role: "CTO", sub: "AI Engineer\nMaster i Fintech og BA", image: "/founders/aleksander.png", pos: "center 55%" },
-    { name: "Franciscus Drake", role: "CEO", sub: "Markedsføring\nProduct development\nBachelor i Markedsføring", image: "/founders/franciscus.jpg", pos: "center 25%" }
+    { name: "Aleksander MacKee", role: "CTO", sub: "AI Engineer\nMaster i Fintech og BA", image: "/founders/aleksander.png", pos: "center 55%", phone: "974 09 897", tel: "+4797409897" },
+    { name: "Franciscus Drake Bruseth", role: "CEO", sub: "Markedsføring\nProduct development\nBachelor i Markedsføring", image: "/founders/franciscus.jpg", pos: "center 25%", phone: "479 10 461", tel: "+4747910461" }
   ];
 
   return (
@@ -137,9 +137,13 @@ const MeetUs = () => {
                 <div className="absolute inset-0 border-[8px] border-background pointer-events-none rounded-full"></div>
               </div>
               <h3 className="font-sans font-bold text-3xl mb-1">{member.name}</h3>
-              <div className="font-mono text-sm uppercase tracking-widest text-accent flex flex-col gap-1">
+              <div className="font-mono text-sm uppercase tracking-widest text-accent flex flex-col gap-1 mb-4">
                 <span>{member.role}</span>
                 <span className="opacity-50 text-sm md:text-lg italic whitespace-pre-line leading-relaxed">{member.sub}</span>
+              </div>
+              <div className="flex flex-col gap-1 font-mono text-sm">
+                <a href={`tel:${member.tel}`} className="text-white hover:text-accent transition-colors font-semibold">{member.phone}</a>
+                <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
               </div>
             </div>
           ))}
@@ -323,7 +327,7 @@ const Footer = () => {
               <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
             </div>
             <div className="flex flex-col gap-1">
-              <span className="text-white/40 text-xs uppercase tracking-widest">Francis</span>
+              <span className="text-white/40 text-xs uppercase tracking-widest">Franciscus Drake Bruseth</span>
               <a href="tel:+4747910461" className="text-white hover:text-accent transition-colors font-semibold">479 10 461</a>
               <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
             </div>
