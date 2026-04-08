@@ -315,11 +315,18 @@ const Footer = () => {
             <a href="#faq" className="hover:text-white/70 transition-colors">FAQ</a>
             <a href="#pricing" className="hover:text-white/70 transition-colors">Tjenester</a>
           </div>
-          <div className="flex flex-col gap-4">
-            <span className="text-white/60 uppercase tracking-widest mb-2 font-semibold">Kontakt</span>
-            <a href="tel:+4797409897" className="text-white hover:text-accent transition-colors font-semibold">974 09 897</a>
-            <a href="tel:+4747910461" className="text-white hover:text-accent transition-colors font-semibold">479 10 461</a>
-            <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors font-semibold">team@oppskalert.no</a>
+          <div className="flex flex-col gap-6">
+            <span className="text-white/60 uppercase tracking-widest font-semibold">Kontakt</span>
+            <div className="flex flex-col gap-1">
+              <span className="text-white/40 text-xs uppercase tracking-widest">Aleksander Mackee</span>
+              <a href="tel:+4797409897" className="text-white hover:text-accent transition-colors font-semibold">974 09 897</a>
+              <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="text-white/40 text-xs uppercase tracking-widest">Francis</span>
+              <a href="tel:+4747910461" className="text-white hover:text-accent transition-colors font-semibold">479 10 461</a>
+              <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
+            </div>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Selskap</span>
