@@ -117,8 +117,8 @@ const MeetUs = () => {
   }, []);
 
   const members = [
-    { name: "Aleksander MacKee", role: "CTO", sub: "AI Engineer\nKunderelasjoner\nMaster i Fintech og BA", image: "/founders/aleksander.png", pos: "center 55%", phone: "974 09 897", tel: "+4797409897" },
-    { name: "Franciscus Drake Bruseth", role: "CEO", sub: "Markedsføring\nProduct development\nBachelor i Markedsføring", image: "/founders/franciscus.jpg", pos: "center 25%", phone: "479 10 461", tel: "+4747910461" }
+    { name: "Aleksander MacKee", role: "CTO", sub: "AI Engineer\nKunderelasjoner\nMaster i Fintech og BA", image: "/founders/aleksander.webp", pos: "center 55%", phone: "974 09 897", tel: "+4797409897" },
+    { name: "Franciscus Drake Bruseth", role: "CEO", sub: "Markedsføring\nProduct development\nBachelor i Markedsføring", image: "/founders/franciscus.webp", pos: "center 25%", phone: "479 10 461", tel: "+4747910461" }
   ];
 
   return (
