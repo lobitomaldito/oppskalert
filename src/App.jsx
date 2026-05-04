@@ -43,7 +43,7 @@ const Navbar = () => {
       <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
         <a href="#features" className="hover:-translate-y-[1px] transition-transform">Løsninger</a>
         <a href="#philosophy" className="hover:-translate-y-[1px] transition-transform">Filosofi</a>
-        <a href="#protocol" className="hover:-translate-y-[1px] transition-transform">Protokoll</a>
+        <Link to="/vårt-arbeid" className="hover:-translate-y-[1px] transition-transform">Vårt arbeid</Link>
         <Link to="/blogg" className="hover:-translate-y-[1px] transition-transform">Blogg</Link>
         <a href="#contact" className="hover:-translate-y-[1px] transition-transform">Kontakt</a>
       </div>

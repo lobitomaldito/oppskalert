@@ -7,6 +7,7 @@ import App from './App.jsx'
 const IntakePage = lazy(() => import('./pages/IntakePage.jsx'))
 const BlogPage = lazy(() => import('./pages/BlogPage.jsx'))
 const ArticlePage = lazy(() => import('./pages/ArticlePage.jsx'))
+const VårtArbeidPage = lazy(() => import('./pages/VårtArbeidPage.jsx'))
 
 const Fallback = () => <div className="min-h-screen bg-background" />
 
@@ -28,6 +29,11 @@ createRoot(document.getElementById('root')).render(
         <Route path="/blogg/:slug" element={
           <Suspense fallback={<Fallback />}>
             <ArticlePage />
+          </Suspense>
+        } />
+        <Route path="/vårt-arbeid" element={
+          <Suspense fallback={<Fallback />}>
+            <VårtArbeidPage />
           </Suspense>
         } />
       </Routes>
