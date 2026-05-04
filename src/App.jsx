@@ -44,6 +44,7 @@ const Navbar = () => {
         <a href="#features" className="hover:-translate-y-[1px] transition-transform">Løsninger</a>
         <a href="#philosophy" className="hover:-translate-y-[1px] transition-transform">Filosofi</a>
         <a href="#protocol" className="hover:-translate-y-[1px] transition-transform">Protokoll</a>
+        <Link to="/blogg" className="hover:-translate-y-[1px] transition-transform">Blogg</Link>
         <a href="#contact" className="hover:-translate-y-[1px] transition-transform">Kontakt</a>
       </div>
       <Link to="/kom-i-gang" className="group relative overflow-hidden bg-surface text-primary border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center">

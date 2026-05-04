@@ -5,6 +5,10 @@ import './index.css'
 import App from './App.jsx'
 
 const IntakePage = lazy(() => import('./pages/IntakePage.jsx'))
+const BlogPage = lazy(() => import('./pages/BlogPage.jsx'))
+const ArticlePage = lazy(() => import('./pages/ArticlePage.jsx'))
+
+const Fallback = () => <div className="min-h-screen bg-background" />
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -12,8 +16,18 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/kom-i-gang" element={
-          <Suspense fallback={<div className="min-h-screen bg-background" />}>
+          <Suspense fallback={<Fallback />}>
             <IntakePage />
+          </Suspense>
+        } />
+        <Route path="/blogg" element={
+          <Suspense fallback={<Fallback />}>
+            <BlogPage />
+          </Suspense>
+        } />
+        <Route path="/blogg/:slug" element={
+          <Suspense fallback={<Fallback />}>
+            <ArticlePage />
           </Suspense>
         } />
       </Routes>
