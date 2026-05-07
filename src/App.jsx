@@ -5,7 +5,6 @@ import { ArrowRight, Fingerprint, CheckSquare, Smartphone, Eye, TextSearch } fro
 import { clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Link } from 'react-router-dom';
-import WavingCanvas from './components/ShaderWaving';
 import LiquidGlass from './components/LiquidGlass';
 import OppskalertFAQ from './components/OppskalertFAQ';
 
@@ -66,9 +65,43 @@ const Hero = () => {
 
   return (
     <section ref={container} className="relative h-[100dvh] w-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
-      <div className="absolute inset-0 z-0 bg-background">
-        <WavingCanvas className="w-full h-full object-cover opacity-60 mix-blend-screen" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none"></div>
+      <div className="absolute inset-0 z-0">
+        <svg className="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1440" height="900" fill="#1e1535"/>
+          {/* Left chevron */}
+          <polygon points="0,200 260,450 0,700" fill="#f5b97a"/>
+          <polygon points="0,200 220,450 0,700" fill="#2d2456"/>
+          {/* Left center diamonds */}
+          <polygon points="200,0 480,260 260,450 0,200" fill="#2d2456"/>
+          <polygon points="220,450 480,260 480,640" fill="#f5b97a"/>
+          <polygon points="0,700 220,450 480,640 200,900" fill="#2d2456"/>
+          {/* Top center triangle */}
+          <polygon points="480,0 700,0 480,260" fill="#f5b97a"/>
+          <polygon points="700,0 960,0 700,300" fill="#2d2456"/>
+          {/* Center */}
+          <polygon points="480,260 700,300 480,640" fill="#1e1535"/>
+          <polygon points="700,300 960,0 960,600" fill="#1e1535"/>
+          <polygon points="700,300 960,600 480,640" fill="#1e1535"/>
+          {/* Bottom center */}
+          <polygon points="480,640 700,900 200,900" fill="#f5b97a"/>
+          <polygon points="480,640 960,600 700,900" fill="#2d2456"/>
+          <polygon points="960,600 1100,900 700,900" fill="#f5b97a"/>
+          {/* Right side */}
+          <polygon points="960,0 1440,0 1440,300 960,300" fill="#2d2456"/>
+          <polygon points="1200,0 1440,0 1440,200" fill="#f5b97a"/>
+          <polygon points="960,300 1440,300 1200,600" fill="#1e1535"/>
+          <polygon points="1200,600 1440,300 1440,600" fill="#f5b97a"/>
+          <polygon points="960,600 1200,600 1100,900 960,900" fill="#2d2456"/>
+          <polygon points="1200,600 1440,600 1440,900 1100,900" fill="#f5b97a"/>
+          <polygon points="1200,600 1440,600 1350,750" fill="#2d2456"/>
+          {/* Thin gold lines */}
+          <line x1="0" y1="200" x2="480" y2="260" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
+          <line x1="0" y1="700" x2="480" y2="640" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
+          <line x1="480" y1="640" x2="960" y2="600" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
+          <line x1="960" y1="300" x2="1440" y2="200" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
+          <line x1="960" y1="600" x2="1440" y2="600" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
+        </svg>
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent pointer-events-none"></div>
       </div>
       <div className="relative z-10 max-w-5xl text-white">
         <h1 className="flex flex-col gap-2">
