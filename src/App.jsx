@@ -1,18 +1,60 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Fingerprint, CheckSquare, Smartphone, Eye, TextSearch } from 'lucide-react';
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { ArrowRight, Fingerprint } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import LiquidGlass from './components/LiquidGlass';
-import OppskalertFAQ from './components/OppskalertFAQ';
 
-function cn(...inputs) {
-  return twMerge(clsx(inputs));
-}
 
 gsap.registerPlugin(ScrollTrigger);
+
+const testimonials = [
+  { quote: "De leverte nettsiden vår på under en uke. Profesjonelt, raskt og bedre enn vi forventet.", name: "Kari Nilsen", company: "Nilsen Regnskap AS" },
+  { quote: "Endelig en nettside som faktisk selger. Vi fikk tre nye kunder i løpet av den første måneden.", name: "Jonas Berg", company: "Berg Elektro" },
+  { quote: "Enkelt å jobbe med og de forstod merkevaren vår med en gang. Anbefales!", name: "Silje Dahl", company: "Dahl Interiør" },
+  { quote: "Jeg var skeptisk til prisen, men resultatet overgikk alt jeg hadde håpet på.", name: "Thomas Haugen", company: "Haugen Bygg" },
+  { quote: "Oppskalert skjønner hva en liten bedrift faktisk trenger. Ingen unødvendig fluff.", name: "Marte Solberg", company: "Solberg Coaching" },
+  { quote: "Fra idé til ferdig side på fem dager. Imponerende.", name: "Erik Andersen", company: "Andersen Konsult" },
+];
+
+const Testimonials = () => {
+  const track1 = useRef(null);
+  const track2 = useRef(null);
+
+  useEffect(() => {
+    const tl1 = gsap.to(track1.current, { x: '-50%', duration: 30, ease: 'none', repeat: -1 });
+    const tl2 = gsap.to(track2.current, { x: '0%', duration: 35, ease: 'none', repeat: -1, startAt: { x: '-50%' } });
+    return () => { tl1.kill(); tl2.kill(); };
+  }, []);
+
+  const Card = ({ t }) => (
+    <div className="flex-shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-6 mx-3">
+      <p className="font-mono text-sm text-white/80 leading-relaxed mb-4">"{t.quote}"</p>
+      <div>
+        <p className="font-sans font-bold text-white text-sm">{t.name}</p>
+        <p className="font-mono text-xs text-white/40">{t.company}</p>
+      </div>
+    </div>
+  );
+
+  const doubled = [...testimonials, ...testimonials];
+
+  return (
+    <section className="py-24 overflow-hidden bg-background">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-24 mb-12">
+        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Hva kundene sier</span>
+        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2">De snakker for oss.</h2>
+      </div>
+      <div className="flex flex-col gap-4">
+        <div className="flex" ref={track1}>
+          {doubled.map((t, i) => <Card key={i} t={t} />)}
+        </div>
+        <div className="flex" ref={track2}>
+          {[...doubled].reverse().map((t, i) => <Card key={i} t={t} />)}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Navbar = () => {
   const navRef = useRef(null);
@@ -56,69 +98,52 @@ const Navbar = () => {
 
 const Hero = () => {
   const container = useRef(null);
+  const dotRef = useRef(null);
+  const wordmarkRef = useRef(null);
   useEffect(() => {
     let ctx = gsap.context(() => {
       gsap.from(".hero-elem", { y: 40, opacity: 0, duration: 1.2, stagger: 0.15, ease: "power3.out", delay: 0.2 });
+      gsap.to(dotRef.current, {
+        y: -18, duration: 0.4, ease: "power2.out",
+        yoyo: true, repeat: -1, repeatDelay: 2, delay: 1.8
+      });
+      gsap.to(wordmarkRef.current, {
+        opacity: 0,
+        scrollTrigger: { trigger: container.current, start: "top top", end: "40% top", scrub: true }
+      });
     }, container);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={container} className="relative h-[100dvh] w-full flex flex-col justify-end pb-24 px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
-      <div className="absolute inset-0 z-0">
-        <svg className="w-full h-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="1440" height="900" fill="#1e1535"/>
-          {/* Left chevron */}
-          <polygon points="0,200 260,450 0,700" fill="#f5b97a"/>
-          <polygon points="0,200 220,450 0,700" fill="#2d2456"/>
-          {/* Left center diamonds */}
-          <polygon points="200,0 480,260 260,450 0,200" fill="#2d2456"/>
-          <polygon points="220,450 480,260 480,640" fill="#f5b97a"/>
-          <polygon points="0,700 220,450 480,640 200,900" fill="#2d2456"/>
-          {/* Top center triangle */}
-          <polygon points="480,0 700,0 480,260" fill="#f5b97a"/>
-          <polygon points="700,0 960,0 700,300" fill="#2d2456"/>
-          {/* Center */}
-          <polygon points="480,260 700,300 480,640" fill="#1e1535"/>
-          <polygon points="700,300 960,0 960,600" fill="#1e1535"/>
-          <polygon points="700,300 960,600 480,640" fill="#1e1535"/>
-          {/* Bottom center */}
-          <polygon points="480,640 700,900 200,900" fill="#f5b97a"/>
-          <polygon points="480,640 960,600 700,900" fill="#2d2456"/>
-          <polygon points="960,600 1100,900 700,900" fill="#f5b97a"/>
-          {/* Right side */}
-          <polygon points="960,0 1440,0 1440,300 960,300" fill="#2d2456"/>
-          <polygon points="1200,0 1440,0 1440,200" fill="#f5b97a"/>
-          <polygon points="960,300 1440,300 1200,600" fill="#1e1535"/>
-          <polygon points="1200,600 1440,300 1440,600" fill="#f5b97a"/>
-          <polygon points="960,600 1200,600 1100,900 960,900" fill="#2d2456"/>
-          <polygon points="1200,600 1440,600 1440,900 1100,900" fill="#f5b97a"/>
-          <polygon points="1200,600 1440,600 1350,750" fill="#2d2456"/>
-          {/* Thin gold lines */}
-          <line x1="0" y1="200" x2="480" y2="260" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
-          <line x1="0" y1="700" x2="480" y2="640" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
-          <line x1="480" y1="640" x2="960" y2="600" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
-          <line x1="960" y1="300" x2="1440" y2="200" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
-          <line x1="960" y1="600" x2="1440" y2="600" stroke="#f5b97a" strokeWidth="1.5" opacity="0.6"/>
-        </svg>
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent pointer-events-none"></div>
-      </div>
-      <div className="relative z-10 max-w-5xl text-white">
-        <h1 className="flex flex-col gap-2">
-          <span className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight uppercase">Vi bygger nettsiden din —</span>
-          <span className="hero-elem font-serif italic text-6xl md:text-8xl tracking-tighter leading-tight mt-2">ingen risiko, ingen binding.</span>
-        </h1>
-        <p className="hero-elem mt-8 font-mono text-lg md:text-xl text-white/70 max-w-2xl leading-relaxed">
-          Vi bygger nettsider og systemer som skalerer norske bedrifter. Ingen kompromisser, kun presisjon.
+    <section ref={container} className="relative h-[100dvh] w-full flex flex-col justify-between overflow-hidden" style={{backgroundColor: '#201335'}}>
+      <div className="relative z-10 text-white pt-28 px-6 md:px-16 lg:px-24">
+        <p className="hero-elem font-sans font-bold text-base md:text-lg uppercase tracking-widest text-white/50 mb-4">
+          Norsk webutvikling
         </p>
-        <div className="hero-elem mt-10 flex gap-4">
+        <h1
+          className="hero-elem text-white font-black leading-none"
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(48px, 8vw, 120px)', letterSpacing: '-0.03em', maxWidth: '14ch' }}
+        >
+          Nettsider som faktisk selger.
+        </h1>
+        <div className="hero-elem mt-10 flex items-center gap-6">
           <Link to="/kom-i-gang" className="group relative overflow-hidden bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300 text-center">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </span>
             <div className="absolute inset-0 bg-surface translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
           </Link>
+          <span className="text-white/40 font-mono text-sm">Ingen binding. Ingen risiko.</span>
         </div>
+      </div>
+      <div ref={wordmarkRef} className="overflow-hidden leading-none select-none flex justify-end pr-6 md:pr-16 lg:pr-24 pb-10">
+        <span
+          className="hero-elem font-black text-white"
+          style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 'clamp(60px, 10vw, 160px)', lineHeight: 1, letterSpacing: '-0.04em', paddingBottom: '0.1em' }}
+        >
+          oppskalert<span ref={dotRef} style={{ color: '#f5b97a', display: 'inline-block' }}>.</span>
+        </span>
       </div>
     </section>
   );
@@ -151,33 +176,31 @@ const MeetUs = () => {
   }, []);
 
   const members = [
-    { name: "Aleksander MacKee", role: "CTO", sub: "AI Engineer\nKunderelasjoner", image: "/founders/aleksander.webp", pos: "center 55%", phone: "974 09 897", tel: "+4797409897" },
-    { name: "Franciscus Drake Bruseth", role: "CEO", sub: "Markedsføring\nProduct development", image: "/founders/franciscus.webp", pos: "center 25%", phone: "479 10 461", tel: "+4747910461" }
+    { name: "Aleksander MacKee", role: "CTO", sub: "AI-ingeniør\nKunderelasjoner", image: "/founders/aleksander.webp", pos: "center 55%", phone: "974 09 897", tel: "+4797409897" },
+    { name: "Franciscus Drake Bruseth", role: "CEO", sub: "Markedsføring\nProduktuutvikling", image: "/founders/franciscus.webp", pos: "center 25%", phone: "479 10 461", tel: "+4747910461" }
   ];
 
   return (
-    <section id="team" ref={container} className="relative py-12 px-6 md:px-12 lg:px-24 overflow-hidden bg-background">
-      {/* LiquidGlass removed as per user request to remove bubble animations */}
+    <section id="team" ref={container} className="relative py-24 px-6 md:px-12 lg:px-24 overflow-hidden rounded-t-[3rem]" style={{backgroundColor: '#f5e6d8'}}>
       <div className="max-w-5xl mx-auto relative z-10 w-full">
         <div className="flex flex-col items-center mb-24">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Ekspertisen bak</span>
-          <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center">Møt oss.</h2>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] mb-4" style={{color: '#a06040'}}>Ekspertisen bak</span>
+          <h2 className="font-sans font-bold text-5xl md:text-7xl tracking-tighter text-center" style={{color: '#201335'}}>Møt oss.</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32">
           {members.map((member, i) => (
-            <div key={i} className="member-card flex flex-col items-center text-center text-white">
-              <div className="w-80 h-80 rounded-full border border-primary/10 bg-surface/30 backdrop-blur-sm relative overflow-hidden mb-8 group">
+            <div key={i} className="member-card flex flex-col items-center text-center">
+              <div className="w-full aspect-[3/4] rounded-[2rem] relative overflow-hidden mb-8 group shadow-xl">
                 <ImageWithPlaceholder src={member.image} alt={member.name} pos={member.pos} />
-                <div className="absolute inset-0 border-[8px] border-background pointer-events-none rounded-full"></div>
               </div>
-              <h3 className="font-sans font-bold text-3xl mb-1">{member.name}</h3>
-              <div className="font-mono text-sm uppercase tracking-widest text-accent flex flex-col gap-1 mb-4">
+              <h3 className="font-sans font-bold text-3xl mb-1" style={{color: '#201335'}}>{member.name}</h3>
+              <div className="font-mono text-sm uppercase tracking-widest flex flex-col gap-1 mb-4" style={{color: '#a06040'}}>
                 <span>{member.role}</span>
-                <span className="opacity-50 text-sm md:text-lg italic whitespace-pre-line leading-relaxed">{member.sub}</span>
+                <span className="text-sm md:text-lg italic whitespace-pre-line leading-relaxed" style={{color: '#201335', opacity: 0.5}}>{member.sub}</span>
               </div>
               <div className="flex flex-col gap-1 font-mono text-sm">
-                <a href={`tel:${member.tel}`} className="text-white hover:text-accent transition-colors font-semibold">{member.phone}</a>
-                <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
+                <a href={`tel:${member.tel}`} className="hover:opacity-70 transition-opacity font-semibold" style={{color: '#201335'}}>{member.phone}</a>
+                <a href="mailto:team@oppskalert.no" className="hover:opacity-70 transition-opacity" style={{color: '#a06040'}}>team@oppskalert.no</a>
               </div>
             </div>
           ))}
@@ -188,195 +211,131 @@ const MeetUs = () => {
 };
 
 
-const PhilosophyCard = ({ title, desc, index, icon: Icon }) => {
-  return (
-    <div className="sticky top-0 h-[100dvh] w-full flex items-center justify-center p-6" style={{ zIndex: index }}>
-      <div className="protocol-card w-full max-w-5xl bg-surface rounded-[3rem] shadow-xl border border-primary/10 overflow-hidden relative">
-        <div className="p-12 md:p-24 flex flex-col justify-center items-center text-center max-w-4xl mx-auto">
-          <div className="bg-highlight text-background p-6 rounded-3xl w-fit mb-12 shadow-[0_0_40px_rgba(252,231,98,0.25)]">
-            {Icon && <Icon className="w-10 h-10" />}
-          </div>
-          <h2 className="font-sans font-bold text-5xl md:text-7xl mb-10 tracking-tight">{title}</h2>
-          <p className="font-mono text-primary/70 text-xl md:text-3xl leading-relaxed max-w-3xl">{desc}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
 
-const Philosophy = () => {
+
+const projects = [
+  { img: "/websider/katrin-brubakk.png", name: "Katrin Brubakk", url: "https://katrinbrubakk.no" },
+  { img: "/websider/tore-sunde-rasmussen.png", name: "Tore Sunde-Rasmussen", url: "https://toresunderasmussen.no" },
+  { img: "/websider/irmelin-drake-ny.png", name: "Irmelin Drake", url: "https://irmelindrake.no" },
+];
+
+const Portfolio = () => {
   const container = useRef(null);
   useEffect(() => {
     let ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray('.protocol-card');
-      cards.forEach((card, i) => {
-        if (i < cards.length - 1) {
-          gsap.to(card, {
-            scale: 0.9, opacity: 0.5,
-            scrollTrigger: { trigger: cards[i + 1], start: "top bottom", end: "top 20%", scrub: true }
-          });
-        }
+      gsap.from(".portfolio-item", {
+        scrollTrigger: { trigger: container.current, start: "top 80%" },
+        y: 40, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power2.out"
       });
     }, container);
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="facts" ref={container} className="relative bg-background">
-
-      
-      <PhilosophyCard title="Førsteinntrykk." desc="94% av førsteinntrykket til hjemmesider er relatert til design - vi sørger for at ditt er perfekt." index={10} icon={Eye} />
-      <PhilosophyCard title="Synlighet." desc="74% av de som søker etter bedrifter starter på Google. Vi sørger for at de finner deg." index={20} icon={TextSearch} />
-      <PhilosophyCard title="Mobilitet." desc="Google favoriserer mobiltilpassede sider. Vi bygger for alle skjermer, uten kompromiss." index={30} icon={Smartphone} />
+    <section ref={container} className="py-24 px-6 md:px-12 lg:px-24 bg-background">
+      <div className="max-w-5xl mx-auto mb-12">
+        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Referanser</span>
+        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2">Noe av det vi har laget.</h2>
+      </div>
+      <div className="columns-2 md:columns-3 gap-4 max-w-5xl mx-auto">
+        {projects.map((p, i) => {
+          const inner = (
+            <>
+              <img
+                src={p.img}
+                alt={p.name}
+                className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-background/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                <div className="flex items-center gap-2">
+                  <span className="font-sans font-bold text-white text-sm">{p.name}</span>
+                  {p.url && <ArrowRight className="w-4 h-4 text-accent" />}
+                </div>
+              </div>
+            </>
+          );
+          return p.url ? (
+            <a key={i} href={p.url} target="_blank" rel="noopener noreferrer"
+              className="portfolio-item break-inside-avoid mb-4 rounded-2xl overflow-hidden group relative block cursor-pointer">
+              {inner}
+            </a>
+          ) : (
+            <div key={i} className="portfolio-item break-inside-avoid mb-4 rounded-2xl overflow-hidden group relative">
+              {inner}
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 };
 
-const PricingCard = ({ months, price, color, title, subtitle, features, isPopular }) => (
-  <div className={cn(
-    "bg-white text-background rounded-[2.5rem] p-8 flex flex-col shadow-xl border relative overflow-hidden h-full transition-all duration-300",
-    isPopular ? "border-accent ring-1 ring-accent/20 scale-[1.02]" : "border-black/5"
-  )}>
-    {isPopular && (
-      <div className="absolute top-0 right-0 bg-accent text-background px-6 py-1.5 rounded-bl-3xl font-sans font-bold text-[10px] uppercase tracking-wider z-10 shadow-sm">
-        Mest populær
+const ContactCTA = () => (
+  <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-primary relative z-40 rounded-[4rem] text-background overflow-hidden">
+    <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+      <span className="font-mono text-xs uppercase tracking-[0.3em] text-background/50 mb-4">Kom i gang</span>
+      <h2 className="font-sans text-4xl md:text-6xl font-bold mb-6 tracking-tighter">Klar for en nettside som selger?</h2>
+      <p className="font-mono text-sm md:text-base text-background/60 max-w-xl mb-12 leading-relaxed">
+        Vi setter pris på alle prosjekter individuelt — ingen skjulte kostnader, ingen binding. Ta kontakt så gir vi deg et tilbud innen 24 timer.
+      </p>
+      <div className="flex flex-col sm:flex-row gap-4 items-center">
+        <Link to="/kom-i-gang" className="group relative overflow-hidden bg-background text-primary px-10 py-5 rounded-full font-sans font-bold text-lg transition-transform hover:scale-[1.03] duration-300">
+          <span className="relative z-10 flex items-center gap-2">Kontakt for tilbud <ArrowRight className="w-5 h-5" /></span>
+        </Link>
+        <a href="tel:+4797409897" className="font-mono text-background/60 hover:text-background transition-colors text-sm">
+          eller ring oss: 974 09 897
+        </a>
       </div>
-    )}
-    <div className={cn("inline-block w-fit px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2 border", color)}>
-      {title}
     </div>
-    <div className="font-serif italic text-sm text-black/50 mb-6 leading-tight min-h-[3rem]">
-      {subtitle}
-    </div>
-    <div className="flex items-baseline gap-2 mb-8">
-      <span className="text-4xl md:text-5xl font-bold tracking-tighter">{price} kr</span>
-      {months && <span className="text-black/40 font-medium text-lg">/måned</span>}
-    </div>
-    
-    <div className="flex flex-col gap-4 mb-10 bg-black/[0.03] p-6 rounded-3xl">
-      {features.map((item, i) => (
-        <div key={i} className="flex items-start gap-3">
-          <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
-            <CheckSquare className="w-3 h-3 text-primary" />
-          </div>
-          <span className="font-sans text-sm font-semibold leading-tight">{item}</span>
-        </div>
-      ))}
-    </div>
-    
-    <div className="mt-auto flex flex-col gap-3">
-      <Link to="/kom-i-gang" className="w-full py-4 rounded-2xl bg-[#1a2d2a] text-white font-sans font-bold text-sm text-center hover:bg-black transition-colors duration-300">Bestill rådgivning</Link>
-      <Link to="/kom-i-gang" className="w-full py-4 rounded-2xl border border-black/10 font-sans font-bold text-sm text-center hover:bg-black/5 transition-colors duration-300">Bestill nå</Link>
-    </div>
-  </div>
+  </section>
 );
-
-const Pricing = () => {
-  return (
-    <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-primary relative z-40 rounded-[4rem] text-background overflow-hidden">
-      <div className="max-w-7xl mx-auto flex flex-col items-center">
-        <h2 className="font-sans text-4xl md:text-6xl font-bold text-center mb-6 tracking-tight">Vi tilpasser prisene våre</h2>
-        <p className="font-mono text-sm md:text-base text-background/70 text-center max-w-2xl mb-24 leading-relaxed">
-          Våre pakker er skreddersydd for deg og kommer med en lavere månedlig kostnad i stedet for høye engangsbeløp, slik at du kan spre utbetalingene.
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-16 max-w-6xl">
-          <PricingCard 
-            title="Visitkort" 
-            subtitle="For deg som vil ha en profesjonell tilstedeværelse på nett"
-            price="9 900" 
-            color="text-gray-500 border-gray-200" 
-            features={[ 
-              "Én side mobiltilpasset", 
-              "Hero med bilde og tagline", 
-              "Kort bio og om-seksjon", 
-              "Kontaktskjema", 
-              "SEO-grunnoppsett med ditt navn som domene", 
-              "Levert på 5 virkedager" 
-            ]} 
-          />
-          <PricingCard 
-            title="Presentasjonsside" 
-            subtitle="For deg som aktivt booker foredrag og vil konvertere besøkende"
-            price="17 900" 
-            isPopular={true}
-            color="text-purple-500 border-purple-200" 
-            features={[ 
-              'Alt i Visitkort', 
-              '3–5 sider', 
-              'Foredragstemaer og målgrupper', 
-              'Testimonials fra arrangører', 
-              'Videointegrering', 
-              'Cookie-samtykke', 
-              'CMS så du kan redigere selv', 
-              'Levert på 10 virkedager' 
-            ]} 
-          />
-          <PricingCard 
-            title="Full salgside" 
-            subtitle="For deg som er profilert taler og vil ha en side som matcher statusen din"
-            price="27 900" 
-            color="text-orange-500 border-orange-200" 
-            features={[ 
-              'Alt i Presentasjonsside', 
-              'Profesjonelt copywriting', 
-              'Pressepakke og mediaseksjon', 
-              'Google Analytics-oppsett', 
-              'Bookingforespørsel med kalender', 
-              'Prioritert support i 3 måneder', 
-              'Levert på 15 virkedager' 
-            ]} 
-          />
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const Footer = () => {
   return (
-    <footer id="contact" className="bg-background text-white pt-24 pb-8 px-6 md:px-12 lg:px-24 rounded-t-[4rem] relative z-40 mt-[-4rem]">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 text-white">
-        <div className="max-w-sm">
-          <span className="font-sans font-bold text-3xl tracking-tight lowercase mb-2 block">oppskalert.</span>
-          <p className="font-mono text-white/30 text-xs mb-6">et datterselskap av PotentialAIze AS</p>
-          <p className="font-mono text-white/50 text-sm leading-relaxed mb-8">Vi bygger nettsider og systemer som skalerer norske bedrifter.</p>
-          <div className="flex items-center gap-3 font-mono text-sm font-semibold bg-white/5 w-fit px-4 py-2 rounded-full border border-white/10">
-            <div className="w-2 h-2 rounded-full bg-highlight animate-pulse"></div>
-            SYSTEM OPERATIONAL
+    <footer id="contact" className="bg-background text-white pt-24 pb-8 px-6 md:px-12 lg:px-24 relative z-40 mt-[-4rem]">
+      <div className="max-w-5xl mx-auto">
+        {/* CTA */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 pb-16 border-b border-white/10">
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-white/40 mb-3">Klar til å starte?</p>
+            <h2 className="font-sans font-black text-4xl md:text-6xl tracking-tighter text-white leading-none" style={{fontFamily: "'Plus Jakarta Sans', sans-serif"}}>
+              La oss bygge<br />noe bra sammen.
+            </h2>
           </div>
+          <Link to="/kom-i-gang" className="flex-shrink-0 flex items-center gap-2 bg-accent text-background px-8 py-4 rounded-full font-sans font-bold text-base hover:scale-[1.03] transition-transform duration-300">
+            Kontakt for tilbud <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-        <div className="flex gap-16 font-mono text-sm">
-          <div className="flex flex-col gap-4">
-            <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Navigasjon</span>
-            <a href="#facts" className="hover:text-white/70 transition-colors">Visste du at?</a>
-            <a href="#faq" className="hover:text-white/70 transition-colors">FAQ</a>
-            <a href="#pricing" className="hover:text-white/70 transition-colors">Tjenester</a>
+
+        {/* Info */}
+        <div className="flex flex-col md:flex-row justify-between gap-12 pt-12">
+          <div>
+            <span className="font-sans font-bold text-2xl tracking-tight lowercase block mb-1">oppskalert.</span>
+            <p className="font-mono text-white/30 text-xs">et datterselskap av PotentialAIze AS</p>
           </div>
-          <div className="flex flex-col gap-6">
-            <span className="text-white/60 uppercase tracking-widest font-semibold">Kontakt</span>
-            <div className="flex flex-col gap-1">
-              <span className="text-white/40 text-xs uppercase tracking-widest">Aleksander Mackee</span>
-              <a href="tel:+4797409897" className="text-white hover:text-accent transition-colors font-semibold">974 09 897</a>
+          <div className="flex gap-16 font-mono text-sm">
+            <div className="flex flex-col gap-3">
+              <span className="text-white/40 uppercase tracking-widest text-xs font-semibold mb-1">Kontakt</span>
+              <a href="tel:+4797409897" className="text-white hover:text-accent transition-colors">974 09 897</a>
+              <a href="tel:+4747910461" className="text-white hover:text-accent transition-colors">479 10 461</a>
               <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
             </div>
-            <div className="flex flex-col gap-1">
-              <span className="text-white/40 text-xs uppercase tracking-widest">Franciscus Drake Bruseth</span>
-              <a href="tel:+4747910461" className="text-white hover:text-accent transition-colors font-semibold">479 10 461</a>
-              <a href="mailto:team@oppskalert.no" className="text-accent hover:text-highlight transition-colors">team@oppskalert.no</a>
+            <div className="flex flex-col gap-3">
+              <span className="text-white/40 uppercase tracking-widest text-xs font-semibold mb-1">Selskap</span>
+              <span className="text-white/50">Orgnr: 935 067 049</span>
+              <span className="text-white/50">Oslo, Norge</span>
             </div>
           </div>
-          <div className="flex flex-col gap-4">
-            <span className="text-white/40 uppercase tracking-widest mb-2 font-semibold">Selskap</span>
-            <span className="text-white/50">Orgnr: 935 067 049</span>
-            <span className="text-white/50">Ostadalsveien 66</span>
-            <span className="text-white/50">0753 Oslo</span>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-white/10 flex justify-between items-center font-mono text-xs text-white/20">
+          <p>&copy; {new Date().getFullYear()} PotentialAIze AS.</p>
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-highlight animate-pulse"></div>
+            <span>SYSTEM OPERATIONAL</span>
           </div>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-white/10 flex justify-between items-center font-mono text-xs text-white/30">
-        <p>&copy; {new Date().getFullYear()} PotentialAIze AS. All rights reserved.</p>
-        <p>Built with precision in Norway.</p>
       </div>
     </footer>
   );
@@ -388,9 +347,9 @@ const Home = () => (
     <main>
       <Hero />
       <MeetUs />
-      <OppskalertFAQ />
-      <Philosophy />
-      <Pricing />
+      <Testimonials />
+      <Portfolio />
+      <ContactCTA />
     </main>
     <Footer />
   </div>
