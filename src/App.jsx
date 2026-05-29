@@ -219,8 +219,6 @@ const projects = [
   { img: "/websider/steinar-husby.png", name: "Steinar Husby", url: "https://steinarhusby.no" },
   { img: "/websider/tore-sunde-rasmussen.png", name: "Tore Sunde-Rasmussen", url: "https://toresunderasmussen.no" },
   { img: "/websider/irmelin-drake-ny.png", name: "Irmelin Drake", url: "https://irmelindrake.no" },
-  { img: "/websider/mona-steenberg.png", name: "Mona Steenberg", url: "https://ledervekst.no" },
-  { img: "/websider/troels-mirakelmannen.png", name: "Troels Mirakelmannen", url: "https://mirakelmannen.no" },
 ];
 
 const Portfolio = () => {
