@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Fingerprint } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from './components/SEO';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -341,8 +342,52 @@ const Footer = () => {
   );
 };
 
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Oppskalert",
+  "image": "https://oppskalert.no/oppskalert%20fav.png",
+  "description": "Vi bygger lynraske nettsider og konverterende systemer som skalerer norske bedrifter.",
+  "url": "https://oppskalert.no",
+  "telephone": "+4797409897",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Ostadalsveien 66",
+    "addressLocality": "Oslo",
+    "postalCode": "0753",
+    "addressCountry": "NO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 59.9482,
+    "longitude": 10.6483
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday"
+    ],
+    "opens": "09:00",
+    "closes": "17:00"
+  },
+  "sameAs": [
+    "https://oppskalert.no"
+  ]
+};
+
 const Home = () => (
   <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
+    <SEO 
+      title="Nettsider som faktisk selger" 
+      description="Vi bygger lynraske, konverteringsoptimaliserte nettsider og systemer som skalerer norske bedrifter. Ingen binding, ingen risiko. Få en gratis demo i dag." 
+      keywords={["nettside bedrift", "billig nettside norge", "webutvikling norge", "mobilhastighet nettside"]}
+      canonical="https://oppskalert.no/"
+      jsonLd={homeSchema}
+    />
     <Navbar />
     <main>
       <Hero />

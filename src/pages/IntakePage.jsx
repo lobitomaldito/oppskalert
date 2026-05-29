@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import StepSidebar from '../components/intake/StepSidebar';
 import StepProgressBar from '../components/intake/StepProgressBar';
+import SEO from '../components/SEO';
 import Step1About from '../components/intake/Step1About';
 import Step2Profile from '../components/intake/Step2Profile';
 import Step3Topics from '../components/intake/Step3Topics';
@@ -92,6 +93,12 @@ const IntakePage = () => {
 
   return (
     <div className="min-h-screen bg-background text-primary font-sans flex flex-col md:flex-row relative overflow-hidden">
+      <SEO 
+        title="Bestill gratis nettside-demo" 
+        description="Fyll ut vårt enkle skjema for å gi oss innsikt i din bedrift, så bygger vi en gratis, fullt fungerende demo av din nye nettside på under 5 dager."
+        keywords={["gratis nettside demo", "oppskalert demo", "bestill nettside bedrift"]}
+        canonical="https://oppskalert.no/kom-i-gang"
+      />
       {/* Background Animation */}
       <div className="absolute inset-0 z-0 opacity-30 pointer-events-none">
         <ShaderWaving className="w-full h-full object-cover" />

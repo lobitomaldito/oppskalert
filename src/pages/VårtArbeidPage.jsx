@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Eye, TextSearch, Smartphone, CheckSquare, Fingerprint } from 'lucide-react';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -205,6 +206,12 @@ const VårtArbeidPage = () => {
 
   return (
     <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
+      <SEO 
+        title="Vårt arbeid & Prosess" 
+        description="Oppdag vår unike prosess og protokoll. Vi bygger en gratis demo av nettsiden din før du bestemmer deg for noe som helst."
+        keywords={["prosess webutvikling", "gratis nettside demo", "mobiloptimalisering bedrift"]}
+        canonical="https://oppskalert.no/vårt-arbeid"
+      />
       <Navbar />
 
       <section ref={heroRef} className="pt-48 pb-24 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden">

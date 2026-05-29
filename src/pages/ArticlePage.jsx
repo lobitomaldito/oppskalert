@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getArticleBySlug, articles } from '../lib/articles';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -169,8 +170,42 @@ const ArticlePage = () => {
   const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
   const nextArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": article.title,
+    "description": article.description,
+    "image": `https://oppskalert.no${article.hero}`,
+    "datePublished": article.publishDate,
+    "author": {
+      "@type": "Organization",
+      "name": "Oppskalert"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Oppskalert",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://oppskalert.no/oppskalert%20fav.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://oppskalert.no/blogg/${article.slug}`
+    }
+  };
+
   return (
     <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
+      <SEO 
+        title={article.title}
+        description={article.description}
+        keywords={article.keywords}
+        canonical={`https://oppskalert.no/blogg/${article.slug}`}
+        ogType="article"
+        ogImage={`https://oppskalert.no${article.hero}`}
+        jsonLd={articleSchema}
+      />
       <Navbar />
 
       {/* Hero */}

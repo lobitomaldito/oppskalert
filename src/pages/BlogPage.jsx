@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 import { articles } from '../lib/articles';
+import SEO from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -148,6 +149,12 @@ const BlogPage = () => {
 
   return (
     <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
+      <SEO 
+        title="Blogg & Innsikt" 
+        description="Få konkret kunnskap om nettsider, mobilhastighet, konvertering og hva som faktisk driver salg og vekst for norske bedrifter."
+        keywords={["blogg nettsider", "mobilhastighet nettside", "nettside konvertering", "bedrift digital vekst"]}
+        canonical="https://oppskalert.no/blogg"
+      />
       <Navbar />
 
       {/* Hero */}
