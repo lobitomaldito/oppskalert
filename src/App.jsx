@@ -217,7 +217,7 @@ const MeetUs = () => {
 const projects = [
   { img: "/websider/katrin-brubakk.png", name: "Katrin Brubakk", url: "https://katrinbrubakk.no" },
   { img: "/websider/steinar-husby.png", name: "Steinar Husby", url: "https://steinarhusby.no" },
-  { img: "/websider/samtaleverkstedet.webp", name: "Samtaleverkstedet", url: "https://samtaleverkstedet.no" },
+  { img: "/websider/samtaleverkstedet.jpg", name: "Samtaleverkstedet", url: "https://samtaleverkstedet.no" },
   { img: "/websider/tore-sunde-rasmussen.png", name: "Tore Sunde-Rasmussen", url: "https://toresunderasmussen.no" },
   { img: "/websider/irmelin-drake-ny.png", name: "Irmelin Drake", url: "https://irmelindrake.no" },
 ];
