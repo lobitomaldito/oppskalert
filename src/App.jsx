@@ -220,6 +220,7 @@ const projects = [
   { img: "/websider/samtaleverkstedet.jpg", name: "Samtaleverkstedet", url: "https://samtaleverkstedet.no" },
   { img: "/websider/tore-sunde-rasmussen.png", name: "Tore Sunde-Rasmussen", url: "https://toresunderasmussen.no" },
   { img: "/websider/irmelin-drake-ny.png", name: "Irmelin Drake", url: "https://irmelindrake.no" },
+  { img: "/websider/progressive-diplomacy.png", name: "Progressive Diplomacy", url: "https://progressivediplomacy.com" },
 ];
 
 const Portfolio = () => {
