@@ -4,9 +4,42 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Fingerprint } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
+import OppskalertFAQ from './components/OppskalertFAQ';
 
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Reliable scroll-reveal via IntersectionObserver. Unlike GSAP's ScrollTrigger
+// it recomputes element positions live, so it can't be thrown off by the custom
+// fonts/images reflowing the page after load, and a CSS transition can never
+// freeze mid-tween. Items inside [data-reveal] stay visible if JS never runs.
+function useReveal(stagger = 90) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const items = Array.from(root.querySelectorAll('[data-reveal]'));
+    // Fallback: if IntersectionObserver is unavailable, show everything
+    // immediately rather than risk leaving content hidden.
+    if (!('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+    root.classList.add('reveal-armed');
+    items.forEach((el, i) => { el.style.transitionDelay = `${i * stagger}ms`; });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [stagger]);
+  return ref;
+}
 
 const testimonials = [
   { quote: "De leverte nettsiden vår på under en uke. Profesjonelt, raskt og bedre enn vi forventet.", name: "Kari Nilsen", company: "Nilsen Regnskap AS" },
@@ -84,7 +117,7 @@ const Navbar = () => {
       </div>
       <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest">
         <a href="#features" className="hover:-translate-y-[1px] transition-transform">Løsninger</a>
-        <a href="#philosophy" className="hover:-translate-y-[1px] transition-transform">Filosofi</a>
+        <a href="#prosess" className="hover:-translate-y-[1px] transition-transform">Prosess</a>
         <Link to="/vårt-arbeid" className="hover:-translate-y-[1px] transition-transform">Vårt arbeid</Link>
         <Link to="/blogg" className="hover:-translate-y-[1px] transition-transform">Blogg</Link>
         <a href="#contact" className="hover:-translate-y-[1px] transition-transform">Kontakt</a>
@@ -345,6 +378,90 @@ const Footer = () => {
   );
 };
 
+const services = [
+  { n: "01", title: "Konverteringsdesign", desc: "Sider bygget for å få besøkende til å ta kontakt — ikke bare se pene ut. Hvert element har én jobb: å skape kunder." },
+  { n: "02", title: "Lynrask ytelse", desc: "Sider som laster på under ett sekund. Google belønner det, og besøkende blir værende i stedet for å forsvinne." },
+  { n: "03", title: "SEO fra bunnen", desc: "Riktig struktur, metadata og innhold fra dag én, slik at de rette kundene finner deg når de søker på Google." },
+  { n: "04", title: "Mobil-først", desc: "Perfekt på alle skjermer. 7 av 10 besøk skjer på mobil — siden din skal selge der folk faktisk er." },
+  { n: "05", title: "Drift & support", desc: "Vi holder siden oppdatert, rask og sikker etter lansering, så du kan fokusere på å drive bedriften din." },
+];
+
+const Services = () => {
+  const container = useReveal(90);
+
+  return (
+    <section id="features" ref={container} className="py-24 px-6 md:px-12 lg:px-24 bg-background text-white">
+      <div className="max-w-5xl mx-auto mb-16">
+        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Hva vi leverer</span>
+        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2">Alt en side trenger for å selge.</h2>
+      </div>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {services.map((s, i) => (
+          <div key={i} data-reveal className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col gap-4 hover:border-accent/30 transition-colors duration-300 group">
+            <span className="font-mono text-sm text-accent">{s.n}</span>
+            <h3 className="font-sans font-bold text-2xl tracking-tight group-hover:text-accent transition-colors duration-300">{s.title}</h3>
+            <p className="font-mono text-sm text-white/50 leading-relaxed">{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+const steps = [
+  { n: "01", title: "Demo", desc: "Vi bygger en ferdig demo av din nye side — før du betaler en krone. Du ser resultatet, ikke et tilbud." },
+  { n: "02", title: "Tilbakemelding", desc: "Du sier hva du liker og hva som skal endres. Vi justerer til det sitter perfekt." },
+  { n: "03", title: "Lansering", desc: "Vi setter siden live — raskt og riktig, med SEO, sikkerhet og mobil på plass fra start." },
+  { n: "04", title: "Vekst", desc: "Vi følger opp med drift, oppdateringer og forbedringer, så siden fortsetter å levere." },
+];
+
+const Process = () => {
+  const container = useReveal(110);
+
+  return (
+    <section id="prosess" ref={container} className="py-24 px-6 md:px-12 lg:px-24" style={{ backgroundColor: '#f5e6d8' }}>
+      <div className="max-w-5xl mx-auto">
+        <div className="mb-16">
+          <span className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: '#a06040' }}>Slik jobber vi</span>
+          <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2" style={{ color: '#201335' }}>Fra idé til ferdig på dager.</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {steps.map((s, i) => (
+            <div key={i} data-reveal className="flex flex-col gap-3">
+              <span className="font-sans font-black text-5xl" style={{ color: '#a06040', opacity: 0.4 }}>{s.n}</span>
+              <h3 className="font-sans font-bold text-xl" style={{ color: '#201335' }}>{s.title}</h3>
+              <p className="font-mono text-sm leading-relaxed" style={{ color: '#201335', opacity: 0.6 }}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const stats = [
+  { value: "< 1s", label: "Lastetid på sidene vi bygger" },
+  { value: "100%", label: "Responsivt på mobil, nettbrett og desktop" },
+  { value: "0 kr", label: "I binding — du eier alt selv" },
+];
+
+const Stats = () => {
+  const container = useReveal(120);
+
+  return (
+    <section ref={container} className="py-20 px-6 md:px-12 lg:px-24" style={{ backgroundColor: '#4f4789' }}>
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        {stats.map((s, i) => (
+          <div key={i} data-reveal className="flex flex-col items-center gap-3">
+            <span className="font-sans font-black text-6xl md:text-7xl tracking-tighter text-white">{s.value}</span>
+            <span className="font-mono text-sm text-white/60 max-w-[18ch] leading-relaxed">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -394,9 +511,13 @@ const Home = () => (
     <Navbar />
     <main>
       <Hero />
+      <Services />
       <MeetUs />
+      <Process />
       <Testimonials />
       <Portfolio />
+      <Stats />
+      <OppskalertFAQ />
       <ContactCTA />
     </main>
     <Footer />
