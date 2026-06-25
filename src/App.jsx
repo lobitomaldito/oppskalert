@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Fingerprint } from 'lucide-react';
+import { ArrowRight, Fingerprint, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import OppskalertFAQ from './components/OppskalertFAQ';
+import { submitDemoRequest } from './lib/demoRequest';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,12 +43,10 @@ function useReveal(stagger = 90) {
 }
 
 const testimonials = [
-  { quote: "De leverte nettsiden vår på under en uke. Profesjonelt, raskt og bedre enn vi forventet.", name: "Kari Nilsen", company: "Nilsen Regnskap AS" },
-  { quote: "Endelig en nettside som faktisk selger. Vi fikk tre nye kunder i løpet av den første måneden.", name: "Jonas Berg", company: "Berg Elektro" },
-  { quote: "Enkelt å jobbe med og de forstod merkevaren vår med en gang. Anbefales!", name: "Silje Dahl", company: "Dahl Interiør" },
-  { quote: "Jeg var skeptisk til prisen, men resultatet overgikk alt jeg hadde håpet på.", name: "Thomas Haugen", company: "Haugen Bygg" },
-  { quote: "Oppskalert skjønner hva en liten bedrift faktisk trenger. Ingen unødvendig fluff.", name: "Marte Solberg", company: "Solberg Coaching" },
-  { quote: "Fra idé til ferdig side på fem dager. Imponerende.", name: "Erik Andersen", company: "Andersen Konsult" },
+  { quote: "Jeg fikk en vennlig henvendelse fra Aleksander i Oppskalert, og ble raskt imponert over kunnskapen og kompetansen deres. Det var lett å si ja til at de skulle oppgradere hjemmesiden min, og jeg er absolutt fornøyd med både samarbeidet og resultatet!", name: "Guro Brakestad", company: "Familieterapeut og foredragsholder" },
+  { quote: "Jeg ble veldig fornøyd med resultatet og de leverte raskt!", name: "Katrin Brubakk", company: "katrinbrubakk.no" },
+  { quote: "Oppskalert forsto raskt hva vi trengte og leverte en nettside som virkelig representerer oss. Profesjonelt, effektivt og en glede å samarbeide med.", name: "Thoralf Stenvold", company: "Progressive Diplomacy" },
+  { quote: "Kjempefornøyd :)", name: "Irmelin Drake", company: "irmelindrake.no" },
 ];
 
 const Testimonials = () => {
@@ -79,10 +78,10 @@ const Testimonials = () => {
         <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2">De snakker for oss.</h2>
       </div>
       <div className="flex flex-col gap-4">
-        <div className="flex" ref={track1}>
+        <div className="flex items-start" ref={track1}>
           {doubled.map((t, i) => <Card key={i} t={t} />)}
         </div>
-        <div className="flex" ref={track2}>
+        <div className="flex items-start" ref={track2}>
           {[...doubled].reverse().map((t, i) => <Card key={i} t={t} />)}
         </div>
       </div>
@@ -122,10 +121,10 @@ const Navbar = () => {
         <Link to="/blogg" className="hover:-translate-y-[1px] transition-transform">Blogg</Link>
         <a href="#contact" className="hover:-translate-y-[1px] transition-transform">Kontakt</a>
       </div>
-      <Link to="/kom-i-gang" className="group relative overflow-hidden bg-surface text-primary border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center">
+      <a href="#bestill-demo" className="group relative overflow-hidden bg-surface text-primary border border-white/10 px-6 py-2.5 rounded-full font-sans font-medium text-sm transition-transform hover:scale-[1.03] duration-300 shadow-md text-center">
         <span className="relative z-10 group-hover:text-white transition-colors duration-300">Bestill Demo</span>
         <div className="absolute inset-0 bg-primary translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
-      </Link>
+      </a>
     </nav>
   );
 };
@@ -162,12 +161,12 @@ const Hero = () => {
           Nettsider som faktisk selger.
         </h1>
         <div className="hero-elem mt-10 flex items-center gap-6">
-          <Link to="/kom-i-gang" className="group relative overflow-hidden bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300 text-center">
+          <a href="#bestill-demo" className="group relative overflow-hidden bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300 text-center">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </span>
             <div className="absolute inset-0 bg-surface translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
-          </Link>
+          </a>
           <span className="text-white/40 font-mono text-sm">Ingen binding. Ingen risiko.</span>
         </div>
       </div>
@@ -210,8 +209,8 @@ const MeetUs = () => {
   }, []);
 
   const members = [
-    { name: "Aleksander MacKee", role: "CTO", sub: "AI-ingeniør\nKunderelasjoner", image: "/founders/aleksander.webp", pos: "center 55%", phone: "974 09 897", tel: "+4797409897" },
-    { name: "Franciscus Drake Bruseth", role: "CEO", sub: "Markedsføring\nProduktuutvikling", image: "/founders/franciscus.webp", pos: "center 25%", phone: "479 10 461", tel: "+4747910461" }
+    { name: "Aleksander MacKee", role: "CTO", sub: "AI-ingeniør\nKunderelasjoner", image: "/founders/aleksander.webp", pos: "center 55%", phone: "974 09 897", tel: "+4797409897", linkedin: "https://www.linkedin.com/in/aleks-mackee-bbba9120b/" },
+    { name: "Franciscus Drake Bruseth", role: "CEO", sub: "Markedsføring\nProduktuutvikling", image: "/founders/franciscus.webp", pos: "center 25%", phone: "479 10 461", tel: "+4747910461", linkedin: "https://www.linkedin.com/in/franciscus-drake-bruseth-a78b34204/" }
   ];
 
   return (
@@ -232,9 +231,12 @@ const MeetUs = () => {
                 <span>{member.role}</span>
                 <span className="text-sm md:text-lg italic whitespace-pre-line leading-relaxed" style={{color: '#201335', opacity: 0.5}}>{member.sub}</span>
               </div>
-              <div className="flex flex-col gap-1 font-mono text-sm">
+              <div className="flex flex-col items-center gap-1 font-mono text-sm">
                 <a href={`tel:${member.tel}`} className="hover:opacity-70 transition-opacity font-semibold" style={{color: '#201335'}}>{member.phone}</a>
                 <a href="mailto:team@oppskalert.no" className="hover:opacity-70 transition-opacity" style={{color: '#a06040'}}>team@oppskalert.no</a>
+                <a href={member.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} på LinkedIn`} className="inline-flex items-center gap-1.5 mt-2 hover:opacity-70 transition-opacity" style={{color: '#a06040'}}>
+                  <Linkedin className="w-4 h-4" /> LinkedIn
+                </a>
               </div>
             </div>
           ))}
@@ -248,6 +250,7 @@ const MeetUs = () => {
 
 
 const projects = [
+  { img: "/websider/oppskalert.png", name: "Oppskalert", url: "https://oppskalert.no" },
   { img: "/websider/katrin-brubakk.png", name: "Katrin Brubakk", url: "https://katrinbrubakk.no" },
   { img: "/websider/steinar-husby.png", name: "Steinar Husby", url: "https://steinarhusby.no" },
   { img: "/websider/samtaleverkstedet.jpg", name: "Samtaleverkstedet", url: "https://samtaleverkstedet.no" },
@@ -308,25 +311,105 @@ const Portfolio = () => {
   );
 };
 
-const ContactCTA = () => (
-  <section id="pricing" className="py-32 px-6 md:px-12 lg:px-24 bg-primary relative z-40 rounded-[4rem] text-background overflow-hidden">
-    <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-      <span className="font-mono text-xs uppercase tracking-[0.3em] text-background/50 mb-4">Kom i gang</span>
-      <h2 className="font-sans text-4xl md:text-6xl font-bold mb-6 tracking-tighter">Klar for en nettside som selger?</h2>
-      <p className="font-mono text-sm md:text-base text-background/60 max-w-xl mb-12 leading-relaxed">
-        Vi setter pris på alle prosjekter individuelt — ingen skjulte kostnader, ingen binding. Ta kontakt så gir vi deg et tilbud innen 24 timer.
-      </p>
-      <div className="flex flex-col sm:flex-row gap-4 items-center">
-        <Link to="/kom-i-gang" className="group relative overflow-hidden bg-background text-primary px-10 py-5 rounded-full font-sans font-bold text-lg transition-transform hover:scale-[1.03] duration-300">
-          <span className="relative z-10 flex items-center gap-2">Kontakt for tilbud <ArrowRight className="w-5 h-5" /></span>
-        </Link>
-        <a href="tel:+4797409897" className="font-mono text-background/60 hover:text-background transition-colors text-sm">
-          eller ring oss: 974 09 897
-        </a>
+const inputClass =
+  "w-full bg-background/5 border border-background/20 rounded-full px-6 py-4 font-mono text-sm text-background placeholder:text-background/40 focus:outline-none focus:border-background/60 transition-colors";
+
+const DemoForm = () => {
+  const [navn, setNavn] = useState('');
+  const [epost, setEpost] = useState('');
+  const [firma, setFirma] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (status === 'sending') return;
+    if (!navn.trim() || !epost.trim()) {
+      setStatus('error');
+      return;
+    }
+    setStatus('sending');
+    try {
+      await submitDemoRequest({ navn, epost, firma });
+      setStatus('success');
+    } catch (err) {
+      console.error('Demo request failed:', err);
+      setStatus('error');
+    }
+  };
+
+  return (
+    <section id="bestill-demo" className="scroll-mt-28 py-32 px-6 md:px-12 lg:px-24 bg-primary relative z-40 rounded-[4rem] text-background overflow-hidden">
+      <div className="max-w-2xl mx-auto flex flex-col items-center text-center w-full">
+        <span className="font-mono text-xs uppercase tracking-[0.3em] text-background/50 mb-4">Bestill demo</span>
+        <h2 className="font-sans text-4xl md:text-6xl font-bold mb-6 tracking-tighter">Klar for en nettside som selger?</h2>
+        <p className="font-mono text-sm md:text-base text-background/60 max-w-xl mb-10 leading-relaxed">
+          Legg igjen navn og e-post, så bygger vi en gratis demo av din nye side. Ingen binding, ingen risiko — vi tar kontakt innen 24 timer.
+        </p>
+
+        {status === 'success' ? (
+          <div className="w-full bg-background/5 border border-background/20 rounded-3xl p-10">
+            <p className="font-sans font-bold text-2xl mb-2">Takk! Vi har mottatt forespørselen din.</p>
+            <p className="font-mono text-sm text-background/60 leading-relaxed">
+              Vi tar kontakt på e-post innen 24 timer. Haster det? Ring oss på{' '}
+              <a href="tel:+4797409897" className="underline hover:text-background transition-colors">974 09 897</a>.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-left">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="text"
+                value={navn}
+                onChange={(e) => { setNavn(e.target.value); if (status === 'error') setStatus('idle'); }}
+                placeholder="Navn *"
+                aria-label="Navn"
+                autoComplete="name"
+                className={inputClass}
+              />
+              <input
+                type="email"
+                value={epost}
+                onChange={(e) => { setEpost(e.target.value); if (status === 'error') setStatus('idle'); }}
+                placeholder="E-post *"
+                aria-label="E-post"
+                autoComplete="email"
+                className={inputClass}
+              />
+            </div>
+            <input
+              type="text"
+              value={firma}
+              onChange={(e) => setFirma(e.target.value)}
+              placeholder="Firma (valgfritt)"
+              aria-label="Firma"
+              autoComplete="organization"
+              className={inputClass}
+            />
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="group relative overflow-hidden bg-background text-primary px-10 py-5 rounded-full font-sans font-bold text-lg transition-transform hover:scale-[1.02] duration-300 disabled:opacity-60 disabled:hover:scale-100 mt-1"
+            >
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-5 h-5" /></>}
+              </span>
+            </button>
+            {status === 'error' && (
+              <p className="font-mono text-sm text-red-600 text-center">
+                Fyll inn navn og en gyldig e-post, så prøver vi igjen. Eller ring oss på{' '}
+                <a href="tel:+4797409897" className="underline">974 09 897</a>.
+              </p>
+            )}
+            <p className="font-mono text-xs text-background/40 text-center mt-1">
+              Eller ring oss direkte:{' '}
+              <a href="tel:+4797409897" className="text-background/70 hover:text-background transition-colors">974 09 897</a>
+            </p>
+          </form>
+        )}
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Footer = () => {
   return (
@@ -340,9 +423,9 @@ const Footer = () => {
               La oss bygge<br />noe bra sammen.
             </h2>
           </div>
-          <Link to="/kom-i-gang" className="flex-shrink-0 flex items-center gap-2 bg-accent text-background px-8 py-4 rounded-full font-sans font-bold text-base hover:scale-[1.03] transition-transform duration-300">
-            Kontakt for tilbud <ArrowRight className="w-4 h-4" />
-          </Link>
+          <a href="#bestill-demo" className="flex-shrink-0 flex items-center gap-2 bg-accent text-background px-8 py-4 rounded-full font-sans font-bold text-base hover:scale-[1.03] transition-transform duration-300">
+            Bestill gratis demo <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
 
         {/* Info */}
@@ -518,7 +601,7 @@ const Home = () => (
       <Portfolio />
       <Stats />
       <OppskalertFAQ />
-      <ContactCTA />
+      <DemoForm />
     </main>
     <Footer />
   </div>
