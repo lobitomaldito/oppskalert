@@ -251,6 +251,7 @@ const MeetUs = () => {
 
 const projects = [
   { img: "/websider/oppskalert.png", name: "Oppskalert", url: "https://oppskalert.no" },
+  { img: "/websider/alpha-negotiations.png", name: "Alpha Negotiations", url: "https://alphanegotiations.com" },
   { img: "/websider/katrin-brubakk.png", name: "Katrin Brubakk", url: "https://katrinbrubakk.no" },
   { img: "/websider/steinar-husby.png", name: "Steinar Husby", url: "https://steinarhusby.no" },
   { img: "/websider/samtaleverkstedet.jpg", name: "Samtaleverkstedet", url: "https://samtaleverkstedet.no" },
