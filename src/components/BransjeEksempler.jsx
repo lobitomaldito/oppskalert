@@ -20,17 +20,9 @@ const BransjeEksempler = () => {
 
   return (
     <section id="eksempler" ref={container} className="relative py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-background overflow-hidden">
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div
-          className="absolute right-[-12%] top-[10%] h-[60vh] w-[55vw] rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(255,177,122,0.10), transparent 62%)', filter: 'blur(44px)' }}
-        />
-      </div>
-
       <div className="relative z-10 max-w-5xl mx-auto">
         <div className="mb-12 md:mb-16" data-reveal>
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Konsepteksempler</span>
-          <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance mt-3">Sider for din bransje.</h2>
+          <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance">Sider for din bransje.</h2>
           <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-xl leading-relaxed">
             Vi bygger hver side fra bunnen — for nettopp din bransje. Dette er konsept-eksempler vi har laget. Trykk for å se en hel side i aksjon.
           </p>
@@ -51,7 +43,7 @@ const BransjeEksempler = () => {
                   <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
                   <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
                 </span>
-                <div className="ml-2 flex-1 rounded-full bg-white/[0.06] px-3 py-1 text-[11px] font-mono text-white/40 truncate">
+                <div className="ml-2 flex-1 rounded-full bg-white/[0.06] px-3 py-1 text-[11px] font-mono text-white/55 truncate">
                   {n.domain}
                 </div>
               </div>

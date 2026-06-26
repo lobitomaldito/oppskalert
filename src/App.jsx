@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Fingerprint, Linkedin, Menu, Star, X } from 'lucide-react';
+import { ArrowRight, Check, Fingerprint, Linkedin, Menu, Star, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import OppskalertFAQ from './components/OppskalertFAQ';
@@ -48,8 +48,7 @@ const Testimonials = () => {
   return (
     <section className="py-24 overflow-hidden bg-background">
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-24 mb-12">
-        <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Hva kundene sier</span>
-        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2">Fornøyde kunder.</h2>
+        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance">Fornøyde kunder.</h2>
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex items-start" ref={track1}>
@@ -67,6 +66,7 @@ const navLinks = [
   { label: 'Løsninger', href: '#features' },
   { label: 'Prosess', href: '#prosess' },
   { label: 'Eksempler', href: '#eksempler' },
+  { label: 'Priser', href: '#priser' },
   { label: 'Vårt arbeid', to: '/vårt-arbeid' },
   { label: 'Blogg', to: '/blogg' },
   { label: 'Kontakt', href: '#contact' },
@@ -124,7 +124,7 @@ const Navbar = () => {
           aria-label={menuOpen ? 'Lukk meny' : 'Åpne meny'}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
-          className="md:hidden inline-flex items-center justify-center w-10 h-10 -mr-1 text-current"
+          className="md:hidden inline-flex items-center justify-center w-11 h-11 -mr-1 text-current"
         >
           {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -223,7 +223,14 @@ const Hero = () => {
 
 const ImageWithPlaceholder = ({ src, alt, pos }) => {
   const [error, setError] = useState(false);
-  useEffect(() => { setError(false); }, [src]);
+  // Reset the error when src changes — done during render (React's "adjust
+  // state on prop change" pattern) rather than in an effect, so a new image
+  // gets a clean attempt without a wasted render or an effect round-trip.
+  const [prevSrc, setPrevSrc] = useState(src);
+  if (src !== prevSrc) {
+    setPrevSrc(src);
+    setError(false);
+  }
   if (!src || error) {
     return (
       <div className="absolute inset-0 flex items-center justify-center bg-background/50">
@@ -517,8 +524,9 @@ const services = [
   { n: "01", title: "Konverteringsdesign", desc: "Sider bygget for å få besøkende til å ta kontakt — ikke bare se pene ut. Hvert element har én jobb: å skape kunder." },
   { n: "02", title: "Lynrask ytelse", desc: "Sider som laster på under ett sekund. Google belønner det, og besøkende blir værende i stedet for å forsvinne." },
   { n: "03", title: "SEO fra bunnen", desc: "Riktig struktur, metadata og innhold fra dag én, slik at de rette kundene finner deg når de søker på Google." },
-  { n: "04", title: "Mobil-først", desc: "Perfekt på alle skjermer. 7 av 10 besøk skjer på mobil — siden din skal selge der folk faktisk er." },
-  { n: "05", title: "Drift & support", desc: "Vi holder siden oppdatert, rask og sikker etter lansering, så du kan fokusere på å drive bedriften din." },
+  { n: "04", title: "Synlig i AI-søk", desc: "Stadig flere spør ChatGPT, Perplexity og Googles AI-oversikter i stedet for å google. Vi optimaliserer siden så bedriften din blir funnet, forstått og anbefalt av AI-ene — ikke bare av Google." },
+  { n: "05", title: "Mobil-først", desc: "Perfekt på alle skjermer. 7 av 10 besøk skjer på mobil — siden din skal selge der folk faktisk er." },
+  { n: "06", title: "Drift & support", desc: "Vi holder siden oppdatert, rask og sikker etter lansering, så du kan fokusere på å drive bedriften din." },
 ];
 
 const Services = () => {
@@ -528,7 +536,7 @@ const Services = () => {
     <section id="features" ref={container} className="relative py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-background text-white overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto mb-14 md:mb-20">
         <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance">Alt en side trenger for å selge.</h2>
-        <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-md leading-relaxed">Fem ting vi bygger inn i hver eneste side — så den faktisk gjør jobben sin.</p>
+        <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-md leading-relaxed">Seks ting vi bygger inn i hver eneste side — så den faktisk gjør jobben sin.</p>
       </div>
       <div className="relative z-10 max-w-5xl mx-auto">
         {services.map((s, i) => (
@@ -541,6 +549,127 @@ const Services = () => {
             <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed md:pt-2 md:max-w-md">{s.desc}</p>
           </div>
         ))}
+      </div>
+    </section>
+  );
+};
+
+const pricingTiers = [
+  // Innholdet i hver pakke er ment å redigeres fritt.
+  {
+    name: "Landingsside",
+    price: "9 990",
+    tagline: "Én slagkraftig side som gjør jobben.",
+    featured: false,
+    features: ["1 sides nettside", "Konverteringsdesign", "Mobiloptimalisert", "Grunnleggende SEO", "Kontaktskjema", "Live på få dager"],
+  },
+  {
+    name: "Avansert",
+    price: "13 990",
+    tagline: "Flere sider og mer å spille på.",
+    featured: true,
+    features: ["Alt i Landingsside", "Inntil 5 sider", "Avansert SEO + AI-søk", "Bloggoppsett", "Bildegalleri", "Google Analytics"],
+  },
+  {
+    name: "Full pakke",
+    price: "19 990",
+    tagline: "Alt du trenger for å vokse.",
+    featured: false,
+    features: ["Alt i Avansert", "Ubegrenset antall sider", "Booking & skjemaer", "Tekstforfatting", "Drift & support", "Prioritert leveranse"],
+  },
+];
+
+// Tilleggstjenester — veiledende priser, ment å redigeres fritt.
+// "/ mnd" markerer løpende (retainer) tjenester.
+const addons = [
+  { name: "Registrering av domene", price: "500 kr" },
+  { name: "Designtjenester – logo, ikoner", price: "5 000 – 25 000 kr" },
+  { name: "Designprofil & stilmanual", price: "7 500 – 12 500 kr" },
+  { name: "Innholdsproduksjon (bilder/video)", price: "På forespørsel" },
+  { name: "Tekstforfatter", price: "7 500 – 30 000 kr" },
+  { name: "Oppsett av e-post & brukere", price: "200–300 kr / bruker / mnd" },
+  { name: "Integrasjoner", price: "5 000 – 50 000 kr" },
+  { name: "Skreddersydde løsninger", price: "5 000 – 50 000 kr" },
+  { name: "Chat-funksjon", price: "2 000 – 5 000 kr" },
+  { name: "Consent Mode v2 – cookievarsel", price: "300–400 kr / mnd" },
+  { name: "Ekstra sikkerhet", price: "200–300 kr / mnd" },
+  { name: "Ekstra rask nettside", price: "400–500 kr / mnd" },
+  { name: "Ekstra synlighet i søkemotorer", price: "3 000 – 15 000 kr / mnd" },
+  { name: "Optimalisert innlogging", price: "3 000 – 6 000 kr" },
+  { name: "Spesielle systemer eller hensyn", price: "På forespørsel" },
+];
+
+const Pricing = () => {
+  const container = useReveal(100);
+
+  return (
+    <section id="priser" ref={container} className="relative py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-background text-white overflow-hidden">
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <div className="mb-14 md:mb-16 text-center" data-reveal>
+          <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance">Tydelige priser, ingen overraskelser.</h2>
+          <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-xl mx-auto leading-relaxed">Engangspris, ingen binding — og du ser en gratis demo før du bestemmer deg.</p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6 items-start">
+          {pricingTiers.map((t) => (
+            <div
+              key={t.name}
+              data-reveal
+              className={`relative flex flex-col h-full rounded-3xl p-8 border ${t.featured ? 'border-accent bg-white/[0.06]' : 'border-white/10 bg-white/[0.03]'}`}
+            >
+              {t.featured && (
+                <span className="absolute top-0 right-6 -translate-y-1/2 bg-accent text-background text-[11px] font-mono uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
+                  Mest populær
+                </span>
+              )}
+              <h3 className="font-sans font-bold text-2xl">{t.name}</h3>
+              <p className="font-mono text-sm text-white/60 mt-2 leading-relaxed min-h-[40px]">{t.tagline}</p>
+              <div className="mt-6 flex items-baseline gap-1.5">
+                <span className="font-sans font-black text-5xl tracking-tighter">{t.price}</span>
+                <span className="font-mono text-sm text-white/55">kr</span>
+              </div>
+              <span className="font-mono text-xs text-white/55 mt-1">engangspris · eks. mva</span>
+              <ul className="mt-7 flex flex-col gap-3 flex-1">
+                {t.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 font-mono text-sm text-white/75">
+                    <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href="#bestill-demo"
+                className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform hover:scale-[1.03] ${t.featured ? 'bg-accent text-background' : 'bg-white/10 text-white hover:bg-white/[0.16]'}`}
+              >
+                Bestill gratis demo <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Tilleggstjenester — utvidelser til en hvilken som helst pakke */}
+        <div className="mt-20 md:mt-24 pt-12 border-t border-white/10" data-reveal>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+            <div>
+              <h3 className="font-sans font-bold text-3xl md:text-4xl tracking-tight">Bygg på etter behov.</h3>
+            </div>
+            <p className="font-mono text-xs text-white/50 max-w-xs leading-relaxed sm:text-right">Legg til på en hvilken som helst pakke — som engangs eller månedlig. Veiledende priser, eks. mva.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 sm:gap-x-12">
+            {addons.map((a) => (
+              <div key={a.name} className="flex items-baseline justify-between gap-4 py-3.5 border-b border-white/10">
+                <span className="font-sans text-sm md:text-base text-white/85">{a.name}</span>
+                <span className="font-mono text-xs md:text-sm text-accent whitespace-nowrap text-right">{a.price}</span>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+            <p className="font-mono text-xs text-white/55 max-w-md leading-relaxed">Usikker på hva du trenger? Vi setter sammen en pakke som passer.</p>
+            <a href="#bestill-demo" className="flex-shrink-0 inline-flex items-center gap-2 bg-white/10 text-white hover:bg-white/[0.16] px-7 py-3.5 rounded-full font-sans font-bold text-sm transition-colors duration-300">
+              Snakk med oss <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -692,6 +821,7 @@ const Home = () => (
       <MeetUs />
       <Process />
       <Services />
+      <Pricing />
       <OppskalertFAQ />
       <DemoForm />
     </main>

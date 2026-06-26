@@ -17,6 +17,19 @@
     @apply bg-background text-primary antialiased;
     overflow-x: hidden;
   }
+
+  /* Keyboard focus — visible everywhere. Accent ring reads on the dark
+     surfaces (most of the page); on the warm light rooms (cream founders /
+     process, ivory demo form) peach washes out, so switch the ring to ink. */
+  :focus-visible {
+    outline: 2px solid #ffb17a;
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+  [style*="#f5e6d8"] :focus-visible,
+  .bg-primary :focus-visible {
+    outline-color: #201335;
+  }
 }
 
 /* Hero entrance — transform-only, so content is ALWAYS visible (opacity:1).
