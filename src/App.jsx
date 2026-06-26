@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Fingerprint, Linkedin, Menu, X } from 'lucide-react';
+import { ArrowRight, Fingerprint, Linkedin, Menu, Star, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import OppskalertFAQ from './components/OppskalertFAQ';
@@ -30,6 +30,11 @@ const Testimonials = () => {
 
   const Card = ({ t }) => (
     <div className="flex-shrink-0 w-80 bg-white/5 border border-white/10 rounded-2xl p-6 mx-3">
+      <div className="flex gap-0.5 mb-3" aria-label="5 av 5 stjerner">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
+        ))}
+      </div>
       <p className="font-mono text-sm text-white/80 leading-relaxed mb-4">"{t.quote}"</p>
       <div>
         <p className="font-sans font-bold text-white text-sm">{t.name}</p>
@@ -44,7 +49,7 @@ const Testimonials = () => {
     <section className="py-24 overflow-hidden bg-background">
       <div className="max-w-5xl mx-auto px-6 md:px-12 lg:px-24 mb-12">
         <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Hva kundene sier</span>
-        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2">De snakker for oss.</h2>
+        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter mt-2">Fornøyde kunder.</h2>
       </div>
       <div className="flex flex-col gap-4">
         <div className="flex items-start" ref={track1}>
@@ -682,11 +687,11 @@ const Home = () => (
       <Hero />
       <Portfolio />
       <BransjeEksempler />
+      <Testimonials />
       <Stats />
       <MeetUs />
       <Process />
       <Services />
-      <Testimonials />
       <OppskalertFAQ />
       <DemoForm />
     </main>
