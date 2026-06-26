@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogImage, jsonLd }) => {
+const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogImage, jsonLd, noindex = false }) => {
   useEffect(() => {
     // Title
     const defaultTitle = 'Oppskalert | Nettsider som faktisk selger';
@@ -38,6 +38,10 @@ const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogIm
     if (keywords) {
       setMetaByName('keywords', Array.isArray(keywords) ? keywords.join(', ') : keywords);
     }
+
+    // Robots — demo/concept pages are noindex so fictional businesses never
+    // rank or confuse anyone. Default real pages stay indexable.
+    setMetaByName('robots', noindex ? 'noindex, nofollow' : 'index, follow');
 
     // Canonical link
     const finalCanonical = canonical || window.location.href;
@@ -83,7 +87,7 @@ const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogIm
         activeScript.remove();
       }
     };
-  }, [title, description, keywords, canonical, ogType, ogImage, jsonLd]);
+  }, [title, description, keywords, canonical, ogType, ogImage, jsonLd, noindex]);
 
   return null;
 };

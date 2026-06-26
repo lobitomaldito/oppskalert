@@ -1,9 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useState } from "react";
 import { Plus } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useReveal } from "../lib/useReveal";
 
 const faqs = [
   {
@@ -34,45 +31,25 @@ const faqs = [
 
 export default function OppskalertFAQ() {
   const [openIndex, setOpenIndex] = useState(null);
-  const container = useRef(null);
-
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.from(".faq-item", {
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top 80%"
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out"
-      });
-    }, container);
-    return () => ctx.revert();
-  }, []);
+  const container = useReveal(90);
 
   const toggle = (i) => {
     setOpenIndex(openIndex === i ? null : i);
-    // Refresh ScrollTrigger after the transition is mostly done to avoid "lag" and sync sticky elements
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 350);
   };
 
   return (
     <section id="faq" ref={container} className="relative py-32 px-6 md:px-12 lg:px-24 overflow-hidden bg-background text-white border-t border-primary/5">
       <div className="max-w-3xl mx-auto relative z-10 w-full">
         <div className="flex flex-col items-center mb-16">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">Lurer du på noe?</span>
-          <h2 className="font-sans font-bold text-5xl md:text-6xl tracking-tighter text-center">Spørsmål og svar.</h2>
+          <h2 className="font-sans font-bold text-5xl md:text-6xl tracking-tighter text-center text-balance">Spørsmål og svar.</h2>
+          <p className="font-mono text-sm md:text-base text-white/70 mt-5 text-center max-w-md leading-relaxed">Det folk lurer på før de tar kontakt — kort og greit.</p>
         </div>
         <div className="flex flex-col">
           {faqs.map((item, i) => (
             <div
               key={i}
-              className={`faq-item border-primary/10 ${i === 0 ? "border-y" : "border-b"}`}
+              data-reveal
+              className={`border-primary/10 ${i === 0 ? "border-y" : "border-b"}`}
             >
               <button
                 onClick={() => toggle(i)}

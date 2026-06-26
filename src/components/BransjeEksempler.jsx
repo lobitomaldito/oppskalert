@@ -1,0 +1,107 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import { useReveal } from '../lib/useReveal';
+
+// Konsept-eksempler: fiktive bransjesider vi har bygget for å vise spennvidde
+// i kald e-post. Hvert kort lenker til en hel, levende demo-side. Tydelig merket
+// som konsept — holdt adskilt fra den ekte porteføljen ("Noe av det vi har laget").
+const img = (id, w = 900) =>
+  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+const niches = [
+  { tag: 'Frisør', brand: 'Glød', domain: 'glodsalong.no', headline: 'Hår som får deg til å gløde.', route: '/eksempler/frisor', img: '1746723375184-5f537d2e6f31', accent: '#d98c63' },
+  { tag: 'Håndverker', brand: 'Nordbygg', domain: 'nordbygg.no', headline: 'Vi bygger det som varer.', route: '/eksempler/handverker', img: '1674649207083-281c2517ab49', accent: '#e07a24' },
+  { tag: 'Restaurant', brand: 'Nær', domain: 'naerrestaurant.no', headline: 'Smaker du husker.', route: '/eksempler/restaurant', img: '1773122150546-94699cfc8f23', accent: '#c69a52' },
+  { tag: 'Tannlege', brand: 'Klar Tannklinikk', domain: 'klartann.no', headline: 'Tannhelse i trygge hender.', route: '/eksempler/tannlege', img: '1629909613654-28e377c37b09', accent: '#2f9c8f' },
+];
+
+const BransjeEksempler = () => {
+  const container = useReveal(90);
+
+  return (
+    <section id="eksempler" ref={container} className="relative py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-background overflow-hidden">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          className="absolute right-[-12%] top-[10%] h-[60vh] w-[55vw] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(255,177,122,0.10), transparent 62%)', filter: 'blur(44px)' }}
+        />
+      </div>
+
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <div className="mb-12 md:mb-16" data-reveal>
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-accent">Konsepteksempler</span>
+          <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance mt-3">Sider for din bransje.</h2>
+          <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-xl leading-relaxed">
+            Vi bygger hver side fra bunnen — for nettopp din bransje. Dette er konsept-eksempler vi har laget. Trykk for å se en hel side i aksjon.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+          {niches.map((n) => (
+            <Link
+              key={n.tag}
+              to={n.route}
+              data-reveal
+              className="group block rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-white/25 transition-colors duration-300"
+            >
+              {/* Browser-chrome bar — gjør kortet til en mini-nettleser */}
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.04]">
+                <span className="flex gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                </span>
+                <div className="ml-2 flex-1 rounded-full bg-white/[0.06] px-3 py-1 text-[11px] font-mono text-white/40 truncate">
+                  {n.domain}
+                </div>
+              </div>
+
+              {/* Forhåndsvisning */}
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <img
+                  src={img(n.img)}
+                  alt={`${n.brand} – ${n.tag.toLowerCase()}side`}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+
+                <span
+                  className="absolute top-4 left-4 text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold"
+                  style={{ backgroundColor: n.accent, color: '#201335' }}
+                >
+                  {n.tag}
+                </span>
+
+                <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3">
+                  <div>
+                    <p className="font-sans font-bold text-white text-xl leading-tight">{n.brand}</p>
+                    <p className="font-mono text-xs text-white/65 mt-1">{n.headline}</p>
+                  </div>
+                  <span className="flex-shrink-0 inline-flex items-center gap-1 text-sm font-medium text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                    Se siden <ArrowRight className="w-4 h-4" style={{ color: n.accent }} />
+                  </span>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Avslutning — knytter til "vi lager alle slags sider" */}
+        <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-white/10 pt-10">
+          <p className="font-mono text-sm md:text-base text-white/70 max-w-md leading-relaxed">
+            Finner du ikke din bransje? Vi lager nettsider for alle — og bygger en gratis demo av nettopp din.
+          </p>
+          <a
+            href="#bestill-demo"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-accent text-background px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
+          >
+            Bestill gratis demo <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default BransjeEksempler;

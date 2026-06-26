@@ -19,6 +19,22 @@
   }
 }
 
+/* Hero entrance — transform-only, so content is ALWAYS visible (opacity:1).
+   Animations pause on hidden tabs / headless renderers; gating opacity here
+   would ship the hero blank in those contexts. A transform rise can't: worst
+   case the text sits a few px lower until the animation runs. */
+@keyframes heroRise {
+  from { transform: translateY(34px); }
+  to   { transform: translateY(0); }
+}
+.hero-elem { animation: heroRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-elem:nth-child(2) { animation-delay: 0.09s; }
+.hero-elem:nth-child(3) { animation-delay: 0.18s; }
+.hero-elem:nth-child(4) { animation-delay: 0.27s; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-elem { animation: none; }
+}
+
 /* Global Noise Overlay */
 .noise-overlay {
   position: fixed;
