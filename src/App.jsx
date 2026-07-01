@@ -63,7 +63,6 @@ const Testimonials = () => {
 };
 
 const navLinks = [
-  { label: 'Løsninger', href: '#features' },
   { label: 'Prosess', href: '#prosess' },
   { label: 'Eksempler', href: '#eksempler' },
   { label: 'Priser', href: '#priser' },
@@ -520,40 +519,6 @@ const Footer = () => {
   );
 };
 
-const services = [
-  { n: "01", title: "Konverteringsdesign", desc: "Sider bygget for å få besøkende til å ta kontakt — ikke bare se pene ut. Hvert element har én jobb: å skape kunder." },
-  { n: "02", title: "Lynrask ytelse", desc: "Sider som laster på under ett sekund. Google belønner det, og besøkende blir værende i stedet for å forsvinne." },
-  { n: "03", title: "SEO fra bunnen", desc: "Riktig struktur, metadata og innhold fra dag én, slik at de rette kundene finner deg når de søker på Google." },
-  { n: "04", title: "Synlig i AI-søk", desc: "Stadig flere spør ChatGPT, Perplexity og Googles AI-oversikter i stedet for å google. Vi optimaliserer siden så bedriften din blir funnet, forstått og anbefalt av AI-ene — ikke bare av Google." },
-  { n: "05", title: "Mobil-først", desc: "Perfekt på alle skjermer. 7 av 10 besøk skjer på mobil — siden din skal selge der folk faktisk er." },
-  { n: "06", title: "Drift & support", desc: "Vi holder siden oppdatert, rask og sikker etter lansering, så du kan fokusere på å drive bedriften din." },
-];
-
-const Services = () => {
-  const container = useReveal(90);
-
-  return (
-    <section id="features" ref={container} className="relative py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-background text-white overflow-hidden">
-      <div className="relative z-10 max-w-5xl mx-auto mb-14 md:mb-20">
-        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance">Alt en side trenger for å selge.</h2>
-        <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-md leading-relaxed">Seks ting vi bygger inn i hver eneste side — så den faktisk gjør jobben sin.</p>
-      </div>
-      <div className="relative z-10 max-w-5xl mx-auto">
-        {services.map((s, i) => (
-          <div
-            key={i}
-            data-reveal
-            className="group grid grid-cols-1 md:grid-cols-[1fr_1.25fr] gap-x-10 gap-y-3 py-8 md:py-10 border-t border-white/10 last:border-b transition-colors duration-300 hover:border-accent/40"
-          >
-            <h3 className="font-sans font-bold text-3xl md:text-4xl tracking-tight leading-[1.05] group-hover:text-accent transition-colors duration-300">{s.title}</h3>
-            <p className="font-mono text-sm md:text-base text-white/60 leading-relaxed md:pt-2 md:max-w-md">{s.desc}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 const pricingTiers = [
   // Innholdet i hver pakke er ment å redigeres fritt.
   {
@@ -742,29 +707,6 @@ const Process = () => {
   );
 };
 
-const stats = [
-  { value: "< 1s", label: "Lastetid på sidene vi bygger" },
-  { value: "100%", label: "Responsivt på mobil, nettbrett og desktop" },
-  { value: "0 kr", label: "I binding — du eier alt selv" },
-];
-
-const Stats = () => {
-  const container = useReveal(120);
-
-  return (
-    <section ref={container} className="py-20 px-6 md:px-12 lg:px-24" style={{ backgroundColor: '#4f4789' }}>
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-        {stats.map((s, i) => (
-          <div key={i} data-reveal className="flex flex-col items-center gap-3">
-            <span className="font-sans font-black text-6xl md:text-7xl tracking-tighter text-white">{s.value}</span>
-            <span className="font-mono text-sm text-white/60 max-w-[18ch] leading-relaxed">{s.label}</span>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
-
 const homeSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -817,10 +759,8 @@ const Home = () => (
       <Portfolio />
       <BransjeEksempler />
       <Testimonials />
-      <Stats />
       <MeetUs />
       <Process />
-      <Services />
       <Pricing />
       <OppskalertFAQ />
       <DemoForm />
