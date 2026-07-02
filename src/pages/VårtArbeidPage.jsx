@@ -4,6 +4,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Eye, TextSearch, Smartphone, CheckSquare, Fingerprint } from 'lucide-react';
 import SEO from '../components/SEO';
+import Portfolio from '../components/Portfolio';
+import BransjeEksempler from '../components/BransjeEksempler';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -227,6 +229,8 @@ const VårtArbeidPage = () => {
         </div>
       </section>
 
+      <Portfolio />
+      <BransjeEksempler />
       <Protocol />
       <Facts />
 
