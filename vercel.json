@@ -1,10 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    {
-      "//": "Alt uten filendelse er en klientside-rute og skal til index.html. Stier som ender på .png/.webp/.js/.xml osv. holdes utenfor, slik at en fil som faktisk mangler gir ekte 404 i stedet for forsiden med status 200 (soft 404 for Google).",
-      "source": "/((?!.*\\.[a-zA-Z0-9]+$).*)",
-      "destination": "/index.html"
-    }
+    { "source": "/arbeid", "destination": "/index.html" },
+    { "source": "/vårt-arbeid", "destination": "/index.html" },
+    { "source": "/priser", "destination": "/index.html" },
+    { "source": "/metode", "destination": "/index.html" },
+    { "source": "/om", "destination": "/index.html" },
+    { "source": "/kontakt", "destination": "/index.html" },
+    { "source": "/kom-i-gang", "destination": "/index.html" },
+    { "source": "/blogg", "destination": "/index.html" },
+    { "source": "/blogg/:slug", "destination": "/index.html" },
+    { "source": "/eksempler/:slug", "destination": "/index.html" }
   ]
 }
