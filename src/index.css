@@ -1,38 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;700&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* Supreme (Indian Type Foundry / Fontshare): brødtekstfonten.
+   Selvhostet, ikke via API: én variabel fil dekker vekt 100–800, så hele
+   spekteret koster 30 kB i stedet for én forespørsel per vekt. Fontshare
+   EULA tillater kommersiell web-bruk og selvhosting; lisensen ligger i
+   public/fonts/Supreme-LICENSE.txt.
+
+   Erstattet Space Mono, som var uleselig i lengre avsnitt. */
+@font-face {
+  font-family: 'Supreme';
+  src: url('/fonts/Supreme-Variable.woff2') format('woff2-variations'),
+       url('/fonts/Supreme-Variable.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Supreme';
+  src: url('/fonts/Supreme-VariableItalic.woff2') format('woff2-variations'),
+       url('/fonts/Supreme-VariableItalic.woff2') format('woff2');
+  font-weight: 100 800;
+  font-style: italic;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   TOKENS: "Midnattsverkstedet"
+   Auberginen er merkevaren. Alt her er den samme paletten som
+   før, bare samlet ett sted i stedet for spredt som hex-literaler
+   gjennom komponentene.
+
+   Kontrastgulv (målt mot #201335):
+     ivory ≥ 50%  for AA på aubergine
+     ivory ≥ 70%  for AA på dusty grape (--surface)
+   Derfor: --ink-faint er KUN trygg på --bg. På surface-kort,
+   bruk --ink-muted. Se DESIGN.md.
+   ============================================================ */
 @layer base {
+  :root {
+    /* Flater */
+    --bg:        32 19 53;      /* #201335  midnattsaubergine */
+    --bg-deep:   23 14 38;      /* #170e26  dypere bånd (fot, prisrom) */
+    --surface:   79 71 137;     /* #4f4789  dusty grape, løftet flate */
+
+    /* Blekk på mørkt */
+    --ink:       255 253 237;   /* #fffded  ivory */
+
+    /* Aksenter */
+    --signal:    255 177 122;   /* #ffb17a  sandy brown, konverteringsstien */
+    --signal-hi: 252 231 98;    /* #fce762  banana cream, sjelden og aldri fyll */
+
+    /* Lyst rom */
+    --room:        245 230 216; /* #f5e6d8  varm krem */
+    --room-ink:    32 19 53;    /* aubergine som blekk på krem */
+    --room-signal: 138 77 44;   /* #8a4d2c  clay, 5.4:1 på krem */
+
+    /* Blekk-nivåer (alpha på ivory) */
+    --ink-muted: 0.72;          /* 9.2:1 på bg · 5.0:1 på surface, trygg overalt */
+    --ink-faint: 0.58;          /* 6.2:1 på bg, KUN på bg */
+
+    /* Rytme */
+    --gutter:  clamp(1.25rem, 5vw, 3rem);
+    --maks:    68rem;
+    --seksjon: clamp(3.5rem, 8vw, 6.5rem);
+
+    /* Bevegelse */
+    --lett: cubic-bezier(0.22, 1, 0.36, 1);
+    --fart: 0.7s;
+
+    /* z-skala: semantisk, aldri 9999 */
+    --z-nav: 50;
+    --z-meny: 40;
+    --z-flyt: 60;
+  }
+
   html {
     scroll-behavior: smooth;
   }
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
+    html { scroll-behavior: auto; }
   }
   body {
     @apply bg-background text-primary antialiased;
     overflow-x: hidden;
+    /* Supreme er en variabel font, så vi er ikke låst til hele hundretall.
+       400 leste for tynt i brødtekst; 450 gir merkbart mer kjøtt på strekene
+       uten å nærme seg halvfet. Tailwinds font-bold/-semibold overstyrer
+       fortsatt der de er satt eksplisitt. */
+    font-weight: 450;
   }
 
-  /* Keyboard focus — visible everywhere. Accent ring reads on the dark
-     surfaces (most of the page); on the warm light rooms (cream founders /
-     process, ivory demo form) peach washes out, so switch the ring to ink. */
+  /* Keyboard focus: visible everywhere. Accent ring reads on the dark
+     surfaces (most of the page); on the warm light rooms peach washes out,
+     so switch the ring to ink. */
   :focus-visible {
-    outline: 2px solid #ffb17a;
+    outline: 2px solid rgb(var(--signal));
     outline-offset: 2px;
     border-radius: 3px;
   }
+  .rom :focus-visible,
   [style*="#f5e6d8"] :focus-visible,
+  .bg-room :focus-visible,
   .bg-primary :focus-visible {
-    outline-color: #201335;
+    outline-color: rgb(var(--room-ink));
   }
+
+  /* Overskrifter puster jevnere med balansert ombrekking; lang brødtekst
+     får «pretty» så siste linje ikke blir et enslig ord. */
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
 }
 
-/* Hero entrance — transform-only, so content is ALWAYS visible (opacity:1).
+@layer components {
+  /* Den sentrale kolonnen. Én kilde til bredde og gutter. Dette er
+     «strammingen»: hver seksjon deler nøyaktig samme målebånd. */
+  .wrap {
+    width: 100%;
+    max-width: var(--maks);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .seksjon { padding-block: var(--seksjon); }
+}
+
+/* Hero entrance: transform-only, so content is ALWAYS visible (opacity:1).
    Animations pause on hidden tabs / headless renderers; gating opacity here
    would ship the hero blank in those contexts. A transform rise can't: worst
    case the text sits a few px lower until the animation runs. */
@@ -60,14 +155,14 @@
   opacity: 0.05;
 }
 
-/* Scroll reveal — driven by IntersectionObserver (see useReveal in App.jsx).
+/* Scroll reveal, driven by IntersectionObserver (see useReveal).
    Hidden state only applies once JS arms the container, so content stays
    visible if scripts fail. Immune to font/image reflow and never freezes. */
 .reveal-armed [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity var(--fart) var(--lett),
+              transform var(--fart) var(--lett);
   will-change: opacity, transform;
 }
 .reveal-armed [data-reveal].is-visible {

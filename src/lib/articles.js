@@ -14,7 +14,7 @@ Data fra Google viser at hele 53 % av mobilbrukere forlater en side som tar mer 
 
 ## Time to Interactive er det eneste tallet som betyr noe
 
-Mange byråer skryter av at nettsiden er «lett» eller at bildene er optimalisert. Men de glemmer ofte *Time to Interactive* (TTI) — altså når knappen faktisk kan trykkes på. Det hjelper lite at logoen dukker opp raskt hvis brukeren må vente i seks sekunder før menyen eller kontaktknappen svarer. Siden din kan se ferdig ut, men hvis den ikke er interaktiv, er den i praksis ubrukelig for en kunde som er klar til å kjøpe.
+Mange byråer skryter av at nettsiden er «lett» eller at bildene er optimalisert. Men de glemmer ofte *Time to Interactive* (TTI), altså når knappen faktisk kan trykkes på. Det hjelper lite at logoen dukker opp raskt hvis brukeren må vente i seks sekunder før menyen eller kontaktknappen svarer. Siden din kan se ferdig ut, men hvis den ikke er interaktiv, er den i praksis ubrukelig for en kunde som er klar til å kjøpe.
 
 ## Mobilhastighet påvirker mer enn bare kundene
 
@@ -26,7 +26,7 @@ De fleste bedrifter sitter fast med nettsider bygget på tunge, utdaterte rammev
 
 ## Fra treghet til konvertering
 
-For å snu utviklingen må du slutte å se på nettsiden som et statisk utstillingsvindu. Betrakt den som en maskin som skal levere leads. Hvis maskinen er treg, blir produksjonen lav. Den gode nyheten er at ytelsesoptimalisering ofte gir umiddelbar uttelling. Vi har sett bedrifter øke konverteringen med 20–40 % bare ved å fokusere på at innholdet er synlig og interaktivt innenfor det første sekundet.
+For å snu utviklingen må du slutte å se på nettsiden som et statisk utstillingsvindu. Betrakt den som en maskin som skal levere leads. Hvis maskinen er treg, blir produksjonen lav. Den gode nyheten er at ytelsesoptimalisering ofte gir umiddelbar uttelling. Jeg har sett bedrifter øke konverteringen med 20–40 % bare ved å fokusere på at innholdet er synlig og interaktivt innenfor det første sekundet.
 
 ## Hva bør du gjøre nå?
 
@@ -39,31 +39,31 @@ Ikke stol på antakelser eller hva byrået ditt sa for to år siden. Gå til Goo
     publishDate: "2026-05-01",
     keywords: ["billig nettside norge", "AI nettside"],
     hero: "/blogg/myten-om-den-dyre-nettsiden-ai-prisbilde.jpg",
-    content: `En lokal rørleggerbedrift fikk nylig et tilbud fra et tradisjonelt byrå: 120 000 kroner for en ny nettside. Leveringstid? Tre måneder. Da vi tok en titt på prosjektbeskrivelsen, så vi 60 000 kroner i prosjektledelse, utallige timer med «strategiske avklaringer» og dyre lisenser. Sannheten er at en billig nettside i Norge i 2024 ikke lenger betyr dårlig kvalitet, det betyr bare at noen har sluttet å fakturere for unødvendig byråkrati.
+    content: `En lokal rørleggerbedrift fikk nylig et tilbud fra et tradisjonelt byrå: 120 000 kroner for en ny nettside. Leveringstid? Tre måneder. Da jeg tok en titt på prosjektbeskrivelsen, så jeg 60 000 kroner i prosjektledelse, utallige timer med «strategiske avklaringer» og dyre lisenser. Sannheten er at en billig nettside i Norge i 2026 ikke lenger betyr dårlig kvalitet, det betyr bare at noen har sluttet å fakturere for unødvendig byråkrati.
 
 ## Timebruk er ikke lenger en målestokk for verdi
 
-Tradisjonelle byråer selger timer. Når du fakturerer etter medgått tid, er effektivitet en fiende av profitt. Hvis en seniorutvikler bruker 100 timer på å kode det samme som en AI-orkestrert prosess løser på fire timer, taper byrået penger på å være effektive. Ved å bruke verktøy som Claude, Firecrawl og Antigravity, fjerner vi behovet for å fakturere for 80 % av de manuelle arbeidstimene.
+Tradisjonelle byråer selger timer. Når du fakturerer etter medgått tid, er effektivitet en fiende av profitt. Hvis en seniorutvikler bruker 100 timer på å kode det samme som en AI-orkestrert prosess løser på fire timer, taper byrået penger på å være effektive. Ved å bruke verktøy som Claude, Firecrawl og Antigravity, fjerner jeg behovet for å fakturere for 80 % av de manuelle arbeidstimene.
 
-Vi har målt tidsbruk på våre egne prosjekter: Oppgaven med å sette opp en fullverdig, konverteringsoptimalisert landingsside har sunket fra 40 timer til under 5 timer det siste året. Kunden betaler ikke for våre timer lenger; de betaler for resultatet.
+Jeg har målt tidsbruk på mine egne prosjekter: Oppgaven med å sette opp en fullverdig, konverteringsoptimalisert landingsside har sunket fra 40 timer til under 5 timer det siste året. Kunden betaler ikke for timene mine lenger; de betaler for resultatet.
 
 ## Arkitekturen bak en moderne, rimelig nettside
 
 Mange tror fortsatt at en AI nettside er en billig mal som ser ut som alle andre. Det er en utdatert myte. AI-drevet utvikling handler ikke om å generere søppel, men om å bruke maskiner til å utføre den repeterende kodingen, mens menneskelig ekspertise fokuserer på konverteringsdesign og informasjonsarkitektur.
 
-Ved å bruke AI-verktøy kan vi generere struktur, skrive innhold basert på kundens eksisterende data, og bygge layout som laster på under 1,5 sekunder. Hastighet er den nye valutaen. 53 % av brukere forlater en side som bruker mer enn 3 sekunder på å laste inn – en feil de fleste dyre «håndkodede» sider fra 2022 fortsatt sliter med.
+Ved å bruke AI-verktøy kan jeg generere struktur, skrive innhold basert på kundens eksisterende data, og bygge layout som laster på under 1,5 sekunder. Hastighet er den nye valutaen. 53 % av brukere forlater en side som bruker mer enn 3 sekunder på å laste inn – en feil de fleste dyre «håndkodede» sider fra 2022 fortsatt sliter med.
 
 ## Hvorfor «strategiske workshops» spiser budsjettet ditt
 
-Etter to måneder med «strategiprosesser» sitter mange SMB-eiere igjen med en powerpoint og et budsjett som er 30 % overskredet. Vår tilnærming er den stikk motsatte: Vi bygger demoen først. Vi tar en risiko ved å investere våre egne ressurser i å vise deg resultatet før vi i det hele tatt diskuterer pris.
+Etter to måneder med «strategiprosesser» sitter mange SMB-eiere igjen med en powerpoint og et budsjett som er 30 % overskredet. Min tilnærming er den stikk motsatte: jeg bygger demoen først. Jeg tar risikoen ved å investere mine egne timer i å vise deg resultatet før vi i det hele tatt diskuterer pris.
 
 Når du ser en fungerende side, forsvinner behovet for lange, fakturerbare brief-møter. Enten fungerer siden for din bedrift, eller så gjør den det ikke. Det er ingen «strategisk partner»-avgift på 20 000 kroner for å sitte i et møterom og snakke om visjoner.
 
 ## Kvalitet uten kostnadspåslag fra 10-mannsteam
 
-Tradisjonelle byråer må dekke kontorleie, prosjektledere, juniorsjefer og selgere gjennom påslag på din faktura. Når vi eliminerer disse leddene gjennom orkestrering, kan vi levere et produkt som er teknisk overlegent til en brøkdel av prisen.
+Tradisjonelle byråer må dekke kontorleie, prosjektledere, juniorsjefer og selgere gjennom påslag på din faktura. Når jeg kutter disse leddene gjennom orkestrering, kan jeg levere et produkt som er teknisk overlegent til en brøkdel av prisen.
 
-En nettside er ikke et kunstverk som skal diskuteres i måneder; det er en salgsmaskin. Hvis den ikke selger, er den kostbar uansett om den kostet 5 000 eller 500 000 kroner. Vi bygger for konvertering, ikke for å fylle en byrå-portefølje.
+En nettside er ikke et kunstverk som skal diskuteres i måneder; det er en salgsmaskin. Hvis den ikke selger, er den kostbar uansett om den kostet 5 000 eller 500 000 kroner. Jeg bygger for konvertering, ikke for å fylle en byrå-portefølje.
 
 ## Hvordan navigere markedet videre
 
@@ -75,7 +75,7 @@ Hvis du vurderer ny nettside i år, bør du stille tre spørsmål til ethvert by
 
 Hvis de svarer med floskler om «synergier» og «holistisk tilnærming», vet du at du betaler for luft. Hvis de kan vise til konkrete tall og faktiske demoer, er du på rett vei.
 
-For å se hva som er mulig med en moderne, effektiv tilnærming til webutvikling, kan du ta en titt på våre tidligere demoer eller kontakte oss for en gjennomgang av din nåværende nettsides ytelse.`,
+For å se hva som er mulig med en moderne, effektiv tilnærming til webutvikling, kan du ta en titt på mine tidligere demoer eller ta kontakt for en gjennomgang av din nåværende nettsides ytelse.`,
   },
   {
     slug: "hvordan-bygge-en-nettside-for-konvertering",
@@ -98,15 +98,15 @@ En god nettside for konvertering følger en logisk sti. Den leder brukeren fra e
 
 ## Mobilhastighet er ikke et teknisk valg, det er økonomi
 
-Vi ser ofte sider med tunge bildegallerier som bruker fire sekunder på å rendre. Hvert sekund ekstra lastetid reduserer konverteringsraten med omtrent 7-10%.
+Jeg ser ofte sider med tunge bildegallerier som bruker fire sekunder på å rendre. Hvert sekund ekstra lastetid reduserer konverteringsraten med omtrent 7-10%.
 
-Det hjelper ikke med verdens beste copy hvis siden er for treg til å vise den. Vi bruker verktøy som Firecrawl for å strippe ned unødvendig kode og sikre at innholdet når øynene til kunden umiddelbart. Hastighet er den lavest hengende frukten for å øke salget ditt.
+Det hjelper ikke med verdens beste copy hvis siden er for treg til å vise den. Jeg bruker verktøy som Firecrawl for å strippe ned unødvendig kode og sikre at innholdet når øynene til kunden umiddelbart. Hastighet er den lavest hengende frukten for å øke salget ditt.
 
 ## Bruk data, ikke magefølelse
 
-Tradisjonelle byråer selger deg det de synes er 'pent'. Vi selger det som beviselig flytter brukere nedover trakten. Hver eneste seksjon på en nettside bør ha et formål: enten å bygge tillit, fjerne innvendinger, eller lede til neste steg.
+Tradisjonelle byråer selger deg det de synes er 'pent'. Jeg selger det som beviselig flytter brukere nedover trakten. Hver eneste seksjon på en nettside bør ha et formål: enten å bygge tillit, fjerne innvendinger, eller lede til neste steg.
 
-Ved å teste CTA-tekster ser vi ofte forskjeller på 20-30% i klikkrate bare ved å endre fra 'Kontakt oss' til 'Få gratis demo'. Små endringer i arkitekturen gir store utslag i bunnlinjen.
+Ved å teste CTA-tekster ser jeg ofte forskjeller på 20-30 % i klikkrate bare ved å endre fra 'Kontakt oss' til 'Få gratis demo'. Små endringer i arkitekturen gir store utslag i bunnlinjen.
 
 ## Veien videre for din nettside
 

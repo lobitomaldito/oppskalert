@@ -1,89 +1,76 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
+import { SeksjonTopp } from './Layout';
+import { prosjekter, ruter } from '../lib/site';
 
-const projects = [
-  { img: "/websider/oppskalert.png", name: "Oppskalert", url: "https://oppskalert.no" },
-  { img: "/websider/alpha-negotiations.png", name: "Alpha Negotiations", url: "https://alphanegotiations.com" },
-  { img: "/websider/katrin-brubakk.png", name: "Katrin Brubakk", url: "https://katrinbrubakk.no" },
-  { img: "/websider/steinar-husby.png", name: "Steinar Husby", url: "https://steinarhusby.no" },
-  { img: "/websider/samtaleverkstedet.jpg", name: "Samtaleverkstedet", url: "https://samtaleverkstedet.no" },
-  { img: "/websider/tore-sunde-rasmussen.png", name: "Tore Sunde-Rasmussen", url: "https://toresunderasmussen.no" },
-  { img: "/websider/irmelin-drake-ny.png", name: "Irmelin Drake", url: "https://irmelindrake.no" },
-  { img: "/websider/progressive-diplomacy.png", name: "Progressive Diplomacy", url: "https://progressivediplomacy.com" },
-];
+/* Rutenett i stedet for den gamle marquee-en. Marquee-en så levende ut,
+   men den doblet hele listen i DOM-en, flyttet seg under pekeren når du
+   skulle klikke, og lot deg aldri se mer enn tre sider om gangen.
+   Et rutenett viser alt, står stille, og er lettere å lese på mobil. */
+const Kort = ({ p }) => (
+  <a
+    href={p.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    data-reveal
+    className="group block rounded-2xl overflow-hidden border border-primary/10 bg-primary/[0.03] transition-[border-color,transform] duration-300 ease-lett hover:border-accent/50 hover:-translate-y-1"
+  >
+    {/* Nettleserlinje: gjør kortet til et lite vindu mot en ekte side */}
+    <div className="flex items-center gap-2 px-4 py-2.5 border-b border-primary/10 bg-primary/[0.04]">
+      <span className="flex gap-1.5" aria-hidden="true">
+        <span className="w-2 h-2 rounded-full bg-primary/25" />
+        <span className="w-2 h-2 rounded-full bg-primary/25" />
+        <span className="w-2 h-2 rounded-full bg-primary/25" />
+      </span>
+      <span className="ml-1 flex-1 truncate font-body text-[11px] text-primary/70">{p.domene}</span>
+      <ArrowUpRight className="w-3.5 h-3.5 text-primary/70 group-hover:text-accent transition-colors" />
+    </div>
 
-const Portfolio = () => {
+    <div className="aspect-[16/10] overflow-hidden bg-surface/20">
+      <img
+        src={p.img}
+        alt={`Skjermbilde av nettsiden til ${p.navn}`}
+        loading="lazy"
+        className="w-full h-full object-cover object-top transition-transform duration-700 ease-lett group-hover:scale-[1.04]"
+      />
+    </div>
+
+    <div className="flex items-baseline justify-between gap-4 px-4 py-3.5">
+      <span className="font-sans font-bold text-[0.95rem]">{p.navn}</span>
+      <span className="font-body text-[0.72rem] text-primary/70 flex-shrink-0">{p.bransje}</span>
+    </div>
+  </a>
+);
+
+/* limit=null viser alt (porteføljesiden); et tall klipper listen (forsiden). */
+const Portfolio = ({ limit = null, visAlleLenke = false, tittel = 'Noe av det jeg', uthevet = 'har bygget.' }) => {
   const container = useReveal(80);
-  const viewport = useRef(null);
-  const track = useRef(null);
-
-  useEffect(() => {
-    // Infinite horizontal scroll. Same technique as Testimonials: the list is
-    // doubled and we translate the track by exactly -50% of its own width, so
-    // the second copy lands precisely where the first began — a seamless loop.
-    // Per-card margins (not flex gap) keep that halfway point exact.
-    const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      const tween = gsap.to(track.current, { x: '-50%', duration: 55, ease: 'none', repeat: -1 });
-      const vp = viewport.current;
-      const pause = () => tween.pause();   // hold still so cards are easy to click
-      const play = () => tween.play();
-      vp.addEventListener('pointerenter', pause);
-      vp.addEventListener('pointerleave', play);
-      return () => { tween.kill(); vp.removeEventListener('pointerenter', pause); vp.removeEventListener('pointerleave', play); };
-    });
-    // Reduced motion: don't animate — let the row be scrolled by hand instead.
-    mm.add('(prefers-reduced-motion: reduce)', () => {
-      viewport.current.classList.add('overflow-x-auto');
-    });
-    return () => mm.revert();
-  }, []);
-
-  const doubled = [...projects, ...projects];
+  const liste = limit ? prosjekter.slice(0, limit) : prosjekter;
 
   return (
-    <section ref={container} className="relative py-24 md:py-32 bg-background overflow-hidden">
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 lg:px-24 mb-12" data-reveal>
-        <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance">Noe av det vi har laget.</h2>
-        <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-md leading-relaxed">Ekte sider, for ekte norske bedrifter — trykk for å besøke dem.</p>
-      </div>
+    <section ref={container} className="seksjon">
+      <div className="wrap">
+        <SeksjonTopp
+          tittel={tittel}
+          uthevet={uthevet}
+          lede="Ekte sider i drift for ekte norske bedrifter. Trykk deg inn på hvilken som helst av dem. Alle er i drift."
+        />
 
-      <div ref={viewport} className="relative overflow-hidden">
-        {/* Edge fades så kortene tones ut i kantene */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-28 z-10 bg-gradient-to-r from-background to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-28 z-10 bg-gradient-to-l from-background to-transparent" />
-
-        <div ref={track} className="flex w-max will-change-transform">
-          {doubled.map((p, i) => {
-            const isClone = i >= projects.length;
-            return (
-              <a
-                key={i}
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-hidden={isClone ? true : undefined}
-                tabIndex={isClone ? -1 : undefined}
-                className="group relative flex-shrink-0 w-[260px] sm:w-[320px] mx-2 rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03]"
-              >
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.05]"
-                  />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-background via-background/70 to-transparent pt-10 pb-3 px-4">
-                  <span className="font-sans font-bold text-white text-sm">{p.name}</span>
-                  <ArrowRight className="w-4 h-4 text-accent opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                </div>
-              </a>
-            );
-          })}
+        <div className="grid gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))]">
+          {liste.map((p) => <Kort key={p.domene} p={p} />)}
         </div>
+
+        {visAlleLenke && (
+          <div data-reveal className="mt-10">
+            <Link
+              to={ruter.arbeid}
+              className="inline-flex items-center gap-2 font-sans font-bold text-sm border border-primary/20 hover:border-accent px-6 py-3 rounded-full transition-colors duration-300"
+            >
+              Se hele porteføljen <ArrowRight className="w-4 h-4 text-accent" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

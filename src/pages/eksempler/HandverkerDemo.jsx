@@ -3,7 +3,7 @@ import SEO from '../../components/SEO';
 import { useReveal } from '../../lib/useReveal';
 
 /*
- * Konseptside / DEMO — fiktiv tømrer & totalentreprenør "NORDBYGG".
+ * Konseptside / DEMO. Fiktiv tømrer & totalentreprenør "NORDBYGG".
  * Egen merkevare og fargepalett (industriell, solid, betong + safety-amber) for å
  * vise spennvidde. Ikke en ekte kunde: noindex + tydelig demo-banner. Bygget av Oppskalert.
  */
@@ -21,10 +21,10 @@ const photos = {
 };
 
 const services = [
-  { icon: Hammer, name: 'Totalrenovering', desc: 'Vi tar hele jobben — fra riving til ferdig overflate. Én entreprenør, ett ansvar, fast pris.', price: 'Be om pris' },
+  { icon: Hammer, name: 'Totalrenovering', desc: 'Vi tar hele jobben, fra riving til ferdig overflate. Én entreprenør, ett ansvar, fast pris.', price: 'Be om pris' },
   { icon: Ruler, name: 'Bad & våtrom', desc: 'Membran, fall til sluk og fliser etter våtromsnormen. Dokumentert og garantert tett.', price: 'fra kr 195 000,–' },
   { icon: HardHat, name: 'Tak & fasade', desc: 'Omtekking, etterisolering og ny kledning som tåler norsk vær i tiår framover.', price: 'Be om pris' },
-  { icon: Wrench, name: 'Tilbygg & garasje', desc: 'Mer plass til familien. Vi prosjekterer, søker og bygger — nøkkelferdig.', price: 'fra kr 850 000,–' },
+  { icon: Wrench, name: 'Tilbygg & garasje', desc: 'Mer plass til familien. Vi prosjekterer, søker og bygger. Nøkkelferdig.', price: 'fra kr 850 000,–' },
 ];
 
 const stats = [
@@ -48,10 +48,10 @@ const projects = [
 const reviews = [
   { quote: 'Nordbygg ga oss fastpris og holdt den. Badet ble ferdig på dagen, ryddig fra start til slutt.', name: 'Marius og Hanne, Nordstrand' },
   { quote: 'Endelig et firma som svarer på telefonen og rydder etter seg. Tilbygget vårt ble akkurat som tegnet.', name: 'Kristin H., Bærum' },
-  { quote: 'Profesjonelle fra befaring til overlevering. Fagfolk som tar stolthet i jobben — anbefales sterkt.', name: 'Ole-Petter S., Lørenskog' },
+  { quote: 'Profesjonelle fra befaring til overlevering. Fagfolk som tar stolthet i jobben. Anbefales sterkt.', name: 'Ole-Petter S., Lørenskog' },
 ];
 
-// Tydelig at dette er en demo Oppskalert har laget — leder tilbake til pitchen.
+// Tydelig at dette er en demo Oppskalert har laget. Leder tilbake til pitchen.
 const DemoBanner = () => (
   <div className="sticky top-0 z-[60] w-full bg-[#16181a] text-[#ece8e1] border-b border-[#ece8e1]/10">
     <div className="max-w-6xl mx-auto flex items-center justify-between gap-4 px-5 py-2.5">
@@ -109,7 +109,7 @@ const Hero = () => (
           Vi bygger<br />det som <span className="text-[#e07a24]">varer.</span>
         </h1>
         <p className="hero-elem mt-7 max-w-md text-[#3a3f44] text-base sm:text-lg leading-relaxed">
-          Totalrenovering, bad, tak og tilbygg — utført av fagfolk med fagbrev. Én entreprenør tar hele ansvaret, fra befaring til ferdig nøkkel.
+          Totalrenovering, bad, tak og tilbygg, utført av fagfolk med fagbrev. Én entreprenør tar hele ansvaret, fra befaring til ferdig nøkkel.
         </p>
         <div className="hero-elem mt-9 flex flex-wrap items-center gap-4">
           <a href="#kontakt" className="group inline-flex items-center gap-2 rounded-sm bg-[#16181a] px-7 py-3.5 text-[#ece8e1] font-bold uppercase tracking-wider transition-transform hover:scale-[1.03]">
@@ -229,7 +229,7 @@ const Projects = () => {
 const About = () => {
   const ref = useReveal(110);
   const points = [
-    { icon: HardHat, title: '15 års erfaring', desc: 'Hundrevis av prosjekter i Oslo og Viken — vi vet hva som holder over tid.' },
+    { icon: HardHat, title: '15 års erfaring', desc: 'Hundrevis av prosjekter i Oslo og Viken. Vi vet hva som holder over tid.' },
     { icon: ShieldCheck, title: 'Fagbrev & ansvarsrett', desc: 'Sentral godkjenning og ansvarsforsikring. Alt papirarbeid tar vi.' },
     { icon: Hammer, title: 'Ryddig arbeid', desc: 'Avtalte tider, rene byggeplasser og full opprydding etter endt jobb.' },
   ];
@@ -243,7 +243,7 @@ const About = () => {
           <span className="font-mono text-xs uppercase tracking-[0.25em] text-[#e07a24]" data-reveal>Om oss</span>
           <h2 data-reveal className="font-black uppercase text-4xl sm:text-5xl tracking-tight mt-3 leading-[0.95]">Solid håndverk,<br />uten overraskelser.</h2>
           <p data-reveal className="text-[#ece8e1]/70 mt-5 leading-relaxed max-w-md">
-            Nordbygg er et lokalt tømrer- og entreprenørfirma. Vi tror på fast pris, tydelig kommunikasjon og fagfolk som tar stolthet i arbeidet. Du skal vite hva du får — før vi løfter første spiker.
+            Nordbygg er et lokalt tømrer- og entreprenørfirma. Vi tror på fast pris, tydelig kommunikasjon og fagfolk som tar stolthet i arbeidet. Du skal vite hva du får, før vi løfter første spiker.
           </p>
           <div className="mt-10 space-y-6">
             {points.map((p) => (
@@ -364,7 +364,7 @@ const HandverkerDemo = () => (
   <div className="bg-[#ece8e1] min-h-screen font-sans selection:bg-[#e07a24] selection:text-[#16181a]">
     <SEO
       title="Nordbygg (demo)"
-      description="Konseptside laget av Oppskalert — slik kan en moderne håndverkerside se ut. Ikke en ekte bedrift."
+      description="Konseptside laget av Oppskalert. Slik kan en moderne håndverkerside se ut. Ikke en ekte bedrift."
       canonical="https://oppskalert.no/eksempler/handverker"
       noindex
     />

@@ -3,7 +3,7 @@ import SEO from '../../components/SEO';
 import { useReveal } from '../../lib/useReveal';
 
 /*
- * Konseptside / DEMO — fiktiv nabolagsrestaurant "Nær".
+ * Konseptside / DEMO. Fiktiv nabolagsrestaurant "Nær".
  * Egen merkevare og fargepalett (mørk, varm, redaksjonell) for å vise spennvidde.
  * Ikke en ekte kunde: noindex + tydelig demo-banner. Bygget av Oppskalert.
  */
@@ -52,13 +52,13 @@ const team = [
 
 const reviews = [
   { quote: 'Et av de varmeste måltidene jeg har hatt i Oslo. Vi ble sittende til langt på natt.', name: 'Marte L.' },
-  { quote: 'Kortreist gjort på sitt aller beste — hver rett smaker av sesongen. Kommer tilbake.', name: 'Anders V.' },
+  { quote: 'Kortreist gjort på sitt aller beste. Hver rett smaker av sesongen. Kommer tilbake.', name: 'Anders V.' },
   { quote: 'Vinen Jonas valgte til menyen satt perfekt. Et nabolagssted med sjel.', name: 'Hanne K.' },
 ];
 
 const gallery = [photos.plated, photos.table, photos.woodInterior, photos.closePlate];
 
-// Tydelig at dette er en demo Oppskalert har laget — leder tilbake til pitchen.
+// Tydelig at dette er en demo Oppskalert har laget. Leder tilbake til pitchen.
 const DemoBanner = () => (
   <div className="sticky top-0 z-[60] w-full bg-[#100d0c] text-[#f4ece0]">
     <div className="max-w-6xl mx-auto flex items-center justify-between gap-4 px-5 py-2.5">
@@ -116,7 +116,7 @@ const Hero = () => (
           Et måltid verdt<br />å bli <span className="italic text-[#c69a52]">sittende</span> for.
         </h1>
         <p className="hero-elem mt-7 max-w-md text-[#f4ece0]/70 text-base sm:text-lg leading-relaxed">
-          Kortreist, sesongbasert mat og naturvin — servert i et varmt, lite rom midt i nabolaget. Åpent kjøkken, korte avstander fra jord til bord.
+          Kortreist, sesongbasert mat og naturvin, servert i et varmt, lite rom midt i nabolaget. Åpent kjøkken, korte avstander fra jord til bord.
         </p>
         <div className="hero-elem mt-9 flex flex-wrap items-center gap-4">
           <a href="#kontakt" className="group inline-flex items-center gap-2 rounded-full bg-[#c69a52] px-7 py-3.5 text-[#1a1614] font-medium transition-transform hover:scale-[1.03]">
@@ -168,7 +168,7 @@ const Menu = () => {
         <div className="max-w-xl mb-14" data-reveal>
           <span className="text-xs uppercase tracking-[0.25em] text-[#c69a52]">Sesongens meny</span>
           <h2 className="font-serif text-[#f4ece0] text-4xl sm:text-6xl tracking-tight mt-3">Smaker du husker.</h2>
-          <p className="text-[#f4ece0]/65 mt-4 leading-relaxed">Menyen følger sesongen og råvarene vi får tak i. Den endrer seg ofte — her er noen av rettene som går igjen.</p>
+          <p className="text-[#f4ece0]/65 mt-4 leading-relaxed">Menyen følger sesongen og råvarene vi får tak i. Den endrer seg ofte, men her er noen av rettene som går igjen.</p>
         </div>
         <div className="grid lg:grid-cols-3 gap-12 lg:gap-10">
           {menu.map((g) => (
@@ -189,7 +189,7 @@ const Menu = () => {
           ))}
         </div>
         <p className="text-[#f4ece0]/45 text-sm mt-12" data-reveal>
-          Vi tilbyr også en 5-retters sesongmeny til 695,– — gjerne med utvalgt naturvin.
+          Vi tilbyr også en 5-retters sesongmeny til 695,–, gjerne med utvalgt naturvin.
         </p>
       </div>
     </section>
@@ -231,7 +231,7 @@ const About = () => {
           <span className="text-xs uppercase tracking-[0.25em] text-[#c69a52]" data-reveal>Om oss</span>
           <h2 data-reveal className="font-serif text-[#f4ece0] text-4xl sm:text-5xl tracking-tight mt-3">Nært på alle måter.</h2>
           <p data-reveal className="text-[#f4ece0]/70 mt-5 leading-relaxed">
-            Nær begynte med en enkel tanke: god mat trenger ikke reise langt. Kjøkkensjef Sigrid handler hos bønder, fiskere og produsenter i nærområdet, og lar råvarene bestemme menyen. Resultatet er et lite, varmt sted der gjestene blir sittende — og naboer blir kjente.
+            Nær begynte med en enkel tanke: god mat trenger ikke reise langt. Kjøkkensjef Sigrid handler hos bønder, fiskere og produsenter i nærområdet, og lar råvarene bestemme menyen. Resultatet er et lite, varmt sted der gjestene blir sittende, og naboer blir kjente.
           </p>
           <p data-reveal className="flex items-center gap-2 text-[#c69a52] text-sm mt-6">
             <Wine className="w-4 h-4" /> Et nøye utvalg naturvin til hver rett.
@@ -278,7 +278,7 @@ const Contact = () => {
         <div>
           <span className="text-xs uppercase tracking-[0.25em] text-[#c69a52]" data-reveal>Book bord</span>
           <h2 data-reveal className="font-serif text-[#f4ece0] text-4xl sm:text-6xl tracking-tight mt-3">Vi har satt<br />av en plass.</h2>
-          <p data-reveal className="text-[#f4ece0]/70 mt-5 max-w-md leading-relaxed">Ring oss, eller stikk innom. Vi tar imot bordbestillinger for både små og store selskap — og holder gjerne av et bord i baren.</p>
+          <p data-reveal className="text-[#f4ece0]/70 mt-5 max-w-md leading-relaxed">Ring oss, eller stikk innom. Vi tar imot bordbestillinger for både små og store selskap, og holder gjerne av et bord i baren.</p>
           <div data-reveal className="mt-9 space-y-4 text-[#f4ece0]">
             <p className="flex items-center gap-3"><MapPin className="w-5 h-5 text-[#c69a52]" /> Markveien 35, 0554 Oslo</p>
             <p className="flex items-center gap-3"><Phone className="w-5 h-5 text-[#c69a52]" /> 21 00 00 00</p>
@@ -333,7 +333,7 @@ const RestaurantDemo = () => (
   <div className="bg-[#1a1614] min-h-screen font-sans selection:bg-[#c69a52] selection:text-[#1a1614]">
     <SEO
       title="Nær Restaurant (demo)"
-      description="Konseptside laget av Oppskalert — slik kan en moderne restaurantside se ut. Ikke en ekte bedrift."
+      description="Konseptside laget av Oppskalert. Slik kan en moderne restaurantside se ut. Ikke en ekte bedrift."
       canonical="https://oppskalert.no/eksempler/restaurant"
       noindex
     />

@@ -3,7 +3,7 @@ import SEO from '../../components/SEO';
 import { useReveal } from '../../lib/useReveal';
 
 /*
- * Konseptside / DEMO — fiktiv frisørsalong "Glød".
+ * Konseptside / DEMO. Fiktiv frisørsalong "Glød".
  * Egen merkevare og fargepalett (varm, redaksjonell) for å vise spennvidde.
  * Ikke en ekte kunde: noindex + tydelig demo-banner. Bygget av Oppskalert.
  */
@@ -37,12 +37,12 @@ const stylists = [
 const reviews = [
   { quote: 'Beste klippen jeg har hatt i Oslo. Maja forsto nøyaktig hva jeg ville ha.', name: 'Ingrid S.' },
   { quote: 'Rolig, vakker salong og et utrolig dyktig team. Går aldri noe annet sted.', name: 'Thomas B.' },
-  { quote: 'Fikk balayage hos Henrik — fargen er helt magisk. Anbefales på det varmeste!', name: 'Camilla R.' },
+  { quote: 'Fikk balayage hos Henrik, og fargen er helt magisk. Anbefales på det varmeste!', name: 'Camilla R.' },
 ];
 
 const gallery = [photos.styling, photos.cutting, photos.interior, photos.detail];
 
-// Tydelig at dette er en demo Oppskalert har laget — leder tilbake til pitchen.
+// Tydelig at dette er en demo Oppskalert har laget. Leder tilbake til pitchen.
 const DemoBanner = () => (
   <div className="sticky top-0 z-[60] w-full bg-[#221d1a] text-[#f6efe7]">
     <div className="max-w-6xl mx-auto flex items-center justify-between gap-4 px-5 py-2.5">
@@ -100,7 +100,7 @@ const Hero = () => (
           Hår som får deg<br />til å <span className="italic text-[#b9694a]">gløde</span>.
         </h1>
         <p className="hero-elem mt-7 max-w-md text-[#221d1a]/70 text-base sm:text-lg leading-relaxed">
-          En rolig salong i hjertet av Oslo, der erfarne stylister tar seg tid til deg — og resultatet varer lenger enn timen.
+          En rolig salong i hjertet av Oslo, der erfarne stylister tar seg tid til deg, og resultatet varer lenger enn timen.
         </p>
         <div className="hero-elem mt-9 flex flex-wrap items-center gap-4">
           <a href="#kontakt" className="group inline-flex items-center gap-2 rounded-full bg-[#221d1a] px-7 py-3.5 text-[#f6efe7] font-medium transition-transform hover:scale-[1.03]">
@@ -254,7 +254,7 @@ const Contact = () => {
         <div>
           <span className="text-xs uppercase tracking-[0.25em] text-[#b9694a]" data-reveal>Bestill time</span>
           <h2 data-reveal className="font-serif text-[#221d1a] text-4xl sm:text-6xl tracking-tight mt-3">Vi gleder oss<br />til å se deg.</h2>
-          <p data-reveal className="text-[#221d1a]/70 mt-5 max-w-md leading-relaxed">Ring oss, eller stikk innom. Online booking åpner snart — meld deg på så gir vi beskjed først.</p>
+          <p data-reveal className="text-[#221d1a]/70 mt-5 max-w-md leading-relaxed">Ring oss, eller stikk innom. Online booking åpner snart. Meld deg på, så gir vi beskjed først.</p>
           <div data-reveal className="mt-9 space-y-4 text-[#221d1a]">
             <p className="flex items-center gap-3"><MapPin className="w-5 h-5 text-[#b9694a]" /> Thorvald Meyers gate 24, 0555 Oslo</p>
             <p className="flex items-center gap-3"><Phone className="w-5 h-5 text-[#b9694a]" /> 22 00 00 00</p>
@@ -309,7 +309,7 @@ const FrisorDemo = () => (
   <div className="bg-[#f6efe7] min-h-screen font-sans selection:bg-[#221d1a] selection:text-[#f6efe7]">
     <SEO
       title="Glød Frisørsalong (demo)"
-      description="Konseptside laget av Oppskalert — slik kan en moderne frisørside se ut. Ikke en ekte bedrift."
+      description="Konseptside laget av Oppskalert. Slik kan en moderne frisørside se ut. Ikke en ekte bedrift."
       canonical="https://oppskalert.no/eksempler/frisor"
       noindex
     />

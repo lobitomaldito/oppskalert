@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
+import { SeksjonTopp } from './Layout';
+import { ruter } from '../lib/site';
 
-// Konsept-eksempler: fiktive bransjesider vi har bygget for å vise spennvidde
+// Konsept-eksempler: fiktive bransjesider jeg har bygget for å vise spennvidde
 // i kald e-post. Hvert kort lenker til en hel, levende demo-side. Tydelig merket
-// som konsept — holdt adskilt fra den ekte porteføljen ("Noe av det vi har laget").
+// som konsept, holdt adskilt fra den ekte porteføljen ("Noe av det jeg har bygget").
 const img = (id, w = 900) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
@@ -19,13 +21,14 @@ const BransjeEksempler = () => {
   const container = useReveal(90);
 
   return (
-    <section id="eksempler" ref={container} className="relative py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-background overflow-hidden">
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <div className="mb-12 md:mb-16" data-reveal>
-          <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tighter text-balance">Sider for din bransje.</h2>
-          <p className="font-mono text-sm md:text-base text-white/70 mt-5 max-w-xl leading-relaxed">
-            Vi bygger hver side fra bunnen — for nettopp din bransje. Dette er konsept-eksempler vi har laget. Trykk for å se en hel side i aksjon.
-          </p>
+    <section id="eksempler" ref={container} className="seksjon overflow-hidden">
+      <div className="wrap">
+        <div data-reveal>
+          <SeksjonTopp
+            tittel="Sider for"
+            uthevet="din bransje."
+            lede="Jeg bygger hver side fra bunnen, for nettopp din bransje. Dette er konsept-eksempler jeg har laget. Trykk for å se en hel side i aksjon."
+          />
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
@@ -36,14 +39,14 @@ const BransjeEksempler = () => {
               data-reveal
               className="group block rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-white/25 transition-colors duration-300"
             >
-              {/* Browser-chrome bar — gjør kortet til en mini-nettleser */}
+              {/* Browser-chrome bar: gjør kortet til en mini-nettleser */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.04]">
                 <span className="flex gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
                   <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
                   <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
                 </span>
-                <div className="ml-2 flex-1 rounded-full bg-white/[0.06] px-3 py-1 text-[11px] font-mono text-white/55 truncate">
+                <div className="ml-2 flex-1 rounded-full bg-white/[0.06] px-3 py-1 text-[11px] font-body text-white/55 truncate">
                   {n.domain}
                 </div>
               </div>
@@ -59,7 +62,7 @@ const BransjeEksempler = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
 
                 <span
-                  className="absolute top-4 left-4 text-[11px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold"
+                  className="absolute top-4 left-4 text-[11px] font-body uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold"
                   style={{ backgroundColor: n.accent, color: '#201335' }}
                 >
                   {n.tag}
@@ -68,7 +71,7 @@ const BransjeEksempler = () => {
                 <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3">
                   <div>
                     <p className="font-sans font-bold text-white text-xl leading-tight">{n.brand}</p>
-                    <p className="font-mono text-xs text-white/65 mt-1">{n.headline}</p>
+                    <p className="font-body text-xs text-white/65 mt-1">{n.headline}</p>
                   </div>
                   <span className="flex-shrink-0 inline-flex items-center gap-1 text-sm font-medium text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                     Se siden <ArrowRight className="w-4 h-4" style={{ color: n.accent }} />
@@ -79,17 +82,17 @@ const BransjeEksempler = () => {
           ))}
         </div>
 
-        {/* Avslutning — knytter til "vi lager alle slags sider" */}
-        <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-white/10 pt-10">
-          <p className="font-mono text-sm md:text-base text-white/70 max-w-md leading-relaxed">
-            Finner du ikke din bransje? Vi lager nettsider for alle — og bygger en gratis demo av nettopp din.
+        {/* Avslutning: knytter til "jeg lager alle slags sider" */}
+        <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-primary/12 pt-10">
+          <p className="font-body text-[0.95rem] md:text-base text-primary/80 max-w-md leading-relaxed">
+            Finner du ikke din bransje? Jeg lager nettsider for alle, og bygger gjerne en gratis demo av nettopp din.
           </p>
-          <a
-            href="#bestill-demo"
+          <Link
+            to={ruter.kontakt}
             className="flex-shrink-0 inline-flex items-center gap-2 bg-accent text-background px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
           >
             Bestill gratis demo <ArrowRight className="w-4 h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

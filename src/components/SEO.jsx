@@ -33,13 +33,13 @@ const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogIm
 
     // Primary Meta Tags
     setMetaByName('title', finalTitle);
-    setMetaByName('description', description || 'Vi bygger lynraske, konverteringsoptimaliserte nettsider og systemer som skalerer norske bedrifter. Ingen binding, ingen risiko. Møt oss i dag.');
+    setMetaByName('description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo før du betaler en krone. Ingen binding.');
     
     if (keywords) {
       setMetaByName('keywords', Array.isArray(keywords) ? keywords.join(', ') : keywords);
     }
 
-    // Robots — demo/concept pages are noindex so fictional businesses never
+    // Robots: demo/concept pages are noindex so fictional businesses never
     // rank or confuse anyone. Default real pages stay indexable.
     setMetaByName('robots', noindex ? 'noindex, nofollow' : 'index, follow');
 
@@ -56,14 +56,14 @@ const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogIm
     // Open Graph / Facebook
     const finalOgImage = ogImage || 'https://oppskalert.no/oppskalert%20fav.png';
     setMetaByProperty('og:title', finalTitle);
-    setMetaByProperty('og:description', description || 'Vi bygger lynraske, konverteringsoptimaliserte nettsider og systemer som skalerer norske bedrifter.');
+    setMetaByProperty('og:description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo først.');
     setMetaByProperty('og:type', ogType);
     setMetaByProperty('og:url', finalCanonical);
     setMetaByProperty('og:image', finalOgImage);
 
     // Twitter
     setMetaByName('twitter:title', finalTitle);
-    setMetaByName('twitter:description', description || 'Vi bygger lynraske, konverteringsoptimaliserte nettsider og systemer som skalerer norske bedrifter.');
+    setMetaByName('twitter:description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo først.');
     setMetaByName('twitter:image', finalOgImage);
     setMetaByName('twitter:url', finalCanonical);
 

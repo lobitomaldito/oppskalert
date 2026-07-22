@@ -3,7 +3,7 @@ import SEO from '../../components/SEO';
 import { useReveal } from '../../lib/useReveal';
 
 /*
- * Konseptside / DEMO — fiktiv tannklinikk "Klar Tannklinikk".
+ * Konseptside / DEMO. Fiktiv tannklinikk "Klar Tannklinikk".
  * Egen merkevare og fargepalett (ren, rolig, klinisk-men-varm) for å vise spennvidde.
  * Ikke en ekte kunde: noindex + tydelig demo-banner. Bygget av Oppskalert.
  */
@@ -21,7 +21,7 @@ const photos = {
 
 const treatments = [
   { name: 'Undersøkelse & tannrens', desc: 'Grundig sjekk, profesjonell rens og en klar plan for tannhelsen din.', price: 'fra 690,–' },
-  { name: 'Tannbleking', desc: 'Skånsom bleking som gir et lysere og friskere smil — trygt og effektivt.', price: 'fra 2 490,–' },
+  { name: 'Tannbleking', desc: 'Skånsom bleking som gir et lysere og friskere smil, trygt og effektivt.', price: 'fra 2 490,–' },
   { name: 'Implantater', desc: 'Permanent erstatning for tapte tenner, planlagt med moderne 3D-bilder.', price: 'fra 14 900,–' },
   { name: 'Tannregulering', desc: 'Diskré regulering med usynlige skinner for rette tenner i alle aldre.', price: 'fra 24 900,–' },
 ];
@@ -44,7 +44,7 @@ const promises = [
   { icon: Smile, title: 'Tydelige priser', desc: 'Du får alltid et klart prisoverslag før vi setter i gang.' },
 ];
 
-// Tydelig at dette er en demo Oppskalert har laget — leder tilbake til pitchen.
+// Tydelig at dette er en demo Oppskalert har laget. Leder tilbake til pitchen.
 const DemoBanner = () => (
   <div className="sticky top-0 z-[60] w-full bg-[#123b46] text-[#f4f7f8]">
     <div className="max-w-6xl mx-auto flex items-center justify-between gap-4 px-5 py-2.5">
@@ -104,7 +104,7 @@ const Hero = () => (
           Tannhelse i<br /><span className="text-[#2f9c8f]">trygge hender</span>.
         </h1>
         <p className="hero-elem mt-7 max-w-md text-[#123b46]/70 text-base sm:text-lg leading-relaxed">
-          En moderne og smertefri klinikk sentralt i Oslo, der erfarne tannleger tar seg tid til deg — i rolige, lyse omgivelser.
+          En moderne og smertefri klinikk sentralt i Oslo, der erfarne tannleger tar seg tid til deg, i rolige, lyse omgivelser.
         </p>
         <div className="hero-elem mt-9 flex flex-wrap items-center gap-4">
           <a href="#kontakt" className="group inline-flex items-center gap-2 rounded-full bg-[#123b46] px-7 py-3.5 text-[#f4f7f8] font-medium transition-transform hover:scale-[1.03]">
@@ -210,7 +210,7 @@ const About = () => {
           <span className="text-xs uppercase tracking-[0.25em] text-[#2f9c8f]" data-reveal>Om klinikken</span>
           <h2 data-reveal className="font-sans font-medium text-4xl sm:text-5xl tracking-tight mt-3">En rolig klinikk å komme til.</h2>
           <p data-reveal className="text-[#f4f7f8]/75 mt-5 leading-relaxed">
-            Klar Tannklinikk ble til med én tanke: at et tannlegebesøk skal føles trygt. Vi har bygget en lys, rolig klinikk med moderne utstyr, der du blir sett, hørt og tatt godt vare på — også om du synes tannlegen er litt skummel.
+            Klar Tannklinikk ble til med én tanke: at et tannlegebesøk skal føles trygt. Vi har bygget en lys, rolig klinikk med moderne utstyr, der du blir sett, hørt og tatt godt vare på, også om du synes tannlegen er litt skummel.
           </p>
           <div data-reveal className="mt-8 grid sm:grid-cols-3 gap-6">
             {[
@@ -291,7 +291,7 @@ const Contact = () => {
             <p className="flex items-center gap-3"><Clock className="w-5 h-5 text-[#2f9c8f]" /> Man–fre 08–18 · Lør 10–14</p>
           </div>
           <div data-reveal className="mt-6 rounded-2xl bg-[#bcd6da]/30 px-5 py-4 text-sm text-[#123b46]/80 ring-1 ring-[#123b46]/5">
-            <span className="font-medium text-[#123b46]">Akutt tannverk?</span> Ring oss før kl. 12 — vi holder av tid for akuttpasienter hver dag.
+            <span className="font-medium text-[#123b46]">Akutt tannverk?</span> Ring oss før kl. 12, så holder vi av tid for akuttpasienter samme dag.
           </div>
           <a href="tel:2100000" data-reveal className="group mt-8 inline-flex items-center gap-2 rounded-full bg-[#123b46] px-7 py-3.5 text-[#f4f7f8] font-medium transition-transform hover:scale-[1.03]">
             Ring og bestill time <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
@@ -342,7 +342,7 @@ const TannlegeDemo = () => (
   <div className="bg-[#f4f7f8] min-h-screen font-sans selection:bg-[#123b46] selection:text-[#f4f7f8]">
     <SEO
       title="Klar Tannklinikk (demo)"
-      description="Konseptside laget av Oppskalert — slik kan en moderne tannlegeside se ut. Ikke en ekte bedrift."
+      description="Konseptside laget av Oppskalert. Slik kan en moderne tannlegeside se ut. Ikke en ekte bedrift."
       canonical="https://oppskalert.no/eksempler/tannlege"
       noindex
     />

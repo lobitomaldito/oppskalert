@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 // Dedicated client for the public "Bestill demo" form. It is pinned to the
 // "oppskalert" CRM project so the form works regardless of the main app's
 // VITE_SUPABASE_URL. The anon key is public by design, and the
-// demo_foresporsler table only allows INSERT for the anon role (RLS) — there
+// demo_foresporsler table only allows INSERT for the anon role (RLS). There
 // is no SELECT policy, so leads can be submitted but never read back.
 const DEMO_SUPABASE_URL = 'https://zmefwkqhdamdcjnxxfjl.supabase.co';
 const DEMO_SUPABASE_ANON_KEY =
@@ -32,7 +32,7 @@ export async function submitDemoRequest({ navn, epost, firma }) {
 
   if (error) throw error;
 
-  // Best-effort e-mail notification — the lead is already stored, so a failed
+  // Best-effort e-mail notification. The lead is already stored, so a failed
   // e-mail must never break the submission.
   if (WEB3FORMS_KEY) {
     try {
@@ -45,12 +45,12 @@ export async function submitDemoRequest({ navn, epost, firma }) {
           from_name: 'oppskalert.no',
           name: navnClean,
           email: epostClean,
-          firma: firmaClean || '—',
-          message: `Ny demo-forespørsel fra nettsiden.\n\nNavn: ${navnClean}\nE-post: ${epostClean}\nFirma: ${firmaClean || '—'}`,
+          firma: firmaClean || '(ikke oppgitt)',
+          message: `Ny demo-forespørsel fra nettsiden.\n\nNavn: ${navnClean}\nE-post: ${epostClean}\nFirma: ${firmaClean || '(ikke oppgitt)'}`,
         }),
       });
     } catch {
-      /* ignore — lead is safe in Supabase */
+      /* ignore: lead is safe in Supabase */
     }
   }
 }
