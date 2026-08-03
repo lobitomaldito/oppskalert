@@ -29,6 +29,18 @@ const Modell = ({ m, visPasserDeg = false }) => (
     </div>
     <span className="font-body text-xs text-primary/70 mt-1.5">{m.periode} · eks. mva</span>
 
+    {/* Kun på engangspris-kortet: kalkulatoren regner ut et scope-basert
+        engangsestimat, ikke et månedsbeløp, så den hører hjemme her og
+        ikke på driftskortet ved siden av. */}
+    {m.id === 'engangs' && (
+      <Link
+        to={ruter.kalkulator}
+        className="font-body text-xs text-accent hover:text-highlight transition-colors underline underline-offset-2 mt-2 inline-block w-fit"
+      >
+        Regn ut prisen for din side →
+      </Link>
+    )}
+
     {visPasserDeg && (
       <ul className="mt-6 pt-5 border-t border-primary/10 flex flex-col gap-2.5">
         <li className="font-body text-xs uppercase tracking-widest text-primary/70 mb-0.5">Passer deg som</li>
