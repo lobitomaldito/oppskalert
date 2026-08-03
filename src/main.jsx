@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 import App from './App.jsx'
 import { ScrollToTop } from './components/Layout.jsx'
+import './lib/posthog.js'
 
 const ArbeidPage = lazy(() => import('./pages/ArbeidPage.jsx'))
 const PriserPage = lazy(() => import('./pages/PriserPage.jsx'))
