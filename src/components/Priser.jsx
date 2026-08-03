@@ -76,6 +76,12 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         </div>
 
         <p data-reveal className="font-body text-xs text-primary/70 mt-6 max-w-[52rem]">{prisNotat}</p>
+        <p data-reveal className="font-body text-sm text-primary/80 mt-3 max-w-[52rem]">
+          Vil du redigere selv, eller ha enda raskere respons?{' '}
+          <Link to={ruter.drift} className="text-accent hover:text-highlight transition-colors underline underline-offset-2">
+            Se alle driftsnivåer
+          </Link>
+        </p>
 
         {visAlltidMed && (
           <div data-reveal className="mt-12 rounded-3xl border border-primary/10 bg-primary/[0.03] p-7 md:p-9 max-w-[52rem]">

@@ -21,6 +21,11 @@ export const ruter = {
   om: '/om',
   kontakt: '/kontakt',
   blogg: '/blogg',
+  kalkulator: '/kalkulator',
+  drift: '/drift',
+  sammenlign: '/sammenlign',
+  sammenlignWix: '/sammenlign/wix',
+  sammenlignWordpress: '/sammenlign/wordpress',
 };
 
 export const navLenker = [
@@ -91,6 +96,133 @@ export const alltidMed = [
   'Google Analytics og Search Console',
   'Lynrask, uten tunge plugins',
 ];
+
+/* ---------------------------------------------------------------
+   DRIFT. Tre nivåer under "Driftet av meg"-paraplyen. Prisene her
+   er den eneste kilden — /drift, forsidens Priser-kort og FAQ leser
+   alle herfra, så en prisjustering skjer på ett sted.
+   --------------------------------------------------------------- */
+export const driftNivaer = [
+  {
+    id: 'grunn',
+    navn: 'Grunndrift',
+    fra: '149',
+    enhet: 'kr/mnd',
+    tagline: 'Du redigerer selv. Jeg passer på det tekniske i bakgrunnen.',
+    inkludert: [
+      'Hosting, domene og SSL',
+      'Månedlig backup',
+      'Sikkerhets- og programvareoppdateringer',
+      'E-post support innen 3 virkedager',
+    ],
+    fremhevet: false,
+  },
+  {
+    id: 'drift',
+    navn: 'Driftet av meg',
+    fra: '690',
+    enhet: 'kr/mnd',
+    tagline: 'Jeg passer på alt. Du slipper å tenke teknisk igjen.',
+    inkludert: [
+      'Alt i Grunndrift, pluss:',
+      'Rimelige innholdsendringer inkludert',
+      'Backup og oppetidsovervåking hyppigere',
+      'Support direkte fra meg, ikke en helpdesk',
+    ],
+    fremhevet: true,
+  },
+  {
+    id: 'prioritert',
+    navn: 'Prioritert',
+    fra: '1 290',
+    enhet: 'kr/mnd',
+    tagline: 'For deg som vil ha raskest svar og en side som stadig forbedres.',
+    inkludert: [
+      'Alt i Driftet av meg, pluss:',
+      'Raskere responstid på endringer',
+      'Flere endringer inkludert per måned',
+      'Kvartalsvis SEO-gjennomgang',
+    ],
+    fremhevet: false,
+  },
+];
+
+export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid — bytt nivå eller avslutt når du vil.';
+
+/* ---------------------------------------------------------------
+   KALKULATOR. Selvbetjent prisestimat. Grunnpris etter omfang,
+   pluss flate påslag per funksjon. Alt er fortsatt skreddersydd og
+   håndkodet — det finnes bevisst ingen "mal"-tier, siden det ville
+   motsagt alltidMed over. Tallene er godkjent 2026-08-03; endre kun
+   her, så følger kalkulatoren automatisk med.
+   --------------------------------------------------------------- */
+export const kalkulatorOmfang = [
+  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 7990, max: 9990 },
+  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900 },
+  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900 },
+  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900 },
+];
+
+export const kalkulatorTillegg = [
+  { id: 'booking', label: 'Booking-løsning', min: 3500, max: 4500 },
+  { id: 'nettbutikk', label: 'Nettbutikk / betaling', min: 5500, max: 7500 },
+  { id: 'sprak', label: 'Flere språk', min: 2500, max: 3500 },
+  { id: 'seo', label: 'Utvidet SEO-pakke', min: 3000, max: 4000 },
+  { id: 'integrasjon', label: 'Integrasjoner (CRM/regnskap)', min: 4000, max: 5500 },
+];
+
+// Haster-tillegget er en hastighetspremie, ikke en funksjon, derfor
+// prosent på totalen i stedet for et flatt kronebeløp.
+export const kalkulatorHaster = { minFaktor: 1.15, maxFaktor: 1.20 };
+
+/* ---------------------------------------------------------------
+   SAMMENLIGN. Ærlige side-mot-side med de vanligste DIY-alternativene
+   kunden uansett vurderer. Ingen Shopify-side — nettbutikk selges
+   ikke som eget spor i dag, så den sammenligningen ville vært mot
+   noe jeg ikke tilbyr.
+   --------------------------------------------------------------- */
+export const sammenlignOversikt = [
+  {
+    slug: 'wix',
+    navn: 'Wix',
+    rute: '/sammenlign/wix',
+    kort: 'Bygge selv med en drag-and-drop-bygger, eller få det gjort for deg? Pris over tid, eierskap og hastighet side om side.',
+  },
+  {
+    slug: 'wordpress',
+    navn: 'WordPress',
+    rute: '/sammenlign/wordpress',
+    kort: 'Fleksibelt, men hvem vedlikeholder det? Sikkerhet, plugin-oppdateringer og hva det faktisk koster over tid.',
+  },
+];
+
+export const sammenlignWix = {
+  navn: 'Wix',
+  intro: 'Wix er et solid verktøy for å bygge en nettside selv. Spørsmålet er ikke om det virker, men om det er din tid eller din nettside som skal betale for det.',
+  rader: [
+    ['Hvem bygger siden', 'Du, i byggeren deres', 'Jeg, fra første skisse til lansering'],
+    ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller drift du kan si opp'],
+    ['Eierskap', 'Låst til Wix sin plattform', 'Du eier filene, kan ta dem med deg videre'],
+    ['Hastighet og SEO', 'Tyngre byggerkode, varierende', 'Håndkodet og lettvekt fra dag én'],
+    ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner en gratis demo først'],
+    ['Support', 'Generisk chat-support', 'Direkte med meg, ikke en helpdesk'],
+  ],
+  konklusjon: 'Har du tid og lyst til å lære et byggeverktøy, og bedriften tåler at nettsiden ser sånn ut, er Wix et fint sted å starte. Vil du ha en side som er bygget for å konvertere, uten at du selv må bli webdesigner, er det dette jeg gjør.',
+};
+
+export const sammenlignWordpress = {
+  navn: 'WordPress',
+  intro: 'WordPress er gratis å laste ned. Det som koster er alt rundt: hosting, plugins, og noen som følger med når noe går galt — for noe går alltid galt før eller siden.',
+  rader: [
+    ['Grunnkostnad', 'Gratis kjerne, betal for hosting og plugins løpende', 'Fastpris inkluderer alt fra start'],
+    ['Vedlikehold', 'Du eller en utvikler må oppdatere jevnlig', 'Håndkodet, uten plugins å holde ved like'],
+    ['Sikkerhet', 'Mest angrepne CMS i verden, krever årvåkenhet', 'Ingen CMS, ingen kjent angrepsflate'],
+    ['Ytelse', 'Kan bli tung med mange plugins', 'Lynrask fra første linje kode'],
+    ['Eierskap', 'Du eier siden, men trenger teknisk kompetanse for å drifte den', 'Du eier siden, jeg drifter den om du vil slippe'],
+    ['Fleksibilitet', 'Enormt plugin-økosystem for spesialbehov', 'Skreddersydd funksjonalitet bygget direkte inn'],
+  ],
+  konklusjon: 'Trenger du et enormt plugin-økosystem eller har en intern utvikler som følger med, kan WordPress være riktig. De fleste små bedrifter jeg møter vil heller ha en side som bare virker, uten en liste over oppdateringer som venter på dem hver måned.',
+};
 
 /* ---------------------------------------------------------------
    METODE. En ekte sekvens, så nummerering er fortjent her

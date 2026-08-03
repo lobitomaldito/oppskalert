@@ -9,11 +9,32 @@ import posthog from '../lib/posthog';
 const feltKlasse =
   'w-full bg-room-ink/5 border border-room-ink/25 rounded-full px-6 py-4 font-body text-sm text-room-ink placeholder:text-room-ink/70 focus:outline-none focus:border-room-ink/60 transition-colors';
 
+const pillKlasse = (valgt) =>
+  `rounded-full border px-5 py-3 font-body text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-room-signal/50 ${
+    valgt ? 'border-room-signal bg-room-signal/15 text-room-ink' : 'border-room-ink/25 text-room-ink/80 hover:border-room-ink/45'
+  }`;
+
+const behovOpsjoner = [
+  { id: 'nettside', label: 'Nettside' },
+  { id: 'nettbutikk', label: 'Nettbutikk' },
+  { id: 'vet-ikke', label: 'Vet ikke helt enda' },
+];
+
+const behovLabel = (id) => behovOpsjoner.find((b) => b.id === id)?.label;
+
 const DemoSkjema = ({ tittel, uthevet, lede }) => {
+  const [steg, setSteg] = useState(1);
+  const [behov, setBehov] = useState(null);
+  const [harNettside, setHarNettside] = useState(null); // null | true | false
   const [navn, setNavn] = useState('');
   const [epost, setEpost] = useState('');
   const [firma, setFirma] = useState('');
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
+
+  const gaTilSteg2 = () => {
+    posthog.capture('demo_form_steg1_fullfort', { behov, har_nettside: harNettside });
+    setSteg(2);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,9 +44,12 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
       return;
     }
     setStatus('sending');
+    const meldingDeler = [];
+    if (behov) meldingDeler.push(`Trenger hjelp til: ${behovLabel(behov)}.`);
+    if (harNettside !== null) meldingDeler.push(`Har nettside fra før: ${harNettside ? 'Ja' : 'Nei'}.`);
     try {
-      await submitDemoRequest({ navn, epost, firma });
-      posthog.capture('demo_request_submitted', { has_company: Boolean(firma.trim()) });
+      await submitDemoRequest({ navn, epost, firma, melding: meldingDeler.join(' ') });
+      posthog.capture('demo_request_submitted', { has_company: Boolean(firma.trim()), behov, har_nettside: harNettside });
       setStatus('success');
     } catch (err) {
       console.error('Demo request failed:', err);
@@ -52,8 +76,49 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 <a href={`tel:${kontakt.tel}`} className="underline hover:text-room-signal transition-colors">{kontakt.telefon}</a>.
               </p>
             </div>
+          ) : steg === 1 ? (
+            <div className="w-full flex flex-col gap-7 text-left">
+              <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 text-center">Steg 1 av 2</span>
+
+              <div>
+                <span className="font-sans font-bold text-sm block mb-3">Hva trenger du demo til?</span>
+                <div className="flex flex-wrap gap-2.5">
+                  {behovOpsjoner.map((b) => (
+                    <button
+                      key={b.id} type="button" aria-pressed={behov === b.id}
+                      onClick={() => setBehov(b.id)}
+                      className={pillKlasse(behov === b.id)}
+                    >
+                      {b.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <span className="font-sans font-bold text-sm block mb-3">Har du en nettside fra før?</span>
+                <div className="flex flex-wrap gap-2.5">
+                  <button type="button" aria-pressed={harNettside === true} onClick={() => setHarNettside(true)} className={pillKlasse(harNettside === true)}>Ja</button>
+                  <button type="button" aria-pressed={harNettside === false} onClick={() => setHarNettside(false)} className={pillKlasse(harNettside === false)}>Nei</button>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center gap-3 mt-2">
+                <button
+                  type="button"
+                  onClick={gaTilSteg2}
+                  className="group bg-room-ink text-room px-10 py-5 rounded-full font-sans font-bold text-lg transition-transform duration-300 hover:scale-[1.02] w-full sm:w-auto"
+                >
+                  <span className="flex items-center justify-center gap-2">Neste <ArrowRight className="w-5 h-5" /></span>
+                </button>
+                <button type="button" onClick={() => setSteg(2)} className="font-body text-xs text-room-ink/60 hover:text-room-ink underline underline-offset-2">
+                  Hopp over, jeg vil bare legge igjen kontaktinfo
+                </button>
+              </div>
+            </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-left">
+              <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 text-center -mt-1 mb-1">Steg 2 av 2</span>
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="text" value={navn} autoComplete="name" aria-label="Navn" placeholder="Navn *"
@@ -79,6 +144,9 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 <span className="flex items-center justify-center gap-2">
                   {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-5 h-5" /></>}
                 </span>
+              </button>
+              <button type="button" onClick={() => setSteg(1)} className="font-body text-xs text-room-ink/60 hover:text-room-ink self-center underline underline-offset-2">
+                Tilbake
               </button>
 
               {status === 'error' && (

@@ -162,6 +162,12 @@ export const Footer = () => (
             ))}
           </div>
           <div className="flex flex-col gap-3">
+            <span className="text-primary/70 uppercase tracking-widest text-xs font-semibold mb-1">Verktøy</span>
+            <Link to={ruter.kalkulator} className="text-primary/70 hover:text-primary transition-colors">Priskalkulator</Link>
+            <Link to={ruter.drift} className="text-primary/70 hover:text-primary transition-colors">Drift og support</Link>
+            <Link to={ruter.sammenlign} className="text-primary/70 hover:text-primary transition-colors">Sammenlign</Link>
+          </div>
+          <div className="flex flex-col gap-3">
             <span className="text-primary/70 uppercase tracking-widest text-xs font-semibold mb-1">Selskap</span>
             <span className="text-primary/70">Orgnr {kontakt.orgnr}</span>
             <span className="text-primary/70">{kontakt.sted}</span>

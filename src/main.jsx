@@ -18,6 +18,11 @@ const FrisorDemo = lazy(() => import('./pages/eksempler/FrisorDemo.jsx'))
 const HandverkerDemo = lazy(() => import('./pages/eksempler/HandverkerDemo.jsx'))
 const RestaurantDemo = lazy(() => import('./pages/eksempler/RestaurantDemo.jsx'))
 const TannlegeDemo = lazy(() => import('./pages/eksempler/TannlegeDemo.jsx'))
+const KalkulatorPage = lazy(() => import('./pages/KalkulatorPage.jsx'))
+const DriftPage = lazy(() => import('./pages/DriftPage.jsx'))
+const SammenlignPage = lazy(() => import('./pages/SammenlignPage.jsx'))
+const VsWixPage = lazy(() => import('./pages/sammenlign/VsWixPage.jsx'))
+const VsWordPressPage = lazy(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -32,6 +37,11 @@ createRoot(document.getElementById('root')).render(
           {/* Gammel rute, beholdt så delte lenker og Google ikke havner i 404 */}
           <Route path="/vårt-arbeid" element={<Navigate to="/arbeid" replace />} />
           <Route path="/priser" element={<PriserPage />} />
+          <Route path="/kalkulator" element={<KalkulatorPage />} />
+          <Route path="/drift" element={<DriftPage />} />
+          <Route path="/sammenlign" element={<SammenlignPage />} />
+          <Route path="/sammenlign/wix" element={<VsWixPage />} />
+          <Route path="/sammenlign/wordpress" element={<VsWordPressPage />} />
           <Route path="/metode" element={<MetodePage />} />
           <Route path="/om" element={<OmPage />} />
           <Route path="/kontakt" element={<KontaktPage />} />

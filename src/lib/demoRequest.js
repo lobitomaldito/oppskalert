@@ -16,16 +16,18 @@ const demoClient = createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY);
 // every request. If unset, the lead is still saved to Supabase.
 const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
 
-export async function submitDemoRequest({ navn, epost, firma }) {
+export async function submitDemoRequest({ navn, epost, firma, melding }) {
   const navnClean = navn.trim();
   const epostClean = epost.trim();
   const firmaClean = firma?.trim() || null;
+  const meldingClean = melding?.trim() || null;
 
   const { error } = await demoClient.from('demo_foresporsler').insert([
     {
       navn: navnClean,
       epost: epostClean,
       firma: firmaClean,
+      melding: meldingClean,
       kilde: 'nettside',
     },
   ]);
@@ -46,7 +48,7 @@ export async function submitDemoRequest({ navn, epost, firma }) {
           name: navnClean,
           email: epostClean,
           firma: firmaClean || '(ikke oppgitt)',
-          message: `Ny demo-forespørsel fra nettsiden.\n\nNavn: ${navnClean}\nE-post: ${epostClean}\nFirma: ${firmaClean || '(ikke oppgitt)'}`,
+          message: `Ny demo-forespørsel fra nettsiden.\n\nNavn: ${navnClean}\nE-post: ${epostClean}\nFirma: ${firmaClean || '(ikke oppgitt)'}${meldingClean ? `\n\n${meldingClean}` : ''}`,
         }),
       });
     } catch {
