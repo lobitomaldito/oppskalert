@@ -10,6 +10,10 @@
     { "source": "/kom-i-gang", "destination": "/index.html" },
     { "source": "/blogg", "destination": "/index.html" },
     { "source": "/blogg/:slug", "destination": "/index.html" },
-    { "source": "/eksempler/:slug", "destination": "/index.html" }
+    { "source": "/eksempler/:slug", "destination": "/index.html" },
+    { "source": "/kalkulator", "destination": "/index.html" },
+    { "source": "/drift", "destination": "/index.html" },
+    { "source": "/sammenlign", "destination": "/index.html" },
+    { "source": "/sammenlign/:slug", "destination": "/index.html" }
   ]
 }
