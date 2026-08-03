@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { submitDemoRequest } from '../lib/demoRequest';
 import { kontakt } from '../lib/site';
 import posthog from '../lib/posthog';
@@ -9,15 +9,29 @@ import posthog from '../lib/posthog';
 const feltKlasse =
   'w-full bg-room-ink/5 border border-room-ink/25 rounded-full px-6 py-4 font-body text-sm text-room-ink placeholder:text-room-ink/70 focus:outline-none focus:border-room-ink/60 transition-colors';
 
-const pillKlasse = (valgt) =>
-  `rounded-full border px-5 py-3 font-body text-sm font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-room-signal/50 ${
-    valgt ? 'border-room-signal bg-room-signal/15 text-room-ink' : 'border-room-ink/25 text-room-ink/80 hover:border-room-ink/45'
+// Samme korttaktikk som priskalkulatoren (valgt = fylt kant + hake), bare
+// overført til krem-rommets farger. Tidligere versjon var tynne piller uten
+// beskrivelse — for lite fysisk tilstedeværelse til å føles trykkbare.
+const kortKlasse = (valgt) =>
+  `text-left rounded-2xl border px-5 py-4 transition-all duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-room-signal/50 ${
+    valgt ? 'border-room-signal bg-room-signal/15' : 'border-room-ink/20 bg-room-ink/[0.03] hover:border-room-ink/40'
   }`;
 
+const Hake = ({ valgt }) => (
+  <span
+    className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${
+      valgt ? 'bg-room-signal border-room-signal' : 'border-room-ink/30'
+    }`}
+    aria-hidden="true"
+  >
+    {valgt && <Check className="w-3 h-3 text-room" strokeWidth={3} />}
+  </span>
+);
+
 const behovOpsjoner = [
-  { id: 'nettside', label: 'Nettside' },
-  { id: 'nettbutikk', label: 'Nettbutikk' },
-  { id: 'vet-ikke', label: 'Vet ikke helt enda' },
+  { id: 'nettside', label: 'Nettside', beskrivelse: 'Ny side eller redesign' },
+  { id: 'nettbutikk', label: 'Nettbutikk', beskrivelse: 'Selge produkter på nett' },
+  { id: 'vet-ikke', label: 'Vet ikke helt enda', beskrivelse: 'Vi finner ut av det sammen' },
 ];
 
 const behovLabel = (id) => behovOpsjoner.find((b) => b.id === id)?.label;
@@ -82,24 +96,48 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
 
               <div>
                 <span className="font-sans font-bold text-sm block mb-3">Hva trenger du demo til?</span>
-                <div className="flex flex-wrap gap-2.5">
-                  {behovOpsjoner.map((b) => (
-                    <button
-                      key={b.id} type="button" aria-pressed={behov === b.id}
-                      onClick={() => setBehov(b.id)}
-                      className={pillKlasse(behov === b.id)}
-                    >
-                      {b.label}
-                    </button>
-                  ))}
+                <div className="grid sm:grid-cols-3 gap-3">
+                  {behovOpsjoner.map((b) => {
+                    const valgt = behov === b.id;
+                    return (
+                      <button
+                        key={b.id} type="button" aria-pressed={valgt}
+                        onClick={() => setBehov(b.id)}
+                        className={kortKlasse(valgt)}
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{b.label}</span>
+                          <Hake valgt={valgt} />
+                        </div>
+                        <span className="block font-body text-xs text-room-ink/70 mt-1">{b.beskrivelse}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
               <div>
                 <span className="font-sans font-bold text-sm block mb-3">Har du en nettside fra før?</span>
-                <div className="flex flex-wrap gap-2.5">
-                  <button type="button" aria-pressed={harNettside === true} onClick={() => setHarNettside(true)} className={pillKlasse(harNettside === true)}>Ja</button>
-                  <button type="button" aria-pressed={harNettside === false} onClick={() => setHarNettside(false)} className={pillKlasse(harNettside === false)}>Nei</button>
+                <div className="grid grid-cols-2 gap-3 max-w-sm">
+                  {[
+                    { verdi: true, label: 'Ja', beskrivelse: 'Jeg vil bygge om' },
+                    { verdi: false, label: 'Nei', beskrivelse: 'Jeg starter fra bunn' },
+                  ].map((o) => {
+                    const valgt = harNettside === o.verdi;
+                    return (
+                      <button
+                        key={o.label} type="button" aria-pressed={valgt}
+                        onClick={() => setHarNettside(o.verdi)}
+                        className={kortKlasse(valgt)}
+                      >
+                        <div className="flex items-start justify-between gap-2">
+                          <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{o.label}</span>
+                          <Hake valgt={valgt} />
+                        </div>
+                        <span className="block font-body text-xs text-room-ink/70 mt-1">{o.beskrivelse}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
