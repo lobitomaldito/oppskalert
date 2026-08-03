@@ -10,6 +10,7 @@ import BransjeEksempler from './components/BransjeEksempler';
 import Omtaler from './components/Omtaler';
 import Metode from './components/Metode';
 import Priser from './components/Priser';
+import Kalkulator from './components/Kalkulator';
 import FAQ from './components/FAQ';
 import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, kontakt, ruter } from './lib/site';
@@ -191,6 +192,11 @@ const Home = () => (
     <Omtaler />
     <Metode />
     <Priser />
+    <Kalkulator
+      tittel="Hva koster"
+      uthevet="din nettside?"
+      lede="Regn det ut selv, på under ett minutt. Samme fastpriser jeg bruker i ekte prosjekter — ingen e-post, ingen forpliktelser."
+    />
     <BransjeEksempler />
     <FAQ />
     <DemoSkjema

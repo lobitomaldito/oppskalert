@@ -3,6 +3,7 @@ import { Check, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useReveal } from '../lib/useReveal';
 import { formatKr } from '../lib/utils';
+import { SeksjonTopp } from './Layout';
 import { kalkulatorOmfang, kalkulatorTillegg, kalkulatorHaster, ruter } from '../lib/site';
 
 const pillBase =
@@ -42,7 +43,7 @@ const TilleggKnapp = ({ item, valgt, onClick }) => (
 /* Selvbetjent estimat. Samme mekanikk som en byrå-kalkulator man møter
    andre steder — spenn, ikke eksakt tall, ingen e-post nødvendig — men
    uten en "mal"-tier, siden alt her alltid er skreddersydd og håndkodet. */
-const Kalkulator = () => {
+const Kalkulator = ({ tittel, uthevet, lede }) => {
   const container = useReveal(80);
   const [omfangId, setOmfangId] = useState('2-5');
   const [tillegg, setTillegg] = useState(() => new Set());
@@ -75,6 +76,7 @@ const Kalkulator = () => {
   return (
     <section ref={container} className="seksjon">
       <div className="wrap">
+        {tittel && <SeksjonTopp tittel={tittel} uthevet={uthevet} lede={lede} />}
         <div className="grid lg:grid-cols-[1fr_20rem] gap-8 items-start">
 
           <div data-reveal className="flex flex-col gap-8">
