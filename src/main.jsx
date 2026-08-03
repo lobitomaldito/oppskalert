@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import './index.css'
+import './lib/posthog.js'
 import App from './App.jsx'
 import { ScrollToTop } from './components/Layout.jsx'
 

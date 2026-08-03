@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { submitDemoRequest } from '../lib/demoRequest';
 import { kontakt } from '../lib/site';
+import posthog from '../lib/posthog';
 
 /* Plassholder på 70% blekk mot krem gir 6.3:1, godt over AA. Den vanlige
    feilen er lysegrå plassholdertekst «for elegansen»; den er uleselig. */
@@ -24,6 +25,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
     setStatus('sending');
     try {
       await submitDemoRequest({ navn, epost, firma });
+      posthog.capture('demo_request_submitted', { has_company: Boolean(firma.trim()) });
       setStatus('success');
     } catch (err) {
       console.error('Demo request failed:', err);
