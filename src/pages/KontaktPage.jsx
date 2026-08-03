@@ -5,24 +5,24 @@ import { Shell, SideTopp } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { kontakt } from '../lib/site';
 import { useReveal } from '../lib/useReveal';
-import posthog from '../lib/posthog';
+import { track } from '../lib/analytics';
 
 const Direkte = () => {
   const container = useReveal(80);
   return (
     <section ref={container} className="pb-4">
       <div className="wrap grid gap-5 sm:grid-cols-3 max-w-[52rem]">
-        <a data-reveal href={`tel:${kontakt.tel}`} onClick={() => posthog.capture('contact_phone_clicked')} className="rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 hover:border-accent/50 transition-colors">
+        <a data-reveal href={`tel:${kontakt.tel}`} onClick={() => track('contact_phone_clicked')} className="rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 hover:border-accent/50 transition-colors">
           <Phone className="w-5 h-5 text-accent mb-3" aria-hidden="true" />
           <span className="font-body text-xs uppercase tracking-widest text-primary/70 block">Ring meg</span>
           <span className="font-sans font-bold text-lg mt-1 block">{kontakt.telefon}</span>
         </a>
-        <a data-reveal href={`mailto:${kontakt.epost}`} onClick={() => posthog.capture('contact_email_clicked')} className="rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 hover:border-accent/50 transition-colors">
+        <a data-reveal href={`mailto:${kontakt.epost}`} onClick={() => track('contact_email_clicked')} className="rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 hover:border-accent/50 transition-colors">
           <Mail className="w-5 h-5 text-accent mb-3" aria-hidden="true" />
           <span className="font-body text-xs uppercase tracking-widest text-primary/70 block">Skriv til meg</span>
           <span className="font-sans font-bold text-base mt-1 block break-all">{kontakt.epost}</span>
         </a>
-        <a data-reveal href={kontakt.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture('contact_linkedin_clicked')} className="rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 hover:border-accent/50 transition-colors">
+        <a data-reveal href={kontakt.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => track('contact_linkedin_clicked')} className="rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 hover:border-accent/50 transition-colors">
           <Linkedin className="w-5 h-5 text-accent mb-3" aria-hidden="true" />
           <span className="font-body text-xs uppercase tracking-widest text-primary/70 block">Finn meg på</span>
           <span className="font-sans font-bold text-lg mt-1 block">LinkedIn</span>

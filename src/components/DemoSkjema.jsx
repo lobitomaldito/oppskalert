@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { submitDemoRequest } from '../lib/demoRequest';
 import { kontakt } from '../lib/site';
-import posthog from '../lib/posthog';
+import { track, identify } from '../lib/analytics';
 
 /* Plassholder på 70% blekk mot krem gir 6.3:1, godt over AA. Den vanlige
    feilen er lysegrå plassholdertekst «for elegansen»; den er uleselig. */
@@ -46,7 +46,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   const gaTilSteg2 = () => {
-    posthog.capture('demo_form_steg1_fullfort', { behov, har_nettside: harNettside });
+    track('demo_form_steg1_fullfort', { behov, har_nettside: harNettside });
     setSteg(2);
   };
 
@@ -63,7 +63,8 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
     if (harNettside !== null) meldingDeler.push(`Har nettside fra før: ${harNettside ? 'Ja' : 'Nei'}.`);
     try {
       await submitDemoRequest({ navn, epost, firma, melding: meldingDeler.join(' ') });
-      posthog.capture('demo_request_submitted', { has_company: Boolean(firma.trim()), behov, har_nettside: harNettside });
+      identify({ email: epost.trim(), name: navn.trim() });
+      track('demo_request_submitted', { has_company: Boolean(firma.trim()), behov, har_nettside: harNettside });
       setStatus('success');
     } catch (err) {
       console.error('Demo request failed:', err);

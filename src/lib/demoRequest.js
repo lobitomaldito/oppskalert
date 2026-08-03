@@ -9,7 +9,9 @@ const DEMO_SUPABASE_URL = 'https://zmefwkqhdamdcjnxxfjl.supabase.co';
 const DEMO_SUPABASE_ANON_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InptZWZ3a3FoZGFtZGNqbnh4ZmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNjAzNjgsImV4cCI6MjA5NjgzNjM2OH0.U0flw1EqHTDpZBk9TwA0MT-HZ9nWeggXQaepA6mc9Kk';
 
-const demoClient = createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY);
+// Eksportert så lib/analytics.js kan skrive til samme prosjekts
+// analytics_events-tabell uten å duplisere anon-nøkkelen.
+export const demoClient = createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY);
 
 // Optional e-mail notification. Set VITE_WEB3FORMS_KEY to your free Web3Forms
 // access key (web3forms.com) to receive an e-mail at team@oppskalert.no for

@@ -14,6 +14,8 @@ const OmPage = lazy(() => import('./pages/OmPage.jsx'))
 const KontaktPage = lazy(() => import('./pages/KontaktPage.jsx'))
 const BlogPage = lazy(() => import('./pages/BlogPage.jsx'))
 const ArticlePage = lazy(() => import('./pages/ArticlePage.jsx'))
+const KategoriPage = lazy(() => import('./pages/blogg/KategoriPage.jsx'))
+const ForfatterPage = lazy(() => import('./pages/blogg/ForfatterPage.jsx'))
 const FrisorDemo = lazy(() => import('./pages/eksempler/FrisorDemo.jsx'))
 const HandverkerDemo = lazy(() => import('./pages/eksempler/HandverkerDemo.jsx'))
 const RestaurantDemo = lazy(() => import('./pages/eksempler/RestaurantDemo.jsx'))
@@ -23,6 +25,7 @@ const DriftPage = lazy(() => import('./pages/DriftPage.jsx'))
 const SammenlignPage = lazy(() => import('./pages/SammenlignPage.jsx'))
 const VsWixPage = lazy(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazy(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
+const DashboardPage = lazy(() => import('./pages/DashboardPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -49,11 +52,14 @@ createRoot(document.getElementById('root')).render(
               som redirect så delte lenker og Google ikke havner i 404. */}
           <Route path="/kom-i-gang" element={<Navigate to="/kontakt" replace />} />
           <Route path="/blogg" element={<BlogPage />} />
+          <Route path="/blogg/kategori/:slug" element={<KategoriPage />} />
+          <Route path="/blogg/forfatter/:slug" element={<ForfatterPage />} />
           <Route path="/blogg/:slug" element={<ArticlePage />} />
           <Route path="/eksempler/frisor" element={<FrisorDemo />} />
           <Route path="/eksempler/handverker" element={<HandverkerDemo />} />
           <Route path="/eksempler/restaurant" element={<RestaurantDemo />} />
           <Route path="/eksempler/tannlege" element={<TannlegeDemo />} />
+          <Route path="/admin/dashboard" element={<DashboardPage />} />
           {/* Ukjent rute → forsiden, i stedet for en blank skjerm */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
