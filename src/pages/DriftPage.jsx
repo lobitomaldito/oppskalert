@@ -6,6 +6,20 @@ import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
 import { driftNivaer, driftNotat, ruter } from '../lib/site';
 
+const driftSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'Oppskalert driftsnivåer',
+  itemListElement: driftNivaer.map((n) => ({
+    '@type': 'Offer',
+    name: n.navn,
+    description: n.tagline,
+    price: n.fra.replace(/\s/g, ''),
+    priceCurrency: 'NOK',
+    url: 'https://oppskalert.no/drift',
+  })),
+};
+
 const DriftKort = ({ nivaa }) => (
   <div
     data-reveal
@@ -105,6 +119,7 @@ const DriftPage = () => (
       description="Tre nivåer av drift og support for nettsiden din, fra 149 kr/mnd. Du velger hva som passer, jeg tar meg av resten. Ingen bindingstid."
       keywords={['drift nettside pris', 'support nettside abonnement', 'vedlikehold nettside']}
       canonical="https://oppskalert.no/drift"
+      jsonLd={driftSchema}
     />
     <SideTopp
       tittel="Hold nettsiden"

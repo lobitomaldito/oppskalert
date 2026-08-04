@@ -1,13 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/vårt-arbeid", "destination": "/arbeid", "permanent": true },
+    { "source": "/kom-i-gang", "destination": "/kontakt", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/arbeid", "destination": "/index.html" },
-    { "source": "/vårt-arbeid", "destination": "/index.html" },
     { "source": "/priser", "destination": "/index.html" },
     { "source": "/metode", "destination": "/index.html" },
     { "source": "/om", "destination": "/index.html" },
     { "source": "/kontakt", "destination": "/index.html" },
-    { "source": "/kom-i-gang", "destination": "/index.html" },
     { "source": "/blogg", "destination": "/index.html" },
     { "source": "/blogg/kategori/:slug", "destination": "/index.html" },
     { "source": "/blogg/forfatter/:slug", "destination": "/index.html" },

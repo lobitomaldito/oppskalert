@@ -37,8 +37,7 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/arbeid" element={<ArbeidPage />} />
-          {/* Gammel rute, beholdt så delte lenker og Google ikke havner i 404 */}
-          <Route path="/vårt-arbeid" element={<Navigate to="/arbeid" replace />} />
+          {/* /vårt-arbeid redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/priser" element={<PriserPage />} />
           <Route path="/kalkulator" element={<KalkulatorPage />} />
           <Route path="/drift" element={<DriftPage />} />
@@ -48,9 +47,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/metode" element={<MetodePage />} />
           <Route path="/om" element={<OmPage />} />
           <Route path="/kontakt" element={<KontaktPage />} />
-          {/* Gammelt talerliste-skjema, fjernet 2026-07. Ruta lever videre
-              som redirect så delte lenker og Google ikke havner i 404. */}
-          <Route path="/kom-i-gang" element={<Navigate to="/kontakt" replace />} />
+          {/* /kom-i-gang redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/blogg" element={<BlogPage />} />
           <Route path="/blogg/kategori/:slug" element={<KategoriPage />} />
           <Route path="/blogg/forfatter/:slug" element={<ForfatterPage />} />

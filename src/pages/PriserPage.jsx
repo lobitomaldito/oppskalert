@@ -5,7 +5,21 @@ import Priser from '../components/Priser';
 import FAQ from '../components/FAQ';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
-import { faqSchema } from '../lib/site';
+import { faqSchema, prismodeller } from '../lib/site';
+
+const priserSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'Oppskalert prismodeller',
+  itemListElement: prismodeller.map((p) => ({
+    '@type': 'Offer',
+    name: p.navn,
+    description: p.tagline,
+    price: p.fra.replace(/\s/g, ''),
+    priceCurrency: 'NOK',
+    url: 'https://oppskalert.no/priser',
+  })),
+};
 
 /* Sammenligningen svarer på det ene spørsmålet prismodellene ikke gjør
    alene: hva er egentlig forskjellen, rad for rad. */
@@ -69,7 +83,7 @@ const PriserPage = () => (
       description="Nettside med engangspris fra 7 990 kr, eller driftet av meg fra 690 kr/mnd. Fast pris, gratis demo først, ingen binding."
       keywords={['hva koster nettside', 'nettside pris norge', 'nettside abonnement']}
       canonical="https://oppskalert.no/priser"
-      jsonLd={faqSchema}
+      jsonLd={[faqSchema, priserSchema]}
     />
     <SideTopp
       tittel="Fast pris."

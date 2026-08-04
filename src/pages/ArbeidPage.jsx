@@ -3,6 +3,23 @@ import { Shell, SideTopp } from '../components/Layout';
 import Portfolio from '../components/Portfolio';
 import BransjeEksempler from '../components/BransjeEksempler';
 import DemoSkjema from '../components/DemoSkjema';
+import { prosjekter } from '../lib/site';
+
+const arbeidSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Nettsider bygget av Oppskalert',
+  url: 'https://oppskalert.no/arbeid',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: prosjekter.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.navn,
+      url: p.url,
+    })),
+  },
+};
 
 const ArbeidPage = () => (
   <Shell>
@@ -11,6 +28,7 @@ const ArbeidPage = () => (
       description="Ekte nettsider i drift for norske bedrifter, pluss konsept-eksempler for ulike bransjer. Se hva jeg har bygget."
       keywords={['nettside portefølje norge', 'webdesign eksempler', 'nettside bedrift']}
       canonical="https://oppskalert.no/arbeid"
+      jsonLd={arbeidSchema}
     />
     <SideTopp
       tittel="Sider jeg"

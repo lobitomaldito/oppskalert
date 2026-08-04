@@ -1,0 +1,22 @@
+# Oppskalert
+
+> Norsk webutvikling – én person, hele jobben. Aleksander MacKee bygger håndkodede, konverteringsoptimaliserte nettsider for norske bedrifter. Du ser en ferdig, gratis demo før du bestemmer deg for om du vil betale noe.
+
+## Om
+- [Om meg](https://oppskalert.no/om): Hvem som bygger sidene, og hvorfor det ikke er noe mellomledd.
+- [Metode](https://oppskalert.no/metode): Fra gratis demo til lansering, i fire steg.
+- [Arbeid](https://oppskalert.no/arbeid): Ekte nettsider i drift for norske kunder, pluss bransjeeksempler.
+
+## Priser
+- [Priser](https://oppskalert.no/priser): Engangspris fra 7 990 kr, eller drift fra 690 kr/mnd. Fast pris, ingen binding.
+- [Priskalkulator](https://oppskalert.no/kalkulator): Selvbetjent prisestimat basert på omfang og tilleggsfunksjoner.
+- [Drift og support](https://oppskalert.no/drift): Tre driftsnivåer fra 149 kr/mnd, ingen bindingstid.
+
+## Sammenligning
+- [Sammenlign](https://oppskalert.no/sammenlign): Oppskalert mot Wix og WordPress, side om side.
+
+## Innsikt
+- [Blogg](https://oppskalert.no/blogg): Artikler om nettsider, mobilhastighet og konvertering.
+
+## Kontakt
+- [Kontakt](https://oppskalert.no/kontakt): team@oppskalert.no, +47 974 09 897. Svar innen 24 timer.
