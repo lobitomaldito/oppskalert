@@ -1,0 +1,84 @@
+# Regler for automatgenererte blogginnlegg
+
+Dette er instruksjonene den ukentlige genereringsagenten følger. Målet er at
+et automatgenerert innlegg skal være umulig å skille fra de tre
+håndskrevne artiklene i `src/lib/articles.js` (`handwritten`-arrayen),
+både i stemme og struktur.
+
+## Arbeidsflyt
+
+1. Åpne `content/blog-queue.json`. Finn første oppføring med `"status": "pending"`.
+   Er køen tom, stopp uten å gjøre noe (ikke finn på et nytt tema selv).
+2. Sjekk at `slug` ikke allerede finnes i `handwritten` (i `src/lib/articles.js`)
+   eller i en eksisterende fil under `src/content/generated/`. Kollisjon → hopp
+   til neste `pending`-oppføring.
+3. Skriv artikkelen (se skjema og stemmeregler under).
+4. Generer et hero-bilde med `image-gen`-skillen, 1600×900, lagre som
+   `public/blogg/<slug>.jpg` eller `.webp`.
+5. Lagre artikkelen som `src/content/generated/<slug>.js`, se skjema under.
+6. Oppdater `content/blog-queue.json`: sett `"status": "published"` og legg
+   til `"publishedDate"` (samme dato som `publishDate` i artikkelen) på
+   oppføringen.
+7. Opprett en ny branch (`content/<slug>`), commit med melding
+   `content: publish blog post "<title>"`, push branchen, og åpne en PR mot
+   master. Ikke merge selv, ikke push til master direkte — brukeren skal
+   godkjenne hver artikkel før den går live.
+
+## Skjema (`src/content/generated/<slug>.js`)
+
+```js
+export default {
+  slug: "din-slug",
+  title: "Tittel som matcher content/blog-queue.json",
+  description: "Meta-beskrivelse, 140-160 tegn, samme funksjon som en SEO snippet.",
+  publishDate: "ÅÅÅÅ-MM-DD",
+  keywords: ["søkeord 1", "søkeord 2"],
+  hero: "/blogg/din-slug.jpg",
+  content: `## Første seksjon
+
+Brødtekst...
+
+## Neste seksjon
+
+Mer brødtekst...`,
+};
+```
+
+Feltene må matche nøyaktig det de tre håndskrevne artiklene bruker (se
+`src/lib/articles.js`) — samme nøkler, samme typer. `getArticleBySlug` og
+sorteringen i `articles.js` forventer dette uendret.
+
+## Stemme og stil
+
+Disse reglene er ikke forslag, de er harde krav fordi feil her går rett ut
+på et kundevendt nettsted:
+
+- **Norsk, jeg-form.** Aleksander skriver selv. Aldri "vi" (agency-tonen
+  DESIGN.md eksplisitt tar avstand fra).
+- **Aldri tankestrek (—).** Bruk komma, kolon eller punktum i stedet. Dette
+  er den klareste AI-tellen kunder legger merke til, og den skal ikke
+  forekomme noe sted i tekst som går live.
+- **Konkrete tall, ikke adjektiver.** "Under ett sekund" slår "lynrask"
+  hver gang, jf. `Hvorfor`-seksjonen i `src/App.jsx`. Finn et ekte tall,
+  en prosent, en tidsangivelse, fremfor et supperlativ.
+- **Ikke nevn navngitte konkurrenter.** Verken raskweb.no, webaas.no eller
+  ndw.no skal forekomme i løpetekst, selv i sammenligningsøyemed.
+- **Struktur:** 5-7 `##`-seksjoner, hver 80-150 ord, matcher lengden på de
+  tre eksisterende artiklene (ca. 600-900 ord totalt). Ingen tallmerkede
+  lister (`01/02/03`) som ren pynt, jf. DESIGN.md sin Don't-regel.
+  Fet/kursiv brukes sparsomt, kun for å understreke ett nøkkelbegrep per
+  seksjon, ikke som gjennomgående mønster.
+- **Avslutning:** et konkret, gjennomførbart neste steg for leseren
+  (som artikkel 1 og 3 gjør). Ikke en hard salgs-CTA i selve teksten,
+  `ArticlePage.jsx` rendrer allerede en CTA-boks under artikkelen.
+- **Ingen fakta du ikke kan belegge.** Statistikk skal være plausibel og i
+  tråd med det de eksisterende artiklene bruker (Google-tall om
+  lastetid/konvertering), ikke oppspinn presentert som forskning med
+  navngitt kilde.
+
+## Temakø
+
+`content/blog-queue.json` er hele køen. Fyll på med nye temaer etter
+samme skjema (`slug`, `title`, `keywords`, `status: "pending"`) når køen
+blir kort, ideelt hentet fra reelle søkeord-gap-data (se samtalen om
+Opinlys Keywords-eksport) fremfor gjettet fritt.

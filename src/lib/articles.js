@@ -1,4 +1,4 @@
-export const articles = [
+const handwritten = [
   {
     slug: "mobilhastighet-nettside-koster-millioner",
     title: "Mobilhastighet på nettside: Hvorfor 3 sekunder koster millioner",
@@ -115,6 +115,18 @@ Ved å teste CTA-tekster ser jeg ofte forskjeller på 20-30 % i klikkrate bare v
 Ta en kritisk gjennomgang av din egen side i kveld. Er hovedbudskapet ditt synlig før du scroller? Hvis ikke, har du et klart forbedringspunkt å starte med.`,
   },
 ];
+
+// Automatgenererte artikler bor i egne filer under src/content/generated/,
+// én fil per post, så en ukentlig kjøring bare legger til en ny fil i
+// stedet for å redigere denne matrisen (unngår merge-konflikter og risikoen
+// for å ødelegge et 100+ linjer JS-literal ved et script-uhell). Se
+// content/BLOG-GENERATION.md for skjema og generatorregler.
+const generatedModules = import.meta.glob('../content/generated/*.js', { eager: true });
+const generated = Object.values(generatedModules).map((m) => m.default);
+
+export const articles = [...handwritten, ...generated].sort(
+  (a, b) => new Date(b.publishDate) - new Date(a.publishDate)
+);
 
 export function getArticleBySlug(slug) {
   return articles.find((a) => a.slug === slug) || null;

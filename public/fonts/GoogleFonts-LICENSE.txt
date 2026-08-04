@@ -1,0 +1,7 @@
+Plus Jakarta Sans and DM Serif Display are both licensed under the SIL Open
+Font License, Version 1.1, which permits self-hosting and commercial web use.
+Full license text: https://openfontlicense.org
+
+These woff2 files were fetched once from Google Fonts (fonts.gstatic.com) and
+are served locally from this project instead of via a live Google Fonts
+<link>/@import, so visitors' IPs are never logged with Google on page load.

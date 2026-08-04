@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "seo",
+    "title": "Hva er SEO og hvorfor betyr det noe for bedriften din?",
+    "keywords": ["hva er seo", "seo for bedrifter"],
+    "status": "pending"
+  },
+  {
+    "slug": "utvikling-nettside",
+    "title": "Utvikling av nettside: Alt en liten bedrift trenger å vite",
+    "keywords": ["utvikling av nettside", "nettside for bedrift"],
+    "status": "pending"
+  },
+  {
+    "slug": "norsk-domene",
+    "title": "Norsk domene: hva det er, hva det koster og hva du må passe på",
+    "keywords": ["norsk domene", ".no domene pris"],
+    "status": "pending"
+  },
+  {
+    "slug": "webutvikler-oslo",
+    "title": "Webutvikler i Oslo: Priser, alternativer og hva du bør spørre om",
+    "keywords": ["webutvikler oslo", "nettsidepriser oslo"],
+    "status": "pending"
+  }
+]
