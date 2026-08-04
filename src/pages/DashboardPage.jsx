@@ -104,6 +104,53 @@ const Trafikkilder = ({ sources }) => {
   );
 };
 
+const TopSider = ({ sider }) => {
+  const max = Math.max(1, ...sider.map((s) => s.visninger));
+  return (
+    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
+      <h2 className="font-sans font-bold text-lg mb-1">Mest besøkte sider</h2>
+      <p className="font-body text-xs text-primary/60 mb-6">Sidevisninger siste 30 dager, etter sti.</p>
+      <div className="flex flex-col gap-3">
+        {sider.slice(0, 10).map((s) => (
+          <div key={s.sti} className="flex items-center gap-3">
+            <span className="font-body text-xs text-primary/80 w-40 truncate">{s.sti}</span>
+            <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
+              <div className="h-full bg-accent rounded-full" style={{ width: `${(s.visninger / max) * 100}%` }} />
+            </div>
+            <span className="font-body text-xs text-primary/60 w-10 text-right">{s.visninger}</span>
+          </div>
+        ))}
+        {sider.length === 0 && <p className="font-body text-sm text-primary/60">Ingen data enda.</p>}
+      </div>
+    </div>
+  );
+};
+
+// $exception_list[1] er nyeste posthog-js sitt eksepsjonsformat — se
+// hentSisteFeil i api/admin/dashboard-data.js. Rødlig tekst er samme
+// semantiske feilfarge som PIN-feilen under (text-red-...), ikke
+// merkevarens aksentfarge.
+const SisteFeil = ({ feil }) => (
+  <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
+    <h2 className="font-sans font-bold text-lg mb-1">Feil siste 30 dager</h2>
+    <p className="font-body text-xs text-primary/60 mb-6">Fanget automatisk av PostHog. Ingen feil er et godt tegn.</p>
+    <div className="flex flex-col gap-3">
+      {feil.map((f, i) => (
+        <div key={`${f.melding}-${i}`} className="border-b border-primary/10 last:border-b-0 pb-3 last:pb-0">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <span className="font-sans font-bold text-sm text-red-400">{f.type || 'Feil'}</span>
+            <span className="font-body text-xs text-primary/50">
+              {f.antall}× · sist {new Date(f.sist).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' })}
+            </span>
+          </div>
+          <p className="font-body text-xs text-primary/70 mt-1 leading-relaxed break-words">{f.melding}</p>
+        </div>
+      ))}
+      {feil.length === 0 && <p className="font-body text-sm text-primary/60">Ingen feil registrert.</p>}
+    </div>
+  </div>
+);
+
 const Leads = ({ leads }) => (
   <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
     <h2 className="font-sans font-bold text-lg mb-6">Nye henvendelser</h2>
@@ -259,8 +306,10 @@ const DashboardPage = () => {
               </p>
             )}
             <Leads leads={data.leads ?? []} />
+            <SisteFeil feil={data.sisteFeil ?? []} />
             <DagligeHendelser days={buildDaySeries(data.days)} />
             <Trafikkilder sources={data.sources} />
+            <TopSider sider={data.topSider ?? []} />
             <UkentligeRapporter reports={data.reports ?? []} />
             <TopHendelser topEvents={data.topEvents} />
           </div>

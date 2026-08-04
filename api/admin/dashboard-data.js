@@ -72,6 +72,82 @@ async function hentPosthogTrafikk() {
   };
 }
 
+// Mest besøkte sider siste 30 dager — særlig for å se om nyere sider
+// (kalkulator, drift, sammenlign) faktisk får trafikk.
+async function hentTopSider() {
+  const apiKey = process.env.POSTHOG_API_KEY;
+  if (!apiKey) return null;
+
+  const query = `
+    SELECT
+      properties.$pathname AS sti,
+      count() AS visninger
+    FROM events
+    WHERE event = '$pageview' AND timestamp > now() - INTERVAL 30 DAY AND properties.$pathname IS NOT NULL
+    GROUP BY sti
+    ORDER BY visninger DESC
+    LIMIT 15
+  `;
+
+  try {
+    const res = await fetch(`${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: { kind: 'HogQLQuery', query } }),
+    });
+    if (!res.ok) {
+      console.error('dashboard-data: topsider-spørring feilet', res.status, await res.text());
+      return null;
+    }
+    const { results } = await res.json();
+    return (results || []).map(([sti, visninger]) => ({ sti, visninger }));
+  } catch (err) {
+    console.error('dashboard-data: topsider-spørring feilet', err);
+    return null;
+  }
+}
+
+// JS-feil siste 30 dager. posthog-js sin exception-autocapture
+// (capture_exceptions: true i lib/posthog.js) skriver til $exception med
+// $exception_list — en liste av {type, value, ...}, ikke et flatt
+// $exception_message-felt (det gamle formatet, avviklet). Hvis
+// skjemaet skulle avvike fra dette, faller spørringen bare tilbake
+// til tom liste under, ikke en knekt dashboard-last.
+async function hentSisteFeil() {
+  const apiKey = process.env.POSTHOG_API_KEY;
+  if (!apiKey) return null;
+
+  const query = `
+    SELECT
+      properties.$exception_list[1].value AS melding,
+      properties.$exception_list[1].type AS type,
+      count() AS antall,
+      max(timestamp) AS sist
+    FROM events
+    WHERE event = '$exception' AND timestamp > now() - INTERVAL 30 DAY
+    GROUP BY melding, type
+    ORDER BY sist DESC
+    LIMIT 15
+  `;
+
+  try {
+    const res = await fetch(`${POSTHOG_HOST}/api/projects/${POSTHOG_PROJECT_ID}/query/`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: { kind: 'HogQLQuery', query } }),
+    });
+    if (!res.ok) {
+      console.error('dashboard-data: feil-spørring feilet', res.status, await res.text());
+      return null;
+    }
+    const { results } = await res.json();
+    return (results || []).map(([melding, type, antall, sist]) => ({ melding, type, antall, sist }));
+  } catch (err) {
+    console.error('dashboard-data: feil-spørring feilet', err);
+    return null;
+  }
+}
+
 export default async function handler(req, res) {
   const expectedPin = process.env.DASHBOARD_PIN;
   if (!expectedPin) {
@@ -158,8 +234,13 @@ export default async function handler(req, res) {
   // Reelt besøkstall kommer fra PostHog, ikke Supabase (se
   // hentPosthogTrafikk over). Hvis PostHog-spørringen feiler (f.eks.
   // manglende nøkkel), faller vi tilbake til de gamle, undervurderte
-  // engasjement-baserte tallene i stedet for å knekke dashbordet.
-  const trafikk = await hentPosthogTrafikk();
+  // engasjement-baserte tallene i stedet for å knekke dashbordet. Kjøres
+  // parallelt med topsider/feil siden de er tre uavhengige HogQL-kall.
+  const [trafikk, topSider, sisteFeil] = await Promise.all([
+    hentPosthogTrafikk(),
+    hentTopSider(),
+    hentSisteFeil(),
+  ]);
 
   res.setHeader('Cache-Control', 'no-store');
   res.status(200).json({
@@ -172,5 +253,7 @@ export default async function handler(req, res) {
     topEvents,
     leads: leadsData || [],
     reports: reportsData || [],
+    topSider: topSider ?? [],
+    sisteFeil: sisteFeil ?? [],
   });
 }

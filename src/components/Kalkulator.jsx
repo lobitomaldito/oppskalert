@@ -3,6 +3,7 @@ import { Check, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useReveal } from '../lib/useReveal';
 import { formatKr } from '../lib/utils';
+import { track } from '../lib/analytics';
 import { SeksjonTopp } from './Layout';
 import { kalkulatorOmfang, kalkulatorTillegg, kalkulatorHaster, ruter } from '../lib/site';
 
@@ -50,11 +51,23 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
   const [haster, setHaster] = useState(false);
 
   const toggleTillegg = (id) => {
+    const leggerTil = !tillegg.has(id);
     setTillegg((prev) => {
       const neste = new Set(prev);
       if (neste.has(id)) neste.delete(id); else neste.add(id);
       return neste;
     });
+    track('kalkulator_tillegg_endret', { tillegg: id, valgt: leggerTil });
+  };
+
+  const velgOmfang = (id) => {
+    setOmfangId(id);
+    track('kalkulator_omfang_valgt', { omfang: id });
+  };
+
+  const velgHaster = (verdi) => {
+    setHaster(verdi);
+    track('kalkulator_haster_endret', { haster: verdi });
   };
 
   const { min, max, valgteTillegg, omfang } = useMemo(() => {
@@ -84,7 +97,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
               <h2 className="font-sans font-bold text-lg mb-4">Hvor stor blir nettsiden?</h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {kalkulatorOmfang.map((item) => (
-                  <OmfangKnapp key={item.id} item={item} valgt={item.id === omfangId} onClick={() => setOmfangId(item.id)} />
+                  <OmfangKnapp key={item.id} item={item} valgt={item.id === omfangId} onClick={() => velgOmfang(item.id)} />
                 ))}
               </div>
             </div>
@@ -103,7 +116,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
               <div className="grid sm:grid-cols-2 gap-3 max-w-lg">
                 <button
                   type="button"
-                  onClick={() => setHaster(false)}
+                  onClick={() => velgHaster(false)}
                   aria-pressed={!haster}
                   className={`${pillBase} font-sans font-bold ${!haster ? 'border-accent bg-accent/15 text-accent' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
                 >
@@ -111,7 +124,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setHaster(true)}
+                  onClick={() => velgHaster(true)}
                   aria-pressed={haster}
                   className={`${pillBase} font-sans font-bold ${haster ? 'border-accent bg-accent/15 text-accent' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
                 >
@@ -139,6 +152,13 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
 
             <Link
               to={ruter.kontakt}
+              onClick={() => track('kalkulator_demo_klikket', {
+                omfang: omfangId,
+                tillegg: [...tillegg],
+                haster,
+                min,
+                max,
+              })}
               className="inline-flex items-center justify-center gap-2 bg-accent text-background px-6 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
             >
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
