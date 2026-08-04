@@ -78,6 +78,32 @@ const TopHendelser = ({ topEvents }) => {
   );
 };
 
+// Kilde er utm_source hvis lenken er tagget (f.eks. e-postsignaturen),
+// ellers henvisende domene (f.eks. "google.com" for organisk søk), ellers
+// "direkte" (skrevet inn/bokmerket URL, eller en e-postklient som strippet
+// referrer-headeren, som de fleste gjør).
+const Trafikkilder = ({ sources }) => {
+  const max = Math.max(1, ...sources.map((s) => s.pageviews));
+  return (
+    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
+      <h2 className="font-sans font-bold text-lg mb-1">Trafikkilder</h2>
+      <p className="font-body text-xs text-primary/60 mb-6">Sidevisninger siste 30 dager, etter kilde.</p>
+      <div className="flex flex-col gap-3">
+        {sources.slice(0, 10).map((s) => (
+          <div key={s.kilde} className="flex items-center gap-3">
+            <span className="font-body text-xs text-primary/80 w-32 truncate">{s.kilde}</span>
+            <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
+              <div className="h-full bg-accent rounded-full" style={{ width: `${(s.pageviews / max) * 100}%` }} />
+            </div>
+            <span className="font-body text-xs text-primary/60 w-24 text-right">{s.pageviews} ({s.besokende} bes.)</span>
+          </div>
+        ))}
+        {sources.length === 0 && <p className="font-body text-sm text-primary/60">Ingen data enda.</p>}
+      </div>
+    </div>
+  );
+};
+
 const PinGate = ({ onSubmit, error }) => {
   const [value, setValue] = useState('');
   return (
@@ -156,11 +182,17 @@ const DashboardPage = () => {
           <div className="max-w-5xl mx-auto w-full flex flex-col gap-8">
             <h1 className="font-sans font-bold text-3xl md:text-4xl tracking-tight">Analytics siste 30 dager</h1>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <StatTile label="Hendelser totalt" value={data.totalEvents} />
+              <StatTile label="Sidevisninger" value={data.totalPageviews ?? '–'} />
               <StatTile label="Unike besøkende" value={data.uniqueVisitors} />
               <StatTile label="Demo-forespørsler" value={data.conversions} />
             </div>
+            {data.totalPageviews === null && (
+              <p className="font-body text-xs text-primary/50 -mt-4">
+                Fikk ikke hentet sidevisninger fra PostHog akkurat nå. Unike besøkende og grafen under viser derfor egne engasjement-hendelser i stedet, som undertelles sammenlignet med reell trafikk.
+              </p>
+            )}
             <DagligeHendelser days={buildDaySeries(data.days)} />
+            <Trafikkilder sources={data.sources} />
             <TopHendelser topEvents={data.topEvents} />
           </div>
         ) : null}
