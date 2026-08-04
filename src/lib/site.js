@@ -89,7 +89,7 @@ export const prismodeller = [
 export const alltidMed = [
   'Skreddersydd design, håndkodet',
   'Optimalisert for mobil og desktop',
-  'Grunnleggende SEO og AI-søk',
+  'Synlig i Google, og i AI-søk',
   'Tekster ferdigskrevet',
   'Kontaktskjema',
   'Domene- og SSL-oppsett',
@@ -147,7 +147,7 @@ export const driftNivaer = [
   },
 ];
 
-export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid — bytt nivå eller avslutt når du vil.';
+export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå eller avslutt når du vil.';
 
 /* ---------------------------------------------------------------
    KALKULATOR. Selvbetjent prisestimat. Grunnpris etter omfang,
@@ -218,7 +218,7 @@ export const sammenlignWix = {
 
 export const sammenlignWordpress = {
   navn: 'WordPress',
-  intro: 'WordPress er gratis å laste ned. Det som koster er alt rundt: hosting, plugins, og noen som følger med når noe går galt — for noe går alltid galt før eller siden.',
+  intro: 'WordPress er gratis å laste ned. Det som koster er alt rundt: hosting, plugins, og noen som følger med når noe går galt, for noe går alltid galt før eller siden.',
   rader: [
     ['Grunnkostnad', 'Gratis kjerne, betal for hosting og plugins løpende', 'Fastpris inkluderer alt fra start'],
     ['Vedlikehold', 'Du eller en utvikler må oppdatere jevnlig', 'Håndkodet, uten plugins å holde ved like'],
@@ -287,7 +287,7 @@ export const sporsmal = [
   },
   {
     q: 'Er siden optimalisert for Google og mobil?',
-    a: 'Ja, alltid. Riktig struktur, metadata og hastighet ligger i bunn fra start, og alt jeg leverer er fullt responsivt. Det ser like bra ut på mobilen i bilen som på skjermen på kontoret. Jeg setter også opp Analytics og Search Console, så du kan se hva som faktisk skjer.',
+    a: 'Ja, alltid. Riktig struktur, metadata og hastighet ligger i bunnen fra start, og alt jeg leverer er fullt responsivt. Det ser like bra ut på mobilen i bilen som på skjermen på kontoret. Jeg setter også opp Analytics og Search Console, så du kan se hva som faktisk skjer.',
   },
   {
     q: 'Hvem er det egentlig jeg snakker med?',

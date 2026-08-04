@@ -14,7 +14,7 @@ const KalkulatorPage = () => (
     <SideTopp
       tittel="Hva koster"
       uthevet="din nettside?"
-      lede="Svar på noen få spørsmål, så får du et realistisk prisestimat på under ett minutt. Ingen e-post, ingen forpliktelser — bare de samme fastprisene jeg bruker i ekte prosjekter."
+      lede="Svar på noen få spørsmål, så får du et realistisk prisestimat på under ett minutt. Ingen e-post, ingen forpliktelser, bare de samme fastprisene som jeg bruker i ekte prosjekter."
     />
     <Kalkulator />
     <DemoSkjema

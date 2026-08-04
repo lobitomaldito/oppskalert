@@ -12,7 +12,7 @@ const SammenlignPage = () => {
     <Shell>
       <SEO
         title="Sammenlign"
-        description="Wix, WordPress eller en skreddersydd nettside — ærlig sammenlignet på pris, eierskap, hastighet og tidsbruk."
+        description="Wix, WordPress eller en skreddersydd nettside: ærlig sammenlignet på pris, eierskap, hastighet og tidsbruk."
         keywords={['wix eller webdesigner', 'wordpress eller webdesigner', 'sammenlign nettsideleverandør']}
         canonical="https://oppskalert.no/sammenlign"
       />
@@ -47,7 +47,7 @@ const SammenlignPage = () => {
       <DemoSkjema
         tittel="Fortsatt usikker på"
         uthevet="hva som passer?"
-        lede="Fortell meg kort om bedriften og hva du trenger, så gir jeg deg et ærlig råd — uansett om svaret er meg eller noe annet."
+        lede="Fortell meg kort om bedriften og hva du trenger, så gir jeg deg et ærlig råd, uansett om svaret er meg eller noe annet."
       />
     </Shell>
   );

@@ -34,7 +34,7 @@ const team = [
 
 const reviews = [
   { quote: 'Jeg har alltid grudd meg til tannlegen, men her ble jeg tatt imot med ro og forklart alt underveis. Helt smertefritt.', name: 'Marte K.' },
-  { quote: 'Sentralt, moderne og utrolig hyggelig personale. Fikk akutttime samme dag da jeg hadde vondt. Anbefales!', name: 'Jonas R.' },
+  { quote: 'Sentralt, moderne og utrolig hyggelig personale. Fikk akuttime samme dag da jeg hadde vondt. Anbefales!', name: 'Jonas R.' },
   { quote: 'Beste tannlegeopplevelsen jeg har hatt. Ren klinikk, dyktige folk og tydelig pris før vi startet.', name: 'Linnea T.' },
 ];
 
@@ -214,8 +214,8 @@ const About = () => {
           </p>
           <div data-reveal className="mt-8 grid sm:grid-cols-3 gap-6">
             {[
-              { n: '15+', l: 'år med erfaring' },
-              { n: '320+', l: 'fornøyde pasienter' },
+              { n: '22', l: 'år med erfaring' },
+              { n: '1 800', l: 'pasienter i journal' },
               { n: '4,9', l: 'i snittvurdering' },
             ].map((s) => (
               <div key={s.l}>
@@ -266,7 +266,7 @@ const Reviews = () => {
           {reviews.map((r) => (
             <div key={r.name} data-reveal className="rounded-3xl bg-white p-8 ring-1 ring-[#123b46]/5 shadow-sm">
               <span className="flex mb-4">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-4 h-4 fill-[#2f9c8f] text-[#2f9c8f]" />)}</span>
-              <p className="text-[#123b46]/85 leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
+              <p className="text-[#123b46]/85 leading-relaxed">«{r.quote}»</p>
               <p className="mt-5 text-sm text-[#123b46]/55">{r.name}</p>
             </div>
           ))}

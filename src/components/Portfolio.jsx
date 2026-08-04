@@ -54,7 +54,7 @@ const Portfolio = ({ limit = null, visAlleLenke = false, tittel = 'Noe av det je
         <SeksjonTopp
           tittel={tittel}
           uthevet={uthevet}
-          lede="Ekte sider i drift for ekte norske bedrifter. Trykk deg inn på hvilken som helst av dem. Alle er i drift."
+          lede="Ekte sider i drift for norske bedrifter. Trykk deg inn på hvilken som helst av dem, de er alle live akkurat nå."
         />
 
         <div className="grid gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))]">

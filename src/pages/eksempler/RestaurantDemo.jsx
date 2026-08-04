@@ -128,7 +128,7 @@ const Hero = () => (
         </div>
         <div className="hero-elem mt-9 flex items-center gap-3 text-sm text-[#f4ece0]/70">
           <span className="flex">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-4 h-4 fill-[#c69a52] text-[#c69a52]" />)}</span>
-          4,8 av 5 · 320+ fornøyde gjester
+          4,8 av 5 · 410 gjesteomtaler
         </div>
       </div>
       <div className="hero-elem relative">
@@ -260,7 +260,7 @@ const Reviews = () => {
           {reviews.map((r) => (
             <div key={r.name} data-reveal className="rounded-3xl border border-[#1a1614]/15 p-8 bg-[#1a1614]/[0.04]">
               <span className="flex mb-4">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-4 h-4 fill-[#1a1614] text-[#1a1614]" />)}</span>
-              <p className="text-[#1a1614]/85 leading-relaxed font-serif text-lg">&ldquo;{r.quote}&rdquo;</p>
+              <p className="text-[#1a1614]/85 leading-relaxed font-serif text-lg">«{r.quote}»</p>
               <p className="mt-5 text-sm text-[#1a1614]/60">{r.name}</p>
             </div>
           ))}

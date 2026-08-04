@@ -2,15 +2,15 @@ const handwritten = [
   {
     slug: "mobilhastighet-nettside-koster-millioner",
     title: "Mobilhastighet på nettside: Hvorfor 3 sekunder koster millioner",
-    description: "Når din nettside laster tregt, forsvinner kundene. Her er hvorfor 3-sekundersregelen er kritisk for din omsetning og hvordan du fikser det.",
+    description: "Når nettsiden din laster tregt, forsvinner kundene. Her er hvorfor tre-sekundersregelen er kritisk for omsetningen, og hva du gjør med det.",
     publishDate: "2026-05-01",
     keywords: ["mobilhastighet nettside", "nettside laster tregt"],
     hero: "/blogg/mobilhastighet-nettside-koster-millioner.jpg",
-    content: `Du har brukt titusenvis av kroner på annonser for å få besøkende til siden din. Men så snart de klikker, skjer det ingenting. Skjermen forblir hvit mens en liten sirkel spinner i det uendelige. Dette er ikke bare en irriterende teknisk detalj; det er et aktivt tap av penger. Når din **mobilhastighet på nettside** faller under den magiske grensen på tre sekunder, har du allerede mistet over halvparten av de potensielle kundene dine.
+    content: `Du har brukt titusenvis av kroner på annonser for å få besøkende til siden din. Men så snart de klikker, skjer det ingenting. Skjermen forblir hvit mens en liten sirkel spinner i det uendelige. Dette er ikke bare en irriterende teknisk detalj, det er et aktivt tap av penger. Når **mobilhastigheten på nettsiden din** faller under den magiske grensen på tre sekunder, har du allerede mistet over halvparten av de potensielle kundene dine.
 
-## Hastighet er din viktigste konverteringsfaktor
+## Hastighet er den viktigste konverteringsfaktoren du har
 
-Data fra Google viser at hele 53 % av mobilbrukere forlater en side som tar mer enn tre sekunder å laste. Det er ikke fordi nordmenn er spesielt utålmodige, men fordi vi har utviklet en intuitiv forventning om umiddelbar tilfredsstillelse. Hvis siden din **laster tregt**, tolker hjernen det som et tegn på at bedriften enten er uprofesjonell eller utilgjengelig. Hvert ekstra sekund du legger til i lastetid, reduserer konverteringsraten din med i gjennomsnitt 7 %.
+Data fra Google viser at hele 53 % av mobilbrukerne forlater en side som tar mer enn tre sekunder å laste. Det er ikke fordi nordmenn er spesielt utålmodige, men fordi vi har vent oss til at ting skal skje med en gang. Hvis siden din **laster tregt**, tolker hjernen det som et tegn på at bedriften enten er uprofesjonell eller utilgjengelig. Hvert ekstra sekund du legger til i lastetid, reduserer konverteringsraten din med i gjennomsnitt 7 %.
 
 ## Time to Interactive er det eneste tallet som betyr noe
 
@@ -18,9 +18,9 @@ Mange byråer skryter av at nettsiden er «lett» eller at bildene er optimalise
 
 ## Mobilhastighet påvirker mer enn bare kundene
 
-Det er ikke bare menneskelige besøkende som straffer deg for treg lastetid. Googles algoritmer har for lengst tatt inn over seg brukeropplevelse som en rangeringfaktor. Ved å ignorere ytelse, sender du et signal til søkemotorene om at siden din ikke er verdt å prioritere. Du ender opp med å betale mer for hvert klikk i annonsemarkedet, fordi kvalitetsskåren din synker i takt med lastehastigheten.
+Det er ikke bare menneskelige besøkende som straffer deg for treg lastetid. Googles algoritmer har for lengst tatt inn over seg brukeropplevelse som en rangeringsfaktor. Ved å ignorere ytelse, sender du et signal til søkemotorene om at siden din ikke er verdt å prioritere. Du ender opp med å betale mer for hvert klikk i annonsemarkedet, fordi kvalitetsskåren din synker i takt med lastehastigheten.
 
-## Teknisk gjeld dreper din salgstrakt
+## Teknisk gjeld dreper salgstrakten din
 
 De fleste bedrifter sitter fast med nettsider bygget på tunge, utdaterte rammeverk eller «page builders» med for mye kode. Denne tekniske gjelden er som et anker for hastigheten. En side som veier over 2 MB vil nesten alltid slite med å holde seg under 3-sekundersregelen på 4G-nett. Ved å fjerne unødvendige skript og optimalisere bildestørrelser, kan du ofte halvere lastetiden uten å endre det visuelle uttrykket nevneverdig.
 
@@ -30,12 +30,12 @@ For å snu utviklingen må du slutte å se på nettsiden som et statisk utstilli
 
 ## Hva bør du gjøre nå?
 
-Ikke stol på antakelser eller hva byrået ditt sa for to år siden. Gå til Google PageSpeed Insights i dag. Skriv inn din egen adresse og se på tallet for 'Largest Contentful Paint'. Hvis det er over 2,5 sekunder, har du et konkret forbedringspotensial. Start med å fjerne tunge videoer som spiller automatisk og minimer antall tredjeparts-skript som kjører i bakgrunnen.`,
+Ikke stol på antakelser eller hva byrået ditt sa for to år siden. Gå til Google PageSpeed Insights i dag. Skriv inn din egen adresse og se på tallet for «Largest Contentful Paint». Hvis det er over 2,5 sekunder, har du et konkret forbedringspotensial. Start med å fjerne tunge videoer som spiller automatisk og minimer antall tredjeparts-skript som kjører i bakgrunnen.`,
   },
   {
     slug: "myten-om-den-dyre-nettsiden-ai-prisbilde",
     title: "Myten om den dyre nettsiden: Slik endrer AI prisbildet",
-    description: "Trenger en ny nettside koste 100 000? Svaret er nei. Oppdag hvordan AI utfordrer tradisjonelle byråpriser og gir deg mer verdi for pengene i Norge.",
+    description: "Må en ny nettside koste 100 000 kroner? Svaret er nei. Slik utfordrer AI de tradisjonelle byråprisene, og gir deg mer for pengene.",
     publishDate: "2026-05-01",
     keywords: ["billig nettside norge", "AI nettside"],
     hero: "/blogg/myten-om-den-dyre-nettsiden-ai-prisbilde.jpg",
@@ -51,7 +51,7 @@ Jeg har målt tidsbruk på mine egne prosjekter: Oppgaven med å sette opp en fu
 
 Mange tror fortsatt at en AI nettside er en billig mal som ser ut som alle andre. Det er en utdatert myte. AI-drevet utvikling handler ikke om å generere søppel, men om å bruke maskiner til å utføre den repeterende kodingen, mens menneskelig ekspertise fokuserer på konverteringsdesign og informasjonsarkitektur.
 
-Ved å bruke AI-verktøy kan jeg generere struktur, skrive innhold basert på kundens eksisterende data, og bygge layout som laster på under 1,5 sekunder. Hastighet er den nye valutaen. 53 % av brukere forlater en side som bruker mer enn 3 sekunder på å laste inn – en feil de fleste dyre «håndkodede» sider fra 2022 fortsatt sliter med.
+Ved å bruke AI-verktøy kan jeg generere struktur, skrive innhold basert på kundens eksisterende data, og bygge layout som laster på under 1,5 sekunder. Hastighet er den nye valutaen. 53 % av brukerne forlater en side som bruker mer enn tre sekunder på å laste inn – en feil de fleste dyre «håndkodede» sider fra 2022 fortsatt sliter med.
 
 ## Hvorfor «strategiske workshops» spiser budsjettet ditt
 
@@ -80,37 +80,37 @@ For å se hva som er mulig med en moderne, effektiv tilnærming til webutvikling
   {
     slug: "hvordan-bygge-en-nettside-for-konvertering",
     title: "Nettside konvertering: Slik bygger du en ekte salgsmaskin",
-    description: "Slutt å kaste penger på pent design som ikke selger. Lær hvordan konverteringsarkitektur gjør din hjemmeside til en effektiv salgsmaskin for bedriften.",
+    description: "Slutt å kaste penger på pent design som ikke selger. Slik gjør konverteringsarkitektur hjemmesiden din til en side som faktisk skaffer kunder.",
     publishDate: "2026-05-01",
     keywords: ["nettside konvertering", "hjemmeside til bedrift"],
     hero: "/blogg/hvordan-bygge-en-nettside-for-konvertering.jpg",
     content: `## Estetikk er den dyreste feilen du kan gjøre
 
-Bedriftseiere bruker ofte 100 000 kroner på en ny nettside fordi den gamle «ser utdatert ut». Seks måneder senere viser tallene at ingenting har endret seg. En studie viser at 70% av besøkende forlater en side med dårlig struktur før de i det hele tatt ser tilbudet ditt.
+Bedriftseiere bruker ofte 100 000 kroner på en ny nettside fordi den gamle «ser utdatert ut». Seks måneder senere viser tallene at ingenting har endret seg. En studie viser at 70 % av de besøkende forlater en side med dårlig struktur før de i det hele tatt ser tilbudet ditt.
 
 Du kjøper ikke et nytt maleri for å øke salget. Du bygger en salgsmaskin. Problemet er ikke fargene eller fontene, men konverteringsarkitekturen som ligger under overflaten.
 
 ## Informasjonsarkitektur dikterer hvor kunden trykker
 
-Brukeren din er utålmodig. Innen to sekunder har de bestemt seg for om de blir eller går. Hvis de må lete etter hva du faktisk selger, har du allerede tapt 40% av potensielle kunder.
+Brukeren din er utålmodig. Innen to sekunder har de bestemt seg for om de blir eller går. Hvis de må lete etter hva du faktisk selger, har du allerede tapt 40 % av de potensielle kundene.
 
-En god nettside for konvertering følger en logisk sti. Den leder brukeren fra et konkret problem til en spesifikk løsning, og ender med en tydelig CTA (Call to Action). Hvis din hjemmeside for bedrift krever mer enn to klikk for å finne kontaktinformasjon eller kjøpsknapp, er det for mye friksjon.
+En god nettside for konvertering følger en logisk sti. Den leder brukeren fra et konkret problem til en spesifikk løsning, og ender med en tydelig oppfordring til handling. Hvis nettsiden til bedriften din krever mer enn to klikk for å finne kontaktinformasjon eller kjøpsknapp, er det for mye friksjon.
 
 ## Mobilhastighet er ikke et teknisk valg, det er økonomi
 
-Jeg ser ofte sider med tunge bildegallerier som bruker fire sekunder på å rendre. Hvert sekund ekstra lastetid reduserer konverteringsraten med omtrent 7-10%.
+Jeg ser ofte sider med tunge bildegallerier som bruker fire sekunder på å rendre. Hvert sekund ekstra lastetid reduserer konverteringsraten med omtrent 7–10 %.
 
 Det hjelper ikke med verdens beste copy hvis siden er for treg til å vise den. Jeg bruker verktøy som Firecrawl for å strippe ned unødvendig kode og sikre at innholdet når øynene til kunden umiddelbart. Hastighet er den lavest hengende frukten for å øke salget ditt.
 
 ## Bruk data, ikke magefølelse
 
-Tradisjonelle byråer selger deg det de synes er 'pent'. Jeg selger det som beviselig flytter brukere nedover trakten. Hver eneste seksjon på en nettside bør ha et formål: enten å bygge tillit, fjerne innvendinger, eller lede til neste steg.
+Tradisjonelle byråer selger deg det de synes er «pent». Jeg selger det som beviselig flytter brukere nedover trakten. Hver eneste seksjon på en nettside bør ha et formål: enten å bygge tillit, fjerne innvendinger, eller lede til neste steg.
 
-Ved å teste CTA-tekster ser jeg ofte forskjeller på 20-30 % i klikkrate bare ved å endre fra 'Kontakt oss' til 'Få gratis demo'. Små endringer i arkitekturen gir store utslag i bunnlinjen.
+Ved å teste knappetekster ser jeg ofte forskjeller på 20–30 % i klikkrate bare ved å endre fra «Kontakt oss» til «Få gratis demo». Små endringer i arkitekturen gir store utslag i bunnlinjen.
 
-## Veien videre for din nettside
+## Veien videre for nettsiden din
 
-Å bygge en konverterende nettside handler om å forstå kundens reise fra start til slutt. Det handler om å fjerne alt som distraherer og forsterke alt som selger. Hvis du er usikker på om din side presterer, se på analyseverktøyene dine i dag: Hvor faller folk av? Det er der arkitekturen din svikter.
+Å bygge en konverterende nettside handler om å forstå kundens reise fra start til slutt. Det handler om å fjerne alt som distraherer og forsterke alt som selger. Hvis du er usikker på om siden din presterer, se på analyseverktøyene dine i dag: hvor faller folk av? Det er der arkitekturen din svikter.
 
 Ta en kritisk gjennomgang av din egen side i kveld. Er hovedbudskapet ditt synlig før du scroller? Hvis ikke, har du et klart forbedringspunkt å starte med.`,
   },

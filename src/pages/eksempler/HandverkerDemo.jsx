@@ -290,7 +290,7 @@ const Reviews = () => {
           {reviews.map((r) => (
             <div key={r.name} data-reveal className="border border-[#16181a]/15 bg-[#ece8e1] p-8 rounded-sm">
               <span className="flex mb-4">{Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-4 h-4 fill-[#e07a24] text-[#e07a24]" />)}</span>
-              <p className="text-[#16181a] leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
+              <p className="text-[#16181a] leading-relaxed">«{r.quote}»</p>
               <p className="mt-5 font-mono text-xs uppercase tracking-wider text-[#3a3f44]">{r.name}</p>
             </div>
           ))}

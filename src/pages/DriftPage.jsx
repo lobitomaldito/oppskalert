@@ -135,9 +135,9 @@ const DriftPage = () => (
     </section>
     <Sammenligning />
     <DemoSkjema
-      tittel="Klar for å sove"
-      uthevet="godt om natten?"
-      lede="La meg ta meg av det tekniske, så kan du fokusere på bedriften din."
+      tittel="Én ting mindre"
+      uthevet="å tenke på."
+      lede="La meg ta meg av det tekniske, så kan du bruke tiden på bedriften din."
     />
   </Shell>
 );
