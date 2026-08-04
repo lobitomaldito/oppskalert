@@ -155,12 +155,18 @@ export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid — bytt niv�
    håndkodet — det finnes bevisst ingen "mal"-tier, siden det ville
    motsagt alltidMed over. Tallene er godkjent 2026-08-03; endre kun
    her, så følger kalkulatoren automatisk med.
-   --------------------------------------------------------------- */
+
+   manedspris er det veiledende "eller X kr/mnd"-alternativet til
+   engangsestimatet (godkjent 2026-08-04) — Driftet av meg skalert med
+   omfang, siden en flat 690 kr/mnd uansett prosjektstørrelse ville
+   undervurdert et stort nettbutikk-prosjekt kraftig. Upåvirket av
+   tillegg/haster, med vilje: et enkelt tall er lettere å stå for enn et
+   utregnet ett. */
 export const kalkulatorOmfang = [
-  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 7990, max: 9990 },
-  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900 },
-  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900 },
-  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900 },
+  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 7990, max: 9990, manedspris: 690 },
+  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900, manedspris: 890 },
+  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900, manedspris: 1190 },
+  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900, manedspris: 1590 },
 ];
 
 export const kalkulatorTillegg = [

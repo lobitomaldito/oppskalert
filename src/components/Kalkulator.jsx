@@ -128,6 +128,9 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                 {formatKr(min)}–{formatKr(max)} <span className="text-lg font-sans font-bold text-primary/70">kr</span>
               </div>
               <span className="font-body text-sm text-primary/70 mt-1 block">{omfang.label}{valgteTillegg.length > 0 ? ` + ${valgteTillegg.length} tillegg` : ''}{haster ? ', haster' : ''}</span>
+              <span className="font-body text-sm text-primary/70 mt-1 block">
+                eller fra <span className="text-primary font-semibold">{formatKr(omfang.manedspris)} kr/mnd</span>, driftet av meg
+              </span>
             </div>
 
             <p className="font-body text-xs text-primary/70 leading-relaxed border-t border-primary/10 pt-4">
