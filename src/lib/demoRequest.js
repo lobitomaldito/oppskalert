@@ -11,7 +11,16 @@ const DEMO_SUPABASE_ANON_KEY =
 
 // Eksportert så lib/analytics.js kan skrive til samme prosjekts
 // analytics_events-tabell uten å duplisere anon-nøkkelen.
-export const demoClient = createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY);
+//
+// Auth-persistens er skrudd av: denne klienten gjør bare anonyme INSERT-kall
+// og kaller aldri demoClient.auth.*, men uten dette starter GoTrueClient
+// likevel opp sesjonshåndtering med Navigator Locks for token-refresh på
+// tvers av faner. Med flere faner åpne kolliderer de om samme lock-navn og
+// kaster en uhåndtert "Lock ... was released because another request stole
+// it"-exception, fanget opp av PostHog error tracking i produksjon.
+export const demoClient = createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY, {
+  auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+});
 
 // Optional e-mail notification. Set VITE_WEB3FORMS_KEY to your free Web3Forms
 // access key (web3forms.com) to receive an e-mail at team@oppskalert.no for
