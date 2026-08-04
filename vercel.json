@@ -5,22 +5,22 @@
     { "source": "/kom-i-gang", "destination": "/kontakt", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/arbeid", "destination": "/index.html" },
-    { "source": "/priser", "destination": "/index.html" },
-    { "source": "/metode", "destination": "/index.html" },
-    { "source": "/om", "destination": "/index.html" },
-    { "source": "/kontakt", "destination": "/index.html" },
+    { "source": "/arbeid", "destination": "/arbeid/index.html" },
+    { "source": "/priser", "destination": "/priser/index.html" },
+    { "source": "/metode", "destination": "/metode/index.html" },
+    { "source": "/om", "destination": "/om/index.html" },
+    { "source": "/kontakt", "destination": "/kontakt/index.html" },
     { "source": "/blogg", "destination": "/index.html" },
     { "source": "/blogg/kategori/:slug", "destination": "/index.html" },
     { "source": "/blogg/forfatter/:slug", "destination": "/index.html" },
     { "source": "/blogg/:slug", "destination": "/index.html" },
-    { "source": "/eksempler/:slug", "destination": "/index.html" },
-    { "source": "/kalkulator", "destination": "/index.html" },
-    { "source": "/drift", "destination": "/index.html" },
-    { "source": "/sammenlign", "destination": "/index.html" },
-    { "source": "/sammenlign/:slug", "destination": "/index.html" },
+    { "source": "/eksempler/:slug", "destination": "/eksempler/:slug/index.html" },
+    { "source": "/kalkulator", "destination": "/kalkulator/index.html" },
+    { "source": "/drift", "destination": "/drift/index.html" },
+    { "source": "/sammenlign", "destination": "/sammenlign/index.html" },
+    { "source": "/sammenlign/:slug", "destination": "/sammenlign/:slug/index.html" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap.xml" },
     { "source": "/rss.xml", "destination": "/api/rss.xml" },
-    { "source": "/admin/dashboard", "destination": "/index.html" }
+    { "source": "/admin/dashboard", "destination": "/admin/dashboard/index.html" }
   ]
 }

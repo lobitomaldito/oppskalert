@@ -6,10 +6,12 @@ import { fetchOpinly } from './_shared/opinly.js';
 // aldri oppdatert når Opinly publiserer noe nytt.
 const SITE_URL = 'https://oppskalert.no';
 
+// /eksempler/* er bevisst utelatt: de er fiktive demo-bedrifter (noindex via
+// SEO.jsx), og skal derfor ikke stå i sitemapen — Googles egne retningslinjer
+// sier en noindex'et URL ikke hører hjemme her.
 const STATIC_PATHS = [
   '/', '/arbeid', '/priser', '/kalkulator', '/drift', '/sammenlign',
   '/sammenlign/wix', '/sammenlign/wordpress', '/metode', '/om', '/kontakt', '/blogg',
-  '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',
 ];
 
 const escapeXml = (s) =>
