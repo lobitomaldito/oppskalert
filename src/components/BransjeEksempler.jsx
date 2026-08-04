@@ -31,13 +31,15 @@ const BransjeEksempler = () => {
           />
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
+        {/* Mobil: horisontal scroll-snap i stedet for stacket rutenett,
+            så fire tunge bildekort ikke spiser høyde. Fra sm: rutenett som før. */}
+        <div className="flex sm:grid sm:grid-cols-2 gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible">
           {niches.map((n) => (
             <Link
               key={n.tag}
               to={n.route}
               data-reveal
-              className="group block rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-white/25 transition-colors duration-300"
+              className="group block flex-shrink-0 w-[78%] sm:w-auto snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-white/25 transition-colors duration-300"
             >
               {/* Browser-chrome bar: gjør kortet til en mini-nettleser */}
               <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.04]">

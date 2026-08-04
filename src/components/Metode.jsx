@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp } from './Layout';
-import { stegene } from '../lib/site';
+import { ruter, stegene } from '../lib/site';
 
 /* Her er nummerering fortjent: dette ER en sekvens, og rekkefølgen bærer
    informasjon leseren trenger. Derfor tall her, og ingen andre steder. */
@@ -44,7 +46,9 @@ const Metode = ({ utdypet = false }) => {
                   </span>
                 </div>
 
-                <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/90 max-w-[58ch]">{s.desc}</p>
+                {utdypet && (
+                  <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/90 max-w-[58ch]">{s.desc}</p>
+                )}
 
                 {utdypet && (
                   <ul className="mt-4 flex flex-col gap-1.5">
@@ -63,6 +67,16 @@ const Metode = ({ utdypet = false }) => {
             </li>
           ))}
         </ol>
+
+        {!utdypet && (
+          <Link
+            data-reveal
+            to={ruter.metode}
+            className="mt-10 md:mt-12 inline-flex items-center gap-2 font-sans font-bold text-sm text-room-signal hover:opacity-80 transition-opacity"
+          >
+            Les mer om hvordan jeg jobber <ArrowRight className="w-4 h-4" />
+          </Link>
+        )}
       </div>
     </section>
   );

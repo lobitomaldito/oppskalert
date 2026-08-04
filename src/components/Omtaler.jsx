@@ -16,7 +16,6 @@ const Stjerner = () => (
 
 const Omtaler = () => {
   const container = useReveal(90);
-  const [forst, ...resten] = omtaler;
 
   return (
     <section ref={container} className="seksjon">
@@ -26,22 +25,32 @@ const Omtaler = () => {
           uthevet="Hør på kundene."
         />
 
-        <div className="grid gap-5 lg:grid-cols-[1.15fr_1fr]">
-          {/* Den lengste omtalen får plassen den fortjener */}
-          <figure data-reveal className="rounded-3xl border border-primary/12 bg-primary/[0.04] p-7 md:p-9 flex flex-col">
-            <Stjerner />
-            <blockquote className="font-body text-[0.95rem] md:text-base leading-[1.75] text-primary/90 flex-1">
-              «{forst.sitat}»
-            </blockquote>
-            <figcaption className="mt-6">
-              <span className="font-sans font-bold block">{forst.navn}</span>
-              <span className="font-body text-xs text-primary/70">{forst.firma}</span>
-            </figcaption>
-          </figure>
-
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1 lg:grid-rows-3">
-            {resten.map((t) => (
-              <figure key={t.navn} data-reveal className="rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 flex flex-col">
+        {/* Mobil: horisontal scroll-snap, holder seksjonen kort i høyden.
+            Fra lg: samme rutenett som før, med den lengste omtalen igjen
+            i egen kolonne (row-span-3 lar de tre andre fylle plassen ved siden av). */}
+        <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 sm:mx-0 sm:px-0 sm:pb-0 lg:grid lg:grid-cols-[1.15fr_1fr] lg:grid-rows-3 lg:overflow-visible">
+          {omtaler.map((t, i) =>
+            i === 0 ? (
+              <figure
+                key={t.navn}
+                data-reveal
+                className="flex-shrink-0 w-[82%] sm:w-[60%] lg:w-auto snap-start rounded-3xl border border-primary/12 bg-primary/[0.04] p-7 md:p-9 flex flex-col lg:col-start-1 lg:row-start-1 lg:row-span-3"
+              >
+                <Stjerner />
+                <blockquote className="font-body text-[0.95rem] md:text-base leading-[1.75] text-primary/90 flex-1">
+                  «{t.sitat}»
+                </blockquote>
+                <figcaption className="mt-6">
+                  <span className="font-sans font-bold block">{t.navn}</span>
+                  <span className="font-body text-xs text-primary/70">{t.firma}</span>
+                </figcaption>
+              </figure>
+            ) : (
+              <figure
+                key={t.navn}
+                data-reveal
+                className="flex-shrink-0 w-[82%] sm:w-[60%] lg:w-auto snap-start rounded-2xl border border-primary/12 bg-primary/[0.03] p-6 flex flex-col"
+              >
                 <Stjerner />
                 <blockquote className="font-body text-[0.95rem] leading-relaxed text-primary/85 flex-1">«{t.sitat}»</blockquote>
                 <figcaption className="mt-4">
@@ -49,8 +58,8 @@ const Omtaler = () => {
                   <span className="font-body text-xs text-primary/70">{t.firma}</span>
                 </figcaption>
               </figure>
-            ))}
-          </div>
+            )
+          )}
         </div>
       </div>
     </section>
