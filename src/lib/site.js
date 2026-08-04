@@ -26,6 +26,7 @@ export const ruter = {
   sammenlign: '/sammenlign',
   sammenlignWix: '/sammenlign/wix',
   sammenlignWordpress: '/sammenlign/wordpress',
+  seo: '/sokemotoroptimalisering',
 };
 
 export const navLenker = [

@@ -11,7 +11,8 @@ const SITE_URL = 'https://oppskalert.no';
 // sier en noindex'et URL ikke hører hjemme her.
 const STATIC_PATHS = [
   '/', '/arbeid', '/priser', '/kalkulator', '/drift', '/sammenlign',
-  '/sammenlign/wix', '/sammenlign/wordpress', '/metode', '/om', '/kontakt', '/blogg',
+  '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
+  '/metode', '/om', '/kontakt', '/blogg',
 ];
 
 const escapeXml = (s) =>

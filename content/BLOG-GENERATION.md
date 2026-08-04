@@ -21,7 +21,7 @@ både i stemme og struktur.
    oppføringen.
 7. Opprett en ny branch (`content/<slug>`), commit med melding
    `content: publish blog post "<title>"`, push branchen, og åpne en PR mot
-   master. Ikke merge selv, ikke push til master direkte — brukeren skal
+   master. Ikke merge selv, ikke push til master direkte, brukeren skal
    godkjenne hver artikkel før den går live.
 
 ## Skjema (`src/content/generated/<slug>.js`)
@@ -45,8 +45,26 @@ Mer brødtekst...`,
 ```
 
 Feltene må matche nøyaktig det de tre håndskrevne artiklene bruker (se
-`src/lib/articles.js`) — samme nøkler, samme typer. `getArticleBySlug` og
+`src/lib/articles.js`), samme nøkler, samme typer. `getArticleBySlug` og
 sorteringen i `articles.js` forventer dette uendret.
+
+### Registrer filen
+
+Å legge filen i mappen er ikke nok. Den må også inn i
+`src/content/generated/index.js`, med to linjer:
+
+```js
+import minNyeArtikkel from './2026-08-11-slug-her.js';
+
+export const generated = [minNyeArtikkel];
+```
+
+Dette registeret erstattet et `import.meta.glob`-oppslag som fant filene
+automatisk. Globen er en Vite-funksjon, og `api/sitemap.xml.js` og
+`api/rss.xml.js` importerer `articles.js` og kjører som vanlig Node på
+Vercel. Der er `import.meta.glob` undefined, så modulen kastet ved import og
+begge rutene svarte 500. Ett ekstra linjepar per artikkel er prisen for at
+sitemapen holder seg oppe.
 
 ## Stemme og stil
 

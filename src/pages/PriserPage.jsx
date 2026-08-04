@@ -79,16 +79,16 @@ const Sammenligning = () => {
 const PriserPage = () => (
   <Shell>
     <SEO
-      title="Priser"
-      description="Nettside med engangspris fra 7 990 kr, eller driftet av meg fra 690 kr/mnd. Fast pris, gratis demo først, ingen binding."
-      keywords={['hva koster nettside', 'nettside pris norge', 'nettside abonnement']}
+      title="Nettside pris, fast og uten overraskelser"
+      description="Pris på hjemmeside og nettside: engangspris fra 7 990 kr, eller driftet av meg fra 690 kr/mnd. Du får fast pris og en gratis demo før du bestemmer deg. Ingen binding."
+      keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[faqSchema, priserSchema]}
     />
     <SideTopp
-      tittel="Fast pris."
-      uthevet="Null overraskelser."
-      lede="To modeller, begge starter med en gratis demo. Du vet nøyaktig hva det koster før jeg skriver en eneste linje kode."
+      tittel="Fast pris på"
+      uthevet="nettside og drift."
+      lede="To modeller, begge starter med en gratis demo. Du vet nøyaktig hva hjemmesiden koster før jeg skriver en eneste linje kode."
     />
     <Priser visPasserDeg />
     <Sammenligning />

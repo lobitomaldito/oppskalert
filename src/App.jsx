@@ -178,10 +178,13 @@ const homeJsonLd = [homeSchema, faqSchema];
 
 const Home = () => (
   <Shell>
+    {/* Tittel og beskrivelse er skrevet for søk, ikke for merkevare.
+        «Nettsider som faktisk selger» er god copy og null søkevolum, så den
+        lever videre som H1 i heroen i stedet. Se SEO.md punkt 4. */}
     <SEO
-      title="Nettsider som faktisk selger"
-      description="Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Du ser en ferdig demo gratis før du betaler en krone. Ingen binding."
-      keywords={['nettside bedrift', 'billig nettside norge', 'webutvikling norge', 'gratis nettside demo']}
+      title="Profesjonell nettside til fast pris"
+      description="Nettsideleverandør for norske bedrifter. Jeg bygger en profesjonell nettside til fast pris, og du ser en ferdig demo gratis før du betaler en krone. Ingen binding."
+      keywords={['nettsideleverandør', 'profesjonell nettside', 'nettside til bedrift', 'nettside pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />

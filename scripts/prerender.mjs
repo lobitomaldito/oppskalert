@@ -27,6 +27,7 @@ const distDir = path.join(__dirname, '..', 'dist');
 const ROUTES = [
   '/', '/arbeid', '/priser', '/metode', '/om', '/kontakt', '/drift',
   '/sammenlign', '/sammenlign/wix', '/sammenlign/wordpress', '/kalkulator',
+  '/sokemotoroptimalisering',
   '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',
   '/admin/dashboard',
 ];

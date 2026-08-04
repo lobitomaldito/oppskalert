@@ -6,14 +6,14 @@ import DemoSkjema from '../components/DemoSkjema';
 const KalkulatorPage = () => (
   <Shell>
     <SEO
-      title="Priskalkulator"
-      description="Regn ut hva nettsiden din koster på under ett minutt. Gratis, ingen e-post nødvendig, bygget på de samme fastprisene jeg bruker i ekte prosjekter."
-      keywords={['priskalkulator nettside', 'hva koster nettside', 'nettside pris kalkulator']}
+      title="Hva koster en nettside? Regn det ut"
+      description="Hva koster en nettside i 2026? Regn det ut på under ett minutt. Gratis, ingen e-post nødvendig, bygget på de samme fastprisene jeg bruker i ekte prosjekter."
+      keywords={['hva koster en nettside', 'hva koster en hjemmeside', 'priskalkulator nettside']}
       canonical="https://oppskalert.no/kalkulator"
     />
     <SideTopp
       tittel="Hva koster"
-      uthevet="din nettside?"
+      uthevet="en nettside?"
       lede="Svar på noen få spørsmål, så får du et realistisk prisestimat på under ett minutt. Ingen e-post, ingen forpliktelser, bare de samme fastprisene som jeg bruker i ekte prosjekter."
     />
     <Kalkulator />
