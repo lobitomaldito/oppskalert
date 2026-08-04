@@ -109,6 +109,20 @@ export default async function handler(req, res) {
     return;
   }
 
+  // Leads leses kun her, med service-role-nøkkelen — anon-nøkkelen i
+  // klienten har bevisst ingen SELECT-policy på denne tabellen (se
+  // demoRequest.js), så dette er det eneste stedet innsendte skjema kan
+  // leses tilbake fra.
+  const { data: leadsData, error: leadsError } = await supabase
+    .from('demo_foresporsler')
+    .select('id, navn, epost, firma, melding, status, created_at')
+    .order('created_at', { ascending: false })
+    .limit(50);
+
+  if (leadsError) {
+    console.error('dashboard-data: kunne ikke hente leads', leadsError);
+  }
+
   const byDay = {};
   const byEvent = {};
   const anonIds = new Set();
@@ -143,5 +157,6 @@ export default async function handler(req, res) {
     engagementEvents: data.length,
     conversions: byEvent.demo_request_submitted || 0,
     topEvents,
+    leads: leadsData || [],
   });
 }

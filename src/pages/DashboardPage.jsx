@@ -104,6 +104,30 @@ const Trafikkilder = ({ sources }) => {
   );
 };
 
+const Leads = ({ leads }) => (
+  <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
+    <h2 className="font-sans font-bold text-lg mb-6">Nye henvendelser</h2>
+    <div className="flex flex-col gap-4">
+      {leads.map((l) => (
+        <div key={l.id} className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <span className="font-sans font-bold text-base text-primary">{l.navn}</span>
+            <span className="font-body text-xs text-primary/50">
+              {new Date(l.created_at).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+            </span>
+          </div>
+          <div className="font-body text-sm text-primary/80 mt-0.5">
+            <a href={`mailto:${l.epost}`} className="text-accent hover:underline">{l.epost}</a>
+            {l.firma && <span className="text-primary/60"> · {l.firma}</span>}
+          </div>
+          {l.melding && <p className="font-body text-sm text-primary/70 mt-1.5 leading-relaxed">{l.melding}</p>}
+        </div>
+      ))}
+      {leads.length === 0 && <p className="font-body text-sm text-primary/60">Ingen henvendelser enda.</p>}
+    </div>
+  </div>
+);
+
 const PinGate = ({ onSubmit, error }) => {
   const [value, setValue] = useState('');
   return (
@@ -191,6 +215,7 @@ const DashboardPage = () => {
                 Fikk ikke hentet sidevisninger fra PostHog akkurat nå. Unike besøkende og grafen under viser derfor egne engasjement-hendelser i stedet, som undertelles sammenlignet med reell trafikk.
               </p>
             )}
+            <Leads leads={data.leads ?? []} />
             <DagligeHendelser days={buildDaySeries(data.days)} />
             <Trafikkilder sources={data.sources} />
             <TopHendelser topEvents={data.topEvents} />
