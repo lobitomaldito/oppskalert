@@ -128,6 +128,49 @@ const Leads = ({ leads }) => (
   </div>
 );
 
+// Skrevet av en ukentlig cloud-agent (schedule-rutine), som også committer
+// samme rapport som markdown til reports/ i repoet. Ingen markdown-rendering
+// her med vilje — whitespace-pre-wrap er nok og unngår en ny avhengighet.
+const UkentligeRapporter = ({ reports }) => {
+  const [apen, setApen] = useState(null);
+  return (
+    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
+      <h2 className="font-sans font-bold text-lg mb-1">Ukentlige rapporter</h2>
+      <p className="font-body text-xs text-primary/60 mb-6">Trafikk, kilder og innsikt, oppsummert hver uke.</p>
+      <div className="flex flex-col gap-4">
+        {reports.map((r) => {
+          const erApen = apen === r.id;
+          return (
+            <div key={r.id} className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <span className="font-sans font-bold text-base text-primary">
+                  {new Date(r.week_start).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' })}
+                  {' – '}
+                  {new Date(r.week_end).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' })}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setApen(erApen ? null : r.id)}
+                  className="font-body text-xs text-accent hover:underline"
+                >
+                  {erApen ? 'Skjul full rapport' : 'Vis full rapport'}
+                </button>
+              </div>
+              <p className="font-body text-sm text-primary/80 mt-1.5 leading-relaxed">{r.summary}</p>
+              {erApen && (
+                <pre className="font-body text-xs text-primary/70 mt-3 leading-relaxed whitespace-pre-wrap bg-primary/5 rounded-2xl p-4">
+                  {r.report_markdown}
+                </pre>
+              )}
+            </div>
+          );
+        })}
+        {reports.length === 0 && <p className="font-body text-sm text-primary/60">Ingen rapporter enda. Første ukentlige rapport kommer etter neste kjøring.</p>}
+      </div>
+    </div>
+  );
+};
+
 const PinGate = ({ onSubmit, error }) => {
   const [value, setValue] = useState('');
   return (
@@ -218,6 +261,7 @@ const DashboardPage = () => {
             <Leads leads={data.leads ?? []} />
             <DagligeHendelser days={buildDaySeries(data.days)} />
             <Trafikkilder sources={data.sources} />
+            <UkentligeRapporter reports={data.reports ?? []} />
             <TopHendelser topEvents={data.topEvents} />
           </div>
         ) : null}

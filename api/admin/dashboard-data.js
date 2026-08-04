@@ -123,6 +123,19 @@ export default async function handler(req, res) {
     console.error('dashboard-data: kunne ikke hente leads', leadsError);
   }
 
+  // Skrevet av en ukentlig cloud-agent (se /reports i repoet for historikk
+  // og den fulle rapporten som markdown). Samme lese-mønster som leads:
+  // anon kan bare INSERT, så dette er eneste sted de kan leses tilbake fra.
+  const { data: reportsData, error: reportsError } = await supabase
+    .from('weekly_reports')
+    .select('id, week_start, week_end, summary, report_markdown, stats, created_at')
+    .order('week_start', { ascending: false })
+    .limit(12);
+
+  if (reportsError) {
+    console.error('dashboard-data: kunne ikke hente ukentlige rapporter', reportsError);
+  }
+
   const byDay = {};
   const byEvent = {};
   const anonIds = new Set();
@@ -158,5 +171,6 @@ export default async function handler(req, res) {
     conversions: byEvent.demo_request_submitted || 0,
     topEvents,
     leads: leadsData || [],
+    reports: reportsData || [],
   });
 }
