@@ -1,199 +1,321 @@
 import { useEffect, useState } from 'react';
-import { Loader2, Lock } from 'lucide-react';
+import { ChevronDown, Loader2, Lock, TrendingDown, TrendingUp } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Navbar, Footer } from '../components/Layout';
 
 const STORAGE_KEY = 'oppskalert_dashboard_pin';
+const PERIODER = [7, 30, 90];
 
-// Fyller inn alle 30 dagene, ikke bare dem med treff, så stolpediagrammet
-// blir sammenhengende i stedet for hullete rundt stille dager.
-const buildDaySeries = (days) => {
-  const byDate = new Map(days.map((d) => [d.date, d.count]));
-  const out = [];
-  for (let i = 29; i >= 0; i--) {
+const kort = 'bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8';
+
+const nb = (n) => new Intl.NumberFormat('nb-NO').format(n);
+const prosent = (andel) => `${Math.round(andel * 100)} %`;
+const datoKort = (d) => new Date(d).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' });
+const datoTid = (d) =>
+  new Date(d).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+
+// Fyller inn alle dagene i perioden, ikke bare dem med treff, så
+// stolpediagrammet blir sammenhengende i stedet for hullete rundt stille dager.
+const byggDagsserie = (dager, antallDager) => {
+  const perDato = new Map(dager.map((d) => [d.dato, d]));
+  const ut = [];
+  for (let i = antallDager - 1; i >= 0; i--) {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    const key = d.toISOString().slice(0, 10);
-    out.push({ date: key, count: byDate.get(key) || 0 });
+    const nokkel = d.toISOString().slice(0, 10);
+    ut.push(perDato.get(nokkel) || { dato: nokkel, visninger: 0, besokende: 0 });
   }
-  return out;
+  return ut;
 };
 
-const StatTile = ({ label, value }) => (
-  <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6">
-    <span className="font-body text-xs uppercase tracking-widest text-primary/60 block mb-2">{label}</span>
-    <span className="font-sans font-bold text-3xl md:text-4xl text-primary">{value}</span>
+// Endring vises bare når forrige periode faktisk hadde noe å sammenligne
+// med. «+100 %» fra null er en tom påstand, og «uendret» fra 0 til 0 er
+// verre enn ingenting.
+const Endring = ({ na, forrige }) => {
+  if (forrige === null || forrige === undefined) return null;
+  if (forrige === 0) {
+    return (
+      <span className="font-body text-xs text-primary/50">
+        {na === 0 ? 'ingen forrige periode heller' : 'ingenting forrige periode'}
+      </span>
+    );
+  }
+  const endring = (na - forrige) / forrige;
+  const opp = endring >= 0;
+  const Ikon = opp ? TrendingUp : TrendingDown;
+  return (
+    <span className={`font-body text-xs flex items-center gap-1 ${opp ? 'text-emerald-400' : 'text-red-400'}`}>
+      <Ikon className="w-3.5 h-3.5" aria-hidden="true" />
+      {opp ? '+' : ''}{Math.round(endring * 100)} % mot forrige periode
+    </span>
+  );
+};
+
+const Nokkeltall = ({ etikett, verdi, forrige, forklaring }) => (
+  <div className={`${kort} p-6`}>
+    <span className="font-body text-xs uppercase tracking-widest text-primary/60 block mb-2">{etikett}</span>
+    <span className="font-sans font-bold text-3xl md:text-4xl text-primary block">
+      {verdi === null || verdi === undefined ? '–' : nb(verdi)}
+    </span>
+    <div className="mt-2 flex flex-col gap-1">
+      <Endring na={verdi} forrige={forrige} />
+      {forklaring && <span className="font-body text-xs text-primary/50">{forklaring}</span>}
+    </div>
   </div>
 );
 
-const DagligeHendelser = ({ days }) => {
+// Aksen viser topp, midt og null, slik at en stolpe kan leses av uten å
+// måtte holde musen over den. Datoene under er første, midterste og siste
+// dag i perioden.
+const Trafikkgraf = ({ dager, antallDager }) => {
   const [hover, setHover] = useState(null);
-  const max = Math.max(1, ...days.map((d) => d.count));
+  const serie = byggDagsserie(dager, antallDager);
+  const maks = Math.max(1, ...serie.map((d) => d.visninger));
+  const merker = [0, Math.floor(serie.length / 2), serie.length - 1];
 
   return (
-    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
-      <h2 className="font-sans font-bold text-lg mb-6">Hendelser siste 30 dager</h2>
-      <div className="relative flex items-end gap-1 h-40">
-        {days.map((d) => (
-          <div
-            key={d.date}
-            className="group relative flex-1 h-full flex items-end"
-            onMouseEnter={() => setHover(d)}
-            onMouseLeave={() => setHover((cur) => (cur?.date === d.date ? null : cur))}
-          >
-            <div
-              className="w-full bg-accent/70 group-hover:bg-accent rounded-t-sm transition-colors"
-              style={{ height: `${Math.max(2, (d.count / max) * 100)}%` }}
-            />
+    <div className={kort}>
+      <h2 className="font-sans font-bold text-lg mb-1">Sidevisninger per dag</h2>
+      <p className="font-body text-xs text-primary/60 mb-6">
+        Ditt eget besøk på /admin er holdt utenfor. Hold over en stolpe for tallene.
+      </p>
+      <div className="flex gap-3">
+        <div className="flex flex-col justify-between h-40 font-body text-[0.65rem] text-primary/40 text-right w-8 shrink-0">
+          <span>{nb(maks)}</span>
+          <span>{nb(Math.round(maks / 2))}</span>
+          <span>0</span>
+        </div>
+        <div className="flex-1">
+          <div className="relative flex items-end gap-px h-40 border-l border-b border-primary/10 pl-1">
+            {/* Hjelpelinjer på topp og midt, så høyden kan leses av mot aksen. */}
+            <div className="absolute inset-x-0 top-0 border-t border-dashed border-primary/10" aria-hidden="true" />
+            <div className="absolute inset-x-0 top-1/2 border-t border-dashed border-primary/10" aria-hidden="true" />
+            {serie.map((d) => (
+              <div
+                key={d.dato}
+                className="group relative flex-1 h-full flex items-end"
+                onMouseEnter={() => setHover(d)}
+                onMouseLeave={() => setHover((n) => (n?.dato === d.dato ? null : n))}
+              >
+                <div
+                  className="w-full bg-accent/70 group-hover:bg-accent rounded-t-sm transition-colors"
+                  style={{ height: `${Math.max(1, (d.visninger / maks) * 100)}%` }}
+                />
+              </div>
+            ))}
+            {hover && (
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-primary text-background text-xs font-body px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none z-10">
+                {datoKort(hover.dato)}: {nb(hover.visninger)} visninger, {nb(hover.besokende)} besøkende
+              </div>
+            )}
+          </div>
+          <div className="flex justify-between font-body text-[0.65rem] text-primary/40 mt-2 pl-1">
+            {merker.map((i) => (
+              <span key={i}>{datoKort(serie[i].dato)}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// «Hvor mange gjorde dette», ikke en streng sekvens: kalkulatoren er en
+// sidevei, og skjemaet har en «hopp over»-lenke som lar noen sende inn uten
+// å fullføre steg 1. Frafall vises derfor bare mellom de to stegene der det
+// faktisk er en rekkefølge, ellers leses et lavt kalkulatortall som at folk
+// forsvant, når de bare aldri gikk den veien.
+const FRAFALL_ETTER = 'Åpnet skjemaet';
+
+const Trakt = ({ steg }) => {
+  const topp = Math.max(1, steg[0]?.personer || 0);
+  return (
+    <div className={kort}>
+      <h2 className="font-sans font-bold text-lg mb-1">Veien til en henvendelse</h2>
+      <p className="font-body text-xs text-primary/60 mb-6">
+        Antall personer som gjorde hvert steg. Kalkulatoren er en sidevei, ikke et krav for å sende inn.
+      </p>
+      <div className="flex flex-col gap-4">
+        {steg.map((s, i) => {
+          const forrige = i > 0 ? steg[i - 1] : null;
+          const frafall =
+            forrige?.navn === FRAFALL_ETTER && forrige.personer > s.personer
+              ? forrige.personer - s.personer
+              : 0;
+          return (
+            <div key={s.navn}>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-1.5">
+                <span className="font-body text-sm text-primary/90">{s.navn}</span>
+                <span className="font-body text-xs text-primary/60">
+                  <span className="font-sans font-bold text-sm text-primary">{nb(s.personer)}</span>
+                  {i > 0 && ` · ${prosent(s.andel)} av besøkende`}
+                </span>
+              </div>
+              <div className="bg-primary/5 rounded-full h-3 overflow-hidden">
+                <div className="h-full bg-accent rounded-full transition-all" style={{ width: `${(s.personer / topp) * 100}%` }} />
+              </div>
+              {frafall > 0 && (
+                <span className="font-body text-[0.7rem] text-primary/40 mt-1 block">
+                  {nb(frafall)} åpnet skjemaet uten å sende inn
+                </span>
+              )}
+            </div>
+          );
+        })}
+        {steg.length === 0 && <p className="font-body text-sm text-primary/60">Ingen data enda.</p>}
+      </div>
+    </div>
+  );
+};
+
+const Stolpeliste = ({ tittel, lede, rader, nokkel, tomtekst }) => {
+  const maks = Math.max(1, ...rader.map((r) => r.visninger));
+  return (
+    <div className={kort}>
+      <h2 className="font-sans font-bold text-lg mb-1">{tittel}</h2>
+      <p className="font-body text-xs text-primary/60 mb-6">{lede}</p>
+      <div className="flex flex-col gap-3">
+        {rader.slice(0, 10).map((r) => (
+          <div key={r[nokkel]} className="flex items-center gap-3">
+            <span className="font-body text-xs text-primary/80 w-32 sm:w-40 truncate" title={r[nokkel]}>{r[nokkel]}</span>
+            <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
+              <div className="h-full bg-accent rounded-full" style={{ width: `${(r.visninger / maks) * 100}%` }} />
+            </div>
+            <span className="font-body text-xs text-primary/60 w-28 text-right tabular-nums">
+              {nb(r.visninger)} · {nb(r.besokende)} bes.
+            </span>
           </div>
         ))}
-        {hover && (
-          <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-primary text-background text-xs font-body px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none">
-            {new Date(hover.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' })}: {hover.count}
-          </div>
+        {rader.length === 0 && <p className="font-body text-sm text-primary/60">{tomtekst}</p>}
+      </div>
+    </div>
+  );
+};
+
+// En feil uten adresse, nettleser og antall rammede er ikke til å gjøre noe
+// med. Kjent støy (Outlook sin lenkeskanner, chunk-feil etter deploy) er
+// skilt ut, ellers drukner de to som faktisk betyr noe.
+const Feilrad = ({ f, dempet }) => (
+  <div className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
+    <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+      <span className={`font-sans font-bold text-sm ${dempet ? 'text-primary/60' : 'text-red-400'}`}>
+        {f.type || 'Feil'}
+      </span>
+      <span className="font-body text-xs text-primary/50 tabular-nums">
+        {nb(f.antall)}× · {nb(f.rammede)} {f.rammede === 1 ? 'person' : 'personer'} · {datoKort(f.forst)}–{datoKort(f.sist)}
+      </span>
+    </div>
+    <p className="font-body text-xs text-primary/70 mt-1 leading-relaxed break-words">{f.melding}</p>
+    <div className="font-body text-[0.7rem] text-primary/45 mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5">
+      {f.url && <span className="break-all">{f.url.replace(/^https?:\/\/[^/]+/, '') || '/'}</span>}
+      {f.nettleser && <span>{f.nettleser}{f.os ? ` · ${f.os}` : ''}</span>}
+    </div>
+    {f.hvorfor && <p className="font-body text-[0.7rem] text-primary/60 mt-1.5 italic">{f.hvorfor}</p>}
+  </div>
+);
+
+const Feil = ({ feil }) => {
+  const [visStoy, setVisStoy] = useState(false);
+  return (
+    <div className={kort}>
+      <h2 className="font-sans font-bold text-lg mb-1">Feil som er verdt å se på</h2>
+      <p className="font-body text-xs text-primary/60 mb-6">
+        Fanget automatisk av PostHog, med adressen de skjedde på og hvor mange som ble rammet.
+      </p>
+      <div className="flex flex-col gap-4">
+        {feil.ekte.map((f, i) => <Feilrad key={`${f.type}-${i}`} f={f} />)}
+        {feil.ekte.length === 0 && (
+          <p className="font-body text-sm text-primary/60">Ingen feil som krever noe av deg. Det er et godt tegn.</p>
         )}
       </div>
-    </div>
-  );
-};
 
-const TopHendelser = ({ topEvents }) => {
-  const max = Math.max(1, ...topEvents.map((e) => e.count));
-  return (
-    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
-      <h2 className="font-sans font-bold text-lg mb-6">Mest brukte hendelser</h2>
-      <div className="flex flex-col gap-3">
-        {topEvents.slice(0, 10).map((e) => (
-          <div key={e.event} className="flex items-center gap-3">
-            <span className="font-body text-xs text-primary/80 w-48 truncate">{e.event}</span>
-            <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
-              <div className="h-full bg-accent rounded-full" style={{ width: `${(e.count / max) * 100}%` }} />
+      {feil.stoy.length > 0 && (
+        <div className="mt-6 pt-5 border-t border-primary/10">
+          <button
+            type="button"
+            onClick={() => setVisStoy((v) => !v)}
+            className="font-body text-xs text-primary/60 hover:text-primary flex items-center gap-1.5 transition-colors"
+          >
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${visStoy ? 'rotate-180' : ''}`} aria-hidden="true" />
+            {feil.stoy.length} kjent støyfeil som ikke er din å fikse
+          </button>
+          {visStoy && (
+            <div className="flex flex-col gap-4 mt-4">
+              {feil.stoy.map((f, i) => <Feilrad key={`stoy-${f.type}-${i}`} f={f} dempet />)}
             </div>
-            <span className="font-body text-xs text-primary/60 w-8 text-right">{e.count}</span>
-          </div>
-        ))}
-        {topEvents.length === 0 && <p className="font-body text-sm text-primary/60">Ingen hendelser enda.</p>}
-      </div>
-    </div>
-  );
-};
-
-// Kilde er utm_source hvis lenken er tagget (f.eks. e-postsignaturen),
-// ellers henvisende domene (f.eks. "google.com" for organisk søk), ellers
-// "direkte" (skrevet inn/bokmerket URL, eller en e-postklient som strippet
-// referrer-headeren, som de fleste gjør).
-const Trafikkilder = ({ sources }) => {
-  const max = Math.max(1, ...sources.map((s) => s.pageviews));
-  return (
-    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
-      <h2 className="font-sans font-bold text-lg mb-1">Trafikkilder</h2>
-      <p className="font-body text-xs text-primary/60 mb-6">Sidevisninger siste 30 dager, etter kilde.</p>
-      <div className="flex flex-col gap-3">
-        {sources.slice(0, 10).map((s) => (
-          <div key={s.kilde} className="flex items-center gap-3">
-            <span className="font-body text-xs text-primary/80 w-32 truncate">{s.kilde}</span>
-            <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
-              <div className="h-full bg-accent rounded-full" style={{ width: `${(s.pageviews / max) * 100}%` }} />
-            </div>
-            <span className="font-body text-xs text-primary/60 w-24 text-right">{s.pageviews} ({s.besokende} bes.)</span>
-          </div>
-        ))}
-        {sources.length === 0 && <p className="font-body text-sm text-primary/60">Ingen data enda.</p>}
-      </div>
-    </div>
-  );
-};
-
-const TopSider = ({ sider }) => {
-  const max = Math.max(1, ...sider.map((s) => s.visninger));
-  return (
-    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
-      <h2 className="font-sans font-bold text-lg mb-1">Mest besøkte sider</h2>
-      <p className="font-body text-xs text-primary/60 mb-6">Sidevisninger siste 30 dager, etter sti.</p>
-      <div className="flex flex-col gap-3">
-        {sider.slice(0, 10).map((s) => (
-          <div key={s.sti} className="flex items-center gap-3">
-            <span className="font-body text-xs text-primary/80 w-40 truncate">{s.sti}</span>
-            <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
-              <div className="h-full bg-accent rounded-full" style={{ width: `${(s.visninger / max) * 100}%` }} />
-            </div>
-            <span className="font-body text-xs text-primary/60 w-10 text-right">{s.visninger}</span>
-          </div>
-        ))}
-        {sider.length === 0 && <p className="font-body text-sm text-primary/60">Ingen data enda.</p>}
-      </div>
-    </div>
-  );
-};
-
-// $exception_list[1] er nyeste posthog-js sitt eksepsjonsformat — se
-// hentSisteFeil i api/admin/dashboard-data.js. Rødlig tekst er samme
-// semantiske feilfarge som PIN-feilen under (text-red-...), ikke
-// merkevarens aksentfarge.
-const SisteFeil = ({ feil }) => (
-  <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
-    <h2 className="font-sans font-bold text-lg mb-1">Feil siste 30 dager</h2>
-    <p className="font-body text-xs text-primary/60 mb-6">Fanget automatisk av PostHog. Ingen feil er et godt tegn.</p>
-    <div className="flex flex-col gap-3">
-      {feil.map((f, i) => (
-        <div key={`${f.melding}-${i}`} className="border-b border-primary/10 last:border-b-0 pb-3 last:pb-0">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-            <span className="font-sans font-bold text-sm text-red-400">{f.type || 'Feil'}</span>
-            <span className="font-body text-xs text-primary/50">
-              {f.antall}× · sist {new Date(f.sist).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' })}
-            </span>
-          </div>
-          <p className="font-body text-xs text-primary/70 mt-1 leading-relaxed break-words">{f.melding}</p>
+          )}
         </div>
-      ))}
-      {feil.length === 0 && <p className="font-body text-sm text-primary/60">Ingen feil registrert.</p>}
+      )}
     </div>
-  </div>
-);
+  );
+};
 
-const Leads = ({ leads }) => (
-  <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
-    <h2 className="font-sans font-bold text-lg mb-6">Nye henvendelser</h2>
-    <div className="flex flex-col gap-4">
-      {leads.map((l) => (
-        <div key={l.id} className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
-          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-            <span className="font-sans font-bold text-base text-primary">{l.navn}</span>
-            <span className="font-body text-xs text-primary/50">
-              {new Date(l.created_at).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
-            </span>
+const Henvendelser = ({ leads, spam }) => {
+  const [visSpam, setVisSpam] = useState(false);
+  return (
+    <div className={kort}>
+      <h2 className="font-sans font-bold text-lg mb-6">Nye henvendelser</h2>
+      <div className="flex flex-col gap-4">
+        {leads.map((l) => (
+          <div key={l.id} className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+              <span className="font-sans font-bold text-base text-primary">{l.navn}</span>
+              <span className="font-body text-xs text-primary/50">{datoTid(l.created_at)}</span>
+            </div>
+            <div className="font-body text-sm text-primary/80 mt-0.5">
+              <a href={`mailto:${l.epost}`} className="text-accent hover:underline">{l.epost}</a>
+              {l.firma && <span className="text-primary/60"> · {l.firma}</span>}
+            </div>
+            {l.melding && <p className="font-body text-sm text-primary/70 mt-1.5 leading-relaxed">{l.melding}</p>}
           </div>
-          <div className="font-body text-sm text-primary/80 mt-0.5">
-            <a href={`mailto:${l.epost}`} className="text-accent hover:underline">{l.epost}</a>
-            {l.firma && <span className="text-primary/60"> · {l.firma}</span>}
-          </div>
-          {l.melding && <p className="font-body text-sm text-primary/70 mt-1.5 leading-relaxed">{l.melding}</p>}
+        ))}
+        {leads.length === 0 && <p className="font-body text-sm text-primary/60">Ingen ekte henvendelser i perioden.</p>}
+      </div>
+
+      {spam.length > 0 && (
+        <div className="mt-6 pt-5 border-t border-primary/10">
+          <button
+            type="button"
+            onClick={() => setVisSpam((v) => !v)}
+            className="font-body text-xs text-primary/60 hover:text-primary flex items-center gap-1.5 transition-colors"
+          >
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform ${visSpam ? 'rotate-180' : ''}`} aria-hidden="true" />
+            {spam.length} skjult som spam
+          </button>
+          {visSpam && (
+            <div className="flex flex-col gap-3 mt-4">
+              {spam.map((l) => (
+                <div key={l.id} className="font-body text-xs text-primary/45 flex flex-wrap gap-x-2">
+                  <span className="text-primary/60">{l.navn}</span>
+                  <span>{l.epost}</span>
+                  <span className="italic">({l.spamGrunn})</span>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      ))}
-      {leads.length === 0 && <p className="font-body text-sm text-primary/60">Ingen henvendelser enda.</p>}
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 // Skrevet av en ukentlig cloud-agent (schedule-rutine), som også committer
 // samme rapport som markdown til reports/ i repoet. Ingen markdown-rendering
-// her med vilje — whitespace-pre-wrap er nok og unngår en ny avhengighet.
-const UkentligeRapporter = ({ reports }) => {
+// her med vilje: whitespace-pre-wrap er nok og unngår en ny avhengighet.
+const UkentligeRapporter = ({ rapporter }) => {
   const [apen, setApen] = useState(null);
   return (
-    <div className="bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8">
+    <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">Ukentlige rapporter</h2>
       <p className="font-body text-xs text-primary/60 mb-6">Trafikk, kilder og innsikt, oppsummert hver uke.</p>
       <div className="flex flex-col gap-4">
-        {reports.map((r) => {
+        {rapporter.map((r) => {
           const erApen = apen === r.id;
           return (
             <div key={r.id} className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
               <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
                 <span className="font-sans font-bold text-base text-primary">
-                  {new Date(r.week_start).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' })}
-                  {' – '}
-                  {new Date(r.week_end).toLocaleDateString('nb-NO', { day: 'numeric', month: 'short' })}
+                  {datoKort(r.week_start)} – {datoKort(r.week_end)}
                 </span>
                 <button
                   type="button"
@@ -212,11 +334,34 @@ const UkentligeRapporter = ({ reports }) => {
             </div>
           );
         })}
-        {reports.length === 0 && <p className="font-body text-sm text-primary/60">Ingen rapporter enda. Første ukentlige rapport kommer etter neste kjøring.</p>}
+        {rapporter.length === 0 && (
+          <p className="font-body text-sm text-primary/60">Ingen rapporter enda. Første kommer etter neste kjøring.</p>
+        )}
       </div>
     </div>
   );
 };
+
+const Periodevelger = ({ valgt, onVelg, laster }) => (
+  <div className="flex gap-2" role="group" aria-label="Velg periode">
+    {PERIODER.map((d) => (
+      <button
+        key={d}
+        type="button"
+        disabled={laster}
+        onClick={() => onVelg(d)}
+        aria-pressed={valgt === d}
+        className={`font-body text-xs px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
+          valgt === d
+            ? 'bg-accent text-background border-accent font-semibold'
+            : 'border-primary/20 text-primary/70 hover:border-primary/40'
+        }`}
+      >
+        {d} dager
+      </button>
+    ))}
+  </div>
+);
 
 const PinGate = ({ onSubmit, error }) => {
   const [value, setValue] = useState('');
@@ -225,15 +370,9 @@ const PinGate = ({ onSubmit, error }) => {
       <Lock className="w-8 h-8 text-accent mx-auto mb-6" />
       <h1 className="font-sans font-bold text-2xl mb-2">Dashboard</h1>
       <p className="font-body text-sm text-primary/70 mb-8">Skriv inn PIN for å se analytics.</p>
-      <form
-        onSubmit={(e) => { e.preventDefault(); onSubmit(value); }}
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={(e) => { e.preventDefault(); onSubmit(value); }} className="flex flex-col gap-4">
         <input
-          type="password"
-          inputMode="numeric"
-          autoFocus
-          value={value}
+          type="password" inputMode="numeric" autoFocus value={value}
           onChange={(e) => setValue(e.target.value)}
           className="w-full bg-primary/5 border border-primary/20 rounded-full px-6 py-4 font-body text-sm text-primary text-center tracking-[0.3em] focus:outline-none focus:border-accent transition-colors"
           placeholder="PIN"
@@ -249,15 +388,18 @@ const PinGate = ({ onSubmit, error }) => {
 
 const DashboardPage = () => {
   const [pin, setPin] = useState(() => sessionStorage.getItem(STORAGE_KEY) || '');
+  const [dager, setDager] = useState(30);
   const [data, setData] = useState(null);
   const [status, setStatus] = useState('idle'); // idle | loading | error | ready
   const [pinError, setPinError] = useState(false);
 
-  const hentData = async (pinValue) => {
+  const hentData = async (pinValue, antallDager) => {
     setStatus('loading');
     setPinError(false);
     try {
-      const res = await fetch('/api/admin/dashboard-data', { headers: { 'x-dashboard-pin': pinValue } });
+      const res = await fetch(`/api/admin/dashboard-data?dager=${antallDager}`, {
+        headers: { 'x-dashboard-pin': pinValue },
+      });
       if (res.status === 401) {
         sessionStorage.removeItem(STORAGE_KEY);
         setPin('');
@@ -276,8 +418,13 @@ const DashboardPage = () => {
     }
   };
 
+  const velgPeriode = (nyeDager) => {
+    setDager(nyeDager);
+    hentData(pin, nyeDager);
+  };
+
   useEffect(() => {
-    if (pin) hentData(pin);
+    if (pin) hentData(pin, dager);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -287,33 +434,60 @@ const DashboardPage = () => {
 
       <section className="pt-40 pb-32 px-6 md:px-12 lg:px-24 min-h-[70vh] flex flex-col justify-center">
         {!pin ? (
-          <PinGate onSubmit={(value) => { setPin(value); hentData(value); }} error={pinError} />
-        ) : status === 'loading' ? (
-          <div className="flex justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-accent" /></div>
+          <PinGate onSubmit={(value) => { setPin(value); hentData(value, dager); }} error={pinError} />
         ) : status === 'error' ? (
           <p className="font-body text-primary/70 text-center">Klarte ikke å hente data. Prøv å laste siden på nytt.</p>
-        ) : data ? (
+        ) : !data ? (
+          <div className="flex justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-accent" /></div>
+        ) : (
           <div className="max-w-5xl mx-auto w-full flex flex-col gap-8">
-            <h1 className="font-sans font-bold text-3xl md:text-4xl tracking-tight">Analytics siste 30 dager</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              <StatTile label="Sidevisninger" value={data.totalPageviews ?? '–'} />
-              <StatTile label="Unike besøkende" value={data.uniqueVisitors} />
-              <StatTile label="Demo-forespørsler" value={data.conversions} />
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <h1 className="font-sans font-bold text-3xl md:text-4xl tracking-tight">
+                Siste {dager} dager
+              </h1>
+              <div className="flex items-center gap-3">
+                {status === 'loading' && <Loader2 className="w-4 h-4 animate-spin text-accent" aria-label="Laster" />}
+                <Periodevelger valgt={dager} onVelg={velgPeriode} laster={status === 'loading'} />
+              </div>
             </div>
-            {data.totalPageviews === null && (
-              <p className="font-body text-xs text-primary/50 -mt-4">
-                Fikk ikke hentet sidevisninger fra PostHog akkurat nå. Unike besøkende og grafen under viser derfor egne engasjement-hendelser i stedet, som undertelles sammenlignet med reell trafikk.
+
+            {!data.posthogTilgjengelig && (
+              <p className="font-body text-sm text-red-400 bg-red-400/5 border border-red-400/20 rounded-2xl px-5 py-4">
+                PostHog svarte ikke. Trafikktall, sider og feil er tomme fordi de hentes derfra, ikke fordi det ikke
+                skjedde noe. Henvendelsene under er hentet fra Supabase og stemmer.
               </p>
             )}
-            <Leads leads={data.leads ?? []} />
-            <SisteFeil feil={data.sisteFeil ?? []} />
-            <DagligeHendelser days={buildDaySeries(data.days)} />
-            <Trafikkilder sources={data.sources} />
-            <TopSider sider={data.topSider ?? []} />
-            <UkentligeRapporter reports={data.reports ?? []} />
-            <TopHendelser topEvents={data.topEvents} />
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <Nokkeltall
+                etikett="Sidevisninger" verdi={data.sidevisninger?.na} forrige={data.sidevisninger?.forrige}
+                forklaring="Uten /admin og uten byggroboten"
+              />
+              <Nokkeltall
+                etikett="Unike besøkende" verdi={data.besokende?.na} forrige={data.besokende?.forrige}
+              />
+              <Nokkeltall
+                etikett="Henvendelser" verdi={data.henvendelser?.na} forrige={data.henvendelser?.forrige}
+                forklaring="Spam holdt utenfor"
+              />
+            </div>
+
+            <Henvendelser leads={data.leads ?? []} spam={data.spam ?? []} />
+            <Feil feil={data.feil ?? { ekte: [], stoy: [] }} />
+            <Trafikkgraf dager={data.dager ?? []} antallDager={dager} />
+            <Trakt steg={data.trakt ?? []} />
+            <Stolpeliste
+              tittel="Mest besøkte sider" lede="Sidevisninger og unike besøkende per sti."
+              rader={data.sider ?? []} nokkel="sti" tomtekst="Ingen sidevisninger i perioden."
+            />
+            <Stolpeliste
+              tittel="Trafikkilder"
+              lede="utm_source hvis lenken er tagget, ellers domenet folk kom fra. «direkte» er skrevet inn, bokmerket, eller en e-postklient som strippet referrer."
+              rader={data.kilder ?? []} nokkel="kilde" tomtekst="Ingen trafikk i perioden."
+            />
+            <UkentligeRapporter rapporter={data.rapporter ?? []} />
           </div>
-        ) : null}
+        )}
       </section>
 
       <Footer />

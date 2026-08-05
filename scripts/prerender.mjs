@@ -105,6 +105,14 @@ async function launchBrowser() {
 async function snapshotRoute(browser, baseUrl, route) {
   const page = await browser.newPage();
   try {
+    // Uten dette er dette en helt vanlig Chromium for posthog-js, og hvert
+    // bygg sendte én $pageview per rute (25 stykker) inn i analytics. Det
+    // gjorde både besøkstallene og trafikkildene ubrukelige, siden de så ut
+    // som direkte trafikk. lib/posthog.js hopper over init når flagget er
+    // satt, og evaluateOnNewDocument kjører før sidens egne skript.
+    await page.evaluateOnNewDocument(() => {
+      window.__PRERENDER__ = true;
+    });
     await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
     // SEO.jsx sets title/meta/robots/canonical/OG/JSON-LD together in one
     // effect; the canonical link's presence is a reliable proxy that the

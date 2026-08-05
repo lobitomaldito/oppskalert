@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { submitDemoRequest } from '../lib/demoRequest';
 import { kontakt } from '../lib/site';
@@ -45,6 +45,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
   const [firma, setFirma] = useState('');
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
+  // To botsignaler api/demo-request.js vurderer. Feltet er skjult for
+  // mennesker og skjermlesere, så bare et skript som fyller ut alt det
+  // finner treffer det. Tidsstemplet skiller en ekte utfylling fra et
+  // øyeblikkelig POST.
+  const [honeypot, setHoneypot] = useState('');
+  const apnetRef = useRef(0);
+  useEffect(() => { apnetRef.current = Date.now(); }, []);
+
   const gaTilSteg2 = () => {
     track('demo_form_steg1_fullfort', { behov, har_nettside: harNettside });
     setSteg(2);
@@ -62,7 +70,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
     if (behov) meldingDeler.push(`Trenger hjelp til: ${behovLabel(behov)}.`);
     if (harNettside !== null) meldingDeler.push(`Har nettside fra før: ${harNettside ? 'Ja' : 'Nei'}.`);
     try {
-      await submitDemoRequest({ navn, epost, firma, melding: meldingDeler.join(' ') });
+      await submitDemoRequest({
+        navn,
+        epost,
+        firma,
+        melding: meldingDeler.join(' '),
+        honeypot,
+        msPaSkjema: Date.now() - apnetRef.current,
+      });
       identify({ email: epost.trim(), name: navn.trim() });
       track('demo_request_submitted', { has_company: Boolean(firma.trim()), behov, har_nettside: harNettside });
       setStatus('success');
@@ -158,6 +173,18 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
           ) : (
             <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-left">
               <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 text-center -mt-1 mb-1">Steg 2 av 2</span>
+
+              {/* Honeypot. Plassert utenfor skjermen i stedet for display:none,
+                  fordi en del bots hopper over skjulte felt men ikke
+                  forflyttede. aria-hidden + tabIndex holder den unna
+                  skjermlesere og tastaturnavigasjon. */}
+              <input
+                type="text" name="nettadresse" value={honeypot} tabIndex={-1}
+                autoComplete="off" aria-hidden="true"
+                onChange={(e) => setHoneypot(e.target.value)}
+                className="absolute left-[-9999px] w-px h-px opacity-0"
+              />
+
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="text" value={navn} autoComplete="name" aria-label="Navn" placeholder="Navn *"

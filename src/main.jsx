@@ -7,25 +7,56 @@ import './lib/posthog.js'
 import App from './App.jsx'
 import { ScrollToTop } from './components/Layout.jsx'
 
-const ArbeidPage = lazy(() => import('./pages/ArbeidPage.jsx'))
-const PriserPage = lazy(() => import('./pages/PriserPage.jsx'))
-const MetodePage = lazy(() => import('./pages/MetodePage.jsx'))
-const OmPage = lazy(() => import('./pages/OmPage.jsx'))
-const KontaktPage = lazy(() => import('./pages/KontaktPage.jsx'))
-const BlogPage = lazy(() => import('./pages/BlogPage.jsx'))
-const ArticlePage = lazy(() => import('./pages/ArticlePage.jsx'))
-const FrisorDemo = lazy(() => import('./pages/eksempler/FrisorDemo.jsx'))
-const HandverkerDemo = lazy(() => import('./pages/eksempler/HandverkerDemo.jsx'))
-const RestaurantDemo = lazy(() => import('./pages/eksempler/RestaurantDemo.jsx'))
-const TannlegeDemo = lazy(() => import('./pages/eksempler/TannlegeDemo.jsx'))
-const KalkulatorPage = lazy(() => import('./pages/KalkulatorPage.jsx'))
-const DriftPage = lazy(() => import('./pages/DriftPage.jsx'))
-const SammenlignPage = lazy(() => import('./pages/SammenlignPage.jsx'))
-const VsWixPage = lazy(() => import('./pages/sammenlign/VsWixPage.jsx'))
-const VsWordPressPage = lazy(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
-const SeoPage = lazy(() => import('./pages/SeoPage.jsx'))
-const WebdesignOsloPage = lazy(() => import('./pages/WebdesignOsloPage.jsx'))
-const DashboardPage = lazy(() => import('./pages/DashboardPage.jsx'))
+// Vite gir hver chunk et innholdshash i filnavnet. Etter en deploy peker en
+// fane som stod åpen fra før fortsatt på de gamle navnene, og første
+// navigasjon til en lazy rute 404-er med «Failed to fetch dynamically
+// imported module» og en hvit Suspense-fallback. Én reload henter fersk
+// index.html og løser det. Flagget hindrer en evig løkke hvis importen
+// feiler av en annen grunn (offline, blokkert av en utvidelse).
+const RELOAD_FLAGG = 'oppskalert_chunk_reload'
+
+const sesjon = {
+  les: (n) => { try { return sessionStorage.getItem(n) } catch { return null } },
+  skriv: (n, v) => { try { sessionStorage.setItem(n, v) } catch { /* privat modus */ } },
+  slett: (n) => { try { sessionStorage.removeItem(n) } catch { /* privat modus */ } },
+}
+
+const lazySide = (last) =>
+  lazy(() =>
+    last().then(
+      (mod) => {
+        sesjon.slett(RELOAD_FLAGG)
+        return mod
+      },
+      (err) => {
+        if (sesjon.les(RELOAD_FLAGG)) throw err
+        sesjon.skriv(RELOAD_FLAGG, '1')
+        window.location.reload()
+        // Løses aldri: reloaden overtar før React rekker å rendre noe.
+        return new Promise(() => {})
+      },
+    ),
+  )
+
+const ArbeidPage = lazySide(() => import('./pages/ArbeidPage.jsx'))
+const PriserPage = lazySide(() => import('./pages/PriserPage.jsx'))
+const MetodePage = lazySide(() => import('./pages/MetodePage.jsx'))
+const OmPage = lazySide(() => import('./pages/OmPage.jsx'))
+const KontaktPage = lazySide(() => import('./pages/KontaktPage.jsx'))
+const BlogPage = lazySide(() => import('./pages/BlogPage.jsx'))
+const ArticlePage = lazySide(() => import('./pages/ArticlePage.jsx'))
+const FrisorDemo = lazySide(() => import('./pages/eksempler/FrisorDemo.jsx'))
+const HandverkerDemo = lazySide(() => import('./pages/eksempler/HandverkerDemo.jsx'))
+const RestaurantDemo = lazySide(() => import('./pages/eksempler/RestaurantDemo.jsx'))
+const TannlegeDemo = lazySide(() => import('./pages/eksempler/TannlegeDemo.jsx'))
+const KalkulatorPage = lazySide(() => import('./pages/KalkulatorPage.jsx'))
+const DriftPage = lazySide(() => import('./pages/DriftPage.jsx'))
+const SammenlignPage = lazySide(() => import('./pages/SammenlignPage.jsx'))
+const VsWixPage = lazySide(() => import('./pages/sammenlign/VsWixPage.jsx'))
+const VsWordPressPage = lazySide(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
+const SeoPage = lazySide(() => import('./pages/SeoPage.jsx'))
+const WebdesignOsloPage = lazySide(() => import('./pages/WebdesignOsloPage.jsx'))
+const DashboardPage = lazySide(() => import('./pages/DashboardPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

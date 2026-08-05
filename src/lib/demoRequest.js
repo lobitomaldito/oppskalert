@@ -1,10 +1,16 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Dedicated client for the public "Bestill demo" form. It is pinned to the
-// "oppskalert" CRM project so the form works regardless of the main app's
-// VITE_SUPABASE_URL. The anon key is public by design, and the
-// demo_foresporsler table only allows INSERT for the anon role (RLS). There
-// is no SELECT policy, so leads can be submitted but never read back.
+// Klient for analytics_events, pinnet til "oppskalert"-prosjektet så
+// sporingen virker uavhengig av appens VITE_SUPABASE_URL. Anon-nøkkelen er
+// offentlig med vilje, og analytics_events har kun en INSERT-policy for
+// anon-rollen, ingen SELECT.
+//
+// Demo-skjemaet skrev tidligere til demo_foresporsler herfra. Det er
+// flyttet til api/demo-request.js: nøkkelen, tabellnavnet og feltnavnene
+// ligger i bundlet, så bots fant PostgREST-endepunktet og skrev leads rett
+// inn uten å åpne siden. Anon-INSERT på den tabellen stenges av
+// supabase/migrations/20260805121000, som kjøres først etter at denne
+// koden er deployet.
 const DEMO_SUPABASE_URL = 'https://zmefwkqhdamdcjnxxfjl.supabase.co';
 const DEMO_SUPABASE_ANON_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InptZWZ3a3FoZGFtZGNqbnh4ZmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEyNjAzNjgsImV4cCI6MjA5NjgzNjM2OH0.U0flw1EqHTDpZBk9TwA0MT-HZ9nWeggXQaepA6mc9Kk';
@@ -22,48 +28,28 @@ export const demoClient = createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY
   auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
 });
 
-// Optional e-mail notification. Set VITE_WEB3FORMS_KEY to your free Web3Forms
-// access key (web3forms.com) to receive an e-mail at team@oppskalert.no for
-// every request. If unset, the lead is still saved to Supabase.
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
+/**
+ * Sender skjemaet til api/demo-request.js, som skriver til Supabase med
+ * service-role-nøkkelen og sender e-postvarselet. `honeypot` og `msPaSkjema`
+ * er botsignalene ruten vurderer: et felt ingen ekte bruker ser, og hvor
+ * lenge skjemaet faktisk stod åpent.
+ */
+export async function submitDemoRequest({ navn, epost, firma, melding, honeypot, msPaSkjema }) {
+  const res = await fetch('/api/demo-request', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      navn: navn.trim(),
+      epost: epost.trim(),
+      firma: firma?.trim() || null,
+      melding: melding?.trim() || null,
+      nettadresse: honeypot || '',
+      msPaSkjema,
+    }),
+  });
 
-export async function submitDemoRequest({ navn, epost, firma, melding }) {
-  const navnClean = navn.trim();
-  const epostClean = epost.trim();
-  const firmaClean = firma?.trim() || null;
-  const meldingClean = melding?.trim() || null;
-
-  const { error } = await demoClient.from('demo_foresporsler').insert([
-    {
-      navn: navnClean,
-      epost: epostClean,
-      firma: firmaClean,
-      melding: meldingClean,
-      kilde: 'nettside',
-    },
-  ]);
-
-  if (error) throw error;
-
-  // Best-effort e-mail notification. The lead is already stored, so a failed
-  // e-mail must never break the submission.
-  if (WEB3FORMS_KEY) {
-    try {
-      await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `Ny demo-forespørsel: ${navnClean}`,
-          from_name: 'oppskalert.no',
-          name: navnClean,
-          email: epostClean,
-          firma: firmaClean || '(ikke oppgitt)',
-          message: `Ny demo-forespørsel fra nettsiden.\n\nNavn: ${navnClean}\nE-post: ${epostClean}\nFirma: ${firmaClean || '(ikke oppgitt)'}${meldingClean ? `\n\n${meldingClean}` : ''}`,
-        }),
-      });
-    } catch {
-      /* ignore: lead is safe in Supabase */
-    }
+  if (!res.ok) {
+    const detaljer = await res.json().catch(() => ({}));
+    throw new Error(detaljer.error || `Innsending feilet (${res.status})`);
   }
 }
