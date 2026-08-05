@@ -258,6 +258,68 @@ const Feil = ({ feil }) => {
   );
 };
 
+const varighet = (sek) => {
+  if (sek < 60) return `${sek} sek`;
+  const min = Math.round(sek / 60);
+  if (min < 60) return `${min} min`;
+  return `${Math.floor(min / 60)} t ${min % 60} min`;
+};
+
+const ENHETSNAVN = { Desktop: 'Datamaskin', Mobile: 'Mobil', Tablet: 'Nettbrett' };
+
+// Én rad per ekte besøk. Klikketekstene kommer rett fra PostHog sin
+// autocapture, så du ser hvilke knapper som ble trykket uten at noe måtte
+// instrumenteres. Dette er panelet som svarer på «var det noen der, og hva
+// så de på», som er hele poenget når du sender kald e-post.
+const Besokende = ({ liste }) => (
+  <div className={kort}>
+    <h2 className="font-sans font-bold text-lg mb-1">Hvem har vært innom</h2>
+    <p className="font-body text-xs text-primary/60 mb-6">
+      Hvert ekte besøk, med sted, vei gjennom siden og hva de trykket på. Dine egne besøk er holdt utenfor.
+    </p>
+    <div className="flex flex-col gap-5">
+      {liste.map((b, i) => (
+        <div key={`${b.start}-${i}`} className="border-b border-primary/10 last:border-b-0 pb-5 last:pb-0">
+          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <span className="font-sans font-bold text-sm text-primary">
+              {b.sted}
+              <span className="font-body font-normal text-primary/50"> · {ENHETSNAVN[b.enhet] || b.enhet}</span>
+            </span>
+            <span className="font-body text-xs text-primary/50 tabular-nums">
+              {datoTid(b.start)} · {varighet(b.sekunder)}
+              {b.klikk > 0 && ` · ${nb(b.klikk)} klikk`}
+            </span>
+          </div>
+
+          <div className="font-body text-xs text-primary/75 mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1">
+            {b.vei.map((v, j) => (
+              <span key={`${v.sti}-${j}`} className="flex items-center gap-1.5">
+                {j > 0 && <span className="text-primary/30">→</span>}
+                <span className="bg-primary/5 rounded-md px-2 py-0.5">
+                  {v.sti}{v.ganger > 1 && <span className="text-primary/40"> ×{v.ganger}</span>}
+                </span>
+              </span>
+            ))}
+          </div>
+
+          {b.klikket.length > 0 && (
+            <p className="font-body text-xs text-primary/50 mt-2">
+              Trykket på: <span className="text-primary/70">{b.klikket.join(', ')}</span>
+            </p>
+          )}
+
+          <span className="font-body text-[0.7rem] text-primary/40 mt-2 block">Kilde: {b.kilde}</span>
+        </div>
+      ))}
+      {liste.length === 0 && (
+        <p className="font-body text-sm text-primary/60">
+          Ingen ekte besøk i perioden. Alt som traff siden var skannere eller crawlere.
+        </p>
+      )}
+    </div>
+  </div>
+);
+
 const Henvendelser = ({ leads, spam }) => {
   const [visSpam, setVisSpam] = useState(false);
   return (
@@ -471,7 +533,7 @@ const DashboardPage = () => {
                 etikett="Ekte besøkende" verdi={data.engasjerte?.na} forrige={data.engasjerte?.forrige}
                 forklaring={
                   data.besokende?.na
-                    ? `av ${nb(data.besokende.na)} registrerte. Resten er e-postskannere og crawlere.`
+                    ? `av ${nb(data.besokende.na)} registrerte. Resten er e-postskannere og crawlere. Dine egne besøk er ute.`
                     : null
                 }
               />
@@ -486,13 +548,16 @@ const DashboardPage = () => {
             </div>
 
             <p className="font-body text-xs text-primary/50 -mt-4 leading-relaxed">
-              «Ekte besøkende» teller bare økter med minst ett klikk eller minst{' '}
-              {data.periode?.engasjertSekunder ?? 60} sekunder på siden. Grunnen: når du sender e-post, åpner
+              «Ekte besøkende» teller bare økter som varte over {data.periode?.engasjertSekunder ?? 60} sekunder,
+              eller som både klikket og gikk videre til en ny side. Grunnen: når du sender e-post, åpner
               mottakernes sikkerhetsskannere (Outlook Safe Links og liknende) hver lenke automatisk fra
-              datasentre i Irland og Nederland. De ser ut som besøkende, men klikker aldri og blir aldri.
+              datasentre i Irland og Nederland. Noen av dem trykker til og med på alle knappene de finner. De
+              ser ut som besøkende, men blir aldri kunder. Nettlesere som har åpnet dette dashbordet regnes
+              som deg og holdes utenfor.
             </p>
 
             <Henvendelser leads={data.leads ?? []} spam={data.spam ?? []} />
+            <Besokende liste={data.besokende_liste ?? []} />
             <Feil feil={data.feil ?? { ekte: [], stoy: [] }} />
             <Trafikkgraf dager={data.dager ?? []} antallDager={dager} />
             <Trakt steg={data.trakt ?? []} />

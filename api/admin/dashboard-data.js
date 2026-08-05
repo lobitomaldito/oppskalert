@@ -18,26 +18,42 @@ const POSTHOG_HOST = 'https://eu.posthog.com';
 // som tester. Endres domenet må dette følge med, ellers blir alle tall null.
 const PRODUKSJONSVERT = "properties.$host LIKE '%oppskalert.no'";
 
-// /admin/* er ditt eget dashbord. Det lå på fjerdeplass over mest besøkte
-// sider, som er et selvportrett, ikke innsikt.
-const IKKE_ADMIN = "(properties.$pathname IS NULL OR NOT startsWith(properties.$pathname, '/admin'))";
-const SIDEVISNING = `event = '$pageview' AND NOT startsWith(coalesce(properties.$pathname, '/'), '/admin')`;
+// /admin/* er ditt eget dashbord, og hendelsene derfra må ut av HELE
+// settet, ikke bare av sidevisningene. Ellers teller klikk på PIN-knappen
+// som engasjement og tiden du sitter i dashbordet som lesetid.
+const IKKE_ADMIN = "NOT startsWith(coalesce(properties.$pathname, '/'), '/admin')";
+
+// Bare du har PIN-en, så enhver nettleser som har åpnet /admin er deg. Det
+// er det eneste sikre eier-signalet vi har, og det er verdt mye: én eneste
+// distinct_id sto for 190 av hendelsene i måleperioden. Uten dette filteret
+// er dashbordet i praksis et speil.
+const IKKE_EIER = `distinct_id NOT IN (
+  SELECT distinct_id FROM events
+  WHERE event = '$pageview' AND startsWith(coalesce(properties.$pathname, '/'), '/admin')
+    AND timestamp > now() - INTERVAL 180 DAY
+)`;
 
 const TILLATTE_PERIODER = [7, 30, 90];
 
-// Terskelen for at en økt teller som et menneske.
+// Terskelen for at en økt teller som et menneske: over ett minutt, eller
+// klikk kombinert med mer enn én side.
 //
-// Målt på ekte data 5. august: av 86 økter hadde 11 minst ett klikk og 11
-// varte over ett minutt, til sammen 15 unike. De resterende 71 lå tett
-// samlet på 28 til 44 sekunder med null interaksjon. Det er ikke lesetid,
-// det er posthog-js som fortsetter å sende $web_vitals i cirka 30 sekunder
-// etter innlasting. En terskel på 10 sekunder slapp derfor gjennom 61 av
-// 86 og var ubrukelig.
+// Målt på ekte data 5. august. En ren tidsterskel på 10 sekunder slapp
+// gjennom 61 av 86 økter og var ubrukelig, fordi posthog-js fortsetter å
+// sende $web_vitals i cirka 30 sekunder etter innlasting. Skannerøkter ser
+// derfor ut som 28 til 44 sekunder, ikke som null.
 //
-// Kontrollen som bekrefter at dette treffer riktig: null økter fra Irland
-// eller Nederland (Europas to store datasenterregioner, der e-postskannerne
-// bor) passerer, mens snittøkten fra Norge er 179 sekunder.
+// Klikk alene holder heller ikke: fire økter klikket seg gjennom samtlige
+// valgknapper i demo-skjemaet på under 45 sekunder, på én side, uten å
+// navigere. To av dem kom fra Dublin og Amsterdam. Det er en skanner som
+// trykker på alt den finner i DOM-en, ikke et menneske som velger. Derfor
+// kreves navigasjon i tillegg til klikk.
+//
+// Etter begge reglene overlever bare norske økter, og alle ser ut som ekte
+// forløp.
 const ENGASJERT_SEKUNDER = 60;
+const erEngasjert = (sider, sekunder, klikk) =>
+  sekunder >= ENGASJERT_SEKUNDER || (klikk > 0 && sider > 1);
 
 // Rekkefølgen betyr noe: gemini.google.com må fanges som AI-søk før
 // google-regelen tar den som vanlig søk.
@@ -125,16 +141,18 @@ async function hentSesjoner(dager) {
       if(min(timestamp) >= now() - INTERVAL ${dager} DAY, 'na', 'forrige') AS periode,
       toDate(min(timestamp)) AS dag,
       any(distinct_id) AS person,
-      countIf(${SIDEVISNING}) AS sider,
+      countIf(event = '$pageview') AS sider,
       dateDiff('second', min(timestamp), max(timestamp)) AS sekunder,
       countIf(event IN ('$autocapture', '$rageclick')) AS klikk,
-      argMinIf(properties.utm_source, timestamp, ${SIDEVISNING}) AS utm,
-      argMinIf(properties.$referring_domain, timestamp, ${SIDEVISNING}) AS ref,
-      argMinIf(properties.$pathname, timestamp, ${SIDEVISNING}) AS landing
+      argMinIf(properties.utm_source, timestamp, event = '$pageview') AS utm,
+      argMinIf(properties.$referring_domain, timestamp, event = '$pageview') AS ref,
+      argMinIf(properties.$pathname, timestamp, event = '$pageview') AS landing
     FROM events
     WHERE timestamp > now() - INTERVAL ${dager * 2} DAY
       AND ${PRODUKSJONSVERT}
       AND properties.$session_id IS NOT NULL
+      AND ${IKKE_ADMIN}
+      AND ${IKKE_EIER}
     GROUP BY properties.$session_id
     HAVING sider > 0
     LIMIT 50000
@@ -157,25 +175,25 @@ async function hentSesjoner(dager) {
   const forrige = { visninger: 0, alle: new Set(), engasjerte: new Set() };
 
   for (const [periode, dag, person, sider, sekunder, klikk, utm, ref, landing] of rader) {
-    const erEngasjert = klikk > 0 || sekunder >= ENGASJERT_SEKUNDER;
+    const engasjert = erEngasjert(sider, sekunder, klikk);
     const bunke = periode === 'na' ? na : forrige;
 
     bunke.visninger += sider;
     bunke.alle.add(person);
-    if (erEngasjert) bunke.engasjerte.add(person);
+    if (engasjert) bunke.engasjerte.add(person);
     if (periode !== 'na') continue;
 
     if (!na.perDag.has(dag)) na.perDag.set(dag, { visninger: 0, personer: new Set() });
     const dagCelle = na.perDag.get(dag);
     dagCelle.visninger += sider;
-    if (erEngasjert) dagCelle.personer.add(person);
+    if (engasjert) dagCelle.personer.add(person);
 
     const kilde = kategoriserKilde(utm, ref);
     if (!na.perKilde.has(kilde)) na.perKilde.set(kilde, tomKilde());
     const kildeCelle = na.perKilde.get(kilde);
     kildeCelle.okter += 1;
     kildeCelle.visninger += sider;
-    if (erEngasjert) {
+    if (engasjert) {
       kildeCelle.engasjerteOkter += 1;
       kildeCelle.personer.add(person);
     }
@@ -186,7 +204,7 @@ async function hentSesjoner(dager) {
       if (!na.perSti.has(landing)) na.perSti.set(landing, tomSide());
       const stiCelle = na.perSti.get(landing);
       stiCelle.visninger += 1;
-      if (erEngasjert) stiCelle.personer.add(person);
+      if (engasjert) stiCelle.personer.add(person);
     }
   }
 
@@ -210,6 +228,65 @@ async function hentSesjoner(dager) {
       .map(([sti, v]) => ({ sti, visninger: v.visninger, personer: v.personer.size }))
       .sort((a, b) => b.personer - a.personer || b.visninger - a.visninger),
   };
+}
+
+// Én rad per ekte besøk, med hvor de er fra, hvilken vei de gikk, og hva de
+// trykket på. Klikketekstene kommer fra $autocapture sin elements_chain, så
+// «Booking-løsning» og «Bestill gratis demo» leses rett av uten at noe måtte
+// instrumenteres i koden.
+//
+// groupArray har ingen garantert rekkefølge i ClickHouse, derfor sorteres
+// stiene eksplisitt på tidsstempel. Uten det blir «veien» tilfeldig stokket.
+async function hentBesokende(dager) {
+  const rader = await posthogSporring(
+    `
+    SELECT
+      min(timestamp) AS start,
+      argMinIf(properties.$geoip_city_name, timestamp, event = '$pageview') AS by,
+      argMinIf(properties.$geoip_country_name, timestamp, event = '$pageview') AS land,
+      argMinIf(properties.$device_type, timestamp, event = '$pageview') AS enhet,
+      argMinIf(properties.utm_source, timestamp, event = '$pageview') AS utm,
+      argMinIf(properties.$referring_domain, timestamp, event = '$pageview') AS ref,
+      countIf(event = '$pageview') AS sider,
+      dateDiff('second', min(timestamp), max(timestamp)) AS sekunder,
+      countIf(event IN ('$autocapture', '$rageclick')) AS klikk,
+      arrayMap(x -> x.2, arraySort(x -> x.1, groupArrayIf((timestamp, properties.$pathname), event = '$pageview'))) AS stier,
+      arrayDistinct(arrayFlatten(groupArrayIf(elements_chain_texts, event = '$autocapture'))) AS klikket
+    FROM events
+    WHERE timestamp > now() - INTERVAL ${dager} DAY
+      AND ${PRODUKSJONSVERT}
+      AND properties.$session_id IS NOT NULL
+      AND ${IKKE_ADMIN}
+      AND ${IKKE_EIER}
+    GROUP BY properties.$session_id
+    HAVING sider > 0
+    ORDER BY start DESC
+    LIMIT 200
+    `,
+    'besøks-spørring',
+  );
+  if (!rader) return null;
+
+  return rader
+    .filter(([, , , , , , sider, sekunder, klikk]) => erEngasjert(sider, sekunder, klikk))
+    .slice(0, 25)
+    .map(([start, by, land, enhet, utm, ref, , sekunder, klikk, stier, klikket]) => ({
+      start,
+      sted: [by, land].filter(Boolean).join(', ') || 'ukjent sted',
+      enhet,
+      sekunder,
+      klikk,
+      kilde: kategoriserKilde(utm, ref),
+      // En SPA rendrer forsiden flere ganger i samme økt, så «/ → / → /»
+      // er én side sett tre ganger, ikke tre steg. Slås sammen med teller.
+      vei: (stier || []).reduce((ut, sti) => {
+        const siste = ut[ut.length - 1];
+        if (siste && siste.sti === sti) siste.ganger += 1;
+        else ut.push({ sti, ganger: 1 });
+        return ut;
+      }, []),
+      klikket: (klikket || []).map((t) => (t || '').trim()).filter(Boolean).slice(0, 8),
+    }));
 }
 
 // posthog-js sin exception-autocapture (capture_exceptions: true i
@@ -363,10 +440,11 @@ export default async function handler(req, res) {
   const ekteLeads = alleLeads.filter((l) => !l.erSpam);
   const spamLeads = alleLeads.filter((l) => l.erSpam && iPerioden(l));
 
-  const [trafikk, feil, trakt] = await Promise.all([
+  const [trafikk, feil, trakt, besokende] = await Promise.all([
     hentSesjoner(dager),
     hentFeil(dager),
     hentTrakt(dager),
+    hentBesokende(dager),
   ]);
 
   // Trakten må måle mot samme nevner som «Ekte besøkende» over. Ellers står
@@ -399,6 +477,7 @@ export default async function handler(req, res) {
     dager: trafikk?.dager ?? [],
     kilder: trafikk?.kilder ?? [],
     sider: trafikk?.sider ?? [],
+    besokende_liste: besokende ?? [],
     trakt: traktMotEngasjerte(trakt, trafikk?.engasjerte?.na) ?? [],
     feil: feil ?? { ekte: [], stoy: [] },
     leads: ekteLeads.filter(iPerioden),
