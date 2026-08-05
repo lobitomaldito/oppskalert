@@ -2,6 +2,7 @@ import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell, SideTopp, SeksjonTopp } from '../components/Layout';
+import { Avsnitt } from '../components/Landingsside';
 import Portfolio from '../components/Portfolio';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
@@ -54,17 +55,6 @@ const webdesignOsloSchema = [
     ],
   },
 ];
-
-const Avsnitt = ({ tittel, uthevet, children }) => (
-  <div data-reveal className="max-w-[62ch]">
-    <h2 className="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.15rem)] leading-[1.1] tracking-[-0.03em] mb-4">
-      {tittel} <span className="text-accent">{uthevet}</span>
-    </h2>
-    <div className="font-body text-[0.98rem] md:text-base text-primary/80 leading-relaxed flex flex-col gap-4">
-      {children}
-    </div>
-  </div>
-);
 
 const Innhold = () => {
   const container = useReveal(70);

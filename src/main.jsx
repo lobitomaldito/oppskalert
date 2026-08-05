@@ -56,6 +56,9 @@ const VsWixPage = lazySide(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazySide(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 const SeoPage = lazySide(() => import('./pages/SeoPage.jsx'))
 const WebdesignOsloPage = lazySide(() => import('./pages/WebdesignOsloPage.jsx'))
+const NettsideDesignPage = lazySide(() => import('./pages/NettsideDesignPage.jsx'))
+const NettsideBedriftPage = lazySide(() => import('./pages/NettsideBedriftPage.jsx'))
+const NettbutikkPage = lazySide(() => import('./pages/NettbutikkPage.jsx'))
 const DashboardPage = lazySide(() => import('./pages/DashboardPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
@@ -77,6 +80,9 @@ createRoot(document.getElementById('root')).render(
           <Route path="/sammenlign/wordpress" element={<VsWordPressPage />} />
           <Route path="/sokemotoroptimalisering" element={<SeoPage />} />
           <Route path="/webdesign-oslo" element={<WebdesignOsloPage />} />
+          <Route path="/nettside-design" element={<NettsideDesignPage />} />
+          <Route path="/nettside-til-bedrift" element={<NettsideBedriftPage />} />
+          <Route path="/lage-nettbutikk" element={<NettbutikkPage />} />
           <Route path="/metode" element={<MetodePage />} />
           <Route path="/om" element={<OmPage />} />
           <Route path="/kontakt" element={<KontaktPage />} />

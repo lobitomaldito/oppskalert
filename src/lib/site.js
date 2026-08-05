@@ -28,6 +28,9 @@ export const ruter = {
   sammenlignWordpress: '/sammenlign/wordpress',
   seo: '/sokemotoroptimalisering',
   webdesignOslo: '/webdesign-oslo',
+  nettsideDesign: '/nettside-design',
+  nettsideBedrift: '/nettside-til-bedrift',
+  nettbutikk: '/lage-nettbutikk',
 };
 
 export const navLenker = [
@@ -185,9 +188,11 @@ export const kalkulatorHaster = { minFaktor: 1.15, maxFaktor: 1.20 };
 
 /* ---------------------------------------------------------------
    SAMMENLIGN. Ærlige side-mot-side med de vanligste DIY-alternativene
-   kunden uansett vurderer. Ingen Shopify-side — nettbutikk selges
-   ikke som eget spor i dag, så den sammenligningen ville vært mot
-   noe jeg ikke tilbyr.
+   kunden uansett vurderer. Fortsatt ingen Shopify-side: nettbutikk er
+   ikke et eget spor i prismodellen, så den sammenligningen ville vært
+   mot noe med udefinert pris. Landingssiden /lage-nettbutikk finnes
+   likevel, fordi søket eksisterer, men den oppgir bevisst ingen fastpris
+   og henviser til en samtale i stedet. Endres dette, endre begge steder.
    --------------------------------------------------------------- */
 export const sammenlignOversikt = [
   {
