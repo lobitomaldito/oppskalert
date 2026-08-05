@@ -9,6 +9,20 @@ både i stemme og struktur.
 
 1. Åpne `content/blog-queue.json`. Finn første oppføring med `"status": "pending"`.
    Er køen tom, stopp uten å gjøre noe (ikke finn på et nytt tema selv).
+
+   Statusverdiene er `pending`, `published` og `skipped`. `skipped` betyr at
+   emnet er bevisst tatt ut, enten fordi artikkelen finnes fra før i en annen
+   kilde, eller fordi den ville konkurrert med en landingsside om samme søk.
+   Feltet `note` sier hvorfor. Ikke sett en `skipped`-oppføring tilbake til
+   `pending` uten å lese den noten først.
+
+   Køen er sortert etter verdi, mest verdifulle først, og `searchVolume` og
+   `difficulty` er tatt med som dokumentasjon på hvorfor. Feltene brukes ikke
+   av arbeidsflyten. Nye emner hentes fra søkeordstabellene i `SEO.md`
+   punkt 4, og skal treffe **informasjonssøk**. Kommersielle søk dekkes av
+   landingssidene (`/priser`, `/nettside-design`, `/webdesign-oslo`,
+   `/nettside-til-bedrift`, `/lage-nettbutikk`, `/sokemotoroptimalisering`),
+   og en artikkel om samme søk stjeler bare fra dem.
 2. Sjekk at `slug` ikke allerede finnes i `handwritten` (i `src/lib/articles.js`)
    eller i en eksisterende fil under `src/content/generated/`. Kollisjon → hopp
    til neste `pending`-oppføring.
