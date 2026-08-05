@@ -2,7 +2,10 @@
   {
     "slug": "google-min-bedrift",
     "title": "Google Bedriftsprofil: slik blir bedriften synlig i lokale søk",
-    "keywords": ["google min bedrift", "google bedriftsprofil"],
+    "keywords": [
+      "google min bedrift",
+      "google bedriftsprofil"
+    ],
     "searchVolume": 590,
     "difficulty": 16,
     "status": "pending"
@@ -10,7 +13,10 @@
   {
     "slug": "responsiv-nettside",
     "title": "Responsiv nettside: hva det betyr, og hvorfor mobil kommer først",
-    "keywords": ["responsiv nettside", "mobiltilpasset nettside"],
+    "keywords": [
+      "responsiv nettside",
+      "mobiltilpasset nettside"
+    ],
     "searchVolume": 70,
     "difficulty": 5,
     "status": "pending"
@@ -18,7 +24,10 @@
   {
     "slug": "hvordan-lage-nettside",
     "title": "Hvordan lage nettside: gjøre det selv, eller sette det bort?",
-    "keywords": ["hvordan lage nettside", "lage nettside selv"],
+    "keywords": [
+      "hvordan lage nettside",
+      "lage nettside selv"
+    ],
     "searchVolume": 210,
     "difficulty": 15,
     "status": "pending"
@@ -26,7 +35,10 @@
   {
     "slug": "nettside-ai",
     "title": "AI og nettsider: hva verktøyene faktisk klarer i 2026",
-    "keywords": ["nettside ai", "ai nettside"],
+    "keywords": [
+      "nettside ai",
+      "ai nettside"
+    ],
     "searchVolume": 140,
     "difficulty": 0,
     "status": "pending"
@@ -34,7 +46,10 @@
   {
     "slug": "bytte-nettside",
     "title": "Når bør du bytte nettside? Fem tegn på at den koster deg kunder",
-    "keywords": ["ny nettside", "bytte nettside"],
+    "keywords": [
+      "ny nettside",
+      "bytte nettside"
+    ],
     "searchVolume": 320,
     "difficulty": 16,
     "status": "pending"
@@ -42,7 +57,10 @@
   {
     "slug": "seo-eller-google-annonser",
     "title": "SEO eller Google-annonser: hva lønner seg for en liten bedrift?",
-    "keywords": ["google annonser", "seo eller annonser"],
+    "keywords": [
+      "google annonser",
+      "seo eller annonser"
+    ],
     "searchVolume": 260,
     "difficulty": 13,
     "status": "pending"
@@ -50,7 +68,10 @@
   {
     "slug": "hjemmesider-for-sma-bedrifter",
     "title": "Hjemmesider for små bedrifter: hva du trenger, og hva du kan droppe",
-    "keywords": ["hjemmesider for små bedrifter", "hjemmeside liten bedrift"],
+    "keywords": [
+      "hjemmesider for små bedrifter",
+      "hjemmeside liten bedrift"
+    ],
     "searchVolume": 50,
     "difficulty": 26,
     "status": "pending"
@@ -58,28 +79,42 @@
   {
     "slug": "webutvikler-oslo",
     "title": "Webutvikler i Oslo: Priser, alternativer og hva du bør spørre om",
-    "keywords": ["webutvikler oslo", "nettsidepriser oslo"],
+    "keywords": [
+      "webutvikler oslo",
+      "nettsidepriser oslo"
+    ],
     "status": "published",
     "publishedDate": "2026-08-04"
   },
   {
     "slug": "norsk-domene",
     "title": "Norsk domene: hva det er, hva det koster og hva du må passe på",
-    "keywords": ["norsk domene", ".no domene pris"],
-    "status": "skipped",
-    "note": "Skrevet av Opinly, planlagt publisert 5. august. Migreres inn med scripts/migrate-opinly.mjs. Skal ikke skrives på nytt."
+    "keywords": [
+      "norsk domene",
+      ".no domene pris"
+    ],
+    "status": "published",
+    "note": "Skrevet av Opinly, migrert manuelt inn 5. august før oppsigelsen. Hero-bildet er generert på nytt, og utgående lenker til konkurrenter er fjernet.",
+    "publishedDate": "2026-08-05"
   },
   {
     "slug": "utvikling-nettside",
     "title": "Utvikling av nettside: Alt en liten bedrift trenger å vite",
-    "keywords": ["utvikling av nettside", "nettside for bedrift"],
-    "status": "skipped",
-    "note": "Skrevet av Opinly, planlagt publisert 6. august. Migreres inn med scripts/migrate-opinly.mjs. Skal ikke skrives på nytt."
+    "keywords": [
+      "utvikling av nettside",
+      "nettside for bedrift"
+    ],
+    "status": "published",
+    "note": "Skrevet av Opinly, migrert manuelt inn 5. august før oppsigelsen. Hero-bildet er generert på nytt, og utgående lenker til konkurrenter er fjernet.",
+    "publishedDate": "2026-08-05"
   },
   {
     "slug": "seo",
     "title": "Hva er SEO og hvorfor betyr det noe for bedriften din?",
-    "keywords": ["hva er seo", "seo for bedrifter"],
+    "keywords": [
+      "hva er seo",
+      "seo for bedrifter"
+    ],
     "status": "skipped",
     "note": "Droppet med vilje. Overlapper direkte med landingssiden /sokemotoroptimalisering, og to sider som slåss om samme søk hjelper ingen av dem."
   }

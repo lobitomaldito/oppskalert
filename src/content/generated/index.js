@@ -11,5 +11,7 @@
  */
 
 import webutviklerOslo from './webutvikler-oslo.js';
+import norskDomene from './norsk-domene.js';
+import utviklingNettside from './utvikling-nettside.js';
 
-export const generated = [webutviklerOslo];
+export const generated = [webutviklerOslo, norskDomene, utviklingNettside];

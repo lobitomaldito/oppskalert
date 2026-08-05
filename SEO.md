@@ -329,13 +329,17 @@ Status per 5. august 2026.
 
 **Hent ut først:**
 
-- [ ] Vent til begge planlagte innlegg har publisert seg selv (norsk-domene
-      5. aug 20:59 UTC, utvikling-nettside 6. aug 20:59 UTC), kjør så
-      `node scripts/migrate-opinly.mjs` på nytt. Da følger de med automatisk,
-      med hero-bilder. Publiserte innlegg er det eneste prod-APIet eksponerer.
-- [ ] Bestem hva som skjer med utkastet «Hva er SEO og hvorfor betyr det noe
-      for bedriften din?». Det overlapper med `/sokemotoroptimalisering` og
-      bør trolig droppes framfor å kannibalisere den.
+- [x] ~~Alt innhold er ute.~~ Den publiserte artikkelen ble hentet med
+      `scripts/migrate-opinly.mjs`. De to planlagte ble kopiert manuelt
+      5. august, siden prod-APIet kun eksponerer publiserte innlegg og vi
+      ikke ville vente. Hero-bildene deres lot seg ikke hente (403 på CDN-en
+      for alle varianter av bilde-ID-en), så de er generert på nytt med
+      `image-gen`. Utgående lenker til norske konkurrenter er fjernet.
+- [x] ~~Utkastet «Hva er SEO ...» er droppet~~, det overlappet med
+      `/sokemotoroptimalisering`. Markert `skipped` i `content/blog-queue.json`.
+
+**Opinly kan sies opp nå.** Ingenting i repoet er avhengig av abonnementet
+lenger: bloggen er lokal, pikselen er fjernet, og api/opinly/* er slettet.
 - [ ] Alt annet er allerede tappet ut hit: søkeordsgap (punkt 4),
       konkurrenter (punkt 5), backlink-gap (punkt 6), teknisk audit (punkt 3),
       LLM-oppsett og -tall (punkt 9). Sporede søkeord i Opinly er ett stykk,

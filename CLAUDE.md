@@ -124,22 +124,17 @@ Kjente lint-feil fra før i `BloggKort.jsx` og `LiquidGlass.jsx`. Ikke dine.
 
 ## Status per 5. august 2026
 
-**Live og verifisert i prod:** prerendering av statiske sider, riktige titler
-per side, `sitemap.xml` og `rss.xml` svarer 200, demosidene under `/eksempler`
-er `noindex`, `/sokemotoroptimalisering` er publisert.
+**Live og verifisert i prod:** prerendering av alle ruter inkludert bloggen,
+titler skrevet for søk, `sitemap.xml` og `rss.xml` svarer 200, demosidene under
+`/eksempler` er `noindex`, Opinly-pikselen er fjernet, og fem landingssider er
+publisert: `/sokemotoroptimalisering`, `/webdesign-oslo`, `/nettside-design`,
+`/nettside-til-bedrift`, `/lage-nettbutikk`.
 
-**Ligger på branch, ikke deployet:** `blogg/migrer-ut-av-opinly` med
-bloggmigreringen, prerendering av blogg-rutene (17 ruter blir 22) og
-LLM-dataene i SEO.md. Denne fikser også duplikatinnholdet på `/blogg`.
+Bloggen er migrert helt ut av Opinly, seks artikler, og hver artikkel har tre
+kontaktpunkter i stedet for ett på slutten.
 
-**Blokkert på Aleksander:**
-
-1. Google Search Console. Send inn sitemapen på nytt (den svarte 500 fra mai
-   til 5. august, så Google har den trolig markert som feilet), og be om
-   indeksering av nye sider.
-2. Opinly skal sies opp. Sjekklisten står i SEO.md punkt 11. Viktigst: vent til
-   de planlagte innleggene har publisert seg selv, kjør så
-   `node scripts/migrate-opinly.mjs` på nytt før oppsigelsen.
+**Blokkert på Aleksander:** be Google Search Console indeksere de fem nye
+landingssidene. Sitemapen er sendt inn.
 
 `irmelindrake.no` er en kollegas prosjekt uten vår tilgang, og
 alphanegotiations.com krediterer et annet byrå. Begge er utenfor rekkevidde
@@ -147,14 +142,15 @@ og skal ikke følges opp videre.
 
 **Kjent gjeld:**
 
-- `index.html` laster fortsatt Opinlys analytics-piksel, og `src/lib/analytics.js`
-  sender hendelser dit. Feiler stille ved oppsigelse. PostHog dekker det samme.
 - `alphanegotiations.com` ligger i porteføljen i `src/lib/site.js`, men
   footeren der krediterer et annet byrå. Bør trolig ut.
 - Tankestrek finnes i rundt ni kodekommentarer. Ikke i kundevendt tekst.
 - Forsidens H1 er «Nettsider som faktisk selger». God copy, null søkevolum.
   Heroen er nøyaktig én skjermhøyde, så et ekstra ord gir en fjerde linje og
   brekker layouten. Endres bare sammen med typografien.
+- De tre eldste hero-bildene under `public/blogg/*.jpg` har tekst brent inn i
+  bildet over stockfoto, som DESIGN.md advarer mot. De tre nyeste (`.webp`) er
+  tekstfrie og abstrakte. Settet er ikke konsistent.
 
 ---
 
