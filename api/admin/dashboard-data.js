@@ -13,17 +13,52 @@ const POSTHOG_PROJECT_ID = '239572';
 const POSTHOG_HOST = 'https://eu.posthog.com';
 
 // Alt som ikke kommer fra produksjonsdomenet holdes utenfor tallene:
-// prerenderen kjørte tidligere mot 127.0.0.1 og la igjen 25 sidevisninger
-// per bygg (rettet i lib/posthog.js, men historikken ligger der), og
-// preview-deployer på *.vercel.app er deg selv som tester, ikke besøkende.
-// Endres domenet må dette følge med, ellers blir alle tall null.
+// prerenderen kjørte tidligere mot 127.0.0.1 (rettet i lib/posthog.js, men
+// historikken ligger der), og preview-deployer på *.vercel.app er deg selv
+// som tester. Endres domenet må dette følge med, ellers blir alle tall null.
 const PRODUKSJONSVERT = "properties.$host LIKE '%oppskalert.no'";
 
-// /admin/* er ditt eget dashbord. Det lå på åttendeplass over mest besøkte
+// /admin/* er ditt eget dashbord. Det lå på fjerdeplass over mest besøkte
 // sider, som er et selvportrett, ikke innsikt.
 const IKKE_ADMIN = "(properties.$pathname IS NULL OR NOT startsWith(properties.$pathname, '/admin'))";
+const SIDEVISNING = `event = '$pageview' AND NOT startsWith(coalesce(properties.$pathname, '/'), '/admin')`;
 
 const TILLATTE_PERIODER = [7, 30, 90];
+
+// Terskelen for at en økt teller som et menneske.
+//
+// Målt på ekte data 5. august: av 86 økter hadde 11 minst ett klikk og 11
+// varte over ett minutt, til sammen 15 unike. De resterende 71 lå tett
+// samlet på 28 til 44 sekunder med null interaksjon. Det er ikke lesetid,
+// det er posthog-js som fortsetter å sende $web_vitals i cirka 30 sekunder
+// etter innlasting. En terskel på 10 sekunder slapp derfor gjennom 61 av
+// 86 og var ubrukelig.
+//
+// Kontrollen som bekrefter at dette treffer riktig: null økter fra Irland
+// eller Nederland (Europas to store datasenterregioner, der e-postskannerne
+// bor) passerer, mens snittøkten fra Norge er 179 sekunder.
+const ENGASJERT_SEKUNDER = 60;
+
+// Rekkefølgen betyr noe: gemini.google.com må fanges som AI-søk før
+// google-regelen tar den som vanlig søk.
+const KILDEREGLER = [
+  { treff: /(^|\.)(chatgpt\.com|chat\.openai\.com|perplexity\.ai|claude\.ai|copilot\.microsoft\.com|gemini\.google\.com)$/, navn: 'AI-søk' },
+  { treff: /(^|\.)google\./, navn: 'Google-søk' },
+  { treff: /(^|\.)(bing\.com|duckduckgo\.com|ecosia\.org|kvasir\.no|yahoo\.)/, navn: 'Annet søk' },
+  { treff: /(^|\.)(linkedin\.com|lnkd\.in|facebook\.com|instagram\.com|x\.com|t\.co)$/, navn: 'Sosiale medier' },
+];
+
+const kategoriserKilde = (utm, ref) => {
+  const tagget = (utm || '').trim();
+  if (tagget) {
+    if (/signatur/i.test(tagget)) return 'E-postsignatur';
+    if (/kald.?e-?post/i.test(tagget)) return 'Kald e-post';
+    return tagget;
+  }
+  const domene = (ref || '').trim().toLowerCase();
+  if (!domene || domene === '$direct') return 'Direkte';
+  return KILDEREGLER.find((r) => r.treff.test(domene))?.navn || domene;
+};
 
 // Feil som ikke er dine å fikse. De skjules bak en knapp i stedet for å
 // slettes, så du fortsatt kan se dem hvis et mønster endrer seg.
@@ -77,67 +112,103 @@ async function posthogSporring(query, merkelapp) {
   }
 }
 
-// Rådene hentes ut per hendelse i stedet for ferdig aggregert, fordi hver
-// bøtte (dag, kilde, sti) også skal ha unike besøkende, og det krever at
-// samme distinct_id kan telles i flere bøtter samtidig. Volumet er noen
-// hundre rader i måneden, så det er billigere enn seks separate uniq-kall.
-// Grensen er en sikkerhetsventil, ikke en forventet mengde.
-async function hentTrafikk(dager) {
+// Aggregeres per økt, ikke per sidevisning, fordi det er på øktnivå det er
+// mulig å skille et menneske fra en e-postskanner: varighet og klikk gir
+// bare mening for en økt. Hver rad er én økt, med kilden og landingssiden
+// fra dens første sidevisning. Volumet er under hundre økter i måneden, så
+// det er billigere enn en haug med uniq-kall. Grensen er en
+// sikkerhetsventil, ikke en forventet mengde.
+async function hentSesjoner(dager) {
   const rader = await posthogSporring(
     `
     SELECT
-      if(timestamp >= now() - INTERVAL ${dager} DAY, 'na', 'forrige') AS periode,
-      toDate(timestamp) AS dag,
-      multiIf(
-        properties.utm_source IS NOT NULL AND properties.utm_source != '', properties.utm_source,
-        properties.$referring_domain IS NOT NULL AND properties.$referring_domain != '' AND properties.$referring_domain != '$direct', properties.$referring_domain,
-        'direkte'
-      ) AS kilde,
-      properties.$pathname AS sti,
-      distinct_id
+      if(min(timestamp) >= now() - INTERVAL ${dager} DAY, 'na', 'forrige') AS periode,
+      toDate(min(timestamp)) AS dag,
+      any(distinct_id) AS person,
+      countIf(${SIDEVISNING}) AS sider,
+      dateDiff('second', min(timestamp), max(timestamp)) AS sekunder,
+      countIf(event IN ('$autocapture', '$rageclick')) AS klikk,
+      argMinIf(properties.utm_source, timestamp, ${SIDEVISNING}) AS utm,
+      argMinIf(properties.$referring_domain, timestamp, ${SIDEVISNING}) AS ref,
+      argMinIf(properties.$pathname, timestamp, ${SIDEVISNING}) AS landing
     FROM events
-    WHERE event = '$pageview'
-      AND timestamp > now() - INTERVAL ${dager * 2} DAY
+    WHERE timestamp > now() - INTERVAL ${dager * 2} DAY
       AND ${PRODUKSJONSVERT}
-      AND ${IKKE_ADMIN}
+      AND properties.$session_id IS NOT NULL
+    GROUP BY properties.$session_id
+    HAVING sider > 0
     LIMIT 50000
     `,
-    'trafikk-spørring',
+    'sesjons-spørring',
   );
   if (!rader) return null;
 
-  const tom = () => ({ visninger: 0, besokende: new Set() });
-  const na = { total: tom(), perDag: new Map(), perKilde: new Map(), perSti: new Map() };
-  const forrige = { total: tom() };
+  const tomKilde = () => ({ okter: 0, engasjerteOkter: 0, visninger: 0, personer: new Set() });
+  const tomSide = () => ({ visninger: 0, personer: new Set() });
 
-  for (const [periode, dag, kilde, sti, distinctId] of rader) {
+  const na = {
+    visninger: 0,
+    alle: new Set(),
+    engasjerte: new Set(),
+    perDag: new Map(),
+    perKilde: new Map(),
+    perSti: new Map(),
+  };
+  const forrige = { visninger: 0, alle: new Set(), engasjerte: new Set() };
+
+  for (const [periode, dag, person, sider, sekunder, klikk, utm, ref, landing] of rader) {
+    const erEngasjert = klikk > 0 || sekunder >= ENGASJERT_SEKUNDER;
     const bunke = periode === 'na' ? na : forrige;
-    bunke.total.visninger += 1;
-    bunke.total.besokende.add(distinctId);
+
+    bunke.visninger += sider;
+    bunke.alle.add(person);
+    if (erEngasjert) bunke.engasjerte.add(person);
     if (periode !== 'na') continue;
 
-    for (const [kart, nokkel] of [[na.perDag, dag], [na.perKilde, kilde], [na.perSti, sti]]) {
-      if (nokkel === null || nokkel === undefined) continue;
-      if (!kart.has(nokkel)) kart.set(nokkel, tom());
-      const celle = kart.get(nokkel);
-      celle.visninger += 1;
-      celle.besokende.add(distinctId);
+    if (!na.perDag.has(dag)) na.perDag.set(dag, { visninger: 0, personer: new Set() });
+    const dagCelle = na.perDag.get(dag);
+    dagCelle.visninger += sider;
+    if (erEngasjert) dagCelle.personer.add(person);
+
+    const kilde = kategoriserKilde(utm, ref);
+    if (!na.perKilde.has(kilde)) na.perKilde.set(kilde, tomKilde());
+    const kildeCelle = na.perKilde.get(kilde);
+    kildeCelle.okter += 1;
+    kildeCelle.visninger += sider;
+    if (erEngasjert) {
+      kildeCelle.engasjerteOkter += 1;
+      kildeCelle.personer.add(person);
+    }
+
+    // Landingssiden, ikke alle sider i økten: spørsmålet er hvor folk kommer
+    // inn, og bare den første sidevisningen er hentet ut per økt.
+    if (landing) {
+      if (!na.perSti.has(landing)) na.perSti.set(landing, tomSide());
+      const stiCelle = na.perSti.get(landing);
+      stiCelle.visninger += 1;
+      if (erEngasjert) stiCelle.personer.add(person);
     }
   }
 
-  const listeAv = (kart, navn) =>
-    [...kart.entries()]
-      .map(([nokkel, v]) => ({ [navn]: nokkel, visninger: v.visninger, besokende: v.besokende.size }))
-      .sort((a, b) => b.visninger - a.visninger);
-
   return {
-    sidevisninger: { na: na.total.visninger, forrige: forrige.total.visninger },
-    besokende: { na: na.total.besokende.size, forrige: forrige.total.besokende.size },
+    sidevisninger: { na: na.visninger, forrige: forrige.visninger },
+    besokende: { na: na.alle.size, forrige: forrige.alle.size },
+    engasjerte: { na: na.engasjerte.size, forrige: forrige.engasjerte.size },
     dager: [...na.perDag.entries()]
-      .map(([dato, v]) => ({ dato, visninger: v.visninger, besokende: v.besokende.size }))
+      .map(([dato, v]) => ({ dato, visninger: v.visninger, personer: v.personer.size }))
       .sort((a, b) => a.dato.localeCompare(b.dato)),
-    kilder: listeAv(na.perKilde, 'kilde'),
-    sider: listeAv(na.perSti, 'sti'),
+    kilder: [...na.perKilde.entries()]
+      .map(([kilde, v]) => ({
+        kilde,
+        personer: v.personer.size,
+        okter: v.okter,
+        engasjerteOkter: v.engasjerteOkter,
+        visninger: v.visninger,
+      }))
+      .sort((a, b) => b.personer - a.personer || b.okter - a.okter),
+    sider: [...na.perSti.entries()]
+      .map(([sti, v]) => ({ sti, visninger: v.visninger, personer: v.personer.size }))
+      .sort((a, b) => b.personer - a.personer || b.visninger - a.visninger),
   };
 }
 
@@ -293,19 +364,34 @@ export default async function handler(req, res) {
   const spamLeads = alleLeads.filter((l) => l.erSpam && iPerioden(l));
 
   const [trafikk, feil, trakt] = await Promise.all([
-    hentTrafikk(dager),
+    hentSesjoner(dager),
     hentFeil(dager),
     hentTrakt(dager),
   ]);
 
+  // Trakten må måle mot samme nevner som «Ekte besøkende» over. Ellers står
+  // det at 1 av 71 brukte kalkulatoren, altså 1 %, når sannheten er 1 av 7
+  // mennesker. De 64 andre var skannere som aldri kunne blitt en henvendelse.
+  // Stegene under toppen teller allerede bare folk som gjorde noe aktivt, så
+  // bare nevneren trenger å byttes.
+  const traktMotEngasjerte = (steg, engasjerte) => {
+    if (!steg?.length || !engasjerte) return steg;
+    return steg.map((s, i) =>
+      i === 0
+        ? { ...s, personer: engasjerte, andel: 1 }
+        : { ...s, andel: Math.min(1, s.personer / engasjerte) },
+    );
+  };
+
   res.setHeader('Cache-Control', 'no-store');
   res.status(200).json({
-    periode: { dager },
+    periode: { dager, engasjertSekunder: ENGASJERT_SEKUNDER },
     // null betyr «PostHog svarte ikke», og vises som et eget varsel i
     // dashbordet i stedet for å bli tegnet som en null.
     posthogTilgjengelig: trafikk !== null,
     sidevisninger: trafikk?.sidevisninger ?? null,
     besokende: trafikk?.besokende ?? null,
+    engasjerte: trafikk?.engasjerte ?? null,
     henvendelser: {
       na: ekteLeads.filter(iPerioden).length,
       forrige: ekteLeads.filter((l) => !iPerioden(l)).length,
@@ -313,7 +399,7 @@ export default async function handler(req, res) {
     dager: trafikk?.dager ?? [],
     kilder: trafikk?.kilder ?? [],
     sider: trafikk?.sider ?? [],
-    trakt: trakt ?? [],
+    trakt: traktMotEngasjerte(trakt, trafikk?.engasjerte?.na) ?? [],
     feil: feil ?? { ekte: [], stoy: [] },
     leads: ekteLeads.filter(iPerioden),
     spam: spamLeads,

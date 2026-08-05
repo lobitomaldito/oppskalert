@@ -23,7 +23,7 @@ const byggDagsserie = (dager, antallDager) => {
     const d = new Date();
     d.setDate(d.getDate() - i);
     const nokkel = d.toISOString().slice(0, 10);
-    ut.push(perDato.get(nokkel) || { dato: nokkel, visninger: 0, besokende: 0 });
+    ut.push(perDato.get(nokkel) || { dato: nokkel, visninger: 0, personer: 0 });
   }
   return ut;
 };
@@ -105,7 +105,7 @@ const Trafikkgraf = ({ dager, antallDager }) => {
             ))}
             {hover && (
               <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-primary text-background text-xs font-body px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none z-10">
-                {datoKort(hover.dato)}: {nb(hover.visninger)} visninger, {nb(hover.besokende)} besøkende
+                {datoKort(hover.dato)}: {nb(hover.visninger)} visninger, {nb(hover.personer)} ekte besøkende
               </div>
             )}
           </div>
@@ -133,7 +133,7 @@ const Trakt = ({ steg }) => {
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">Veien til en henvendelse</h2>
       <p className="font-body text-xs text-primary/60 mb-6">
-        Antall personer som gjorde hvert steg. Kalkulatoren er en sidevei, ikke et krav for å sende inn.
+        Målt mot ekte besøkende, ikke mot skannerne. Kalkulatoren er en sidevei, ikke et krav for å sende inn.
       </p>
       <div className="flex flex-col gap-4">
         {steg.map((s, i) => {
@@ -168,21 +168,29 @@ const Trakt = ({ steg }) => {
   );
 };
 
-const Stolpeliste = ({ tittel, lede, rader, nokkel, tomtekst }) => {
-  const maks = Math.max(1, ...rader.map((r) => r.visninger));
+// Stolpen måler ekte personer, ikke sidevisninger. Skanneren som henter
+// /kontakt én gang skal ikke gi en like lang stolpe som noen som faktisk
+// leste siden. Den dempede teksten viser hvor mange økter kilden hadde
+// totalt, så en kilde som bare er roboter synes som nettopp det: mange
+// økter, null personer.
+const Kildeliste = ({ tittel, lede, rader, nokkel, tomtekst }) => {
+  const maks = Math.max(1, ...rader.map((r) => r.personer));
   return (
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">{tittel}</h2>
       <p className="font-body text-xs text-primary/60 mb-6">{lede}</p>
-      <div className="flex flex-col gap-3">
-        {rader.slice(0, 10).map((r) => (
+      <div className="flex flex-col gap-3.5">
+        {rader.slice(0, 12).map((r) => (
           <div key={r[nokkel]} className="flex items-center gap-3">
-            <span className="font-body text-xs text-primary/80 w-32 sm:w-40 truncate" title={r[nokkel]}>{r[nokkel]}</span>
+            <span className="font-body text-xs text-primary/80 w-32 sm:w-44 truncate" title={r[nokkel]}>{r[nokkel]}</span>
             <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
-              <div className="h-full bg-accent rounded-full" style={{ width: `${(r.visninger / maks) * 100}%` }} />
+              <div className="h-full bg-accent rounded-full" style={{ width: `${(r.personer / maks) * 100}%` }} />
             </div>
-            <span className="font-body text-xs text-primary/60 w-28 text-right tabular-nums">
-              {nb(r.visninger)} · {nb(r.besokende)} bes.
+            <span className="font-body text-xs w-32 text-right tabular-nums shrink-0">
+              <span className={r.personer > 0 ? 'text-primary/80' : 'text-primary/35'}>
+                {nb(r.personer)} {r.personer === 1 ? 'person' : 'personer'}
+              </span>
+              <span className="text-primary/35"> · {nb(r.okter ?? r.visninger)} økt{(r.okter ?? r.visninger) === 1 ? '' : 'er'}</span>
             </span>
           </div>
         ))}
@@ -460,11 +468,16 @@ const DashboardPage = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               <Nokkeltall
-                etikett="Sidevisninger" verdi={data.sidevisninger?.na} forrige={data.sidevisninger?.forrige}
-                forklaring="Uten /admin og uten byggroboten"
+                etikett="Ekte besøkende" verdi={data.engasjerte?.na} forrige={data.engasjerte?.forrige}
+                forklaring={
+                  data.besokende?.na
+                    ? `av ${nb(data.besokende.na)} registrerte. Resten er e-postskannere og crawlere.`
+                    : null
+                }
               />
               <Nokkeltall
-                etikett="Unike besøkende" verdi={data.besokende?.na} forrige={data.besokende?.forrige}
+                etikett="Sidevisninger" verdi={data.sidevisninger?.na} forrige={data.sidevisninger?.forrige}
+                forklaring="Alle, uten /admin. Ikke filtrert for roboter."
               />
               <Nokkeltall
                 etikett="Henvendelser" verdi={data.henvendelser?.na} forrige={data.henvendelser?.forrige}
@@ -472,18 +485,26 @@ const DashboardPage = () => {
               />
             </div>
 
+            <p className="font-body text-xs text-primary/50 -mt-4 leading-relaxed">
+              «Ekte besøkende» teller bare økter med minst ett klikk eller minst{' '}
+              {data.periode?.engasjertSekunder ?? 60} sekunder på siden. Grunnen: når du sender e-post, åpner
+              mottakernes sikkerhetsskannere (Outlook Safe Links og liknende) hver lenke automatisk fra
+              datasentre i Irland og Nederland. De ser ut som besøkende, men klikker aldri og blir aldri.
+            </p>
+
             <Henvendelser leads={data.leads ?? []} spam={data.spam ?? []} />
             <Feil feil={data.feil ?? { ekte: [], stoy: [] }} />
             <Trafikkgraf dager={data.dager ?? []} antallDager={dager} />
             <Trakt steg={data.trakt ?? []} />
-            <Stolpeliste
-              tittel="Mest besøkte sider" lede="Sidevisninger og unike besøkende per sti."
-              rader={data.sider ?? []} nokkel="sti" tomtekst="Ingen sidevisninger i perioden."
-            />
-            <Stolpeliste
-              tittel="Trafikkilder"
-              lede="utm_source hvis lenken er tagget, ellers domenet folk kom fra. «direkte» er skrevet inn, bokmerket, eller en e-postklient som strippet referrer."
+            <Kildeliste
+              tittel="Hvor folk kommer fra"
+              lede="Kilden til hver økt, målt i ekte personer. En kilde med mange økter og null personer er roboter."
               rader={data.kilder ?? []} nokkel="kilde" tomtekst="Ingen trafikk i perioden."
+            />
+            <Kildeliste
+              tittel="Hvor folk lander"
+              lede="Første side i økten. Der folk kommer inn, ikke alt de klikket seg videre til."
+              rader={data.sider ?? []} nokkel="sti" tomtekst="Ingen sidevisninger i perioden."
             />
             <UkentligeRapporter rapporter={data.rapporter ?? []} />
           </div>
