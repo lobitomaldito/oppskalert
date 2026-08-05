@@ -134,13 +134,16 @@ LLM-dataene i SEO.md. Denne fikser også duplikatinnholdet på `/blogg`.
 
 **Blokkert på Aleksander:**
 
-1. Google Search Console. Verifiser domenet og send inn sitemapen. Uten dette
-   finnes ingen måling i det hele tatt. Dette er det viktigste punktet.
-2. `irmelindrake.no` mangler prerendering og krediteringslenke. De tre andre
-   Lovable-kundesidene er fikset.
-3. Opinly skal sies opp. Sjekklisten står i SEO.md punkt 11. Viktigst: vent til
+1. Google Search Console. Send inn sitemapen på nytt (den svarte 500 fra mai
+   til 5. august, så Google har den trolig markert som feilet), og be om
+   indeksering av nye sider.
+2. Opinly skal sies opp. Sjekklisten står i SEO.md punkt 11. Viktigst: vent til
    de planlagte innleggene har publisert seg selv, kjør så
    `node scripts/migrate-opinly.mjs` på nytt før oppsigelsen.
+
+`irmelindrake.no` er en kollegas prosjekt uten vår tilgang, og
+alphanegotiations.com krediterer et annet byrå. Begge er utenfor rekkevidde
+og skal ikke følges opp videre.
 
 **Kjent gjeld:**
 

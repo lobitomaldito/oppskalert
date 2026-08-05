@@ -313,9 +313,10 @@ Status per 5. august 2026.
 3. ~~Bygg ut `/priser` med ordene folk faktisk søker på.~~ Gjort, title og H1
    treffer «pris på nettside» og «nettside pris».
 4. ~~Skriv om title og meta description på forsiden.~~ Gjort.
-5. Footer-kreditering på leverte nettsider. Delvis: 6 av 8 kundesider har den
-   nå synlig i rå HTML. irmelindrake.no mangler, alphanegotiations.com er
-   ikke lenger vår.
+5. ~~Footer-kreditering på leverte nettsider.~~ Gjort på alt vi kontrollerer:
+   6 av 8 kundesider har den synlig i rå HTML. irmelindrake.no er en kollegas
+   prosjekt uten vår tilgang, og alphanegotiations.com krediterer et annet
+   byrå. Begge er utenfor rekkevidde og følges ikke opp videre.
 6. Opprett Google Bedriftsprofil, proff.no, 1881, og katalogene i punkt 9.
 7. ~~Lag én dedikert landingsside per kommersielt søkeord.~~ Startet:
    `/sokemotoroptimalisering` er live. Neste: `/nettside-design`.

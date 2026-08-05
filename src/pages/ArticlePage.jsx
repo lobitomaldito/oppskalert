@@ -4,6 +4,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getArticleBySlug, articles } from '../lib/articles';
+import { ruter } from '../lib/site';
 import SEO from '../components/SEO';
 import { Navbar, Footer } from '../components/Layout';
 
@@ -50,13 +51,52 @@ const renderInline = (text, keyPrefix) =>
       return part;
     });
 
-const renderContent = (content) => {
+/* Artikkelen hadde tidligere ett eneste kontaktpunkt, og det lå 97 % inn i
+   teksten. På en artikkel på 3300 ord betyr det i praksis ingen CTA.
+   Nå er det tre, med stigende temperatur:
+
+     1. tidlig, ren tekstlenke etter introen, for de som allerede vet hva de vil
+     2. midtveis, en rolig boks ved nærmeste H2 forbi 45 % av teksten
+     3. til slutt, den fylte aksentknappen
+
+   Kun den siste bruker aksentfyll. DESIGN.md sin Lamplight-regel sier at
+   Sandy Brown tilhører konverteringsstien og virker fordi den er sjelden, så
+   tre fylte knapper i én artikkel ville nøytralisert alle tre. Midtveisboksen
+   bruker tonal fyll og kantlinje i stedet, og en annen form enn slutt-CTA-en,
+   jf. «vary the section forms». */
+
+const tellOrd = (s) => s.trim().split(/\s+/).filter(Boolean).length;
+
+// Terskel: under dette er artikkelen for kort til at en midtveis-CTA gir
+// mening, da står de to andre alene.
+const MIDT_CTA_MIN_ORD = 800;
+
+const renderContent = (content, { tidligCta = null, midtCta = null } = {}) => {
   const lines = content.split('\n');
   const elements = [];
+  const totaltOrd = tellOrd(content);
+  const midtGrense = totaltOrd * 0.45;
+  let ordSaaLangt = 0;
+  let tidligSatt = tidligCta === null;
+  let midtSatt = midtCta === null || totaltOrd < MIDT_CTA_MIN_ORD;
   let i = 0;
 
   while (i < lines.length) {
     const line = lines[i];
+    const erH2 = line.startsWith('## ');
+    ordSaaLangt += tellOrd(line);
+
+    /* Begge plasseres rett før en H2, aldri midt i en tanke. Den tidlige tar
+       den aller første, altså rett etter introen, som er alt som står før
+       første mellomtittel. Den midtre tar første H2 forbi 45 %, og aldri
+       samme som den tidlige. */
+    if (!tidligSatt && erH2) {
+      elements.push(<div key={`tidlig-cta-${i}`}>{tidligCta}</div>);
+      tidligSatt = true;
+    } else if (!midtSatt && tidligSatt && ordSaaLangt > midtGrense && erH2) {
+      elements.push(<div key={`midt-cta-${i}`}>{midtCta}</div>);
+      midtSatt = true;
+    }
 
     if (line.startsWith('### ')) {
       elements.push(
@@ -113,6 +153,51 @@ const breadcrumbSchema = (name, url) => ({
   ],
 });
 
+/* Standardtekster. Artikkelfilen kan overstyre dem med et valgfritt
+   cta-objekt ({ tidlig, midt: { tittel, tekst } }), men defaultene er skrevet
+   så de passer enhver artikkel på dette nettstedet. Da gjelder de også for
+   alt den ukentlige generatoren lager, uten at den må huske noe nytt. */
+const CTA_STANDARD = {
+  tidlig: 'Leter du egentlig bare etter en pris?',
+  midt: {
+    tittel: 'Vil du se dette gjort på din egen side?',
+    tekst: 'Jeg bygger et ferdig utkast med ditt innhold før du bestemmer deg. Liker du det ikke, koster det ingenting.',
+  },
+};
+
+/* 1. Tidlig. Ren tekstlenke rett etter introen, ingen boks og ingen knapp.
+      For den som allerede vet hva de vil og ikke gidder å lese 3000 ord. */
+const TidligCta = ({ tekst }) => (
+  <p className="font-body text-[0.95rem] text-primary/70 leading-relaxed my-8 pl-5 border-l border-primary/15">
+    {tekst}{' '}
+    <Link to={ruter.priser} className="text-accent underline underline-offset-2 hover:text-primary transition-colors">
+      Se hva en nettside koster
+    </Link>
+    , eller{' '}
+    <Link to={ruter.kontakt} className="text-accent underline underline-offset-2 hover:text-primary transition-colors">
+      be om en gratis demo
+    </Link>
+    .
+  </p>
+);
+
+/* 2. Midtveis. Bevisst en annen form enn slutt-CTA-en: venstrestilt, tonal
+      fyll og kantlinje, tekstlenke i stedet for fylt knapp. Aksentfyllet er
+      reservert til den siste. */
+const MidtCta = ({ tittel, tekst }) => (
+  <aside className="my-12 rounded-[2rem] border border-primary/12 bg-primary/[0.04] p-7 md:p-8">
+    <h3 className="font-sans font-bold text-lg md:text-xl tracking-tight mb-2.5">{tittel}</h3>
+    <p className="font-body text-[0.95rem] text-primary/80 leading-relaxed mb-5 max-w-[52ch]">{tekst}</p>
+    <Link
+      to={ruter.kontakt}
+      className="inline-flex items-center gap-2 font-sans font-bold text-sm text-accent hover:text-highlight transition-colors"
+    >
+      Bestill gratis demo <ArrowRight className="w-4 h-4" />
+    </Link>
+  </aside>
+);
+
+/* 3. Slutt. Den ene fylte aksentknappen i artikkelen. */
 const CTA = () => (
   <div className="mt-20 bg-surface/30 border border-primary/10 rounded-[2.5rem] p-10 text-center">
     <span className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-3 block">Klar for neste steg?</span>
@@ -154,6 +239,11 @@ const LocalArticle = ({ article }) => {
       { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: 'power3.out', delay: 0.2 }
     );
   }, []);
+
+  const cta = {
+    tidlig: article.cta?.tidlig || CTA_STANDARD.tidlig,
+    midt: { ...CTA_STANDARD.midt, ...(article.cta?.midt || {}) },
+  };
 
   const currentIndex = articles.findIndex((a) => a.slug === article.slug);
   const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
@@ -213,7 +303,10 @@ const LocalArticle = ({ article }) => {
 
       <article className="px-6 md:px-12 lg:px-24 pb-32">
         <div className="max-w-3xl mx-auto">
-          {renderContent(article.content)}
+          {renderContent(article.content, {
+            tidligCta: <TidligCta tekst={cta.tidlig} />,
+            midtCta: <MidtCta tittel={cta.midt.tittel} tekst={cta.midt.tekst} />,
+          })}
 
           <div className="mt-16 flex flex-wrap gap-2">
             {article.keywords.map((kw) => (

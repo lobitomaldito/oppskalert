@@ -48,6 +48,25 @@ Feltene må matche nøyaktig det de tre håndskrevne artiklene bruker (se
 `src/lib/articles.js`), samme nøkler, samme typer. `getArticleBySlug` og
 sorteringen i `articles.js` forventer dette uendret.
 
+### Valgfritt: egne CTA-tekster
+
+Artikkelen får automatisk tre kontaktpunkter, og du trenger ikke gjøre noe
+for at de skal virke. Vil du at de skal snakke om akkurat dette temaet i
+stedet for standardteksten, legg til et `cta`-objekt i artikkelfilen:
+
+```js
+cta: {
+  tidlig: 'Vurderer du allerede å bytte leverandør?',
+  midt: {
+    tittel: 'Skal jeg måle din side?',
+    tekst: 'Jeg henter siden slik en robot gjør og sier hva jeg finner.',
+  },
+},
+```
+
+Alle felt er valgfrie hver for seg, og det du utelater faller tilbake på
+standarden. Den midtre boksen vises bare i artikler over 800 ord.
+
 ### Registrer filen
 
 Å legge filen i mappen er ikke nok. Den må også inn i
