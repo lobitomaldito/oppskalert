@@ -110,7 +110,9 @@ const LiquidGlass = ({ className }) => {
   // Physics state
   const dropsRef = useRef([]);
   const mouseRef = useRef({ x: 999, y: 999, active: false, down: false });
-  const lastTimeRef = useRef(performance.now());
+  // Settes når animasjonsløkken starter, ikke her. performance.now() er uren
+  // og kan ikke kalles under render.
+  const lastTimeRef = useRef(0);
   const accRef = useRef(0);
   const uidRef = useRef(0);
   const aspectRef = useRef(1);
@@ -404,7 +406,10 @@ const LiquidGlass = ({ className }) => {
 
     const animate = () => {
       const now = performance.now();
-      const dt = Math.min(now - lastTimeRef.current, MAX_FRAME_DT_MS);
+      // Første frame har ingen forrige tid å måle mot, så deltaet hoppes over.
+      const dt = lastTimeRef.current === 0
+        ? 0
+        : Math.min(now - lastTimeRef.current, MAX_FRAME_DT_MS);
       lastTimeRef.current = now;
       accRef.current += dt;
 
@@ -422,6 +427,10 @@ const LiquidGlass = ({ className }) => {
       requestRef.current = requestAnimationFrame(animate);
     };
 
+    // Nullstill klokken her også, ellers ville en ny montering (mobil til
+    // desktop) regnet med tiden fra forrige løkke som første delta.
+    lastTimeRef.current = 0;
+    accRef.current = 0;
     requestRef.current = requestAnimationFrame(animate);
 
     return () => {

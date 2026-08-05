@@ -23,7 +23,7 @@ const BloggKort = ({ article, index = 0 }) => {
         y: 0, opacity: 1, duration: 0.8, delay: (index % 6) * 0.1, ease: 'power2.out',
       }
     );
-  }, []);
+  }, [index]);
 
   return (
     <Link ref={cardRef} to={`/blogg/${article.slug}`} className="group block bg-surface/30 border border-primary/10 rounded-[2.5rem] overflow-hidden hover:border-accent/30 transition-all duration-500 hover:-translate-y-1">
