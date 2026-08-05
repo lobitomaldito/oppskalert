@@ -2,15 +2,23 @@ import posthog from './posthog';
 import { demoClient } from './demoRequest';
 
 // Én kilde til sannhet for sporing. Alle event-kall går gjennom track()/
-// identify() her i stedet for å ringe posthog eller window.opinly direkte,
-// slik at Opinly kan sies opp senere uten å måtte grave i hver komponent.
+// identify() her i stedet for å ringe posthog direkte, så et bytte av
+// verktøy blir én endring i denne filen og ikke en gjennomgang av hver
+// komponent. Det var nettopp denne innkapslingen som gjorde at Opinly kunne
+// fjernes uten å røre en eneste komponent.
+//
 // Hendelsene lagres også i din egen Supabase-tabell (analytics_events),
-// så du beholder rådataene selv om du bytter eller dropper et av verktøyene.
+// så du beholder rådataene selv om du bytter eller dropper PostHog.
 
-const onOpinlyReady = (fn) => {
-  if (typeof window === 'undefined') return;
-  if (window.opinly) fn();
-  else window.addEventListener('opinly:ready', fn, { once: true });
+// anon_id kom tidligere fra Opinly-pikselen. PostHogs distinct id gjør samme
+// nytte og lever så lenge PostHog gjør. Kallet er pakket inn fordi det kaster
+// hvis posthog.init() aldri kjørte (mangler token, eller prerender).
+const anonId = () => {
+  try {
+    return posthog.get_distinct_id() || null;
+  } catch {
+    return null;
+  }
 };
 
 async function logOwnEvent(event, properties) {
@@ -20,7 +28,7 @@ async function logOwnEvent(event, properties) {
         event,
         properties,
         path: typeof window !== 'undefined' ? window.location.pathname : null,
-        anon_id: typeof window !== 'undefined' ? window.opinly?.anonId || null : null,
+        anon_id: anonId(),
       },
     ]);
   } catch {
@@ -30,15 +38,14 @@ async function logOwnEvent(event, properties) {
 
 export function track(event, properties = {}) {
   posthog.capture(event, properties);
-  onOpinlyReady(() => window.opinly.track(event, properties));
   logOwnEvent(event, properties);
 }
 
-// Opinly krever e-post og ignorerer kallet uten den, så vi identifiserer
-// bare når vi faktisk har fått den fra brukeren (f.eks. etter et
-// skjemainnsendt), aldri på gjetning.
+// Identifiser bare når vi faktisk har fått e-posten fra brukeren, altså
+// etter et innsendt skjema, aldri på gjetning. person_profiles er satt til
+// 'identified_only' i posthog.js, så dette er punktet der en besøkende går
+// fra anonym til en profil.
 export function identify({ email, userId, ...traits } = {}) {
   if (!email) return;
   posthog.identify(userId || email, { email, ...traits });
-  onOpinlyReady(() => window.opinly.identify({ email, userId }));
 }
