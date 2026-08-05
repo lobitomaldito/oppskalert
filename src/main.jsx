@@ -14,8 +14,6 @@ const OmPage = lazy(() => import('./pages/OmPage.jsx'))
 const KontaktPage = lazy(() => import('./pages/KontaktPage.jsx'))
 const BlogPage = lazy(() => import('./pages/BlogPage.jsx'))
 const ArticlePage = lazy(() => import('./pages/ArticlePage.jsx'))
-const KategoriPage = lazy(() => import('./pages/blogg/KategoriPage.jsx'))
-const ForfatterPage = lazy(() => import('./pages/blogg/ForfatterPage.jsx'))
 const FrisorDemo = lazy(() => import('./pages/eksempler/FrisorDemo.jsx'))
 const HandverkerDemo = lazy(() => import('./pages/eksempler/HandverkerDemo.jsx'))
 const RestaurantDemo = lazy(() => import('./pages/eksempler/RestaurantDemo.jsx'))
@@ -51,8 +49,6 @@ createRoot(document.getElementById('root')).render(
           <Route path="/kontakt" element={<KontaktPage />} />
           {/* /kom-i-gang redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/blogg" element={<BlogPage />} />
-          <Route path="/blogg/kategori/:slug" element={<KategoriPage />} />
-          <Route path="/blogg/forfatter/:slug" element={<ForfatterPage />} />
           <Route path="/blogg/:slug" element={<ArticlePage />} />
           <Route path="/eksempler/frisor" element={<FrisorDemo />} />
           <Route path="/eksempler/handverker" element={<HandverkerDemo />} />

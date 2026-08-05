@@ -99,4 +99,4 @@ på et kundevendt nettsted:
 `content/blog-queue.json` er hele køen. Fyll på med nye temaer etter
 samme skjema (`slug`, `title`, `keywords`, `status: "pending"`) når køen
 blir kort, ideelt hentet fra reelle søkeord-gap-data (se samtalen om
-Opinlys Keywords-eksport) fremfor gjettet fritt.
+søkeordstabellene i `SEO.md`) fremfor gjettet fritt.

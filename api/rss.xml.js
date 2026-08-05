@@ -1,37 +1,18 @@
 import { articles } from '../src/lib/articles.js';
-import { fetchOpinly } from './_shared/opinly.js';
 
 const SITE_URL = 'https://oppskalert.no';
 
 const escapeXml = (s) =>
   String(s).replace(/[<>&'"]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[c]));
 
-async function getOpinlyRssItems(limit = 20) {
-  try {
-    const res = await fetchOpinly('/content/rss', { limit });
-    if (!res.ok) return [];
-    return await res.json();
-  } catch (err) {
-    console.error('rss: kunne ikke hente Opinly-poster', err);
-    return [];
-  }
-}
 
 export default async function handler(req, res) {
-  const opinlyItems = await getOpinlyRssItems(20);
-
   const items = [
     ...articles.map((a) => ({
       title: a.title,
       link: `${SITE_URL}/blogg/${a.slug}`,
       description: a.description,
       pubDate: new Date(a.publishDate).toUTCString(),
-    })),
-    ...opinlyItems.map((item) => ({
-      title: item.title,
-      link: `${SITE_URL}/blogg/${item.slug}`,
-      description: item.description,
-      pubDate: new Date(item.date).toUTCString(),
     })),
   ].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
 

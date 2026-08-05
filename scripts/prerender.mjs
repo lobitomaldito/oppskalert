@@ -19,15 +19,20 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, '..', 'dist');
 
-// Static-content routes only. Opinly-backed blog routes (/blogg, /blogg/:slug,
-// /blogg/kategori/:slug, /blogg/forfatter/:slug) are excluded: their content
-// is unknown at build time. /admin/dashboard IS included so its noindex
-// robots tag (set unconditionally by SEO.jsx regardless of PIN state)
-// reaches non-JS crawlers too — the PinGate shell has no private data in it.
+// Blogg-rutene var tidligere utelatt fordi innholdet ble hentet fra Opinly
+// ved kjøretid og dermed var ukjent ved byggtid. Etter migreringen til
+// src/content/generated/ er hver artikkel kjent her, så de prerendres nå
+// som alt annet. /admin/dashboard er med for at noindex-taggen (satt
+// ubetinget av SEO.jsx, uavhengig av PIN-status) skal nå crawlere uten JS.
+// PinGate-skallet inneholder ingen private data.
+import { articles } from '../src/lib/articles.js';
+
 const ROUTES = [
   '/', '/arbeid', '/priser', '/metode', '/om', '/kontakt', '/drift',
   '/sammenlign', '/sammenlign/wix', '/sammenlign/wordpress', '/kalkulator',
   '/sokemotoroptimalisering',
+  '/blogg',
+  ...articles.map((a) => `/blogg/${a.slug}`),
   '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',
   '/admin/dashboard',
 ];

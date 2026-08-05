@@ -1,10 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getArticleBySlug, articles } from '../lib/articles';
-import { getPost, opinlyImageUrl, renderOpinlyContent } from '../lib/opinly';
 import SEO from '../components/SEO';
 import { Navbar, Footer } from '../components/Layout';
 
@@ -16,6 +15,41 @@ const formatDate = (dateStr) => {
   return d.toLocaleDateString('nb-NO', { year: 'numeric', month: 'long', day: 'numeric' });
 };
 
+/* Inline-markdown: fet, kursiv og lenker. Ett regex-split i stedet for tre
+   runder, ellers taper vi lenker som ligger inni en fet setning. */
+const renderInline = (text, keyPrefix) =>
+  text
+    .split(/(\*\*[^*]+\*\*|\*[^*]+\*|\[[^\]]+\]\([^)]+\))/g)
+    .filter(Boolean)
+    .map((part, j) => {
+      const key = `${keyPrefix}-${j}`;
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={key} className="text-primary font-semibold">{part.slice(2, -2)}</strong>;
+      }
+      if (part.startsWith('*') && part.endsWith('*')) {
+        return <em key={key} className="italic">{part.slice(1, -1)}</em>;
+      }
+      const lenke = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+      if (lenke) {
+        const [, label, href] = lenke;
+        const ekstern = href.startsWith('http');
+        return (
+          <a
+            key={key}
+            href={href}
+            target={ekstern ? '_blank' : undefined}
+            /* Migrerte Opinly-artikler lenker ut til andre leverandører.
+               nofollow, så vi ikke gir bort lenkeverdi til konkurrenter. */
+            rel={ekstern ? 'noopener noreferrer nofollow' : undefined}
+            className="text-accent underline underline-offset-2 hover:text-primary transition-colors"
+          >
+            {label}
+          </a>
+        );
+      }
+      return part;
+    });
+
 const renderContent = (content) => {
   const lines = content.split('\n');
   const elements = [];
@@ -24,43 +58,42 @@ const renderContent = (content) => {
   while (i < lines.length) {
     const line = lines[i];
 
-    if (line.startsWith('## ')) {
+    if (line.startsWith('### ')) {
+      elements.push(
+        <h3 key={i} className="font-sans font-bold text-xl md:text-2xl tracking-tight mt-10 mb-3 text-primary">
+          {renderInline(line.slice(4), i)}
+        </h3>
+      );
+    } else if (line.startsWith('## ')) {
       elements.push(
         <h2 key={i} className="font-sans font-bold text-2xl md:text-3xl tracking-tight mt-12 mb-4 text-primary">
-          {line.replace('## ', '')}
+          {renderInline(line.slice(3), i)}
         </h2>
       );
-    } else if (line.match(/^\d+\./)) {
+    } else if (line.match(/^\d+\./) || line.startsWith('- ')) {
+      const nummerert = !line.startsWith('- ');
+      const matcher = (l) => (nummerert ? l.match(/^\d+\./) : l.startsWith('- '));
       const listItems = [];
-      while (i < lines.length && lines[i].match(/^\d+\./)) {
+      const start = i;
+      while (i < lines.length && matcher(lines[i])) {
         listItems.push(
           <li key={i} className="font-body text-primary/85 leading-relaxed text-base md:text-lg">
-            {lines[i].replace(/^\d+\.\s/, '')}
+            {renderInline(lines[i].replace(/^(\d+\.|-)\s/, ''), i)}
           </li>
         );
         i++;
       }
+      const Tag = nummerert ? 'ol' : 'ul';
       elements.push(
-        <ol key={`list-${i}`} className="list-decimal list-inside space-y-2 my-6">
+        <Tag key={`list-${start}`} className={`${nummerert ? 'list-decimal' : 'list-disc'} list-inside space-y-2 my-6`}>
           {listItems}
-        </ol>
+        </Tag>
       );
       continue;
     } else if (line.trim() !== '') {
-      const parsed = line
-        .split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g)
-        .map((part, j) => {
-          if (part.startsWith('**') && part.endsWith('**')) {
-            return <strong key={j} className="text-primary font-semibold">{part.slice(2, -2)}</strong>;
-          }
-          if (part.startsWith('*') && part.endsWith('*')) {
-            return <em key={j} className="italic">{part.slice(1, -1)}</em>;
-          }
-          return part;
-        });
       elements.push(
         <p key={i} className="font-body text-primary/85 leading-relaxed text-base md:text-lg my-5">
-          {parsed}
+          {renderInline(line, i)}
         </p>
       );
     }
@@ -222,171 +255,15 @@ const LocalArticle = ({ article }) => {
   );
 };
 
-// Poster hentet fra Opinly: samme visuelle språk som de håndskrevne
-// artiklene, men body kommer som et ContentNode-tre og rendres med
-// renderOpinlyContent i stedet for markdown-parseren over.
-const OpinlyArticle = ({ post }) => {
-  const heroRef = useRef(null);
-
-  useEffect(() => {
-    gsap.fromTo(heroRef.current.querySelectorAll('.hero-elem'),
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: 'power3.out', delay: 0.2 }
-    );
-  }, []);
-
-  const heroImage = opinlyImageUrl(post.titleFile?.fileKey);
-  const canonical = `https://oppskalert.no/blogg/${post.slug}`;
-  const description = post.metaDescription || post.description;
-
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description,
-    image: heroImage || undefined,
-    datePublished: post.firstPublishedAt,
-    dateModified: post.modifiedAt || post.firstPublishedAt,
-    author: post.author ? { '@type': 'Person', name: post.author.name } : { '@type': 'Organization', name: 'Oppskalert' },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Oppskalert',
-      logo: { '@type': 'ImageObject', url: 'https://oppskalert.no/oppskalert%20fav.png' },
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
-  };
-
-  const faqSchema = post.faqs?.length
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: post.faqs.map((f) => ({
-          '@type': 'Question',
-          name: f.question,
-          acceptedAnswer: { '@type': 'Answer', text: f.answer },
-        })),
-      }
-    : null;
-
-  const jsonLd = [articleSchema, breadcrumbSchema(post.title, canonical), faqSchema].filter(Boolean);
-
-  return (
-    <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
-      <SEO
-        title={post.metaTitle || post.title}
-        description={description}
-        keywords={(post.tags || []).map((t) => t.name)}
-        canonical={canonical}
-        ogType="article"
-        ogImage={heroImage || undefined}
-        jsonLd={jsonLd}
-      />
-      <Navbar />
-
-      <section ref={heroRef} className="pt-40 pb-0 px-6 md:px-12 lg:px-24 bg-background">
-        <div className="max-w-3xl mx-auto">
-          <Link to="/blogg" className="hero-elem inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-accent hover:text-primary transition-colors duration-300 mb-8">
-            <ArrowLeft className="w-3 h-3" /> Tilbake til blogg
-          </Link>
-          <h1 className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight leading-tight mb-6">
-            {post.title}
-          </h1>
-          <div className="hero-elem flex items-center gap-4 font-body text-xs uppercase tracking-widest text-primary/70 mb-12">
-            <span>{formatDate(post.firstPublishedAt)}</span>
-            {post.category && (
-              <>
-                <span className="w-1 h-1 rounded-full bg-primary/20" />
-                <Link to={`/blogg/kategori/${post.category.slug}`} className="hover:text-accent transition-colors">{post.category.name}</Link>
-              </>
-            )}
-            {post.author && (
-              <>
-                <span className="w-1 h-1 rounded-full bg-primary/20" />
-                <Link to={`/blogg/forfatter/${post.author.slug}`} className="hover:text-accent transition-colors">{post.author.name}</Link>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {heroImage && (
-        <div className="px-6 md:px-12 lg:px-24 mb-16">
-          <div className="max-w-3xl mx-auto rounded-[2.5rem] overflow-hidden h-64 md:h-96">
-            <img src={heroImage} alt={post.titleFile?.altText || post.title} className="w-full h-full object-cover" />
-          </div>
-        </div>
-      )}
-
-      <article className="px-6 md:px-12 lg:px-24 pb-32">
-        <div className="max-w-3xl mx-auto">
-          {renderOpinlyContent(post.content)}
-
-          {post.tags?.length > 0 && (
-            <div className="mt-16 flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <span key={tag.slug} className="font-body text-xs uppercase tracking-widest text-primary/70 border border-primary/10 px-4 py-2 rounded-full">
-                  {tag.name}
-                </span>
-              ))}
-            </div>
-          )}
-
-          <CTA />
-        </div>
-      </article>
-
-      <Footer />
-    </div>
-  );
-};
-
-const LoadingState = () => {
-  const heroRef = useRef(null);
-  return (
-    <ArticleShell heroRef={heroRef}>
-      <div className="animate-pulse space-y-6" aria-hidden="true">
-        <div className="h-10 w-3/4 bg-primary/10 rounded-full" />
-        <div className="h-4 w-1/3 bg-primary/10 rounded-full" />
-      </div>
-    </ArticleShell>
-  );
-};
-
-// Egen underkomponent, remountet via key={slug} fra ArticlePage under. Det
-// gjør at loading/notFound/opinlyPost alltid starter friskt på en ny slug
-// uten å måtte nulle dem synkront i effekten (setState i selve
-// effekt-kroppen, i stedet for i en async-fortsettelse, gir kaskaderende
-// rerendere som React sitt lint-regelverk flagger).
-const OpinlyArticleFetcher = ({ slug }) => {
-  const [opinlyPost, setOpinlyPost] = useState(null);
-  const [notFound, setNotFound] = useState(false);
-
-  useEffect(() => {
-    let cancelled = false;
-    getPost(slug)
-      .then((post) => {
-        if (cancelled) return;
-        if (!post) setNotFound(true);
-        else setOpinlyPost(post);
-      })
-      .catch((err) => {
-        console.error('Kunne ikke hente Opinly-artikkel:', err);
-        if (!cancelled) setNotFound(true);
-      });
-    return () => { cancelled = true; };
-  }, [slug]);
-
-  if (notFound) return <Navigate to="/blogg" replace />;
-  if (!opinlyPost) return <LoadingState />;
-  return <OpinlyArticle post={opinlyPost} />;
-};
-
+/* Alt blogginnhold bor nå i src/content/generated/ og src/lib/articles.js.
+   Opinly er ute, så en ukjent slug er en ekte 404 og ikke noe vi kan hente
+   fra et API i etterkant. */
 const ArticlePage = () => {
   const { slug } = useParams();
   const localArticle = getArticleBySlug(slug);
 
-  if (localArticle) return <LocalArticle article={localArticle} />;
-  return <OpinlyArticleFetcher key={slug} slug={slug} />;
+  if (!localArticle) return <Navigate to="/blogg" replace />;
+  return <LocalArticle article={localArticle} />;
 };
 
 export default ArticlePage;
