@@ -30,7 +30,7 @@ import { articles } from '../src/lib/articles.js';
 const ROUTES = [
   '/', '/arbeid', '/priser', '/metode', '/om', '/kontakt', '/drift',
   '/sammenlign', '/sammenlign/wix', '/sammenlign/wordpress', '/kalkulator',
-  '/sokemotoroptimalisering',
+  '/sokemotoroptimalisering', '/webdesign-oslo',
   '/blogg',
   ...articles.map((a) => `/blogg/${a.slug}`),
   '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',

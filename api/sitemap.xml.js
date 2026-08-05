@@ -12,6 +12,7 @@ const SITE_URL = 'https://oppskalert.no';
 const STATIC_PATHS = [
   '/', '/arbeid', '/priser', '/kalkulator', '/drift', '/sammenlign',
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
+  '/webdesign-oslo',
   '/metode', '/om', '/kontakt', '/blogg',
 ];
 

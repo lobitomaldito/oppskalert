@@ -166,6 +166,7 @@ export const Footer = () => (
             <Link to={ruter.kalkulator} className="text-primary/70 hover:text-primary transition-colors">Priskalkulator</Link>
             <Link to={ruter.drift} className="text-primary/70 hover:text-primary transition-colors">Drift og support</Link>
             <Link to={ruter.seo} className="text-primary/70 hover:text-primary transition-colors">Søkemotoroptimalisering</Link>
+            <Link to={ruter.webdesignOslo} className="text-primary/70 hover:text-primary transition-colors">Webdesign i Oslo</Link>
             <Link to={ruter.sammenlign} className="text-primary/70 hover:text-primary transition-colors">Sammenlign</Link>
           </div>
           <div className="flex flex-col gap-3">

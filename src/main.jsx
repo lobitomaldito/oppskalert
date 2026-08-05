@@ -24,6 +24,7 @@ const SammenlignPage = lazy(() => import('./pages/SammenlignPage.jsx'))
 const VsWixPage = lazy(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazy(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 const SeoPage = lazy(() => import('./pages/SeoPage.jsx'))
+const WebdesignOsloPage = lazy(() => import('./pages/WebdesignOsloPage.jsx'))
 const DashboardPage = lazy(() => import('./pages/DashboardPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
@@ -44,6 +45,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/sammenlign/wix" element={<VsWixPage />} />
           <Route path="/sammenlign/wordpress" element={<VsWordPressPage />} />
           <Route path="/sokemotoroptimalisering" element={<SeoPage />} />
+          <Route path="/webdesign-oslo" element={<WebdesignOsloPage />} />
           <Route path="/metode" element={<MetodePage />} />
           <Route path="/om" element={<OmPage />} />
           <Route path="/kontakt" element={<KontaktPage />} />

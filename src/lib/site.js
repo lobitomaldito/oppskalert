@@ -27,6 +27,7 @@ export const ruter = {
   sammenlignWix: '/sammenlign/wix',
   sammenlignWordpress: '/sammenlign/wordpress',
   seo: '/sokemotoroptimalisering',
+  webdesignOslo: '/webdesign-oslo',
 };
 
 export const navLenker = [
