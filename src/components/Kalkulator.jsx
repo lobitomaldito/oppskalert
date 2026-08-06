@@ -103,7 +103,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
 
             <div>
-              <h2 className="font-sans font-bold text-lg mb-4">Hva skal være med? <span className="font-body font-normal text-primary/60 text-sm">Velg det som passer</span></h2>
+              <h2 className="font-sans font-bold text-lg mb-4">Hva skal være med? <span className="font-body font-normal text-primary/70 text-sm">Velg det som passer</span></h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {kalkulatorTillegg.map((item) => (
                   <TilleggKnapp key={item.id} item={item} valgt={tillegg.has(item.id)} onClick={() => toggleTillegg(item.id)} />

@@ -42,19 +42,11 @@ const BransjeEksempler = () => {
               data-reveal
               className="group block rounded-2xl overflow-hidden border border-primary/10 bg-primary/[0.03] hover:border-primary/25 transition-colors duration-300"
             >
-              {/* Browser-chrome bar: gjør kortet til en mini-nettleser */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-primary/10 bg-primary/[0.04]">
-                <span className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-primary/20" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-primary/20" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-primary/20" />
-                </span>
-                <div className="ml-2 flex-1 rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-body text-primary/55 truncate">
-                  {n.domain}
-                </div>
-              </div>
-
-              {/* Forhåndsvisning */}
+              {/* Nettleserlinjen er fjernet her av samme grunn som på
+                  porteføljekortene: tre prikker og et domene på 11 piksler
+                  for å si «dette er en nettside», som bildet allerede sier.
+                  Domenet var i tillegg den siste teksten på hele siten som
+                  ikke klarte kontrastkravet, 3,7:1 mot 4,5:1. */}
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img
                   src={img(n.img)}
@@ -62,10 +54,12 @@ const BransjeEksempler = () => {
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                {/* Bakgrunnen er krem nå, så gradienten toner ned mot krem
+                    og teksten under den skrives med aubergine. */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
 
                 <span
-                  className="absolute top-4 left-4 text-[11px] font-body uppercase tracking-widest px-2.5 py-1 rounded-full font-semibold"
+                  className="absolute top-4 left-4 text-sm font-body px-3 py-1 rounded-full font-semibold"
                   style={{ backgroundColor: n.accent, color: '#201335' }}
                 >
                   {n.tag}
@@ -74,7 +68,7 @@ const BransjeEksempler = () => {
                 <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3">
                   <div>
                     <p className="font-sans font-bold text-primary text-xl leading-tight">{n.brand}</p>
-                    <p className="font-body text-xs text-primary/65 mt-1">{n.headline}</p>
+                    <p className="font-body text-sm text-primary/75 mt-1">{n.headline}</p>
                   </div>
                   <span className="flex-shrink-0 inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                     Se siden <ArrowRight className="w-4 h-4" style={{ color: n.accent }} />
