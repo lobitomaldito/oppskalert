@@ -88,31 +88,28 @@
    ============================================================ */
 @layer base {
   :root {
-    /* Flater. Snudd 2026-08: kremen var det sjeldne rommet, nå er den
-       standardflaten. Auberginen er fortsatt merkevaren, men den er blitt
-       blokken som fortjenes i stedet for bakteppet. Token-NAVNENE er med
-       vilje uendret: --room betyr fortsatt «det kontrasterende rommet»,
-       det er bare motsatt rom nå, så hver eneste bg-room, text-room-ink
-       og text-room-signal ute i komponentene fortsetter å virke. */
-    --bg:        245 230 216;   /* #f5e6d8  varm krem */
-    --bg-deep:   237 220 203;   /* #eddccb  dypere krembånd */
-    --surface:   255 253 237;   /* #fffded  ivory, løftet flate på krem */
+    /* Flater. Kremen ble prøvd som standardflate i august 2026 og rullet
+       tilbake: auberginen ER merkevaren, og på krem ble den redusert til
+       et innslag. Kremen er derfor det sjeldne rommet igjen. */
+    --bg:        32 19 53;      /* #201335  midnattsaubergine */
+    --bg-deep:   23 14 38;      /* #170e26  dypere bånd (fot, prisrom) */
+    --surface:   79 71 137;     /* #4f4789  dusty grape, løftet flate */
 
-    /* Blekk på lyst */
-    --ink:       32 19 53;      /* #201335  midnattsaubergine, 13.9:1 på krem */
+    /* Blekk på mørkt */
+    --ink:       255 253 237;   /* #fffded  ivory */
 
     /* Aksenter */
-    --signal:    138 77 44;     /* #8a4d2c  clay, 5.4:1 på krem */
-    --signal-hi: 107 57 31;     /* #6b391f  dypere clay, hover, aldri fyll */
+    --signal:    255 177 122;   /* #ffb17a  sandy brown, konverteringsstien */
+    --signal-hi: 252 231 98;    /* #fce762  banana cream, sjelden og aldri fyll */
 
-    /* Mørkt rom: den fortjente blokken */
-    --room:        32 19 53;    /* aubergine */
-    --room-ink:    255 253 237; /* ivory som blekk på aubergine */
-    --room-signal: 255 177 122; /* #ffb17a  fersken, kun inne i mørkt rom */
+    /* Lyst rom */
+    --room:        245 230 216; /* #f5e6d8  varm krem */
+    --room-ink:    32 19 53;    /* aubergine som blekk på krem */
+    --room-signal: 138 77 44;   /* #8a4d2c  clay, 5.4:1 på krem */
 
-    /* Blekk-nivåer (alpha på aubergine over krem) */
-    --ink-muted: 0.75;          /* 9.0:1 på bg, trygg overalt */
-    --ink-faint: 0.62;          /* 6.3:1 på bg, KUN på bg */
+    /* Blekk-nivåer (alpha på ivory) */
+    --ink-muted: 0.72;          /* 9.2:1 på bg · 5.0:1 på surface, trygg overalt */
+    --ink-faint: 0.58;          /* 6.2:1 på bg, KUN på bg */
 
     /* Rytme */
     --gutter:  clamp(1.25rem, 5vw, 3rem);
@@ -145,9 +142,9 @@
     font-weight: 450;
   }
 
-  /* Tastaturfokus skal synes overalt. Clay-ringen leser på kremen, som nå
-     er det meste av siden. Inne i de mørke rommene drukner clay i
-     auberginen, så der bytter vi til fersken. */
+  /* Tastaturfokus skal synes overalt. Fersken-ringen leser på auberginen,
+     som er det meste av siden. Inne i kremrommene vaskes fersken ut, så
+     der bytter vi til clay. */
   :focus-visible {
     outline: 2px solid rgb(var(--signal));
     outline-offset: 2px;
@@ -175,6 +172,16 @@
     padding-inline: var(--gutter);
   }
   .seksjon { padding-block: var(--seksjon); }
+
+  /* Vekselbånd, så to naboseksjoner aldri deler flate.
+     På mørkt holder det ikke med en dypere bakgrunn slik det gjorde på
+     krem: --bg mot --bg-deep gir 0,39 av 100 i lysforskjell, altså
+     usynlig, fordi mørke farger komprimerer avstanden. Løftet tint gir
+     et hint, og hårstrekene gjør grensen utvetydig uansett skjerm. */
+  .band {
+    background-color: rgb(var(--surface) / 0.16);
+    border-block: 1px solid rgb(var(--ink) / 0.10);
+  }
 }
 
 /* Hero entrance: transform-only, so content is ALWAYS visible (opacity:1).

@@ -108,7 +108,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
             </div>
           ) : steg === 1 ? (
             <div className="w-full flex flex-col gap-7 text-left">
-              <span className="font-body text-sm text-room-ink/60 text-center">Steg 1 av 2</span>
+              <span className="font-body text-sm text-room-ink/75 text-center">Steg 1 av 2</span>
 
               <div>
                 <span className="font-sans font-bold text-sm block mb-3">Hva trenger du demo til?</span>
@@ -165,14 +165,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 >
                   <span className="flex items-center justify-center gap-2">Neste <ArrowRight className="w-5 h-5" /></span>
                 </button>
-                <button type="button" onClick={() => setSteg(2)} className="font-body text-sm text-room-ink/60 hover:text-room-ink underline underline-offset-2">
+                <button type="button" onClick={() => setSteg(2)} className="font-body text-sm text-room-ink/75 hover:text-room-ink underline underline-offset-2">
                   Hopp over, jeg vil bare legge igjen kontaktinfo
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-left">
-              <span className="font-body text-sm text-room-ink/60 text-center -mt-1 mb-1">Steg 2 av 2</span>
+              <span className="font-body text-sm text-room-ink/75 text-center -mt-1 mb-1">Steg 2 av 2</span>
 
               {/* Honeypot. Plassert utenfor skjermen i stedet for display:none,
                   fordi en del bots hopper over skjulte felt men ikke
@@ -211,7 +211,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                   {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-5 h-5" /></>}
                 </span>
               </button>
-              <button type="button" onClick={() => setSteg(1)} className="font-body text-sm text-room-ink/60 hover:text-room-ink self-center underline underline-offset-2">
+              <button type="button" onClick={() => setSteg(1)} className="font-body text-sm text-room-ink/75 hover:text-room-ink self-center underline underline-offset-2">
                 Tilbake
               </button>
 
