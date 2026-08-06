@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell, SeksjonTopp } from './components/Layout';
 import Portfolio from './components/Portfolio';
-import BransjeEksempler from './components/BransjeEksempler';
 import Omtaler from './components/Omtaler';
 import Metode from './components/Metode';
 import Priser from './components/Priser';
@@ -122,7 +121,7 @@ const Hvorfor = () => {
       <div className="wrap grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:items-start">
         <div data-reveal>
           <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-            Nettsiden er det første <span className="text-accent">håndtrykket</span> bedriften din gir.
+            Nettsiden er det første håndtrykket bedriften din gir.
           </h2>
           <p className="font-body text-[0.95rem] md:text-base text-primary/85 mt-5 leading-relaxed max-w-[48ch]">
             Jeg sørger for at det sitter. Sidene er håndkodet, ikke stemplet ut av en mal, og de er bygget for å gjøre besøkende til kunder, ikke bare for å se pene ut.
@@ -189,12 +188,11 @@ const Home = () => (
       jsonLd={homeJsonLd}
     />
     <Hero />
-    <Portfolio limit={6} visAlleLenke />
+    <Portfolio limit={6} visAlleLenke mobilScroll />
     <Hvorfor />
     <Omtaler />
     <Metode />
-    <Priser />
-    <BransjeEksempler />
+    <Priser visAlltidMed={false} />
     <FAQ />
     <DemoSkjema
       tittel="Klar for en nettside"

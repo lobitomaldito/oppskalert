@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { kontakt, navLenker, ruter } from '../lib/site';
+import { cn } from '../lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -225,7 +226,7 @@ export const SideTopp = ({ tittel, uthevet, lede }) => (
 export const SeksjonTopp = ({ tittel, uthevet, lede, midtstilt = false }) => (
   <div className={`mb-10 md:mb-14 ${midtstilt ? 'text-center mx-auto max-w-2xl' : ''}`}>
     <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-      {tittel}{uthevet && <> <span className="text-accent">{uthevet}</span></>}
+      {tittel}{uthevet && <> {uthevet}</>}
     </h2>
     {lede && (
       <p className={`font-body text-[0.95rem] md:text-base text-primary/80 mt-4 leading-relaxed max-w-[54ch] ${midtstilt ? 'mx-auto' : ''}`}>
@@ -234,3 +235,31 @@ export const SeksjonTopp = ({ tittel, uthevet, lede, midtstilt = false }) => (
     )}
   </div>
 );
+
+/* Delt horisontal-scroll-rad. Flex med scroll-snap på mobil, rutenett fra sm.
+   Mønsteret lå kopiert ordrett tre steder (Omtaler, BransjeEksempler,
+   Portfolio); nå bor det ett sted. gridKlasser styrer rutenettet fra sm og
+   opp (kolonner, rader, avstand). kortBredde er bredden hvert kort får i den
+   horisontale raden på mobil, den nullstilles til auto når rutenettet tar
+   over. as bytter rot-elementet, f.eks. "ol" der barna er <li> og
+   rekkefølgen er meningsbærende (se Metode). */
+export const KortRad = ({ children, as = 'div', gridKlasser, kortBredde, className }) => {
+  const Tag = as;
+  return (
+    <Tag
+      className={cn(
+        'flex sm:grid overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible',
+        gridKlasser,
+        className,
+      )}
+    >
+      {Children.map(children, (barn) =>
+        isValidElement(barn)
+          ? cloneElement(barn, {
+              className: cn('flex-shrink-0 snap-start sm:w-auto', kortBredde, barn.props.className),
+            })
+          : barn
+      )}
+    </Tag>
+  );
+};

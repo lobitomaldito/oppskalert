@@ -134,7 +134,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
           </div>
 
-          <div data-reveal className="lg:sticky lg:top-28 rounded-3xl border border-accent/30 bg-surface/25 p-7 flex flex-col gap-5">
+          <div data-reveal className="lg:sticky lg:top-28 rounded-2xl border border-accent/30 bg-surface/25 p-7 flex flex-col gap-5">
             <div>
               <span className="font-body text-xs uppercase tracking-widest text-primary/70">Estimert pris</span>
               <div className="font-display font-extrabold text-[2.1rem] leading-none tracking-[-0.02em] mt-2">

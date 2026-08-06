@@ -29,7 +29,7 @@ const SammenlignPage = () => {
                 key={s.slug}
                 to={s.rute}
                 data-reveal
-                className="group flex flex-col justify-between rounded-3xl border border-primary/12 bg-primary/[0.03] hover:border-accent/40 transition-colors duration-300 p-7"
+                className="group flex flex-col justify-between rounded-2xl border border-primary/12 bg-primary/[0.03] hover:border-accent/40 transition-colors duration-300 p-7"
               >
                 <div>
                   <h2 className="font-sans font-bold text-xl">Meg vs. {s.navn}</h2>

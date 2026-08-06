@@ -39,7 +39,7 @@ const SammenlignDetalj = ({ data }) => {
             </table>
           </div>
 
-          <div data-reveal className="mt-8 rounded-3xl border border-primary/10 bg-primary/[0.03] p-7 md:p-8 max-w-[52rem]">
+          <div data-reveal className="mt-8 rounded-2xl border border-primary/10 bg-primary/[0.03] p-7 md:p-8 max-w-[52rem]">
             <h2 className="font-sans font-bold text-lg mb-3">Så hva passer deg?</h2>
             <p className="font-body text-[0.95rem] text-primary/80 leading-relaxed">{data.konklusjon}</p>
             <Link

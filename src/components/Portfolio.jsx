@@ -1,20 +1,30 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
-import { SeksjonTopp } from './Layout';
+import { KortRad, SeksjonTopp } from './Layout';
+import { cn } from '../lib/utils';
 import { prosjekter, ruter } from '../lib/site';
 
 /* Rutenett i stedet for den gamle marquee-en. Marquee-en så levende ut,
    men den doblet hele listen i DOM-en, flyttet seg under pekeren når du
    skulle klikke, og lot deg aldri se mer enn tre sider om gangen.
-   Et rutenett viser alt, står stille, og er lettere å lese på mobil. */
-const Kort = ({ p }) => (
+   Et rutenett viser alt og står stille.
+
+   mobilScroll bytter rutenettet med KortRad, den delte horisontale
+   snap-scrolleren (samme grep som Omtaler og BransjeEksempler). Det brukes
+   der porteføljen er ett av flere avsnitt og seks stablede kort spiser hele
+   skjermen. På /arbeid er porteføljen hele poenget med siden, så der skal
+   kortene ligge under hverandre og kunne skummes uten å sveipe. */
+const Kort = ({ p, className }) => (
   <a
     href={p.url}
     target="_blank"
     rel="noopener noreferrer"
     data-reveal
-    className="group block rounded-2xl overflow-hidden border border-primary/10 bg-primary/[0.03] transition-[border-color,transform] duration-300 ease-lett hover:border-accent/50 hover:-translate-y-1"
+    className={cn(
+      'group block rounded-2xl overflow-hidden border border-primary/10 bg-primary/[0.03] transition-[border-color,transform] duration-300 ease-lett hover:border-accent/50 hover:-translate-y-1',
+      className,
+    )}
   >
     {/* Nettleserlinje: gjør kortet til et lite vindu mot en ekte side */}
     <div className="flex items-center gap-2 px-4 py-2.5 border-b border-primary/10 bg-primary/[0.04]">
@@ -43,10 +53,15 @@ const Kort = ({ p }) => (
   </a>
 );
 
+// Samme rutenett brukes med og uten KortRad, så det skal se identisk ut fra
+// sm og opp uansett hvilken av de to grenene under som er aktiv.
+const RUTENETT = 'gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))]';
+
 /* limit=null viser alt (porteføljesiden); et tall klipper listen (forsiden). */
-const Portfolio = ({ limit = null, visAlleLenke = false, tittel = 'Noe av det jeg', uthevet = 'har bygget.' }) => {
+const Portfolio = ({ limit = null, visAlleLenke = false, mobilScroll = false, tittel = 'Noe av det jeg', uthevet = 'har bygget.' }) => {
   const container = useReveal(80);
   const liste = limit ? prosjekter.slice(0, limit) : prosjekter;
+  const kort = liste.map((p) => <Kort key={p.domene} p={p} />);
 
   return (
     <section ref={container} className="seksjon">
@@ -57,9 +72,11 @@ const Portfolio = ({ limit = null, visAlleLenke = false, tittel = 'Noe av det je
           lede="Ekte sider i drift for norske bedrifter. Trykk deg inn på hvilken som helst av dem, de er alle live akkurat nå."
         />
 
-        <div className="grid gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))]">
-          {liste.map((p) => <Kort key={p.domene} p={p} />)}
-        </div>
+        {mobilScroll ? (
+          <KortRad gridKlasser={RUTENETT} kortBredde="w-[78%]">{kort}</KortRad>
+        ) : (
+          <div className={cn('grid', RUTENETT)}>{kort}</div>
+        )}
 
         {visAlleLenke && (
           <div data-reveal className="mt-10">

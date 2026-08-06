@@ -23,7 +23,7 @@ const driftSchema = {
 const DriftKort = ({ nivaa }) => (
   <div
     data-reveal
-    className={`relative flex flex-col h-full rounded-3xl p-7 md:p-8 border ${
+    className={`relative flex flex-col h-full rounded-2xl p-7 md:p-8 border ${
       nivaa.fremhevet ? 'border-accent bg-surface/25' : 'border-primary/12 bg-primary/[0.03]'
     }`}
   >

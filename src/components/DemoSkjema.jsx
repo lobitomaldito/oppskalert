@@ -92,14 +92,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
       <div className="wrap">
         <div className="max-w-[38rem] mx-auto flex flex-col items-center text-center">
           <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-            {tittel} <span className="text-room-signal">{uthevet}</span>
+            {tittel} <span>{uthevet}</span>
           </h2>
           <p className="font-body text-[0.95rem] md:text-base text-room-ink/90 mt-5 mb-9 leading-relaxed max-w-[46ch]">
             {lede}
           </p>
 
           {status === 'success' ? (
-            <div className="w-full bg-room-ink/5 border border-room-ink/20 rounded-3xl p-9" role="status">
+            <div className="w-full bg-room-ink/5 border border-room-ink/20 rounded-2xl p-9" role="status">
               <p className="font-sans font-bold text-2xl mb-2">Takk! Den er mottatt.</p>
               <p className="font-body text-[0.95rem] text-room-ink/90 leading-relaxed">
                 Jeg tar kontakt på e-post innen 24 timer. Haster det, ring meg på{' '}

@@ -55,7 +55,7 @@ const OmPage = () => {
       <section ref={container} className="seksjon pt-4">
         <div className="wrap grid gap-10 lg:grid-cols-[20rem_1fr] lg:gap-16 items-start">
           <div data-reveal className="lg:sticky lg:top-32">
-            <div className="w-full max-w-[20rem] aspect-[3/4] rounded-3xl relative overflow-hidden shadow-xl bg-surface/20">
+            <div className="w-full max-w-[20rem] aspect-[3/4] rounded-2xl relative overflow-hidden shadow-xl bg-surface/20">
               <Portrett />
             </div>
             <h2 className="font-sans font-bold text-2xl mt-6">{kontakt.navn}</h2>

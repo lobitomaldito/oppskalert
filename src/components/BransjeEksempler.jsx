@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
-import { SeksjonTopp } from './Layout';
+import { KortRad, SeksjonTopp } from './Layout';
 import { ruter } from '../lib/site';
 
 // Konsept-eksempler: fiktive bransjesider jeg har bygget for å vise spennvidde
@@ -31,24 +31,25 @@ const BransjeEksempler = () => {
           />
         </div>
 
-        {/* Mobil: horisontal scroll-snap i stedet for stacket rutenett,
-            så fire tunge bildekort ikke spiser høyde. Fra sm: rutenett som før. */}
-        <div className="flex sm:grid sm:grid-cols-2 gap-5 md:gap-6 overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible">
+        {/* Mobil: horisontal scroll-snap via KortRad i stedet for stacket
+            rutenett, så fire tunge bildekort ikke spiser høyde. Fra sm:
+            rutenett som før. */}
+        <KortRad gridKlasser="gap-5 md:gap-6 sm:grid-cols-2" kortBredde="w-[78%]">
           {niches.map((n) => (
             <Link
               key={n.tag}
               to={n.route}
               data-reveal
-              className="group block flex-shrink-0 w-[78%] sm:w-auto snap-start rounded-2xl overflow-hidden border border-white/10 bg-white/[0.03] hover:border-white/25 transition-colors duration-300"
+              className="group block rounded-2xl overflow-hidden border border-primary/10 bg-primary/[0.03] hover:border-primary/25 transition-colors duration-300"
             >
               {/* Browser-chrome bar: gjør kortet til en mini-nettleser */}
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.04]">
+              <div className="flex items-center gap-2 px-4 py-3 border-b border-primary/10 bg-primary/[0.04]">
                 <span className="flex gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-primary/20" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-primary/20" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-primary/20" />
                 </span>
-                <div className="ml-2 flex-1 rounded-full bg-white/[0.06] px-3 py-1 text-[11px] font-body text-white/55 truncate">
+                <div className="ml-2 flex-1 rounded-full bg-primary/[0.06] px-3 py-1 text-[11px] font-body text-primary/55 truncate">
                   {n.domain}
                 </div>
               </div>
@@ -72,17 +73,17 @@ const BransjeEksempler = () => {
 
                 <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3">
                   <div>
-                    <p className="font-sans font-bold text-white text-xl leading-tight">{n.brand}</p>
-                    <p className="font-body text-xs text-white/65 mt-1">{n.headline}</p>
+                    <p className="font-sans font-bold text-primary text-xl leading-tight">{n.brand}</p>
+                    <p className="font-body text-xs text-primary/65 mt-1">{n.headline}</p>
                   </div>
-                  <span className="flex-shrink-0 inline-flex items-center gap-1 text-sm font-medium text-white opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  <span className="flex-shrink-0 inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                     Se siden <ArrowRight className="w-4 h-4" style={{ color: n.accent }} />
                   </span>
                 </div>
               </div>
             </Link>
           ))}
-        </div>
+        </KortRad>
 
         {/* Avslutning: knytter til "jeg lager alle slags sider" */}
         <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-primary/12 pt-10">
