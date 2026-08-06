@@ -88,26 +88,31 @@
    ============================================================ */
 @layer base {
   :root {
-    /* Flater */
-    --bg:        32 19 53;      /* #201335  midnattsaubergine */
-    --bg-deep:   23 14 38;      /* #170e26  dypere bånd (fot, prisrom) */
-    --surface:   79 71 137;     /* #4f4789  dusty grape, løftet flate */
+    /* Flater. Snudd 2026-08: kremen var det sjeldne rommet, nå er den
+       standardflaten. Auberginen er fortsatt merkevaren, men den er blitt
+       blokken som fortjenes i stedet for bakteppet. Token-NAVNENE er med
+       vilje uendret: --room betyr fortsatt «det kontrasterende rommet»,
+       det er bare motsatt rom nå, så hver eneste bg-room, text-room-ink
+       og text-room-signal ute i komponentene fortsetter å virke. */
+    --bg:        245 230 216;   /* #f5e6d8  varm krem */
+    --bg-deep:   237 220 203;   /* #eddccb  dypere krembånd */
+    --surface:   255 253 237;   /* #fffded  ivory, løftet flate på krem */
 
-    /* Blekk på mørkt */
-    --ink:       255 253 237;   /* #fffded  ivory */
+    /* Blekk på lyst */
+    --ink:       32 19 53;      /* #201335  midnattsaubergine, 13.9:1 på krem */
 
     /* Aksenter */
-    --signal:    255 177 122;   /* #ffb17a  sandy brown, konverteringsstien */
-    --signal-hi: 252 231 98;    /* #fce762  banana cream, sjelden og aldri fyll */
+    --signal:    138 77 44;     /* #8a4d2c  clay, 5.4:1 på krem */
+    --signal-hi: 107 57 31;     /* #6b391f  dypere clay, hover, aldri fyll */
 
-    /* Lyst rom */
-    --room:        245 230 216; /* #f5e6d8  varm krem */
-    --room-ink:    32 19 53;    /* aubergine som blekk på krem */
-    --room-signal: 138 77 44;   /* #8a4d2c  clay, 5.4:1 på krem */
+    /* Mørkt rom: den fortjente blokken */
+    --room:        32 19 53;    /* aubergine */
+    --room-ink:    255 253 237; /* ivory som blekk på aubergine */
+    --room-signal: 255 177 122; /* #ffb17a  fersken, kun inne i mørkt rom */
 
-    /* Blekk-nivåer (alpha på ivory) */
-    --ink-muted: 0.72;          /* 9.2:1 på bg · 5.0:1 på surface, trygg overalt */
-    --ink-faint: 0.58;          /* 6.2:1 på bg, KUN på bg */
+    /* Blekk-nivåer (alpha på aubergine over krem) */
+    --ink-muted: 0.75;          /* 9.0:1 på bg, trygg overalt */
+    --ink-faint: 0.62;          /* 6.3:1 på bg, KUN på bg */
 
     /* Rytme */
     --gutter:  clamp(1.25rem, 5vw, 3rem);
@@ -140,19 +145,18 @@
     font-weight: 450;
   }
 
-  /* Keyboard focus: visible everywhere. Accent ring reads on the dark
-     surfaces (most of the page); on the warm light rooms peach washes out,
-     so switch the ring to ink. */
+  /* Tastaturfokus skal synes overalt. Clay-ringen leser på kremen, som nå
+     er det meste av siden. Inne i de mørke rommene drukner clay i
+     auberginen, så der bytter vi til fersken. */
   :focus-visible {
     outline: 2px solid rgb(var(--signal));
     outline-offset: 2px;
     border-radius: 3px;
   }
   .rom :focus-visible,
-  [style*="#f5e6d8"] :focus-visible,
   .bg-room :focus-visible,
   .bg-primary :focus-visible {
-    outline-color: rgb(var(--room-ink));
+    outline-color: rgb(var(--room-signal));
   }
 
   /* Overskrifter puster jevnere med balansert ombrekking; lang brødtekst

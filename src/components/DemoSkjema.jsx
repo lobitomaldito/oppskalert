@@ -108,7 +108,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
             </div>
           ) : steg === 1 ? (
             <div className="w-full flex flex-col gap-7 text-left">
-              <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 text-center">Steg 1 av 2</span>
+              <span className="font-body text-sm text-room-ink/60 text-center">Steg 1 av 2</span>
 
               <div>
                 <span className="font-sans font-bold text-sm block mb-3">Hva trenger du demo til?</span>
@@ -125,7 +125,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                           <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{b.label}</span>
                           <Hake valgt={valgt} />
                         </div>
-                        <span className="block font-body text-xs text-room-ink/70 mt-1">{b.beskrivelse}</span>
+                        <span className="block font-body text-sm text-room-ink/70 mt-1">{b.beskrivelse}</span>
                       </button>
                     );
                   })}
@@ -150,7 +150,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                           <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{o.label}</span>
                           <Hake valgt={valgt} />
                         </div>
-                        <span className="block font-body text-xs text-room-ink/70 mt-1">{o.beskrivelse}</span>
+                        <span className="block font-body text-sm text-room-ink/70 mt-1">{o.beskrivelse}</span>
                       </button>
                     );
                   })}
@@ -165,14 +165,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 >
                   <span className="flex items-center justify-center gap-2">Neste <ArrowRight className="w-5 h-5" /></span>
                 </button>
-                <button type="button" onClick={() => setSteg(2)} className="font-body text-xs text-room-ink/60 hover:text-room-ink underline underline-offset-2">
+                <button type="button" onClick={() => setSteg(2)} className="font-body text-sm text-room-ink/60 hover:text-room-ink underline underline-offset-2">
                   Hopp over, jeg vil bare legge igjen kontaktinfo
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-left">
-              <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 text-center -mt-1 mb-1">Steg 2 av 2</span>
+              <span className="font-body text-sm text-room-ink/60 text-center -mt-1 mb-1">Steg 2 av 2</span>
 
               {/* Honeypot. Plassert utenfor skjermen i stedet for display:none,
                   fordi en del bots hopper over skjulte felt men ikke
@@ -211,7 +211,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                   {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-5 h-5" /></>}
                 </span>
               </button>
-              <button type="button" onClick={() => setSteg(1)} className="font-body text-xs text-room-ink/60 hover:text-room-ink self-center underline underline-offset-2">
+              <button type="button" onClick={() => setSteg(1)} className="font-body text-sm text-room-ink/60 hover:text-room-ink self-center underline underline-offset-2">
                 Tilbake
               </button>
 
@@ -222,7 +222,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 </p>
               )}
 
-              <p className="font-body text-xs text-room-ink/70 text-center mt-1">
+              <p className="font-body text-sm text-room-ink/70 text-center mt-1">
                 Uforpliktende. Jeg svarer innen 24 timer, eller ring direkte:{' '}
                 <a href={`tel:${kontakt.tel}`} className="text-room-signal hover:underline">{kontakt.telefon}</a>
               </p>

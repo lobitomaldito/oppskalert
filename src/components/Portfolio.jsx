@@ -26,17 +26,10 @@ const Kort = ({ p, className }) => (
       className,
     )}
   >
-    {/* Nettleserlinje: gjør kortet til et lite vindu mot en ekte side */}
-    <div className="flex items-center gap-2 px-4 py-2.5 border-b border-primary/10 bg-primary/[0.04]">
-      <span className="flex gap-1.5" aria-hidden="true">
-        <span className="w-2 h-2 rounded-full bg-primary/25" />
-        <span className="w-2 h-2 rounded-full bg-primary/25" />
-        <span className="w-2 h-2 rounded-full bg-primary/25" />
-      </span>
-      <span className="ml-1 flex-1 truncate font-body text-[11px] text-primary/70">{p.domene}</span>
-      <ArrowUpRight className="w-3.5 h-3.5 text-primary/70 group-hover:text-accent transition-colors" />
-    </div>
-
+    {/* Nettleserlinjen med tre prikker og domenet er fjernet. Den kostet seks
+        elementer og to mikrotekster per kort, seks kort ganger det, for å si
+        «dette er en nettside», noe skjermbildet allerede sier. Pilen er flyttet
+        ned til navnet, så det synes fortsatt at lenken går ut av siden. */}
     <div className="aspect-[16/10] overflow-hidden bg-surface/20">
       <img
         src={p.img}
@@ -46,9 +39,12 @@ const Kort = ({ p, className }) => (
       />
     </div>
 
-    <div className="flex items-baseline justify-between gap-4 px-4 py-3.5">
-      <span className="font-sans font-bold text-[0.95rem]">{p.navn}</span>
-      <span className="font-body text-[0.72rem] text-primary/70 flex-shrink-0">{p.bransje}</span>
+    <div className="flex items-baseline justify-between gap-4 px-5 py-4">
+      <span className="font-sans font-bold text-base">{p.navn}</span>
+      <span className="flex items-center gap-1.5 flex-shrink-0 font-body text-sm text-primary/70">
+        {p.bransje}
+        <ArrowUpRight className="w-4 h-4 group-hover:text-accent transition-colors" aria-hidden="true" />
+      </span>
     </div>
   </a>
 );

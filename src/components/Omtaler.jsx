@@ -42,7 +42,7 @@ const Omtaler = () => {
                 </blockquote>
                 <figcaption className="mt-6">
                   <span className="font-sans font-bold block">{t.navn}</span>
-                  <span className="font-body text-xs text-primary/70">{t.firma}</span>
+                  <span className="font-body text-sm text-primary/70">{t.firma}</span>
                 </figcaption>
               </figure>
             ) : (
@@ -55,7 +55,7 @@ const Omtaler = () => {
                 <blockquote className="font-body text-[0.95rem] leading-relaxed text-primary/85 flex-1">«{t.sitat}»</blockquote>
                 <figcaption className="mt-4">
                   <span className="font-sans font-bold text-sm block">{t.navn}</span>
-                  <span className="font-body text-xs text-primary/70">{t.firma}</span>
+                  <span className="font-body text-sm text-primary/70">{t.firma}</span>
                 </figcaption>
               </figure>
             )

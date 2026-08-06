@@ -18,7 +18,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => (
     )}
   >
     {m.fremhevet && (
-      <span className="absolute top-0 right-7 -translate-y-1/2 bg-accent text-background text-[11px] font-body uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
+      <span className="absolute top-0 right-7 -translate-y-1/2 bg-accent text-background text-sm font-body px-3.5 py-1 rounded-full font-semibold">
         Mest valgt
       </span>
     )}
@@ -31,7 +31,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => (
       <span className="font-display font-extrabold text-[2.75rem] leading-none tracking-[-0.03em]">{m.fra}</span>
       <span className="font-body text-sm text-primary/70">{m.enhet}</span>
     </div>
-    <span className="font-body text-xs text-primary/70 mt-1.5">{m.periode} · eks. mva</span>
+    <span className="font-body text-sm text-primary/70 mt-1.5">{m.periode}</span>
 
     {/* Kun på engangspris-kortet: kalkulatoren regner ut et scope-basert
         engangsestimat, ikke et månedsbeløp, så den hører hjemme her og
@@ -39,7 +39,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => (
     {m.id === 'engangs' && (
       <Link
         to={ruter.kalkulator}
-        className="font-body text-xs text-accent hover:text-highlight transition-colors underline underline-offset-2 mt-2 inline-block w-fit"
+        className="font-body text-sm text-accent hover:text-highlight transition-colors underline underline-offset-2 mt-2 inline-block w-fit"
       >
         Regn ut prisen for din side →
       </Link>
@@ -47,7 +47,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => (
 
     {visPasserDeg && (
       <ul className="mt-6 pt-5 border-t border-primary/10 flex flex-col gap-2.5">
-        <li className="font-body text-xs uppercase tracking-widest text-primary/70 mb-0.5">Passer deg som</li>
+        <li className="font-body text-sm text-primary/70 mb-1">Passer deg som</li>
         {m.passerDeg.map((p) => (
           <li key={p} className="font-body text-[0.95rem] text-primary/80 leading-relaxed">– {p}</li>
         ))}
@@ -91,7 +91,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
           {prismodeller.map((m) => <Modell key={m.id} m={m} visPasserDeg={visPasserDeg} />)}
         </KortRad>
 
-        <p data-reveal className="font-body text-xs text-primary/70 mt-6 max-w-[52rem]">{prisNotat}</p>
+        <p data-reveal className="font-body text-sm text-primary/70 mt-6 max-w-[52rem]">{prisNotat}</p>
         <p data-reveal className="font-body text-sm text-primary/80 mt-3 max-w-[52rem]">
           Vil du redigere selv, eller ha enda raskere respons?{' '}
           <Link to={ruter.drift} className="text-accent hover:text-highlight transition-colors underline underline-offset-2">

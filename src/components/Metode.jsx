@@ -11,8 +11,20 @@ const Metode = ({ utdypet = false }) => {
 
   // Bygges én gang og gjenbrukes i begge grener under: kun rammen rundt
   // stegene (vertikal liste kontra KortRad) er forskjellig, ikke innholdet.
+  //
+  // På forsiden får hvert steg en egen ramme. Uten den fløt fire tekstblokker
+  // fritt på den mørke flaten og seksjonen leste som uferdig. Pilen mellom
+  // kortene er ikke pynt: rekkefølgen ER innholdet i denne seksjonen.
   const steg = stegene.map((s, i) => (
-    <li key={s.tittel} data-reveal className={utdypet ? 'md:grid md:grid-cols-[auto_1fr] md:gap-8' : ''}>
+    <li
+      key={s.tittel}
+      data-reveal
+      className={
+        utdypet
+          ? 'md:grid md:grid-cols-[auto_1fr] md:gap-8'
+          : 'relative rounded-2xl border border-room-ink/15 bg-room-ink/[0.05] p-6 h-full'
+      }
+    >
       <div className="flex items-center gap-4 mb-4">
         <span
           className="flex items-center justify-center w-11 h-11 rounded-full font-sans font-bold text-base flex-shrink-0 bg-room-signal text-room"
@@ -21,19 +33,19 @@ const Metode = ({ utdypet = false }) => {
           {i + 1}
         </span>
         {utdypet && (
-          <span className="md:hidden font-body text-xs uppercase tracking-widest text-room-ink/75">{s.tid}</span>
+          <span className="md:hidden font-body text-sm text-room-ink/75">{s.tid}</span>
         )}
       </div>
 
       <div className={utdypet ? 'md:pt-1' : ''}>
-        <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <h3 className="font-sans font-bold text-lg md:text-xl">
-            <span className="sr-only">Steg {i + 1}: </span>{s.tittel}
-          </h3>
-          <span className={`font-body text-xs uppercase tracking-widest text-room-ink/75 ${utdypet ? 'hidden md:inline' : ''}`}>
-            {s.tid}
-          </span>
-        </div>
+        <h3 className="font-sans font-bold text-lg md:text-xl">
+          <span className="sr-only">Steg {i + 1}: </span>{s.tittel}
+        </h3>
+        {/* Tiden sto i versaler med sperring. Den er opplysning, ikke en
+            etikett som skal rope, så den er nå vanlig småtekst. */}
+        <span className={`block font-body text-sm text-room-ink/70 mt-1 ${utdypet ? 'hidden md:block' : ''}`}>
+          {s.tid}
+        </span>
 
         {utdypet && (
           <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/90 max-w-[58ch]">{s.desc}</p>
@@ -48,11 +60,22 @@ const Metode = ({ utdypet = false }) => {
         )}
 
         {i === 0 && !utdypet && (
-          <span className="inline-flex items-center font-body text-[0.7rem] uppercase tracking-[0.15em] px-2.5 py-1 rounded-full mt-4 bg-room-signal/12 text-room-signal">
-            Gratis · ingen binding
+          <span className="inline-flex items-center font-body text-sm px-3 py-1 rounded-full mt-4 bg-room-signal/12 text-room-signal">
+            Gratis, ingen binding
           </span>
         )}
       </div>
+
+      {/* Pilen ligger i mellomrommet mellom kortene. Den vises der stegene
+          faktisk står på én rad: mobil (horisontal scroller) og lg (fire
+          kolonner). Mellom sm og lg er rutenettet to ganger to, og da ville
+          en høyrepil på kort nummer to peke ut i ingenting. */}
+      {!utdypet && i < stegene.length - 1 && (
+        <ArrowRight
+          className="absolute top-1/2 -right-[1.6rem] -translate-y-1/2 w-5 h-5 text-room-signal/50 sm:hidden lg:block"
+          aria-hidden="true"
+        />
+      )}
     </li>
   ));
 
@@ -75,7 +98,7 @@ const Metode = ({ utdypet = false }) => {
              horisontale scroller som resten av forsiden, kun her fordi
              utdypet=false; /metode (utdypet=true) beholder den lange
              vertikale listen som er hele poenget med siden. */
-          <KortRad as="ol" gridKlasser="gap-8 md:grid-cols-2 lg:grid-cols-4" kortBredde="w-[72%]">
+          <KortRad as="ol" gridKlasser="gap-8 sm:grid-cols-2 lg:grid-cols-4" kortBredde="w-[72%]">
             {steg}
           </KortRad>
         )}
