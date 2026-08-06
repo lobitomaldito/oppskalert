@@ -187,13 +187,18 @@ const Home = () => (
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />
+    {/* Flatene veksler bevisst, så ingen to naboseksjoner deler bakgrunn.
+        På den gamle mørke paletten skilte de tinta kortene seksjonene fra
+        hverandre av seg selv. På krem forsvant den grensen, og fire
+        seksjoner på rad rant sammen til én lang flate. Rekkefølgen er
+        krem, ivory, krem, ivory, aubergine, dyp krem, ivory, aubergine. */}
     <Hero />
-    <Portfolio limit={6} visAlleLenke mobilScroll />
+    <Portfolio limit={6} visAlleLenke mobilScroll flate="bg-surface" />
     <Hvorfor />
-    <Omtaler />
+    <Omtaler flate="bg-surface" />
     <Metode />
     <Priser visAlltidMed={false} />
-    <FAQ />
+    <FAQ flate="bg-surface" />
     <DemoSkjema
       tittel="Klar for en nettside"
       uthevet="som selger?"

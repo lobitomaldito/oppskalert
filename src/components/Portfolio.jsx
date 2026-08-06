@@ -54,13 +54,13 @@ const Kort = ({ p, className }) => (
 const RUTENETT = 'gap-4 sm:gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))]';
 
 /* limit=null viser alt (porteføljesiden); et tall klipper listen (forsiden). */
-const Portfolio = ({ limit = null, visAlleLenke = false, mobilScroll = false, tittel = 'Noe av det jeg', uthevet = 'har bygget.' }) => {
+const Portfolio = ({ limit = null, visAlleLenke = false, mobilScroll = false, flate = '', tittel = 'Noe av det jeg', uthevet = 'har bygget.' }) => {
   const container = useReveal(80);
   const liste = limit ? prosjekter.slice(0, limit) : prosjekter;
   const kort = liste.map((p) => <Kort key={p.domene} p={p} />);
 
   return (
-    <section ref={container} className="seksjon">
+    <section ref={container} className={cn('seksjon', flate)}>
       <div className="wrap">
         <SeksjonTopp
           tittel={tittel}

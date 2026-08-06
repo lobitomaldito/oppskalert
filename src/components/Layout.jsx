@@ -256,7 +256,10 @@ export const KortRad = ({ children, as = 'div', gridKlasser, kortBredde, classNa
   return (
     <Tag
       className={cn(
-        'flex sm:grid overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible',
+        // items-stretch må stå her, ikke på kortene. Et kort med h-full får
+        // en eksplisitt høyde, og da slår ikke flexboxens stretch inn: hvert
+        // kort faller tilbake til sin egen innholdshøyde og raden blir ujevn.
+        'flex items-stretch sm:grid overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible',
         gridKlasser,
         className,
       )}

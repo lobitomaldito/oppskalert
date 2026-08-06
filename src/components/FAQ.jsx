@@ -2,17 +2,18 @@ import { useId, useState } from 'react';
 import { Plus } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp } from './Layout';
+import { cn } from '../lib/utils';
 import { sporsmal } from '../lib/site';
 
 /* Ingen kort, ingen rammer, bare hårfine linjer, slik at spørsmålene
    leses som en liste og ikke som enda et rutenett med bokser. */
-const FAQ = ({ tittel = 'Det folk lurer på', uthevet = 'før de sier ja.', lede = null }) => {
+const FAQ = ({ tittel = 'Det folk lurer på', uthevet = 'før de sier ja.', lede = null, flate = '' }) => {
   const [apen, setApen] = useState(null);
   const container = useReveal(70);
   const uid = useId();
 
   return (
-    <section id="faq" ref={container} className="seksjon">
+    <section id="faq" ref={container} className={cn('seksjon', flate)}>
       <div className="wrap">
         <SeksjonTopp tittel={tittel} uthevet={uthevet} lede={lede} />
 

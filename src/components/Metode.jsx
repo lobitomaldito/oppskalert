@@ -22,7 +22,7 @@ const Metode = ({ utdypet = false }) => {
       className={
         utdypet
           ? 'md:grid md:grid-cols-[auto_1fr] md:gap-8'
-          : 'relative rounded-2xl border border-room-ink/15 bg-room-ink/[0.05] p-6 h-full'
+          : 'relative rounded-2xl border border-room-ink/15 bg-room-ink/[0.05] p-6'
       }
     >
       <div className="flex items-center gap-4 mb-4">
@@ -46,6 +46,12 @@ const Metode = ({ utdypet = false }) => {
         <span className={`block font-body text-sm text-room-ink/70 mt-1 ${utdypet ? 'hidden md:block' : ''}`}>
           {s.tid}
         </span>
+
+        {/* Kortene sto nesten tomme. I en horisontal scroller koster høyde
+            ingenting, så her er det plass til å faktisk si hva steget er. */}
+        {!utdypet && (
+          <p className="font-body text-[0.95rem] leading-relaxed mt-3 text-room-ink/85">{s.kort}</p>
+        )}
 
         {utdypet && (
           <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/90 max-w-[58ch]">{s.desc}</p>

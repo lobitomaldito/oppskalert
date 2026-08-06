@@ -12,7 +12,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => (
   <div
     data-reveal
     className={cn(
-      'relative flex flex-col h-full rounded-2xl p-7 md:p-8 border',
+      'relative flex flex-col rounded-2xl p-7 md:p-8 border',
       m.fremhevet ? 'border-accent bg-surface/25' : 'border-primary/12 bg-primary/[0.03]',
       className,
     )}

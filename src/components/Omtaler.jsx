@@ -1,6 +1,7 @@
 import { Star } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { KortRad, SeksjonTopp } from './Layout';
+import { cn } from '../lib/utils';
 import { omtaler } from '../lib/site';
 
 /* Statisk rutenett i stedet for den gamle uendelige marquee-en: fire omtaler
@@ -14,11 +15,11 @@ const Stjerner = () => (
   </div>
 );
 
-const Omtaler = () => {
+const Omtaler = ({ flate = '' }) => {
   const container = useReveal(90);
 
   return (
-    <section ref={container} className="seksjon">
+    <section ref={container} className={cn('seksjon', flate)}>
       <div className="wrap">
         <SeksjonTopp
           tittel="Ikke ta mitt ord for det."

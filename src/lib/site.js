@@ -240,29 +240,38 @@ export const sammenlignWordpress = {
 /* ---------------------------------------------------------------
    METODE. En ekte sekvens, så nummerering er fortjent her
    (og bare her, ikke som stillas over hver seksjon).
+
+   To tekstlengder med vilje: `kort` er én til to setninger skrevet for
+   kortet på forsiden, `desc` er den lange versjonen på /metode. Å kutte
+   desc ned automatisk (første setning, tegngrense) ville gjort at copyen
+   på forsiden endret seg i det stille hver gang noen redigerte desc.
    --------------------------------------------------------------- */
 export const stegene = [
   {
     tittel: 'Jeg bygger demoen din',
     tid: 'Få dager',
+    kort: 'Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse.',
     desc: 'Du sender meg noen linjer om bedriften, eller bare navnet, så finner jeg resten selv. Så bygger jeg et ferdig utkast av den nye siden din. Ikke en skisse i PowerPoint, men en ekte side du kan åpne på mobilen og klikke rundt i.',
     punkter: ['Koster ingenting, uansett hva du lander på', 'Du trenger ikke levere noe på forhånd', 'Demoen ligger på en privat lenke bare du får'],
   },
   {
     tittel: 'Du sier hva du synes',
     tid: 'Ditt tempo',
+    kort: 'Se på den i fred og ro. Liker du den ikke, sletter jeg den, og du skylder meg ingenting.',
     desc: 'Se på den i fred og ro, gjerne sammen med noen. Liker du den ikke, sier du fra. Jeg sletter den, og ingen skylder noen noe. Liker du retningen, justerer jeg farger, tekst og struktur til den sitter. Det er nå vi blir enige om prisen, og den er fast.',
     punkter: ['Ingen forpliktelse før du sier ja', 'Fast pris avtalt før jeg gjør ferdig', 'Du bestemmer hva som skal med'],
   },
   {
     tittel: 'Jeg lanserer',
     tid: '1–2 uker',
+    kort: 'Domene, SSL og hosting ordner jeg. Har du en gammel side, byttes den uten nedetid.',
     desc: 'Domene, SSL og lynrask hosting. Har du en gammel side, flytter jeg deg over uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe.',
     punkter: ['Domene og SSL ordner jeg', 'Søkemotor-oppsett fra dag én', 'Gammel side byttes uten nedetid'],
   },
   {
     tittel: 'Jeg passer på, hvis du vil',
     tid: 'Løpende',
+    kort: 'Med driftsavtale følger jeg med videre. Trenger du en endring, sender du en e-post.',
     desc: 'Velger du driftsavtale, følger jeg med videre: hosting, backup, overvåking og support. Trenger du å bytte et bilde eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, får du alle filene og hjelp til å komme i gang selv.',
     punkter: ['Rimelige endringer inkludert i driftsavtalen', 'Du eier innholdet uansett modell', 'Bytt modell senere om behovet endrer seg'],
   },
