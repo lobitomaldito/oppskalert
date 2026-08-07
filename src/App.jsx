@@ -54,14 +54,18 @@ const Hero = () => (
       </div>
 
       {/* Risikoavlastningen. Dette er argumentene som gjør at folk tør å
-          trykke på knappen over, så de skal ha vekt nok til å bli lest. */}
-      <ul className="hero-elem mt-12 md:mt-14 grid gap-x-10 gap-y-5 sm:grid-cols-3 max-w-[46rem] border-t border-primary/15 pt-7">
+          trykke på knappen over, så de skal ha vekt nok til å bli lest.
+          Stablet på mobil skilles de tre av samme border-t-per-rad som
+          Hvorfor-seksjonens tre punkter lenger ned, samme grep, ikke to.
+          Fra sm og opp står de side om side, og da gjør avstanden jobben
+          en strek ellers ville gjort, så border-t flytter til kun ul-en. */}
+      <ul className="hero-elem mt-12 md:mt-14 grid sm:grid-cols-3 sm:gap-x-10 max-w-[46rem] sm:border-t sm:border-primary/15 sm:pt-7">
         {[
           ['Gratis utkast', 'før du bestemmer deg'],
           ['Du betaler', 'først når du er fornøyd'],
           ['Ingen binding', 'du eier alt selv'],
         ].map(([k, v]) => (
-          <li key={k} className="font-body">
+          <li key={k} className="font-body border-t border-primary/15 py-5 sm:border-t-0 sm:py-0">
             <span className="block font-bold text-base md:text-lg text-primary leading-snug">{k}</span>
             <span className="block text-[0.95rem] md:text-base text-primary/80 mt-1">{v}</span>
           </li>

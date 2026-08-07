@@ -176,11 +176,12 @@
   /* Vekselbånd, så to naboseksjoner aldri deler flate.
      På mørkt holder det ikke med en dypere bakgrunn slik det gjorde på
      krem: --bg mot --bg-deep gir 0,39 av 100 i lysforskjell, altså
-     usynlig, fordi mørke farger komprimerer avstanden. Løftet tint gir
-     et hint, og hårstrekene gjør grensen utvetydig uansett skjerm. */
+     usynlig, fordi mørke farger komprimerer avstanden. Første forsøk på
+     tint (0.16) var fortsatt for svakt til å lese i en skjermdump; 0.30
+     er der forskjellen faktisk synes uten å lese som en egen seksjonsfarge. */
   .band {
-    background-color: rgb(var(--surface) / 0.16);
-    border-block: 1px solid rgb(var(--ink) / 0.10);
+    background-color: rgb(var(--surface) / 0.30);
+    border-block: 1px solid rgb(var(--ink) / 0.16);
   }
 }
 
