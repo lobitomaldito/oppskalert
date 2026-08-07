@@ -8,7 +8,8 @@
     ],
     "searchVolume": 590,
     "difficulty": 16,
-    "status": "pending"
+    "status": "published",
+    "publishedDate": "2026-08-06"
   },
   {
     "slug": "responsiv-nettside",
