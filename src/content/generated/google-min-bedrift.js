@@ -4,7 +4,7 @@ export default {
   description: "Google Bedriftsprofil avgjør om bedriften din vises i lokale søk. Her er feltene som faktisk påvirker rangeringen, og hva du bør fikse først.",
   publishDate: "2026-08-06",
   keywords: ["google min bedrift", "google bedriftsprofil"],
-  hero: "",
+  hero: "/blogg/google-min-bedrift.webp",
   content: `## Hva Google Bedriftsprofil faktisk er
 
 Google Bedriftsprofil, tidligere kalt Google Min Bedrift, er den gratis oppføringen som dukker opp når noen søker etter bedriften din, eller etter en tjeneste du tilbyr, i nærheten av der de befinner seg. Den vises i kartet, i "lokalpakken" med tre treff øverst på mobilsøk, og som en informasjonsboks til høyre på skjermen ved søk på PC. For en bedrift med fysisk adresse eller et geografisk nedslagsfelt er dette ofte den første kontakten en potensiell kunde har med deg, før de i det hele tatt besøker nettsiden. En ufullstendig eller feil profil er dermed et førsteinntrykk du taper penger på hver eneste dag.

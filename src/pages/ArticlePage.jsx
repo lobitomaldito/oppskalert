@@ -250,12 +250,17 @@ const LocalArticle = ({ article }) => {
   const nextArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
 
   const canonical = `https://oppskalert.no/blogg/${article.slug}`;
+  /* Den ukentlige generatoren har skrevet hero: "" minst én gang. Uten denne
+     vakten blir og:image og schema-bildet til den bare "https://oppskalert.no",
+     som er en ugyldig bilde-URL, og <img src=""> laster siden på nytt i noen
+     nettlesere. Mangler bildet, utelates feltet i stedet. */
+  const heroUrl = article.hero ? `https://oppskalert.no${article.hero}` : undefined;
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: article.title,
     description: article.description,
-    image: `https://oppskalert.no${article.hero}`,
+    ...(heroUrl ? { image: heroUrl } : {}),
     datePublished: article.publishDate,
     author: { '@type': 'Organization', name: 'Oppskalert' },
     publisher: {
@@ -274,7 +279,7 @@ const LocalArticle = ({ article }) => {
         keywords={article.keywords}
         canonical={canonical}
         ogType="article"
-        ogImage={`https://oppskalert.no${article.hero}`}
+        ogImage={heroUrl}
         jsonLd={[articleSchema, breadcrumbSchema(article.title, canonical)]}
       />
       <Navbar />
@@ -295,11 +300,13 @@ const LocalArticle = ({ article }) => {
         </div>
       </section>
 
-      <div className="px-6 md:px-12 lg:px-24 mb-16">
+      {article.hero && (
+        <div className="px-6 md:px-12 lg:px-24 mb-16">
         <div className="max-w-3xl mx-auto rounded-[2.5rem] overflow-hidden h-64 md:h-96">
           <img src={article.hero} alt={article.title} className="w-full h-full object-cover" />
         </div>
       </div>
+      )}
 
       <article className="px-6 md:px-12 lg:px-24 pb-32">
         <div className="max-w-3xl mx-auto">
