@@ -9,7 +9,8 @@
     "postbuild": "node scripts/prerender.mjs && node scripts/indexnow.mjs --auto",
     "lint": "eslint .",
     "preview": "vite preview",
-    "indexnow": "node scripts/indexnow.mjs"
+    "indexnow": "node scripts/indexnow.mjs",
+    "bing": "node scripts/bing.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
