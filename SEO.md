@@ -277,6 +277,28 @@ kjøres manuelt mot ChatGPT, Claude og Gemini gratis, én gang i kvartalet.
 - What are the best website hosting and maintenance providers for small businesses in Norway?
 - Is {company} or {competitor} better for website hosting and maintenance agreements tailored for small businesses?
 
+### Bing AI Performance, en gratis erstatning
+
+Bing lanserte **AI Performance** i februar 2026. Den ligger i menyen i Bing
+Webmaster Tools og måler hvordan innholdet vårt siteres i AI-svar, på tvers av
+Microsoft Copilot, AI-sammendrag i Bing og enkelte partnerintegrasjoner.
+
+Fire tall: totale siteringer, snitt antall siterte sider per dag,
+**grunnlagssøk** (frasene AI-en faktisk brukte da den hentet innholdet vårt),
+og siteringer per URL.
+
+Grunnlagssøkene er det interessante. Det er reelle data på hvilke spørsmål som
+fører til at vi blir sitert, i motsetning til promptsettet under, som er vår
+egen gjetning på hva folk spør om.
+
+**Det finnes ingen API.** Sjekket 7. august 2026: ti sannsynlige endepunktnavn
+mot `ssl.bing.com/webmaster/api.svc` svarte alle 404, og Microsoft bekrefter i
+sitt eget Q&A at rapporten ikke er eksponert programmatisk. Den må leses
+manuelt i grensesnittet. Ikke bruk tid på å lete etter et endepunkt igjen.
+
+Promptsettet under er fortsatt nyttig for ChatGPT, Claude og Gemini, som Bing
+ikke dekker.
+
 ### Det mest handlingsrettede funnet
 
 Domenene AI-modellene siterer når de svarer på disse spørsmålene er nesten
