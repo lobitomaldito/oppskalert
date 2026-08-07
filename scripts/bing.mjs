@@ -117,13 +117,17 @@ const kommandoer = {
   },
 
   async lenker() {
+    /* GetLinkCounts er det ene endepunktet som ikke returnerer en array, men
+       et objekt med { Links, TotalPages }. De andre gir array direkte. */
     const d = await kall('GetLinkCounts', { page: 0 });
+    const lenker = d?.Links || [];
     tabell(
-      (d || [])
+      lenker
         .sort((a, b) => b.Count - a.Count)
         .slice(0, 25)
         .map((l) => ({ side: l.Url, innkommende: l.Count }))
     );
+    if (d?.TotalPages > 1) console.log(`  (${d.TotalPages} sider med resultater, viser første)`);
   },
 
   async trafikk() {
