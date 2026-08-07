@@ -86,7 +86,20 @@ async function byttToken(params) {
     body: new URLSearchParams({ client_id: CLIENT_ID, client_secret: CLIENT_SECRET, ...params }),
   });
   const d = await res.json();
-  if (!res.ok) throw new Error(`token: ${d.error_description || d.error || res.status}`);
+  if (!res.ok) {
+    /* invalid_grant betyr nesten alltid at refresh-tokenet er utløpt. Det
+       skjer automatisk etter sju dager så lenge OAuth-appen står i
+       «Testing» i Google Cloud. Sett den til «In production» for å slippe. */
+    if (d.error === 'invalid_grant') {
+      throw new Error(
+        'refresh-tokenet er utløpt eller trukket tilbake.\n' +
+          '  Kjør: npm run gsc auth\n' +
+          '  Skjer dette hver uke, står OAuth-appen i «Testing» i Google Cloud.\n' +
+          '  Sett publiseringsstatus til «In production», så varer tokenet.'
+      );
+    }
+    throw new Error(`token: ${d.error_description || d.error || res.status}`);
+  }
   return d;
 }
 
