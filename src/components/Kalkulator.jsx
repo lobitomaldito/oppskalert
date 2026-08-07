@@ -103,7 +103,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
 
             <div>
-              <h2 className="font-sans font-bold text-lg mb-4">Hva skal være med? <span className="font-body font-normal text-primary/60 text-sm">Velg det som passer</span></h2>
+              <h2 className="font-sans font-bold text-lg mb-4">Hva skal være med? <span className="font-body font-normal text-primary/70 text-sm">Velg det som passer</span></h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {kalkulatorTillegg.map((item) => (
                   <TilleggKnapp key={item.id} item={item} valgt={tillegg.has(item.id)} onClick={() => toggleTillegg(item.id)} />
@@ -134,7 +134,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
           </div>
 
-          <div data-reveal className="lg:sticky lg:top-28 rounded-3xl border border-accent/30 bg-surface/25 p-7 flex flex-col gap-5">
+          <div data-reveal className="lg:sticky lg:top-28 rounded-2xl border border-accent/30 bg-surface/25 p-7 flex flex-col gap-5">
             <div>
               <span className="font-body text-xs uppercase tracking-widest text-primary/70">Estimert pris</span>
               <div className="font-display font-extrabold text-[2.1rem] leading-none tracking-[-0.02em] mt-2">

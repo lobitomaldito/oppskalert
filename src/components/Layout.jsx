@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { kontakt, navLenker, ruter } from '../lib/site';
+import { cn } from '../lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,15 +31,23 @@ export const Navbar = () => {
   const lukk = () => setMenuOpen(false);
 
   useEffect(() => {
+    // GSAP animerer inline-stiler, så vi kan ikke bruke Tailwind-klasser her.
+    // Fargene leses derfor ut av tokens i stedet for å skrives som literaler:
+    // navbaren hadde en hardkodet dusty grape som overlevde palettbyttet og
+    // ble et lilla felt midt på en krembakgrunn.
+    const tok = (navn, alpha) => {
+      const v = getComputedStyle(document.documentElement).getPropertyValue(navn).trim().split(/\s+/).join(', ');
+      return `rgba(${v}, ${alpha})`;
+    };
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         start: 'top -50',
         end: 99999,
         onUpdate: (self) => {
           gsap.to(navRef.current, {
-            backgroundColor: self.isActive ? 'rgba(79, 71, 137, 0.90)' : 'rgba(79, 71, 137, 0)',
+            backgroundColor: self.isActive ? tok('--surface', 0.92) : tok('--surface', 0),
             backdropFilter: self.isActive ? 'blur(8px)' : 'blur(0px)',
-            borderColor: self.isActive ? 'rgba(255, 253, 237, 0.12)' : 'rgba(255, 253, 237, 0)',
+            borderColor: self.isActive ? tok('--ink', 0.12) : tok('--ink', 0),
             duration: 0.3,
           });
         },
@@ -68,7 +77,7 @@ export const Navbar = () => {
           oppskalert<span className="text-accent">.</span>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-7 font-body text-xs uppercase tracking-widest">
+        <div className="hidden lg:flex items-center gap-7 font-body text-sm">
           {navLenker.map((l) => (
             <NavLink key={l.label} to={l.to} className={linkClass}>{l.label}</NavLink>
           ))}
@@ -104,7 +113,7 @@ export const Navbar = () => {
                 key={l.label}
                 to={l.to}
                 onClick={lukk}
-                className="font-body text-sm uppercase tracking-widest text-primary/80 hover:text-primary py-4 border-b border-primary/10 transition-colors"
+                className="font-body text-base text-primary/80 hover:text-primary py-4 border-b border-primary/10 transition-colors"
               >
                 {l.label}
               </NavLink>
@@ -150,19 +159,19 @@ export const Footer = () => (
 
         <div className="flex flex-wrap gap-x-14 gap-y-8 font-body text-sm">
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 uppercase tracking-widest text-xs font-semibold mb-1">Kontakt</span>
+            <span className="text-primary/70 text-sm font-semibold mb-1">Kontakt</span>
             <span className="text-primary/70">{kontakt.navn}</span>
             <a href={`tel:${kontakt.tel}`} className="text-primary hover:text-accent transition-colors">{kontakt.telefon}</a>
             <a href={`mailto:${kontakt.epost}`} className="text-accent hover:text-highlight transition-colors">{kontakt.epost}</a>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 uppercase tracking-widest text-xs font-semibold mb-1">Snarveier</span>
+            <span className="text-primary/70 text-sm font-semibold mb-1">Snarveier</span>
             {navLenker.map((l) => (
               <Link key={l.label} to={l.to} className="text-primary/70 hover:text-primary transition-colors">{l.label}</Link>
             ))}
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 uppercase tracking-widest text-xs font-semibold mb-1">Tjenester</span>
+            <span className="text-primary/70 text-sm font-semibold mb-1">Tjenester</span>
             <Link to={ruter.nettsideDesign} className="text-primary/70 hover:text-primary transition-colors">Nettsidedesign</Link>
             <Link to={ruter.nettsideBedrift} className="text-primary/70 hover:text-primary transition-colors">Nettside til bedrift</Link>
             <Link to={ruter.nettbutikk} className="text-primary/70 hover:text-primary transition-colors">Lage nettbutikk</Link>
@@ -171,12 +180,12 @@ export const Footer = () => (
             <Link to={ruter.drift} className="text-primary/70 hover:text-primary transition-colors">Drift og support</Link>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 uppercase tracking-widest text-xs font-semibold mb-1">Verktøy</span>
+            <span className="text-primary/70 text-sm font-semibold mb-1">Verktøy</span>
             <Link to={ruter.kalkulator} className="text-primary/70 hover:text-primary transition-colors">Priskalkulator</Link>
             <Link to={ruter.sammenlign} className="text-primary/70 hover:text-primary transition-colors">Sammenlign</Link>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 uppercase tracking-widest text-xs font-semibold mb-1">Selskap</span>
+            <span className="text-primary/70 text-sm font-semibold mb-1">Selskap</span>
             <span className="text-primary/70">Orgnr {kontakt.orgnr}</span>
             <span className="text-primary/70">{kontakt.sted}</span>
             <span className="text-primary/70">Et datterselskap av<br />{kontakt.morselskap}</span>
@@ -184,7 +193,7 @@ export const Footer = () => (
         </div>
       </div>
 
-      <div className="mt-12 pt-6 border-t border-primary/10 flex flex-wrap gap-4 justify-between items-center font-body text-xs text-primary/70">
+      <div className="mt-12 pt-6 border-t border-primary/10 flex flex-wrap gap-4 justify-between items-center font-body text-sm text-primary/70">
         <p>&copy; {new Date().getFullYear()} {kontakt.morselskap}.</p>
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-highlight animate-pulse" />
@@ -225,7 +234,7 @@ export const SideTopp = ({ tittel, uthevet, lede }) => (
 export const SeksjonTopp = ({ tittel, uthevet, lede, midtstilt = false }) => (
   <div className={`mb-10 md:mb-14 ${midtstilt ? 'text-center mx-auto max-w-2xl' : ''}`}>
     <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-      {tittel}{uthevet && <> <span className="text-accent">{uthevet}</span></>}
+      {tittel}{uthevet && <> {uthevet}</>}
     </h2>
     {lede && (
       <p className={`font-body text-[0.95rem] md:text-base text-primary/80 mt-4 leading-relaxed max-w-[54ch] ${midtstilt ? 'mx-auto' : ''}`}>
@@ -234,3 +243,34 @@ export const SeksjonTopp = ({ tittel, uthevet, lede, midtstilt = false }) => (
     )}
   </div>
 );
+
+/* Delt horisontal-scroll-rad. Flex med scroll-snap på mobil, rutenett fra sm.
+   Mønsteret lå kopiert ordrett tre steder (Omtaler, BransjeEksempler,
+   Portfolio); nå bor det ett sted. gridKlasser styrer rutenettet fra sm og
+   opp (kolonner, rader, avstand). kortBredde er bredden hvert kort får i den
+   horisontale raden på mobil, den nullstilles til auto når rutenettet tar
+   over. as bytter rot-elementet, f.eks. "ol" der barna er <li> og
+   rekkefølgen er meningsbærende (se Metode). */
+export const KortRad = ({ children, as = 'div', gridKlasser, kortBredde, className }) => {
+  const Tag = as;
+  return (
+    <Tag
+      className={cn(
+        // items-stretch må stå her, ikke på kortene. Et kort med h-full får
+        // en eksplisitt høyde, og da slår ikke flexboxens stretch inn: hvert
+        // kort faller tilbake til sin egen innholdshøyde og raden blir ujevn.
+        'flex items-stretch sm:grid overflow-x-auto snap-x snap-mandatory -mx-4 px-4 pb-2 sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible',
+        gridKlasser,
+        className,
+      )}
+    >
+      {Children.map(children, (barn) =>
+        isValidElement(barn)
+          ? cloneElement(barn, {
+              className: cn('flex-shrink-0 snap-start sm:w-auto', kortBredde, barn.props.className),
+            })
+          : barn
+      )}
+    </Tag>
+  );
+};

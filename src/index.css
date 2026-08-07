@@ -88,7 +88,9 @@
    ============================================================ */
 @layer base {
   :root {
-    /* Flater */
+    /* Flater. Kremen ble prøvd som standardflate i august 2026 og rullet
+       tilbake: auberginen ER merkevaren, og på krem ble den redusert til
+       et innslag. Kremen er derfor det sjeldne rommet igjen. */
     --bg:        32 19 53;      /* #201335  midnattsaubergine */
     --bg-deep:   23 14 38;      /* #170e26  dypere bånd (fot, prisrom) */
     --surface:   79 71 137;     /* #4f4789  dusty grape, løftet flate */
@@ -140,19 +142,18 @@
     font-weight: 450;
   }
 
-  /* Keyboard focus: visible everywhere. Accent ring reads on the dark
-     surfaces (most of the page); on the warm light rooms peach washes out,
-     so switch the ring to ink. */
+  /* Tastaturfokus skal synes overalt. Fersken-ringen leser på auberginen,
+     som er det meste av siden. Inne i kremrommene vaskes fersken ut, så
+     der bytter vi til clay. */
   :focus-visible {
     outline: 2px solid rgb(var(--signal));
     outline-offset: 2px;
     border-radius: 3px;
   }
   .rom :focus-visible,
-  [style*="#f5e6d8"] :focus-visible,
   .bg-room :focus-visible,
   .bg-primary :focus-visible {
-    outline-color: rgb(var(--room-ink));
+    outline-color: rgb(var(--room-signal));
   }
 
   /* Overskrifter puster jevnere med balansert ombrekking; lang brødtekst
@@ -171,6 +172,17 @@
     padding-inline: var(--gutter);
   }
   .seksjon { padding-block: var(--seksjon); }
+
+  /* Vekselbånd, så to naboseksjoner aldri deler flate.
+     På mørkt holder det ikke med en dypere bakgrunn slik det gjorde på
+     krem: --bg mot --bg-deep gir 0,39 av 100 i lysforskjell, altså
+     usynlig, fordi mørke farger komprimerer avstanden. Første forsøk på
+     tint (0.16) var fortsatt for svakt til å lese i en skjermdump; 0.30
+     er der forskjellen faktisk synes uten å lese som en egen seksjonsfarge. */
+  .band {
+    background-color: rgb(var(--surface) / 0.30);
+    border-block: 1px solid rgb(var(--ink) / 0.16);
+  }
 }
 
 /* Hero entrance: transform-only, so content is ALWAYS visible (opacity:1).

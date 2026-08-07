@@ -92,14 +92,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
       <div className="wrap">
         <div className="max-w-[38rem] mx-auto flex flex-col items-center text-center">
           <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-            {tittel} <span className="text-room-signal">{uthevet}</span>
+            {tittel} <span>{uthevet}</span>
           </h2>
           <p className="font-body text-[0.95rem] md:text-base text-room-ink/90 mt-5 mb-9 leading-relaxed max-w-[46ch]">
             {lede}
           </p>
 
           {status === 'success' ? (
-            <div className="w-full bg-room-ink/5 border border-room-ink/20 rounded-3xl p-9" role="status">
+            <div className="w-full bg-room-ink/5 border border-room-ink/20 rounded-2xl p-9" role="status">
               <p className="font-sans font-bold text-2xl mb-2">Takk! Den er mottatt.</p>
               <p className="font-body text-[0.95rem] text-room-ink/90 leading-relaxed">
                 Jeg tar kontakt på e-post innen 24 timer. Haster det, ring meg på{' '}
@@ -108,7 +108,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
             </div>
           ) : steg === 1 ? (
             <div className="w-full flex flex-col gap-7 text-left">
-              <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 text-center">Steg 1 av 2</span>
+              <span className="font-body text-sm text-room-ink/75 text-center">Steg 1 av 2</span>
 
               <div>
                 <span className="font-sans font-bold text-sm block mb-3">Hva trenger du demo til?</span>
@@ -125,7 +125,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                           <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{b.label}</span>
                           <Hake valgt={valgt} />
                         </div>
-                        <span className="block font-body text-xs text-room-ink/70 mt-1">{b.beskrivelse}</span>
+                        <span className="block font-body text-sm text-room-ink/70 mt-1">{b.beskrivelse}</span>
                       </button>
                     );
                   })}
@@ -150,7 +150,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                           <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{o.label}</span>
                           <Hake valgt={valgt} />
                         </div>
-                        <span className="block font-body text-xs text-room-ink/70 mt-1">{o.beskrivelse}</span>
+                        <span className="block font-body text-sm text-room-ink/70 mt-1">{o.beskrivelse}</span>
                       </button>
                     );
                   })}
@@ -165,14 +165,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 >
                   <span className="flex items-center justify-center gap-2">Neste <ArrowRight className="w-5 h-5" /></span>
                 </button>
-                <button type="button" onClick={() => setSteg(2)} className="font-body text-xs text-room-ink/60 hover:text-room-ink underline underline-offset-2">
+                <button type="button" onClick={() => setSteg(2)} className="font-body text-sm text-room-ink/75 hover:text-room-ink underline underline-offset-2">
                   Hopp over, jeg vil bare legge igjen kontaktinfo
                 </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-left">
-              <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 text-center -mt-1 mb-1">Steg 2 av 2</span>
+              <span className="font-body text-sm text-room-ink/75 text-center -mt-1 mb-1">Steg 2 av 2</span>
 
               {/* Honeypot. Plassert utenfor skjermen i stedet for display:none,
                   fordi en del bots hopper over skjulte felt men ikke
@@ -211,7 +211,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                   {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-5 h-5" /></>}
                 </span>
               </button>
-              <button type="button" onClick={() => setSteg(1)} className="font-body text-xs text-room-ink/60 hover:text-room-ink self-center underline underline-offset-2">
+              <button type="button" onClick={() => setSteg(1)} className="font-body text-sm text-room-ink/75 hover:text-room-ink self-center underline underline-offset-2">
                 Tilbake
               </button>
 
@@ -222,7 +222,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 </p>
               )}
 
-              <p className="font-body text-xs text-room-ink/70 text-center mt-1">
+              <p className="font-body text-sm text-room-ink/70 text-center mt-1">
                 Uforpliktende. Jeg svarer innen 24 timer, eller ring direkte:{' '}
                 <a href={`tel:${kontakt.tel}`} className="text-room-signal hover:underline">{kontakt.telefon}</a>
               </p>

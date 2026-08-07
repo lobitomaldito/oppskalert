@@ -1,12 +1,8 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell, SeksjonTopp } from './components/Layout';
 import Portfolio from './components/Portfolio';
-import BransjeEksempler from './components/BransjeEksempler';
 import Omtaler from './components/Omtaler';
 import Metode from './components/Metode';
 import Priser from './components/Priser';
@@ -15,102 +11,69 @@ import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, kontakt, ruter } from './lib/site';
 import { useReveal } from './lib/useReveal';
 
-gsap.registerPlugin(ScrollTrigger);
+/* Heroen hadde ti ting på én skjerm: navbar-ordmerke, kicker, H1, avsnitt,
+   to knapper, en svartidslinje, en trippel og et kjempeordmerke. Fire av dem
+   sa det samme.
 
-const Hero = () => {
-  const container = useRef(null);
-  const dotRef = useRef(null);
-  const wordmarkRef = useRef(null);
-
-  useEffect(() => {
-    // matchMedia owns its own cleanup (mm.revert), which both restores the
-    // from-state to a visible default and is StrictMode-safe (double-mount).
-    // Entrance is a CSS animation (.hero-elem) so it can never strand content
-    // at opacity:0; GSAP here only drives the dot bounce and wordmark fade.
-    const mm = gsap.matchMedia();
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.to(dotRef.current, {
-        y: -18, duration: 0.4, ease: 'power2.out',
-        yoyo: true, repeat: -1, repeatDelay: 2, delay: 1.8,
-      });
-      gsap.to(wordmarkRef.current, {
-        opacity: 0,
-        scrollTrigger: { trigger: container.current, start: 'top top', end: '45% top', scrub: true },
-      });
-    });
-    return () => mm.revert();
-  }, []);
-
-  // h-, ikke min-h-: seksjonen ER nøyaktig én skjerm på desktop, så ordmerket
-  // lander flush mot bunnkanten i stedet for å bli klippet midt i bokstavene.
-  // Under md får den naturlig høyde.
-  return (
-    <section ref={container} className="relative flex flex-col justify-between overflow-hidden md:h-[100dvh]">
-      <div className="wrap pt-32 md:pt-36">
-        {/* Den ENE kickeren på siden. Én navngitt kicker er stemme;
-            en over hver seksjon er AI-grammatikk. */}
-        <p className="hero-elem font-body font-medium text-xs md:text-sm uppercase tracking-[0.22em] text-primary/80 mb-6">
-          Norsk webutvikling · én person, hele jobben
-        </p>
-
-        <h1
-          className="hero-elem font-display font-extrabold text-primary"
-          style={{ fontSize: 'clamp(2.9rem, 8vw, 5.75rem)', lineHeight: 0.98, letterSpacing: '-0.035em', maxWidth: '14ch' }}
-        >
-          Nettsider som faktisk <span className="text-accent">selger</span>.
-        </h1>
-
-        <p className="hero-elem font-body text-base md:text-lg text-primary/85 mt-7 max-w-[46ch] leading-relaxed">
-          Jeg bygger den ferdig, viser deg den gratis, og lanserer den på dager, ikke måneder. Liker du den ikke, koster den ingenting.
-        </p>
-
-        <div className="hero-elem mt-9 flex flex-wrap items-center gap-x-5 gap-y-4">
-          <Link
-            to={ruter.kontakt}
-            className="inline-flex items-center gap-2 bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform duration-300 hover:scale-[1.03]"
-          >
-            Bestill gratis demo <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            to={ruter.arbeid}
-            className="inline-flex items-center gap-2 border border-primary/25 hover:border-primary/60 px-7 py-4 rounded-full font-sans font-bold text-sm transition-colors duration-300"
-          >
-            Se arbeidet
-          </Link>
-          <span className="font-body text-[0.95rem] text-primary/80">Svar innen 24 timer</span>
-        </div>
-
-        {/* Risikoavlastningen. Dette er argumentene som gjør at folk tør å
-            trykke på knappen over, så de skal ha vekt nok til å bli lest. */}
-        <ul className="hero-elem mt-10 md:mt-12 grid gap-x-10 gap-y-5 sm:grid-cols-3 max-w-[46rem] border-t border-primary/15 pt-7">
-          {[
-            ['Gratis utkast', 'før du bestemmer deg'],
-            ['Du betaler', 'først når du er fornøyd'],
-            ['Ingen binding', 'du eier alt selv'],
-          ].map(([k, v]) => (
-            <li key={k} className="font-body">
-              <span className="block font-bold text-base md:text-lg text-primary leading-snug">{k}</span>
-              <span className="block text-[0.95rem] md:text-base text-primary/80 mt-1">{v}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div
-        ref={wordmarkRef}
-        className="wrap relative overflow-hidden leading-none select-none flex justify-end mt-16 md:mt-0 pb-6 md:pb-8"
-        aria-hidden="true"
+   Ute nå:
+   - Kjempeordmerket. Navbaren bærer allerede navnet, så det var merkevaren
+     to ganger på første skjerm, og det største objektet der sa ingenting nytt.
+     Med det ute forsvant også GSAP-en herfra: prikkespretten og scroll-fadingen
+     var det eneste den drev.
+   - Kickeren. Siste versaletikett på forsiden, og «én person, hele jobben»
+     er allerede jeg-formen i avsnittet under.
+   - «Svar innen 24 timer», som var et fjerde element i knapperaden.
+   - Siste setning i avsnittet. Trippelen under sier det samme, bare skannbart. */
+const Hero = () => (
+  <section className="relative flex flex-col justify-center overflow-hidden md:min-h-[100dvh]">
+    <div className="wrap pt-32 pb-16 md:py-36">
+      <h1
+        className="hero-elem font-display font-extrabold text-primary"
+        style={{ fontSize: 'clamp(2.9rem, 8vw, 5.75rem)', lineHeight: 0.98, letterSpacing: '-0.035em', maxWidth: '14ch' }}
       >
-        <span
-          className="font-display font-extrabold text-primary"
-          style={{ fontSize: 'clamp(3.25rem, 10vw, 8rem)', lineHeight: 1, letterSpacing: '-0.045em', paddingBottom: '0.08em' }}
+        Nettsider som faktisk <span className="text-accent">selger</span>.
+      </h1>
+
+      <p className="hero-elem font-body text-base md:text-lg text-primary/85 mt-7 max-w-[46ch] leading-relaxed">
+        Jeg bygger den ferdig, viser deg den gratis, og lanserer den på dager, ikke måneder.
+      </p>
+
+      <div className="hero-elem mt-9 flex flex-wrap items-center gap-x-5 gap-y-4">
+        <Link
+          to={ruter.kontakt}
+          className="inline-flex items-center gap-2 bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform duration-300 hover:scale-[1.03]"
         >
-          oppskalert<span ref={dotRef} className="text-accent inline-block">.</span>
-        </span>
+          Bestill gratis demo <ArrowRight className="w-4 h-4" />
+        </Link>
+        <Link
+          to={ruter.arbeid}
+          className="inline-flex items-center gap-2 border border-primary/25 hover:border-primary/60 px-7 py-4 rounded-full font-sans font-bold text-sm transition-colors duration-300"
+        >
+          Se arbeidet
+        </Link>
       </div>
-    </section>
-  );
-};
+
+      {/* Risikoavlastningen. Dette er argumentene som gjør at folk tør å
+          trykke på knappen over, så de skal ha vekt nok til å bli lest.
+          Stablet på mobil skilles de tre av samme border-t-per-rad som
+          Hvorfor-seksjonens tre punkter lenger ned, samme grep, ikke to.
+          Fra sm og opp står de side om side, og da gjør avstanden jobben
+          en strek ellers ville gjort, så border-t flytter til kun ul-en. */}
+      <ul className="hero-elem mt-12 md:mt-14 grid sm:grid-cols-3 sm:gap-x-10 max-w-[46rem] sm:border-t sm:border-primary/15 sm:pt-7">
+        {[
+          ['Gratis utkast', 'før du bestemmer deg'],
+          ['Du betaler', 'først når du er fornøyd'],
+          ['Ingen binding', 'du eier alt selv'],
+        ].map(([k, v]) => (
+          <li key={k} className="font-body border-t border-primary/15 py-5 sm:border-t-0 sm:py-0">
+            <span className="block font-bold text-base md:text-lg text-primary leading-snug">{k}</span>
+            <span className="block text-[0.95rem] md:text-base text-primary/80 mt-1">{v}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
 
 /* Hvorfor det betyr noe. Konkrete tall i stedet for adjektiver.
    «Under ett sekund» slår «lynrask» hver gang. */
@@ -122,7 +85,7 @@ const Hvorfor = () => {
       <div className="wrap grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:items-start">
         <div data-reveal>
           <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-            Nettsiden er det første <span className="text-accent">håndtrykket</span> bedriften din gir.
+            Nettsiden er det første håndtrykket bedriften din gir.
           </h2>
           <p className="font-body text-[0.95rem] md:text-base text-primary/85 mt-5 leading-relaxed max-w-[48ch]">
             Jeg sørger for at det sitter. Sidene er håndkodet, ikke stemplet ut av en mal, og de er bygget for å gjøre besøkende til kunder, ikke bare for å se pene ut.
@@ -188,14 +151,18 @@ const Home = () => (
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />
+    {/* Flatene veksler bevisst, så ingen to naboseksjoner deler bakgrunn.
+        Fire seksjoner på rad med samme flate rant sammen til én lang side
+        uten grenser. Rekkefølgen er aubergine, bånd, aubergine, bånd,
+        krem, dyp, aubergine, krem. Se .band i index.css for hvorfor
+        båndet trenger hårstrek og ikke bare en dypere bakgrunn. */}
     <Hero />
-    <Portfolio limit={6} visAlleLenke />
+    <Portfolio limit={6} visAlleLenke mobilScroll flate="band" />
     <Hvorfor />
-    <Omtaler />
+    <Omtaler flate="band" />
     <Metode />
-    <Priser />
-    <BransjeEksempler />
-    <FAQ />
+    <Priser visAlltidMed={false} />
+    <FAQ flate="band" />
     <DemoSkjema
       tittel="Klar for en nettside"
       uthevet="som selger?"
