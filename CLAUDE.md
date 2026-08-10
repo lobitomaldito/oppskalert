@@ -157,8 +157,12 @@ og skal ikke følges opp videre.
 ## Git
 
 Aleksander godkjenner før noe går live. Jobb på branch, ikke commit rett på
-master, og ikke merge eller push uten at han sier fra. Blogginnlegg skal alltid
-gå via PR, se `content/BLOG-GENERATION.md`.
+master, og ikke merge eller push uten at han sier fra.
+
+**Unntak: den ukentlige bloggrutinen.** Fra 10. august 2026 merger den PR-en
+sin selv rett etter at den er åpnet, ingen manuell godkjenning per artikkel.
+Se `content/BLOG-GENERATION.md` for detaljer. Alt annet arbeid i dette
+repoet, kode, andre innholdsendringer, følger fortsatt hovedregelen over.
 
 **Flere Claude-sesjoner jobber i dette repoet samtidig.** Det betyr at det
 nesten alltid ligger ukommittert arbeid i treet som ikke er ditt. Bruk aldri

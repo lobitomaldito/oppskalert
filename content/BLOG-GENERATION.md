@@ -35,8 +35,12 @@ både i stemme og struktur.
    oppføringen.
 7. Opprett en ny branch (`content/<slug>`), commit med melding
    `content: publish blog post "<title>"`, push branchen, og åpne en PR mot
-   master. Ikke merge selv, ikke push til master direkte, brukeren skal
-   godkjenne hver artikkel før den går live.
+   master.
+8. Merge PR-en selv, umiddelbart etter at den er åpnet. Ikke push rett til
+   master uten PR, PR-en er fortsatt revisjonssporet og gjør en artikkel lett
+   å reversere, men vent ikke på manuell godkjenning fra brukeren. Dette er et
+   bevisst unntak fra hovedregelen i `CLAUDE.md` sitt Git-avsnitt, avtalt
+   10. august 2026, og gjelder kun denne rutinen.
 
 ## Skjema (`src/content/generated/<slug>.js`)
 
