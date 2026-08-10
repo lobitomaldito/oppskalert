@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "indexnow": "node scripts/indexnow.mjs",
-    "bing": "node scripts/bing.mjs"
+    "bing": "node scripts/bing.mjs",
+    "gsc": "node scripts/gsc.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
