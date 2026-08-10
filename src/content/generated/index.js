@@ -14,5 +14,6 @@ import webutviklerOslo from './webutvikler-oslo.js';
 import norskDomene from './norsk-domene.js';
 import utviklingNettside from './utvikling-nettside.js';
 import googleMinBedrift from './google-min-bedrift.js';
+import responsivNettside from './responsiv-nettside.js';
 
-export const generated = [webutviklerOslo, norskDomene, utviklingNettside, googleMinBedrift];
+export const generated = [webutviklerOslo, norskDomene, utviklingNettside, googleMinBedrift, responsivNettside];

@@ -20,7 +20,8 @@
     ],
     "searchVolume": 70,
     "difficulty": 5,
-    "status": "pending"
+    "status": "published",
+    "publishedDate": "2026-08-10"
   },
   {
     "slug": "hvordan-lage-nettside",
