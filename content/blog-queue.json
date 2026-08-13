@@ -32,7 +32,8 @@
     ],
     "searchVolume": 210,
     "difficulty": 15,
-    "status": "pending"
+    "status": "published",
+    "publishedDate": "2026-08-13"
   },
   {
     "slug": "nettside-ai",
