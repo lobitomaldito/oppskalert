@@ -1,11 +1,16 @@
 #!/usr/bin/env node
-/* Leser data ut av Bing Webmaster Tools, så du slipper å klikke deg gjennom
- * grensesnittet for å se hvordan det går.
+/* Leser data ut av Bing Webmaster Tools, og sender inn URL-er.
  *
- * Merk hva dette IKKE er til: innsending av URL-er er allerede automatisk via
- * scripts/indexnow.mjs, som kjører på hver produksjonsdeploy og ikke trenger
- * noen nøkkel. Verdien her ligger i lesingen, særlig `lenker`: Bing gir
- * innkommende lenker gratis, og det er nettopp det vi mistet med Opinly.
+ * Om innsending: dette sto tidligere som «ikke nødvendig, IndexNow gjør det
+ * automatisk». Det stemte ikke. Målt 13. august 2026 svarer IndexNow 403
+ * UserForbiddedToAccessSite for oppskalert.no, altså at de ikke godtar
+ * koblingen mellom domenet og nøkkelfilen, selv om filen svarer 200 med
+ * riktig innhold for alle user agents. `send` her går utenom den
+ * nøkkelfil-håndhilsingen og bruker den autentiserte API-nøkkelen i stedet,
+ * så innsending virker uavhengig av om IndexNow-problemet blir løst.
+ *
+ * Verdien i lesingen ligger særlig i `lenker`: Bing gir innkommende lenker
+ * gratis, og det er nettopp det vi mistet med Opinly.
  *
  * Nøkkelen er en hemmelighet. Den ligger i .env.local (dekket av .gitignore)
  * og skal aldri committes eller limes inn i en chat:
@@ -14,6 +19,7 @@
  *
  * Bruk:
  *   node scripts/bing.mjs kvote      # hvor mange URL-er du kan sende inn
+ *   node scripts/bing.mjs send <url> # send inn én eller flere URL-er
  *   node scripts/bing.mjs sok        # søkene du vises på, med klikk og posisjon
  *   node scripts/bing.mjs sider      # sidene som får trafikk
  *   node scripts/bing.mjs lenker     # innkommende lenker per side
@@ -54,13 +60,20 @@ if (!KEY) {
   process.exit(1);
 }
 
-async function kall(metode, params = {}) {
+async function kall(metode, params = {}, body = null) {
   const url = new URL(`${BASE}/${metode}`);
   url.searchParams.set('apikey', KEY);
-  url.searchParams.set('siteUrl', SITE);
+  /* SubmitUrlBatch vil ha siteUrl i kroppen, ikke i query. Sender vi begge,
+     svarer API-et 400. */
+  if (!body) url.searchParams.set('siteUrl', SITE);
   for (const [k, v] of Object.entries(params)) url.searchParams.set(k, v);
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    method: body ? 'POST' : 'GET',
+    ...(body
+      ? { headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: JSON.stringify(body) }
+      : {}),
+  });
   const tekst = await res.text();
   if (!res.ok) throw new Error(`${metode}: ${res.status} ${tekst.slice(0, 200)}`);
   try {
@@ -68,6 +81,13 @@ async function kall(metode, params = {}) {
   } catch {
     throw new Error(`${metode}: fikk ikke JSON tilbake: ${tekst.slice(0, 200)}`);
   }
+}
+
+async function urlerFraSitemap() {
+  const res = await fetch(`${SITE}sitemap.xml`);
+  if (!res.ok) throw new Error(`sitemap svarte ${res.status}`);
+  const xml = await res.text();
+  return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 }
 
 // Bing returnerer datoer som /Date(1754352000000)/
@@ -89,6 +109,25 @@ const kommandoer = {
   async kvote() {
     const d = await kall('GetUrlSubmissionQuota');
     console.log(`  daglig igjen: ${d.DailyQuota}   månedlig igjen: ${d.MonthlyQuota}`);
+  },
+
+  /* Uten argumenter sendes hele sitemapen inn. Med argumenter sendes kun de
+     URL-ene du oppgir, som er det du vil ha når noen få sider er nye. */
+  async send(urler) {
+    const liste = urler.filter((a) => a.startsWith('http'));
+    const urlList = liste.length ? liste : await urlerFraSitemap();
+    if (!urlList.length) return console.log('  ingen URL-er å sende inn');
+
+    const kvote = await kall('GetUrlSubmissionQuota');
+    if (urlList.length > kvote.DailyQuota) {
+      return console.error(
+        `  ${urlList.length} URL-er, men bare ${kvote.DailyQuota} igjen av dagskvoten. Avbryter.`
+      );
+    }
+
+    await kall('SubmitUrlBatch', {}, { siteUrl: SITE, urlList });
+    urlList.forEach((u) => console.log(`  sendt  ${u}`));
+    console.log(`\n  ${urlList.length} URL-er sendt inn. ${kvote.DailyQuota - urlList.length} igjen i dag.`);
   },
 
   async sok() {
@@ -146,13 +185,13 @@ const kommandoer = {
   },
 };
 
-const cmd = process.argv[2];
+const [cmd, ...rest] = process.argv.slice(2);
 if (!cmd || !kommandoer[cmd]) {
   console.error(`Ukjent kommando. Velg en av: ${Object.keys(kommandoer).join(', ')}`);
   process.exit(1);
 }
 
-kommandoer[cmd]().catch((err) => {
+kommandoer[cmd](rest).catch((err) => {
   console.error('feil:', err.message);
   process.exit(1);
 });
