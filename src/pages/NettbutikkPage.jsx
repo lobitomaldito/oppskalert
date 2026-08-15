@@ -3,7 +3,8 @@ import SEO from '../components/SEO';
 import { Shell, SideTopp } from '../components/Layout';
 import { Avsnitt, Brodtekst, Punktliste } from '../components/Landingsside';
 import DemoSkjema from '../components/DemoSkjema';
-import { ruter } from '../lib/site';
+import FAQ from '../components/FAQ';
+import { lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 /* Målsøkeord: «lage nettbutikk» (210/mnd, KD 15).
 
@@ -36,6 +37,7 @@ const nettbutikkSchema = [
       { '@type': 'ListItem', position: 2, name: 'Lage nettbutikk', item: CANONICAL },
     ],
   },
+  lagFaqSchema(landingsSporsmal.nettbutikk),
 ];
 
 const punkter = [
@@ -128,6 +130,12 @@ const NettbutikkPage = () => (
           for hvordan det følges opp.
         </>
       }
+    />
+
+    <FAQ
+      tittel="Det folk lurer på"
+      uthevet="om nettbutikk."
+      sporsmal={landingsSporsmal.nettbutikk}
     />
 
     <DemoSkjema

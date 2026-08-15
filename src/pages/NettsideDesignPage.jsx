@@ -4,7 +4,8 @@ import { Shell, SideTopp } from '../components/Layout';
 import { Avsnitt, Brodtekst, Punktliste } from '../components/Landingsside';
 import Portfolio from '../components/Portfolio';
 import DemoSkjema from '../components/DemoSkjema';
-import { ruter } from '../lib/site';
+import FAQ from '../components/FAQ';
+import { lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 /* Målsøkeord: «design nettsider» (140/mnd, KD 8) og «nettside design»
    (260/mnd, KD 22), begge fra søkeordsgapet i SEO.md punkt 4.
@@ -35,6 +36,7 @@ const designSchema = [
       { '@type': 'ListItem', position: 2, name: 'Design av nettsider', item: CANONICAL },
     ],
   },
+  lagFaqSchema(landingsSporsmal.design),
 ];
 
 const punkter = [
@@ -132,6 +134,12 @@ const NettsideDesignPage = () => (
           for hvordan et prosjekt går fra første samtale til lansering.
         </>
       }
+    />
+
+    <FAQ
+      tittel="Det folk lurer på"
+      uthevet="om design."
+      sporsmal={landingsSporsmal.design}
     />
 
     <DemoSkjema

@@ -316,15 +316,167 @@ export const sporsmal = [
 ];
 
 /* Google leser dette og kan vise spørsmålene direkte i søkeresultatet.
-   Utledes fra samme liste som vises, så de aldri kommer ut av synk. */
-export const faqSchema = {
+   Utledes alltid fra den samme listen som vises på siden, så schema og
+   synlig tekst ikke kan komme ut av synk. */
+export const lagFaqSchema = (liste) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: sporsmal.map(({ q, a }) => ({
+  mainEntity: liste.map(({ q, a }) => ({
     '@type': 'Question',
     name: q,
     acceptedAnswer: { '@type': 'Answer', text: a },
   })),
+});
+
+export const faqSchema = lagFaqSchema(sporsmal);
+
+/* ---------------------------------------------------------------
+   FAQ per side.
+
+   Hver rute som viser en FAQ skal ha sitt eget sett. Grunnen er ikke
+   variasjon for variasjonens skyld: to ruter som viser den samme
+   FAQPage-en er duplisert strukturert data på to URLer, og da velger
+   Google én av dem og forkaster den andre. /priser og forsiden delte
+   nøyaktig samme åtte spørsmål fram til 13. august 2026.
+
+   Avgrensningen mellom sidene er den samme som for brødteksten, og den
+   står i kommentaren øverst i hver sidefil: /priser eier pris,
+   /webdesign-oslo eier det lokale, /nettside-design eier det visuelle.
+   Derfor svarer landingssidene bevisst kort på pris og lenker videre,
+   i stedet for å gjenta prislisten og konkurrere med /priser.
+   --------------------------------------------------------------- */
+
+/* /priser. Prisspesifikke spørsmål, ingen overlapp med listen over.
+   Tallene skal alltid stemme med `pakker` og `prismodeller` lenger oppe
+   i denne filen. Endrer du prisene der, endre dem her også. */
+export const prisSporsmal = [
+  {
+    q: 'Hva koster en nettside i Norge i 2026?',
+    a: 'Hos meg starter en enkel landingsside på 7 990 kr eks. mva. En vanlig bedriftsnettside på to til fem sider ligger mellom 12 900 og 16 900 kr, seks til ti sider mellom 18 900 og 24 900 kr, og over ti sider fra 27 900 kr. Du får alltid en fast pris før jeg skriver en linje kode, og du kan regne ut ditt eget estimat i kalkulatoren.',
+  },
+  {
+    q: 'Hva er forskjellen på engangspris og driftsavtale?',
+    a: 'Engangspris betyr at du betaler én gang, får alle filene og eier hele løsningen. Driftsavtale betyr at jeg bygger siden og passer på den videre, fra 690 kr i måneden, med hosting, backup, overvåking og rimelige endringer inkludert. Det er den samme siden i begge tilfeller. Forskjellen er om du vil eie det tekniske selv, eller la meg ta det.',
+  },
+  {
+    q: 'Kommer det noe på toppen av prisen?',
+    a: 'Prisene er eks. mva, og domenet kommer i tillegg. Et .no-domene koster typisk 100 til 300 kr i året, og det står i ditt navn fra dag én. Ut over det er det ingen oppstartsavgift, ingen lisenser og ingen plugin-abonnementer, for siden er håndkodet og har ikke noe å abonnere på.',
+  },
+  {
+    q: 'Hva koster det å endre noe etter at siden er lansert?',
+    a: 'Har du driftsavtale, er rimelige endringer inkludert. Skal du bytte et bilde, rette en tekst eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Har du engangspris, avtaler vi pris per jobb, eller du gjør det selv i filene du allerede eier.',
+  },
+  {
+    q: 'Kan jeg bytte mellom modellene senere?',
+    a: 'Ja, begge veier. Det er ingen bindingstid på driftsavtalen, så du kan si opp når du vil. Innholdet og designet er ditt uansett hvilken modell du står på, så du står aldri fast, og overgangen finner vi ut av når den er aktuell.',
+  },
+  {
+    q: 'Hvorfor fast pris og ikke timepris?',
+    a: 'Fordi timepris flytter risikoen over på deg. Går jobben tregere enn ventet, er det du som betaler for det. Med fast pris avtalt før jeg begynner vet du nøyaktig hva sluttsummen blir, og det er min jobb å treffe estimatet. Vokser omfanget underveis, sier jeg fra og vi avtaler det nye tallet før jeg gjør noe.',
+  },
+];
+
+/* De fem søkeordsdrevne landingssidene. Fire til fem spørsmål hver, valgt
+   ut fra hva folk faktisk spør om akkurat det temaet. */
+export const landingsSporsmal = {
+  seo: [
+    {
+      q: 'Hvor lang tid tar det før søkemotoroptimalisering gir resultater?',
+      a: 'På et nytt domene ser du gjerne de første visningene i Search Console etter noen uker, og posisjonene setter seg over et par måneder. Har du et etablert domene og problemet er teknisk, går det fortere: retter vi en sitemap som svarer med feilmelding, kan sidene være indeksert i løpet av dager. Alle som lover deg resultater neste uke selger deg noe annet enn de sier.',
+    },
+    {
+      q: 'Kan du garantere at jeg havner først i Google?',
+      a: 'Nei, og ingen kan det. Google er ikke en knapp noen kan trykke på. Det jeg kan love er at du får se målingene selv. Search Console settes opp på ditt eget domene med tilgang til deg, så du ser hvilke søk du dukker opp på, hvor mange som klikker, og om kurven peker riktig vei.',
+    },
+    {
+      q: 'Hva er forskjellen på å rangere i Google og å bli sitert av ChatGPT?',
+      a: 'Google sender folk til siden din. En AI-assistent svarer i stedet for deg, og nevner deg bare hvis den har noe å nevne. Kravene overlapper mye, men de fleste AI-crawlere kjører ikke JavaScript i det hele tatt, så en side som Google så vidt klarer å tolke er helt tom for dem. Ferdig lest tekst, strukturerte data og en llms.txt er det som skiller.',
+    },
+    {
+      q: 'Må jeg kjøpe en ny nettside for at du skal jobbe med søk?',
+      a: 'Nei. Jeg begynner med å hente siden du har slik en robot gjør, og si hva jeg finner. Ofte ligger de største funnene i ting som kan rettes på siden som allerede står der. Er selve fundamentet problemet, sier jeg det rett ut, og så er det ditt valg hva du gjør med det.',
+    },
+    {
+      q: 'Hva koster søkemotoroptimalisering hos deg?',
+      a: 'Det er ikke et eget abonnement. Søkemotoroptimalisering ligger inne som grunnarbeid i alle nye sider jeg bygger, og som en kvartalsvis gjennomgang i det øverste driftsnivået. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
+    },
+  ],
+
+  oslo: [
+    {
+      q: 'Må jeg møte deg fysisk?',
+      a: 'Nei, men du kan. Jeg holder til på Røa og tar gjerne en kaffe før vi begynner, hvis det gjør beslutningen lettere. Ellers går det meste på e-post og telefon. Uansett snakker du med meg hele veien, ikke med en prosjektkoordinator som videreformidler.',
+    },
+    {
+      q: 'Jobber du bare med bedrifter i Oslo?',
+      a: 'Nei, jeg jobber over hele landet. Men søker noen etter webdesign i Oslo, leter de som regel etter noen de kan ringe og holde ansvarlig, og da spiller det inn at jeg faktisk sitter her. For selve jobben betyr geografien lite.',
+    },
+    {
+      q: 'Hvorfor spiller det inn for søk at bedriften ligger i Oslo?',
+      a: 'Fordi lokale søk rangeres på andre signaler enn vanlige søk. Google Bedriftsprofil må være koblet riktig, adressen må stå likt på tvers av oppføringer, og siden må gjøre det tydelig for søkemotorene hvor du holder til. Det bygger jeg inn fra start, ikke som et tillegg etterpå.',
+    },
+    {
+      q: 'Hvor lang tid tar det fra start til lansering?',
+      a: 'Demoen er som regel klar på få dager. Fra du godkjenner den til siden er oppe på ditt eget domene går det vanligvis en til to uker. Har du en gammel side, byttes den uten nedetid. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding.',
+    },
+  ],
+
+  design: [
+    {
+      q: 'Bruker du maler?',
+      a: 'Nei. Jeg tegner strukturen for din bedrift og koder den for hånd. Maler er raske fordi noen andre har tatt alle valgene, men de har tatt dem for en annen bedrift enn din. Du ender med seksjoner du ikke trenger, og mangler den ene som ville solgt.',
+    },
+    {
+      q: 'Kan jeg bruke logoen og fargene vi har fra før?',
+      a: 'Ja, og som regel bør du. Har du en visuell identitet som fungerer, bygger jeg videre på den. Har du bare en logo og ingen retning ellers, foreslår jeg typografi og farger som kler den, og du sier hva du synes før noe er låst.',
+    },
+    {
+      q: 'Får jeg se designet før jeg betaler?',
+      a: 'Ja, hele siden. Ikke en skisse i et presentasjonsverktøy, men en ekte side du kan åpne på mobilen og klikke rundt i, bygget med ditt innhold. Er retningen feil, sier du det, og det har ikke kostet deg noe.',
+    },
+    {
+      q: 'Hva om jeg vil endre designet senere?',
+      a: 'Det går fint. Siden er håndkodet uten maler og plugins under, så en endring ett sted knekker sjelden noe et annet sted. Har du driftsavtale, sender du en e-post. Har du engangspris, eier du filene og kan gjøre det selv eller sette det bort til hvem du vil.',
+    },
+  ],
+
+  bedrift: [
+    {
+      q: 'Hva må en bedriftsnettside inneholde for å være lovlig?',
+      a: 'To ting rammer også enkeltpersonforetak. Nettsteder rettet mot allmennheten skal følge WCAG 2.1 nivå AA, altså nok kontrast mellom tekst og bakgrunn, beskrivende alt-tekst på bilder, og at hele siden kan brukes med tastatur alene. Og har du et kontaktskjema eller et analyseverktøy, behandler du personopplysninger, så du trenger personvernerklæring og et samtykke der det er like enkelt å si nei som ja. Forhåndsavkryssede bokser er ikke lov.',
+    },
+    {
+      q: 'Hva trenger jeg å ha klart før vi setter i gang?',
+      a: 'Navnet på bedriften. Resten finner jeg selv, og jeg bygger demoen før du har levert noe som helst. Har du bilder, tekster eller en logo du vil bruke, tar jeg gjerne imot det, men det er ikke noe du trenger å vente på før vi kommer i gang.',
+    },
+    {
+      q: 'Kan du flytte nettsiden vi har i dag?',
+      a: 'Ja. Har du en gammel side, flytter jeg deg over uten nedetid, og de gamle adressene sendes videre, så du ikke mister det du har bygget opp i Google. Står domenet i en tidligere leverandørs navn, hjelper jeg deg med å få det over i ditt eget.',
+    },
+    {
+      q: 'Hvem eier nettsiden etterpå?',
+      a: 'Du. Domenet står i ditt navn fra dag én, og du eier innholdet og designet uansett hvilken modell du velger. Velger du driftsavtale, er det fordi du vil slippe det tekniske, ikke fordi du er låst. Du kan når som helst ta med deg siden videre til noen andre.',
+    },
+  ],
+
+  nettbutikk: [
+    {
+      q: 'Hva koster det å lage en nettbutikk?',
+      a: 'Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har snakket sammen. Fem produkter uten varianter og ti tusen produkter med lager, størrelser og regnskapsintegrasjon er to helt forskjellige jobber. Det du får er en fast pris før jeg skriver en linje kode, akkurat som på alt annet.',
+    },
+    {
+      q: 'Kan kundene betale med Vipps?',
+      a: 'Ja. I Norge er Vipps ikke et alternativ, det er forventningen. Vipps og kort settes opp og testes før butikken åpner, og Vipps er tilgjengelig fra første skjerm i kassen, ikke gjemt bak et valg lenger nede.',
+    },
+    {
+      q: 'Hvordan fungerer frakt?',
+      a: 'Frakt settes opp mot Bring eller Posten, med riktige priser i kassen. Det viktigste er at fraktprisen er synlig tidlig, og ikke dukker opp som en overraskelse i siste skjermbilde. Det er en av de vanligste grunnene til at folk forlater handlekurven.',
+    },
+    {
+      q: 'Kan jeg legge inn og endre produkter selv?',
+      a: 'Ja. Du får lagerstyring og ordreoversikt du klarer å bruke uten opplæring. Å legge til et produkt, justere en pris eller se hva som er solgt skal du kunne gjøre selv, uten å sende meg en e-post om det.',
+    },
+  ],
 };
 
 /* ---------------------------------------------------------------

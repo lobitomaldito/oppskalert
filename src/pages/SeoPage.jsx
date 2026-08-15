@@ -4,25 +4,29 @@ import SEO from '../components/SEO';
 import { Shell, SideTopp, SeksjonTopp } from '../components/Layout';
 import { Avsnitt } from '../components/Landingsside';
 import DemoSkjema from '../components/DemoSkjema';
+import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
-import { ruter } from '../lib/site';
+import { lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 /* Dedikert landingsside for søkeordet «søkemotoroptimalisering» (590 søk/mnd,
    KD 9 per SEO.md punkt 4). Mønsteret er hentet fra konkurrentene som faktisk
    rangerer: én side per kommersielt søkeord, med ordet i URL-en, i stedet for
    å håpe at forsiden dekker alt. */
 
-const seoSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Søkemotoroptimalisering',
-  serviceType: 'Søkemotoroptimalisering (SEO)',
-  description:
-    'Teknisk SEO, innhold og lenkebygging for norske bedrifter. Jeg måler først, fikser det som faktisk blokkerer, og rapporterer på synlighet i både Google og AI-assistenter.',
-  areaServed: { '@type': 'Country', name: 'Norge' },
-  provider: { '@type': 'Organization', name: 'Oppskalert', url: 'https://oppskalert.no' },
-  url: 'https://oppskalert.no/sokemotoroptimalisering',
-};
+const seoSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Søkemotoroptimalisering',
+    serviceType: 'Søkemotoroptimalisering (SEO)',
+    description:
+      'Teknisk SEO, innhold og lenkebygging for norske bedrifter. Jeg måler først, fikser det som faktisk blokkerer, og rapporterer på synlighet i både Google og AI-assistenter.',
+    areaServed: { '@type': 'Country', name: 'Norge' },
+    provider: { '@type': 'Organization', name: 'Oppskalert', url: 'https://oppskalert.no' },
+    url: 'https://oppskalert.no/sokemotoroptimalisering',
+  },
+  lagFaqSchema(landingsSporsmal.seo),
+];
 
 const Innhold = () => {
   const container = useReveal(70);
@@ -166,6 +170,11 @@ const SeoPage = () => (
     />
     <Innhold />
     <Inkludert />
+    <FAQ
+      tittel="Det folk lurer på"
+      uthevet="om søk."
+      sporsmal={landingsSporsmal.seo}
+    />
     <DemoSkjema
       tittel="Vil du vite hva"
       uthevet="som blokkerer deg?"

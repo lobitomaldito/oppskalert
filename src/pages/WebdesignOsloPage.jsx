@@ -5,8 +5,9 @@ import { Shell, SideTopp, SeksjonTopp } from '../components/Layout';
 import { Avsnitt } from '../components/Landingsside';
 import Portfolio from '../components/Portfolio';
 import DemoSkjema from '../components/DemoSkjema';
+import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
-import { kontakt, ruter } from '../lib/site';
+import { kontakt, lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 /* Bygget på faktiske Search Console-data, ikke på søkeordslisten. Forsiden
    fikk i uke 31 visninger på «webdesign i oslo», «webdesigner oslo»,
@@ -54,6 +55,7 @@ const webdesignOsloSchema = [
       { '@type': 'ListItem', position: 2, name: 'Webdesign i Oslo', item: CANONICAL },
     ],
   },
+  lagFaqSchema(landingsSporsmal.oslo),
 ];
 
 const Innhold = () => {
@@ -184,6 +186,11 @@ const WebdesignOsloPage = () => (
     <Innhold />
     <Portfolio tittel="Sider jeg" uthevet="har levert." limit={6} visAlleLenke />
     <Inkludert />
+    <FAQ
+      tittel="Det folk lurer på"
+      uthevet="før de tar kontakt."
+      sporsmal={landingsSporsmal.oslo}
+    />
     <DemoSkjema
       tittel="Vil du se hvordan"
       uthevet="din kan bli?"

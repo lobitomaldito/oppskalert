@@ -4,7 +4,8 @@ import { Shell, SideTopp } from '../components/Layout';
 import { Avsnitt, Brodtekst, Punktliste } from '../components/Landingsside';
 import Omtaler from '../components/Omtaler';
 import DemoSkjema from '../components/DemoSkjema';
-import { ruter } from '../lib/site';
+import FAQ from '../components/FAQ';
+import { lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 /* Målsøkeord: «nettside for bedrift» (140/mnd) og «hjemmeside bedrift»
    (90/mnd). Høyere KD enn de andre landingssidene, så denne vinner ikke på
@@ -36,6 +37,7 @@ const bedriftSchema = [
       { '@type': 'ListItem', position: 2, name: 'Nettside til bedrift', item: CANONICAL },
     ],
   },
+  lagFaqSchema(landingsSporsmal.bedrift),
 ];
 
 const punkter = [
@@ -130,6 +132,12 @@ const NettsideBedriftPage = () => (
     />
 
     <Omtaler />
+
+    <FAQ
+      tittel="Det folk lurer på"
+      uthevet="om bedriftsnettsider."
+      sporsmal={landingsSporsmal.bedrift}
+    />
 
     <DemoSkjema
       tittel="Skal jeg se på"

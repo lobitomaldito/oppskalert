@@ -3,11 +3,23 @@ import { Plus } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp } from './Layout';
 import { cn } from '../lib/utils';
-import { sporsmal } from '../lib/site';
+import { sporsmal as standardSporsmal } from '../lib/site';
 
 /* Ingen kort, ingen rammer, bare hårfine linjer, slik at spørsmålene
-   leses som en liste og ikke som enda et rutenett med bokser. */
-const FAQ = ({ tittel = 'Det folk lurer på', uthevet = 'før de sier ja.', lede = null, flate = '' }) => {
+   leses som en liste og ikke som enda et rutenett med bokser.
+
+   `sporsmal` er en prop fordi hver rute skal ha sitt eget sett. To ruter
+   med samme FAQ er duplisert FAQPage-schema, og da forkaster Google den
+   ene. Setter du et eget sett her, husk å sende det samme settet gjennom
+   lagFaqSchema() i sidens jsonLd, ellers svarer schemaet på andre
+   spørsmål enn de som står på siden. */
+const FAQ = ({
+  tittel = 'Det folk lurer på',
+  uthevet = 'før de sier ja.',
+  lede = null,
+  flate = '',
+  sporsmal = standardSporsmal,
+}) => {
   const [apen, setApen] = useState(null);
   const container = useReveal(70);
   const uid = useId();

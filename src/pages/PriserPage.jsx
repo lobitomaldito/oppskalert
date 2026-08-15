@@ -5,7 +5,13 @@ import Priser from '../components/Priser';
 import FAQ from '../components/FAQ';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
-import { faqSchema, prismodeller } from '../lib/site';
+import { lagFaqSchema, prisSporsmal, prismodeller } from '../lib/site';
+
+/* Egne prisspesifikke spørsmål, ikke den generelle listen fra forsiden.
+   Fram til 13. august 2026 viste begge rutene nøyaktig samme åtte
+   spørsmål, altså identisk FAQPage-schema på to URLer, og da beholder
+   Google bare den ene. Se kommentaren over prisSporsmal i site.js. */
+const prisFaqSchema = lagFaqSchema(prisSporsmal);
 
 const priserSchema = {
   '@context': 'https://schema.org',
@@ -83,7 +89,7 @@ const PriserPage = () => (
       description="Pris på hjemmeside og nettside: engangspris fra 7 990 kr, eller driftet av meg fra 690 kr/mnd. Du får fast pris og en gratis demo før du bestemmer deg. Ingen binding."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
-      jsonLd={[faqSchema, priserSchema]}
+      jsonLd={[prisFaqSchema, priserSchema]}
     />
     <SideTopp
       tittel="Fast pris på"
@@ -92,7 +98,7 @@ const PriserPage = () => (
     />
     <Priser visPasserDeg />
     <Sammenligning />
-    <FAQ tittel="Det folk lurer på" uthevet="om pris." />
+    <FAQ tittel="Det folk lurer på" uthevet="om pris." sporsmal={prisSporsmal} />
     <DemoSkjema
       tittel="Vil du se hva"
       uthevet="din ville kostet?"
