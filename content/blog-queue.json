@@ -44,7 +44,8 @@
     ],
     "searchVolume": 140,
     "difficulty": 0,
-    "status": "pending"
+    "status": "published",
+    "publishedDate": "2026-08-17"
   },
   {
     "slug": "bytte-nettside",
