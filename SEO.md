@@ -598,3 +598,50 @@ Alle fem er funnet ved å bomme på dem. De er designkravene til rutinen.
   mønster som `/webdesign-oslo`.
 - `melaniedahl.com`: `www` svarer 200 i stedet for å redirigere til apex.
   Canonical er riktig, så dette er lav prioritet.
+
+---
+
+## 13. Sortlist, målt 19. august 2026
+
+Begge profilene er opprettet og live. Målt i nettleser, siden Sortlist svarer
+403 på curl og WebFetch.
+
+| | Oppskalert | Appstart |
+| --- | --- | --- |
+| Profil | `/agency/oppskalert` | `/agency/appstart` |
+| Indekserbar | `index,follow` | `index,follow` |
+| Ord på profilen | 497 | 402 |
+| Kategoriside | Web Design, Norge | Mobile App, Norge |
+| Plassering | **13 av 40** | **7 av 25** |
+| Anmeldelser | 0 | 0 |
+| Arbeider vist | 0 | 0 |
+| Lenke til eget domene | **ingen** | **ingen** |
+
+### Det er en AEO-gevinst, ikke en backlink
+
+Den frie profilen har **null utgående lenker** til eget domene. «Visit
+website» er forbeholdt betalte oppføringer, gratisprofilene viser kun «See
+profile». Forvent derfor ingen lenkekraft herfra.
+
+Verdien ligger et annet sted, og den er den samme som ble målt i punkt 9:
+kategorisidene er det språkmodellene siterer når noen spør etter de beste
+leverandørene i Norge. Å stå på «The 10 Best Web Design Agencies in Norway»
+er poenget. Profilsiden alene er bare inngangen dit.
+
+### Tre grep, alle gratis, rangert
+
+1. **Kryss av flere tjenester.** Oppskalert står kun under Web Design.
+   Web Development i Norge har 42 byråer og er en egen siterbar kategoriside
+   vi ikke er på. Det samme gjelder e-handel og SEO. Ett avkryss per ny side.
+2. **Legg inn arbeider.** Begge står med «Looking for work», som er det
+   Sortlist viser når porteføljen er tom. Alle over oss på listen har «N works
+   in X». Åtte ekte kundesider ligger i `src/lib/site.js` og kan legges inn
+   direkte.
+3. **Skaff anmeldelser.** Begge står med 0. Sortlist og Clutch verifiserer med
+   e-post og stikkprøver på telefon. Fire ekte referanser finnes allerede på
+   forsiden: Guro Brakestad, Katrin Brubakk, Thoralf Stenvold og Irmelin Drake.
+   Dette er den største enkeltfaktoren for plassering, og det er en e-post fra
+   Aleksander, ikke et skjema.
+
+Neste måling: 19. september. Se om plasseringen flytter seg, og om profilene
+begynner å dukke opp i AI-svar på promptene i punkt 9.
