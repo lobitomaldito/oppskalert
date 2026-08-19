@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { kontakt, navLenker, ruter } from '../lib/site';
+import { RUTE_VANLIGE_SPORSMAL } from '../lib/populaere-sok';
 import { cn } from '../lib/utils';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -183,6 +184,7 @@ export const Footer = () => (
             <span className="text-primary/70 text-sm font-semibold mb-1">Verktøy</span>
             <Link to={ruter.kalkulator} className="text-primary/70 hover:text-primary transition-colors">Priskalkulator</Link>
             <Link to={ruter.sammenlign} className="text-primary/70 hover:text-primary transition-colors">Sammenlign</Link>
+            <Link to={RUTE_VANLIGE_SPORSMAL} className="text-primary/70 hover:text-primary transition-colors">Vanlige spørsmål</Link>
           </div>
           <div className="flex flex-col gap-3">
             <span className="text-primary/70 text-sm font-semibold mb-1">Selskap</span>

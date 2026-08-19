@@ -15,6 +15,9 @@
 ## Sammenligning
 - [Sammenlign](https://oppskalert.no/sammenlign): Oppskalert mot Wix og WordPress, side om side.
 
+## Vanlige spørsmål
+- [Vanlige spørsmål om nettsider](https://oppskalert.no/vanlige-sporsmal): Hva en nettside koster, hvor lang tid det tar, hva du bør kreve av en leverandør, og hvordan du blir synlig i Google og AI-søk. 15 korte svar.
+
 ## Innsikt
 - [Blogg](https://oppskalert.no/blogg): Artikler om nettsider, mobilhastighet og konvertering.
 

@@ -30,6 +30,7 @@ import { articles } from '../src/lib/articles.js';
 const ROUTES = [
   '/', '/arbeid', '/priser', '/metode', '/om', '/kontakt', '/drift',
   '/sammenlign', '/sammenlign/wix', '/sammenlign/wordpress', '/kalkulator',
+  '/vanlige-sporsmal',
   '/sokemotoroptimalisering', '/webdesign-oslo', '/nettside-design',
   '/nettside-til-bedrift', '/lage-nettbutikk',
   '/blogg',

@@ -380,3 +380,90 @@ lenger: bloggen er lokal, pikselen er fjernet, og api/opinly/* er slettet.
 søkevolum-oppslag og LLM-synlighetsmåling. De to første dekkes av Search
 Console og Keyword Planner. Den tredje må kjøres manuelt med promptene i
 punkt 9.
+
+---
+
+## 12. AEO-måling og samleside, 18. august 2026
+
+Målt mot prod med `diagnose.sh` og et eget skript som leser JSON-LD, H2-er og
+interne lenker på alle 16 statiske ruter.
+
+### FASE 1 er ren
+
+Prerendering virker på alle ruter. Ingen tomme skall, ingen SPA-fallback,
+sitemap svarer 200 med 27 URLer, `llms.txt` finnes. Ordtall i rå HTML: 1181 på
+forsiden, 949 på `/priser`, 328 på `/kalkulator`. Alle sider har nøyaktig én H1.
+
+### Funnet som betyr mest
+
+**21 FAQ-spørsmål og FAQPage-schema ligger ferdig på branchen
+`seo/faq-per-side`, men er aldri merget til master. Null av dem er på prod.**
+
+`landingsSporsmal` i `site.js` har fem sett (seo 5, oslo 4, design 4, bedrift 4,
+nettbutikk 4), og alle fem sidene importerer `lagFaqSchema`. Kildekoden er
+riktig. Prod har 0 treff på FAQ-innholdet.
+
+Dette er akkurat det skillen advarer mot: «jeg fikset det» betyr ofte «jeg
+endret koden, men deployet aldri». Å merge branchen er det billigste tiltaket
+på hele lista, fordi arbeidet allerede er gjort.
+
+### FAQPage-schema per rute, målt på prod
+
+| Rute | FAQPage-svar | H2 som er spørsmål |
+| --- | --- | --- |
+| `/` | 8 | 1 |
+| `/priser` | 8 | 2 |
+| `/kalkulator` | 0 | 2 |
+| `/sokemotoroptimalisering` | 0 | 1 |
+| `/webdesign-oslo` | 0 | 1 |
+| `/nettside-design` | 0 | 1 |
+| `/nettside-til-bedrift` | 0 | 1 |
+| `/lage-nettbutikk` | 0 | 0 |
+| `/metode`, `/om`, `/drift`, `/sammenlign/*` | 0 | 0 til 1 |
+
+Til sammenligning har konkurrenten attentio.no 89 FAQ-par fordelt på 40 ruter,
+med fem spørsmål på nesten hver eneste tjenesteside.
+
+### Backlinks fra kundesider, målt
+
+Alle sju kundesider lenker tilbake, ingen med `nofollow`. Men **fire av sju har
+tom ankertekst**, altså ren logolenke:
+
+| Kundeside | Ankertekst |
+| --- | --- |
+| katrinbrubakk.no | «oppskalert.» |
+| steinarhusby.no | «Oppskalert» |
+| toresunderasmussen.no | «Oppskalert» |
+| woxenhage.no | tom |
+| samtaleverkstedet.no | tom |
+| progressivediplomacy.com | tom |
+| melaniedahl.com | tom |
+
+En logolenke teller, men gir Google null ord å knytte til domenet. Fire sider vi
+selv drifter, fire enkle endringer.
+
+### Nytt: `/vanlige-sporsmal`
+
+Samleside etter mønster fra attentio.no sin `/populaere-sok`. Femten spørsmål
+valgt fra søkeordstabellen i avsnitt 4, ikke fra magefølelse. Data i
+`src/lib/populaere-sok.js`, side i `src/pages/PopulaereSokPage.jsx`.
+
+Målt i byggutdata:
+
+| | Verdi |
+| --- | --- |
+| Ord i rå HTML | 2336, størst av alle sider |
+| H2 som er spørsmål | 15 |
+| FAQPage-svar | 15 |
+| Interne lenker | 24 |
+| Snittlengde på svar | 62 ord |
+| Svar med siffer | 10 av 15 |
+
+Bevisst ikke bygget med trekkspill. Begge deler crawles, men en ekte H2 med
+synlig avsnitt under er formatet AI-modeller siterer.
+
+Registrert tre steder, som er kravet i CLAUDE.md: `main.jsx`,
+`ROUTES` i `prerender.mjs`, og `STATIC_PATHS` i `api/sitemap.xml.js`. Bygget
+sier nå «31 routes snapshotted», mot 30 før.
+
+**Ikke deployet.** Verifisert i `dist/`, ikke i prod.

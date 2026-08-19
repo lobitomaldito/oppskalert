@@ -10,7 +10,8 @@ const SITE_URL = 'https://oppskalert.no';
 // SEO.jsx), og skal derfor ikke stå i sitemapen — Googles egne retningslinjer
 // sier en noindex'et URL ikke hører hjemme her.
 const STATIC_PATHS = [
-  '/', '/arbeid', '/priser', '/kalkulator', '/drift', '/sammenlign',
+  '/', '/arbeid', '/priser', '/kalkulator', '/drift', '/vanlige-sporsmal',
+  '/sammenlign',
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
   '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/lage-nettbutikk',
   '/metode', '/om', '/kontakt', '/blogg',

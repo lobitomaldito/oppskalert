@@ -52,6 +52,7 @@ const TannlegeDemo = lazySide(() => import('./pages/eksempler/TannlegeDemo.jsx')
 const KalkulatorPage = lazySide(() => import('./pages/KalkulatorPage.jsx'))
 const DriftPage = lazySide(() => import('./pages/DriftPage.jsx'))
 const SammenlignPage = lazySide(() => import('./pages/SammenlignPage.jsx'))
+import PopulaereSokPage from './pages/PopulaereSokPage';
 const VsWixPage = lazySide(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazySide(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 const SeoPage = lazySide(() => import('./pages/SeoPage.jsx'))
@@ -76,6 +77,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/kalkulator" element={<KalkulatorPage />} />
           <Route path="/drift" element={<DriftPage />} />
           <Route path="/sammenlign" element={<SammenlignPage />} />
+        <Route path="/vanlige-sporsmal" element={<PopulaereSokPage />} />
           <Route path="/sammenlign/wix" element={<VsWixPage />} />
           <Route path="/sammenlign/wordpress" element={<VsWordPressPage />} />
           <Route path="/sokemotoroptimalisering" element={<SeoPage />} />

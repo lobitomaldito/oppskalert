@@ -5,6 +5,11 @@ import { Shell, SideTopp } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
 import { sammenlignOversikt } from '../lib/site';
+import FAQ from '../components/FAQ';
+import { lagFaqSchema } from '../lib/site';
+import { faqSammenlign } from '../lib/faq-sider';
+
+const faqLd = lagFaqSchema(faqSammenlign);
 
 const SammenlignPage = () => {
   const container = useReveal(90);
@@ -15,6 +20,7 @@ const SammenlignPage = () => {
         description="Wix, WordPress eller en skreddersydd nettside: ærlig sammenlignet på pris, eierskap, hastighet og tidsbruk."
         keywords={['wix eller webdesigner', 'wordpress eller webdesigner', 'sammenlign nettsideleverandør']}
         canonical="https://oppskalert.no/sammenlign"
+      jsonLd={faqLd}
       />
       <SideTopp
         tittel="Meg, sammenlignet"
@@ -49,7 +55,13 @@ const SammenlignPage = () => {
         uthevet="hva som passer?"
         lede="Fortell meg kort om bedriften og hva du trenger, så gir jeg deg et ærlig råd, uansett om svaret er meg eller noe annet."
       />
-    </Shell>
+      <FAQ
+      tittel="Før du velger"
+      uthevet="leverandør."
+      lede="Fire spørsmål det lønner seg å stille alle du vurderer, ikke bare meg."
+      sporsmal={faqSammenlign}
+    />
+  </Shell>
   );
 };
 
