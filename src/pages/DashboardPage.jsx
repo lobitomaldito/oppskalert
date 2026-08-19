@@ -6,7 +6,7 @@ import { Navbar, Footer } from '../components/Layout';
 const STORAGE_KEY = 'oppskalert_dashboard_pin';
 const PERIODER = [7, 30, 90];
 
-const kort = 'bg-surface/30 border border-primary/10 rounded-[2rem] p-6 md:p-8';
+const kort = 'bg-surface/30 border border-room-ink/10 rounded-[2rem] p-6 md:p-8';
 
 const nb = (n) => new Intl.NumberFormat('nb-NO').format(n);
 const prosent = (andel) => `${Math.round(andel * 100)} %`;
@@ -35,7 +35,7 @@ const Endring = ({ na, forrige }) => {
   if (forrige === null || forrige === undefined) return null;
   if (forrige === 0) {
     return (
-      <span className="font-body text-xs text-primary/50">
+      <span className="font-body text-xs text-room-ink/50">
         {na === 0 ? 'ingen forrige periode heller' : 'ingenting forrige periode'}
       </span>
     );
@@ -44,7 +44,7 @@ const Endring = ({ na, forrige }) => {
   const opp = endring >= 0;
   const Ikon = opp ? TrendingUp : TrendingDown;
   return (
-    <span className={`font-body text-xs flex items-center gap-1 ${opp ? 'text-emerald-400' : 'text-red-400'}`}>
+    <span className={`font-body text-xs flex items-center gap-1 ${opp ? 'text-emerald-600' : 'text-red-500'}`}>
       <Ikon className="w-3.5 h-3.5" aria-hidden="true" />
       {opp ? '+' : ''}{Math.round(endring * 100)} % mot forrige periode
     </span>
@@ -53,13 +53,13 @@ const Endring = ({ na, forrige }) => {
 
 const Nokkeltall = ({ etikett, verdi, forrige, forklaring }) => (
   <div className={`${kort} p-6`}>
-    <span className="font-body text-xs uppercase tracking-widest text-primary/60 block mb-2">{etikett}</span>
-    <span className="font-sans font-bold text-3xl md:text-4xl text-primary block">
+    <span className="font-body text-xs uppercase tracking-widest text-room-ink/60 block mb-2">{etikett}</span>
+    <span className="font-sans font-bold text-3xl md:text-4xl text-room-ink block">
       {verdi === null || verdi === undefined ? '–' : nb(verdi)}
     </span>
     <div className="mt-2 flex flex-col gap-1">
       <Endring na={verdi} forrige={forrige} />
-      {forklaring && <span className="font-body text-xs text-primary/50">{forklaring}</span>}
+      {forklaring && <span className="font-body text-xs text-room-ink/50">{forklaring}</span>}
     </div>
   </div>
 );
@@ -76,20 +76,20 @@ const Trafikkgraf = ({ dager, antallDager }) => {
   return (
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">Sidevisninger per dag</h2>
-      <p className="font-body text-xs text-primary/60 mb-6">
+      <p className="font-body text-xs text-room-ink/60 mb-6">
         Ditt eget besøk på /admin er holdt utenfor. Hold over en stolpe for tallene.
       </p>
       <div className="flex gap-3">
-        <div className="flex flex-col justify-between h-40 font-body text-[0.65rem] text-primary/40 text-right w-8 shrink-0">
+        <div className="flex flex-col justify-between h-40 font-body text-[0.65rem] text-room-ink/40 text-right w-8 shrink-0">
           <span>{nb(maks)}</span>
           <span>{nb(Math.round(maks / 2))}</span>
           <span>0</span>
         </div>
         <div className="flex-1">
-          <div className="relative flex items-end gap-px h-40 border-l border-b border-primary/10 pl-1">
+          <div className="relative flex items-end gap-px h-40 border-l border-b border-room-ink/10 pl-1">
             {/* Hjelpelinjer på topp og midt, så høyden kan leses av mot aksen. */}
-            <div className="absolute inset-x-0 top-0 border-t border-dashed border-primary/10" aria-hidden="true" />
-            <div className="absolute inset-x-0 top-1/2 border-t border-dashed border-primary/10" aria-hidden="true" />
+            <div className="absolute inset-x-0 top-0 border-t border-dashed border-room-ink/10" aria-hidden="true" />
+            <div className="absolute inset-x-0 top-1/2 border-t border-dashed border-room-ink/10" aria-hidden="true" />
             {serie.map((d) => (
               <div
                 key={d.dato}
@@ -98,18 +98,18 @@ const Trafikkgraf = ({ dager, antallDager }) => {
                 onMouseLeave={() => setHover((n) => (n?.dato === d.dato ? null : n))}
               >
                 <div
-                  className="w-full bg-ink/70 group-hover:bg-ink rounded-t-sm transition-colors"
+                  className="w-full bg-room-ink/70 group-hover:bg-room-ink rounded-t-sm transition-colors"
                   style={{ height: `${Math.max(1, (d.visninger / maks) * 100)}%` }}
                 />
               </div>
             ))}
             {hover && (
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-primary text-background text-xs font-body px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none z-10">
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-surface text-room-ink text-xs font-body px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none z-10 border border-room-ink/10 shadow-sm">
                 {datoKort(hover.dato)}: {nb(hover.visninger)} visninger, {nb(hover.personer)} ekte besøkende
               </div>
             )}
           </div>
-          <div className="flex justify-between font-body text-[0.65rem] text-primary/40 mt-2 pl-1">
+          <div className="flex justify-between font-body text-[0.65rem] text-room-ink/40 mt-2 pl-1">
             {merker.map((i) => (
               <span key={i}>{datoKort(serie[i].dato)}</span>
             ))}
@@ -132,7 +132,7 @@ const Trakt = ({ steg }) => {
   return (
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">Veien til en henvendelse</h2>
-      <p className="font-body text-xs text-primary/60 mb-6">
+      <p className="font-body text-xs text-room-ink/60 mb-6">
         Målt mot ekte besøkende, ikke mot skannerne. Kalkulatoren er en sidevei, ikke et krav for å sende inn.
       </p>
       <div className="flex flex-col gap-4">
@@ -145,24 +145,24 @@ const Trakt = ({ steg }) => {
           return (
             <div key={s.navn}>
               <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-1.5">
-                <span className="font-body text-sm text-primary/90">{s.navn}</span>
-                <span className="font-body text-xs text-primary/60">
-                  <span className="font-sans font-bold text-sm text-primary">{nb(s.personer)}</span>
+                <span className="font-body text-sm text-room-ink/90">{s.navn}</span>
+                <span className="font-body text-xs text-room-ink/60">
+                  <span className="font-sans font-bold text-sm text-room-ink">{nb(s.personer)}</span>
                   {i > 0 && ` · ${prosent(s.andel)} av besøkende`}
                 </span>
               </div>
-              <div className="bg-primary/5 rounded-full h-3 overflow-hidden">
-                <div className="h-full bg-ink rounded-full transition-all" style={{ width: `${(s.personer / topp) * 100}%` }} />
+              <div className="bg-room-ink/5 rounded-full h-3 overflow-hidden">
+                <div className="h-full bg-room-ink rounded-full transition-all" style={{ width: `${(s.personer / topp) * 100}%` }} />
               </div>
               {frafall > 0 && (
-                <span className="font-body text-[0.7rem] text-primary/40 mt-1 block">
+                <span className="font-body text-[0.7rem] text-room-ink/40 mt-1 block">
                   {nb(frafall)} åpnet skjemaet uten å sende inn
                 </span>
               )}
             </div>
           );
         })}
-        {steg.length === 0 && <p className="font-body text-sm text-primary/60">Ingen data enda.</p>}
+        {steg.length === 0 && <p className="font-body text-sm text-room-ink/60">Ingen data enda.</p>}
       </div>
     </div>
   );
@@ -178,23 +178,23 @@ const Kildeliste = ({ tittel, lede, rader, nokkel, tomtekst }) => {
   return (
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">{tittel}</h2>
-      <p className="font-body text-xs text-primary/60 mb-6">{lede}</p>
+      <p className="font-body text-xs text-room-ink/60 mb-6">{lede}</p>
       <div className="flex flex-col gap-3.5">
         {rader.slice(0, 12).map((r) => (
           <div key={r[nokkel]} className="flex items-center gap-3">
-            <span className="font-body text-xs text-primary/80 w-32 sm:w-44 truncate" title={r[nokkel]}>{r[nokkel]}</span>
-            <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
-              <div className="h-full bg-ink rounded-full" style={{ width: `${(r.personer / maks) * 100}%` }} />
+            <span className="font-body text-xs text-room-ink/80 w-32 sm:w-44 truncate" title={r[nokkel]}>{r[nokkel]}</span>
+            <div className="flex-1 bg-room-ink/5 rounded-full h-3 overflow-hidden">
+              <div className="h-full bg-room-ink rounded-full" style={{ width: `${(r.personer / maks) * 100}%` }} />
             </div>
             <span className="font-body text-xs w-32 text-right tabular-nums shrink-0">
-              <span className={r.personer > 0 ? 'text-primary/80' : 'text-primary/35'}>
+              <span className={r.personer > 0 ? 'text-room-ink/80' : 'text-room-ink/35'}>
                 {nb(r.personer)} {r.personer === 1 ? 'person' : 'personer'}
               </span>
-              <span className="text-primary/35"> · {nb(r.okter ?? r.visninger)} økt{(r.okter ?? r.visninger) === 1 ? '' : 'er'}</span>
+              <span className="text-room-ink/35"> · {nb(r.okter ?? r.visninger)} økt{(r.okter ?? r.visninger) === 1 ? '' : 'er'}</span>
             </span>
           </div>
         ))}
-        {rader.length === 0 && <p className="font-body text-sm text-primary/60">{tomtekst}</p>}
+        {rader.length === 0 && <p className="font-body text-sm text-room-ink/60">{tomtekst}</p>}
       </div>
     </div>
   );
@@ -204,21 +204,21 @@ const Kildeliste = ({ tittel, lede, rader, nokkel, tomtekst }) => {
 // med. Kjent støy (Outlook sin lenkeskanner, chunk-feil etter deploy) er
 // skilt ut, ellers drukner de to som faktisk betyr noe.
 const Feilrad = ({ f, dempet }) => (
-  <div className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
+  <div className="border-b border-room-ink/10 last:border-b-0 pb-4 last:pb-0">
     <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-      <span className={`font-sans font-bold text-sm ${dempet ? 'text-primary/60' : 'text-red-400'}`}>
+      <span className={`font-sans font-bold text-sm ${dempet ? 'text-room-ink/60' : 'text-red-500'}`}>
         {f.type || 'Feil'}
       </span>
-      <span className="font-body text-xs text-primary/50 tabular-nums">
+      <span className="font-body text-xs text-room-ink/50 tabular-nums">
         {nb(f.antall)}× · {nb(f.rammede)} {f.rammede === 1 ? 'person' : 'personer'} · {datoKort(f.forst)}–{datoKort(f.sist)}
       </span>
     </div>
-    <p className="font-body text-xs text-primary/70 mt-1 leading-relaxed break-words">{f.melding}</p>
-    <div className="font-body text-[0.7rem] text-primary/45 mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5">
+    <p className="font-body text-xs text-room-ink/70 mt-1 leading-relaxed break-words">{f.melding}</p>
+    <div className="font-body text-[0.7rem] text-room-ink/45 mt-1.5 flex flex-wrap gap-x-3 gap-y-0.5">
       {f.url && <span className="break-all">{f.url.replace(/^https?:\/\/[^/]+/, '') || '/'}</span>}
       {f.nettleser && <span>{f.nettleser}{f.os ? ` · ${f.os}` : ''}</span>}
     </div>
-    {f.hvorfor && <p className="font-body text-[0.7rem] text-primary/60 mt-1.5 italic">{f.hvorfor}</p>}
+    {f.hvorfor && <p className="font-body text-[0.7rem] text-room-ink/60 mt-1.5 italic">{f.hvorfor}</p>}
   </div>
 );
 
@@ -227,22 +227,22 @@ const Feil = ({ feil }) => {
   return (
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">Feil som er verdt å se på</h2>
-      <p className="font-body text-xs text-primary/60 mb-6">
+      <p className="font-body text-xs text-room-ink/60 mb-6">
         Fanget automatisk av PostHog, med adressen de skjedde på og hvor mange som ble rammet.
       </p>
       <div className="flex flex-col gap-4">
         {feil.ekte.map((f, i) => <Feilrad key={`${f.type}-${i}`} f={f} />)}
         {feil.ekte.length === 0 && (
-          <p className="font-body text-sm text-primary/60">Ingen feil som krever noe av deg. Det er et godt tegn.</p>
+          <p className="font-body text-sm text-room-ink/60">Ingen feil som krever noe av deg. Det er et godt tegn.</p>
         )}
       </div>
 
       {feil.stoy.length > 0 && (
-        <div className="mt-6 pt-5 border-t border-primary/10">
+        <div className="mt-6 pt-5 border-t border-room-ink/10">
           <button
             type="button"
             onClick={() => setVisStoy((v) => !v)}
-            className="font-body text-xs text-primary/60 hover:text-primary flex items-center gap-1.5 transition-colors"
+            className="font-body text-xs text-room-ink/60 hover:text-room-ink flex items-center gap-1.5 transition-colors"
           >
             <ChevronDown className={`w-3.5 h-3.5 transition-transform ${visStoy ? 'rotate-180' : ''}`} aria-hidden="true" />
             {feil.stoy.length} kjent støyfeil som ikke er din å fikse
@@ -274,45 +274,45 @@ const ENHETSNAVN = { Desktop: 'Datamaskin', Mobile: 'Mobil', Tablet: 'Nettbrett'
 const Besokende = ({ liste }) => (
   <div className={kort}>
     <h2 className="font-sans font-bold text-lg mb-1">Hvem har vært innom</h2>
-    <p className="font-body text-xs text-primary/60 mb-6">
+    <p className="font-body text-xs text-room-ink/60 mb-6">
       Hvert ekte besøk, med sted, vei gjennom siden og hva de trykket på. Dine egne besøk er holdt utenfor.
     </p>
     <div className="flex flex-col gap-5">
       {liste.map((b, i) => (
-        <div key={`${b.start}-${i}`} className="border-b border-primary/10 last:border-b-0 pb-5 last:pb-0">
+        <div key={`${b.start}-${i}`} className="border-b border-room-ink/10 last:border-b-0 pb-5 last:pb-0">
           <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-            <span className="font-sans font-bold text-sm text-primary">
+            <span className="font-sans font-bold text-sm text-room-ink">
               {b.sted}
-              <span className="font-body font-normal text-primary/50"> · {ENHETSNAVN[b.enhet] || b.enhet}</span>
+              <span className="font-body font-normal text-room-ink/50"> · {ENHETSNAVN[b.enhet] || b.enhet}</span>
             </span>
-            <span className="font-body text-xs text-primary/50 tabular-nums">
+            <span className="font-body text-xs text-room-ink/50 tabular-nums">
               {datoTid(b.start)} · {varighet(b.sekunder)}
               {b.klikk > 0 && ` · ${nb(b.klikk)} klikk`}
             </span>
           </div>
 
-          <div className="font-body text-xs text-primary/75 mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1">
+          <div className="font-body text-xs text-room-ink/75 mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1">
             {b.vei.map((v, j) => (
               <span key={`${v.sti}-${j}`} className="flex items-center gap-1.5">
-                {j > 0 && <span className="text-primary/30">→</span>}
-                <span className="bg-primary/5 rounded-md px-2 py-0.5">
-                  {v.sti}{v.ganger > 1 && <span className="text-primary/40"> ×{v.ganger}</span>}
+                {j > 0 && <span className="text-room-ink/30">→</span>}
+                <span className="bg-room-ink/5 rounded-md px-2 py-0.5">
+                  {v.sti}{v.ganger > 1 && <span className="text-room-ink/40"> ×{v.ganger}</span>}
                 </span>
               </span>
             ))}
           </div>
 
           {b.klikket.length > 0 && (
-            <p className="font-body text-xs text-primary/50 mt-2">
-              Trykket på: <span className="text-primary/70">{b.klikket.join(', ')}</span>
+            <p className="font-body text-xs text-room-ink/50 mt-2">
+              Trykket på: <span className="text-room-ink/70">{b.klikket.join(', ')}</span>
             </p>
           )}
 
-          <span className="font-body text-[0.7rem] text-primary/40 mt-2 block">Kilde: {b.kilde}</span>
+          <span className="font-body text-[0.7rem] text-room-ink/40 mt-2 block">Kilde: {b.kilde}</span>
         </div>
       ))}
       {liste.length === 0 && (
-        <p className="font-body text-sm text-primary/60">
+        <p className="font-body text-sm text-room-ink/60">
           Ingen ekte besøk i perioden. Alt som traff siden var skannere eller crawlere.
         </p>
       )}
@@ -327,27 +327,27 @@ const Henvendelser = ({ leads, spam }) => {
       <h2 className="font-sans font-bold text-lg mb-6">Nye henvendelser</h2>
       <div className="flex flex-col gap-4">
         {leads.map((l) => (
-          <div key={l.id} className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
+          <div key={l.id} className="border-b border-room-ink/10 last:border-b-0 pb-4 last:pb-0">
             <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-              <span className="font-sans font-bold text-base text-primary">{l.navn}</span>
-              <span className="font-body text-xs text-primary/50">{datoTid(l.created_at)}</span>
+              <span className="font-sans font-bold text-base text-room-ink">{l.navn}</span>
+              <span className="font-body text-xs text-room-ink/50">{datoTid(l.created_at)}</span>
             </div>
-            <div className="font-body text-sm text-primary/80 mt-0.5">
-              <a href={`mailto:${l.epost}`} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">{l.epost}</a>
-              {l.firma && <span className="text-primary/60"> · {l.firma}</span>}
+            <div className="font-body text-sm text-room-ink/80 mt-0.5">
+              <a href={`mailto:${l.epost}`} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">{l.epost}</a>
+              {l.firma && <span className="text-room-ink/60"> · {l.firma}</span>}
             </div>
-            {l.melding && <p className="font-body text-sm text-primary/70 mt-1.5 leading-relaxed">{l.melding}</p>}
+            {l.melding && <p className="font-body text-sm text-room-ink/70 mt-1.5 leading-relaxed">{l.melding}</p>}
           </div>
         ))}
-        {leads.length === 0 && <p className="font-body text-sm text-primary/60">Ingen ekte henvendelser i perioden.</p>}
+        {leads.length === 0 && <p className="font-body text-sm text-room-ink/60">Ingen ekte henvendelser i perioden.</p>}
       </div>
 
       {spam.length > 0 && (
-        <div className="mt-6 pt-5 border-t border-primary/10">
+        <div className="mt-6 pt-5 border-t border-room-ink/10">
           <button
             type="button"
             onClick={() => setVisSpam((v) => !v)}
-            className="font-body text-xs text-primary/60 hover:text-primary flex items-center gap-1.5 transition-colors"
+            className="font-body text-xs text-room-ink/60 hover:text-room-ink flex items-center gap-1.5 transition-colors"
           >
             <ChevronDown className={`w-3.5 h-3.5 transition-transform ${visSpam ? 'rotate-180' : ''}`} aria-hidden="true" />
             {spam.length} skjult som spam
@@ -355,8 +355,8 @@ const Henvendelser = ({ leads, spam }) => {
           {visSpam && (
             <div className="flex flex-col gap-3 mt-4">
               {spam.map((l) => (
-                <div key={l.id} className="font-body text-xs text-primary/45 flex flex-wrap gap-x-2">
-                  <span className="text-primary/60">{l.navn}</span>
+                <div key={l.id} className="font-body text-xs text-room-ink/45 flex flex-wrap gap-x-2">
+                  <span className="text-room-ink/60">{l.navn}</span>
                   <span>{l.epost}</span>
                   <span className="italic">({l.spamGrunn})</span>
                 </div>
@@ -377,27 +377,27 @@ const UkentligeRapporter = ({ rapporter }) => {
   return (
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">Ukentlige rapporter</h2>
-      <p className="font-body text-xs text-primary/60 mb-6">Trafikk, kilder og innsikt, oppsummert hver uke.</p>
+      <p className="font-body text-xs text-room-ink/60 mb-6">Trafikk, kilder og innsikt, oppsummert hver uke.</p>
       <div className="flex flex-col gap-4">
         {rapporter.map((r) => {
           const erApen = apen === r.id;
           return (
-            <div key={r.id} className="border-b border-primary/10 last:border-b-0 pb-4 last:pb-0">
+            <div key={r.id} className="border-b border-room-ink/10 last:border-b-0 pb-4 last:pb-0">
               <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                <span className="font-sans font-bold text-base text-primary">
+                <span className="font-sans font-bold text-base text-room-ink">
                   {datoKort(r.week_start)} – {datoKort(r.week_end)}
                 </span>
                 <button
                   type="button"
                   onClick={() => setApen(erApen ? null : r.id)}
-                  className="font-body text-xs text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors"
+                  className="font-body text-xs text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors"
                 >
                   {erApen ? 'Skjul full rapport' : 'Vis full rapport'}
                 </button>
               </div>
-              <p className="font-body text-sm text-primary/80 mt-1.5 leading-relaxed">{r.summary}</p>
+              <p className="font-body text-sm text-room-ink/80 mt-1.5 leading-relaxed">{r.summary}</p>
               {erApen && (
-                <pre className="font-body text-xs text-primary/70 mt-3 leading-relaxed whitespace-pre-wrap bg-primary/5 rounded-2xl p-4">
+                <pre className="font-body text-xs text-room-ink/70 mt-3 leading-relaxed whitespace-pre-wrap bg-room-ink/5 rounded-2xl p-4">
                   {r.report_markdown}
                 </pre>
               )}
@@ -405,7 +405,7 @@ const UkentligeRapporter = ({ rapporter }) => {
           );
         })}
         {rapporter.length === 0 && (
-          <p className="font-body text-sm text-primary/60">Ingen rapporter enda. Første kommer etter neste kjøring.</p>
+          <p className="font-body text-sm text-room-ink/60">Ingen rapporter enda. Første kommer etter neste kjøring.</p>
         )}
       </div>
     </div>
@@ -423,8 +423,8 @@ const Periodevelger = ({ valgt, onVelg, laster }) => (
         aria-pressed={valgt === d}
         className={`font-body text-xs px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
           valgt === d
-            ? 'bg-ink text-background border-ink font-semibold'
-            : 'border-primary/20 text-primary/70 hover:border-primary/40'
+            ? 'bg-room-ink text-room border-room-ink font-semibold'
+            : 'border-room-ink/20 text-room-ink/70 hover:border-room-ink/40'
         }`}
       >
         {d} dager
@@ -437,17 +437,17 @@ const PinGate = ({ onSubmit, error }) => {
   const [value, setValue] = useState('');
   return (
     <div className="max-w-sm mx-auto text-center">
-      <Lock className="w-8 h-8 text-ink mx-auto mb-6" />
+      <Lock className="w-8 h-8 text-room-ink mx-auto mb-6" />
       <h1 className="font-sans font-bold text-2xl mb-2">Dashboard</h1>
-      <p className="font-body text-sm text-primary/70 mb-8">Skriv inn PIN for å se analytics.</p>
+      <p className="font-body text-sm text-room-ink/70 mb-8">Skriv inn PIN for å se analytics.</p>
       <form onSubmit={(e) => { e.preventDefault(); onSubmit(value); }} className="flex flex-col gap-4">
         <input
           type="password" inputMode="numeric" autoFocus value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="w-full bg-primary/5 border border-primary/20 rounded-full px-6 py-4 font-body text-sm text-primary text-center tracking-[0.3em] focus:outline-none focus:border-ink transition-colors"
+          className="w-full bg-room-ink/5 border border-room-ink/20 rounded-full px-6 py-4 font-body text-sm text-room-ink text-center tracking-[0.3em] focus:outline-none focus:border-room-ink transition-colors"
           placeholder="PIN"
         />
-        <button type="submit" className="bg-ink text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.02]">
+        <button type="submit" className="bg-room-ink text-room px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.02]">
           Lås opp
         </button>
         {error && <p className="font-body text-sm text-red-500" role="alert">Feil PIN, prøv igjen.</p>}
@@ -498,7 +498,7 @@ const DashboardPage = () => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="bg-background text-primary min-h-screen">
+    <div className="min-h-screen">
       <SEO title="Dashboard" noindex canonical="https://oppskalert.no/admin/dashboard" />
       <Navbar />
 
@@ -506,9 +506,9 @@ const DashboardPage = () => {
         {!pin ? (
           <PinGate onSubmit={(value) => { setPin(value); hentData(value, dager); }} error={pinError} />
         ) : status === 'error' ? (
-          <p className="font-body text-primary/70 text-center">Klarte ikke å hente data. Prøv å laste siden på nytt.</p>
+          <p className="font-body text-room-ink/70 text-center">Klarte ikke å hente data. Prøv å laste siden på nytt.</p>
         ) : !data ? (
-          <div className="flex justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-ink" /></div>
+          <div className="flex justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-room-ink" /></div>
         ) : (
           <div className="max-w-5xl mx-auto w-full flex flex-col gap-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
@@ -516,13 +516,13 @@ const DashboardPage = () => {
                 Siste {dager} dager
               </h1>
               <div className="flex items-center gap-3">
-                {status === 'loading' && <Loader2 className="w-4 h-4 animate-spin text-ink" aria-label="Laster" />}
+                {status === 'loading' && <Loader2 className="w-4 h-4 animate-spin text-room-ink" aria-label="Laster" />}
                 <Periodevelger valgt={dager} onVelg={velgPeriode} laster={status === 'loading'} />
               </div>
             </div>
 
             {!data.posthogTilgjengelig && (
-              <p className="font-body text-sm text-red-400 bg-red-400/5 border border-red-400/20 rounded-2xl px-5 py-4">
+              <p className="font-body text-sm text-red-500 bg-red-500/5 border border-red-500/20 rounded-2xl px-5 py-4">
                 PostHog svarte ikke. Trafikktall, sider og feil er tomme fordi de hentes derfra, ikke fordi det ikke
                 skjedde noe. Henvendelsene under er hentet fra Supabase og stemmer.
               </p>
@@ -547,7 +547,7 @@ const DashboardPage = () => {
               />
             </div>
 
-            <p className="font-body text-xs text-primary/50 -mt-4 leading-relaxed">
+            <p className="font-body text-xs text-room-ink/50 -mt-4 leading-relaxed">
               «Ekte besøkende» teller bare økter som varte over {data.periode?.engasjertSekunder ?? 60} sekunder,
               eller som både klikket og gikk videre til en ny side. Grunnen: når du sender e-post, åpner
               mottakernes sikkerhetsskannere (Outlook Safe Links og liknende) hver lenke automatisk fra

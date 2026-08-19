@@ -35,7 +35,7 @@ const FAQ = ({
             const panelId = `${uid}-panel-${i}`;
             const knappId = `${uid}-knapp-${i}`;
             return (
-              <div key={item.q} data-reveal className={`border-primary/20 ${i === 0 ? 'border-y' : 'border-b'}`}>
+              <div key={item.q} data-reveal className={`border-room-ink/20 ${i === 0 ? 'border-y' : 'border-b'}`}>
                 <h3>
                   <button
                     id={knappId}
@@ -47,7 +47,7 @@ const FAQ = ({
                   >
                     {item.q}
                     <Plus
-                      className={`w-5 h-5 flex-shrink-0 text-ink transition-transform duration-300 ease-lett ${open ? 'rotate-45' : ''}`}
+                      className={`w-5 h-5 flex-shrink-0 text-room-ink transition-transform duration-300 ease-lett ${open ? 'rotate-45' : ''}`}
                       aria-hidden="true"
                     />
                   </button>
@@ -62,7 +62,7 @@ const FAQ = ({
                       tabrekkefølgen og skjermleseren når panelet er lukket,
                       uten å ofre animasjonen. */}
                   <div className={`overflow-hidden ${open ? 'visible' : 'invisible'}`}>
-                    <p className="font-body text-[0.95rem] md:text-base leading-[1.75] text-primary/80 pb-6 pr-4 md:pr-12 max-w-[62ch]">
+                    <p className="font-body text-[0.95rem] md:text-base leading-[1.75] text-room-ink/70 pb-6 pr-4 md:pr-12 max-w-[62ch]">
                       {item.a}
                     </p>
                   </div>

@@ -25,7 +25,7 @@ const renderInline = (text, keyPrefix) =>
     .map((part, j) => {
       const key = `${keyPrefix}-${j}`;
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={key} className="text-primary font-semibold">{part.slice(2, -2)}</strong>;
+        return <strong key={key} className="text-room-ink font-semibold">{part.slice(2, -2)}</strong>;
       }
       if (part.startsWith('*') && part.endsWith('*')) {
         return <em key={key} className="italic">{part.slice(1, -1)}</em>;
@@ -42,7 +42,7 @@ const renderInline = (text, keyPrefix) =>
             /* Migrerte Opinly-artikler lenker ut til andre leverandører.
                nofollow, så vi ikke gir bort lenkeverdi til konkurrenter. */
             rel={ekstern ? 'noopener noreferrer nofollow' : undefined}
-            className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors"
+            className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors"
           >
             {label}
           </a>
@@ -100,13 +100,13 @@ const renderContent = (content, { tidligCta = null, midtCta = null } = {}) => {
 
     if (line.startsWith('### ')) {
       elements.push(
-        <h3 key={i} className="font-sans font-bold text-xl md:text-2xl tracking-tight mt-10 mb-3 text-primary">
+        <h3 key={i} className="font-sans font-bold text-xl md:text-2xl tracking-tight mt-10 mb-3 text-room-ink">
           {renderInline(line.slice(4), i)}
         </h3>
       );
     } else if (line.startsWith('## ')) {
       elements.push(
-        <h2 key={i} className="font-sans font-bold text-2xl md:text-3xl tracking-tight mt-12 mb-4 text-primary">
+        <h2 key={i} className="font-sans font-bold text-2xl md:text-3xl tracking-tight mt-12 mb-4 text-room-ink">
           {renderInline(line.slice(3), i)}
         </h2>
       );
@@ -117,7 +117,7 @@ const renderContent = (content, { tidligCta = null, midtCta = null } = {}) => {
       const start = i;
       while (i < lines.length && matcher(lines[i])) {
         listItems.push(
-          <li key={i} className="font-body text-primary/85 leading-relaxed text-base md:text-lg">
+          <li key={i} className="font-body text-room-ink/70 leading-relaxed text-base md:text-lg">
             {renderInline(lines[i].replace(/^(\d+\.|-)\s/, ''), i)}
           </li>
         );
@@ -132,7 +132,7 @@ const renderContent = (content, { tidligCta = null, midtCta = null } = {}) => {
       continue;
     } else if (line.trim() !== '') {
       elements.push(
-        <p key={i} className="font-body text-primary/85 leading-relaxed text-base md:text-lg my-5">
+        <p key={i} className="font-body text-room-ink/70 leading-relaxed text-base md:text-lg my-5">
           {renderInline(line, i)}
         </p>
       );
@@ -168,13 +168,13 @@ const CTA_STANDARD = {
 /* 1. Tidlig. Ren tekstlenke rett etter introen, ingen boks og ingen knapp.
       For den som allerede vet hva de vil og ikke gidder å lese 3000 ord. */
 const TidligCta = ({ tekst }) => (
-  <p className="font-body text-[0.95rem] text-primary/70 leading-relaxed my-8 pl-5 border-l border-primary/15">
+  <p className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed my-8 pl-5 border-l border-room-ink/15">
     {tekst}{' '}
-    <Link to={ruter.priser} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
+    <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
       Se hva en nettside koster
     </Link>
     , eller{' '}
-    <Link to={ruter.kontakt} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
+    <Link to={ruter.kontakt} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
       be om en gratis demo
     </Link>
     .
@@ -185,12 +185,12 @@ const TidligCta = ({ tekst }) => (
       fyll og kantlinje, tekstlenke i stedet for fylt knapp. Den fylte
       knappen er reservert til den siste. */
 const MidtCta = ({ tittel, tekst }) => (
-  <aside className="my-12 rounded-[2rem] border border-primary/10 bg-primary/[0.04] p-7 md:p-8">
+  <aside className="my-12 rounded-[2rem] border border-room-ink/10 bg-room-ink/[0.04] p-7 md:p-8">
     <h3 className="font-sans font-bold text-lg md:text-xl tracking-tight mb-2.5">{tittel}</h3>
-    <p className="font-body text-[0.95rem] text-primary/80 leading-relaxed mb-5 max-w-[52ch]">{tekst}</p>
+    <p className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed mb-5 max-w-[52ch]">{tekst}</p>
     <Link
       to={ruter.kontakt}
-      className="inline-flex items-center gap-2 font-sans font-bold text-sm text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors"
+      className="inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors"
     >
       Bestill gratis demo <ArrowRight className="w-4 h-4" />
     </Link>
@@ -199,14 +199,16 @@ const MidtCta = ({ tittel, tekst }) => (
 
 /* 3. Slutt. Den ene fylte knappen i artikkelen. */
 const CTA = () => (
-  <div className="mt-20 bg-surface/30 border border-primary/10 rounded-[2.5rem] p-10 text-center">
-    <span className="font-body text-xs uppercase tracking-[0.3em] text-ink mb-3 block">Klar for neste steg?</span>
+  <div className="mt-20 bg-surface/30 border border-room-ink/10 rounded-[2.5rem] p-10 text-center">
+    <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink mb-3 block">Klar for neste steg?</span>
     <h3 className="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-4">Jeg bygger din salgsmaskin.</h3>
-    <p className="font-body text-primary/80 text-[0.95rem] mb-8 max-w-md mx-auto leading-relaxed">
+    <p className="font-body text-room-ink/70 text-[0.95rem] mb-8 max-w-md mx-auto leading-relaxed">
       Ingen binding, ingen lange prosesser. Du ser en ferdig demo før du bestemmer deg.
     </p>
-    <Link to="/kontakt" className="group relative inline-flex overflow-hidden bg-ink text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
-      <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
+    <Link to="/kontakt" className="group relative inline-flex overflow-hidden bg-room-ink text-room px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
+      {/* Teksten bytter til room-ink samtidig som det hvite panelet dekker knappen,
+          samme varighet som glidningen (300ms), så den aldri blir hvit på hvitt. */}
+      <span className="relative z-10 group-hover:text-room-ink transition-colors duration-300 flex items-center gap-2">
         Bestill gratis demo <ArrowRight className="w-4 h-4" />
       </span>
       <div className="absolute inset-0 bg-surface translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
@@ -215,11 +217,11 @@ const CTA = () => (
 );
 
 const ArticleShell = ({ heroRef, backLabel = 'Tilbake til blogg', children }) => (
-  <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
+  <div className="min-h-screen selection:bg-room-ink selection:text-room">
     <Navbar />
-    <section ref={heroRef} className="pt-40 pb-0 px-6 md:px-12 lg:px-24 bg-background">
+    <section ref={heroRef} className="pt-40 pb-0 px-6 md:px-12 lg:px-24">
       <div className="max-w-3xl mx-auto">
-        <Link to="/blogg" className="hero-elem inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-ink/70 hover:text-ink transition-colors duration-300 mb-8">
+        <Link to="/blogg" className="hero-elem inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-room-ink/70 hover:text-room-ink transition-colors duration-300 mb-8">
           <ArrowLeft className="w-3 h-3" /> {backLabel}
         </Link>
         {children}
@@ -272,7 +274,7 @@ const LocalArticle = ({ article }) => {
   };
 
   return (
-    <div className="bg-background text-primary min-h-screen selection:bg-primary selection:text-white">
+    <div className="min-h-screen selection:bg-room-ink selection:text-room">
       <SEO
         title={article.title}
         description={article.description}
@@ -284,17 +286,17 @@ const LocalArticle = ({ article }) => {
       />
       <Navbar />
 
-      <section ref={heroRef} className="pt-40 pb-0 px-6 md:px-12 lg:px-24 bg-background">
+      <section ref={heroRef} className="pt-40 pb-0 px-6 md:px-12 lg:px-24">
         <div className="max-w-3xl mx-auto">
-          <Link to="/blogg" className="hero-elem inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-ink/70 hover:text-ink transition-colors duration-300 mb-8">
+          <Link to="/blogg" className="hero-elem inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-room-ink/70 hover:text-room-ink transition-colors duration-300 mb-8">
             <ArrowLeft className="w-3 h-3" /> Tilbake til blogg
           </Link>
           <h1 className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight leading-tight mb-6">
             {article.title}
           </h1>
-          <div className="hero-elem flex items-center gap-4 font-body text-xs uppercase tracking-widest text-primary/70 mb-12">
+          <div className="hero-elem flex items-center gap-4 font-body text-xs uppercase tracking-widest text-room-ink/70 mb-12">
             <span>{formatDate(article.publishDate)}</span>
-            <span className="w-1 h-1 rounded-full bg-primary/20" />
+            <span className="w-1 h-1 rounded-full bg-room-ink/20" />
             <span>oppskalert.</span>
           </div>
         </div>
@@ -317,7 +319,7 @@ const LocalArticle = ({ article }) => {
 
           <div className="mt-16 flex flex-wrap gap-2">
             {article.keywords.map((kw) => (
-              <span key={kw} className="font-body text-xs uppercase tracking-widest text-primary/70 border border-primary/10 px-4 py-2 rounded-full">
+              <span key={kw} className="font-body text-xs uppercase tracking-widest text-room-ink/70 border border-room-ink/10 px-4 py-2 rounded-full">
                 {kw}
               </span>
             ))}
@@ -329,21 +331,21 @@ const LocalArticle = ({ article }) => {
 
       {(prevArticle || nextArticle) && (
         <section className="px-6 md:px-12 lg:px-24 pb-32">
-          <div className="max-w-3xl mx-auto border-t border-primary/10 pt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="max-w-3xl mx-auto border-t border-room-ink/10 pt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {prevArticle ? (
-              <Link to={`/blogg/${prevArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-[2rem] border border-primary/10 hover:border-ink/20 transition-all duration-300 hover:-translate-y-1">
-                <span className="font-body text-xs uppercase tracking-widest text-primary/70 flex items-center gap-2">
+              <Link to={`/blogg/${prevArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-[2rem] border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1">
+                <span className="font-body text-xs uppercase tracking-widest text-room-ink/70 flex items-center gap-2">
                   <ArrowLeft className="w-3 h-3" /> Forrige
                 </span>
-                <span className="font-sans font-bold text-sm leading-snug group-hover:underline underline-offset-4 decoration-ink/40 transition-colors">{prevArticle.title}</span>
+                <span className="font-sans font-bold text-sm leading-snug group-hover:underline underline-offset-4 decoration-room-ink/40 transition-colors">{prevArticle.title}</span>
               </Link>
             ) : <div />}
             {nextArticle ? (
-              <Link to={`/blogg/${nextArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-[2rem] border border-primary/10 hover:border-ink/20 transition-all duration-300 hover:-translate-y-1 text-right md:items-end">
-                <span className="font-body text-xs uppercase tracking-widest text-primary/70 flex items-center gap-2">
+              <Link to={`/blogg/${nextArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-[2rem] border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1 text-right md:items-end">
+                <span className="font-body text-xs uppercase tracking-widest text-room-ink/70 flex items-center gap-2">
                   Neste <ArrowRight className="w-3 h-3" />
                 </span>
-                <span className="font-sans font-bold text-sm leading-snug group-hover:underline underline-offset-4 decoration-ink/40 transition-colors">{nextArticle.title}</span>
+                <span className="font-sans font-bold text-sm leading-snug group-hover:underline underline-offset-4 decoration-room-ink/40 transition-colors">{nextArticle.title}</span>
               </Link>
             ) : <div />}
           </div>

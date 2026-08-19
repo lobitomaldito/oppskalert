@@ -26,7 +26,7 @@ const BloggKort = ({ article, index = 0 }) => {
   }, []);
 
   return (
-    <Link ref={cardRef} to={`/blogg/${article.slug}`} className="group block bg-surface/30 border border-primary/10 rounded-[2.5rem] overflow-hidden hover:border-ink/40 transition-all duration-500 hover:-translate-y-1">
+    <Link ref={cardRef} to={`/blogg/${article.slug}`} className="group block bg-surface/30 border border-room-ink/10 rounded-[2.5rem] overflow-hidden hover:border-room-ink/40 transition-all duration-500 hover:-translate-y-1">
       {article.image && (
         <div className="relative h-56 overflow-hidden">
           <img
@@ -40,24 +40,24 @@ const BloggKort = ({ article, index = 0 }) => {
       )}
       <div className="p-8">
         <div className="flex items-center gap-3 mb-4">
-          <span className="font-body text-xs uppercase tracking-[0.25em] text-ink">{formatDate(article.date)}</span>
+          <span className="font-body text-xs uppercase tracking-[0.25em] text-room-ink">{formatDate(article.date)}</span>
           {article.category && (
             <>
-              <span className="w-1 h-1 rounded-full bg-primary/20" />
-              <span className="font-body text-xs uppercase tracking-[0.25em] text-primary/60">{article.category}</span>
+              <span className="w-1 h-1 rounded-full bg-room-ink/20" />
+              <span className="font-body text-xs uppercase tracking-[0.25em] text-room-ink/70">{article.category}</span>
             </>
           )}
         </div>
-        <h2 className="font-sans font-bold text-xl md:text-2xl tracking-tight text-primary mb-3 leading-snug">
+        <h2 className="font-sans font-bold text-xl md:text-2xl tracking-tight text-room-ink mb-3 leading-snug">
           {article.title}
         </h2>
-        <p className="font-body text-[0.95rem] text-primary/80 leading-relaxed mb-6">
+        <p className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed mb-6">
           {article.description}
         </p>
         {/* "Les mer" mistet aksentfargen. Beholder samme brytnings-signal som
             porteføljekortene (Portfolio.jsx): dempet i hvile, full blekk-styrke
             ved hover, altså opasitet i stedet for en ny farge. */}
-        <div className="flex items-center gap-2 font-body text-xs uppercase tracking-widest text-ink/70 group-hover:text-ink transition-colors duration-300">
+        <div className="flex items-center gap-2 font-body text-xs uppercase tracking-widest text-room-ink/70 group-hover:text-room-ink transition-colors duration-300">
           <span>Les mer</span>
           <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
         </div>

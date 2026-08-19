@@ -16,11 +16,11 @@ import { prosjekter, ruter } from '../lib/site';
    skjermen. På /arbeid er porteføljen hele poenget med siden, så der skal
    kortene ligge under hverandre og kunne skummes uten å sveipe.
 
-   rom styrer om kortet står på --room (lyst felt) eller --bg (mørkt skall),
-   se flate-forklaringen lenger ned. Kortet bytter tekstfarge etter det,
-   ikke bare bakgrunn. Ingen aksentfarge her: all farge på siden skal komme
-   fra skjermbildet, ikke fra skallet rundt det. */
-const Kort = ({ p, rom, className, forsinkelse = 0, varighet = 34 }) => (
+   Kortet er alltid lyst (bg-surface, room-ink), uansett hvilken flate
+   seksjonen rundt står på, siden skallet ikke lenger har noen mørk variant
+   å arve fra. Ingen aksentfarge her: all farge på siden skal komme fra
+   skjermbildet, ikke fra skallet rundt det. */
+const Kort = ({ p, className, forsinkelse = 0, varighet = 34 }) => (
   <a
     href={p.url}
     target="_blank"
@@ -28,9 +28,7 @@ const Kort = ({ p, rom, className, forsinkelse = 0, varighet = 34 }) => (
     data-reveal
     className={cn(
       'group block rounded-2xl overflow-hidden border transition-[border-color,transform] duration-300 ease-lett hover:-translate-y-1',
-      rom
-        ? 'border-room-ink/10 bg-surface hover:border-room-ink/40'
-        : 'border-ink/10 bg-ink/10 hover:border-ink/40',
+      'border-room-ink/10 bg-surface hover:border-room-ink/40',
       className,
     )}
   >
@@ -39,14 +37,11 @@ const Kort = ({ p, rom, className, forsinkelse = 0, varighet = 34 }) => (
         et bilde som glir, med kromet leser det som en nettside du ser
         gjennom. Prikkene er dekorative og skjult for skjermlesere. */}
     {p.full && (
-      <div className={cn(
-        'flex items-center gap-1.5 px-3 py-2 border-b',
-        rom ? 'bg-room border-room-ink/10' : 'bg-ink/10 border-ink/10',
-      )}>
-        <i aria-hidden="true" className={cn('w-[7px] h-[7px] rounded-full', rom ? 'bg-room-ink/20' : 'bg-ink/20')} />
-        <i aria-hidden="true" className={cn('w-[7px] h-[7px] rounded-full', rom ? 'bg-room-ink/20' : 'bg-ink/20')} />
-        <i aria-hidden="true" className={cn('w-[7px] h-[7px] rounded-full', rom ? 'bg-room-ink/20' : 'bg-ink/20')} />
-        <span className={cn('ml-2 font-body text-[0.6875rem]', rom ? 'text-room-ink/70' : 'text-ink/70')}>
+      <div className="flex items-center gap-1.5 px-3 py-2 border-b bg-room border-room-ink/10">
+        <i aria-hidden="true" className="w-[7px] h-[7px] rounded-full bg-room-ink/20" />
+        <i aria-hidden="true" className="w-[7px] h-[7px] rounded-full bg-room-ink/20" />
+        <i aria-hidden="true" className="w-[7px] h-[7px] rounded-full bg-room-ink/20" />
+        <span className="ml-2 font-body text-[0.6875rem] text-room-ink/70">
           {p.domene}
         </span>
       </div>
@@ -77,12 +72,12 @@ const Kort = ({ p, rom, className, forsinkelse = 0, varighet = 34 }) => (
       )}
     </div>
 
-    <div className={cn('flex items-baseline justify-between gap-4 px-5 py-4', rom && 'text-room-ink')}>
+    <div className="flex items-baseline justify-between gap-4 px-5 py-4 text-room-ink">
       <span className="font-sans font-bold text-base">{p.navn}</span>
-      <span className={cn('flex items-center gap-1.5 flex-shrink-0 font-body text-sm', rom ? 'text-room-ink/70' : 'text-ink/70')}>
+      <span className="flex items-center gap-1.5 flex-shrink-0 font-body text-sm text-room-ink/70">
         {p.bransje}
         <ArrowUpRight
-          className={cn('w-4 h-4 transition-colors', rom ? 'group-hover:text-room-ink' : 'group-hover:text-ink')}
+          className="w-4 h-4 transition-colors group-hover:text-room-ink"
           aria-hidden="true"
         />
       </span>
@@ -115,23 +110,24 @@ const Portfolio = ({ limit = null, visAlleLenke = false, mobilScroll = false, fl
   const liste = limit ? prosjekter.slice(0, limit) : prosjekter;
 
   /* flate="band" var før en ren CSS-klasse fra .band (rgb(var(--surface))
-     mot den gamle mørke paletten). Den regnet ikke med de nye tokenene, så
-     her tolkes den i stedet semantisk: band betyr «denne seksjonen står på
-     --room», det lyse feltet, mens fravær av flate betyr --bg, det mørke
-     skallet. Ingen aksentfarge følger med, kun tekstfargen (ink på mørkt,
-     room-ink på lyst) bytter med flaten. */
+     mot den gamle mørke paletten). Skallet er lyst by default nå (kroppens
+     bakgrunn er selve feltfargen), så band betyr bare «marker denne
+     seksjonen tydelig som --room, med kant», mens fravær av flate lar
+     seksjonen smelte sammen med sidens eget lyse felt. Ingen mørk variant
+     finnes lenger her, mørk bakgrunn er reservert til bunnteksten,
+     sitatkortet og fylte knapper. */
   const rom = flate === 'band';
   /* Forskjøvet start og ulik varighet per kort, ellers ruller alle seks i
      takt og raden leser som én flate som beveger seg. Verdiene er de samme
      som i studio-mal-demoen. */
   const kort = liste.map((p, i) => (
-    <Kort key={p.domene} p={p} rom={rom} forsinkelse={0.6 + i * 0.7} varighet={30 + i * 2} />
+    <Kort key={p.domene} p={p} forsinkelse={0.6 + i * 0.7} varighet={30 + i * 2} />
   ));
 
   return (
     <section
       ref={container}
-      className={cn('seksjon', rom ? 'bg-room text-room-ink border-y border-room-ink/10' : 'bg-background text-ink')}
+      className={cn('seksjon text-room-ink', rom && 'bg-room border-y border-room-ink/10')}
     >
       <div className="wrap">
         <SeksjonTopp
@@ -150,12 +146,9 @@ const Portfolio = ({ limit = null, visAlleLenke = false, mobilScroll = false, fl
           <div data-reveal className="mt-10">
             <Link
               to={ruter.arbeid}
-              className={cn(
-                'inline-flex items-center gap-2 font-sans font-bold text-sm border px-6 py-3 rounded-full transition-colors duration-300',
-                rom ? 'border-room-ink/20 hover:border-room-ink/40' : 'border-ink/20 hover:border-ink/40',
-              )}
+              className="inline-flex items-center gap-2 font-sans font-bold text-sm border px-6 py-3 rounded-full transition-colors duration-300 border-room-ink/20 hover:border-room-ink/40"
             >
-              Se hele porteføljen <ArrowRight className={cn('w-4 h-4', rom ? 'text-room-ink' : 'text-ink')} />
+              Se hele porteføljen <ArrowRight className="w-4 h-4 text-room-ink" />
             </Link>
           </div>
         )}

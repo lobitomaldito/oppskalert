@@ -104,7 +104,7 @@ export const alltidMed = [
 
 /* ---------------------------------------------------------------
    DRIFT. Tre nivåer under "Driftet av meg"-paraplyen. Prisene her
-   er den eneste kilden — /drift, forsidens Priser-kort og FAQ leser
+   er den eneste kilden. /drift, forsidens Priser-kort og FAQ leser
    alle herfra, så en prisjustering skjer på ett sted.
    --------------------------------------------------------------- */
 export const driftNivaer = [
@@ -157,12 +157,12 @@ export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå e
 /* ---------------------------------------------------------------
    KALKULATOR. Selvbetjent prisestimat. Grunnpris etter omfang,
    pluss flate påslag per funksjon. Alt er fortsatt skreddersydd og
-   håndkodet — det finnes bevisst ingen "mal"-tier, siden det ville
+   håndkodet. Det finnes bevisst ingen "mal"-tier, siden det ville
    motsagt alltidMed over. Tallene er godkjent 2026-08-03; endre kun
    her, så følger kalkulatoren automatisk med.
 
    manedspris er det veiledende "eller X kr/mnd"-alternativet til
-   engangsestimatet (godkjent 2026-08-04) — Driftet av meg skalert med
+   engangsestimatet (godkjent 2026-08-04), Driftet av meg skalert med
    omfang, siden en flat 690 kr/mnd uansett prosjektstørrelse ville
    undervurdert et stort nettbutikk-prosjekt kraftig. Upåvirket av
    tillegg/haster, med vilje: et enkelt tall er lettere å stå for enn et

@@ -35,13 +35,13 @@ const SammenlignPage = () => {
                 key={s.slug}
                 to={s.rute}
                 data-reveal
-                className="group flex flex-col justify-between rounded-2xl border border-primary/10 bg-primary/[0.03] hover:border-ink/40 transition-colors duration-300 p-7"
+                className="group flex flex-col justify-between rounded-2xl border border-room-ink/10 bg-room-ink/[0.03] hover:border-room-ink/40 transition-colors duration-300 p-7"
               >
                 <div>
                   <h2 className="font-sans font-bold text-xl">Meg vs. {s.navn}</h2>
-                  <p className="font-body text-[0.95rem] text-primary/80 mt-2.5 leading-relaxed">{s.kort}</p>
+                  <p className="font-body text-[0.95rem] text-room-ink/70 mt-2.5 leading-relaxed">{s.kort}</p>
                 </div>
-                <span className="mt-6 inline-flex items-center gap-2 font-sans font-bold text-sm text-ink underline underline-offset-4 decoration-ink/40 group-hover:decoration-ink transition-colors">
+                <span className="mt-6 inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 decoration-room-ink/40 group-hover:decoration-room-ink transition-colors">
                   Se sammenligningen
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </span>

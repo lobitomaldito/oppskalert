@@ -8,7 +8,7 @@ import { SeksjonTopp } from './Layout';
 import { kalkulatorOmfang, kalkulatorTillegg, kalkulatorHaster, ruter } from '../lib/site';
 
 const pillBase =
-  'text-left rounded-2xl border px-5 py-4 font-body text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/50';
+  'text-left rounded-2xl border px-5 py-4 font-body text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50';
 
 /* Valgt tilstand bærer ingen aksentfarge lenger, samme "fylt kant"-taktikk
    som DemoSkjema.jsx (se kommentar der): full blekk-kant og lett tint mot
@@ -20,10 +20,10 @@ const OmfangKnapp = ({ item, valgt, onClick }) => (
     type="button"
     onClick={onClick}
     aria-pressed={valgt}
-    className={`${pillBase} ${valgt ? 'border-ink bg-ink/10' : 'border-primary/15 bg-primary/[0.03] hover:border-primary/30'}`}
+    className={`${pillBase} ${valgt ? 'border-room-ink bg-room-ink/10' : 'border-room-ink/20 hover:border-room-ink/40'}`}
   >
-    <span className={`block font-sans font-bold ${valgt ? 'text-primary underline underline-offset-4' : 'text-primary'}`}>{item.label}</span>
-    <span className="block text-primary/70 text-[0.85rem] mt-0.5">{item.beskrivelse}</span>
+    <span className={`block font-sans font-bold ${valgt ? 'text-room-ink underline underline-offset-4' : 'text-room-ink'}`}>{item.label}</span>
+    <span className="block text-room-ink/70 text-[0.85rem] mt-0.5">{item.beskrivelse}</span>
   </button>
 );
 
@@ -32,22 +32,22 @@ const TilleggKnapp = ({ item, valgt, onClick }) => (
     type="button"
     onClick={onClick}
     aria-pressed={valgt}
-    className={`${pillBase} flex items-center justify-between gap-3 ${valgt ? 'border-ink bg-ink/10' : 'border-primary/15 bg-primary/[0.03] hover:border-primary/30'}`}
+    className={`${pillBase} flex items-center justify-between gap-3 ${valgt ? 'border-room-ink bg-room-ink/10' : 'border-room-ink/20 hover:border-room-ink/40'}`}
   >
-    <span className={valgt ? 'text-primary font-semibold' : 'text-primary/85'}>{item.label}</span>
+    <span className={valgt ? 'text-room-ink font-semibold' : 'text-room-ink/70'}>{item.label}</span>
     <span
       className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center ${
-        valgt ? 'bg-ink border-ink' : 'border-primary/30'
+        valgt ? 'bg-room-ink border-room-ink' : 'border-room-ink/30'
       }`}
       aria-hidden="true"
     >
-      {valgt && <Check className="w-3 h-3 text-background" strokeWidth={3} />}
+      {valgt && <Check className="w-3 h-3 text-room" strokeWidth={3} />}
     </span>
   </button>
 );
 
 /* Selvbetjent estimat. Samme mekanikk som en byrå-kalkulator man møter
-   andre steder — spenn, ikke eksakt tall, ingen e-post nødvendig — men
+   andre steder, spenn, ikke eksakt tall, ingen e-post nødvendig, men
    uten en "mal"-tier, siden alt her alltid er skreddersydd og håndkodet. */
 const Kalkulator = ({ tittel, uthevet, lede }) => {
   const container = useReveal(80);
@@ -108,7 +108,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
 
             <div>
-              <h2 className="font-sans font-bold text-lg mb-4">Hva skal være med? <span className="font-body font-normal text-primary/70 text-sm">Velg det som passer</span></h2>
+              <h2 className="font-sans font-bold text-lg mb-4">Hva skal være med? <span className="font-body font-normal text-room-ink/70 text-sm">Velg det som passer</span></h2>
               <div className="grid sm:grid-cols-2 gap-3">
                 {kalkulatorTillegg.map((item) => (
                   <TilleggKnapp key={item.id} item={item} valgt={tillegg.has(item.id)} onClick={() => toggleTillegg(item.id)} />
@@ -123,7 +123,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                   type="button"
                   onClick={() => velgHaster(false)}
                   aria-pressed={!haster}
-                  className={`${pillBase} font-sans font-bold ${!haster ? 'border-ink bg-ink/10 text-primary underline underline-offset-4' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
+                  className={`${pillBase} font-sans font-bold ${!haster ? 'border-room-ink bg-room-ink/10 text-room-ink underline underline-offset-4' : 'border-room-ink/20 text-room-ink/70 hover:border-room-ink/40'}`}
                 >
                   Fleksibelt
                 </button>
@@ -131,7 +131,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                   type="button"
                   onClick={() => velgHaster(true)}
                   aria-pressed={haster}
-                  className={`${pillBase} font-sans font-bold ${haster ? 'border-ink bg-ink/10 text-primary underline underline-offset-4' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
+                  className={`${pillBase} font-sans font-bold ${haster ? 'border-room-ink bg-room-ink/10 text-room-ink underline underline-offset-4' : 'border-room-ink/20 text-room-ink/70 hover:border-room-ink/40'}`}
                 >
                   Haster (under 2 uker)
                 </button>
@@ -139,19 +139,19 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
           </div>
 
-          <div data-reveal className="lg:sticky lg:top-28 rounded-2xl border border-ink/40 bg-surface/25 p-7 flex flex-col gap-5">
+          <div data-reveal className="lg:sticky lg:top-28 rounded-2xl border border-room-ink/40 bg-surface/25 p-7 flex flex-col gap-5">
             <div>
-              <span className="font-body text-xs uppercase tracking-widest text-primary/70">Estimert pris</span>
+              <span className="font-body text-xs uppercase tracking-widest text-room-ink/70">Estimert pris</span>
               <div className="font-display font-extrabold text-[2.1rem] leading-none tracking-[-0.02em] mt-2">
-                {formatKr(min)}–{formatKr(max)} <span className="text-lg font-sans font-bold text-primary/70">kr</span>
+                {formatKr(min)}–{formatKr(max)} <span className="text-lg font-sans font-bold text-room-ink/70">kr</span>
               </div>
-              <span className="font-body text-sm text-primary/70 mt-1 block">{omfang.label}{valgteTillegg.length > 0 ? ` + ${valgteTillegg.length} tillegg` : ''}{haster ? ', haster' : ''}</span>
-              <span className="font-body text-sm text-primary/70 mt-1 block">
-                eller fra <span className="text-primary font-semibold">{formatKr(omfang.manedspris)} kr/mnd</span>, driftet av meg
+              <span className="font-body text-sm text-room-ink/70 mt-1 block">{omfang.label}{valgteTillegg.length > 0 ? ` + ${valgteTillegg.length} tillegg` : ''}{haster ? ', haster' : ''}</span>
+              <span className="font-body text-sm text-room-ink/70 mt-1 block">
+                eller fra <span className="text-room-ink font-semibold">{formatKr(omfang.manedspris)} kr/mnd</span>, driftet av meg
               </span>
             </div>
 
-            <p className="font-body text-xs text-primary/70 leading-relaxed border-t border-primary/10 pt-4">
+            <p className="font-body text-xs text-room-ink/70 leading-relaxed border-t border-room-ink/10 pt-4">
               Veiledende estimat. Du får alltid en fast pris, og en gratis demo å se på, før du bestemmer deg.
             </p>
 
@@ -164,7 +164,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                 min,
                 max,
               })}
-              className="inline-flex items-center justify-center gap-2 bg-ink text-background px-6 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
+              className="inline-flex items-center justify-center gap-2 bg-room-ink text-room px-6 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
             >
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </Link>

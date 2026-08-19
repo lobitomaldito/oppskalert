@@ -49,10 +49,10 @@ const PopulaereSokPage = () => {
                 <h2 className="font-sans font-bold text-[1.35rem] sm:text-2xl leading-snug tracking-tight">
                   {item.q}
                 </h2>
-                <p className="font-body text-primary/80 leading-relaxed mt-3">{item.a}</p>
+                <p className="font-body text-room-ink/70 leading-relaxed mt-3">{item.a}</p>
                 <Link
                   to={item.til.rute}
-                  className="group inline-flex items-center gap-2 font-sans font-bold text-sm text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink mt-3.5"
+                  className="group inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink mt-3.5"
                 >
                   {item.til.tekst}
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

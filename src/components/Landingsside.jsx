@@ -21,7 +21,7 @@ export const Avsnitt = ({ tittel, uthevet, children }) => (
     <h2 className="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.15rem)] leading-[1.1] tracking-[-0.03em] mb-4">
       {tittel} {uthevet}
     </h2>
-    <div className="font-body text-[0.98rem] md:text-base text-primary/80 leading-relaxed flex flex-col gap-4">
+    <div className="font-body text-[0.98rem] md:text-base text-room-ink/70 leading-relaxed flex flex-col gap-4">
       {children}
     </div>
   </div>
@@ -47,14 +47,14 @@ export const Punktliste = ({ tittel, uthevet, lede, punkter, fotnote }) => {
         <SeksjonTopp tittel={tittel} uthevet={uthevet} lede={lede} />
         <ul data-reveal className="grid gap-3.5 md:grid-cols-2 max-w-[62rem]">
           {punkter.map((p) => (
-            <li key={p} className="flex items-start gap-3 font-body text-[0.95rem] text-primary/85 leading-relaxed">
-              <Check className="w-4 h-4 text-ink mt-1 flex-shrink-0" aria-hidden="true" />
+            <li key={p} className="flex items-start gap-3 font-body text-[0.95rem] text-room-ink/70 leading-relaxed">
+              <Check className="w-4 h-4 text-room-ink mt-1 flex-shrink-0" aria-hidden="true" />
               {p}
             </li>
           ))}
         </ul>
         {fotnote && (
-          <p data-reveal className="font-body text-[0.95rem] text-primary/80 mt-8 max-w-[56ch] leading-relaxed">
+          <p data-reveal className="font-body text-[0.95rem] text-room-ink/70 mt-8 max-w-[56ch] leading-relaxed">
             {fotnote}
           </p>
         )}

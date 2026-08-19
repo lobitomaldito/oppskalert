@@ -40,7 +40,7 @@ const BransjeEksempler = () => {
               key={n.tag}
               to={n.route}
               data-reveal
-              className="group block rounded-2xl overflow-hidden border border-primary/10 bg-primary/[0.03] hover:border-primary/25 transition-colors duration-300"
+              className="group block rounded-2xl overflow-hidden border border-room-ink/10 bg-room-ink/5 hover:border-room-ink/25 transition-colors duration-300"
             >
               {/* Nettleserlinjen er fjernet her av samme grunn som på
                   porteføljekortene: tre prikker og et domene på 11 piksler
@@ -56,7 +56,7 @@ const BransjeEksempler = () => {
                 />
                 {/* Bakgrunnen er krem nå, så gradienten toner ned mot krem
                     og teksten under den skrives med aubergine. */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-room via-room/60 to-transparent" />
 
                 <span
                   className="absolute top-4 left-4 text-sm font-body px-3 py-1 rounded-full font-semibold"
@@ -67,10 +67,10 @@ const BransjeEksempler = () => {
 
                 <div className="absolute inset-x-0 bottom-0 p-5 flex items-end justify-between gap-3">
                   <div>
-                    <p className="font-sans font-bold text-primary text-xl leading-tight">{n.brand}</p>
-                    <p className="font-body text-sm text-primary/75 mt-1">{n.headline}</p>
+                    <p className="font-sans font-bold text-room-ink text-xl leading-tight">{n.brand}</p>
+                    <p className="font-body text-sm text-room-ink/70 mt-1">{n.headline}</p>
                   </div>
-                  <span className="flex-shrink-0 inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  <span className="flex-shrink-0 inline-flex items-center gap-1 text-sm font-medium text-room-ink opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                     Se siden <ArrowRight className="w-4 h-4" style={{ color: n.accent }} />
                   </span>
                 </div>
@@ -80,13 +80,13 @@ const BransjeEksempler = () => {
         </KortRad>
 
         {/* Avslutning: knytter til "jeg lager alle slags sider" */}
-        <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-primary/10 pt-10">
-          <p className="font-body text-[0.95rem] md:text-base text-primary/80 max-w-md leading-relaxed">
+        <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-room-ink/10 pt-10">
+          <p className="font-body text-[0.95rem] md:text-base text-room-ink/70 max-w-md leading-relaxed">
             Finner du ikke din bransje? Jeg lager nettsider for alle, og bygger gjerne en gratis demo av nettopp din.
           </p>
           <Link
             to={ruter.kontakt}
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-ink text-background px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-room-ink text-room px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
           >
             Bestill gratis demo <ArrowRight className="w-4 h-4" />
           </Link>

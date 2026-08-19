@@ -87,7 +87,7 @@ const NettsideBedriftPage = () => (
           malbaserte sider.
         </p>
         <p>
-          <strong className="text-primary font-semibold">Universell utforming.</strong>{' '}
+          <strong className="text-room-ink font-semibold">Universell utforming.</strong>{' '}
           Nettsteder som retter seg mot allmennheten skal følge WCAG 2.1 nivå AA.
           I praksis: nok kontrast mellom tekst og bakgrunn, beskrivende alt-tekst
           på bilder, og at hele siden kan brukes med tastatur alene. Rundt én av
@@ -95,7 +95,7 @@ const NettsideBedriftPage = () => (
           tapte kunder.
         </p>
         <p>
-          <strong className="text-primary font-semibold">Personvern.</strong> Har
+          <strong className="text-room-ink font-semibold">Personvern.</strong> Har
           du et kontaktskjema eller analyseverktøy, behandler du personopplysninger.
           Da trengs en personvernerklæring og et samtykke der det er like enkelt å
           si nei som ja. Forhåndsavkryssede bokser er ikke lov.
@@ -112,11 +112,11 @@ const NettsideBedriftPage = () => (
           Hos meg står domenet i ditt navn fra dag én, og du får koden. Velger du
           en driftsavtale, er det fordi du vil slippe det tekniske, ikke fordi du
           er låst. Se{' '}
-          <Link to={ruter.drift} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
+          <Link to={ruter.drift} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             drift og support
           </Link>{' '}
           for hva den dekker, eller{' '}
-          <Link to={ruter.priser} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
+          <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             prisene
           </Link>{' '}
           for begge modellene.
