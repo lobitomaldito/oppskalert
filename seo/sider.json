@@ -1,0 +1,57 @@
+{
+  "_lesMeg": "Sidelista til SEO-maskinen. modus: pr = maskinen foreslår endringer i et repo vi kan skrive til. rapport = kun funn, ingen kodeendring. av = hoppes over. merkevare = ord som IKKE skal telle som kannibalisering, fordi Google med rette viser flere sider på et merkevaresøk.",
+  "sider": [
+    {
+      "eiendom": "https://oppskalert.no/",
+      "navn": "Oppskalert",
+      "merkevare": ["oppskalert"],
+      "modus": "pr",
+      "repo": { "type": "lokal", "sti": "." },
+      "koe": "content/blog-queue.json"
+    },
+    {
+      "eiendom": "https://appstart.no/",
+      "navn": "Appstart",
+      "merkevare": ["appstart", "app start"],
+      "modus": "pr",
+      "repo": { "type": "github", "slug": "magnusberggren/appstart", "gren": "main" }
+    },
+    {
+      "eiendom": "https://www.katrinbrubakk.no/",
+      "navn": "Katrin Brubakk",
+      "merkevare": ["katrin", "brubakk", "glatz"],
+      "modus": "rapport"
+    },
+    {
+      "eiendom": "https://samtaleverkstedet.no/",
+      "navn": "Samtaleverkstedet",
+      "merkevare": ["samtaleverkstedet", "guro", "brakestad"],
+      "modus": "rapport"
+    },
+    {
+      "eiendom": "https://steinarhusby.no/",
+      "navn": "Steinar Husby",
+      "merkevare": ["steinar", "husby"],
+      "modus": "rapport"
+    },
+    {
+      "eiendom": "https://progressivediplomacy.com/",
+      "navn": "Progressive Diplomacy",
+      "merkevare": ["progressive diplomacy", "thoralf", "stenvold"],
+      "modus": "rapport"
+    },
+    {
+      "eiendom": "https://melaniedahl.com/",
+      "navn": "Melanie Dahl",
+      "merkevare": ["melanie", "dahl"],
+      "modus": "rapport",
+      "ogsaa": ["https://www.melaniedahl.com/"]
+    },
+    {
+      "eiendom": "https://www.avro.no/",
+      "navn": "AVRO",
+      "merkevare": ["avro"],
+      "modus": "rapport"
+    }
+  ]
+}

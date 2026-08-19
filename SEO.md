@@ -505,3 +505,96 @@ rangeringsmål, og den har unik title, beskrivelse og canonical. Ingen handling.
    kontoer.
 3. **Send inn den nye sitemapen** i Google Search Console, så
    `/vanlige-sporsmal` blir oppdaget raskere enn ved vanlig crawl.
+
+---
+
+## 12. Første måling fra Search Console-APIet, 19. august 2026
+
+OAuth er på plass, `scripts/gsc.mjs` leser ekte tall, og `--side <url>` gjør
+at samme skript kjører mot alle eiendommene. Dette er nullpunktet.
+
+### Oppskalert.no, siste 28 dager
+
+7 klikk, cirka 1 100 visninger. Forsiden alene står for 559 visninger på
+snittposisjon 13,0.
+
+**Landingssidene taper mot forsiden på sine egne søkeord.** Det snur punkt 7
+i handlingslisten, som sa at neste steg var flere landingssider.
+
+| Søk | Side | Visninger | Posisjon |
+| --- | --- | --- | --- |
+| webdesign i oslo | `/webdesign-oslo` | 44 | 71,5 |
+| webdesign i oslo | `/` | 38 | 17,4 |
+| webutvikler oslo | `/webdesign-oslo` | 37 | 71,9 |
+| webutvikler oslo | `/blogg/webutvikler-oslo` | 27 | 36,5 |
+
+Forsiden slår den dedikerte Oslo-siden med 54 posisjoner. Ordtellingen er ikke
+problemet: `/webdesign-oslo` har 1 142 ord, forsiden 1 583. Alle fem
+landingssidene ligger mellom posisjon 60 og 80, mens forsiden ligger mellom 12
+og 17 på de samme kommersielle ordene. Det ser ut som Google behandler settet
+som nesten-duplikater av forsiden. **Ikke bygg landingsside nummer seks før
+dette er avklart.**
+
+### Sju søk rett utenfor førstesiden, alle båret av forsiden
+
+| Søk | Visninger | Posisjon |
+| --- | --- | --- |
+| webhosting | 80 | 16,4 |
+| hjemmeside | 78 | 13,1 |
+| webdesign bedrift | 47 | 12,0 |
+| webdesign firma | 46 | 12,7 |
+| responsiv nettside | 44 | 10,1 |
+| webdesigner oslo | 23 | 12,9 |
+| webdesign i oslo | 38 | 17,4 |
+
+Rettet samme dag: forsidens title var «Profesjonell nettside til fast pris»,
+uten ordet «webdesign», som den rangerer på fire ganger. Ny title er «Webdesign
+for bedrifter til fast pris». `/drift` het «Drift og support», som ingen søker
+på, og eier nå ordet «webhosting» som forsiden fanget opp på posisjon 16.
+
+Heroens H1 er ikke rørt. Den er låst av layouten, og title er uansett det
+sterkere signalet.
+
+### Fem feller i Search Console-APIet
+
+Alle fem er funnet ved å bomme på dem. De er designkravene til rutinen.
+
+1. **`rowLimit: 25` gir de 25 første radene, ikke de største.** APIet sorterer
+   på klikk. Med null klikk overalt faller rekkefølgen tilbake på alfabetisk,
+   så den første tabellen stoppet ved «d» og skjulte alle de store søkene.
+   Hent bredt, sorter på visninger lokalt.
+2. **Totaler fra `query` stemmer ikke med totaler fra `page`.** Med dimensjonen
+   `page` har oppskalert.no 7 klikk. Legger du til `query`, blir det 0. Google
+   holder tilbake sjeldne søk av personvernhensyn, og de forsvinner stille.
+   Regn aldri ut totaler fra søkedata.
+3. **Merkevaresøk ser ut som kannibalisering, men er det ikke.** Alle
+   kundesidene flagget eierens eget navn som «flere sider konkurrerer». Det er
+   normale sitelinks. Ekte kannibalisering krever at søket ikke er merkevaren,
+   og at beste posisjon er dårligere enn 10.
+4. **`www` og apex er to eiendommer med delte tall.** melaniedahl.com hadde 5
+   visninger på apex og 17 på www, samme nettsted. Summer, eller velg én.
+5. **At `sitemap.xml` svarer 200 betyr ikke at Google vet om den.**
+   `www.avro.no` og `progressivediplomacy.com` serverte gyldige sitemaps som
+   aldri var sendt inn. Begge sendt inn 19. august.
+
+### Overordnet sjekk, ni eiendommer
+
+| Eiendom | Klikk | Visninger | Merknad |
+| --- | --- | --- | --- |
+| www.katrinbrubakk.no | 41 | 758 | Klart best. «katrin glatz brubakk» 499 visninger, posisjon 3 |
+| progressivediplomacy.com | 13 | 66 | Sitemap manglet, sendt inn |
+| steinarhusby.no | 6 | 46 | Sitemap har 3 URL-er, bloggen har minst 7 innlegg med visninger |
+| samtaleverkstedet.no | 4 | 31 | Ett klikk fra posisjon 2,6 på `/tjenester/veiledning.html` |
+| appstart.no | 1 | 19 | Samme kannibalisering: `/` posisjon 41 mot `/hva-koster-en-app` posisjon 74 |
+| oppskalert.no | 7 | 1 085 | Flest visninger, null klikk fra ikke-anonymiserte søk |
+| melaniedahl.com (+ www) | 0 | 22 | Delt mellom to eiendommer, canonical peker riktig |
+| www.avro.no | 0 | 0 | 29 URL-er i sitemap, aldri sendt inn. Sendt inn 19. august |
+
+**Ikke gjort, krever tilgang til andre repoer:**
+
+- `steinarhusby.no`: sitemapen mangler alle blogginnleggene, og er sist lest
+  12. juni. Sju innlegg får visninger uten å stå i den.
+- `appstart.no`: `/hva-koster-en-app` taper mot forsiden på «app pris», samme
+  mønster som `/webdesign-oslo`.
+- `melaniedahl.com`: `www` svarer 200 i stedet for å redirigere til apex.
+  Canonical er riktig, så dette er lav prioritet.

@@ -33,7 +33,9 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ENV = path.join(ROOT, '.env.local');
-const SITE = 'https://oppskalert.no/';
+const argv = process.argv.slice(2);
+const sideFlagg = argv.indexOf('--side');
+const SITE = sideFlagg !== -1 ? argv.splice(sideFlagg, 2)[1] : 'https://oppskalert.no/';
 
 /* webmasters gir lese OG skrive (sitemap-innsending, legge til eiendom).
    siteverification trengs først når vi skal verifisere kundesider herfra. */
@@ -191,12 +193,16 @@ const periode = (dager) => {
   return { startDate: iso(start), endDate: iso(slutt) };
 };
 
-async function ytelse(dimensjon, dager) {
+/* rowLimit 25 gir de 25 FORSTE radene, ikke de storste. APIet sorterer paa
+   klikk, og med et nytt domene er alle klikk null, saa rekkefolgen faller
+   tilbake paa alfabetisk. Hent bredt og sorter paa visninger her i stedet. */
+async function ytelse(dimensjon, dager, antall = 25) {
   const d = await api(`/sites/${encodeURIComponent(SITE)}/searchAnalytics/query`, {
     metode: 'POST',
-    body: { ...periode(dager), dimensions: [dimensjon], rowLimit: 25 },
+    body: { ...periode(dager), dimensions: [dimensjon], rowLimit: 5000 },
   });
-  return (d.rows || []).map((r) => ({
+  const rader = (d.rows || []).sort((a, b) => b.impressions - a.impressions).slice(0, antall);
+  return rader.map((r) => ({
     [dimensjon === 'query' ? 'søk' : 'side']: r.keys[0].replace('https://oppskalert.no', '') || '/',
     klikk: r.clicks,
     visninger: r.impressions,
@@ -266,7 +272,7 @@ const kommandoer = {
   },
 };
 
-const [cmd, ...rest] = process.argv.slice(2);
+const [cmd, ...rest] = argv;
 if (!cmd || !kommandoer[cmd]) {
   console.error(`Ukjent kommando. Velg en av: ${Object.keys(kommandoer).join(', ')}`);
   process.exit(1);
