@@ -185,7 +185,7 @@ const TidligCta = ({ tekst }) => (
       fyll og kantlinje, tekstlenke i stedet for fylt knapp. Aksentfyllet er
       reservert til den siste. */
 const MidtCta = ({ tittel, tekst }) => (
-  <aside className="my-12 rounded-[2rem] border border-primary/12 bg-primary/[0.04] p-7 md:p-8">
+  <aside className="my-12 rounded-[2rem] border border-primary/10 bg-primary/[0.04] p-7 md:p-8">
     <h3 className="font-sans font-bold text-lg md:text-xl tracking-tight mb-2.5">{tittel}</h3>
     <p className="font-body text-[0.95rem] text-primary/80 leading-relaxed mb-5 max-w-[52ch]">{tekst}</p>
     <Link

@@ -30,7 +30,7 @@ const Kontrast = () => {
           lede="De fleste vil ha betalt for å tenke. Jeg vil heller bygge noe du kan se på, og la det avgjøre."
         />
         <div className="grid gap-5 md:grid-cols-2 max-w-[52rem]">
-          <div data-reveal className="rounded-2xl border border-primary/12 p-7">
+          <div data-reveal className="rounded-2xl border border-primary/10 p-7">
             <h3 className="font-sans font-bold text-lg mb-5 text-primary/75">Den vanlige veien</h3>
             <ul className="flex flex-col gap-3">
               {vanlig.map((v) => (

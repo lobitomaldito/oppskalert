@@ -5,74 +5,87 @@ import { SeksjonTopp, KortRad } from './Layout';
 import { cn } from '../lib/utils';
 import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
 
-/* To modeller side om side. Her er kort riktig virkemiddel: to alternativer
-   som skal sammenlignes punkt for punkt, ikke dekorasjon. className kommer
+/* To modeller side om side, og to ulike verdener. Engangspris er kortet du
+   eier og går videre med: hvitt, ferdig, avsluttet. Drift er kortet jeg
+   passer på for deg: mørkt som skallet rundt, en pågående avtale i stedet
+   for en kvittering. Kontrasten er meningsbærende, ikke dekorativ, den
+   samme forskjellen som modellene faktisk representerer. className kommer
    fra KortRad (bredden på mobil), derfor cn() i stedet for en ren streng. */
-const Modell = ({ m, visPasserDeg = false, className }) => (
-  <div
-    data-reveal
-    className={cn(
-      'relative flex flex-col rounded-2xl p-7 md:p-8 border',
-      m.fremhevet ? 'border-accent bg-surface/25' : 'border-primary/12 bg-primary/[0.03]',
-      className,
-    )}
-  >
-    {m.fremhevet && (
-      <span className="absolute top-0 right-7 -translate-y-1/2 bg-accent text-background text-sm font-body px-3.5 py-1 rounded-full font-semibold">
-        Mest valgt
-      </span>
-    )}
+const Modell = ({ m, visPasserDeg = false, className }) => {
+  const paDrift = m.id === 'drift';
+  return (
+    <div
+      data-reveal
+      className={cn(
+        'relative flex flex-col rounded-2xl p-7 md:p-8 border',
+        paDrift
+          ? 'bg-background text-ink border-accent/40'
+          : 'bg-surface text-room-ink border-room-ink/20',
+        className,
+      )}
+    >
+      {m.fremhevet && (
+        <span className="absolute top-0 right-7 -translate-y-1/2 bg-accent text-background text-sm font-body px-3.5 py-1 rounded-full font-semibold">
+          Mest valgt
+        </span>
+      )}
 
-    <h3 className="font-sans font-bold text-xl">{m.navn}</h3>
-    <p className="font-body text-[0.95rem] text-primary/80 mt-2.5 leading-relaxed min-h-[3em]">{m.tagline}</p>
+      <h3 className="font-sans font-bold text-xl">{m.navn}</h3>
+      <p className={cn('font-body text-[0.95rem] mt-2.5 leading-relaxed min-h-[3em]', paDrift ? 'text-ink/80' : 'text-room-ink/70')}>
+        {m.tagline}
+      </p>
 
-    <div className="mt-6 flex items-baseline gap-1.5">
-      <span className="font-body text-sm text-primary/70">fra</span>
-      <span className="font-display font-extrabold text-[2.75rem] leading-none tracking-[-0.03em]">{m.fra}</span>
-      <span className="font-body text-sm text-primary/70">{m.enhet}</span>
-    </div>
-    <span className="font-body text-sm text-primary/70 mt-1.5">{m.periode}</span>
+      <div className="mt-6 flex items-baseline gap-1.5">
+        <span className={cn('font-body text-sm', paDrift ? 'text-ink/70' : 'text-room-ink/70')}>fra</span>
+        <span className="font-display font-extrabold text-[2.75rem] leading-none tracking-[-0.03em]">{m.fra}</span>
+        <span className={cn('font-body text-sm', paDrift ? 'text-ink/70' : 'text-room-ink/70')}>{m.enhet}</span>
+      </div>
+      <span className={cn('font-body text-sm mt-1.5', paDrift ? 'text-ink/70' : 'text-room-ink/70')}>{m.periode}</span>
 
-    {/* Kun på engangspris-kortet: kalkulatoren regner ut et scope-basert
-        engangsestimat, ikke et månedsbeløp, så den hører hjemme her og
-        ikke på driftskortet ved siden av. */}
-    {m.id === 'engangs' && (
-      <Link
-        to={ruter.kalkulator}
-        className="font-body text-sm text-accent hover:text-highlight transition-colors underline underline-offset-2 mt-2 inline-block w-fit"
-      >
-        Regn ut prisen for din side →
-      </Link>
-    )}
+      {/* Kun på engangspris-kortet: kalkulatoren regner ut et scope-basert
+          engangsestimat, ikke et månedsbeløp, så den hører hjemme her og
+          ikke på driftskortet ved siden av. */}
+      {m.id === 'engangs' && (
+        <Link
+          to={ruter.kalkulator}
+          className="font-body text-sm text-room-signal hover:opacity-80 transition-opacity underline underline-offset-2 mt-2 inline-block w-fit"
+        >
+          Regn ut prisen for din side →
+        </Link>
+      )}
 
-    {visPasserDeg && (
-      <ul className="mt-6 pt-5 border-t border-primary/10 flex flex-col gap-2.5">
-        <li className="font-body text-sm text-primary/70 mb-1">Passer deg som</li>
-        {m.passerDeg.map((p) => (
-          <li key={p} className="font-body text-[0.95rem] text-primary/80 leading-relaxed">– {p}</li>
+      {visPasserDeg && (
+        <ul className={cn('mt-6 pt-5 border-t flex flex-col gap-2.5', paDrift ? 'border-ink/20' : 'border-room-ink/20')}>
+          <li className={cn('font-body text-sm mb-1', paDrift ? 'text-ink/70' : 'text-room-ink/70')}>Passer deg som</li>
+          {m.passerDeg.map((p) => (
+            <li key={p} className={cn('font-body text-[0.95rem] leading-relaxed', paDrift ? 'text-ink/80' : 'text-room-ink/70')}>
+              – {p}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <ul className="mt-6 flex flex-col gap-3 flex-1">
+        {m.inkludert.map((f) => (
+          <li key={f} className={cn('flex items-start gap-2.5 font-body text-[0.95rem] leading-relaxed', paDrift ? 'text-ink/80' : 'text-room-ink/70')}>
+            <Check className={cn('w-4 h-4 mt-0.5 flex-shrink-0', paDrift ? 'text-accent' : 'text-room-signal')} aria-hidden="true" />
+            {f}
+          </li>
         ))}
       </ul>
-    )}
 
-    <ul className="mt-6 flex flex-col gap-3 flex-1">
-      {m.inkludert.map((f) => (
-        <li key={f} className="flex items-start gap-2.5 font-body text-[0.95rem] text-primary/80 leading-relaxed">
-          <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" aria-hidden="true" />
-          {f}
-        </li>
-      ))}
-    </ul>
-
-    <Link
-      to={ruter.kontakt}
-      className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] ${
-        m.fremhevet ? 'bg-accent text-background' : 'bg-primary/10 hover:bg-primary/[0.16]'
-      }`}
-    >
-      Bestill gratis demo <ArrowRight className="w-4 h-4" />
-    </Link>
-  </div>
-);
+      <Link
+        to={ruter.kontakt}
+        className={cn(
+          'mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]',
+          paDrift ? 'bg-accent text-background' : 'bg-room-ink text-surface',
+        )}
+      >
+        Bestill gratis demo <ArrowRight className="w-4 h-4" />
+      </Link>
+    </div>
+  );
+};
 
 const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }) => {
   const container = useReveal(90);
@@ -100,7 +113,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         </p>
 
         {visAlltidMed ? (
-          <div data-reveal className="mt-12 rounded-2xl border border-primary/12 bg-primary/[0.03] p-7 md:p-9 max-w-[52rem]">
+          <div data-reveal className="mt-12 rounded-2xl border border-primary/20 p-7 md:p-9 max-w-[52rem]">
             <h3 className="font-sans font-bold text-lg mb-6">Alt dette følger med, uansett modell.</h3>
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
               {alltidMed.map((f) => (

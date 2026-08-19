@@ -22,7 +22,7 @@ const Metode = ({ utdypet = false }) => {
       className={
         utdypet
           ? 'md:grid md:grid-cols-[auto_1fr] md:gap-8'
-          : 'relative rounded-2xl border border-room-ink/15 bg-room-ink/[0.05] p-6'
+          : 'relative rounded-2xl border border-room-ink/20 bg-room-ink/10 p-6'
       }
     >
       <div className="flex items-center gap-4 mb-4">
@@ -33,7 +33,7 @@ const Metode = ({ utdypet = false }) => {
           {i + 1}
         </span>
         {utdypet && (
-          <span className="md:hidden font-body text-sm text-room-ink/75">{s.tid}</span>
+          <span className="md:hidden font-body text-sm text-room-ink/70">{s.tid}</span>
         )}
       </div>
 
@@ -50,11 +50,11 @@ const Metode = ({ utdypet = false }) => {
         {/* Kortene sto nesten tomme. I en horisontal scroller koster høyde
             ingenting, så her er det plass til å faktisk si hva steget er. */}
         {!utdypet && (
-          <p className="font-body text-[0.95rem] leading-relaxed mt-3 text-room-ink/85">{s.kort}</p>
+          <p className="font-body text-[0.95rem] leading-relaxed mt-3 text-room-ink/80">{s.kort}</p>
         )}
 
         {utdypet && (
-          <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/90 max-w-[58ch]">{s.desc}</p>
+          <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/80 max-w-[58ch]">{s.desc}</p>
         )}
 
         {utdypet && (
@@ -66,7 +66,7 @@ const Metode = ({ utdypet = false }) => {
         )}
 
         {i === 0 && !utdypet && (
-          <span className="inline-flex items-center font-body text-sm px-3 py-1 rounded-full mt-4 bg-room-signal/12 text-room-signal">
+          <span className="inline-flex items-center font-body text-sm px-3 py-1 rounded-full mt-4 bg-room-signal/10 text-room-signal">
             Gratis, ingen binding
           </span>
         )}
@@ -78,7 +78,7 @@ const Metode = ({ utdypet = false }) => {
           en høyrepil på kort nummer to peke ut i ingenting. */}
       {!utdypet && i < stegene.length - 1 && (
         <ArrowRight
-          className="absolute top-1/2 -right-[1.6rem] -translate-y-1/2 w-5 h-5 text-room-signal/50 sm:hidden lg:block"
+          className="absolute top-1/2 -right-[1.6rem] -translate-y-1/2 w-5 h-5 text-room-signal/70 sm:hidden lg:block"
           aria-hidden="true"
         />
       )}
@@ -92,7 +92,7 @@ const Metode = ({ utdypet = false }) => {
           <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
             Demoen kommer først. Regningen kommer sist.
           </h2>
-          <p className="font-body text-sm md:text-base mt-4 max-w-[54ch] leading-relaxed text-room-ink/85">
+          <p className="font-body text-sm md:text-base mt-4 max-w-[54ch] leading-relaxed text-room-ink/80">
             De fleste vil ha møter, tilbud og forskudd før du ser noe som helst. Jeg snur på det: du får en ferdig side å klikke i før du har betalt en krone.
           </p>
         </div>

@@ -17,7 +17,7 @@ const SammenlignDetalj = ({ data }) => {
       />
       <section ref={container} className="seksjon pt-0">
         <div className="wrap">
-          <div data-reveal className="overflow-x-auto rounded-2xl border border-primary/12">
+          <div data-reveal className="overflow-x-auto rounded-2xl border border-primary/10">
             <table className="w-full border-collapse min-w-[38rem]">
               <caption className="sr-only">Sammenligning av meg og {data.navn}</caption>
               <thead>

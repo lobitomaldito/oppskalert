@@ -35,7 +35,7 @@ const FAQ = ({
             const panelId = `${uid}-panel-${i}`;
             const knappId = `${uid}-knapp-${i}`;
             return (
-              <div key={item.q} data-reveal className={`border-primary/15 ${i === 0 ? 'border-y' : 'border-b'}`}>
+              <div key={item.q} data-reveal className={`border-primary/20 ${i === 0 ? 'border-y' : 'border-b'}`}>
                 <h3>
                   <button
                     id={knappId}

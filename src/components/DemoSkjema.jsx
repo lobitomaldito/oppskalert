@@ -10,11 +10,11 @@ const feltKlasse =
   'w-full bg-room-ink/5 border border-room-ink/25 rounded-full px-6 py-4 font-body text-sm text-room-ink placeholder:text-room-ink/70 focus:outline-none focus:border-room-ink/60 transition-colors';
 
 // Samme korttaktikk som priskalkulatoren (valgt = fylt kant + hake), bare
-// overført til krem-rommets farger. Tidligere versjon var tynne piller uten
-// beskrivelse — for lite fysisk tilstedeværelse til å føles trykkbare.
+// overført til rommets farger. Tidligere versjon var tynne piller uten
+// beskrivelse, for lite fysisk tilstedeværelse til å føles trykkbare.
 const kortKlasse = (valgt) =>
   `text-left rounded-2xl border px-5 py-4 transition-all duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-room-signal/50 ${
-    valgt ? 'border-room-signal bg-room-signal/15' : 'border-room-ink/20 bg-room-ink/[0.03] hover:border-room-ink/40'
+    valgt ? 'border-room-signal bg-room-signal/20' : 'border-room-ink/20 bg-room-ink/10 hover:border-room-ink/40'
   }`;
 
 const Hake = ({ valgt }) => (

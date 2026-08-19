@@ -24,7 +24,7 @@ const DriftKort = ({ nivaa }) => (
   <div
     data-reveal
     className={`relative flex flex-col h-full rounded-2xl p-7 md:p-8 border ${
-      nivaa.fremhevet ? 'border-accent bg-surface/25' : 'border-primary/12 bg-primary/[0.03]'
+      nivaa.fremhevet ? 'border-accent bg-surface/25' : 'border-primary/10 bg-primary/[0.03]'
     }`}
   >
     {nivaa.fremhevet && (
@@ -83,7 +83,7 @@ const Sammenligning = () => {
     <section ref={container} className="seksjon">
       <div className="wrap">
         <SeksjonTopp tittel="Full oversikt," uthevet="rad for rad." />
-        <div data-reveal className="overflow-x-auto rounded-2xl border border-primary/12">
+        <div data-reveal className="overflow-x-auto rounded-2xl border border-primary/10">
           <table className="w-full border-collapse min-w-[36rem]">
             <caption className="sr-only">Sammenligning av de tre driftsnivåene</caption>
             <thead>

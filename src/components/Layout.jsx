@@ -25,33 +25,26 @@ export const ScrollToTop = () => {
 /* Ett navigasjonsoppsett for hele siden. Før lå det to ulike navbarer
    i App.jsx og VårtArbeidPage.jsx, med forskjellige lenker. Det er
    grunnen til at "Løsninger" og "Filosofi" pekte på seksjoner som ikke
-   fantes lenger. */
+   fantes lenger.
+
+   Studio-mal-redesignet (19. august 2026) dropper den svevende,
+   scroll-fargede pillen: skallet veksler mellom mørkt og lyst felt seksjon
+   for seksjon, og en nav som toner mellom to fargesett samtidig som
+   innholdet under den bytter, blir uleselig i overgangen. Navbaren står nå
+   fast på hvitt (--surface) med mørk skrift (--room-ink) uansett hva som
+   ruller forbi under, med en tynn bunnkant som vises etter første scroll. */
 export const Navbar = () => {
   const navRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const lukk = () => setMenuOpen(false);
 
   useEffect(() => {
-    // GSAP animerer inline-stiler, så vi kan ikke bruke Tailwind-klasser her.
-    // Fargene leses derfor ut av tokens i stedet for å skrives som literaler:
-    // navbaren hadde en hardkodet dusty grape som overlevde palettbyttet og
-    // ble et lilla felt midt på en krembakgrunn.
-    const tok = (navn, alpha) => {
-      const v = getComputedStyle(document.documentElement).getPropertyValue(navn).trim().split(/\s+/).join(', ');
-      return `rgba(${v}, ${alpha})`;
-    };
     const ctx = gsap.context(() => {
       ScrollTrigger.create({
         start: 'top -50',
         end: 99999,
-        onUpdate: (self) => {
-          gsap.to(navRef.current, {
-            backgroundColor: self.isActive ? tok('--surface', 0.92) : tok('--surface', 0),
-            backdropFilter: self.isActive ? 'blur(8px)' : 'blur(0px)',
-            borderColor: self.isActive ? tok('--ink', 0.12) : tok('--ink', 0),
-            duration: 0.3,
-          });
-        },
+        onUpdate: (self) => setScrolled(self.isActive),
       });
     }, navRef);
     return () => ctx.revert();
@@ -66,16 +59,19 @@ export const Navbar = () => {
   }, [menuOpen]);
 
   const linkClass = ({ isActive }) =>
-    `transition-colors duration-200 hover:text-primary ${isActive ? 'text-accent' : 'text-primary/70'}`;
+    `transition-colors duration-200 hover:text-room-ink ${isActive ? 'text-room-signal' : 'text-room-ink/60'}`;
 
   return (
     <>
       <nav
         ref={navRef}
-        className="fixed top-6 left-1/2 -translate-x-1/2 z-nav flex items-center justify-between gap-6 px-6 py-3 rounded-full border border-transparent w-[92%] max-w-[68rem] text-primary"
+        className={cn(
+          'fixed top-0 inset-x-0 z-nav flex items-center justify-between gap-6 px-6 md:px-10 py-4 bg-surface text-room-ink transition-shadow duration-300',
+          scrolled ? 'shadow-[0_1px_0_rgb(var(--room-ink)/0.1)]' : '',
+        )}
       >
         <Link to={ruter.hjem} className="font-display font-extrabold text-2xl tracking-tight lowercase flex-shrink-0">
-          oppskalert<span className="text-accent">.</span>
+          oppskalert<span className="text-room-signal">.</span>
         </Link>
 
         <div className="hidden lg:flex items-center gap-7 font-body text-sm">
@@ -86,7 +82,7 @@ export const Navbar = () => {
 
         <Link
           to={ruter.kontakt}
-          className="hidden sm:inline-flex items-center gap-2 flex-shrink-0 bg-accent text-background px-5 py-2.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
+          className="hidden sm:inline-flex items-center gap-2 flex-shrink-0 bg-room-ink text-surface px-5 py-2.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
         >
           Gratis demo
         </Link>
@@ -106,7 +102,7 @@ export const Navbar = () => {
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="lg:hidden fixed inset-x-0 top-0 z-meny pt-24 pb-8 px-6 bg-background/95 backdrop-blur-md border-b border-primary/10"
+          className="lg:hidden fixed inset-x-0 top-[64px] z-meny pt-4 pb-8 px-6 bg-surface text-room-ink border-b border-room-ink/10"
         >
           <div className="flex flex-col max-w-[68rem] mx-auto">
             {navLenker.map((l) => (
@@ -114,7 +110,7 @@ export const Navbar = () => {
                 key={l.label}
                 to={l.to}
                 onClick={lukk}
-                className="font-body text-base text-primary/80 hover:text-primary py-4 border-b border-primary/10 transition-colors"
+                className="font-body text-base text-room-ink/80 hover:text-room-ink py-4 border-b border-room-ink/10 transition-colors"
               >
                 {l.label}
               </NavLink>
@@ -122,7 +118,7 @@ export const Navbar = () => {
             <Link
               to={ruter.kontakt}
               onClick={lukk}
-              className="mt-6 inline-flex items-center justify-center gap-2 bg-accent text-background px-6 py-4 rounded-full font-sans font-bold text-base"
+              className="mt-6 inline-flex items-center justify-center gap-2 bg-room-ink text-surface px-6 py-4 rounded-full font-sans font-bold text-base"
             >
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </Link>
@@ -133,10 +129,28 @@ export const Navbar = () => {
   );
 };
 
+/* Ordmerket nederst skal fylle hele bredden av wrap-kolonnen, uansett
+   skjermbredde. Første forsøk målte bredden i DOM-en med JS og regnet
+   font-size ut derfra, men landet på font-size: 0px i praksis (raste
+   sammen til usynlig ved mount, aldri korrigert). Samme løsning som
+   heroens vannmerke bruker allerede og som er bevist å virke: en ren
+   CSS clamp() i vw, ingen JS, ingen målefeil mulig. Låst til ca. 11
+   tegn ("oppskalert.") ved maks-bredden --maks (68rem), derav 5,7vw. */
+const StortOrdmerke = () => (
+  <div className="overflow-hidden w-full">
+    <span
+      style={{ fontSize: 'clamp(3rem, 10.5vw, 7.6rem)', letterSpacing: '-0.03em' }}
+      className="font-display font-extrabold lowercase leading-none block whitespace-nowrap -mx-1"
+    >
+      oppskalert<span className="text-accent">.</span>
+    </span>
+  </div>
+);
+
 export const Footer = () => (
-  <footer className="bg-deep text-primary pt-20 pb-8">
+  <footer className="bg-deep text-ink pt-20 pb-10">
     <div className="wrap">
-      <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 pb-14 border-b border-primary/10">
+      <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 pb-14 border-b border-ink/10">
         <h2 className="font-display font-extrabold text-4xl md:text-5xl tracking-tight leading-[1.05] max-w-[16ch]">
           La oss bygge noe bra sammen.
         </h2>
@@ -153,55 +167,59 @@ export const Footer = () => (
           <span className="font-display font-extrabold text-2xl tracking-tight lowercase block mb-2">
             oppskalert<span className="text-accent">.</span>
           </span>
-          <p className="font-body text-primary/70 text-sm leading-relaxed">
+          <p className="font-body text-ink/70 text-sm leading-relaxed">
             Norsk webutvikling. Én person, hele jobben, fra første skisse til ferdig nettside.
           </p>
         </div>
 
         <div className="flex flex-wrap gap-x-14 gap-y-8 font-body text-sm">
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 text-sm font-semibold mb-1">Kontakt</span>
-            <span className="text-primary/70">{kontakt.navn}</span>
-            <a href={`tel:${kontakt.tel}`} className="text-primary hover:text-accent transition-colors">{kontakt.telefon}</a>
+            <span className="text-ink/70 text-sm font-semibold mb-1">Kontakt</span>
+            <span className="text-ink/70">{kontakt.navn}</span>
+            <a href={`tel:${kontakt.tel}`} className="text-ink hover:text-accent transition-colors">{kontakt.telefon}</a>
             <a href={`mailto:${kontakt.epost}`} className="text-accent hover:text-highlight transition-colors">{kontakt.epost}</a>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 text-sm font-semibold mb-1">Snarveier</span>
+            <span className="text-ink/70 text-sm font-semibold mb-1">Snarveier</span>
             {navLenker.map((l) => (
-              <Link key={l.label} to={l.to} className="text-primary/70 hover:text-primary transition-colors">{l.label}</Link>
+              <Link key={l.label} to={l.to} className="text-ink/70 hover:text-ink transition-colors">{l.label}</Link>
             ))}
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 text-sm font-semibold mb-1">Tjenester</span>
-            <Link to={ruter.nettsideDesign} className="text-primary/70 hover:text-primary transition-colors">Nettsidedesign</Link>
-            <Link to={ruter.nettsideBedrift} className="text-primary/70 hover:text-primary transition-colors">Nettside til bedrift</Link>
-            <Link to={ruter.nettbutikk} className="text-primary/70 hover:text-primary transition-colors">Lage nettbutikk</Link>
-            <Link to={ruter.webdesignOslo} className="text-primary/70 hover:text-primary transition-colors">Webdesign i Oslo</Link>
-            <Link to={ruter.seo} className="text-primary/70 hover:text-primary transition-colors">Søkemotoroptimalisering</Link>
-            <Link to={ruter.drift} className="text-primary/70 hover:text-primary transition-colors">Drift og support</Link>
+            <span className="text-ink/70 text-sm font-semibold mb-1">Tjenester</span>
+            <Link to={ruter.nettsideDesign} className="text-ink/70 hover:text-ink transition-colors">Nettsidedesign</Link>
+            <Link to={ruter.nettsideBedrift} className="text-ink/70 hover:text-ink transition-colors">Nettside til bedrift</Link>
+            <Link to={ruter.nettbutikk} className="text-ink/70 hover:text-ink transition-colors">Lage nettbutikk</Link>
+            <Link to={ruter.webdesignOslo} className="text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
+            <Link to={ruter.seo} className="text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
+            <Link to={ruter.drift} className="text-ink/70 hover:text-ink transition-colors">Drift og support</Link>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 text-sm font-semibold mb-1">Verktøy</span>
-            <Link to={ruter.kalkulator} className="text-primary/70 hover:text-primary transition-colors">Priskalkulator</Link>
-            <Link to={ruter.sammenlign} className="text-primary/70 hover:text-primary transition-colors">Sammenlign</Link>
-            <Link to={RUTE_VANLIGE_SPORSMAL} className="text-primary/70 hover:text-primary transition-colors">Vanlige spørsmål</Link>
+            <span className="text-ink/70 text-sm font-semibold mb-1">Verktøy</span>
+            <Link to={ruter.kalkulator} className="text-ink/70 hover:text-ink transition-colors">Priskalkulator</Link>
+            <Link to={ruter.sammenlign} className="text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
+            <Link to={RUTE_VANLIGE_SPORSMAL} className="text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
           </div>
           <div className="flex flex-col gap-3">
-            <span className="text-primary/70 text-sm font-semibold mb-1">Selskap</span>
-            <span className="text-primary/70">Orgnr {kontakt.orgnr}</span>
-            <span className="text-primary/70">{kontakt.sted}</span>
-            <span className="text-primary/70">Et datterselskap av<br />{kontakt.morselskap}</span>
+            <span className="text-ink/70 text-sm font-semibold mb-1">Selskap</span>
+            <span className="text-ink/70">Orgnr {kontakt.orgnr}</span>
+            <span className="text-ink/70">{kontakt.sted}</span>
+            <span className="text-ink/70">Et datterselskap av<br />{kontakt.morselskap}</span>
           </div>
         </div>
       </div>
 
-      <div className="mt-12 pt-6 border-t border-primary/10 flex flex-wrap gap-4 justify-between items-center font-body text-sm text-primary/70">
+      <div className="mt-12 pt-6 border-t border-ink/10 flex flex-wrap gap-4 justify-between items-center font-body text-sm text-ink/70">
         <p>&copy; {new Date().getFullYear()} {kontakt.morselskap}.</p>
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-highlight animate-pulse" />
           <span>Ledig for nye prosjekter</span>
         </div>
       </div>
+    </div>
+
+    <div className="wrap mt-16">
+      <StortOrdmerke />
     </div>
   </footer>
 );

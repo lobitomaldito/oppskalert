@@ -75,41 +75,47 @@
 @tailwind utilities;
 
 /* ============================================================
-   TOKENS: "Midnattsverkstedet"
-   Auberginen er merkevaren. Alt her er den samme paletten som
-   før, bare samlet ett sted i stedet for spredt som hex-literaler
-   gjennom komponentene.
+   TOKENS: "Verkstedrommet"
+   Redesign 19. august 2026, etter studio-mal-demoen (mammutstudios.com-
+   inspirert, se inspirasjon/demo-studio-mal.md). Erstatter den mørke
+   auberginepaletten med to nøytrale flater og null aksentfarge i skallet:
+   all farge på siden skal komme fra kundearbeidet som vises fram, ikke
+   fra merkevaren selv.
 
-   Kontrastgulv (målt mot #201335):
-     ivory ≥ 50%  for AA på aubergine
-     ivory ≥ 70%  for AA på dusty grape (--surface)
-   Derfor: --ink-faint er KUN trygg på --bg. På surface-kort,
-   bruk --ink-muted. Se DESIGN.md.
+   Kontrastgulv (målt i demoen):
+     blekk på felt   15,0:1
+     dempet på felt   5,4:1
+     kritt på blekk  16,8:1
+     dempet kritt     7,2:1
    ============================================================ */
 @layer base {
   :root {
-    /* Flater. Kremen ble prøvd som standardflate i august 2026 og rullet
-       tilbake: auberginen ER merkevaren, og på krem ble den redusert til
-       et innslag. Kremen er derfor det sjeldne rommet igjen. */
-    --bg:        32 19 53;      /* #201335  midnattsaubergine */
-    --bg-deep:   23 14 38;      /* #170e26  dypere bånd (fot, prisrom) */
-    --surface:   79 71 137;     /* #4f4789  dusty grape, løftet flate */
+    /* Flater. To nøytraler, ingen gradient. --bg er det blekke skallet
+       (mørk), --room er periwinkle-feltet (lys). De veksler seksjon for
+       seksjon i stedet for at én er "hoved" og én er "sjelden". */
+    --bg:        18 17 29;      /* #12111d  blekk */
+    --bg-deep:   12 11 20;      /* mørkere variant, kun for footer-bånd */
+    --surface:   255 255 255;   /* rent hvitt, veksler med --room */
 
-    /* Blekk på mørkt */
-    --ink:       255 253 237;   /* #fffded  ivory */
+    /* Kritt på blekk */
+    --ink:       243 242 251;   /* #f3f2fb  kritt */
 
-    /* Aksenter */
-    --signal:    255 177 122;   /* #ffb17a  sandy brown, konverteringsstien */
-    --signal-hi: 252 231 98;    /* #fce762  banana cream, sjelden og aldri fyll */
+    /* Aksent. Bevisst nesten fraværende: kun punktumet i ordmerket. */
+    --signal:    255 177 122;   /* #ffb17a  på blekk (mørk bg) */
+    --signal-hi: 252 231 98;    /* #fce762  sjelden, aldri fyll */
 
-    /* Lyst rom */
-    --room:        245 230 216; /* #f5e6d8  varm krem */
-    --room-ink:    32 19 53;    /* aubergine som blekk på krem */
-    --room-signal: 138 77 44;   /* #8a4d2c  clay, 5.4:1 på krem */
+    /* Lyst rom: periwinkle-feltet */
+    --room:        230 229 246; /* #e6e5f6  felt */
+    --room-deep:   220 218 241; /* #dcdaf1  vannmerke bak overskrifter */
+    --room-ink:    18 17 29;    /* samme blekk som --bg, som ink på felt */
+    --room-signal: 184 85 26;   /* #b8551a  clay, punktum på felt (1,4:1 uten dette) */
 
-    /* Blekk-nivåer (alpha på ivory) */
-    --ink-muted: 0.72;          /* 9.2:1 på bg · 5.0:1 på surface, trygg overalt */
-    --ink-faint: 0.58;          /* 6.2:1 på bg, KUN på bg */
+    /* Blekk-nivåer (alpha på kritt, kun brukt på --bg) */
+    --ink-muted: 0.75;          /* ≈ #a09eb8 mot blekk, 7,2:1 */
+    --ink-faint: 0.62;
+
+    /* Samme nivåer på felt (alpha på room-ink) */
+    --room-ink-muted: 0.68;     /* ≈ #5c5a70 mot felt, 5,4:1 */
 
     /* Rytme */
     --gutter:  clamp(1.25rem, 5vw, 3rem);

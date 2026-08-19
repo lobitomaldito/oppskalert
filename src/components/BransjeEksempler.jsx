@@ -60,7 +60,7 @@ const BransjeEksempler = () => {
 
                 <span
                   className="absolute top-4 left-4 text-sm font-body px-3 py-1 rounded-full font-semibold"
-                  style={{ backgroundColor: n.accent, color: '#201335' }}
+                  style={{ backgroundColor: n.accent, color: 'rgb(var(--room-ink))' }}
                 >
                   {n.tag}
                 </span>
@@ -80,7 +80,7 @@ const BransjeEksempler = () => {
         </KortRad>
 
         {/* Avslutning: knytter til "jeg lager alle slags sider" */}
-        <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-primary/12 pt-10">
+        <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-primary/10 pt-10">
           <p className="font-body text-[0.95rem] md:text-base text-primary/80 max-w-md leading-relaxed">
             Finner du ikke din bransje? Jeg lager nettsider for alle, og bygger gjerne en gratis demo av nettopp din.
           </p>

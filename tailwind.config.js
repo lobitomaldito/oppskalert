@@ -23,6 +23,7 @@ export default {
         highlight: tok('--signal-hi'),
         darkText: tok('--ink'),
         room: tok('--room'),
+        'room-deep': tok('--room-deep'),
         'room-ink': tok('--room-ink'),
         'room-signal': tok('--room-signal'),
       },
