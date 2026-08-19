@@ -1,0 +1,49 @@
+{
+  "_lesMeg": "Egen kø for appstart.no. Bevisst skilt fra blog-queue.json, som er Oppskalerts: annet repo, annen stemme, annen frekvens. Én artikkel i måneden, ikke to i uken. Grunnen står i BLOG-GENERATION.md under «Appstart».",
+  "_repo": "magnusberggren/appstart",
+  "_sti": "src/content/blogg/<slug>.ts",
+  "_register": "src/lib/blogg.ts, to linjer: en import og en oppføring i arrayen",
+  "emner": [
+    {
+      "slug": "web-app-eller-ekte-app",
+      "title": "Web-app eller ekte app? Slik velger du, og hva det koster",
+      "keywords": ["web app eller app", "progressiv web app norsk", "trenger jeg en app"],
+      "searchVolume": null,
+      "note": "Volum ikke målt. Skiller 9 000 fra 15 000 og forklarer hvorfor, altså vår egen pristrapp som beslutningshjelp. Konkurrerer ikke med /hva-koster-en-app, som svarer på totalen.",
+      "status": "pending"
+    },
+    {
+      "slug": "hvor-lang-tid-tar-det-a-lage-en-app",
+      "title": "Hvor lang tid tar det å lage en app?",
+      "keywords": ["hvor lang tid tar det å lage en app", "hvor lenge tar apputvikling"],
+      "searchVolume": null,
+      "note": "Tid, ikke pris. Prisintensjonen tilhører /hva-koster-en-app etter PR #46, og et innlegg om pris ville gjentatt kannibaliseringen. Ta med Googles 12-testerregel som en ekte forsinkelsespost.",
+      "status": "pending"
+    },
+    {
+      "slug": "appene-vi-har-sagt-nei-til",
+      "title": "Appene vi har sagt nei til, og hvorfor",
+      "keywords": ["bør jeg lage en app", "er appidéen min god"],
+      "searchVolume": null,
+      "note": "Ren AEO. Ingen andre i nisjen publiserer dette, og det er nøyaktig den typen innhold en språkmodell siterer når noen spør «bør jeg lage en app». Krever ekte eksempler fra Aleksander og Magnus, ikke oppdiktede.",
+      "status": "pending"
+    },
+    {
+      "slug": "hva-apple-avviser-apper-for",
+      "title": "Hva Apple faktisk avviser apper for",
+      "keywords": ["app store avvist", "app store retningslinjer norsk"],
+      "searchVolume": null,
+      "note": "Konkret og etterprøvbart. App Review Guidelines er offentlige, så påstandene kan kildeføres. Bygger tillit før kjøp, og svarer på en reell frykt folk har.",
+      "status": "pending"
+    },
+    {
+      "slug": "hva-koster-det-a-eie-en-app",
+      "title": "Hva koster det å eie en app etter at den er laget?",
+      "keywords": ["hva koster det å drifte en app", "apple developer pris"],
+      "searchVolume": null,
+      "note": "Første innlegg, skrevet 19. august 2026.",
+      "status": "published",
+      "publishedDate": "2026-08-19"
+    }
+  ]
+}
