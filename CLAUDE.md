@@ -20,6 +20,17 @@ Serverless-funksjoner ligger i `api/`.
 
 ---
 
+## Deploysperre: `FONTLISENS.md`
+
+**Branchen `redesign/studio-mal` skal ikke deployes eller merges til master
+før hele sjekklisten i `FONTLISENS.md` i repo-roten er krysset av.**
+Redesignet bruker Suisse Int'l og GT Sectra Fine, og filene som ligger i
+`public/fonts/` nå er ulisensierte konverteringer, ikke rettighetshavernes
+egne. Se `FONTLISENS.md` for hva som må kjøpes og byttes ut først. Dette er
+en hard sperre, ikke en påminnelse.
+
+---
+
 ## Regler for tekst som går live
 
 Disse er harde krav, ikke forslag. Feil her går rett ut på et kundevendt
@@ -96,6 +107,20 @@ registreres med to linjer i `index.js` i samme mappe, en import og en
 oppføring i arrayen. Tidligere fant en `import.meta.glob` filene automatisk,
 men den måtte vekk fordi den drepte sitemap-ruten. Se felle 2 over.
 
+### Case-sidene under `/arbeid`
+
+Redesignet la til seks case-ruter, `/arbeid/<slug>`, én per kundeprosjekt.
+Slugene ligger i `caser`-arrayen i `src/lib/demo-innhold.js`. Som alle andre
+ruter må de registreres tre steder, ikke bare i router-en:
+
+- `src/main.jsx`, som `<Route path="/arbeid/:slug" element={<CasePage />} />`
+- `ROUTES` i `scripts/prerender.mjs`, via `...caser.map(c => \`/arbeid/${c.slug}\`)`
+- `STATIC_PATHS` i `api/sitemap.xml.js`, samme mønster
+
+Se felle 1 over: glemmer du ett av de tre, får ruten forsidens HTML og title
+hos crawlere. Bygget rapporterer nå 39 ruter snapshottet, opp fra 33 før
+case-sidene ble lagt til.
+
 ---
 
 ## Verifisering
@@ -122,7 +147,14 @@ Kjente lint-feil fra før i `BloggKort.jsx` og `LiquidGlass.jsx`. Ikke dine.
 
 ---
 
-## Status per 5. august 2026
+## Status per 19. august 2026
+
+**Redesign pågår på egen branch.** `redesign/studio-mal` porter et nytt
+designsystem (se DESIGN.md) inn i denne kodebasen. Den er IKKE merget og
+IKKE live: prod kjører fortsatt det gamle aubergine-systemet
+(«Midnattsverkstedet»). Ikke anta at endringer på den branchen gjelder for
+`oppskalert.no` slik den står i dag, og se deploysperren om `FONTLISENS.md`
+øverst i denne fila før noe fra den branchen går videre.
 
 **Live og verifisert i prod:** prerendering av alle ruter inkludert bloggen,
 titler skrevet for søk, `sitemap.xml` og `rss.xml` svarer 200, demosidene under
@@ -136,18 +168,21 @@ kontaktpunkter i stedet for ett på slutten.
 **Blokkert på Aleksander:** be Google Search Console indeksere de fem nye
 landingssidene. Sitemapen er sendt inn.
 
-`irmelindrake.no` er en kollegas prosjekt uten vår tilgang, og
-alphanegotiations.com krediterer et annet byrå. Begge er utenfor rekkevidde
-og skal ikke følges opp videre.
+`irmelindrake.no` er en kollegas prosjekt uten vår tilgang. Den er utenfor
+rekkevidde og skal ikke følges opp videre.
 
 **Kjent gjeld:**
 
-- `alphanegotiations.com` ligger i porteføljen i `src/lib/site.js`, men
-  footeren der krediterer et annet byrå. Bør trolig ut.
+- `alphanegotiations.com` ligger fortsatt i `prosjekter`-arrayen i
+  `src/lib/site.js`, men er fjernet fra de seks prosjektene som faktisk vises
+  på forsiden og på `/arbeid`. Målt 19. august 2026 svarte siden HTTP 500.
+  Footeren der krediterer i tillegg et annet byrå. Den bør fjernes helt fra
+  arrayen også, ikke bare fra visningslisten.
 - Tankestrek finnes i rundt ni kodekommentarer. Ikke i kundevendt tekst.
-- Forsidens H1 er «Nettsider som faktisk selger». God copy, null søkevolum.
-  Heroen er nøyaktig én skjermhøyde, så et ekstra ord gir en fjerde linje og
-  brekker layouten. Endres bare sammen med typografien.
+- Forsidens H1 er «Nettsiden din er ikke et visittkort. Den avgjør om de
+  ringer deg.» Heroen er innholdshøy, ikke skjermhøy: den har ingen
+  `min-height: 100vh` og vokser med innholdet, i motsetning til den gamle
+  én-skjermhøyde-begrensningen.
 - De tre eldste hero-bildene under `public/blogg/*.jpg` har tekst brent inn i
   bildet over stockfoto, som DESIGN.md advarer mot. De tre nyeste (`.webp`) er
   tekstfrie og abstrakte. Settet er ikke konsistent.
