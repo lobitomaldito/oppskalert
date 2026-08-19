@@ -1,0 +1,19 @@
+SUISSE INT'L (Light 300, Regular 400, SemiBold 600, Bold 700)
+— Swiss Typefaces, Territet/Zürich
+STATUS: Uautorisert webfont-konvertering fra OnlineWebFonts.com.
+IKKE lisensiert for noe som helst kommersielt, strengt tatt heller ikke
+for demo. Behandles som demo-only: kun lokale pitcher som ikke selges.
+
+Pakken inneholdt ingen lisens fra rettighetshaver. Swiss Typefaces selger
+selv lisensen, og den er uvanlig grei:
+
+  Kjøp: https://www.swisstypefaces.com/fonts/suisse/
+  Full familie (18 snitt) 500 CHF, print + web + app samlet i ett
+  engangskjøp. Enkeltsnitt prises i deres konfigurator.
+
+Kommersiell lisens må kjøpes hos Swiss Typefaces før fonten kan brukes på
+en side som leveres til, betales av, eller driftes for en kunde. Kast
+disse filene og bruk foundryens originaler når lisensen er kjøpt.
+
+Full norsk tegndekning verifisert med cmap-oppslag 2026-08-16:
+æ ø å Æ Ø Å é É « » – er alle til stede i alle fire snitt.

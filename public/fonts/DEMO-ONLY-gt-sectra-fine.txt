@@ -1,0 +1,18 @@
+GT SECTRA FINE (Book 300, Bold 700) — Grilli Type, Zürich
+STATUS: Uautorisert webfont-konvertering fra OnlineWebFonts.com.
+IKKE lisensiert for noe som helst kommersielt, strengt tatt heller ikke
+for demo. Behandles som demo-only: kun lokale pitcher som ikke selges.
+
+Fine er display-snittet av GT Sectra (tynnere kontrast, skarpere detaljer,
+tegnet for store størrelser). Samme rettighetshaver og kjøpssted som
+GT Sectra:
+
+  Kjøp: https://www.grillitype.com/typeface/gt-sectra
+  Web-lisens prises per månedlig sidevisningsnivå. Engangskjøp.
+
+Kommersiell lisens må kjøpes hos Grilli Type før fonten kan brukes på en
+side som leveres til, betales av, eller driftes for en kunde. Kast disse
+filene og bruk foundryens originaler når lisensen er kjøpt.
+
+Full norsk tegndekning verifisert med cmap-oppslag 2026-08-16:
+æ ø å Æ Ø Å é É « » – er alle til stede i begge snitt.

@@ -34,18 +34,18 @@ export default {
         flyt: '60',
       },
       fontFamily: {
-        // To familier, ikke fire. Supreme bærer både brødtekst (font-body) og
-        // strukturell UI (font-sans) — kontrasten mellom dem gjøres med VEKT,
-        // ikke med enda en sans. Space Grotesk lå for nær Supreme i størrelse
-        // og vekt: "Se arbeidet" ved siden av "Svar innen 24 timer" leste som
-        // en feil, ikke som et valg.
-        body: ['Supreme', 'system-ui', 'sans-serif'],
-        sans: ['Supreme', 'system-ui', 'sans-serif'],
-        // Display er den ene ekte kontrasten: mye tyngre, mye større.
-        display: ['"Plus Jakarta Sans"', 'sans-serif'],
-        // Sjeldent aksentgrep — kun i intake-flyten. Se Serif-Is-Sacred-regelen.
-        serif: ['"DM Serif Display"', 'serif'],
-        // Beholdt for demo-sidene under /eksempler, som har egen typografi.
+        // Studio-mal-redesignet: Suisse Int'l bærer alt. Kontrasten gjøres
+        // med vekt og størrelse, ikke med flere familier. Navnene body,
+        // sans og display peker derfor på samme familie, så de øvrige
+        // rutene som bruker font-display eller font-body treffer riktig
+        // typografi uten at hver side må skrives om.
+        body: ['Suisse', 'system-ui', 'sans-serif'],
+        sans: ['Suisse', 'system-ui', 'sans-serif'],
+        display: ['Suisse', 'system-ui', 'sans-serif'],
+        // GT Sectra Fine slipper til to steder: sitatet og pristallene.
+        serif: ['SectraFine', 'Georgia', 'serif'],
+        // Ordmerket, og kun det. Plus Jakarta Sans 800.
+        merke: ['Merke', 'system-ui', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
       borderRadius: {

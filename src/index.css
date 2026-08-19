@@ -1,72 +1,66 @@
-/* Plus Jakarta Sans (display) og DM Serif Display (editorial): selvhostet
-   fra Google Fonts' egne woff2-filer i stedet for et live <link>/@import,
-   som ellers logger besøkerens IP hos Google ved hvert sidevisning og var
-   et render-blocking network-kall i <head>. Filene er identiske med det
-   Google serverte, bare hentet én gang og lagt i public/fonts/. */
+/* ==================================================================
+   SKRIFT
+
+   Portert fra studio-mal-demoen, se inspirasjon/demo-studio-mal.md.
+
+   «Merke» er Plus Jakarta Sans 800 og er låst til ordmerket. Den brukes
+   ingen andre steder. Logoen står i sitt opprinnelige format:
+   «oppskalert» med liten forbokstav og punktumet i signalfargen.
+
+   Suisse Int'l bærer alt annet. GT Sectra Fine dukker opp to steder, i
+   sitatet og i pristallene, og aldri mer.
+
+   LISENSSPERRE: Suisse Int'l og GT Sectra Fine er ikke lisensiert for
+   kommersiell bruk i filene som ligger her. Se FONTLISENS.md i roten.
+   Branchen skal ikke deployes før lisensene er kjøpt og filene byttet.
+   ================================================================== */
 @font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-600.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Plus Jakarta Sans';
-  src: url('/fonts/PlusJakartaSans-700.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Plus Jakarta Sans';
+  font-family: 'Merke';
   src: url('/fonts/PlusJakartaSans-800.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'DM Serif Display';
-  src: url('/fonts/DMSerifDisplay-Regular.woff2') format('woff2');
+  font-family: 'Suisse';
+  src: url('/fonts/suisse-intl-300-normal.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Suisse';
+  src: url('/fonts/suisse-intl-400-normal.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'DM Serif Display';
-  src: url('/fonts/DMSerifDisplay-Italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Supreme (Indian Type Foundry / Fontshare): brødtekstfonten.
-   Selvhostet, ikke via API: én variabel fil dekker vekt 100–800, så hele
-   spekteret koster 30 kB i stedet for én forespørsel per vekt. Fontshare
-   EULA tillater kommersiell web-bruk og selvhosting; lisensen ligger i
-   public/fonts/Supreme-LICENSE.txt.
-
-   Erstattet Space Mono, som var uleselig i lengre avsnitt. */
-@font-face {
-  font-family: 'Supreme';
-  src: url('/fonts/Supreme-Variable.woff2') format('woff2-variations'),
-       url('/fonts/Supreme-Variable.woff2') format('woff2');
-  font-weight: 100 800;
+  font-family: 'Suisse';
+  src: url('/fonts/suisse-intl-600-normal.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Supreme';
-  src: url('/fonts/Supreme-VariableItalic.woff2') format('woff2-variations'),
-       url('/fonts/Supreme-VariableItalic.woff2') format('woff2');
-  font-weight: 100 800;
-  font-style: italic;
+  font-family: 'Suisse';
+  src: url('/fonts/suisse-intl-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SectraFine';
+  src: url('/fonts/gt-sectra-fine-300-normal.woff2') format('woff2');
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SectraFine';
+  src: url('/fonts/gt-sectra-fine-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -74,209 +68,696 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================================
-   TOKENS: "Verkstedrommet"
-   Redesign 19. august 2026, etter studio-mal-demoen (mammutstudios.com-
-   inspirert, se inspirasjon/demo-studio-mal.md). Erstatter den mørke
-   auberginepaletten med to nøytrale flater og null aksentfarge i skallet:
-   all farge på siden skal komme fra kundearbeidet som vises fram, ikke
-   fra merkevaren selv.
+/* ==================================================================
+   TOKENS
 
-   Kontrastgulv (målt i demoen):
-     blekk på felt   15,0:1
-     dempet på felt   5,4:1
-     kritt på blekk  16,8:1
-     dempet kritt     7,2:1
-   ============================================================ */
+   Skallet er tonet ned til to nøytraler og et blekk. All farge på
+   siden kommer fra kundearbeidet. Det er hele disiplinen: byrået
+   holder kjeft, jobben snakker.
+
+   Verdiene finnes i to former med vilje. Hex-navnene (--felt, --blekk)
+   er demoens egne og brukes av komponentklassene under. RGB-triplene
+   (--bg, --ink) er de Tailwind leser gjennom tailwind.config.js, så
+   alle utility-klassene på de øvrige rutene treffer samme palett uten
+   at hver enkelt side må skrives om. Endres en farge, må begge former
+   endres, de er ikke koblet automatisk.
+   ================================================================== */
 @layer base {
   :root {
-    /* Flater. To nøytraler, ingen gradient. --bg er det blekke skallet
-       (mørk), --room er periwinkle-feltet (lys). De veksler seksjon for
-       seksjon i stedet for at én er "hoved" og én er "sjelden". */
-    --bg:        18 17 29;      /* #12111d  blekk */
-    --bg-deep:   12 11 20;      /* mørkere variant, kun for footer-bånd */
-    --surface:   255 255 255;   /* rent hvitt, veksler med --room */
+    /* Demoens egne navn */
+    --felt:       #e6e5f6;
+    --felt-dyp:   #dcdaf1;
+    --felt-kant:  #cbc9e4;
+    --hvit:       #ffffff;
+    --blekk:      #12111d;
+    --blekk-flate:#1c1a2b;
+    --blekk-kant: #2e2b42;
+    --blekk-mykt: #5c5a70;
+    --kritt:      #f3f2fb;
+    --kritt-mykt: #a09eb8;
 
-    /* Kritt på blekk */
-    --ink:       243 242 251;   /* #f3f2fb  kritt */
+    /* Punktumet i ordmerket. To varianter, én per grunn: fersken faller
+       til 1,4:1 på det blekke feltet og forsvinner, clay gjør ikke det. */
+    --prikk:     #b8551a;
+    --prikk-lys: #ffb17a;
 
-    /* Aksent. Bevisst nesten fraværende: kun punktumet i ordmerket. */
-    --signal:    255 177 122;   /* #ffb17a  på blekk (mørk bg) */
-    --signal-hi: 252 231 98;    /* #fce762  sjelden, aldri fyll */
+    /* Samme palett som RGB-tripler, for Tailwind */
+    --bg:          18 17 29;      /* blekk */
+    --bg-deep:     12 11 20;
+    --surface:     255 255 255;   /* hvit */
+    --ink:         243 242 251;   /* kritt */
+    --signal:      255 177 122;   /* prikk-lys */
+    --signal-hi:   252 231 98;
+    --room:        230 229 246;   /* felt */
+    --room-deep:   220 218 241;   /* felt-dyp */
+    --room-ink:    18 17 29;      /* blekk som blekk på felt */
+    --room-signal: 184 85 26;     /* prikk */
 
-    /* Lyst rom: periwinkle-feltet */
-    --room:        230 229 246; /* #e6e5f6  felt */
-    --room-deep:   220 218 241; /* #dcdaf1  vannmerke bak overskrifter */
-    --room-ink:    18 17 29;    /* samme blekk som --bg, som ink på felt */
-    --room-signal: 184 85 26;   /* #b8551a  clay, punktum på felt (1,4:1 uten dette) */
-
-    /* Blekk-nivåer (alpha på kritt, kun brukt på --bg) */
-    --ink-muted: 0.75;          /* ≈ #a09eb8 mot blekk, 7,2:1 */
+    --ink-muted: 0.75;
     --ink-faint: 0.62;
+    --room-ink-muted: 0.68;
 
-    /* Samme nivåer på felt (alpha på room-ink) */
-    --room-ink-muted: 0.68;     /* ≈ #5c5a70 mot felt, 5,4:1 */
+    /* Rytme. Demoens mål, ikke de gamle. */
+    --maks:   78rem;
+    --kant:   clamp(1.25rem, 5vw, 3.5rem);
+    --luft:   clamp(5rem, 10vw, 9rem);
+    --rund:   14px;
+    --rund-stor: 22px;
+    --e: cubic-bezier(.22, 1, .36, 1);
 
-    /* Rytme */
-    --gutter:  clamp(1.25rem, 5vw, 3rem);
-    --maks:    68rem;
-    --seksjon: clamp(3.5rem, 8vw, 6.5rem);
-
-    /* Bevegelse */
+    /* Beholdt under de gamle navnene, brukt av eksisterende sider */
+    --gutter:  var(--kant);
+    --seksjon: var(--luft);
     --lett: cubic-bezier(0.22, 1, 0.36, 1);
     --fart: 0.7s;
 
-    /* z-skala: semantisk, aldri 9999 */
-    --z-nav: 50;
+    --z-nav: 80;
     --z-meny: 40;
-    --z-flyt: 60;
+    --z-flyt: 200;
   }
 
   html {
     scroll-behavior: smooth;
-    /* Navbaren er fast og ugjennomsiktig i studio-mal-redesignet, ca. 72 px
-       høy. Uten dette lander hver ankerlenke (#priser, #faq, #metode) med
-       overskriften gjemt bak den. */
+    /* Toppen er sticky, ca. 76 px. Uten dette lander hver ankerlenke
+       med overskriften gjemt bak den. */
     scroll-padding-top: 6rem;
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
+
   body {
-    @apply bg-background text-primary antialiased;
+    margin: 0;
+    background: var(--felt);
+    color: var(--blekk);
+    font-family: 'Suisse', system-ui, sans-serif;
+    font-weight: 400;
+    font-synthesis: none;
+    font-size: clamp(.9375rem, .3vw + .875rem, 1rem);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    /* Supreme er en variabel font, så vi er ikke låst til hele hundretall.
-       400 leste for tynt i brødtekst; 450 gir merkbart mer kjøtt på strekene
-       uten å nærme seg halvfet. Tailwinds font-bold/-semibold overstyrer
-       fortsatt der de er satt eksplisitt. */
-    font-weight: 450;
   }
 
-  /* Tastaturfokus skal synes overalt. Fersken-ringen leser på auberginen,
-     som er det meste av siden. Inne i kremrommene vaskes fersken ut, så
-     der bytter vi til clay. */
+  h1, h2, h3, p, figure, blockquote, dl, dd { margin: 0; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; }
+
   :focus-visible {
-    outline: 2px solid rgb(var(--signal));
-    outline-offset: 2px;
-    border-radius: 3px;
+    outline: 2px solid var(--blekk);
+    outline-offset: 3px;
+    border-radius: 4px;
   }
-  .rom :focus-visible,
-  .bg-room :focus-visible,
-  .bg-primary :focus-visible {
-    outline-color: rgb(var(--room-signal));
-  }
+  .paa-blekk :focus-visible { outline-color: var(--kritt); }
 
-  /* Overskrifter puster jevnere med balansert ombrekking; lang brødtekst
-     får «pretty» så siste linje ikke blir et enslig ord. */
   h1, h2, h3 { text-wrap: balance; }
   p { text-wrap: pretty; }
 }
 
 @layer components {
-  /* Den sentrale kolonnen. Én kilde til bredde og gutter. Dette er
-     «strammingen»: hver seksjon deler nøyaktig samme målebånd. */
+  /* Den sentrale kolonnen. Én kilde til bredde og gutter. */
   .wrap {
     width: 100%;
     max-width: var(--maks);
     margin-inline: auto;
-    padding-inline: var(--gutter);
+    padding-inline: var(--kant);
   }
-  .seksjon { padding-block: var(--seksjon); }
+  .seksjon { padding-block: var(--luft); }
+  .hvit { background: var(--hvit); }
 
-  /* Vekselbånd, så to naboseksjoner aldri deler flate.
-     På mørkt holder det ikke med en dypere bakgrunn slik det gjorde på
-     krem: --bg mot --bg-deep gir 0,39 av 100 i lysforskjell, altså
-     usynlig, fordi mørke farger komprimerer avstanden. Første forsøk på
-     tint (0.16) var fortsatt for svakt til å lese i en skjermdump; 0.30
-     er der forskjellen faktisk synes uten å lese som en egen seksjonsfarge. */
-  .band {
-    background-color: rgb(var(--surface) / 0.30);
-    border-block: 1px solid rgb(var(--ink) / 0.16);
+  /* Hopp over navigasjonen. Synlig først når den får tastaturfokus. */
+  .hopp {
+    position: absolute; left: 1rem; top: -4rem; z-index: 200;
+    padding: .7rem 1.1rem; border-radius: 999px;
+    background: var(--blekk); color: var(--kritt);
+    font-size: .875rem; font-weight: 600;
+    transition: top .2s var(--e);
+  }
+  .hopp:focus { top: 1rem; }
+
+  /* ----------------------------------------------------------------
+     Ordmerket. Låst asset. Rør ikke størrelsesforholdet mellom
+     bokstavene og punktumet.
+     ---------------------------------------------------------------- */
+  .merke {
+    font-family: 'Merke', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -.035em;
+    text-transform: lowercase;
+    line-height: 1;
+    display: inline-block;
+  }
+  .merke i { font-style: normal; color: var(--prikk); }
+  .paa-blekk .merke i { color: var(--prikk-lys); }
+
+  /* ----------------------------------------------------------------
+     Piller og knapper. Sidens eneste gjennomgående komponenter.
+     ---------------------------------------------------------------- */
+  .pille {
+    display: inline-flex; align-items: center; gap: .5rem;
+    padding: .5rem .95rem; border-radius: 999px;
+    border: 1px solid var(--felt-kant);
+    font-size: .8125rem; line-height: 1; white-space: nowrap;
+    color: var(--blekk-mykt); background: transparent;
+  }
+  .pille .lys {
+    width: .4375rem; height: .4375rem; border-radius: 50%; flex: none;
+    background: var(--prikk); animation: puls 2.6s infinite;
+  }
+  @keyframes puls { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
+  .paa-blekk .pille { border-color: var(--blekk-kant); color: var(--kritt-mykt); }
+  .paa-blekk .pille .lys { background: var(--prikk-lys); }
+
+  .knapp {
+    --slide: 101%;
+    position: relative; overflow: hidden; isolation: isolate;
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: .75rem 1.25rem; border-radius: 999px;
+    background: var(--blekk); color: var(--kritt);
+    font-size: .875rem; font-weight: 600; line-height: 1; white-space: nowrap;
+    border: 1px solid var(--blekk); cursor: pointer;
+    transition: color .25s var(--e);
+  }
+  .knapp::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: var(--hvit);
+    transform: translateY(var(--slide));
+    transition: transform .4s var(--e);
+  }
+  .knapp:hover { color: var(--blekk); }
+  .knapp:hover::before { transform: translateY(0); }
+  .knapp .pil { transition: transform .3s var(--e); }
+  .knapp:hover .pil { transform: translateX(.2rem); }
+  .paa-blekk .knapp { background: var(--kritt); color: var(--blekk); border-color: var(--kritt); }
+  .paa-blekk .knapp::before { background: var(--prikk-lys); }
+  .paa-blekk .knapp:hover { color: var(--blekk); }
+
+  /* Etiketter. Liten prikk foran, aldri sperret versal-eyebrow. */
+  .etikett {
+    display: inline-flex; align-items: center; gap: .6rem;
+    font-size: .8125rem; color: var(--blekk-mykt);
+  }
+  .etikett::before {
+    content: ""; width: .3125rem; height: .3125rem; border-radius: 50%;
+    background: currentColor; flex: none;
+  }
+  .paa-blekk .etikett { color: var(--kritt-mykt); }
+
+  /* ----------------------------------------------------------------
+     Toppen
+     ---------------------------------------------------------------- */
+  .topp { position: sticky; top: 0; z-index: 80; background: var(--felt); }
+  .topp-inn { display: flex; align-items: center; gap: 1rem; min-height: 4.75rem; }
+  .topp .merke { font-size: 1.375rem; padding-block: .35rem; }
+  .topp-nav { display: none; gap: 1.25rem; margin-left: auto; font-size: .875rem; color: var(--blekk-mykt); }
+  /* Padding, ikke bare tekst: uten den er treffflaten 22 px høy og
+     faller under minstemålet i WCAG 2.2 AA 2.5.8 (24 x 24). */
+  .topp-nav a { position: relative; padding: .5rem .35rem; transition: color .2s var(--e); }
+  .topp-nav a::after {
+    content: ""; position: absolute; left: .35rem; right: .35rem; bottom: .3rem; height: 1px;
+    background: currentColor; transform: scaleX(0); transform-origin: left;
+    transition: transform .3s var(--e);
+  }
+  .topp-nav a:hover { color: var(--blekk); }
+  .topp-nav a:hover::after { transform: scaleX(1); }
+  .topp-nav a.aktiv { color: var(--blekk); }
+  .topp-nav a.aktiv::after { transform: scaleX(1); }
+  @media (min-width: 56rem) { .topp-nav { display: flex } }
+  .topp .knapp { margin-left: auto; }
+  @media (min-width: 56rem) { .topp .knapp { margin-left: 1.5rem } }
+  @media (max-width: 55.99rem) {
+    .topp .knapp { padding: .6rem 1rem; font-size: .8125rem }
+    .topp .merke { font-size: 1.25rem }
+  }
+
+  .meny { margin-left: 0; position: relative; }
+  @media (min-width: 56rem) { .meny { display: none } }
+  .meny summary {
+    list-style: none; cursor: pointer; display: grid; place-items: center;
+    width: 2.75rem; height: 2.75rem; border-radius: 999px;
+    border: 1px solid var(--felt-kant);
+  }
+  .meny summary::-webkit-details-marker { display: none; }
+  .meny summary span {
+    display: block; width: 1.0625rem; height: 1.5px; background: currentColor;
+    position: relative; border-radius: 2px;
+  }
+  .meny summary span::before, .meny summary span::after {
+    content: ""; position: absolute; left: 0; width: 100%; height: 1.5px;
+    background: currentColor; border-radius: 2px;
+  }
+  .meny summary span::before { top: -.3125rem; }
+  .meny summary span::after { top: .3125rem; }
+  .meny[open] summary { background: var(--blekk); color: var(--kritt); border-color: var(--blekk); }
+  .meny-liste {
+    position: absolute; right: 0; top: calc(100% + .6rem); min-width: 11rem;
+    display: grid; gap: .1rem; padding: .5rem; border-radius: var(--rund);
+    background: var(--hvit); border: 1px solid var(--felt-kant);
+    box-shadow: 0 1.5rem 3rem -1.5rem rgba(18, 17, 29, .35);
+    z-index: 90;
+  }
+  .meny-liste a { padding: .55rem .7rem; border-radius: .5rem; font-size: .9375rem; color: var(--blekk-mykt); }
+  .meny-liste a:hover, .meny-liste a.aktiv { background: var(--felt); color: var(--blekk); }
+
+  /* ----------------------------------------------------------------
+     Hero. Sentrert, tungt, med ordmerket blåst opp til vannmerke bak.
+     ---------------------------------------------------------------- */
+  .hero {
+    position: relative; text-align: center;
+    padding-block: clamp(3.5rem, 8vw, 7rem) clamp(2rem, 4vw, 3rem);
+    overflow: hidden;
+  }
+  /* Flat tint, så punktumet ikke blir en oransje kloss på 200 piksler. */
+  .vannmerke {
+    position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+    font-size: clamp(9rem, 27vw, 23rem); line-height: 1; letter-spacing: -.055em;
+    color: var(--felt-dyp);
+    pointer-events: none; user-select: none; z-index: 0;
+    white-space: nowrap;
+  }
+  .vannmerke i { color: inherit; }
+  .hero > .wrap { position: relative; z-index: 1; }
+  .hero h1 {
+    margin-top: 0; font-weight: 700;
+    font-size: clamp(2.0625rem, 8.4vw, 5.25rem);
+    line-height: 1; letter-spacing: -.04em;
+    margin-inline: auto; text-wrap: balance;
+  }
+  /* Målet på store skjermer er tre linjer. På mobil får den bruke hele
+     bredden, ellers presses den til fem linjer og spiser skjermen. */
+  @media (min-width: 48rem) {
+    .hero h1 { max-width: 15ch; line-height: .98; letter-spacing: -.042em }
+  }
+  .hero p {
+    margin-top: 1.5rem; margin-inline: auto; max-width: 46ch;
+    color: var(--blekk-mykt); font-size: .9375rem; line-height: 1.65;
+  }
+  .hero-handling { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+
+  .statuslinje {
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    padding-block: 1.25rem clamp(3rem, 6vw, 5rem);
+  }
+
+  /* Undersidetopp. Kort blekt band, ikke full skjermhøyde. */
+  .sidetopp { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4.5rem); }
+  .sidetopp h1 {
+    font-weight: 700; font-size: clamp(2rem, 5.2vw, 3.75rem);
+    line-height: 1.02; letter-spacing: -.038em;
+    max-width: 17ch; margin-top: 1.25rem; text-wrap: balance;
+  }
+  .sidetopp p { margin-top: 1.25rem; max-width: 52ch; color: var(--blekk-mykt); }
+
+  /* ----------------------------------------------------------------
+     Introduksjon og nummererte lister
+     ---------------------------------------------------------------- */
+  .intro { display: grid; gap: 1.5rem clamp(2rem, 5vw, 4.5rem); }
+  @media (min-width: 56rem) { .intro { grid-template-columns: 14rem minmax(0, 1fr); align-items: start } }
+  .intro h2 {
+    font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.375rem);
+    line-height: 1.12; letter-spacing: -.028em; max-width: 24ch; text-wrap: balance;
+  }
+  .intro-brod { margin-top: 1.5rem; max-width: 56ch; color: var(--blekk-mykt); display: grid; gap: 1rem; }
+
+  .nummerert { margin-top: 2.25rem; display: grid; gap: 0; max-width: 34rem; list-style: none; padding: 0; }
+  .nummerert li { border-top: 1px solid var(--felt-kant); }
+  .nummerert li:last-child { border-bottom: 1px solid var(--felt-kant); }
+  /* Forskyvningen på hover gjøres med transform, ikke padding.
+     Padding utløser omlegging hver frame, transform gjør ikke det. */
+  .nummerert a {
+    display: flex; align-items: center; gap: 1rem; padding: .9rem .25rem;
+    font-size: 1.0625rem; transition: transform .3s var(--e);
+  }
+  .nummerert a:hover { transform: translateX(.85rem); }
+  .nummerert .nr { color: var(--blekk-mykt); font-size: .8125rem; min-width: 4.5rem; flex: none; }
+  .nummerert .pil { margin-left: auto; color: var(--blekk-mykt); transition: transform .3s var(--e); }
+  .nummerert a:hover .pil { transform: translateX(.3rem); }
+
+  /* ----------------------------------------------------------------
+     Seksjonstopp
+     ---------------------------------------------------------------- */
+  .seksjonstopp { display: grid; gap: .9rem; max-width: 44ch; margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+  .seksjonstopp h2 {
+    font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.375rem);
+    line-height: 1.12; letter-spacing: -.028em; text-wrap: balance;
+  }
+  .seksjonstopp p { color: var(--blekk-mykt); max-width: 46ch; }
+
+  /* ----------------------------------------------------------------
+     Arbeid. Asymmetrisk rutenett, bildene bærer all farge på siden.
+     ---------------------------------------------------------------- */
+  .arbeider { display: grid; gap: clamp(1.75rem, 3vw, 2.5rem); }
+  @media (min-width: 52rem) {
+    .arbeider { grid-template-columns: repeat(12, 1fr); align-items: start; }
+    .arbeid:nth-child(6n+1) { grid-column: 1 / span 5; margin-top: 3.5rem; }
+    .arbeid:nth-child(6n+2) { grid-column: 6 / span 7; }
+    .arbeid:nth-child(6n+3) { grid-column: 1 / span 6; }
+    .arbeid:nth-child(6n+4) { grid-column: 7 / span 6; margin-top: 3.5rem; }
+    .arbeid:nth-child(6n+5) { grid-column: 1 / span 7; }
+    .arbeid:nth-child(6n+6) { grid-column: 8 / span 5; margin-top: 3.5rem; }
+  }
+  .arbeid a { display: block; }
+  .arbeid .etikett { margin-top: 1.1rem; }
+  .arbeid h3 {
+    margin-top: .5rem; font-weight: 400; font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    line-height: 1.35; letter-spacing: -.015em; max-width: 30ch;
+  }
+  .arbeid .ut {
+    display: inline-block; color: var(--blekk-mykt);
+    transition: transform .3s var(--e), color .2s var(--e);
+  }
+  .arbeid a:hover .ut { transform: translate(.15rem, -.15rem); color: var(--blekk); }
+
+  /* Nettleserramme. Ekte fullsides-fangst som ruller sakte inni.
+
+     Fangstene er tatt med en vanlig 1280 x 900 viewport og beskåret til
+     1280 x 5000, så nedskalert til 640 x 2500. Setter man viewporten til
+     full sidehøyde før skjermbildet, blir hver 100vh-hero like høy som
+     hele siden, og fangsten blir ett bilde uten innhold.
+
+     2500 / 640 = 3,906. Vinduet står i 4:3 og viser derfor
+     0,75 / 3,906 = 19,2 % av bildet av gangen. Full rullelengde blir
+     80,8 %. Endres fangsthøyden eller vindusformatet, må --til regnes
+     om for alle prosjektene i site.js. */
+  .ramme {
+    border-radius: var(--rund); overflow: hidden; background: var(--hvit);
+    box-shadow: 0 0 0 1px rgba(18, 17, 29, .09), 0 1.25rem 2.5rem -1.5rem rgba(18, 17, 29, .28);
+    transition: box-shadow .4s var(--e), transform .4s var(--e);
+  }
+  .arbeid:hover .ramme {
+    transform: translateY(-4px);
+    box-shadow: 0 0 0 1px rgba(18, 17, 29, .14), 0 2rem 3.5rem -1.5rem rgba(18, 17, 29, .4);
+  }
+  .ramme-topp {
+    display: flex; align-items: center; gap: .35rem;
+    padding: .55rem .8rem; background: var(--felt);
+    border-bottom: 1px solid var(--felt-kant);
+  }
+  .ramme-topp i { width: .4375rem; height: .4375rem; border-radius: 50%; background: var(--felt-kant); flex: none; }
+  .ramme-topp p { margin-left: .6rem; font-size: .6875rem; color: var(--blekk-mykt); letter-spacing: .01em; }
+  .ramme-vindu { position: relative; aspect-ratio: 4/3; overflow: hidden; }
+  .ramme-vindu img {
+    width: 100%; height: auto; display: block;
+    animation: rammerull 34s ease-in-out infinite alternate;
+  }
+  @keyframes rammerull {
+    from { transform: translateY(0) }
+    to   { transform: translateY(var(--til, -79%)) }
+  }
+  /* Standard er at rammene ruller. «utenfor» settes bare på kort som
+     forlater skjermen, så seks animasjoner ikke maler i bakgrunnen.
+     Fyrer ikke observeren, ruller alt, som er riktig feilmodus:
+     motsatt oppsett gir kort som står stille for alltid. */
+  .arbeid.utenfor .ramme-vindu img { animation-play-state: paused; }
+  /* will-change bare mens rammen faktisk ruller. Permanent på seks
+     bilder holder seks komposittlag i live, også utenfor skjermen. */
+  .arbeid:not(.utenfor) .ramme-vindu img { will-change: transform; }
+  /* Antydning om at det er mer under kanten. */
+  .ramme-vindu::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3.5rem;
+    background: linear-gradient(to bottom, transparent, rgba(18, 17, 29, .10));
+    pointer-events: none;
+  }
+
+  /* Synlig kun for skjermlesere. Sier at en lenke åpner i ny fane,
+     som ellers bare er en pil ingen skjermleser kan tolke. */
+  .skjult {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* ----------------------------------------------------------------
+     Tjenester. Hvite kort på feltet.
+     ---------------------------------------------------------------- */
+  .tjeneste-rad { display: grid; gap: clamp(2rem, 4vw, 3rem); }
+  @media (min-width: 64rem) { .tjeneste-rad { grid-template-columns: 14rem minmax(0, 1fr) } }
+  .tjenester { display: grid; gap: 1rem; }
+  @media (min-width: 40rem) { .tjenester { grid-template-columns: 1fr 1fr } }
+  .tjeneste {
+    background: var(--hvit); border-radius: var(--rund);
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    display: grid; gap: .85rem; align-content: start;
+    border: 1px solid transparent;
+    transition: border-color .3s var(--e), transform .3s var(--e);
+  }
+  .tjeneste:hover { border-color: var(--felt-kant); transform: translateY(-3px); }
+  .tjeneste svg { width: 1.5rem; height: 1.5rem; stroke: currentColor; fill: none; stroke-width: 1.4; }
+  .tjeneste h3 { font-weight: 600; font-size: 1.0625rem; letter-spacing: -.012em; }
+  .tjeneste p { color: var(--blekk-mykt); font-size: .9375rem; }
+  .tjeneste-side { display: grid; gap: 1.5rem; align-content: start; }
+  .tjeneste-side .knapp { justify-self: start; }
+
+  /* ----------------------------------------------------------------
+     Sitat. Eneste sted GT Sectra Fine får slippe til, sammen med
+     pristallene.
+     ---------------------------------------------------------------- */
+  .sitatblokk { background: var(--felt); padding-block: 0 var(--luft); }
+  .sitatkort {
+    background: var(--blekk); color: var(--kritt);
+    border-radius: var(--rund-stor);
+    padding: clamp(1.75rem, 4vw, 3.25rem);
+    display: grid; gap: clamp(1.75rem, 4vw, 2.75rem);
+    position: relative; overflow: hidden;
+  }
+  .sitat-topp { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .sitat-styring { display: flex; gap: .4rem; }
+  .sitat-styring button {
+    width: 2.75rem; height: 2.75rem; border-radius: 50%;
+    border: 1px solid var(--blekk-kant); background: transparent;
+    display: grid; place-items: center; cursor: pointer;
+    transition: background .2s var(--e), border-color .2s var(--e);
+  }
+  .sitat-styring button:hover { background: var(--blekk-flate); border-color: var(--kritt-mykt); }
+  .sitat-teller { font-size: .8125rem; color: var(--kritt-mykt); font-variant-numeric: tabular-nums; }
+  .sitatkort blockquote {
+    font-family: 'SectraFine', Georgia, serif; font-weight: 400;
+    font-size: clamp(1.25rem, 2.9vw, 2rem);
+    line-height: 1.34; letter-spacing: -.018em;
+    max-width: 32ch; text-wrap: balance;
+  }
+  .sitat-kilde { display: flex; align-items: center; gap: .9rem; }
+  .sitat-kilde .initial {
+    width: 2.75rem; height: 2.75rem; border-radius: 50%; flex: none;
+    display: grid; place-items: center;
+    background: var(--blekk-flate); border: 1px solid var(--blekk-kant);
+    font-weight: 600; font-size: .9375rem;
+  }
+  .sitat-kilde .navn { font-size: .9375rem; }
+  .sitat-kilde .rolle { font-size: .8125rem; color: var(--kritt-mykt); }
+
+  /* ----------------------------------------------------------------
+     Priskort og bloggliste
+     ---------------------------------------------------------------- */
+  .priser { display: grid; gap: 1rem; }
+  @media (min-width: 44rem) { .priser { grid-template-columns: 1fr 1fr } }
+  @media (min-width: 64rem) { .priser.tre { grid-template-columns: repeat(3, 1fr) } }
+  .pris {
+    background: var(--hvit); border-radius: var(--rund);
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    display: flex; flex-direction: column; gap: 1rem;
+    border: 1px solid transparent;
+  }
+  .pris.fremhevet { border-color: var(--blekk); }
+  .pris .modell { font-size: .8125rem; color: var(--blekk-mykt); }
+  .pris .tall {
+    font-family: 'SectraFine', Georgia, serif;
+    font-size: clamp(2.25rem, 4.5vw, 3rem); line-height: 1; letter-spacing: -.025em;
+    font-variant-numeric: tabular-nums;
+  }
+  .pris .tall span {
+    font-family: 'Suisse', sans-serif; font-size: .9375rem; letter-spacing: 0;
+    color: var(--blekk-mykt); margin-left: .35rem;
+  }
+  .pris .tagline { color: var(--blekk-mykt); font-size: .9375rem; }
+  .pris ul { display: grid; gap: .5rem; font-size: .9375rem; margin-top: auto; padding-top: .5rem; list-style: none; }
+  .pris li { display: flex; gap: .6rem; align-items: baseline; }
+  .pris li::before {
+    content: ""; width: .3125rem; height: .3125rem; border-radius: 50%;
+    background: var(--blekk); flex: none; translate: 0 -.2em;
+  }
+  .prisnotat { margin-top: 1.5rem; font-size: .8125rem; color: var(--blekk-mykt); }
+
+  .blogg { list-style: none; padding: 0; }
+  .blogg li { border-top: 1px solid var(--felt-kant); }
+  .blogg li:last-child { border-bottom: 1px solid var(--felt-kant); }
+  .blogg a {
+    display: flex; align-items: baseline; gap: 1.5rem; padding: 1.35rem .25rem;
+    font-size: clamp(1rem, 1.6vw, 1.1875rem); letter-spacing: -.012em;
+    transition: transform .3s var(--e);
+  }
+  .blogg a:hover { transform: translateX(.85rem); }
+  .blogg .pil { margin-left: auto; color: var(--blekk-mykt); flex: none; transition: transform .3s var(--e); }
+  .blogg a:hover .pil { transform: translateX(.3rem); }
+
+  /* ----------------------------------------------------------------
+     Case. Én side per prosjekt, med tanken bak i stedet for bare et
+     bilde. Ryggraden er hentet fra increo.no sin case-mal: brødsmuler,
+     kundenavn som etikett, H1 til venstre og ingress til høyre, så
+     faktapanel, så utfordring og løsning.
+     ---------------------------------------------------------------- */
+  .brodsmuler { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: .8125rem; color: var(--blekk-mykt); }
+  .brodsmuler a { padding: .35rem 0; border-bottom: 1px solid transparent; transition: border-color .2s var(--e); }
+  .brodsmuler a:hover { border-color: var(--blekk-mykt); }
+  .brodsmuler span { opacity: .5; }
+
+  .casetopp { display: grid; gap: clamp(1.5rem, 3vw, 3rem); align-items: end; margin-top: 1.5rem; }
+  @media (min-width: 56rem) { .casetopp { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) } }
+  .casetopp h1 {
+    font-weight: 700; font-size: clamp(1.9rem, 4.4vw, 3.25rem);
+    line-height: 1.04; letter-spacing: -.035em; text-wrap: balance;
+  }
+  .casetopp .ingress { color: var(--blekk-mykt); font-size: clamp(1rem, 1.4vw, 1.0625rem); }
+
+  /* Faktapanelet betjener den som skanner, den som kjøper og intern
+     lenking samtidig. */
+  .fakta {
+    background: var(--felt); border-radius: var(--rund-stor);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    display: grid; gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  @media (min-width: 44rem) { .fakta { grid-template-columns: repeat(3, minmax(0, 1fr)) } }
+  .fakta h2 { font-size: .9375rem; font-weight: 600; margin-bottom: .85rem; }
+  .fakta ul { display: grid; gap: .5rem; font-size: .875rem; color: var(--blekk-mykt); list-style: none; padding: 0; }
+  .fakta a { border-bottom: 1px solid var(--felt-kant); padding-bottom: .1em; transition: border-color .2s var(--e); }
+  .fakta a:hover { border-color: var(--blekk); }
+
+  .casedel { display: grid; gap: clamp(1.25rem, 3vw, 3rem); }
+  @media (min-width: 56rem) { .casedel { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); align-items: start } }
+  .casedel h2 { font-size: clamp(1.35rem, 2.4vw, 1.75rem); line-height: 1.15; letter-spacing: -.025em; text-wrap: balance; }
+  .casedel .brod { display: grid; gap: 1rem; max-width: 62ch; color: var(--blekk-mykt); }
+  .casedel .brod b { font-weight: 600; color: var(--blekk); }
+
+  .caseramme { max-width: 52rem; margin-inline: auto; }
+  .casebunn {
+    display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
+    padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--felt-kant);
+  }
+  /* Uten padding er treffflaten 21 px høy og faller under WCAG 2.2 AA 2.5.8. */
+  .casebunn a.etikett { padding: .55rem 0; transition: color .2s var(--e); }
+  .casebunn a.etikett:hover { color: var(--blekk); }
+
+  /* ----------------------------------------------------------------
+     Portrett og signatur
+     ---------------------------------------------------------------- */
+  .portrettrad { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center; }
+  @media (min-width: 52rem) { .portrettrad { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) } }
+  .portrett { border-radius: var(--rund); overflow: hidden; background: var(--felt-dyp); aspect-ratio: 1; }
+  .portrett img { width: 100%; height: 100%; object-fit: cover; }
+  .portrett-rund { border-radius: 50%; width: clamp(4.5rem, 9vw, 6rem); flex: none; }
+  .signatur { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
+  .signatur .navn { font-size: .9375rem; }
+  .signatur .rolle { font-size: .8125rem; color: var(--blekk-mykt); }
+  .paa-blekk .signatur .rolle { color: var(--kritt-mykt); }
+
+  /* ----------------------------------------------------------------
+     Spørsmål. details/summary, ingen JavaScript.
+     ---------------------------------------------------------------- */
+  .faq-rad { display: grid; gap: 2rem clamp(2rem, 5vw, 4.5rem); }
+  @media (min-width: 56rem) { .faq-rad { grid-template-columns: 16rem minmax(0, 1fr) } }
+  .faq-rad h2 {
+    font-weight: 700; font-size: clamp(1.5rem, 3.2vw, 2.375rem);
+    line-height: 1.1; letter-spacing: -.028em; max-width: 10ch;
+  }
+  .faq-intro { margin-top: 1rem; color: var(--blekk-mykt); font-size: .9375rem; max-width: 26ch; }
+  .faq-intro a { border-bottom: 1px solid var(--felt-kant); transition: border-color .2s var(--e); }
+  .faq-intro a:hover { border-color: var(--blekk); }
+
+  .faq details { border-top: 1px solid var(--felt-kant); }
+  .faq details:last-of-type { border-bottom: 1px solid var(--felt-kant); }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 1.35rem .25rem;
+    font-size: clamp(1rem, 1.5vw, 1.125rem); letter-spacing: -.012em;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq .tegn { margin-left: auto; flex: none; position: relative; width: 1.125rem; height: 1.125rem; }
+  .faq .tegn::before, .faq .tegn::after {
+    content: ""; position: absolute; left: 50%; top: 50%; background: currentColor;
+    translate: -50% -50%; transition: transform .35s var(--e), opacity .25s var(--e);
+  }
+  .faq .tegn::before { width: 1.125rem; height: 1.5px; }
+  .faq .tegn::after { width: 1.5px; height: 1.125rem; }
+  .faq details[open] .tegn::after { transform: scaleY(0); opacity: 0; }
+  .faq details[open] summary { padding-bottom: .5rem; }
+  .faq .svar { padding: 0 3rem 1.6rem .25rem; color: var(--blekk-mykt); max-width: 62ch; font-size: .9375rem; }
+
+  /* ----------------------------------------------------------------
+     Bunn. Ordmerket i full bredde, beskåret av skjermkanten.
+     ---------------------------------------------------------------- */
+  .bunn { background: var(--blekk); color: var(--kritt); position: relative; overflow: hidden; }
+  .bunn-inn { padding-block: clamp(3rem, 6vw, 5rem) 0; }
+  .bunn-post {
+    display: block; margin-top: 0;
+    font-weight: 700; letter-spacing: -.035em; line-height: 1.05;
+    font-size: clamp(1.75rem, 5.5vw, 3.75rem);
+    width: fit-content; max-width: 100%;
+    border-bottom: 2px solid transparent;
+    transition: border-color .3s var(--e);
+    overflow-wrap: anywhere;
+  }
+  .bunn-post:hover { border-color: var(--prikk-lys); }
+  .bunn-rad {
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+    padding-top: 1.5rem; border-top: 1px solid var(--blekk-kant);
+    display: flex; flex-wrap: wrap; gap: .75rem 2rem; justify-content: space-between;
+    font-size: .8125rem; color: var(--kritt-mykt);
+  }
+  .bunn-lenker { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: -.4rem; }
+  .bunn-lenker a { padding: .4rem; border-radius: .35rem; }
+  .bunn-lenker a:hover { color: var(--kritt); }
+  /* Ordmerket i full bredde, beskåret av sidekanten. Størrelsen er en
+     ren clamp i vw, ikke JavaScript-måling: måleversjonen falt sammen
+     til font-size 0 ved mount og ble usynlig. */
+  .bunn-merke-boks {
+    width: 100%; max-width: var(--maks); margin-inline: auto;
+    padding-inline: var(--kant);
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    overflow: hidden;
+  }
+  .bunn-merke {
+    display: block; white-space: nowrap; width: max-content;
+    font-size: clamp(3.25rem, 15.5vw, 11.5rem);
+    line-height: .8; letter-spacing: -.055em;
+    color: var(--kritt);
+    margin-bottom: -.17em;
   }
 }
 
-/* Hero entrance: transform-only, so content is ALWAYS visible (opacity:1).
-   Animations pause on hidden tabs / headless renderers; gating opacity here
-   would ship the hero blank in those contexts. A transform rise can't: worst
-   case the text sits a few px lower until the animation runs. */
-@keyframes heroRise {
-  from { transform: translateY(34px); }
-  to   { transform: translateY(0); }
-}
-.hero-elem { animation: heroRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.hero-elem:nth-child(2) { animation-delay: 0.09s; }
-.hero-elem:nth-child(3) { animation-delay: 0.18s; }
-.hero-elem:nth-child(4) { animation-delay: 0.27s; }
-@media (prefers-reduced-motion: reduce) {
-  .hero-elem { animation: none; }
-}
+/* ==================================================================
+   BEVEGELSE
 
-/* Global Noise Overlay */
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.05;
-}
-
-/* ------------------------------------------------------------------
-   Rullende referanseramme. Ekte fullsides-fangst som ruller sakte inni
-   nettleservinduet på porteføljekortene. Portert fra studio-mal-demoen,
-   se inspirasjon/demo-studio-mal.md.
-
-   Fangstene er tatt med en vanlig 1280 x 900 viewport og beskåret til
-   1280 x 5000, så nedskalert til 640 x 2500. Det er viktig: setter man
-   viewporten til full sidehøyde før skjermbildet, blir hver 100vh-hero
-   like høy som hele siden, og fangsten blir ett bilde uten innhold.
-
-   2500 / 640 = 3,906. Vinduet står i 4:3 og viser derfor
-   0,75 / 3,906 = 19,2 % av bildet av gangen. Full rullelengde blir
-   80,8 %. Endres fangsthøyden eller vindusformatet, må --til regnes om
-   for alle prosjektene i site.js.
-
-   Standard er at rammene ruller. `utenfor` settes bare på kort som
-   forlater skjermen, så seks animasjoner ikke maler i bakgrunnen. Fyrer
-   ikke observeren, ruller alt, som er riktig feilmodus: motsatt oppsett
-   gir kort som står stille for alltid.
-   ------------------------------------------------------------------ */
-@keyframes rammerull {
-  from { transform: translateY(0); }
-  to   { transform: translateY(var(--til, -79%)); }
-}
-.rammerull {
-  animation: rammerull 34s ease-in-out infinite alternate;
-}
-/* will-change bare mens rammen faktisk ruller. Permanent på seks bilder
-   holder seks komposittlag i live, også utenfor skjermen. */
-[data-reveal].is-visible .rammerull { will-change: transform; }
-[data-reveal]:not(.is-visible) .rammerull { animation-play-state: paused; }
-
-@media (prefers-reduced-motion: reduce) {
-  .rammerull { animation: none; transform: none; }
-}
-
-/* Scroll reveal, driven by IntersectionObserver (see useReveal).
-   Hidden state only applies once JS arms the container, so content stays
-   visible if scripts fail. Immune to font/image reflow and never freezes. */
+   To mekanismer med vilje. `.inn` er demoens egen og styres av
+   IntersectionObserver i useReveal. `[data-reveal]` er den
+   eksisterende på de øvrige rutene. Begge gjør det samme, og begge
+   er trygge om JavaScript aldri fyrer: innholdet står synlig.
+   ================================================================== */
+.reveal-armed .inn,
 .reveal-armed [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity var(--fart) var(--lett),
-              transform var(--fart) var(--lett);
+  transform: translateY(1rem);
+  transition: opacity .75s var(--e), transform .75s var(--e);
+  transition-delay: var(--d, 0ms);
   will-change: opacity, transform;
 }
+.reveal-armed .inn.is-visible,
 .reveal-armed [data-reveal].is-visible {
   opacity: 1;
   transform: none;
 }
+
 @media (prefers-reduced-motion: reduce) {
+  .reveal-armed .inn,
   .reveal-armed [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .ramme-vindu img { animation: none; transform: none; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
   }
 }
