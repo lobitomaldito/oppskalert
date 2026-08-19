@@ -1,17 +1,20 @@
-import { Check, Minus } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { Shell, SideTopp, SeksjonTopp } from '../components/Layout';
-import Priser from '../components/Priser';
-import FAQ from '../components/FAQ';
-import DemoSkjema from '../components/DemoSkjema';
-import { useReveal } from '../lib/useReveal';
-import { lagFaqSchema, prisSporsmal, prismodeller } from '../lib/site';
+import { Shell } from '../components/Layout';
+import { lagFaqSchema, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
+import { sporsmal } from '../lib/demo-innhold';
 
-/* Egne prisspesifikke spørsmål, ikke den generelle listen fra forsiden.
-   Fram til 13. august 2026 viste begge rutene nøyaktig samme åtte
-   spørsmål, altså identisk FAQPage-schema på to URLer, og da beholder
-   Google bare den ene. Se kommentaren over prisSporsmal i site.js. */
-const prisFaqSchema = lagFaqSchema(prisSporsmal);
+/* Skjemaet bygges av nøyaktig de spørsmålene som vises lenger nede på
+   siden. Google krever at FAQPage beskriver synlig innhold, så et skjema
+   som lister andre spørsmål enn leseren ser er en reell risiko, ikke en
+   formalitet.
+
+   Fram til 19. august 2026 pekte denne på prisSporsmal i site.js, en egen
+   søkeordsrettet liste. Den lista vises nå på /vanlige-sporsmal i stedet,
+   med sitt eget skjema, så det er fortsatt to ulike FAQPage-sett på to
+   URLer. Det var hele poenget med å skille dem 13. august: identiske
+   skjemaer på to ruter gjør at Google beholder bare den ene. */
+const prisFaqSchema = lagFaqSchema(sporsmal.map(([q, a]) => ({ q, a })));
 
 const priserSchema = {
   '@context': 'https://schema.org',
@@ -27,83 +30,115 @@ const priserSchema = {
   })),
 };
 
-/* Sammenligningen svarer på det ene spørsmålet prismodellene ikke gjør
-   alene: hva er egentlig forskjellen, rad for rad. */
-const rader = [
-  ['Gratis demo før du bestemmer deg', true, true],
-  ['Design og utvikling av komplett nettside', true, true],
-  ['Håndkodet, uten tunge plugins', true, true],
-  ['Søkemotor-grunnoppsett', true, true],
-  ['Du eier alle filene', true, 'Ja, også her'],
-  ['Hosting, domene og SSL', 'Eget ansvar', true],
-  ['Rimelige innholdsendringer inkludert', false, true],
-  ['Backup og oppetidsovervåking', false, true],
-  ['Support direkte fra meg', false, true],
-];
-
-const Celle = ({ v }) => {
-  if (v === true) return <Check className="w-4 h-4 text-ink mx-auto" aria-label="Inkludert" />;
-  if (v === false) return <Minus className="w-4 h-4 text-primary/70 mx-auto" aria-label="Ikke inkludert" />;
-  return <span className="font-body text-xs text-primary/70">{v}</span>;
-};
-
-const Sammenligning = () => {
-  const container = useReveal(80);
-  return (
-    <section ref={container} className="seksjon">
-      <div className="wrap">
-        <SeksjonTopp tittel="Hva inngår i" uthevet="hver modell?" />
-        <div data-reveal className="overflow-x-auto max-w-[52rem]">
-          <table className="w-full border-collapse min-w-[34rem]">
-            <caption className="sr-only">Sammenligning av engangspris og driftsavtale</caption>
-            <thead>
-              <tr className="border-b border-primary/20">
-                <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-primary/70 pb-3 font-semibold">Inkludert</th>
-                <th scope="col" className="font-sans font-bold text-sm pb-3 px-4 w-[8.5rem]">Engangspris</th>
-                <th scope="col" className="font-sans font-bold text-sm pb-3 px-4 w-[8.5rem] underline decoration-ink/40 underline-offset-4">Driftet av meg</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rader.map(([navn, a, b]) => (
-                <tr key={navn} className="border-b border-primary/10">
-                  <th scope="row" className="text-left font-body text-[0.95rem] text-primary/85 py-3.5 pr-4 font-normal">{navn}</th>
-                  <td className="text-center py-3.5 px-4"><Celle v={a} /></td>
-                  <td className="text-center py-3.5 px-4"><Celle v={b} /></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p data-reveal className="font-body text-[0.95rem] text-primary/80 mt-6 max-w-[52ch] leading-relaxed">
-          Begge modellene gjelder nye nettsider. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
-        </p>
-      </div>
-    </section>
-  );
-};
-
 const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 7 990 kr, eller driftet av meg fra 690 kr/mnd. Du får fast pris og en gratis demo før du bestemmer deg. Ingen binding."
+      description="Pris på hjemmeside og nettside: engangspris fra 9 999 kr, eller driftet av meg fra 690 kr/mnd. Du får fast pris og en gratis demo før du bestemmer deg. Ingen binding."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
     />
-    <SideTopp
-      tittel="Fast pris på"
-      uthevet="nettside og drift."
-      lede="To modeller, begge starter med en gratis demo. Du vet nøyaktig hva hjemmesiden koster før jeg skriver en eneste linje kode."
-    />
-    <Priser visPasserDeg />
-    <Sammenligning />
-    <FAQ tittel="Det folk lurer på" uthevet="om pris." sporsmal={prisSporsmal} />
-    <DemoSkjema
-      tittel="Vil du se hva"
-      uthevet="din ville kostet?"
-      lede="Fortell meg kort om bedriften, så får du en fast pris, og en gratis demo før du bestemmer deg."
-    />
+
+    <section className="wrap sidetopp">
+      <p className="etikett inn">Priser</p>
+      <h1 className="inn" style={{ '--d': '60ms' }}>Fast pris på nettside og drift.</h1>
+      <p className="inn" style={{ '--d': '140ms' }}>
+        Du får en fast pris fra meg før jeg skriver en linje kode, og du ser demoen
+        innen tre virkedager. Ingen timepris som løper. Ingen overraskelser på slutten.
+      </p>
+    </section>
+
+    <section className="hvit">
+      <div className="wrap seksjon">
+        <div className="seksjonstopp inn">
+          <p className="etikett">To modeller</p>
+          <h2>Eie den selv, eller la meg passe på</h2>
+        </div>
+        <div className="priser inn" style={{ '--d': '80ms' }}>
+          <article className="pris">
+            <p className="modell">Engangspris</p>
+            <p className="tall">9 999<span>kr</span></p>
+            <p className="tagline">Du eier alt. Én faktura, så er du ferdig.</p>
+            <ul>
+              <li>Komplett nettside, håndbygd for deg</li>
+              <li>Alle filer overlevert, du eier dem</li>
+              <li>SEO-grunnoppsett fra dag én</li>
+              <li>Hjelp med oppsett på ditt eget hosting</li>
+            </ul>
+          </article>
+          <article className="pris fremhevet">
+            <p className="modell">Driftet av meg · ingen binding</p>
+            <p className="tall">690<span>kr/mnd</span></p>
+            <p className="tagline">Jeg passer på alt. Du slipper å tenke teknisk igjen.</p>
+            <ul>
+              <li>Alt i engangspris, pluss:</li>
+              <li>Hosting, domene og SSL</li>
+              <li>Rimelige innholdsendringer inkludert</li>
+              <li>Support direkte fra meg, ikke en helpdesk</li>
+            </ul>
+          </article>
+        </div>
+        <p className="prisnotat">Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.</p>
+      </div>
+    </section>
+
+    <section className="seksjon">
+      <div className="wrap">
+        <div className="seksjonstopp inn">
+          <p className="etikett">Drift</p>
+          <h2>Tre nivåer, bytt når du vil</h2>
+          <p>Velger du at jeg skal passe på siden, er dette nivåene. Du kan gå opp eller
+          ned, eller avslutte, uten oppsigelsestid.</p>
+        </div>
+        <div className="priser tre inn" style={{ '--d': '80ms' }}>
+          {driftNivaer.map((n) => (
+            <article key={n.id} className={n.fremhevet ? 'pris fremhevet' : 'pris'}>
+              <p className="modell">{n.navn}</p>
+              <p className="tall">{n.fra}<span>{n.enhet}</span></p>
+              <p className="tagline">{n.tagline}</p>
+              <ul>
+                {n.inkludert.map((f) => <li key={f}>{f}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+        <p className="prisnotat">{driftNotat}</p>
+      </div>
+    </section>
+
+    <section className="hvit">
+      <div className="wrap seksjon">
+        <div className="faq-rad">
+          <div className="inn">
+            <p className="etikett" style={{ marginBottom: '1.25rem' }}>Spørsmål</p>
+            <h2>Greit å vite</h2>
+            <p className="faq-intro">Er det noe jeg ikke har svart på, er det bare å{' '}
+            <Link to={ruter.kontakt}>ta kontakt</Link>. Jeg svarer selv.</p>
+          </div>
+          {/* Disse seks spørsmålene er studio-mal-demoens egne, ordrett fra
+              demo-innhold.js, og FAQPage-skjemaet over bygges av nøyaktig
+              den samme lista. Det er ikke en detalj: Google krever at
+              FAQPage-strukturen beskriver det som faktisk står synlig på
+              siden, og et skjema som lover andre spørsmål enn de leseren
+              ser kan gi manuell straff eller at rik-resultatet droppes.
+              Endrer du spørsmålene her, endres skjemaet av seg selv.
+
+              De søkeordsrettede prisspørsmålene (prisSporsmal i site.js)
+              ligger fortsatt ute på /vanlige-sporsmal med sitt eget skjema,
+              så den SEO-verdien er ikke tapt, den er bare flyttet dit den
+              faktisk vises. */}
+          <div className="faq inn" style={{ '--d': '80ms' }}>
+            {sporsmal.map(([q, a]) => (
+              <details key={q}>
+                <summary>{q} <span className="tegn" aria-hidden="true" /></summary>
+                <p className="svar">{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   </Shell>
 );
 

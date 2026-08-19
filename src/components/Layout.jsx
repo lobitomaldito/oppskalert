@@ -1,13 +1,8 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight, Menu, X } from 'lucide-react';
+import { Children, cloneElement, isValidElement, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { kontakt, navLenker, ruter } from '../lib/site';
 import { RUTE_VANLIGE_SPORSMAL } from '../lib/populaere-sok';
 import { cn } from '../lib/utils';
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* Uten dette beholder React Router scrollposisjonen mellom ruter, så du
    lander midt på prissiden når du klikker deg dit fra bunnen av forsiden.
@@ -22,247 +17,163 @@ export const ScrollToTop = () => {
   return null;
 };
 
-/* Ett navigasjonsoppsett for hele siden. Før lå det to ulike navbarer
-   i App.jsx og VårtArbeidPage.jsx, med forskjellige lenker. Det er
-   grunnen til at "Løsninger" og "Filosofi" pekte på seksjoner som ikke
-   fantes lenger.
+/* Toppnavigasjonen, portert ordrett fra studio-mal-demoen
+   (mal3.src.html, linje 660 til 686). Alle klasser (.topp, .topp-nav,
+   .merke, .knapp, .pil, .meny, .meny-liste) ligger ferdig i index.css.
 
-   Studio-mal-redesignet (19. august 2026) dropper den svevende,
-   scroll-fargede pillen: skallet veksler mellom mørkt og lyst felt seksjon
-   for seksjon, og en nav som toner mellom to fargesett samtidig som
-   innholdet under den bytter, blir uleselig i overgangen. Navbaren står nå
-   fast på hvitt (--surface) med mørk skrift (--room-ink) uansett hva som
-   ruller forbi under, med en tynn bunnkant som vises etter første scroll. */
+   Mobilmenyen er et rent details/summary-element uten JavaScript i
+   demoen, det holder vi på. Det eneste vi legger til er å lukke menyen
+   når ruten bytter: demoen selv lastet en hash-rute på nytt ved klikk,
+   en SPA gjør ikke det, så et åpent overlegg ville blitt stående. */
 export const Navbar = () => {
-  const navRef = useRef(null);
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const lukk = () => setMenuOpen(false);
+  const menyRef = useRef(null);
+  const location = useLocation();
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        start: 'top -50',
-        end: 99999,
-        onUpdate: (self) => setScrolled(self.isActive),
-      });
-    }, navRef);
-    return () => ctx.revert();
+    if (menyRef.current) menyRef.current.open = false;
+  }, [location]);
+
+  useEffect(() => {
+    const lukkVedEscape = (e) => {
+      if (e.key === 'Escape' && menyRef.current) menyRef.current.open = false;
+    };
+    window.addEventListener('keydown', lukkVedEscape);
+    return () => window.removeEventListener('keydown', lukkVedEscape);
   }, []);
 
-  // Escape lukker menyen. Standard nødutgang for et åpent overlegg.
-  useEffect(() => {
-    if (!menuOpen) return;
-    const onKey = (e) => { if (e.key === 'Escape') setMenuOpen(false); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [menuOpen]);
-
-  const linkClass = ({ isActive }) =>
-    `transition-colors duration-200 hover:text-room-ink ${isActive ? 'text-room-ink font-semibold' : 'text-room-ink/60'}`;
+  const navKlasse = ({ isActive }) => (isActive ? 'aktiv' : undefined);
 
   return (
-    <>
-      <nav
-        ref={navRef}
-        className={cn(
-          'fixed top-0 inset-x-0 z-nav flex items-center justify-between gap-6 px-6 md:px-10 py-4 bg-surface text-room-ink transition-shadow duration-300',
-          scrolled ? 'shadow-[0_1px_0_rgb(var(--room-ink)/0.1)]' : '',
-        )}
-      >
-        <Link to={ruter.hjem} className="font-display font-extrabold text-2xl tracking-tight lowercase flex-shrink-0">
-          oppskalert<span className="text-room-signal">.</span>
-        </Link>
+    <header className="topp">
+      <div className="wrap topp-inn">
+        <Link className="merke" to={ruter.hjem}>oppskalert<i>.</i></Link>
 
-        <div className="hidden lg:flex items-center gap-7 font-body text-sm">
-          {navLenker.map((l) => (
-            <NavLink key={l.label} to={l.to} className={linkClass}>{l.label}</NavLink>
+        <nav className="topp-nav" aria-label="Hovedmeny">
+          {navLenker.map((lenke) => (
+            <NavLink key={lenke.label} to={lenke.to} className={navKlasse}>
+              {lenke.label}
+            </NavLink>
           ))}
-        </div>
+        </nav>
 
-        <Link
-          to={ruter.kontakt}
-          className="hidden sm:inline-flex items-center gap-2 flex-shrink-0 bg-room-ink text-surface px-5 py-2.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
-        >
-          Gratis demo
+        <Link className="knapp" to={ruter.kontakt}>
+          Ta kontakt <span className="pil" aria-hidden="true">↗</span>
         </Link>
 
-        <button
-          type="button"
-          onClick={() => setMenuOpen((o) => !o)}
-          aria-label={menuOpen ? 'Lukk meny' : 'Åpne meny'}
-          aria-expanded={menuOpen}
-          aria-controls="mobile-menu"
-          className="lg:hidden inline-flex items-center justify-center w-11 h-11 -mr-1 text-current"
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </nav>
-
-      {menuOpen && (
-        <div
-          id="mobile-menu"
-          className="lg:hidden fixed inset-x-0 top-[64px] z-meny pt-4 pb-8 px-6 bg-surface text-room-ink border-b border-room-ink/10"
-        >
-          <div className="flex flex-col max-w-[68rem] mx-auto">
-            {navLenker.map((l) => (
-              <NavLink
-                key={l.label}
-                to={l.to}
-                onClick={lukk}
-                className="font-body text-base text-room-ink/80 hover:text-room-ink py-4 border-b border-room-ink/10 transition-colors"
-              >
-                {l.label}
+        <details className="meny" ref={menyRef}>
+          <summary aria-label="Meny"><span aria-hidden="true" /></summary>
+          <nav className="meny-liste" aria-label="Meny">
+            <NavLink to={ruter.hjem} end className={navKlasse}>Forside</NavLink>
+            {navLenker.map((lenke) => (
+              <NavLink key={lenke.label} to={lenke.to} className={navKlasse}>
+                {lenke.label}
               </NavLink>
             ))}
-            <Link
-              to={ruter.kontakt}
-              onClick={lukk}
-              className="mt-6 inline-flex items-center justify-center gap-2 bg-room-ink text-surface px-6 py-4 rounded-full font-sans font-bold text-base"
-            >
-              Bestill gratis demo <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      )}
-    </>
+            <NavLink to={ruter.kontakt} className={navKlasse}>Kontakt</NavLink>
+          </nav>
+        </details>
+      </div>
+    </header>
   );
 };
 
-/* Ordmerket nederst skal fylle hele bredden av wrap-kolonnen, uansett
-   skjermbredde. Første forsøk målte bredden i DOM-en med JS og regnet
-   font-size ut derfra, men landet på font-size: 0px i praksis (raste
-   sammen til usynlig ved mount, aldri korrigert). Samme løsning som
-   heroens vannmerke bruker allerede og som er bevist å virke: en ren
-   CSS clamp() i vw, ingen JS, ingen målefeil mulig. Låst til ca. 11
-   tegn ("oppskalert.") ved maks-bredden --maks (68rem), derav 5,7vw. */
-const StortOrdmerke = () => (
-  <div className="overflow-hidden w-full">
-    <span
-      style={{ fontSize: 'clamp(3rem, 10.5vw, 7.6rem)', letterSpacing: '-0.03em' }}
-      className="font-display font-extrabold lowercase leading-none block whitespace-nowrap -mx-1"
-    >
-      oppskalert<span className="text-accent">.</span>
-    </span>
-  </div>
-);
+/* Bunnteksten, portert ordrett fra studio-mal-demoen (mal3.src.html,
+   linje 1123 til 1152). Klassene (.bunn, .bunn-inn, .bunn-post,
+   .bunn-rad, .bunn-lenker, .bunn-merke-boks, .bunn-merke, .signatur,
+   .portrett, .portrett-rund, .paa-blekk) ligger ferdig i index.css.
 
+   Den gamle bunnteksten lenket i tillegg til Tjenester- og
+   Verktøy-sidene, ni ruter demoens egen bunnmeny ikke kjente til. De
+   lenkene bærer internlenking SEO-arbeidet er avhengig av, så de er
+   lagt til i en egen rad over bunn-rad i stedet for droppet. */
 export const Footer = () => (
-  <footer className="bg-deep text-ink pt-20 pb-10">
-    <div className="wrap">
-      <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-8 pb-14 border-b border-ink/10">
-        <h2 className="font-display font-extrabold text-4xl md:text-5xl tracking-tight leading-[1.05] max-w-[16ch]">
-          La oss bygge noe bra sammen.
-        </h2>
-        <Link
-          to={ruter.kontakt}
-          className="flex-shrink-0 inline-flex items-center gap-2 bg-ink text-background px-8 py-4 rounded-full font-sans font-bold text-base hover:scale-[1.03] transition-transform duration-300"
-        >
-          Bestill gratis demo <ArrowRight className="w-4 h-4" />
-        </Link>
-      </div>
+  <footer className="bunn paa-blekk">
+    <div className="wrap bunn-inn">
+      <a className="bunn-post" href={`mailto:${kontakt.epost}`}>{kontakt.epost}</a>
+      <p style={{ marginTop: '1rem', color: 'var(--kritt-mykt)', fontSize: '.9375rem' }}>
+        Eller bare ring, jeg tar telefonen selv:{' '}
+        <a href={`tel:${kontakt.tel}`} style={{ borderBottom: '1px solid var(--blekk-kant)' }}>
+          {kontakt.telefon}
+        </a>
+      </p>
 
-      <div className="flex flex-col md:flex-row justify-between gap-10 pt-12">
-        <div className="max-w-xs">
-          <span className="font-display font-extrabold text-2xl tracking-tight lowercase block mb-2">
-            oppskalert<span className="text-accent">.</span>
-          </span>
-          <p className="font-body text-ink/70 text-sm leading-relaxed">
-            Norsk webutvikling. Én person, hele jobben, fra første skisse til ferdig nettside.
-          </p>
+      <div className="signatur">
+        <div className="portrett portrett-rund" style={{ width: '3.25rem' }}>
+          <img src="/founders/aleksander.webp" alt="" width={1792} height={2400} loading="lazy" />
         </div>
-
-        <div className="flex flex-wrap gap-x-14 gap-y-8 font-body text-sm">
-          <div className="flex flex-col gap-3">
-            <span className="text-ink/70 text-sm font-semibold mb-1">Kontakt</span>
-            <span className="text-ink/70">{kontakt.navn}</span>
-            <a href={`tel:${kontakt.tel}`} className="text-ink hover:text-ink/70 transition-colors">{kontakt.telefon}</a>
-            <a href={`mailto:${kontakt.epost}`} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">{kontakt.epost}</a>
-          </div>
-          <div className="flex flex-col gap-3">
-            <span className="text-ink/70 text-sm font-semibold mb-1">Snarveier</span>
-            {navLenker.map((l) => (
-              <Link key={l.label} to={l.to} className="text-ink/70 hover:text-ink transition-colors">{l.label}</Link>
-            ))}
-          </div>
-          <div className="flex flex-col gap-3">
-            <span className="text-ink/70 text-sm font-semibold mb-1">Tjenester</span>
-            <Link to={ruter.nettsideDesign} className="text-ink/70 hover:text-ink transition-colors">Nettsidedesign</Link>
-            <Link to={ruter.nettsideBedrift} className="text-ink/70 hover:text-ink transition-colors">Nettside til bedrift</Link>
-            <Link to={ruter.nettbutikk} className="text-ink/70 hover:text-ink transition-colors">Lage nettbutikk</Link>
-            <Link to={ruter.webdesignOslo} className="text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
-            <Link to={ruter.seo} className="text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
-            <Link to={ruter.drift} className="text-ink/70 hover:text-ink transition-colors">Drift og support</Link>
-          </div>
-          <div className="flex flex-col gap-3">
-            <span className="text-ink/70 text-sm font-semibold mb-1">Verktøy</span>
-            <Link to={ruter.kalkulator} className="text-ink/70 hover:text-ink transition-colors">Priskalkulator</Link>
-            <Link to={ruter.sammenlign} className="text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
-            <Link to={RUTE_VANLIGE_SPORSMAL} className="text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
-          </div>
-          <div className="flex flex-col gap-3">
-            <span className="text-ink/70 text-sm font-semibold mb-1">Selskap</span>
-            <span className="text-ink/70">Orgnr {kontakt.orgnr}</span>
-            <span className="text-ink/70">{kontakt.sted}</span>
-            <span className="text-ink/70">Et datterselskap av<br />{kontakt.morselskap}</span>
-          </div>
+        <div>
+          <p className="navn">{kontakt.navn}</p>
+          <p className="rolle">Grunnlegger, Oppskalert</p>
         </div>
       </div>
 
-      <div className="mt-12 pt-6 border-t border-ink/10 flex flex-wrap gap-4 justify-between items-center font-body text-sm text-ink/70">
-        <p>&copy; {new Date().getFullYear()} {kontakt.morselskap}.</p>
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-ink animate-pulse" />
-          <span>Ledig for nye prosjekter</span>
+      <div className="flex flex-wrap gap-x-14 gap-y-8 pt-10 font-body text-sm">
+        <div className="flex flex-col gap-3">
+          <span className="text-ink/70 font-semibold mb-1">Tjenester</span>
+          <Link to={ruter.nettsideDesign} className="text-ink/70 hover:text-ink transition-colors">Nettsidedesign</Link>
+          <Link to={ruter.nettsideBedrift} className="text-ink/70 hover:text-ink transition-colors">Nettside til bedrift</Link>
+          <Link to={ruter.nettbutikk} className="text-ink/70 hover:text-ink transition-colors">Lage nettbutikk</Link>
+          <Link to={ruter.webdesignOslo} className="text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
+          <Link to={ruter.seo} className="text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
+          <Link to={ruter.drift} className="text-ink/70 hover:text-ink transition-colors">Drift og support</Link>
         </div>
+        <div className="flex flex-col gap-3">
+          <span className="text-ink/70 font-semibold mb-1">Verktøy</span>
+          <Link to={ruter.kalkulator} className="text-ink/70 hover:text-ink transition-colors">Priskalkulator</Link>
+          <Link to={ruter.sammenlign} className="text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
+          <Link to={RUTE_VANLIGE_SPORSMAL} className="text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
+        </div>
+      </div>
+
+      <div className="bunn-rad">
+        <p>© {new Date().getFullYear()} Oppskalert · et selskap i {kontakt.morselskap} · {kontakt.sted.split(',')[0]} · org. {kontakt.orgnr}</p>
+        <nav className="bunn-lenker" aria-label="Bunnmeny">
+          <Link to={ruter.arbeid}>Arbeid</Link>
+          <Link to={ruter.priser}>Priser</Link>
+          <Link to={ruter.metode}>Metode</Link>
+          <Link to={ruter.om}>Om meg</Link>
+          <Link to={ruter.blogg}>Blogg</Link>
+          <Link to={ruter.kontakt}>Kontakt</Link>
+        </nav>
       </div>
     </div>
 
-    <div className="wrap mt-16">
-      <StortOrdmerke />
+    <div className="bunn-merke-boks">
+      <span className="merke bunn-merke" aria-hidden="true">oppskalert<i>.</i></span>
     </div>
   </footer>
 );
 
-/* Felles skall: nav på toppen, innhold, fot. Alle ruter bruker denne,
-   så navigasjonen aldri kommer ut av synk mellom sidene igjen. */
+/* Felles skall: hopp-lenke, nav på toppen, innhold, fot. Alle ruter
+   bruker denne, så navigasjonen aldri kommer ut av synk mellom sidene
+   igjen. */
 export const Shell = ({ children }) => (
-  <div className="bg-background text-primary min-h-screen selection:bg-ink selection:text-background">
+  <div className="min-h-screen">
+    <a className="hopp" href="#innhold">Hopp til innhold</a>
     <Navbar />
-    <main>{children}</main>
+    <main id="innhold" tabIndex={-1}>{children}</main>
     <Footer />
   </div>
 );
 
-/* Sidetopp. Samme anslag på alle undersider. Det uthevede ordet står
-   ikke lenger i aksentfarge: studio-malen har ingen aksent i skallet,
-   all farge skal komme fra kundearbeidet. Uthevingen skjer med vekt
-   og linjeskift i stedet, altså typografisk, ikke med farge. */
-export const SideTopp = ({ tittel, uthevet, lede }) => (
-  <header className="wrap pt-36 md:pt-44 pb-8 md:pb-12">
-    <h1 className="hero-elem font-display font-extrabold text-[clamp(2.6rem,6.5vw,4.6rem)] leading-[1.02] tracking-[-0.035em] max-w-[16ch]">
-      {tittel}{uthevet && <> {uthevet}</>}
-    </h1>
-    {lede && (
-      <p className="hero-elem font-body text-base md:text-lg text-primary/80 mt-6 max-w-[52ch] leading-relaxed">
-        {lede}
-      </p>
-    )}
+/* Sidetopp. Samme anslag på alle undersider, klassen er demoens egen
+   .sidetopp (se mal3.src.html linje 803 til 812). Det uthevede ordet
+   er fortsatt bare typografisk, ikke farget, skallet har ingen aksent. */
+export const SideTopp = ({ tittel, uthevet, lede, etikett }) => (
+  <header className="wrap sidetopp">
+    {etikett && <p className="etikett">{etikett}</p>}
+    <h1>{tittel}{uthevet && <> {uthevet}</>}</h1>
+    {lede && <p>{lede}</p>}
   </header>
 );
 
-/* Seksjonstopp. Bevisst UTEN den lille uppercase-eyebrowen over hver
-   seksjon. DESIGN.md ber om at de tynnes ut, ikke multipliseres. */
+/* Seksjonstopp, demoens egen .seksjonstopp-klasse (se mal3.src.html
+   linje 727 til 732). midtstilt er ikke en del av demoens eget CSS,
+   den legges på med Tailwind-verktøyklasser over den ferdige stilen. */
 export const SeksjonTopp = ({ tittel, uthevet, lede, midtstilt = false }) => (
-  <div className={`mb-10 md:mb-14 ${midtstilt ? 'text-center mx-auto max-w-2xl' : ''}`}>
-    <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-      {tittel}{uthevet && <> {uthevet}</>}
-    </h2>
-    {lede && (
-      <p className={`font-body text-[0.95rem] md:text-base text-primary/80 mt-4 leading-relaxed max-w-[54ch] ${midtstilt ? 'mx-auto' : ''}`}>
-        {lede}
-      </p>
-    )}
+  <div className={cn('seksjonstopp', midtstilt && 'mx-auto text-center')}>
+    <h2>{tittel}{uthevet && <> {uthevet}</>}</h2>
+    {lede && <p>{lede}</p>}
   </div>
 );
 

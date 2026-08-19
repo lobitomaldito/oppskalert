@@ -51,7 +51,7 @@ export const prismodeller = [
   {
     id: 'engangs',
     navn: 'Engangspris',
-    fra: '7 990',
+    fra: '9 999',
     enhet: 'kr',
     periode: 'engangspris',
     tagline: 'Du eier alt. Én faktura, så er du ferdig.',
@@ -168,7 +168,7 @@ export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå e
    tillegg/haster, med vilje: et enkelt tall er lettere å stå for enn et
    utregnet ett. */
 export const kalkulatorOmfang = [
-  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 7990, max: 9990, manedspris: 690 },
+  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 9999, max: 12900, manedspris: 690 },
   { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900, manedspris: 890 },
   { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900, manedspris: 1190 },
   { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900, manedspris: 1590 },
@@ -283,7 +283,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'Engangspris starter på 7 990 kr eks. mva, og da eier du alt. Vil du heller at jeg drifter siden for deg, starter det på 690 kr i måneden. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
+    a: 'Engangspris starter på 9 999 kr eks. mva, og da eier du alt. Vil du heller at jeg drifter siden for deg, starter det på 690 kr i måneden. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er en gratis demo, og hva forplikter det meg til?',
@@ -352,7 +352,7 @@ export const faqSchema = lagFaqSchema(sporsmal);
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg starter en enkel landingsside på 7 990 kr eks. mva. En vanlig bedriftsnettside på to til fem sider ligger mellom 12 900 og 16 900 kr, seks til ti sider mellom 18 900 og 24 900 kr, og over ti sider fra 27 900 kr. Du får alltid en fast pris før jeg skriver en linje kode, og du kan regne ut ditt eget estimat i kalkulatoren.',
+    a: 'Hos meg starter en enkel landingsside på 9 999 kr eks. mva. En vanlig bedriftsnettside på to til fem sider ligger mellom 12 900 og 16 900 kr, seks til ti sider mellom 18 900 og 24 900 kr, og over ti sider fra 27 900 kr. Du får alltid en fast pris før jeg skriver en linje kode, og du kan regne ut ditt eget estimat i kalkulatoren.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',

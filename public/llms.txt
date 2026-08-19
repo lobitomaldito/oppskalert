@@ -8,7 +8,7 @@
 - [Arbeid](https://oppskalert.no/arbeid): Ekte nettsider i drift for norske kunder, pluss bransjeeksempler.
 
 ## Priser
-- [Priser](https://oppskalert.no/priser): Engangspris fra 7 990 kr, eller drift fra 690 kr/mnd. Fast pris, ingen binding.
+- [Priser](https://oppskalert.no/priser): Engangspris fra 9 999 kr, eller drift fra 690 kr/mnd. Fast pris, ingen binding.
 - [Priskalkulator](https://oppskalert.no/kalkulator): Selvbetjent prisestimat basert på omfang og tilleggsfunksjoner.
 - [Drift og support](https://oppskalert.no/drift): Tre driftsnivåer fra 149 kr/mnd, ingen bindingstid.
 

@@ -28,7 +28,7 @@ export const populaereSok = [
   {
     // «hva koster en nettside» 70/mnd KD 0, pluss prisklyngen på 720/mnd samlet
     q: 'Hva koster en nettside i Norge?',
-    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 7 990 kroner eks. mva som engangspris, eller 690 kroner i måneden hvis jeg skal drifte den også. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
+    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 9 999 kroner eks. mva som engangspris, eller 690 kroner i måneden hvis jeg skal drifte den også. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
     til: { tekst: 'Se hele prislisten', rute: '/priser' },
   },
   {
@@ -64,7 +64,7 @@ export const populaereSok = [
   {
     // «webdesign oslo» 140/mnd KD 17 + «webutvikler oslo» 260/mnd KD 16
     q: 'Hva koster webdesign i Oslo?',
-    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 7 990 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
+    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 9 999 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
     til: { tekst: 'Webdesign i Oslo', rute: '/webdesign-oslo' },
   },
   {

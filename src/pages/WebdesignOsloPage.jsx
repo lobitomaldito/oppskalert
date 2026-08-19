@@ -45,7 +45,7 @@ const webdesignOsloSchema = [
       { '@type': 'City', name: 'Oslo' },
       { '@type': 'AdministrativeArea', name: 'Viken' },
     ],
-    priceRange: 'fra 7 990 kr',
+    priceRange: 'fra 9 999 kr',
   },
   {
     '@context': 'https://schema.org',
@@ -173,7 +173,7 @@ const WebdesignOsloPage = () => (
   <Shell>
     <SEO
       title="Webdesign i Oslo til fast pris"
-      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 7 990 kr, og en ferdig demo gratis før du bestemmer deg."
+      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 9 999 kr, og en ferdig demo gratis før du bestemmer deg."
       keywords={['webdesign oslo', 'webdesigner oslo', 'webdesign firma', 'webdesign bedrift']}
       canonical={CANONICAL}
       jsonLd={webdesignOsloSchema}

@@ -39,6 +39,7 @@ const lazySide = (last) =>
   )
 
 const ArbeidPage = lazySide(() => import('./pages/ArbeidPage.jsx'))
+const CasePage = lazySide(() => import('./pages/CasePage.jsx'))
 const PriserPage = lazySide(() => import('./pages/PriserPage.jsx'))
 const MetodePage = lazySide(() => import('./pages/MetodePage.jsx'))
 const OmPage = lazySide(() => import('./pages/OmPage.jsx'))
@@ -72,6 +73,7 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/arbeid" element={<ArbeidPage />} />
+          <Route path="/arbeid/:slug" element={<CasePage />} />
           {/* /vårt-arbeid redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/priser" element={<PriserPage />} />
           <Route path="/kalkulator" element={<KalkulatorPage />} />

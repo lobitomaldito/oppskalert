@@ -26,6 +26,10 @@ const distDir = path.join(__dirname, '..', 'dist');
 // ubetinget av SEO.jsx, uavhengig av PIN-status) skal nå crawlere uten JS.
 // PinGate-skallet inneholder ingen private data.
 import { articles } from '../src/lib/articles.js';
+// De 6 caseslugene, portet fra studio-mal-demoen (mal3.src.html). Se felle 1
+// i CLAUDE.md: en rute som ikke står her serveres som forsidens HTML til
+// crawlere, og Google ser den nye casen som en duplikat av forsiden.
+import { caser } from '../src/lib/demo-innhold.js';
 
 const ROUTES = [
   '/', '/arbeid', '/priser', '/metode', '/om', '/kontakt', '/drift',
@@ -33,6 +37,7 @@ const ROUTES = [
   '/vanlige-sporsmal',
   '/sokemotoroptimalisering', '/webdesign-oslo', '/nettside-design',
   '/nettside-til-bedrift', '/lage-nettbutikk',
+  ...caser.map((c) => `/arbeid/${c.slug}`),
   '/blogg',
   ...articles.map((a) => `/blogg/${a.slug}`),
   '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',

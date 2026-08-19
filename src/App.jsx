@@ -1,141 +1,182 @@
-import { ArrowDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
-import { Shell, SeksjonTopp } from './components/Layout';
-import Portfolio from './components/Portfolio';
-import Omtaler from './components/Omtaler';
-import Metode from './components/Metode';
-import Priser from './components/Priser';
-import FAQ from './components/FAQ';
-import DemoSkjema from './components/DemoSkjema';
-import { faqSchema, kontakt, ruter, stegene } from './lib/site';
+import { Shell } from './components/Layout';
+import Arbeider from './components/Arbeider';
+import Sitatkort from './components/Sitatkort';
+import { faqSchema, kontakt, ruter } from './lib/site';
+import { sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
 
-/* Studio-mal-redesignet (19. august 2026, inspirert av mammutstudios.com,
-   se inspirasjon/demo-studio-mal.md). Heroen står nå på det lyse feltet
-   (--room) i stedet for blekk, sentrert i stedet for venstrestilt, og uten
-   full skjermhøyde: innholdet setter høyden, ikke viewporten.
+/* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
+   linje 693 til 797, se inspirasjon/demo-studio-mal.md). Alt CSS ligger
+   allerede i index.css, denne fila bygger bare den samme markupen i
+   React: .hero blir en H1-seksjon på det lyse feltet med vannmerket bak,
+   .statuslinje blir en enkel "se mer"-pille, og resten følger demoens
+   åtte seksjoner i nøyaktig samme rekkefølge. Prisen i casedelen er
+   hevet fra demoens 7 990 til 9 999, det er det eneste tilsiktede
+   tekstavviket. Metode, Priser, Omtaler, FAQ og DemoSkjema-komponentene
+   brukes ikke lenger her: demoens forside slutter etter spørsmålene,
+   de andre seksjonene lever videre på sine egne ruter.
 
-   Eget ordmerke er tilbake, men som et vannmerke i --room-deep bak
-   overskriften, ikke som gjentatt merkevare i knapperaden. Det er beskåret
-   av seksjonskanten (overflow-hidden), så det leser som tekstur, ikke som
-   et andre ordmerke ved siden av navbarens.
+   Hver .inn-seksjon i demoen får sin egen useReveal(), akkurat som
+   Hvorfor-seksjonen gjorde i forrige versjon. [data-reveal] er det
+   useReveal faktisk observerer, .inn er bare demoens egen visuelle
+   klasse, begge trengs på samme element for at reveal skal virke og
+   se riktig ut. */
 
-   Statuslinjen under bruker ekte tall fra stegene i lib/site.js, ikke en
-   påstått ledig kapasitet som ikke finnes noe sted ellers på siden. Ingen
-   pille over H1-en: den ville bare vært tomt stillas, og statuslinjen
-   allerede bærer den ene konkrete opplysningen heroen har å gi. */
-const Hero = () => (
-  <section className="relative overflow-hidden bg-room text-room-ink rom">
-    <div
-      aria-hidden="true"
-      className="pointer-events-none select-none absolute inset-x-0 top-[8%] md:top-[12%] flex justify-center"
-    >
-      <span
-        className="font-display font-extrabold text-room-deep whitespace-nowrap"
-        style={{ fontSize: 'clamp(6rem, 26vw, 16rem)', letterSpacing: '-0.04em', lineHeight: 1 }}
-      >
-        oppskalert.
-      </span>
-    </div>
-
-    <div className="wrap relative pt-36 pb-16 md:pt-44 md:pb-20 flex flex-col items-center text-center">
-      <h1
-        className="hero-elem font-display font-extrabold"
-        style={{ fontSize: 'clamp(2.9rem, 8vw, 5.75rem)', lineHeight: 0.98, letterSpacing: '-0.035em', maxWidth: '16ch' }}
-      >
-        Nettsider som faktisk selger.
-      </h1>
-
-      <p className="hero-elem font-body text-base md:text-lg text-room-ink/80 mt-7 max-w-[46ch] leading-relaxed">
-        Jeg bygger den ferdig, viser deg den gratis, og lanserer den på dager, ikke måneder.
-      </p>
-
-      <div className="hero-elem mt-9 flex flex-wrap items-center justify-center gap-x-5 gap-y-4">
-        <Link
-          to={ruter.kontakt}
-          className="inline-flex items-center gap-2 bg-room-ink text-room px-8 py-4 rounded-full font-sans font-bold transition-transform duration-300 hover:scale-[1.03]"
-        >
-          Bestill gratis demo <ArrowRight className="w-4 h-4" />
-        </Link>
-        <Link
-          to={ruter.arbeid}
-          className="inline-flex items-center gap-2 border border-room-ink/25 hover:border-room-ink/60 px-7 py-4 rounded-full font-sans font-bold text-sm transition-colors duration-300"
-        >
-          Se arbeidet
-        </Link>
+const Hero = () => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className="hero">
+      <span className="vannmerke merke" aria-hidden="true">oppskalert<i>.</i></span>
+      <div className="wrap">
+        <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
+          Nettsiden din er ikke et visittkort. Den avgjør om de ringer deg.
+        </h1>
+        <p data-reveal className="inn" style={{ '--d': '220ms' }}>
+          Skreddersydde nettsider for bedrifter i Oslo. Søk, fart og konvertering
+          fra dag én, og du ser siden ferdig innen tre virkedager.
+        </p>
+        <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
+          <Link className="knapp" to={ruter.kontakt}>
+            Få en gratis demo <span className="pil" aria-hidden="true">↗</span>
+          </Link>
+        </div>
       </div>
+    </section>
+  );
+};
 
-      {/* Risikoavlastningen. Dette er argumentene som gjør at folk tør å
-          trykke på knappen over, så de skal ha vekt nok til å bli lest.
-          Stablet på mobil skilles de tre av samme border-t-per-rad som
-          Hvorfor-seksjonens tre punkter lenger ned, samme grep, ikke to.
-          Fra sm og opp står de side om side, og da gjør avstanden jobben
-          en strek ellers ville gjort, så border-t flytter til kun ul-en. */}
-      <ul className="hero-elem mt-12 md:mt-14 grid sm:grid-cols-3 sm:gap-x-10 max-w-[46rem] sm:border-t sm:border-room-ink/20 sm:pt-7">
-        {[
-          ['Gratis utkast', 'før du bestemmer deg'],
-          ['Du betaler', 'først når du er fornøyd'],
-          ['Ingen binding', 'du eier alt selv'],
-        ].map(([k, v]) => (
-          <li key={k} className="font-body border-t border-room-ink/20 py-5 sm:border-t-0 sm:py-0 text-center sm:text-left">
-            <span className="block font-bold text-base md:text-lg text-room-ink leading-snug">{k}</span>
-            <span className="block text-[0.95rem] md:text-base text-room-ink/70 mt-1">{v}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    {/* Statuslinjen. Tynne piller helt ute ved kantene av wrap-en, én
-        konkret opplysning til venstre (hentet fra stegene i lib/site.js,
-        samme tall som Metode-seksjonen viser, ikke funnet på), og et rent
-        dekorativt bla-ned-hint til høyre. */}
-    <div className="hero-elem wrap relative pb-10 md:pb-14 flex items-center justify-between gap-4">
-      <span className="inline-flex items-center rounded-full border border-room-ink/20 bg-surface px-4 py-2 font-body text-xs md:text-sm text-room-ink/80">
-        Demo klar på {stegene[0].tid.toLowerCase()}
-      </span>
-      <span className="inline-flex items-center gap-2 rounded-full border border-room-ink/20 bg-surface px-4 py-2 font-body text-xs md:text-sm text-room-ink/80">
-        Bla ned <ArrowDown className="w-3.5 h-3.5" />
-      </span>
-    </div>
-  </section>
+const Statuslinje = () => (
+  <div className="wrap statuslinje">
+    <a className="pille" href="#veien-inn">Se mer ↓</a>
+  </div>
 );
 
-/* Hvorfor det betyr noe. Konkrete tall i stedet for adjektiver.
-   «Under ett sekund» slår «lynrask» hver gang.
-
-   Står på --room (lyst felt), ikke blekk: Portfolio rett over og Omtaler
-   rett under er begge mørke (flate="band"), så en mørk Hvorfor mellom dem
-   ville gitt tre naboseksjoner på rad med samme flate. text-primary og
-   border-primary er derfor byttet til text-room-ink og border-room-ink
-   gjennomgående, de peker på ulike farger avhengig av bakgrunn. */
-const Hvorfor = () => {
-  const container = useReveal(100);
-
+const VeienInn = () => {
+  const container = useReveal(80);
   return (
-    <section ref={container} className="seksjon bg-room text-room-ink rom">
-      <div className="wrap grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:items-start">
-        <div data-reveal>
-          <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
-            Nettsiden er det første håndtrykket bedriften din gir.
-          </h2>
-          <p className="font-body text-[0.95rem] md:text-base text-room-ink/85 mt-5 leading-relaxed max-w-[48ch]">
-            Jeg sørger for at det sitter. Sidene er håndkodet, ikke stemplet ut av en mal, og de er bygget for å gjøre besøkende til kunder, ikke bare for å se pene ut.
-          </p>
-        </div>
+    <section ref={container} className="wrap" id="veien-inn" style={{ paddingBottom: 'var(--luft)' }}>
+      <div className="intro">
+        <p data-reveal className="etikett inn">Kom i gang</p>
+        <ul data-reveal className="nummerert inn" style={{ '--d': '80ms' }}>
+          <li><Link to={ruter.arbeid}><span className="nr">Arbeid</span> Se hva jeg har laget <span className="pil" aria-hidden="true">→</span></Link></li>
+          <li><Link to={ruter.priser}><span className="nr">Pris</span> Se hva det koster <span className="pil" aria-hidden="true">→</span></Link></li>
+          <li><Link to={ruter.metode}><span className="nr">Prosess</span> Se hvordan det går til <span className="pil" aria-hidden="true">→</span></Link></li>
+          <li><Link to={ruter.kontakt}><span className="nr">Neste</span> Ta en uforpliktende prat <span className="pil" aria-hidden="true">→</span></Link></li>
+        </ul>
+      </div>
+    </section>
+  );
+};
 
-        <dl data-reveal className="flex flex-col">
-          {[
-            ['Under ett sekund', 'typisk lastetid på sidene jeg bygger'],
-            ['Null plugins', 'ingenting som kan hackes eller gå ut på dato'],
-            ['Mobil først', 'over halvparten av kundene dine kommer derfra'],
-          ].map(([k, v]) => (
-            <div key={k} className="border-t border-room-ink/20 py-5 last:border-b">
-              <dt className="font-sans font-bold text-lg">{k}</dt>
-              <dd className="font-body text-[0.95rem] text-room-ink/80 mt-1">{v}</dd>
-            </div>
-          ))}
-        </dl>
+const ArbeidSeksjon = () => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className="hvit">
+      <div className="wrap seksjon">
+        <div data-reveal className="seksjonstopp inn">
+          <p className="etikett">Noe av det jeg har laget</p>
+          <h2>Sider som er i drift nå</h2>
+          <p>Rammene under ruller gjennom de ekte sidene. Ingen mockup. Ingen utsnitt.
+          Bare siden slik den står akkurat nå.</p>
+        </div>
+        <Arbeider antall={4} />
+        <p style={{ marginTop: 'clamp(2.5rem,5vw,3.5rem)' }}>
+          <Link className="knapp" to={ruter.arbeid}>Se alle sidene <span className="pil" aria-hidden="true">↗</span></Link>
+        </p>
+      </div>
+    </section>
+  );
+};
+
+const SitatSeksjon = () => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className="sitatblokk">
+      <div className="wrap"><Sitatkort /></div>
+    </section>
+  );
+};
+
+const TjenesteSeksjon = () => {
+  const container = useReveal(80);
+  return (
+    <section ref={container} className="seksjon">
+      <div className="wrap tjeneste-rad">
+        <div data-reveal className="tjeneste-side inn">
+          <p className="etikett">Tjenester</p>
+          <Link className="knapp" to={ruter.kontakt}>Ta kontakt <span className="pil" aria-hidden="true">↗</span></Link>
+        </div>
+        <div>
+          <div data-reveal className="seksjonstopp inn">
+            <h2>Dette kan jeg hjelpe deg med</h2>
+            <p>De fleste byråer setter deg opp med en prosjektleder, en designer og en
+            utvikler. Her er det bare meg, hele veien fra første skisse til siden er
+            oppe og går. Du får én faktura og ett telefonnummer.</p>
+          </div>
+          <div data-reveal className="tjenester inn" style={{ '--d': '80ms' }}>
+            {tjenester.map((t) => (
+              <article className="tjeneste" key={t.navn}>
+                <svg viewBox="0 0 24 24" aria-hidden="true" dangerouslySetInnerHTML={{ __html: t.ikon }} />
+                <h3>{t.navn}</h3>
+                <p>{t.tekst}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CaseSeksjon = () => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className="hvit">
+      <div className="wrap seksjon">
+        <div data-reveal className="casedel inn">
+          <h2>Hvordan én person rekker dette på tre dager</h2>
+          <div className="brod">
+            <p>Fordi jeg bygger med AI. Ikke for å ta snarveier, men fordi den fjerner
+            delene som pleide å ta uker: første utkast, standardkode, bildearbeid,
+            femten varianter av en tekst. Igjen står den delen som faktisk trenger et
+            menneske, som er å bestemme hva som er riktig.</p>
+            <p>Det er derfor prisen står på <b>9 999</b> og ikke 40 000, og derfor demoen
+            er ferdig på <b>tre virkedager</b> og ikke fire uker. Ingen andre sier det
+            høyt, men det er hele forklaringen.</p>
+            <p>Og det samme går inn i siden din: en chatbot som er trent på bedriften
+            din og svarer mens du sover, automatikk som fjerner det du i dag taster inn
+            to ganger, og struktur som gjør at du blir funnet i ChatGPT og Googles
+            AI-svar, ikke bare i de blå lenkene.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const FaqSeksjon = () => {
+  const container = useReveal(80);
+  return (
+    <section ref={container} className="hvit">
+      <div className="wrap seksjon">
+        <div className="faq-rad">
+          <div data-reveal className="inn">
+            <p className="etikett" style={{ marginBottom: '1.25rem' }}>Spørsmål</p>
+            <h2>Greit å vite</h2>
+            <p className="faq-intro">Er det noe jeg ikke har svart på, er det bare å{' '}
+            <Link to={ruter.kontakt}>ta kontakt</Link>. Jeg svarer selv.</p>
+          </div>
+          <div data-reveal className="faq inn" style={{ '--d': '80ms' }}>
+            {sporsmal.map(([q, a]) => (
+              <details key={q}>
+                <summary>{q} <span className="tegn" aria-hidden="true" /></summary>
+                <p className="svar">{a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -173,9 +214,8 @@ const homeJsonLd = [homeSchema, faqSchema];
 
 const Home = () => (
   <Shell>
-    {/* Tittel og beskrivelse er skrevet for søk, ikke for merkevare.
-        «Nettsider som faktisk selger» er god copy og null søkevolum, så den
-        lever videre som H1 i heroen i stedet. Se SEO.md punkt 4. */}
+    {/* Tittel og beskrivelse er skrevet for søk, ikke for merkevare, og
+        uendret fra før studio-mal-porteringen. Se SEO.md punkt 4. */}
     <SEO
       title="Profesjonell nettside til fast pris"
       description="Nettsideleverandør for norske bedrifter. Jeg bygger en profesjonell nettside til fast pris, og du ser en ferdig demo gratis før du betaler en krone. Ingen binding."
@@ -183,28 +223,14 @@ const Home = () => (
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />
-    {/* Flatene veksler bevisst, så ingen to naboseksjoner deler bakgrunn.
-        Rekkefølgen er felt, blekk, felt, blekk, felt, dyp, blekk, felt
-        (felt er --room, blekk er --bg, dyp er --bg-deep). Portfolio.jsx
-        tolker flate="band" som "sett meg på --room", motsatt av Omtaler.jsx
-        og FAQ.jsx som bruker flate som en rå CSS-klasse mot den gamle
-        .band-hjelperen (blekk med lett tint). To ulike betydninger av
-        samme propnavn, ikke ideelt, men flate er en per-komponent detalj
-        her, så Portfolio kalles bevisst UTEN flate for å holde den blekk
-        og alterneringen intakt. Se .band i index.css for hvorfor
-        blekk-seksjonene trenger hårstrek og ikke bare en dypere bakgrunn. */}
     <Hero />
-    <Portfolio limit={6} visAlleLenke mobilScroll />
-    <Hvorfor />
-    <Omtaler flate="band" />
-    <Metode />
-    <Priser visAlltidMed={false} />
-    <FAQ flate="band" />
-    <DemoSkjema
-      tittel="Klar for en nettside"
-      uthevet="som selger?"
-      lede="Legg igjen navn og e-post, så bygger jeg en gratis demo av din nye side. Uforpliktende, og jeg svarer innen 24 timer."
-    />
+    <Statuslinje />
+    <VeienInn />
+    <ArbeidSeksjon />
+    <SitatSeksjon />
+    <TjenesteSeksjon />
+    <CaseSeksjon />
+    <FaqSeksjon />
   </Shell>
 );
 

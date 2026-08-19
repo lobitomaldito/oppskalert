@@ -1,4 +1,5 @@
 import { articles } from '../src/lib/articles.js';
+import { caser } from '../src/lib/demo-innhold.js';
 
 /* Alt innhold er nå lokalt (src/lib/articles.js + src/content/generated/),
    så denne kunne i prinsippet vært generert ved build. Den blir stående som
@@ -15,6 +16,7 @@ const STATIC_PATHS = [
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
   '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/lage-nettbutikk',
   '/metode', '/om', '/kontakt', '/blogg',
+  ...caser.map((c) => `/arbeid/${c.slug}`),
 ];
 
 const escapeXml = (s) =>

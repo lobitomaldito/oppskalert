@@ -19,7 +19,7 @@ export const faqKalkulator = [
   },
   {
     q: 'Hvorfor er prisen lavere enn hos andre?',
-    a: 'Fordi jeg er én person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Det er hele forklaringen på at en håndbygd side starter på 7 990 kroner og ikke 25 000.',
+    a: 'Fordi jeg er én person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Det er hele forklaringen på at en håndbygd side starter på 9 999 kroner og ikke 25 000.',
   },
   {
     q: 'Hva er ikke med i prisen?',
@@ -38,7 +38,7 @@ export const faqSammenlign = [
   },
   {
     q: 'Hva koster de ulike alternativene over tid?',
-    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 7 990 kroner én gang, og så 0 hvis du hoster den selv. Krysningspunktet ligger typisk mellom år 2 og år 4, avhengig av hvilken plan du velger.',
+    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 9 999 kroner én gang, og så 0 hvis du hoster den selv. Krysningspunktet ligger typisk mellom år 2 og år 4, avhengig av hvilken plan du velger.',
   },
   {
     q: 'Kan jeg flytte siden min bort fra deg senere?',
@@ -65,7 +65,7 @@ export const faqWix = [
   },
   {
     q: 'Hva koster Wix egentlig i året?',
-    a: 'Planene ligger typisk mellom 1 500 og 4 000 kroner i året avhengig av nivå, pluss domenet. Det høres lite ut, men over 5 år er det 7 500 til 20 000 kroner du aldri eier noe for. En håndbygd side koster 7 990 én gang.',
+    a: 'Planene ligger typisk mellom 1 500 og 4 000 kroner i året avhengig av nivå, pluss domenet. Det høres lite ut, men over 5 år er det 7 500 til 20 000 kroner du aldri eier noe for. En håndbygd side koster 9 999 én gang.',
   },
 ];
 

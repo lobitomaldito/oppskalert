@@ -1,63 +1,89 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Linkedin, Mail, Phone } from 'lucide-react';
 import SEO from '../components/SEO';
-import { Shell, SideTopp } from '../components/Layout';
+import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { kontakt } from '../lib/site';
 import { useReveal } from '../lib/useReveal';
 import { track } from '../lib/analytics';
 
-const Direkte = () => {
-  const container = useReveal(80);
-  return (
-    <section ref={container} className="pb-4">
-      <div className="wrap grid gap-5 sm:grid-cols-3 max-w-[52rem]">
-        <a data-reveal href={`tel:${kontakt.tel}`} onClick={() => track('contact_phone_clicked')} className="rounded-2xl border border-primary/10 bg-primary/[0.03] p-6 hover:border-ink/40 transition-colors">
-          <Phone className="w-5 h-5 text-ink mb-3" aria-hidden="true" />
-          <span className="font-body text-xs uppercase tracking-widest text-primary/70 block">Ring meg</span>
-          <span className="font-sans font-bold text-lg mt-1 block">{kontakt.telefon}</span>
-        </a>
-        <a data-reveal href={`mailto:${kontakt.epost}`} onClick={() => track('contact_email_clicked')} className="rounded-2xl border border-primary/10 bg-primary/[0.03] p-6 hover:border-ink/40 transition-colors">
-          <Mail className="w-5 h-5 text-ink mb-3" aria-hidden="true" />
-          <span className="font-body text-xs uppercase tracking-widest text-primary/70 block">Skriv til meg</span>
-          <span className="font-sans font-bold text-base mt-1 block break-all">{kontakt.epost}</span>
-        </a>
-        <a data-reveal href={kontakt.linkedin} target="_blank" rel="noopener noreferrer" onClick={() => track('contact_linkedin_clicked')} className="rounded-2xl border border-primary/10 bg-primary/[0.03] p-6 hover:border-ink/40 transition-colors">
-          <Linkedin className="w-5 h-5 text-ink mb-3" aria-hidden="true" />
-          <span className="font-body text-xs uppercase tracking-widest text-primary/70 block">Finn meg på</span>
-          <span className="font-sans font-bold text-lg mt-1 block">LinkedIn</span>
-        </a>
-      </div>
+const PORTRETT = '/founders/aleksander.webp';
 
-      <div className="wrap mt-8">
-        <p data-reveal className="font-body text-[0.95rem] text-primary/80 leading-relaxed max-w-[52ch]">
-          Du trenger ikke ha noe klart på forhånd. Har du bare et bedriftsnavn, finner jeg som regel ut av resten selv.
+const KontaktPage = () => {
+  const toppRef = useReveal(80);
+  const portrettRef = useReveal(80);
+
+  return (
+    <Shell>
+      <SEO
+        title="Kontakt"
+        description="Be om en gratis demo av din nye nettside. Jeg svarer innen 24 timer. Ingen selgere, ingen kø."
+        keywords={['kontakt webutvikler', 'gratis nettside demo', 'bestill nettside']}
+        canonical="https://oppskalert.no/kontakt"
+      />
+
+      <section ref={toppRef} className="wrap sidetopp">
+        <p data-reveal className="etikett inn">Kontakt</p>
+        <h1 data-reveal className="inn" style={{ '--d': '60ms' }}>La oss ta en prat.</h1>
+        <p data-reveal className="inn" style={{ '--d': '140ms' }}>
+          Send meg navnet på bedriften din, så tar jeg det derfra. Du trenger ikke ha
+          tenkt ferdig, og du trenger ikke levere noe på forhånd. Jeg svarer innen ett
+          døgn, og det er meg du får svar fra.
         </p>
-      </div>
-    </section>
+      </section>
+
+      <section ref={portrettRef} className="hvit">
+        <div className="wrap seksjon">
+          <div data-reveal className="portrettrad inn">
+            <div className="portrett">
+              <img src={PORTRETT} alt="Aleksander MacKee" width="640" height="640" loading="lazy" />
+            </div>
+            <div>
+              <div className="seksjonstopp" style={{ marginBottom: '1.5rem' }}>
+                <h2>Ring, skriv, eller send bare et navn</h2>
+                <p>
+                  Alt tre funker like bra. Det korteste svaret jeg har fått var to ord, og
+                  den siden er i drift nå. Er du i Oslo, tar vi det gjerne over en kaffe
+                  i stedet.
+                </p>
+              </div>
+              <ol className="nummerert" style={{ maxWidth: 'none' }}>
+                <li>
+                  <a href={`tel:${kontakt.tel}`} onClick={() => track('contact_phone_clicked')}>
+                    <span className="nr">Ring</span> {kontakt.telefon} <span className="pil" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a href={`mailto:${kontakt.epost}`} onClick={() => track('contact_email_clicked')}>
+                    <span className="nr">E-post</span> {kontakt.epost} <span className="pil" aria-hidden="true">→</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={kontakt.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => track('contact_linkedin_clicked')}
+                  >
+                    <span className="nr">LinkedIn</span> Aleksander MacKee
+                    <span className="skjult"> (åpner i ny fane)</span>{' '}
+                    <span className="pil" aria-hidden="true">→</span>
+                  </a>
+                </li>
+              </ol>
+              <p style={{ marginTop: '2rem', color: 'var(--blekk-mykt)', fontSize: '.9375rem' }}>
+                Oppskalert er et selskap i {kontakt.morselskap}, org. {kontakt.orgnr}, Oslo.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <DemoSkjema
+        tittel="Eller bare legg igjen"
+        uthevet="navn og e-post."
+        lede="Så tar jeg kontakt. Du trenger ikke ha noe klart på forhånd. Jeg finner som regel ut av resten selv."
+      />
+    </Shell>
   );
 };
-
-const KontaktPage = () => (
-  <Shell>
-    <SEO
-      title="Kontakt"
-      description="Be om en gratis demo av din nye nettside. Jeg svarer innen 24 timer. Ingen selgere, ingen kø."
-      keywords={['kontakt webutvikler', 'gratis nettside demo', 'bestill nettside']}
-      canonical="https://oppskalert.no/kontakt"
-    />
-    <SideTopp
-      tittel="La oss ta"
-      uthevet="en prat."
-      lede="Fortell meg kort om bedriften din, så bygger jeg et ferdig utkast av den nye siden, gratis og uforpliktende. Jeg svarer innen 24 timer."
-    />
-    <Direkte />
-    <DemoSkjema
-      tittel="Eller bare legg igjen"
-      uthevet="navn og e-post."
-      lede="Så tar jeg kontakt. Du trenger ikke ha noe klart på forhånd. Jeg finner som regel ut av resten selv."
-    />
-  </Shell>
-);
 
 export default KontaktPage;
