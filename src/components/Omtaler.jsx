@@ -10,7 +10,7 @@ import { omtaler } from '../lib/site';
 const Stjerner = () => (
   <div className="flex gap-0.5 mb-3" aria-label="5 av 5 stjerner">
     {Array.from({ length: 5 }).map((_, i) => (
-      <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" aria-hidden="true" />
+      <Star key={i} className="w-3.5 h-3.5 fill-ink text-ink" aria-hidden="true" />
     ))}
   </div>
 );

@@ -19,13 +19,13 @@ const Modell = ({ m, visPasserDeg = false, className }) => {
       className={cn(
         'relative flex flex-col rounded-2xl p-7 md:p-8 border',
         paDrift
-          ? 'bg-background text-ink border-accent/40'
+          ? 'bg-background text-ink border-ink/20'
           : 'bg-surface text-room-ink border-room-ink/20',
         className,
       )}
     >
       {m.fremhevet && (
-        <span className="absolute top-0 right-7 -translate-y-1/2 bg-accent text-background text-sm font-body px-3.5 py-1 rounded-full font-semibold">
+        <span className="absolute top-0 right-7 -translate-y-1/2 bg-ink text-background text-sm font-body px-3.5 py-1 rounded-full font-semibold">
           Mest valgt
         </span>
       )}
@@ -48,7 +48,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => {
       {m.id === 'engangs' && (
         <Link
           to={ruter.kalkulator}
-          className="font-body text-sm text-room-signal hover:opacity-80 transition-opacity underline underline-offset-2 mt-2 inline-block w-fit"
+          className="font-body text-sm text-room-ink hover:opacity-70 transition-opacity underline underline-offset-2 mt-2 inline-block w-fit"
         >
           Regn ut prisen for din side →
         </Link>
@@ -68,7 +68,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => {
       <ul className="mt-6 flex flex-col gap-3 flex-1">
         {m.inkludert.map((f) => (
           <li key={f} className={cn('flex items-start gap-2.5 font-body text-[0.95rem] leading-relaxed', paDrift ? 'text-ink/80' : 'text-room-ink/70')}>
-            <Check className={cn('w-4 h-4 mt-0.5 flex-shrink-0', paDrift ? 'text-accent' : 'text-room-signal')} aria-hidden="true" />
+            <Check className={cn('w-4 h-4 mt-0.5 flex-shrink-0', paDrift ? 'text-ink' : 'text-room-ink')} aria-hidden="true" />
             {f}
           </li>
         ))}
@@ -78,7 +78,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => {
         to={ruter.kontakt}
         className={cn(
           'mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]',
-          paDrift ? 'bg-accent text-background' : 'bg-room-ink text-surface',
+          paDrift ? 'bg-ink text-background' : 'bg-room-ink text-surface',
         )}
       >
         Bestill gratis demo <ArrowRight className="w-4 h-4" />
@@ -107,7 +107,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         <p data-reveal className="font-body text-sm text-primary/70 mt-6 max-w-[52rem]">{prisNotat}</p>
         <p data-reveal className="font-body text-sm text-primary/80 mt-3 max-w-[52rem]">
           Vil du redigere selv, eller ha enda raskere respons?{' '}
-          <Link to={ruter.drift} className="text-accent hover:text-highlight transition-colors underline underline-offset-2">
+          <Link to={ruter.drift} className="text-ink hover:opacity-70 transition-opacity underline underline-offset-2">
             Se alle driftsnivåer
           </Link>
         </p>
@@ -118,7 +118,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
               {alltidMed.map((f) => (
                 <li key={f} className="flex items-start gap-2.5 font-body text-[0.95rem] text-primary/80 leading-relaxed">
-                  <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" aria-hidden="true" />
+                  <Check className="w-4 h-4 text-ink mt-0.5 flex-shrink-0" aria-hidden="true" />
                   {f}
                 </li>
               ))}
@@ -130,7 +130,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
           <Link
             data-reveal
             to={ruter.priser}
-            className="mt-10 inline-flex items-center gap-2 font-sans font-bold text-sm text-accent hover:opacity-80 transition-opacity"
+            className="mt-10 inline-flex items-center gap-2 font-sans font-bold text-sm text-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
           >
             Se alt som er inkludert, og sammenlign modellene i detalj <ArrowRight className="w-4 h-4" />
           </Link>

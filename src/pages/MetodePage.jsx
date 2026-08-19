@@ -40,12 +40,12 @@ const Kontrast = () => {
               ))}
             </ul>
           </div>
-          <div data-reveal className="rounded-2xl border border-accent bg-surface/25 p-7">
+          <div data-reveal className="rounded-2xl border border-ink/40 bg-surface/25 p-7">
             <h3 className="font-sans font-bold text-lg mb-5">Slik jeg gjør det</h3>
             <ul className="flex flex-col gap-3">
               {mitt.map((v) => (
                 <li key={v} className="flex items-start gap-2.5 font-body text-[0.95rem] text-primary/85 leading-relaxed">
-                  <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-accent" aria-hidden="true" />{v}
+                  <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-ink" aria-hidden="true" />{v}
                 </li>
               ))}
             </ul>

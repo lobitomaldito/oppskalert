@@ -93,7 +93,7 @@ const NettsideDesignPage = () => (
         <p>
           Vil du se hvordan det slår ut mot å bygge selv, har jeg lagt det side om
           side i{' '}
-          <Link to={ruter.sammenlign} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.sammenlign} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             sammenligningen
           </Link>
           .
@@ -124,11 +124,11 @@ const NettsideDesignPage = () => (
       fotnote={
         <>
           Designet er én del av leveransen. Se{' '}
-          <Link to={ruter.priser} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.priser} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             hva en nettside koster
           </Link>{' '}
           for hva som ellers inngår, eller{' '}
-          <Link to={ruter.metode} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.metode} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             metoden
           </Link>{' '}
           for hvordan et prosjekt går fra første samtale til lansering.

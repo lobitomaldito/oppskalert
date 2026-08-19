@@ -98,7 +98,7 @@ const Trafikkgraf = ({ dager, antallDager }) => {
                 onMouseLeave={() => setHover((n) => (n?.dato === d.dato ? null : n))}
               >
                 <div
-                  className="w-full bg-accent/70 group-hover:bg-accent rounded-t-sm transition-colors"
+                  className="w-full bg-ink/70 group-hover:bg-ink rounded-t-sm transition-colors"
                   style={{ height: `${Math.max(1, (d.visninger / maks) * 100)}%` }}
                 />
               </div>
@@ -152,7 +152,7 @@ const Trakt = ({ steg }) => {
                 </span>
               </div>
               <div className="bg-primary/5 rounded-full h-3 overflow-hidden">
-                <div className="h-full bg-accent rounded-full transition-all" style={{ width: `${(s.personer / topp) * 100}%` }} />
+                <div className="h-full bg-ink rounded-full transition-all" style={{ width: `${(s.personer / topp) * 100}%` }} />
               </div>
               {frafall > 0 && (
                 <span className="font-body text-[0.7rem] text-primary/40 mt-1 block">
@@ -184,7 +184,7 @@ const Kildeliste = ({ tittel, lede, rader, nokkel, tomtekst }) => {
           <div key={r[nokkel]} className="flex items-center gap-3">
             <span className="font-body text-xs text-primary/80 w-32 sm:w-44 truncate" title={r[nokkel]}>{r[nokkel]}</span>
             <div className="flex-1 bg-primary/5 rounded-full h-3 overflow-hidden">
-              <div className="h-full bg-accent rounded-full" style={{ width: `${(r.personer / maks) * 100}%` }} />
+              <div className="h-full bg-ink rounded-full" style={{ width: `${(r.personer / maks) * 100}%` }} />
             </div>
             <span className="font-body text-xs w-32 text-right tabular-nums shrink-0">
               <span className={r.personer > 0 ? 'text-primary/80' : 'text-primary/35'}>
@@ -333,7 +333,7 @@ const Henvendelser = ({ leads, spam }) => {
               <span className="font-body text-xs text-primary/50">{datoTid(l.created_at)}</span>
             </div>
             <div className="font-body text-sm text-primary/80 mt-0.5">
-              <a href={`mailto:${l.epost}`} className="text-accent hover:underline">{l.epost}</a>
+              <a href={`mailto:${l.epost}`} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">{l.epost}</a>
               {l.firma && <span className="text-primary/60"> · {l.firma}</span>}
             </div>
             {l.melding && <p className="font-body text-sm text-primary/70 mt-1.5 leading-relaxed">{l.melding}</p>}
@@ -390,7 +390,7 @@ const UkentligeRapporter = ({ rapporter }) => {
                 <button
                   type="button"
                   onClick={() => setApen(erApen ? null : r.id)}
-                  className="font-body text-xs text-accent hover:underline"
+                  className="font-body text-xs text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors"
                 >
                   {erApen ? 'Skjul full rapport' : 'Vis full rapport'}
                 </button>
@@ -423,7 +423,7 @@ const Periodevelger = ({ valgt, onVelg, laster }) => (
         aria-pressed={valgt === d}
         className={`font-body text-xs px-4 py-2 rounded-full border transition-colors disabled:opacity-50 ${
           valgt === d
-            ? 'bg-accent text-background border-accent font-semibold'
+            ? 'bg-ink text-background border-ink font-semibold'
             : 'border-primary/20 text-primary/70 hover:border-primary/40'
         }`}
       >
@@ -437,17 +437,17 @@ const PinGate = ({ onSubmit, error }) => {
   const [value, setValue] = useState('');
   return (
     <div className="max-w-sm mx-auto text-center">
-      <Lock className="w-8 h-8 text-accent mx-auto mb-6" />
+      <Lock className="w-8 h-8 text-ink mx-auto mb-6" />
       <h1 className="font-sans font-bold text-2xl mb-2">Dashboard</h1>
       <p className="font-body text-sm text-primary/70 mb-8">Skriv inn PIN for å se analytics.</p>
       <form onSubmit={(e) => { e.preventDefault(); onSubmit(value); }} className="flex flex-col gap-4">
         <input
           type="password" inputMode="numeric" autoFocus value={value}
           onChange={(e) => setValue(e.target.value)}
-          className="w-full bg-primary/5 border border-primary/20 rounded-full px-6 py-4 font-body text-sm text-primary text-center tracking-[0.3em] focus:outline-none focus:border-accent transition-colors"
+          className="w-full bg-primary/5 border border-primary/20 rounded-full px-6 py-4 font-body text-sm text-primary text-center tracking-[0.3em] focus:outline-none focus:border-ink transition-colors"
           placeholder="PIN"
         />
-        <button type="submit" className="bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.02]">
+        <button type="submit" className="bg-ink text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.02]">
           Lås opp
         </button>
         {error && <p className="font-body text-sm text-red-500" role="alert">Feil PIN, prøv igjen.</p>}
@@ -508,7 +508,7 @@ const DashboardPage = () => {
         ) : status === 'error' ? (
           <p className="font-body text-primary/70 text-center">Klarte ikke å hente data. Prøv å laste siden på nytt.</p>
         ) : !data ? (
-          <div className="flex justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-accent" /></div>
+          <div className="flex justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-ink" /></div>
         ) : (
           <div className="max-w-5xl mx-auto w-full flex flex-col gap-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
@@ -516,7 +516,7 @@ const DashboardPage = () => {
                 Siste {dager} dager
               </h1>
               <div className="flex items-center gap-3">
-                {status === 'loading' && <Loader2 className="w-4 h-4 animate-spin text-accent" aria-label="Laster" />}
+                {status === 'loading' && <Loader2 className="w-4 h-4 animate-spin text-ink" aria-label="Laster" />}
                 <Periodevelger valgt={dager} onVelg={velgPeriode} laster={status === 'loading'} />
               </div>
             </div>

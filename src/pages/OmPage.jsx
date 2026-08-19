@@ -62,14 +62,14 @@ const OmPage = () => {
             <p className="font-body text-sm text-primary/70 mt-1">Designer, utvikler og den som svarer</p>
 
             <div className="flex flex-col gap-2.5 mt-5 font-body text-sm">
-              <a href={`tel:${kontakt.tel}`} className="inline-flex items-center gap-2.5 hover:text-accent transition-colors">
-                <Phone className="w-4 h-4 text-accent" aria-hidden="true" />{kontakt.telefon}
+              <a href={`tel:${kontakt.tel}`} className="inline-flex items-center gap-2.5 hover:text-ink transition-colors">
+                <Phone className="w-4 h-4 text-ink" aria-hidden="true" />{kontakt.telefon}
               </a>
-              <a href={`mailto:${kontakt.epost}`} className="inline-flex items-center gap-2.5 hover:text-accent transition-colors">
-                <Mail className="w-4 h-4 text-accent" aria-hidden="true" />{kontakt.epost}
+              <a href={`mailto:${kontakt.epost}`} className="inline-flex items-center gap-2.5 hover:text-ink transition-colors">
+                <Mail className="w-4 h-4 text-ink" aria-hidden="true" />{kontakt.epost}
               </a>
-              <a href={kontakt.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 hover:text-accent transition-colors">
-                <Linkedin className="w-4 h-4 text-accent" aria-hidden="true" />LinkedIn
+              <a href={kontakt.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2.5 hover:text-ink transition-colors">
+                <Linkedin className="w-4 h-4 text-ink" aria-hidden="true" />LinkedIn
               </a>
             </div>
           </div>

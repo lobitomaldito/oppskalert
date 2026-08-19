@@ -59,7 +59,7 @@ export const Navbar = () => {
   }, [menuOpen]);
 
   const linkClass = ({ isActive }) =>
-    `transition-colors duration-200 hover:text-room-ink ${isActive ? 'text-room-signal' : 'text-room-ink/60'}`;
+    `transition-colors duration-200 hover:text-room-ink ${isActive ? 'text-room-ink font-semibold' : 'text-room-ink/60'}`;
 
   return (
     <>
@@ -156,7 +156,7 @@ export const Footer = () => (
         </h2>
         <Link
           to={ruter.kontakt}
-          className="flex-shrink-0 inline-flex items-center gap-2 bg-accent text-background px-8 py-4 rounded-full font-sans font-bold text-base hover:scale-[1.03] transition-transform duration-300"
+          className="flex-shrink-0 inline-flex items-center gap-2 bg-ink text-background px-8 py-4 rounded-full font-sans font-bold text-base hover:scale-[1.03] transition-transform duration-300"
         >
           Bestill gratis demo <ArrowRight className="w-4 h-4" />
         </Link>
@@ -176,8 +176,8 @@ export const Footer = () => (
           <div className="flex flex-col gap-3">
             <span className="text-ink/70 text-sm font-semibold mb-1">Kontakt</span>
             <span className="text-ink/70">{kontakt.navn}</span>
-            <a href={`tel:${kontakt.tel}`} className="text-ink hover:text-accent transition-colors">{kontakt.telefon}</a>
-            <a href={`mailto:${kontakt.epost}`} className="text-accent hover:text-highlight transition-colors">{kontakt.epost}</a>
+            <a href={`tel:${kontakt.tel}`} className="text-ink hover:text-ink/70 transition-colors">{kontakt.telefon}</a>
+            <a href={`mailto:${kontakt.epost}`} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">{kontakt.epost}</a>
           </div>
           <div className="flex flex-col gap-3">
             <span className="text-ink/70 text-sm font-semibold mb-1">Snarveier</span>
@@ -212,7 +212,7 @@ export const Footer = () => (
       <div className="mt-12 pt-6 border-t border-ink/10 flex flex-wrap gap-4 justify-between items-center font-body text-sm text-ink/70">
         <p>&copy; {new Date().getFullYear()} {kontakt.morselskap}.</p>
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-highlight animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-ink animate-pulse" />
           <span>Ledig for nye prosjekter</span>
         </div>
       </div>
@@ -227,19 +227,21 @@ export const Footer = () => (
 /* Felles skall: nav på toppen, innhold, fot. Alle ruter bruker denne,
    så navigasjonen aldri kommer ut av synk mellom sidene igjen. */
 export const Shell = ({ children }) => (
-  <div className="bg-background text-primary min-h-screen selection:bg-accent selection:text-background">
+  <div className="bg-background text-primary min-h-screen selection:bg-ink selection:text-background">
     <Navbar />
     <main>{children}</main>
     <Footer />
   </div>
 );
 
-/* Sidetopp. Samme anslag på alle undersider. Tittelen tar ett
-   fremhevet ord i aksentfarge, slik forsiden gjør. */
+/* Sidetopp. Samme anslag på alle undersider. Det uthevede ordet står
+   ikke lenger i aksentfarge: studio-malen har ingen aksent i skallet,
+   all farge skal komme fra kundearbeidet. Uthevingen skjer med vekt
+   og linjeskift i stedet, altså typografisk, ikke med farge. */
 export const SideTopp = ({ tittel, uthevet, lede }) => (
   <header className="wrap pt-36 md:pt-44 pb-8 md:pb-12">
     <h1 className="hero-elem font-display font-extrabold text-[clamp(2.6rem,6.5vw,4.6rem)] leading-[1.02] tracking-[-0.035em] max-w-[16ch]">
-      {tittel}{uthevet && <> <span className="text-accent">{uthevet}</span></>}
+      {tittel}{uthevet && <> {uthevet}</>}
     </h1>
     {lede && (
       <p className="hero-elem font-body text-base md:text-lg text-primary/80 mt-6 max-w-[52ch] leading-relaxed">

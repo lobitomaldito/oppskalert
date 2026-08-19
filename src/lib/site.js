@@ -482,16 +482,37 @@ export const landingsSporsmal = {
 /* ---------------------------------------------------------------
    PORTEFØLJE. Ekte sider i drift for ekte norske bedrifter.
    --------------------------------------------------------------- */
+/* Porteføljen. Rekkefølgen er den fra studio-mal-demoen, se
+   inspirasjon/demo-studio-mal.md.
+
+   `full` er en fullsides-fangst på 640 x 2500 som ruller sakte inni en
+   nettleserramme på kortet. `til` er hvor langt den rammen skal rulle, i
+   prosent av bildehøyden, og er MÅLT per side, ikke satt likt for alle:
+   fangsten er 2500 px høy uansett hvor lang siden faktisk er, så en kort
+   side har blank plass nederst. Ruller den like langt som en lang side,
+   står kortet tomt i halve runden. Målt 19. august 2026 med
+   scratchpad-skriptet fangst.mjs, som skriver ut anbefalt verdi selv.
+
+   Regnestykket: 2500 / 640 = 3,906. Vinduet står i 4:3 og viser
+   0,75 / 3,906 = 19,2 % av bildet av gangen. Endres fangsthøyden eller
+   vindusformatet, må `til` regnes om for alle.
+
+   alphanegotiations.com og irmelindrake.no er ute av visningslisten.
+   Alpha svarte HTTP 500 da fangstene ble tatt, og footeren der krediterer
+   et annet byrå. Irmelin er en kollegas prosjekt uten vår tilgang. Begge
+   står i CLAUDE.md som utenfor rekkevidde. De ligger igjen nederst uten
+   `full`, så de fortsatt finnes for eventuelle lenker, men de vises ikke
+   i rammene på forsiden. */
 export const prosjekter = [
-  { img: '/websider/woxen-hage.webp', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
-  { img: '/websider/katrin-brubakk.webp', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
-  { img: '/websider/alpha-negotiations.webp', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
-  { img: '/websider/progressive-diplomacy.webp', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
-  { img: '/websider/irmelin-drake-ny.webp', navn: 'Irmelin Drake', bransje: 'Ledelse', url: 'https://irmelindrake.no', domene: 'irmelindrake.no' },
-  { img: '/websider/steinar-husby.webp', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
-  { img: '/websider/samtaleverkstedet.webp', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
-  { img: '/websider/tore-sunde-rasmussen.webp', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
+  { img: '/websider/woxen-hage.webp', full: '/websider/full/woxen-hage.webp', til: '-79%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
+  { img: '/websider/katrin-brubakk.webp', full: '/websider/full/katrin-brubakk.webp', til: '-79%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
+  { img: '/websider/samtaleverkstedet.webp', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
+  { img: '/websider/steinar-husby.webp', full: '/websider/full/steinar-husby.webp', til: '-79%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
+  { img: '/websider/progressive-diplomacy.webp', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
+  { img: '/websider/tore-sunde-rasmussen.webp', full: '/websider/full/tore-sunde-rasmussen.webp', til: '-79%', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
   { img: '/websider/oppskalert.webp', navn: 'Oppskalert', bransje: 'Denne siden', url: 'https://oppskalert.no', domene: 'oppskalert.no' },
+  { img: '/websider/irmelin-drake-ny.webp', navn: 'Irmelin Drake', bransje: 'Ledelse', url: 'https://irmelindrake.no', domene: 'irmelindrake.no' },
+  { img: '/websider/alpha-negotiations.webp', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
 ];
 
 /* Kundeomtaler gjengis ordrett slik de ble skrevet. De er ikke

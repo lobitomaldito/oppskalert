@@ -103,11 +103,11 @@ const NettbutikkPage = () => (
         <p>
           Det du får er en fast pris før jeg skriver en linje kode, akkurat som på
           alt annet. Se{' '}
-          <Link to={ruter.priser} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.priser} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             prisene på vanlige nettsider
           </Link>{' '}
           for hvordan jeg jobber med pris, og{' '}
-          <Link to={ruter.metode} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.metode} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             metoden
           </Link>{' '}
           for gangen i et prosjekt.
@@ -124,7 +124,7 @@ const NettbutikkPage = () => (
         <>
           Butikker trenger mer løpende tilsyn enn vanlige nettsider, siden en
           feil i kassen koster salg samme dag. Se{' '}
-          <Link to={ruter.drift} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.drift} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             drift og support
           </Link>{' '}
           for hvordan det følges opp.

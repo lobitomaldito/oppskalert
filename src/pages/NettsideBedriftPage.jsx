@@ -112,11 +112,11 @@ const NettsideBedriftPage = () => (
           Hos meg står domenet i ditt navn fra dag én, og du får koden. Velger du
           en driftsavtale, er det fordi du vil slippe det tekniske, ikke fordi du
           er låst. Se{' '}
-          <Link to={ruter.drift} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.drift} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             drift og support
           </Link>{' '}
           for hva den dekker, eller{' '}
-          <Link to={ruter.priser} className="text-accent hover:text-highlight transition-colors">
+          <Link to={ruter.priser} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">
             prisene
           </Link>{' '}
           for begge modellene.

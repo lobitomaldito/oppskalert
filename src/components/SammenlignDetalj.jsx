@@ -24,7 +24,10 @@ const SammenlignDetalj = ({ data }) => {
                 <tr className="border-b border-primary/15 bg-primary/[0.03]">
                   <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-primary/70 py-3.5 px-4 font-semibold">Punkt</th>
                   <th scope="col" className="text-left font-sans font-bold text-sm py-3.5 px-4 w-[15rem]">{data.navn}</th>
-                  <th scope="col" className="text-left font-sans font-bold text-sm py-3.5 px-4 w-[15rem] text-accent">Meg</th>
+                  {/* Ingen aksentfarge på "Meg"-kolonnen lenger. Understreken
+                      bærer uthevingen typografisk, cellene under er allerede
+                      differensiert med full vs. dempet blekk-opasitet. */}
+                  <th scope="col" className="text-left font-sans font-bold text-sm py-3.5 px-4 w-[15rem] underline underline-offset-4">Meg</th>
                 </tr>
               </thead>
               <tbody>
@@ -44,7 +47,7 @@ const SammenlignDetalj = ({ data }) => {
             <p className="font-body text-[0.95rem] text-primary/80 leading-relaxed">{data.konklusjon}</p>
             <Link
               to={ruter.kontakt}
-              className="mt-6 inline-flex items-center gap-2 bg-accent text-background px-6 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
+              className="mt-6 inline-flex items-center gap-2 bg-ink text-background px-6 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
             >
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </Link>

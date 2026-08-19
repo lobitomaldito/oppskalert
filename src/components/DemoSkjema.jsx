@@ -13,14 +13,14 @@ const feltKlasse =
 // overført til rommets farger. Tidligere versjon var tynne piller uten
 // beskrivelse, for lite fysisk tilstedeværelse til å føles trykkbare.
 const kortKlasse = (valgt) =>
-  `text-left rounded-2xl border px-5 py-4 transition-all duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-room-signal/50 ${
-    valgt ? 'border-room-signal bg-room-signal/20' : 'border-room-ink/20 bg-room-ink/10 hover:border-room-ink/40'
+  `text-left rounded-2xl border px-5 py-4 transition-all duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50 ${
+    valgt ? 'border-room-ink bg-room-ink/10' : 'border-room-ink/20 bg-room-ink/10 hover:border-room-ink/40'
   }`;
 
 const Hake = ({ valgt }) => (
   <span
     className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${
-      valgt ? 'bg-room-signal border-room-signal' : 'border-room-ink/30'
+      valgt ? 'bg-room-ink border-room-ink' : 'border-room-ink/30'
     }`}
     aria-hidden="true"
   >
@@ -103,7 +103,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
               <p className="font-sans font-bold text-2xl mb-2">Takk! Den er mottatt.</p>
               <p className="font-body text-[0.95rem] text-room-ink/90 leading-relaxed">
                 Jeg tar kontakt på e-post innen 24 timer. Haster det, ring meg på{' '}
-                <a href={`tel:${kontakt.tel}`} className="underline hover:text-room-signal transition-colors">{kontakt.telefon}</a>.
+                <a href={`tel:${kontakt.tel}`} className="underline hover:opacity-70 transition-opacity">{kontakt.telefon}</a>.
               </p>
             </div>
           ) : steg === 1 ? (
@@ -216,7 +216,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
               </button>
 
               {status === 'error' && (
-                <p role="alert" className="font-body text-sm text-room-signal text-center font-semibold">
+                <p role="alert" className="font-body text-sm text-room-ink text-center font-semibold">
                   Jeg trenger navn og en gyldig e-post for å komme i gang. Eller ring meg på{' '}
                   <a href={`tel:${kontakt.tel}`} className="underline">{kontakt.telefon}</a>.
                 </p>
@@ -224,7 +224,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
 
               <p className="font-body text-sm text-room-ink/70 text-center mt-1">
                 Uforpliktende. Jeg svarer innen 24 timer, eller ring direkte:{' '}
-                <a href={`tel:${kontakt.tel}`} className="text-room-signal hover:underline">{kontakt.telefon}</a>
+                <a href={`tel:${kontakt.tel}`} className="text-room-ink underline underline-offset-2 hover:opacity-70 transition-opacity">{kontakt.telefon}</a>
               </p>
             </form>
           )}

@@ -134,6 +134,10 @@
 
   html {
     scroll-behavior: smooth;
+    /* Navbaren er fast og ugjennomsiktig i studio-mal-redesignet, ca. 72 px
+       høy. Uten dette lander hver ankerlenke (#priser, #faq, #metode) med
+       overskriften gjemt bak den. */
+    scroll-padding-top: 6rem;
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -217,6 +221,42 @@
   pointer-events: none;
   z-index: 9999;
   opacity: 0.05;
+}
+
+/* ------------------------------------------------------------------
+   Rullende referanseramme. Ekte fullsides-fangst som ruller sakte inni
+   nettleservinduet på porteføljekortene. Portert fra studio-mal-demoen,
+   se inspirasjon/demo-studio-mal.md.
+
+   Fangstene er tatt med en vanlig 1280 x 900 viewport og beskåret til
+   1280 x 5000, så nedskalert til 640 x 2500. Det er viktig: setter man
+   viewporten til full sidehøyde før skjermbildet, blir hver 100vh-hero
+   like høy som hele siden, og fangsten blir ett bilde uten innhold.
+
+   2500 / 640 = 3,906. Vinduet står i 4:3 og viser derfor
+   0,75 / 3,906 = 19,2 % av bildet av gangen. Full rullelengde blir
+   80,8 %. Endres fangsthøyden eller vindusformatet, må --til regnes om
+   for alle prosjektene i site.js.
+
+   Standard er at rammene ruller. `utenfor` settes bare på kort som
+   forlater skjermen, så seks animasjoner ikke maler i bakgrunnen. Fyrer
+   ikke observeren, ruller alt, som er riktig feilmodus: motsatt oppsett
+   gir kort som står stille for alltid.
+   ------------------------------------------------------------------ */
+@keyframes rammerull {
+  from { transform: translateY(0); }
+  to   { transform: translateY(var(--til, -79%)); }
+}
+.rammerull {
+  animation: rammerull 34s ease-in-out infinite alternate;
+}
+/* will-change bare mens rammen faktisk ruller. Permanent på seks bilder
+   holder seks komposittlag i live, også utenfor skjermen. */
+[data-reveal].is-visible .rammerull { will-change: transform; }
+[data-reveal]:not(.is-visible) .rammerull { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rammerull { animation: none; transform: none; }
 }
 
 /* Scroll reveal, driven by IntersectionObserver (see useReveal).

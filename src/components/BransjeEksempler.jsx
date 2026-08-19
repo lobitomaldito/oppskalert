@@ -86,7 +86,7 @@ const BransjeEksempler = () => {
           </p>
           <Link
             to={ruter.kontakt}
-            className="flex-shrink-0 inline-flex items-center gap-2 bg-accent text-background px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
+            className="flex-shrink-0 inline-flex items-center gap-2 bg-ink text-background px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
           >
             Bestill gratis demo <ArrowRight className="w-4 h-4" />
           </Link>

@@ -27,7 +27,7 @@ const Metode = ({ utdypet = false }) => {
     >
       <div className="flex items-center gap-4 mb-4">
         <span
-          className="flex items-center justify-center w-11 h-11 rounded-full font-sans font-bold text-base flex-shrink-0 bg-room-signal text-room"
+          className="flex items-center justify-center w-11 h-11 rounded-full font-sans font-bold text-base flex-shrink-0 bg-room-ink text-room"
           aria-hidden="true"
         >
           {i + 1}
@@ -66,7 +66,7 @@ const Metode = ({ utdypet = false }) => {
         )}
 
         {i === 0 && !utdypet && (
-          <span className="inline-flex items-center font-body text-sm px-3 py-1 rounded-full mt-4 bg-room-signal/10 text-room-signal">
+          <span className="inline-flex items-center font-body text-sm font-semibold px-3 py-1 rounded-full mt-4 bg-room-ink text-room">
             Gratis, ingen binding
           </span>
         )}
@@ -78,7 +78,7 @@ const Metode = ({ utdypet = false }) => {
           en høyrepil på kort nummer to peke ut i ingenting. */}
       {!utdypet && i < stegene.length - 1 && (
         <ArrowRight
-          className="absolute top-1/2 -right-[1.6rem] -translate-y-1/2 w-5 h-5 text-room-signal/70 sm:hidden lg:block"
+          className="absolute top-1/2 -right-[1.6rem] -translate-y-1/2 w-5 h-5 text-room-ink/40 sm:hidden lg:block"
           aria-hidden="true"
         />
       )}
@@ -113,7 +113,7 @@ const Metode = ({ utdypet = false }) => {
           <Link
             data-reveal
             to={ruter.metode}
-            className="mt-10 md:mt-12 inline-flex items-center gap-2 font-sans font-bold text-sm text-room-signal hover:opacity-80 transition-opacity"
+            className="mt-10 md:mt-12 inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
           >
             Les mer om hvordan jeg jobber <ArrowRight className="w-4 h-4" />
           </Link>

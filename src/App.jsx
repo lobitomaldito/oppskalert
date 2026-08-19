@@ -44,7 +44,7 @@ const Hero = () => (
         className="hero-elem font-display font-extrabold"
         style={{ fontSize: 'clamp(2.9rem, 8vw, 5.75rem)', lineHeight: 0.98, letterSpacing: '-0.035em', maxWidth: '16ch' }}
       >
-        Nettsider som faktisk <span className="text-room-signal">selger</span>.
+        Nettsider som faktisk selger.
       </h1>
 
       <p className="hero-elem font-body text-base md:text-lg text-room-ink/80 mt-7 max-w-[46ch] leading-relaxed">
@@ -54,7 +54,7 @@ const Hero = () => (
       <div className="hero-elem mt-9 flex flex-wrap items-center justify-center gap-x-5 gap-y-4">
         <Link
           to={ruter.kontakt}
-          className="inline-flex items-center gap-2 bg-room-signal text-room px-8 py-4 rounded-full font-sans font-bold transition-transform duration-300 hover:scale-[1.03]"
+          className="inline-flex items-center gap-2 bg-room-ink text-room px-8 py-4 rounded-full font-sans font-bold transition-transform duration-300 hover:scale-[1.03]"
         >
           Bestill gratis demo <ArrowRight className="w-4 h-4" />
         </Link>

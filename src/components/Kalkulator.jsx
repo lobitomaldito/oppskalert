@@ -8,16 +8,21 @@ import { SeksjonTopp } from './Layout';
 import { kalkulatorOmfang, kalkulatorTillegg, kalkulatorHaster, ruter } from '../lib/site';
 
 const pillBase =
-  'text-left rounded-2xl border px-5 py-4 font-body text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50';
+  'text-left rounded-2xl border px-5 py-4 font-body text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink/50';
 
+/* Valgt tilstand bærer ingen aksentfarge lenger, samme "fylt kant"-taktikk
+   som DemoSkjema.jsx (se kommentar der): full blekk-kant og lett tint mot
+   dempet kant og nesten usynlig tint for uvalgt. Understreken på selve
+   ordet er et ekstra, rent typografisk signal, siden font-vekten allerede
+   er lik i begge tilstander. */
 const OmfangKnapp = ({ item, valgt, onClick }) => (
   <button
     type="button"
     onClick={onClick}
     aria-pressed={valgt}
-    className={`${pillBase} ${valgt ? 'border-accent bg-accent/15' : 'border-primary/15 bg-primary/[0.03] hover:border-primary/30'}`}
+    className={`${pillBase} ${valgt ? 'border-ink bg-ink/10' : 'border-primary/15 bg-primary/[0.03] hover:border-primary/30'}`}
   >
-    <span className={`block font-sans font-bold ${valgt ? 'text-accent' : 'text-primary'}`}>{item.label}</span>
+    <span className={`block font-sans font-bold ${valgt ? 'text-primary underline underline-offset-4' : 'text-primary'}`}>{item.label}</span>
     <span className="block text-primary/70 text-[0.85rem] mt-0.5">{item.beskrivelse}</span>
   </button>
 );
@@ -27,12 +32,12 @@ const TilleggKnapp = ({ item, valgt, onClick }) => (
     type="button"
     onClick={onClick}
     aria-pressed={valgt}
-    className={`${pillBase} flex items-center justify-between gap-3 ${valgt ? 'border-accent bg-accent/15' : 'border-primary/15 bg-primary/[0.03] hover:border-primary/30'}`}
+    className={`${pillBase} flex items-center justify-between gap-3 ${valgt ? 'border-ink bg-ink/10' : 'border-primary/15 bg-primary/[0.03] hover:border-primary/30'}`}
   >
     <span className={valgt ? 'text-primary font-semibold' : 'text-primary/85'}>{item.label}</span>
     <span
       className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center ${
-        valgt ? 'bg-accent border-accent' : 'border-primary/30'
+        valgt ? 'bg-ink border-ink' : 'border-primary/30'
       }`}
       aria-hidden="true"
     >
@@ -118,7 +123,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                   type="button"
                   onClick={() => velgHaster(false)}
                   aria-pressed={!haster}
-                  className={`${pillBase} font-sans font-bold ${!haster ? 'border-accent bg-accent/15 text-accent' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
+                  className={`${pillBase} font-sans font-bold ${!haster ? 'border-ink bg-ink/10 text-primary underline underline-offset-4' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
                 >
                   Fleksibelt
                 </button>
@@ -126,7 +131,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                   type="button"
                   onClick={() => velgHaster(true)}
                   aria-pressed={haster}
-                  className={`${pillBase} font-sans font-bold ${haster ? 'border-accent bg-accent/15 text-accent' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
+                  className={`${pillBase} font-sans font-bold ${haster ? 'border-ink bg-ink/10 text-primary underline underline-offset-4' : 'border-primary/15 bg-primary/[0.03] text-primary/80 hover:border-primary/30'}`}
                 >
                   Haster (under 2 uker)
                 </button>
@@ -134,7 +139,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
           </div>
 
-          <div data-reveal className="lg:sticky lg:top-28 rounded-2xl border border-accent/30 bg-surface/25 p-7 flex flex-col gap-5">
+          <div data-reveal className="lg:sticky lg:top-28 rounded-2xl border border-ink/40 bg-surface/25 p-7 flex flex-col gap-5">
             <div>
               <span className="font-body text-xs uppercase tracking-widest text-primary/70">Estimert pris</span>
               <div className="font-display font-extrabold text-[2.1rem] leading-none tracking-[-0.02em] mt-2">
@@ -159,7 +164,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                 min,
                 max,
               })}
-              className="inline-flex items-center justify-center gap-2 bg-accent text-background px-6 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
+              className="inline-flex items-center justify-center gap-2 bg-ink text-background px-6 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03]"
             >
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </Link>

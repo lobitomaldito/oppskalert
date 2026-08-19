@@ -135,15 +135,15 @@ const Inkludert = () => {
               key={p}
               className="flex items-start gap-3 font-body text-[0.95rem] text-primary/85 leading-relaxed"
             >
-              <Check className="w-4 h-4 text-accent mt-1 flex-shrink-0" aria-hidden="true" />
+              <Check className="w-4 h-4 text-ink mt-1 flex-shrink-0" aria-hidden="true" />
               {p}
             </li>
           ))}
         </ul>
         <p data-reveal className="font-body text-[0.95rem] text-primary/80 mt-8 max-w-[54ch] leading-relaxed">
           Søkemotoroptimalisering inngår som en kvartalsvis gjennomgang i det øverste
-          driftsnivået. Se <Link to={ruter.drift} className="text-accent hover:text-highlight transition-colors">drift og support</Link> for
-          hva de tre nivåene koster, eller <Link to={ruter.priser} className="text-accent hover:text-highlight transition-colors">prissiden</Link> for
+          driftsnivået. Se <Link to={ruter.drift} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">drift og support</Link> for
+          hva de tre nivåene koster, eller <Link to={ruter.priser} className="text-ink underline underline-offset-4 decoration-ink/40 hover:decoration-ink transition-colors">prissiden</Link> for
           nye nettsider.
         </p>
       </div>

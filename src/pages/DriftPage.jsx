@@ -24,11 +24,11 @@ const DriftKort = ({ nivaa }) => (
   <div
     data-reveal
     className={`relative flex flex-col h-full rounded-2xl p-7 md:p-8 border ${
-      nivaa.fremhevet ? 'border-accent bg-surface/25' : 'border-primary/10 bg-primary/[0.03]'
+      nivaa.fremhevet ? 'border-ink/40 bg-surface/25' : 'border-primary/10 bg-primary/[0.03]'
     }`}
   >
     {nivaa.fremhevet && (
-      <span className="absolute top-0 right-7 -translate-y-1/2 bg-accent text-background text-[11px] font-body uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
+      <span className="absolute top-0 right-7 -translate-y-1/2 bg-ink text-background text-[11px] font-body uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
         Mest valgt
       </span>
     )}
@@ -42,7 +42,7 @@ const DriftKort = ({ nivaa }) => (
     <ul className="mt-6 flex flex-col gap-3 flex-1">
       {nivaa.inkludert.map((f) => (
         <li key={f} className="flex items-start gap-2.5 font-body text-[0.95rem] text-primary/80 leading-relaxed">
-          <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" aria-hidden="true" />
+          <Check className="w-4 h-4 text-ink mt-0.5 flex-shrink-0" aria-hidden="true" />
           {f}
         </li>
       ))}
@@ -50,7 +50,7 @@ const DriftKort = ({ nivaa }) => (
     <Link
       to={ruter.kontakt}
       className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] ${
-        nivaa.fremhevet ? 'bg-accent text-background' : 'bg-primary/10 hover:bg-primary/[0.16]'
+        nivaa.fremhevet ? 'bg-ink text-background' : 'bg-primary/10 hover:bg-primary/[0.16]'
       }`}
     >
       Velg {nivaa.navn}
@@ -72,7 +72,7 @@ const rader = [
 ];
 
 const Celle = ({ v }) => {
-  if (v === true) return <Check className="w-4 h-4 text-accent mx-auto" aria-label="Inkludert" />;
+  if (v === true) return <Check className="w-4 h-4 text-ink mx-auto" aria-label="Inkludert" />;
   if (v === false) return <Minus className="w-4 h-4 text-primary/50 mx-auto" aria-label="Ikke inkludert" />;
   return <span className="font-body text-xs text-primary/80">{v}</span>;
 };
@@ -90,7 +90,7 @@ const Sammenligning = () => {
               <tr className="border-b border-primary/15 bg-primary/[0.03]">
                 <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-primary/70 py-3.5 px-4 font-semibold">Funksjon</th>
                 {driftNivaer.map((n) => (
-                  <th key={n.id} scope="col" className={`font-sans font-bold text-sm py-3.5 px-4 w-[9rem] ${n.fremhevet ? 'text-accent' : ''}`}>{n.navn}</th>
+                  <th key={n.id} scope="col" className={`font-sans font-bold text-sm py-3.5 px-4 w-[9rem] ${n.fremhevet ? 'underline decoration-ink/40 underline-offset-4' : ''}`}>{n.navn}</th>
                 ))}
               </tr>
             </thead>

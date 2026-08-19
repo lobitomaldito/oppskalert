@@ -42,7 +42,7 @@ const rader = [
 ];
 
 const Celle = ({ v }) => {
-  if (v === true) return <Check className="w-4 h-4 text-accent mx-auto" aria-label="Inkludert" />;
+  if (v === true) return <Check className="w-4 h-4 text-ink mx-auto" aria-label="Inkludert" />;
   if (v === false) return <Minus className="w-4 h-4 text-primary/70 mx-auto" aria-label="Ikke inkludert" />;
   return <span className="font-body text-xs text-primary/70">{v}</span>;
 };
@@ -60,7 +60,7 @@ const Sammenligning = () => {
               <tr className="border-b border-primary/20">
                 <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-primary/70 pb-3 font-semibold">Inkludert</th>
                 <th scope="col" className="font-sans font-bold text-sm pb-3 px-4 w-[8.5rem]">Engangspris</th>
-                <th scope="col" className="font-sans font-bold text-sm pb-3 px-4 w-[8.5rem] text-accent">Driftet av meg</th>
+                <th scope="col" className="font-sans font-bold text-sm pb-3 px-4 w-[8.5rem] underline decoration-ink/40 underline-offset-4">Driftet av meg</th>
               </tr>
             </thead>
             <tbody>

@@ -43,11 +43,11 @@ const FAQ = ({
                     onClick={() => setApen(open ? null : i)}
                     aria-expanded={open}
                     aria-controls={panelId}
-                    className="w-full flex items-center justify-between gap-6 py-5 text-left font-sans font-medium text-[1.02rem] md:text-[1.1rem] hover:text-accent transition-colors duration-200"
+                    className="w-full flex items-center justify-between gap-6 py-5 text-left font-sans font-medium text-[1.02rem] md:text-[1.1rem] hover:opacity-70 transition-opacity duration-200"
                   >
                     {item.q}
                     <Plus
-                      className={`w-5 h-5 flex-shrink-0 text-accent transition-transform duration-300 ease-lett ${open ? 'rotate-45' : ''}`}
+                      className={`w-5 h-5 flex-shrink-0 text-ink transition-transform duration-300 ease-lett ${open ? 'rotate-45' : ''}`}
                       aria-hidden="true"
                     />
                   </button>

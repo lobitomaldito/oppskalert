@@ -44,7 +44,7 @@ const BlogPage = () => {
       <section ref={heroRef} className="pt-48 pb-24 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-surface/10 to-transparent pointer-events-none" />
         <div className="max-w-5xl mx-auto relative z-10">
-          <span className="hero-elem font-body text-xs uppercase tracking-[0.3em] text-accent mb-6 block">Innsikt & Kunnskap</span>
+          <span className="hero-elem font-body text-xs uppercase tracking-[0.3em] text-ink mb-6 block">Innsikt & Kunnskap</span>
           <h1 className="hero-elem font-sans font-bold text-5xl md:text-7xl tracking-tight mb-6">
             Blogg.
           </h1>
@@ -69,7 +69,7 @@ const BlogPage = () => {
       {/* CTA */}
       <section className="py-32 px-6 md:px-12 lg:px-24 bg-surface/20">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="font-body text-xs uppercase tracking-[0.3em] text-accent mb-4 block">Klar for neste steg?</span>
+          <span className="font-body text-xs uppercase tracking-[0.3em] text-ink mb-4 block">Klar for neste steg?</span>
           <h2 className="font-sans font-bold text-4xl md:text-6xl tracking-tight mb-6">
             La oss bygge din<br />
             <span className="font-serif italic">salgsmaskin.</span>
@@ -77,7 +77,7 @@ const BlogPage = () => {
           <p className="font-body text-primary/80 mb-10 leading-relaxed">
             Ingen langvarige strategiprosesser. Du får se en fungerende demo før du bestemmer deg.
           </p>
-          <Link to="/kontakt" className="group relative inline-flex overflow-hidden bg-accent text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
+          <Link to="/kontakt" className="group relative inline-flex overflow-hidden bg-ink text-background px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
             <span className="relative z-10 group-hover:text-white transition-colors duration-300 flex items-center gap-2">
               Bestill gratis demo <ArrowRight className="w-4 h-4" />
             </span>
