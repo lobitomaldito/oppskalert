@@ -466,4 +466,42 @@ Registrert tre steder, som er kravet i CLAUDE.md: `main.jsx`,
 `ROUTES` i `prerender.mjs`, og `STATIC_PATHS` i `api/sitemap.xml.js`. Bygget
 sier nå «31 routes snapshotted», mot 30 før.
 
-**Ikke deployet.** Verifisert i `dist/`, ikke i prod.
+### Deployet og verifisert i prod 18. august 2026
+
+`seo/faq-per-side` er merget til master og pushet. Vercel var live etter
+omtrent 160 sekunder. Målt mot prod etterpå:
+
+| | Før | Etter |
+| --- | --- | --- |
+| FAQPage-svar | 16 på 2 sider | **67 på 12 sider** |
+| URLer i sitemap | 27 | 28 |
+| `/vanlige-sporsmal` | fantes ikke | 1323 ord, 15 spørsmåls-H2, 200 |
+| `/sammenlign/wix` | 267 ord, 0 FAQ | 527 ord, 4 FAQ |
+| `/kalkulator` | 294 ord, 0 FAQ | 601 ord, 5 FAQ |
+| llms.txt | 146 ord | 182 ord |
+
+Alle 33 ruter verifisert i byggutdata før push: nøyaktig én H1 hver, unike
+titler og beskrivelser, korrekte canonicals, `noindex` kun på `/eksempler/*`
+og `/admin/dashboard`.
+
+Merget ble gjort med `git branch -f master` uten å sjekke ut master, fordi en
+annen sesjon hadde ukommittert arbeid i treet. Bloggrutinen hadde i mellomtiden
+pushet tre commits til origin, som ble merget inn og bygget på nytt før push.
+
+### Akseptert som det er
+
+`/kontakt` ligger på 233 ord. Det er normalt for en kontaktside, den er ikke et
+rangeringsmål, og den har unik title, beskrivelse og canonical. Ingen handling.
+
+### Gjenstår, blokkert på Aleksander
+
+1. **Fire kundesider har tom ankertekst** i krediteringslenken: woxenhage.no,
+   samtaleverkstedet.no, progressivediplomacy.com, melaniedahl.com. Alle
+   driftes av oss. En logolenke teller, men gir Google null ord å knytte til
+   domenet.
+2. **Katalogprofiler.** Skillen sitt sterkeste GEO-funn er at AI-modeller
+   siterer kataloger, ikke leverandørenes egne sider. Sortlist, Clutch,
+   GoodFirms, proff.no, 1881. Gratis, og gir backlink på kjøpet. Krever egne
+   kontoer.
+3. **Send inn den nye sitemapen** i Google Search Console, så
+   `/vanlige-sporsmal` blir oppdaget raskere enn ved vanlig crawl.
