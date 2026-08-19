@@ -42,6 +42,11 @@ const SITE = sideFlagg !== -1 ? argv.splice(sideFlagg, 2)[1] : 'https://oppskale
 const SCOPES = [
   'https://www.googleapis.com/auth/webmasters',
   'https://www.googleapis.com/auth/siteverification',
+  /* Analytics Data API er skrivebeskyttet her. Uten dette svarer
+     analyticsadmin og analyticsdata 403 ACCESS_TOKEN_SCOPE_INSUFFICIENT,
+     selv om tokenet er ferskt. Legger du til et scope, må `npm run gsc auth`
+     kjøres på nytt: eksisterende refresh-token bærer bare de gamle. */
+  'https://www.googleapis.com/auth/analytics.readonly',
 ].join(' ');
 
 /* ---------- .env.local ---------- */

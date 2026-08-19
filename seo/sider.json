@@ -1,57 +1,102 @@
 {
-  "_lesMeg": "Sidelista til SEO-maskinen. modus: pr = maskinen foreslår endringer i et repo vi kan skrive til. rapport = kun funn, ingen kodeendring. av = hoppes over. merkevare = ord som IKKE skal telle som kannibalisering, fordi Google med rette viser flere sider på et merkevaresøk.",
+  "_lesMeg": "Sidelista til SEO-maskinen. modus: pr = maskinen foreslår endringer i et repo vi kan skrive til. rapport = kun funn, ingen kodeendring. av = hoppes over. merkevare = ord som IKKE skal telle som kannibalisering, fordi Google med rette viser flere sider på et merkevaresøk. clarityToken = NAVNET på env-variabelen i .env.local, aldri selve nøkkelen. ga4Property = tallet i GA4-eiendommens ID, uten «properties/»-prefikset.",
   "sider": [
     {
       "eiendom": "https://oppskalert.no/",
       "navn": "Oppskalert",
-      "merkevare": ["oppskalert"],
+      "merkevare": [
+        "oppskalert"
+      ],
       "modus": "pr",
-      "repo": { "type": "lokal", "sti": "." },
-      "koe": "content/blog-queue.json"
+      "repo": {
+        "type": "lokal",
+        "sti": "."
+      },
+      "koe": "content/blog-queue.json",
+      "clarityToken": "CLARITY_TOKEN_OPPSKALERT",
+      "clarityProsjekt": "y4uilp2dri",
+      "ga4Property": null
     },
     {
       "eiendom": "https://appstart.no/",
       "navn": "Appstart",
-      "merkevare": ["appstart", "app start"],
+      "merkevare": [
+        "appstart",
+        "app start"
+      ],
       "modus": "pr",
-      "repo": { "type": "github", "slug": "magnusberggren/appstart", "gren": "main" }
+      "repo": {
+        "type": "github",
+        "slug": "magnusberggren/appstart",
+        "gren": "main"
+      },
+      "clarityToken": "CLARITY_TOKEN_APPSTART",
+      "ga4Property": null
     },
     {
       "eiendom": "https://www.katrinbrubakk.no/",
       "navn": "Katrin Brubakk",
-      "merkevare": ["katrin", "brubakk", "glatz"],
-      "modus": "rapport"
+      "merkevare": [
+        "katrin",
+        "brubakk",
+        "glatz"
+      ],
+      "modus": "rapport",
+      "ga4Property": null
     },
     {
       "eiendom": "https://samtaleverkstedet.no/",
       "navn": "Samtaleverkstedet",
-      "merkevare": ["samtaleverkstedet", "guro", "brakestad"],
-      "modus": "rapport"
+      "merkevare": [
+        "samtaleverkstedet",
+        "guro",
+        "brakestad"
+      ],
+      "modus": "rapport",
+      "ga4Property": null
     },
     {
       "eiendom": "https://steinarhusby.no/",
       "navn": "Steinar Husby",
-      "merkevare": ["steinar", "husby"],
-      "modus": "rapport"
+      "merkevare": [
+        "steinar",
+        "husby"
+      ],
+      "modus": "rapport",
+      "ga4Property": null
     },
     {
       "eiendom": "https://progressivediplomacy.com/",
       "navn": "Progressive Diplomacy",
-      "merkevare": ["progressive diplomacy", "thoralf", "stenvold"],
-      "modus": "rapport"
+      "merkevare": [
+        "progressive diplomacy",
+        "thoralf",
+        "stenvold"
+      ],
+      "modus": "rapport",
+      "ga4Property": null
     },
     {
       "eiendom": "https://melaniedahl.com/",
       "navn": "Melanie Dahl",
-      "merkevare": ["melanie", "dahl"],
+      "merkevare": [
+        "melanie",
+        "dahl"
+      ],
       "modus": "rapport",
-      "ogsaa": ["https://www.melaniedahl.com/"]
+      "ogsaa": [
+        "https://www.melaniedahl.com/"
+      ],
+      "ga4Property": null
     },
     {
       "eiendom": "https://www.avro.no/",
       "navn": "AVRO",
-      "merkevare": ["avro"],
-      "modus": "rapport"
+      "merkevare": [
+        "avro"
+      ],
+      "modus": "rapport",
+      "ga4Property": null
     }
   ]
 }

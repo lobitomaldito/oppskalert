@@ -1,0 +1,95 @@
+{
+  "kjoringer": [
+    {
+      "dato": "2026-08-19T14:28:27.499Z",
+      "sider": [
+        {
+          "navn": "Oppskalert",
+          "klikk": 7,
+          "visninger": 1181,
+          "posisjon": 31.4,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        }
+      ]
+    },
+    {
+      "dato": "2026-08-19T14:29:43.344Z",
+      "sider": [
+        {
+          "navn": "Oppskalert",
+          "klikk": 7,
+          "visninger": 1181,
+          "posisjon": 31.4,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Appstart",
+          "klikk": 2,
+          "visninger": 27,
+          "posisjon": 49.1,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Katrin Brubakk",
+          "klikk": 74,
+          "visninger": 1063,
+          "posisjon": 3,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Samtaleverkstedet",
+          "klikk": 11,
+          "visninger": 69,
+          "posisjon": 8.2,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Steinar Husby",
+          "klikk": 9,
+          "visninger": 87,
+          "posisjon": 6.7,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Progressive Diplomacy",
+          "klikk": 27,
+          "visninger": 100,
+          "posisjon": 2.6,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Melanie Dahl",
+          "klikk": 0,
+          "visninger": 29,
+          "posisjon": 9.8,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "AVRO",
+          "klikk": 2,
+          "visninger": 2,
+          "posisjon": 1,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        }
+      ]
+    }
+  ]
+}

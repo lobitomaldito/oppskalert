@@ -22,10 +22,20 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { hentClarity, hentGA4 } from './seo-kilder.mjs';
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 const KONFIG = path.join(ROOT, 'seo', 'sider.json');
+const HISTORIKK = path.join(ROOT, 'seo', 'historikk.json');
 const PERIODE_DAGER = 28;
+
+/* Clarity-APIet gir maks 72 timer bakover og glemmer resten. Kjører rutinen
+   mandag og torsdag, finnes det ingen måte å be om en hel uke. Vi lagrer
+   derfor hvert kjør her og bygger trenden selv. Filen vokser med rundt 1 kB
+   per side per kjøring, altså cirka 100 kB i året for åtte sider. */
+const lesHistorikk = () => {
+  try { return JSON.parse(fs.readFileSync(HISTORIKK, 'utf8')); } catch { return { kjoringer: [] }; }
+};
 
 /* ---------- oppsett ---------- */
 
@@ -243,12 +253,26 @@ async function analyser(side) {
     }));
   } catch { /* manglende tilgang skal ikke felle hele kjøringen */ }
 
+  /* Sekundære kilder. Feiler de, skal hele kjøringen likevel fullføre, så
+     alt er pakket i try. Search Console er den eneste kilden rutinen er
+     avhengig av. */
+  let clarity = { av: true, grunn: 'ikke forsøkt' };
+  let ga4 = { av: true, grunn: 'ikke forsøkt' };
+  try {
+    clarity = await hentClarity(side.clarityToken ? env[side.clarityToken] : null);
+  } catch (e) { clarity = { av: true, grunn: e.message }; }
+  try {
+    ga4 = await hentGA4(side.ga4Property, await accessToken());
+  } catch (e) { ga4 = { av: true, grunn: e.message }; }
+
   return {
     navn: side.navn,
     eiendom: side.eiendom,
     modus: side.modus,
     repo: side.repo || null,
     totaler,
+    clarity,
+    ga4,
     sitemapMangler: sitemap.length === 0,
     sitemapFeil: sitemap.filter((s) => s.feil > 0),
     kannibalisering: finnKannibalisering(par, side.merkevare),
@@ -265,6 +289,22 @@ const md = (alle) => {
     if (s.feil) { l.push(`## ${s.navn}`, '', `Feilet: ${s.feil}`, ''); continue; }
     l.push(`## ${s.navn} (${s.modus})`, '');
     l.push(`${s.totaler.klikk} klikk, ${s.totaler.visninger} visninger, snittposisjon ${s.totaler.posisjon.toFixed(1)}.`, '');
+    if (s.ga4 && !s.ga4.av) {
+      l.push(`Organisk i GA4: ${s.ga4.okter} økter.`, '');
+      if (s.ga4.svakeLandingssider.length) {
+        l.push('### Google sender folk, siden mister dem', '', '| Landingsside | Økter | Engasjement |', '| --- | --- | --- |');
+        for (const r of s.ga4.svakeLandingssider) l.push(`| ${r.side} | ${r.okter} | ${r.engasjement} % |`);
+        l.push('');
+      }
+    }
+    if (s.clarity && !s.clarity.av) {
+      const f = s.clarity.friksjon;
+      const sum = f.raseriklikk + f.dodeKlikk + f.hardTilbake;
+      l.push(`Clarity (${s.clarity.vindu}): ${s.clarity.okter} økter, ${sum} friksjonshendelser.`, '');
+      if (sum > 0) {
+        l.push(`- Raseriklikk ${f.raseriklikk}, døde klikk ${f.dodeKlikk}, hard tilbake ${f.hardTilbake}, skriptfeil ${f.skriptfeil}`, '');
+      }
+    }
     if (s.sitemapMangler) l.push('- **Ingen sitemap sendt inn.**', '');
     if (s.sitemapFeil.length) l.push(`- **Sitemap med feil:** ${s.sitemapFeil.map((f) => f.sti).join(', ')}`, '');
     if (s.kannibalisering.length) {
@@ -320,6 +360,26 @@ for (const side of valgte) {
 }
 
 fs.mkdirSync(path.join(ROOT, 'seo'), { recursive: true });
+
+/* Akkumuler. Bare tallene, ikke hele funnlista, ellers eksploderer filen. */
+const hist = lesHistorikk();
+hist.kjoringer.push({
+  dato: new Date().toISOString(),
+  sider: alle.map((s) => ({
+    navn: s.navn,
+    klikk: s.totaler?.klikk ?? null,
+    visninger: s.totaler?.visninger ?? null,
+    posisjon: s.totaler?.posisjon ? +s.totaler.posisjon.toFixed(1) : null,
+    ga4Okter: s.ga4 && !s.ga4.av ? s.ga4.okter : null,
+    clarityOkter: s.clarity && !s.clarity.av ? s.clarity.okter : null,
+    friksjon: s.clarity && !s.clarity.av
+      ? s.clarity.friksjon.raseriklikk + s.clarity.friksjon.dodeKlikk + s.clarity.friksjon.hardTilbake
+      : null,
+  })),
+});
+hist.kjoringer = hist.kjoringer.slice(-208); // to år med to kjøringer i uka
+fs.writeFileSync(HISTORIKK, JSON.stringify(hist, null, 2));
+
 fs.writeFileSync(path.join(ROOT, 'seo', 'funn.json'), JSON.stringify({ dato: iso(new Date()), dager: PERIODE_DAGER, sider: alle }, null, 2));
 fs.writeFileSync(path.join(ROOT, 'seo', 'funn.md'), md(alle));
 console.log(`\nseo/funn.json og seo/funn.md skrevet for ${alle.length} sider.`);
