@@ -3,8 +3,8 @@ import SEO from './components/SEO';
 import { Shell } from './components/Layout';
 import Arbeider from './components/Arbeider';
 import Sitatkort from './components/Sitatkort';
-import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
-import { sporsmal, tjenester } from './lib/demo-innhold';
+import { faqSchema, heroBevis, kontakt, ruter, vurdering } from './lib/site';
+import { omtaler, sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
@@ -68,6 +68,43 @@ const Vurdering = () => {
   );
 };
 
+/* Én navngitt kundeuttalelse under knappen, som sosialt bevis i heroen.
+
+   Står her i stedet for en stjernescore så lenge Bedriftsprofilen har
+   for få anmeldelser til at et snitt sier noe. Se heroBevis i site.js
+   for hele begrunnelsen. Vises `vurdering` (altså er den ikke null),
+   viker sitatet, siden to bevis på rad i heroen blir støy.
+
+   Sitatet hentes fra samme liste som omtaleseksjonen lenger nede, så
+   de to aldri kan komme ut av synk. */
+const HeroBevis = () => {
+  if (vurdering || !heroBevis) return null;
+  const o = omtaler[heroBevis.indeks];
+  if (!o) return null;
+
+  const kilde = (
+    <span className="hero-bevis-kilde">
+      {o.navn}, {o.rolle}
+    </span>
+  );
+
+  return (
+    <figure data-reveal className="hero-bevis inn" style={{ '--d': '400ms' }}>
+      <blockquote>«{o.sitat}»</blockquote>
+      <figcaption>
+        {heroBevis.url ? (
+          <a href={heroBevis.url} target="_blank" rel="noopener noreferrer">
+            {kilde}
+            <span className="skjult"> (åpnes i ny fane)</span>
+          </a>
+        ) : (
+          kilde
+        )}
+      </figcaption>
+    </figure>
+  );
+};
+
 const Hero = () => {
   const container = useReveal(100);
   return (
@@ -87,6 +124,7 @@ const Hero = () => {
           </Link>
         </div>
         <Vurdering />
+        <HeroBevis />
       </div>
     </section>
   );

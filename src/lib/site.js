@@ -554,3 +554,30 @@ export const omtaler = [
    Ligger vurderingene på Google Bedriftsprofil, viser Google dem uansett
    selv i kartoppføringen, uten at vi trenger å merke dem opp her. */
 export const vurdering = null;
+
+/* ---------------------------------------------------------------
+   HERO-BEVIS. Én navngitt kundeuttalelse rett under knappen.
+
+   Dette står her i stedet for en stjernescore, og det er et bevisst
+   valg, ikke en midlertidig løsning. Google Bedriftsprofilen har per
+   19. august 2026 én anmeldelse. En femmer bygget på én anmeldelse er
+   ikke ulovlig i seg selv, men å vise snittet uten å oppgi antallet er
+   en villedende utelatelse etter markedsføringsloven § 7: 5 av 5 fra én
+   og 5 av 5 fra femti er to helt ulike opplysninger, og leseren kan
+   ikke skille dem uten tallet.
+
+   Et navngitt sitat har ikke det problemet. Det er etterprøvbart i seg
+   selv, det er konkret, og det sier noe en score ikke sier.
+
+   `indeks` peker inn i omtaler i demo-innhold.js, så teksten aldri
+   kommer ut av synk med omtaleseksjonen lenger nede på siden.
+   Kortest mulige sitat vinner her: heroen tåler én linje, ikke fire.
+
+   Bytt til `vurdering`-visningen når profilen har nok anmeldelser til
+   at snittet betyr noe. Rundt ti er der tallet begynner å bære. */
+export const heroBevis = {
+  indeks: 1,
+  // Lenke til Google Bedriftsprofilen. Står den tom, rendres sitatet
+  // uten lenke, og det er fortsatt korrekt, bare mindre etterprøvbart.
+  url: '',
+};

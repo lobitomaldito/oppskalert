@@ -382,6 +382,30 @@
   }
   .stjerner svg.fylt { fill: var(--prikk); }
 
+  /* Navngitt kundeuttalelse i heroen. Sitatet skal lese som en stemme,
+     ikke som en påstand fra siden selv, derfor antikva og ikke grotesk.
+     Samme font som det store sitatkortet lenger nede, bare mye mindre,
+     så de to leser som samme slags bevis i to størrelser. */
+  .hero-bevis {
+    margin: 1.5rem auto 0;
+    max-width: 44ch;
+    display: grid; gap: .5rem;
+  }
+  .hero-bevis blockquote {
+    font-family: 'SectraFine', Georgia, serif;
+    font-size: clamp(1rem, 1.8vw, 1.1875rem);
+    line-height: 1.4; letter-spacing: -.012em;
+    color: var(--blekk);
+    text-wrap: balance;
+  }
+  .hero-bevis figcaption { font-size: .8125rem; color: var(--blekk-mykt); }
+  .hero-bevis a {
+    color: inherit;
+    border-bottom: 1px solid var(--felt-kant);
+    transition: border-color .2s var(--e);
+  }
+  .hero-bevis a:hover { border-color: var(--blekk-mykt); }
+
   .statuslinje {
     display: flex; align-items: center; justify-content: center; gap: 1rem;
     padding-block: 1.25rem clamp(3rem, 6vw, 5rem);
