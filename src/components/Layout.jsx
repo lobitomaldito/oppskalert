@@ -89,12 +89,27 @@ export const Navbar = () => {
 export const Footer = () => (
   <footer className="bunn paa-blekk">
     <div className="wrap bunn-inn">
+      {/* Avslutnings-CTA-en. Den sto på hver side i den gamle footeren og
+          forsvant i porten, siden demoens footer bare hadde e-postadressen.
+          Den store adressen under er fortsatt hovedgrepet, men en knapp
+          fanger dem som vil trykke i stedet for å skrive selv. */}
+      <div className="bunn-cta">
+        <h2>La oss bygge noe bra sammen.</h2>
+        <Link className="knapp" to={ruter.kontakt}>
+          Bestill gratis demo <span className="pil" aria-hidden="true">↗</span>
+        </Link>
+      </div>
+
       <a className="bunn-post" href={`mailto:${kontakt.epost}`}>{kontakt.epost}</a>
       <p style={{ marginTop: '1rem', color: 'var(--kritt-mykt)', fontSize: '.9375rem' }}>
         Eller bare ring, jeg tar telefonen selv:{' '}
         <a href={`tel:${kontakt.tel}`} style={{ borderBottom: '1px solid var(--blekk-kant)' }}>
           {kontakt.telefon}
         </a>
+      </p>
+
+      <p className="bunn-tagline">
+        Norsk webutvikling. Én person, hele jobben, fra første skisse til ferdig nettside.
       </p>
 
       <div className="signatur">
@@ -135,6 +150,13 @@ export const Footer = () => (
           <Link to={ruter.blogg}>Blogg</Link>
           <Link to={ruter.kontakt}>Kontakt</Link>
         </nav>
+        {/* Kapasitetssignalet sto på hver side i den gamle footeren.
+            Det er den eneste opplysningen der som endrer seg, så det er
+            også den eneste som er verdt en pulserende prikk. */}
+        <span className="pille">
+          <span className="lys" aria-hidden="true" />
+          Ledig for nye prosjekter
+        </span>
       </div>
     </div>
 

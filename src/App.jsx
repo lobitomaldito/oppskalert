@@ -3,6 +3,9 @@ import SEO from './components/SEO';
 import { Shell } from './components/Layout';
 import Arbeider from './components/Arbeider';
 import Sitatkort from './components/Sitatkort';
+import Metode from './components/Metode';
+import Priser from './components/Priser';
+import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, heroBevis, kontakt, ruter, vurdering } from './lib/site';
 import { omtaler, sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
@@ -14,9 +17,17 @@ import { useReveal } from './lib/useReveal';
    .statuslinje blir en enkel "se mer"-pille, og resten følger demoens
    åtte seksjoner i nøyaktig samme rekkefølge. Prisen i casedelen er
    hevet fra demoens 7 990 til 9 999, det er det eneste tilsiktede
-   tekstavviket. Metode, Priser, Omtaler, FAQ og DemoSkjema-komponentene
-   brukes ikke lenger her: demoens forside slutter etter spørsmålene,
-   de andre seksjonene lever videre på sine egne ruter.
+   tekstavviket.
+
+   Portingen gjorde forsiden tynnere enn prod: fire hele seksjoner falt
+   ut fordi demoen aldri hadde dem. De er lagt tilbake her, restylet til
+   det nye systemet, i den rekkefølgen som leser best sammen med demoens
+   egne seksjoner:
+   - Hvorfor, bygget lokalt i denne fila fra den gamle forsiden
+     (git show origin/master:src/App.jsx), ordrett tekst, ny stil.
+   - Metode, Priser og DemoSkjema, som komponenter fra components/,
+     allerede restylet til det lyse feltet, bare importert og plassert.
+   DemoSkjema er hovedkonverteringen på siden og skal alltid stå sist.
 
    Hver .inn-seksjon i demoen får sin egen useReveal(), akkurat som
    Hvorfor-seksjonen gjorde i forrige versjon. [data-reveal] er det
@@ -173,6 +184,51 @@ const ArbeidSeksjon = () => {
   );
 };
 
+/* Gjenoppbygd fra origin/master (git show origin/master:src/App.jsx), ord
+   for ord, kun restylet til det nye systemet. Teksten er uendret: samme
+   overskrift, samme tre fakta, samme lenke til /webdesign-oslo med samme
+   begrunnelse. Det gamle markøret brukte text-primary og border-primary/12,
+   som er kritt-hvitt og feil på det lyse feltet, se .hvorfor i index.css for
+   erstatningen. */
+const Hvorfor = () => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className="wrap seksjon">
+      <div className="hvorfor">
+        <div data-reveal className="inn">
+          <h2>Nettsiden er det første håndtrykket bedriften din gir.</h2>
+          <p>Jeg sørger for at det sitter. Sidene er håndkodet, ikke stemplet ut av en
+          mal, og de er bygget for å gjøre besøkende til kunder, ikke bare for å se
+          pene ut.</p>
+          {/* Redaksjonell lenke til landingssiden, ikke pynt. Målt i Search
+              Console over 28 dager: på «webdesign i oslo» lå forsiden på
+              snittposisjon 17,5 med 42 visninger, /webdesign-oslo på 66,3 med
+              51 visninger. Forsiden nevner «webdesign» én gang og «Oslo» tre
+              ganger, landingssiden fem og tolv, så det er ikke relevans som
+              skiller dem: /webdesign-oslo hadde bare footerlenken å leve av.
+              Denne lenken flytter det lokale signalet dit det hører hjemme. */}
+          <p>Sitter du i hovedstaden, har jeg skrevet om{' '}
+          <Link to={ruter.webdesignOslo}>webdesign i Oslo</Link>{' '}
+          for seg, med fast pris og hva som følger med.</p>
+        </div>
+
+        <dl data-reveal className="inn" style={{ '--d': '80ms' }}>
+          {[
+            ['Under ett sekund', 'typisk lastetid på sidene jeg bygger'],
+            ['Null plugins', 'ingenting som kan hackes eller gå ut på dato'],
+            ['Mobil først', 'over halvparten av kundene dine kommer derfra'],
+          ].map(([k, v]) => (
+            <div key={k}>
+              <dt>{k}</dt>
+              <dd>{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+};
+
 const SitatSeksjon = () => {
   const container = useReveal(100);
   return (
@@ -310,10 +366,18 @@ const Home = () => (
     <Statuslinje />
     <VeienInn />
     <ArbeidSeksjon />
+    <Hvorfor />
     <SitatSeksjon />
     <TjenesteSeksjon />
+    <Metode />
     <CaseSeksjon />
+    <Priser visAlltidMed={false} />
     <FaqSeksjon />
+    <DemoSkjema
+      tittel="Klar for en nettside"
+      uthevet="som selger?"
+      lede="Legg igjen navn og e-post, så bygger jeg en gratis demo av din nye side. Uforpliktende, og jeg svarer innen 24 timer."
+    />
   </Shell>
 );
 

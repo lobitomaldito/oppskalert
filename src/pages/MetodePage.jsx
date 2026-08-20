@@ -1,9 +1,69 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Check, X } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
-import { ruter } from '../lib/site';
-import { stegene, omtaler } from '../lib/demo-innhold';
+import DemoSkjema from '../components/DemoSkjema';
+import Metode from '../components/Metode';
+import { useReveal } from '../lib/useReveal';
+import { omtaler } from '../lib/demo-innhold';
+
+/* De to listene under er ordrett fra den gamle MetodePage.jsx (før
+   studio-mal-redesignet), git show origin/master:src/pages/MetodePage.jsx.
+   Ikke omskrevet, bare flyttet inn i det nye designsystemet. */
+const vanlig = [
+  'Møter og tilbudsrunder før du ser noe som helst',
+  'Forskudd og bindingstid',
+  'Skisser og «mockups» i PowerPoint',
+  'Timepris som løper mens dere prater',
+];
+
+const mitt = [
+  'En ferdig, klikkbar demo først',
+  'Ingen forpliktelse før du sier ja',
+  'En ekte side du kan åpne på mobilen',
+  'Fast pris, avtalt før jeg gjør ferdig',
+];
+
+/* Kontrastblokken fra den gamle MetodePage.jsx, gjenoppbygd med
+   .tjeneste-kortene fra designsystemet (samme klasse .tjeneste-rad-
+   seksjonen på denne siden bruker for stegene) i stedet for den gamle
+   aubergine-stilingen. Ingen aksentfarge i skallet: forskjellen mellom
+   kolonnene vises med Check/X og opasitet, ikke farge. */
+const Kontrast = () => {
+  const container = useReveal(90);
+  return (
+    <section ref={container} className="seksjon">
+      <div className="wrap">
+        <div data-reveal className="seksjonstopp inn">
+          <h2>Hvorfor jeg gjør det motsatt vei.</h2>
+          <p>De fleste vil ha betalt for å tenke. Jeg vil heller bygge noe du kan se på, og la det avgjøre.</p>
+        </div>
+        <div data-reveal className="grid gap-5 md:grid-cols-2 max-w-[52rem] inn" style={{ '--d': '80ms' }}>
+          <div className="tjeneste">
+            <h3>Den vanlige veien</h3>
+            <ul className="flex flex-col gap-3">
+              {vanlig.map((v) => (
+                <li key={v} className="flex items-start gap-2.5 font-body text-[0.95rem] text-room-ink/70 leading-relaxed">
+                  <X className="w-4 h-4 mt-0.5 flex-shrink-0 text-room-ink/40" aria-hidden="true" />{v}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="tjeneste">
+            <h3>Slik jeg gjør det</h3>
+            <ul className="flex flex-col gap-3">
+              {mitt.map((v) => (
+                <li key={v} className="flex items-start gap-2.5 font-body text-[0.95rem] text-room-ink/80 leading-relaxed">
+                  <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-room-ink" aria-hidden="true" />{v}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* Sitatkort med to piler som blar gjennom omtaler. Samme data og samme
    frem/tilbake-logikk som studio-mal-demoen sin data-sitatkort, portert
@@ -63,38 +123,32 @@ const MetodePage = () => (
       </p>
     </section>
 
-    <section className="hvit">
-      <div className="wrap seksjon">
-        <div className="tjeneste-rad">
-          <div className="tjeneste-side inn">
-            <p className="etikett">Slik går det til</p>
-            <Link className="knapp" to={ruter.kontakt}>Kom i gang <span className="pil" aria-hidden="true">↗</span></Link>
-          </div>
-          <ol className="nummerert inn" style={{ '--d': '80ms', maxWidth: 'none' }}>
-            {stegene.map((s) => (
-              <li key={s.navn}>
-                <Link to={ruter.kontakt}>
-                  <span className="nr" style={{ minWidth: '6.5rem', flex: 'none' }}>{s.tid}</span>
-                  <span>
-                    <span style={{ display: 'block' }}>{s.navn}</span>
-                    <span style={{ display: 'block', fontSize: '.9375rem', color: 'var(--blekk-mykt)', marginTop: '.3rem', maxWidth: '58ch' }}>
-                      {s.tekst}
-                    </span>
-                  </span>
-                  <span className="pil" aria-hidden="true">→</span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
-    </section>
+    {/* Den utdypede stegvisningen, ikke demoens korte liste.
+
+       Demoen hadde fire steg på én linje hver. Prod har de samme fire
+       stegene, men med `desc` og `punkter` i tillegg, altså rundt 100 ord
+       mer om hva som faktisk skjer i hvert steg. Målt mot prod var det
+       hele forskjellen på denne ruta.
+
+       Metode-komponenten leser den rike lista fra site.js og eier begge
+       visningene: kort på forsiden, utdypet her. Å bygge en tredje
+       variant her ville betydd at stegteksten fantes to steder og kunne
+       komme ut av synk. */}
+    <Metode utdypet />
 
     <section className="sitatblokk" style={{ paddingTop: 'var(--luft)' }}>
       <div className="wrap">
         <SitatKort />
       </div>
     </section>
+
+    <Kontrast />
+
+    <DemoSkjema
+      tittel="Klar for"
+      uthevet="steg én?"
+      lede="Fortell meg hvem du er, så bygger jeg demoen. Det er hele jobben din i første omgang."
+    />
   </Shell>
 );
 

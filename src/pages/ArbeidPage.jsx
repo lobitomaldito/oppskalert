@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
+import BransjeEksempler from '../components/BransjeEksempler';
+import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
 import { caser, omtaler } from '../lib/demo-innhold';
 import { prosjekter } from '../lib/site';
@@ -137,6 +139,14 @@ const ArbeidPage = () => {
           </div>
         </section>
       </div>
+
+      <BransjeEksempler />
+
+      <DemoSkjema
+        tittel="Vil du se hvordan"
+        uthevet="din kan bli?"
+        lede="Jeg bygger et ferdig utkast med ditt innhold, helt uforpliktende. Liker du det ikke, koster det ingenting."
+      />
     </Shell>
   );
 };

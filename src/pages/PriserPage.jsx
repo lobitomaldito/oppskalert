@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { Check, Minus } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
+import DemoSkjema from '../components/DemoSkjema';
 import { lagFaqSchema, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
@@ -29,6 +31,61 @@ const priserSchema = {
     url: 'https://oppskalert.no/priser',
   })),
 };
+
+/* Sammenligningen svarer på det ene spørsmålet prismodellene ikke gjør
+   alene: hva er egentlig forskjellen, rad for rad. */
+const rader = [
+  ['Gratis demo før du bestemmer deg', true, true],
+  ['Design og utvikling av komplett nettside', true, true],
+  ['Håndkodet, uten tunge plugins', true, true],
+  ['Søkemotor-grunnoppsett', true, true],
+  ['Du eier alle filene', true, 'Ja, også her'],
+  ['Hosting, domene og SSL', 'Eget ansvar', true],
+  ['Rimelige innholdsendringer inkludert', false, true],
+  ['Backup og oppetidsovervåking', false, true],
+  ['Support direkte fra meg', false, true],
+];
+
+const Celle = ({ v }) => {
+  if (v === true) return <Check className="w-4 h-4 text-room-ink mx-auto" aria-label="Inkludert" />;
+  if (v === false) return <Minus className="w-4 h-4 text-room-ink/40 mx-auto" aria-label="Ikke inkludert" />;
+  return <span className="font-body text-xs text-room-ink/70">{v}</span>;
+};
+
+const Sammenligning = () => (
+  <section className="seksjon">
+    <div className="wrap">
+      <div className="seksjonstopp inn">
+        <p className="etikett">Sammenligning</p>
+        <h2>Hva inngår i hver modell?</h2>
+      </div>
+      <div className="inn overflow-x-auto rounded-2xl border border-room-ink/15" style={{ '--d': '80ms' }}>
+        <table className="w-full border-collapse min-w-[34rem]">
+          <caption className="sr-only">Sammenligning av engangspris og driftsavtale</caption>
+          <thead>
+            <tr className="border-b border-room-ink/15 bg-room-ink/5">
+              <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Engangspris</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Driftet av meg</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rader.map(([navn, a, b]) => (
+              <tr key={navn} className="border-b border-room-ink/10 last:border-b-0">
+                <th scope="row" className="text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
+                <td className="text-center py-3.5 px-4"><Celle v={a} /></td>
+                <td className="text-center py-3.5 px-4"><Celle v={b} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="prisnotat">
+        Begge modellene gjelder nye nettsider. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
+      </p>
+    </div>
+  </section>
+);
 
 const PriserPage = () => (
   <Shell>
@@ -60,6 +117,12 @@ const PriserPage = () => (
             <p className="modell">Engangspris</p>
             <p className="tall">9 999<span>kr</span></p>
             <p className="tagline">Du eier alt. Én faktura, så er du ferdig.</p>
+            <Link
+              to={ruter.kalkulator}
+              className="self-start text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+            >
+              Regn ut prisen for din side →
+            </Link>
             <ul>
               <li>Komplett nettside, håndbygd for deg</li>
               <li>Alle filer overlevert, du eier dem</li>
@@ -82,6 +145,8 @@ const PriserPage = () => (
         <p className="prisnotat">Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.</p>
       </div>
     </section>
+
+    <Sammenligning />
 
     <section className="seksjon">
       <div className="wrap">
@@ -139,6 +204,12 @@ const PriserPage = () => (
         </div>
       </div>
     </section>
+
+    <DemoSkjema
+      tittel="Vil du se hva"
+      uthevet="din ville kostet?"
+      lede="Fortell meg kort om bedriften, så får du en fast pris, og en gratis demo før du bestemmer deg."
+    />
   </Shell>
 );
 
