@@ -90,6 +90,20 @@ const Hvorfor = () => {
           <p className="font-body text-[0.95rem] md:text-base text-primary/85 mt-5 leading-relaxed max-w-[48ch]">
             Jeg sørger for at det sitter. Sidene er håndkodet, ikke stemplet ut av en mal, og de er bygget for å gjøre besøkende til kunder, ikke bare for å se pene ut.
           </p>
+          {/* Redaksjonell lenke til landingssiden, ikke pynt. Målt i Search
+              Console over 28 dager: på «webdesign i oslo» lå forsiden på
+              snittposisjon 17,5 med 42 visninger, /webdesign-oslo på 66,3 med
+              51 visninger. Forsiden nevner «webdesign» én gang og «Oslo» tre
+              ganger, landingssiden fem og tolv, så det er ikke relevans som
+              skiller dem: /webdesign-oslo hadde bare footerlenken å leve av.
+              Denne lenken flytter det lokale signalet dit det hører hjemme. */}
+          <p className="font-body text-[0.95rem] md:text-base text-primary/85 mt-4 leading-relaxed max-w-[48ch]">
+            Sitter du i hovedstaden, har jeg skrevet om{' '}
+            <Link to={ruter.webdesignOslo} className="text-accent hover:text-highlight transition-colors">
+              webdesign i Oslo
+            </Link>{' '}
+            for seg, med fast pris og hva som følger med.
+          </p>
         </div>
 
         <dl data-reveal className="flex flex-col">
@@ -143,11 +157,18 @@ const Home = () => (
   <Shell>
     {/* Tittel og beskrivelse er skrevet for søk, ikke for merkevare.
         «Nettsider som faktisk selger» er god copy og null søkevolum, så den
-        lever videre som H1 i heroen i stedet. Se SEO.md punkt 4. */}
+        lever videre som H1 i heroen i stedet. Se SEO.md punkt 4.
+
+        Ordet «webdesign» kom inn 19. august 2026 etter måling i Search
+        Console: forsiden rangerte allerede 12,0 på «webdesign bedrift»,
+        12,7 på «webdesign firma» og 12,9 på «webdesigner oslo», med en
+        title som ikke inneholdt ordet én eneste gang. Særskriving er ikke
+        et alternativ, så preposisjonen bærer det: «webdesign for
+        bedrifter». Se SEO.md punkt 12. */}
     <SEO
-      title="Profesjonell nettside til fast pris"
-      description="Nettsideleverandør for norske bedrifter. Jeg bygger en profesjonell nettside til fast pris, og du ser en ferdig demo gratis før du betaler en krone. Ingen binding."
-      keywords={['nettsideleverandør', 'profesjonell nettside', 'nettside til bedrift', 'nettside pris']}
+      title="Webdesign for bedrifter til fast pris"
+      description="Webdesign for norske bedrifter til fast pris. Jeg bygger hjemmesiden ferdig, og du ser en gratis demo før du betaler en krone. Ingen binding."
+      keywords={['webdesign for bedrifter', 'webdesign firma', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />

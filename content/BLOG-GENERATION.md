@@ -137,3 +137,70 @@ på et kundevendt nettsted:
 samme skjema (`slug`, `title`, `keywords`, `status: "pending"`) når køen
 blir kort, ideelt hentet fra reelle søkeord-gap-data (se samtalen om
 søkeordstabellene i `SEO.md`) fremfor gjettet fritt.
+
+---
+
+## Appstart
+
+Fra 19. august 2026 finnes det en blogg på appstart.no også. Den følger de
+samme reglene om struktur og ærlighet, men er ellers et annet løp. Ikke bland
+dem.
+
+| | Oppskalert | Appstart |
+| --- | --- | --- |
+| Kø | `content/blog-queue.json` | `content/appstart-blog-queue.json` |
+| Repo | dette | `magnusberggren/appstart` |
+| Fil | `src/content/generated/<slug>.js` | `src/content/blogg/<slug>.ts` |
+| Register | `src/content/generated/index.js` | `src/lib/blogg.ts` |
+| Frekvens | mandag og torsdag | **én gang i måneden** |
+| Stemme | jeg | **vi** |
+| Hero-bilde | ja, `image-gen` | nei, bloggen bruker ikke bilder |
+
+### Hvorfor bare én i måneden
+
+Målt volum i nisjen er 300 til 500 søk i måneden for hele den kommersielle
+intensjonen «få bygget en app» i Norge, se `SEO-GEO.md` punkt 2 i
+Appstart-mappa. To innlegg i uken blir over hundre artikler i året inn i en
+nisje som tåler kanskje ti. Tynt innhold trekker ned resten av domenet.
+
+### Hva innleggene skal gjøre
+
+Ikke jage søkevolum. Appstart har én opplysning ingen andre i markedet har:
+1 999, 9 000 og 15 000 kroner, mot bransjens 50 000 til 800 000. Innlegg som
+inneholder et konkret avvikende tall blir sitert av språkmodeller. Innlegg som
+sier «det kommer an på» blir det ikke.
+
+**Ikke skriv om hva det koster å bygge en app.** Det søket eier
+`/hva-koster-en-app`, og et innlegg om samme intensjon gjentar
+kannibaliseringen som ble ryddet opp i PR #46.
+
+### Seksjonsmodellen
+
+Innlegget er et TypeScript-objekt, ikke markdown. Fem typer:
+
+```ts
+{ type: "avsnitt";    tekst: string }
+{ type: "overskrift"; tekst: string }
+{ type: "punkter";    punkter: string[] }
+{ type: "tabell";     kolonner: string[]; rader: string[][] }
+{ type: "faktaboks";  over: string; tall: string; under: string }
+```
+
+`tabell` og `faktaboks` er de mest siterbare formene vi har. Bruk minst én av
+dem per innlegg. Et innlegg uten et konkret tall er et innlegg som ikke gjør
+jobben sin.
+
+### Arbeidsflyt
+
+1. Første `pending` i `content/appstart-blog-queue.json`. Tom kø, stopp.
+2. Klon `magnusberggren/appstart`, lag branch `blogg/<slug>`.
+3. Skriv `src/content/blogg/<slug>.ts` etter modellen over.
+4. **Registrer i `src/lib/blogg.ts`:** en import og en oppføring i `innlegg`.
+   Glemmer du det, finnes filen men ruten gjør ikke det.
+5. `npm run build`. Innlegget skal dukke opp som `● /blogg/<slug>` i
+   ruteoversikten, og ordtellingen i rå HTML skal være over 400.
+6. Sett `status: "published"` og `publishedDate` i køen, i dette repoet.
+7. PR mot `main`, vent på grønn Vercel-sjekk, merge.
+
+Alle tall i teksten skal være etterprøvbare. Er et tall ikke målt, skriv det
+ikke. `searchVolume: null` i køen betyr nettopp det: ikke målt, ikke gjett.
