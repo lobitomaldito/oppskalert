@@ -3,7 +3,7 @@ import SEO from './components/SEO';
 import { Shell } from './components/Layout';
 import Arbeider from './components/Arbeider';
 import Sitatkort from './components/Sitatkort';
-import { faqSchema, kontakt, ruter } from './lib/site';
+import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
 
@@ -24,6 +24,50 @@ import { useReveal } from './lib/useReveal';
    klasse, begge trengs på samme element for at reveal skal virke og
    se riktig ut. */
 
+/* Stjernescoren under knappen i heroen.
+
+   Rendrer ingenting hvis `vurdering` er null, som den er inntil ekte tall
+   er lagt inn. Se kommentaren over `vurdering` i site.js for hvorfor det
+   er standarden og ikke en hardkodet femmer.
+
+   Kilden står som en lenke, ikke som løs tekst. Det er poenget: en score
+   uten et sted å etterprøve den er en påstand, og markedsføringsloven
+   krever at den skal kunne dokumenteres. Lenken er dokumentasjonen.
+
+   Stjernene er dekorative og skjult for skjermlesere, siden hele
+   opplysningen allerede står i teksten ved siden av. Uten det leses
+   «stjerne stjerne stjerne stjerne stjerne 5 av 5» opp. */
+const Stjerner = ({ score }) => (
+  <span className="stjerner" aria-hidden="true">
+    {[1, 2, 3, 4, 5].map((n) => (
+      <svg key={n} viewBox="0 0 24 24" className={n <= Math.round(score) ? 'fylt' : ''}>
+        <path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z" />
+      </svg>
+    ))}
+  </span>
+);
+
+const Vurdering = () => {
+  if (!vurdering) return null;
+  // Norsk desimalskille er komma. 5 skal stå som «5», ikke «5,0».
+  const score = Number.isInteger(vurdering.score)
+    ? String(vurdering.score)
+    : String(vurdering.score).replace('.', ',');
+  return (
+    <p data-reveal className="vurdering inn" style={{ '--d': '400ms' }}>
+      <Stjerner score={vurdering.score} />
+      <span>
+        {score} av 5 fra {vurdering.antall}{' '}
+        {vurdering.antall === 1 ? 'vurdering' : 'vurderinger'} på{' '}
+        <a href={vurdering.url} target="_blank" rel="noopener noreferrer">
+          {vurdering.kilde}
+          <span className="skjult"> (åpnes i ny fane)</span>
+        </a>
+      </span>
+    </p>
+  );
+};
+
 const Hero = () => {
   const container = useReveal(100);
   return (
@@ -42,6 +86,7 @@ const Hero = () => {
             Få en gratis demo <span className="pil" aria-hidden="true">↗</span>
           </Link>
         </div>
+        <Vurdering />
       </div>
     </section>
   );

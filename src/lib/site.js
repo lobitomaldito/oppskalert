@@ -523,3 +523,34 @@ export const omtaler = [
   { sitat: 'Oppskalert forsto raskt hva vi trengte og leverte en nettside som virkelig representerer oss. Profesjonelt, effektivt og en glede å samarbeide med.', navn: 'Thoralf Stenvold', firma: 'Progressive Diplomacy' },
   { sitat: 'Kjempefornøyd :)', navn: 'Irmelin Drake', firma: 'irmelindrake.no' },
 ];
+
+/* ---------------------------------------------------------------
+   KUNDEVURDERING. Stjernescoren som vises i heroen.
+
+   Står som null med vilje. Så lenge den er null, rendres ingenting,
+   verken stjerner eller tekst. Det er det trygge utgangspunktet.
+
+   Grunnen til at den ikke bare er hardkodet til fem stjerner:
+   markedsføringsloven krever siden 2022 at en næringsdrivende som
+   viser fram kundevurderinger skal kunne dokumentere at de er ekte og
+   opplyse hvordan de er samlet inn. En stjernescore ingen kunde har
+   gitt er en oppdiktet måling, ikke en avrunding. Det står også som
+   anti-referanse i PRODUCT.md under «Unmeasured numbers».
+
+   Skal den fylles ut, må alle fire feltene være ekte og etterprøvbare:
+
+     export const vurdering = {
+       score: 5,          // faktisk snitt, ikke avrundet oppover
+       antall: 7,          // antall vurderinger snittet bygger på
+       kilde: 'Google',    // hvor de ligger, med navn kunden kjenner igjen
+       url: 'https://...', // direktelenke dit, så påstanden kan sjekkes
+     };
+
+   Lenken er ikke pynt. Den er dokumentasjonen.
+
+   Merk om SEO: ikke legg dette inn som aggregateRating i JSON-LD.
+   Google regner vurderinger en virksomhet publiserer om seg selv som
+   «self-serving», og de er ikke kvalifisert for stjerner i søkeresultatet.
+   Ligger vurderingene på Google Bedriftsprofil, viser Google dem uansett
+   selv i kartoppføringen, uten at vi trenger å merke dem opp her. */
+export const vurdering = null;

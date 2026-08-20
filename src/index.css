@@ -355,6 +355,33 @@
   }
   .hero-handling { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
 
+  /* Kundevurdering under knappen. Bevisst liten og dempet: den skal
+     bekrefte, ikke rope. Roper den, konkurrerer den med overskriften og
+     leser som et banner i stedet for som et faktum.
+
+     Stjernene er clay, ikke fersken. Fersken faller til 1,4:1 på det
+     blekke feltet og forsvinner, som er den samme grunnen til at
+     punktumet i ordmerket har to verdier. */
+  .vurdering {
+    margin-top: 1.25rem;
+    display: flex; align-items: center; justify-content: center;
+    gap: .55rem; flex-wrap: wrap;
+    font-size: .8125rem; color: var(--blekk-mykt);
+  }
+  .vurdering a {
+    color: var(--blekk);
+    border-bottom: 1px solid var(--felt-kant);
+    transition: border-color .2s var(--e);
+  }
+  .vurdering a:hover { border-color: var(--blekk); }
+  .stjerner { display: inline-flex; gap: .1rem; flex: none; }
+  .stjerner svg {
+    width: .875rem; height: .875rem;
+    fill: none; stroke: var(--prikk); stroke-width: 1.6;
+    stroke-linejoin: round;
+  }
+  .stjerner svg.fylt { fill: var(--prikk); }
+
   .statuslinje {
     display: flex; align-items: center; justify-content: center; gap: 1rem;
     padding-block: 1.25rem clamp(3rem, 6vw, 5rem);
