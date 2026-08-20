@@ -90,6 +90,20 @@ const Hvorfor = () => {
           <p className="font-body text-[0.95rem] md:text-base text-primary/85 mt-5 leading-relaxed max-w-[48ch]">
             Jeg sørger for at det sitter. Sidene er håndkodet, ikke stemplet ut av en mal, og de er bygget for å gjøre besøkende til kunder, ikke bare for å se pene ut.
           </p>
+          {/* Redaksjonell lenke til landingssiden, ikke pynt. Målt i Search
+              Console over 28 dager: på «webdesign i oslo» lå forsiden på
+              snittposisjon 17,5 med 42 visninger, /webdesign-oslo på 66,3 med
+              51 visninger. Forsiden nevner «webdesign» én gang og «Oslo» tre
+              ganger, landingssiden fem og tolv, så det er ikke relevans som
+              skiller dem: /webdesign-oslo hadde bare footerlenken å leve av.
+              Denne lenken flytter det lokale signalet dit det hører hjemme. */}
+          <p className="font-body text-[0.95rem] md:text-base text-primary/85 mt-4 leading-relaxed max-w-[48ch]">
+            Sitter du i hovedstaden, har jeg skrevet om{' '}
+            <Link to={ruter.webdesignOslo} className="text-accent hover:text-highlight transition-colors">
+              webdesign i Oslo
+            </Link>{' '}
+            for seg, med fast pris og hva som følger med.
+          </p>
         </div>
 
         <dl data-reveal className="flex flex-col">
