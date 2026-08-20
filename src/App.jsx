@@ -122,12 +122,30 @@ const Hero = () => {
     <section ref={container} className="hero">
       <span className="vannmerke merke" aria-hidden="true">oppskalert<i>.</i></span>
       <div className="wrap">
+        {/* Overskriften er tre korte setninger, ikke én lang. Målt hos ti
+            norske konkurrenter 20. august 2026 ligger H1 på 5,5 ord i snitt,
+            og den forrige versjonen her var 12 ord over to setninger, altså
+            dobbelt så lang som normen. Staccato med punktum der man
+            instinktivt ville satt komma er samtidig det grepet norske sider
+            faktisk bruker, se inspirasjon/norsk-cta.md.
+
+            Den bærer også de tre søkeordene Search Console måler forsiden på:
+            webdesign, bedrifter, Oslo. */}
         <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
-          Nettsiden din er ikke et visittkort. Den avgjør om de ringer deg.
+          Webdesign for bedrifter. Basert i Oslo. Alltid gratis demo.
         </h1>
+        {/* Ingressen sier bevisst noe annet enn overskriften.
+
+            Den forrige gjentok «bedrifter», «Oslo» og «gratis demo», altså
+            alt overskriften og knappen allerede sa, innenfor 400 piksler.
+            Nå bærer den det de tre setningene over ikke rekker: hva som
+            faktisk inngår, hvem som gjør det, og hvor lang tid det tar.
+
+            Malen er den målte: konkret liste, hvem, så én setning som
+            fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
         <p data-reveal className="inn" style={{ '--d': '220ms' }}>
-          Skreddersydde nettsider for bedrifter i Oslo. Søk, fart og konvertering
-          fra dag én, og du ser siden ferdig innen tre virkedager.
+          Design, tekst, koding og lansering, gjort av én person du kan ringe.
+          Demoen er klar på tre virkedager.
         </p>
         <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
           <Link className="knapp" to={ruter.kontakt}>

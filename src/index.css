@@ -641,6 +641,13 @@
     font-family: 'Suisse', sans-serif; font-size: .9375rem; letter-spacing: 0;
     color: var(--blekk-mykt); margin-left: .35rem;
   }
+  /* «fra» foran tallet, ikke etter. Uten det leser 9 999 som en fast pris
+     på hva som helst, og det er den ene misforståelsen prissiden finnes
+     for å unngå. Står i samme dempede grå som enheten, men til venstre,
+     så tallet fortsatt er det øyet lander på først. */
+  .pris .tall .fra {
+    margin-left: 0; margin-right: .45rem;
+  }
   .pris .tagline { color: var(--blekk-mykt); font-size: .9375rem; }
   .pris ul { display: grid; gap: .5rem; font-size: .9375rem; margin-top: auto; padding-top: .5rem; list-style: none; }
   .pris li { display: flex; gap: .6rem; align-items: baseline; }

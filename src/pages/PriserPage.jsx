@@ -115,7 +115,7 @@ const PriserPage = () => (
         <div className="priser inn" style={{ '--d': '80ms' }}>
           <article className="pris">
             <p className="modell">Engangspris</p>
-            <p className="tall">9 999<span>kr</span></p>
+            <p className="tall"><span className="fra">fra</span>9 999<span>kr</span></p>
             <p className="tagline">Du eier alt. Én faktura, så er du ferdig.</p>
             <Link
               to={ruter.kalkulator}
@@ -132,7 +132,7 @@ const PriserPage = () => (
           </article>
           <article className="pris fremhevet">
             <p className="modell">Driftet av meg · ingen binding</p>
-            <p className="tall">690<span>kr/mnd</span></p>
+            <p className="tall"><span className="fra">fra</span>690<span>kr/mnd</span></p>
             <p className="tagline">Jeg passer på alt. Du slipper å tenke teknisk igjen.</p>
             <ul>
               <li>Alt i engangspris, pluss:</li>
@@ -160,7 +160,7 @@ const PriserPage = () => (
           {driftNivaer.map((n) => (
             <article key={n.id} className={n.fremhevet ? 'pris fremhevet' : 'pris'}>
               <p className="modell">{n.navn}</p>
-              <p className="tall">{n.fra}<span>{n.enhet}</span></p>
+              <p className="tall"><span className="fra">fra</span>{n.fra}<span>{n.enhet}</span></p>
               <p className="tagline">{n.tagline}</p>
               <ul>
                 {n.inkludert.map((f) => <li key={f}>{f}</li>)}
