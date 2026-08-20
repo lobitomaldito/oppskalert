@@ -22,11 +22,21 @@
     <meta property="og:image" content="https://oppskalert.no/oppskalert%20fav.png" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:url" content="https://oppskalert.no/" />
-    <meta property="twitter:title" content="Oppskalert | Nettsider som faktisk selger" />
-    <meta property="twitter:description" content="Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo før du betaler en krone. Ingen binding." />
-    <meta property="twitter:image" content="https://oppskalert.no/oppskalert%20fav.png" />
+    <!-- name=, ikke property=. Twitter Cards er spesifisert med name, mens
+         Open Graph bruker property. Sto disse med property=, skrev
+         SEO.jsx sine name=-tagger seg ved siden av i stedet for oppå, og
+         hver eneste rute serverte BEGGE: den ferske per side, og denne
+         gamle med forsidens tittel. Målt 19. august 2026 på /priser:
+
+           property="twitter:title"  Oppskalert | Nettsider som faktisk selger
+           name="twitter:title"      Pris på nettside, fast og uten ...
+
+         Delinger på LinkedIn og Slack plukket den øverste. -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="https://oppskalert.no/" />
+    <meta name="twitter:title" content="Oppskalert | Nettsider som faktisk selger" />
+    <meta name="twitter:description" content="Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo før du betaler en krone. Ingen binding." />
+    <meta name="twitter:image" content="https://oppskalert.no/oppskalert%20fav.png" />
 
     <!-- Brødtekstfonten og display-fonten brukes begge over folden. Uten
          preload rekker nettleseren å male ett bilde med fallback-fonten
@@ -35,6 +45,15 @@
     <link rel="preload" href="/fonts/suisse-intl-400-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/suisse-intl-700-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/PlusJakartaSans-800.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- Microsoft Clarity: heatmaps og session recordings -->
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "y4uilp2dri");
+    </script>
   </head>
   <body>
     <div id="root"></div>

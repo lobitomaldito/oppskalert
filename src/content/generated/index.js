@@ -17,5 +17,6 @@ import googleMinBedrift from './google-min-bedrift.js';
 import responsivNettside from './responsiv-nettside.js';
 import hvordanLageNettside from './hvordan-lage-nettside.js';
 import nettsideAi from './nettside-ai.js';
+import hvaKosterNettside from './hva-koster-nettside.js';
 
-export const generated = [webutviklerOslo, norskDomene, utviklingNettside, googleMinBedrift, responsivNettside, hvordanLageNettside, nettsideAi];
+export const generated = [webutviklerOslo, norskDomene, utviklingNettside, googleMinBedrift, responsivNettside, hvordanLageNettside, nettsideAi, hvaKosterNettside];

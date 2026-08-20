@@ -114,10 +114,15 @@ const Sammenligning = () => {
 
 const DriftPage = () => (
   <Shell>
+    {/* «Webhosting» inn i title 19. august 2026. Search Console viser 80
+        visninger på «webhosting» og 20 på «web hosting», begge fanget av
+        forsiden på posisjon 16 og 26. Denne siden er den som faktisk
+        selger hosting, men rangerte ikke på ordet fordi det ikke sto
+        noe sted. Se SEO.md punkt 12. */}
     <SEO
-      title="Drift og support"
-      description="Tre nivåer av drift og support for nettsiden din, fra 149 kr/mnd. Du velger hva som passer, jeg tar meg av resten. Ingen bindingstid."
-      keywords={['drift nettside pris', 'support nettside abonnement', 'vedlikehold nettside']}
+      title="Webhosting og drift av nettside"
+      description="Webhosting, drift og support for nettsiden din, fra 149 kr/mnd. Hosting, domene og SSL inkludert. Du velger nivå, jeg tar resten. Ingen bindingstid."
+      keywords={['webhosting', 'drift av nettside', 'support nettside abonnement', 'vedlikehold nettside']}
       canonical="https://oppskalert.no/drift"
       jsonLd={driftSchema}
     />

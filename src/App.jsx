@@ -353,12 +353,20 @@ const homeJsonLd = [homeSchema, faqSchema];
 
 const Home = () => (
   <Shell>
-    {/* Tittel og beskrivelse er skrevet for søk, ikke for merkevare, og
-        uendret fra før studio-mal-porteringen. Se SEO.md punkt 4. */}
+    {/* Tittel og beskrivelse er skrevet for søk, ikke for merkevare.
+        «Nettsider som faktisk selger» er god copy og null søkevolum, så den
+        lever videre som H1 i heroen i stedet. Se SEO.md punkt 4.
+
+        Ordet «webdesign» kom inn 19. august 2026 etter måling i Search
+        Console: forsiden rangerte allerede 12,0 på «webdesign bedrift»,
+        12,7 på «webdesign firma» og 12,9 på «webdesigner oslo», med en
+        title som ikke inneholdt ordet én eneste gang. Særskriving er ikke
+        et alternativ, så preposisjonen bærer det: «webdesign for
+        bedrifter». Se SEO.md punkt 12. */}
     <SEO
-      title="Profesjonell nettside til fast pris"
-      description="Nettsideleverandør for norske bedrifter. Jeg bygger en profesjonell nettside til fast pris, og du ser en ferdig demo gratis før du betaler en krone. Ingen binding."
-      keywords={['nettsideleverandør', 'profesjonell nettside', 'nettside til bedrift', 'nettside pris']}
+      title="Webdesign for bedrifter til fast pris"
+      description="Webdesign for norske bedrifter til fast pris. Jeg bygger hjemmesiden ferdig, og du ser en gratis demo før du betaler en krone. Ingen binding."
+      keywords={['webdesign for bedrifter', 'webdesign firma', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />

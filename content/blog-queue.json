@@ -31,8 +31,9 @@
       "pris på nettside",
       "nettside til bedrift pris"
     ],
-    "status": "pending",
-    "note": "Lagt øverst i køen 13. august 2026 fordi dette er det kommersielt viktigste søket i kategorien, og fordi målingen samme dag viste at oppskalert.no ikke rangerer på det i det hele tatt mens en rekke norske byråer har en dedikert side. Søkevolum og KD er ikke målt, så feltene står med vilje tomme. Artikkelen skal oppgi de ekte tallene fra prismodellen i src/lib/site.js (9 999 / 12 900 / 18 900 / 27 900) i stedet for et «fra»-tall alene, og lenke til /priser og /kalkulator. Ikke oppgi tall for nettbutikk, de finnes ikke i prismodellen."
+    "status": "published",
+    "publishedDate": "2026-08-20",
+    "note": "Lagt øverst i køen 13. august 2026 fordi dette er det kommersielt viktigste søket i kategorien, og fordi målingen samme dag viste at oppskalert.no ikke rangerer på det i det hele tatt mens en rekke norske byråer har en dedikert side. Søkevolum og KD er ikke målt, så feltene står med vilje tomme. Artikkelen oppgir de ekte tallene fra prismodellen i src/lib/site.js (9 999 / 12 900 / 18 900 / 27 900) i stedet for et «fra»-tall alene, og lenker til /priser og /kalkulator. Nettbutikk er ikke nevnt, den finnes ikke i prismodellen."
   },
   {
     "slug": "hvordan-lage-nettside",
