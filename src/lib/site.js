@@ -53,7 +53,9 @@ export const prismodeller = [
     navn: 'Engangspris',
     fra: '9 999',
     enhet: 'kr',
-    periode: 'engangspris',
+    // Tom med vilje: navnet er allerede «Engangspris», så en periode som
+    // sier «engangspris» ble til «Engangspris · engangspris» på kortet.
+    periode: '',
     tagline: 'Du eier alt. Én faktura, så er du ferdig.',
     passerDeg: [
       'Du vil eie løsningen hundre prosent',
@@ -88,6 +90,40 @@ export const prismodeller = [
       'Support direkte fra meg, ikke en helpdesk',
     ],
     fremhevet: true,
+  },
+  {
+    /* Tredje modell, lagt til 21. august 2026. To grunner.
+
+       Kommersielt: chatbot og web-app er tjenester som skal selges, og de
+       sto bare nevnt i tjenestekortene uten noe sted å be om pris.
+
+       Visuelt: to kort i et 1fr 1fr-rutenett stod tynt på brede skjermer,
+       og drift-rutenettet rett under har allerede tre. Nå er de like.
+
+       `fra` er en tekst og ikke et tall her, med vilje. Disse prosjektene
+       har ikke en meningsfull startpris: en chatbot trent på fem sider og
+       en app med innlogging er ikke samme jobb. Å oppgi et «fra»-tall
+       ville vært et tall jeg ikke kan stå for, og prissiden finnes for å
+       unngå nettopp det. Se `erForesporsel` der kortet rendres. */
+    id: 'skreddersom',
+    navn: 'Chatbot eller app',
+    fra: 'Forespør pris',
+    erForesporsel: true,
+    enhet: '',
+    periode: 'etter omfang',
+    tagline: 'Skal siden svare for deg, eller skal kundene logge inn?',
+    passerDeg: [
+      'Du får de samme spørsmålene om og om igjen',
+      'Du taster det samme inn i to systemer',
+      'Kundene dine skal bestille eller følge noe over tid',
+    ],
+    inkludert: [
+      'Chatbot trent på din egen bedrift',
+      'Automatikk mellom verktøyene du har fra før',
+      'App til iPhone og Android, hvis du faktisk trenger en',
+      'Fast pris før jeg begynner, som ellers',
+    ],
+    fremhevet: false,
   },
 ];
 
@@ -577,7 +613,14 @@ export const vurdering = null;
    at snittet betyr noe. Rundt ti er der tallet begynner å bære. */
 export const heroBevis = {
   indeks: 1,
-  // Lenke til Google Bedriftsprofilen. Står den tom, rendres sitatet
-  // uten lenke, og det er fortsatt korrekt, bare mindre etterprøvbart.
-  url: '',
+  /* Google Bedriftsprofilen. kgmid-formen er kanonisk og knyttet til
+     oppføringen selv, i motsetning til en share.google-lenke, som er en
+     delingslenke og kan slutte å virke.
+
+     Merk hvordan denne brukes i App.jsx: den gjør IKKE navnet under
+     sitatet klikkbart. Sitatet er hentet direkte fra kunden, ikke fra
+     Google, og en lenke på navnet ville antydet at akkurat den
+     uttalelsen ligger på profilen. Den står som en egen, merket lenke
+     ved siden av i stedet. */
+  url: 'https://www.google.com/search?kgmid=/g/11z60rck3w',
 };

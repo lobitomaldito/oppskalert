@@ -636,11 +636,18 @@
   .priser { display: grid; gap: 1rem; }
   @media (min-width: 44rem) { .priser { grid-template-columns: 1fr 1fr } }
   @media (min-width: 64rem) { .priser.tre { grid-template-columns: repeat(3, 1fr) } }
+  /* Kortet er hvitt med en hårstrek rundt, ikke hvitt uten kant.
+
+     Uten kanten forsvant Engangspris-kortet helt på /priser: seksjonen
+     der har klassen .hvit, så et hvitt kort på hvit flate ble usynlig, og
+     bare det fremhevede kortet med sin mørke kant syntes. På forsiden,
+     der seksjonen står på det blekke feltet, så begge riktige ut, så
+     feilen var usynlig akkurat der man så etter den. */
   .pris {
     background: var(--hvit); border-radius: var(--rund);
     padding: clamp(1.5rem, 2.5vw, 2rem);
     display: flex; flex-direction: column; gap: 1rem;
-    border: 1px solid transparent;
+    border: 1px solid var(--felt-kant);
   }
   .pris.fremhevet { border-color: var(--blekk); }
   .pris .modell { font-size: .8125rem; color: var(--blekk-mykt); }
@@ -659,6 +666,15 @@
      så tallet fortsatt er det øyet lander på først. */
   .pris .tall .fra {
     margin-left: 0; margin-right: .45rem;
+  }
+  /* «Forespør pris» er tekst, ikke et beløp. Den settes derfor mindre og
+     i brødtekstfonten, ikke i antikvaen som bærer sifrene: står den i
+     samme størrelse som 9 999, leser øyet den som et tall den ikke helt
+     får tak i. */
+  .pris .tall.foresporsel {
+    font-family: 'Suisse', system-ui, sans-serif;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    letter-spacing: -.015em;
   }
   .pris .tagline { color: var(--blekk-mykt); font-size: .9375rem; }
   .pris ul { display: grid; gap: .5rem; font-size: .9375rem; margin-top: auto; padding-top: .5rem; list-style: none; }

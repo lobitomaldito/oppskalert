@@ -22,12 +22,17 @@ const priserSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
   name: 'Oppskalert prismodeller',
+  /* Modeller uten fast pris får ikke price-felt. Schema.org tillater et
+     Offer uten pris, men ikke en pris som ikke er et tall: «Forespør pris»
+     ville blitt sendt som price: "Forespørpris", og det er ugyldig
+     strukturert data Google kan flagge. */
   itemListElement: prismodeller.map((p) => ({
     '@type': 'Offer',
     name: p.navn,
     description: p.tagline,
-    price: p.fra.replace(/\s/g, ''),
-    priceCurrency: 'NOK',
+    ...(p.erForesporsel
+      ? {}
+      : { price: p.fra.replace(/\s/g, ''), priceCurrency: 'NOK' }),
     url: 'https://oppskalert.no/priser',
   })),
 };
@@ -109,38 +114,50 @@ const PriserPage = () => (
     <section className="hvit">
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
-          <p className="etikett">To modeller</p>
-          <h2>Eie den selv, eller la meg passe på</h2>
+          <p className="etikett">Tre modeller</p>
+          <h2>Eie den selv, la meg passe på, eller be om noe eget</h2>
         </div>
-        <div className="priser inn" style={{ '--d': '80ms' }}>
-          <article className="pris">
-            <p className="modell">Engangspris</p>
-            <p className="tall"><span className="fra">fra</span>9 999<span>kr</span></p>
-            <p className="tagline">Du eier alt. Én faktura, så er du ferdig.</p>
-            <Link
-              to={ruter.kalkulator}
-              className="self-start text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
-            >
-              Regn ut prisen for din side →
-            </Link>
-            <ul>
-              <li>Komplett nettside, håndbygd for deg</li>
-              <li>Alle filer overlevert, du eier dem</li>
-              <li>SEO-grunnoppsett fra dag én</li>
-              <li>Hjelp med oppsett på ditt eget hosting</li>
-            </ul>
-          </article>
-          <article className="pris fremhevet">
-            <p className="modell">Driftet av meg · ingen binding</p>
-            <p className="tall"><span className="fra">fra</span>690<span>kr/mnd</span></p>
-            <p className="tagline">Jeg passer på alt. Du slipper å tenke teknisk igjen.</p>
-            <ul>
-              <li>Alt i engangspris, pluss:</li>
-              <li>Hosting, domene og SSL</li>
-              <li>Rimelige innholdsendringer inkludert</li>
-              <li>Support direkte fra meg, ikke en helpdesk</li>
-            </ul>
-          </article>
+        {/* Kortene bygges fra prismodeller i site.js, ikke skrevet inn her.
+            De sto tidligere hardkodet, og da fantes den samme teksten to
+            steder: her og i Priser.jsx på forsiden. En prisendring måtte
+            gjøres begge steder for å ikke sprike. Nå er site.js eneste
+            kilde, slik toppen av den fila alltid har hevdet. */}
+        <div className="priser tre inn" style={{ '--d': '80ms' }}>
+          {prismodeller.map((m) => (
+            <article key={m.id} className={m.fremhevet ? 'pris fremhevet' : 'pris'}>
+              <p className="modell">{m.navn}{m.periode ? ` · ${m.periode}` : ''}</p>
+              {m.erForesporsel ? (
+                /* Ingen «fra» og ingen enhet her: det ville lest som at
+                   «Forespør pris» er et beløp. Tallet er også mindre, siden
+                   det er tekst og ikke et siffer som skal bære vekten. */
+                <p className="tall foresporsel">{m.fra}</p>
+              ) : (
+                <p className="tall">
+                  <span className="fra">fra</span>{m.fra}<span>{m.enhet}</span>
+                </p>
+              )}
+              <p className="tagline">{m.tagline}</p>
+              {m.id === 'engangs' && (
+                <Link
+                  to={ruter.kalkulator}
+                  className="self-start text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+                >
+                  Regn ut prisen for din side →
+                </Link>
+              )}
+              {m.erForesporsel && (
+                <Link
+                  to={ruter.kontakt}
+                  className="self-start text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+                >
+                  Fortell meg hva du trenger →
+                </Link>
+              )}
+              <ul>
+                {m.inkludert.map((f) => <li key={f}>{f}</li>)}
+              </ul>
+            </article>
+          ))}
         </div>
         <p className="prisnotat">Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.</p>
       </div>
