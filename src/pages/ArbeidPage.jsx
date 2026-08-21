@@ -70,10 +70,16 @@ const SitatKort = () => {
    ARBEIDER-oppføringene sin egen (nesten identiske) tagline, men den
    teksten er ikke del av det ordrett uthentede innholdet, så case-
    tittelen brukes her for begge steder teksten vises. */
+/* Prosjektet slås opp på slug, ikke på indeksen c.i.
+
+   c.i var en posisjon inn i prosjekter-arrayen, og den brøt stille da et
+   nytt prosjekt ble satt inn midt i lista 21. august: case-sidene pekte
+   da på nabo-prosjektets bilder og domene, uten noen feilmelding. */
 const ArbeiderGrid = () => (
   <div className="arbeider">
     {caser.map((c, i) => {
-      const p = prosjekter[c.i];
+      const p = prosjekter.find((rad) => rad.slug === c.slug);
+      if (!p) return null;
       return (
         <article className="arbeid" key={c.slug} data-reveal>
           <Link to={`/arbeid/${c.slug}`}>

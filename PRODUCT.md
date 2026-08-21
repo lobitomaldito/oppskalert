@@ -51,7 +51,7 @@ How it gets built matters more, because it is the honest answer to the question
 every prospect is actually asking: how can one person deliver in three days at
 this price? Because AI removes the parts that used to take weeks (first drafts,
 boilerplate, image work, fifteen variants of a paragraph) and leaves the part
-that needs judgment. That is why the price says 7 990 and not 40 000. Anyone
+that needs judgment. That is why the price says 9 999 and not 40 000. Anyone
 can claim to use AI. Only a one-person studio can use it to explain a number
 that low.
 
@@ -80,7 +80,7 @@ premium, but never cold.
 
 **On AI specifically: never sell it as a category, always as a consequence.**
 "Vi bruker AI" is what every agency writes and it means nothing. "Derfor koster
-det 7 990 og ikke 40 000" means something. Name the outcome, and let AI be the
+det 9 999 og ikke 40 000" means something. Name the outcome, and let AI be the
 reason it is possible. The word itself should appear rarely and always attached
 to a number or a concrete task.
 

@@ -51,9 +51,11 @@ const CasePage = () => {
   if (indeks === -1) return <IkkeFunnet />;
 
   const c = caser[indeks];
-  const prosjekt = prosjekter[c.i];
+  const finnProsjekt = (slug) => prosjekter.find((rad) => rad.slug === slug);
+  const prosjekt = finnProsjekt(c.slug);
   const neste = caser[(indeks + 1) % caser.length];
-  const nesteProsjekt = prosjekter[neste.i];
+  const nesteProsjekt = finnProsjekt(neste.slug);
+  if (!prosjekt) return <IkkeFunnet />;
   const canonical = `https://oppskalert.no/arbeid/${c.slug}`;
 
   return (
