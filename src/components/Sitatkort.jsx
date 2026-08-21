@@ -28,7 +28,7 @@ const Sitatkort = () => {
           </button>
         </div>
         <p className="sitat-teller">{i + 1} / {omtaler.length}</p>
-        <p className="etikett" style={{ marginLeft: 'auto' }}>Ord fra folk jeg har jobbet for</p>
+        <p className="etikett" style={{ marginLeft: 'auto' }}>Fra kundene</p>
       </div>
       <blockquote>«{o.sitat}»</blockquote>
       <div className="sitat-kilde">

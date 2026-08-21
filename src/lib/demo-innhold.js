@@ -308,6 +308,10 @@ export const sporsmal = [
     "Engangspris begynner på 9 999 kroner eks. mva, og da eier du alt selv. Vil du heller at jeg passer på siden for deg, koster det fra 690 i måneden. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se demoen først, så du vet nøyaktig hva du betaler for."
   ],
   [
+    "Hvorfor er prisen lavere enn hos andre?",
+    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Det er hele forklaringen p\u00e5 at en h\u00e5ndbygd side starter p\u00e5 9 999 kroner og ikke 25 000."
+  ],
+  [
     "Hva forplikter en gratis demo meg til?",
     "Ingenting i det hele tatt. Jeg lager et ferdig utkast av siden din, med ditt innhold, og sender deg en privat lenke. Liker du den ikke, sier du fra, så sletter jeg den. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med."
   ],

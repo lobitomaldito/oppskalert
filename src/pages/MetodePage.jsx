@@ -90,7 +90,7 @@ const SitatKort = () => {
           </button>
         </div>
         <p className="sitat-teller">{n + 1} / {omtaler.length}</p>
-        <p className="etikett" style={{ marginLeft: 'auto' }}>Ord fra folk jeg har jobbet for</p>
+        <p className="etikett" style={{ marginLeft: 'auto' }}>Fra kundene</p>
       </div>
       <blockquote>«{omtale.sitat}»</blockquote>
       <div className="sitat-kilde">

@@ -14,22 +14,21 @@ import { useReveal } from './lib/useReveal';
    allerede i index.css, denne fila bygger bare den samme markupen i
    React: .hero blir en H1-seksjon på det lyse feltet med vannmerket bak,
    .statuslinje blir en enkel "se mer"-pille, og resten følger demoens
-   åtte seksjoner i nøyaktig samme rekkefølge. Prisen i casedelen er
-   hevet fra demoens 7 990 til 9 999, det er det eneste tilsiktede
-   tekstavviket.
+   seksjoner i samme rekkefølge.
 
-   Portingen gjorde forsiden tynnere enn prod: fire hele seksjoner falt
-   ut fordi demoen aldri hadde dem. De er lagt tilbake her, restylet til
-   det nye systemet, i den rekkefølgen som leser best sammen med demoens
-   egne seksjoner:
-   - Hvorfor, bygget lokalt i denne fila fra den gamle forsiden
-     (git show origin/master:src/App.jsx), ordrett tekst, ny stil.
-   - Metode, Priser og DemoSkjema, som komponenter fra components/,
-     allerede restylet til det lyse feltet, bare importert og plassert.
-   DemoSkjema er hovedkonverteringen på siden og skal alltid stå sist.
+   Forsiden følger demoens rekkefølge. Priser og DemoSkjema er de eneste
+   tilleggene: prisen fordi den er det folk leter etter, skjemaet fordi
+   det er hovedkonverteringen. Skjemaet skal alltid stå sist.
 
-   Hver .inn-seksjon i demoen får sin egen useReveal(), akkurat som
-   Hvorfor-seksjonen gjorde i forrige versjon. [data-reveal] er det
+   Tre seksjoner er bevisst tatt ut igjen etter at de først ble lagt til:
+   - Hvorfor og Metode, fordi demoen ikke hadde dem. Metode lever videre
+     på /metode, som er stedet folk leter etter den.
+   - AI-avsnittet «Hvordan én person rekker dette på tre dager», fordi
+     det brukte tolv linjer på å si det ett FAQ-spørsmål nå sier på to.
+     Svaret ligger som «Hvorfor er prisen lavere enn hos andre?» i
+     sporsmal, og de tre AI-tjenestene står fortsatt i tjenestekortene.
+
+   Hver .inn-seksjon i demoen får sin egen useReveal(). [data-reveal] er det
    useReveal faktisk observerer, .inn er bare demoens egen visuelle
    klasse, begge trengs på samme element for at reveal skal virke og
    se riktig ut. */
@@ -224,7 +223,9 @@ const TjenesteSeksjon = () => {
             <h2>Dette kan jeg hjelpe deg med</h2>
             <p>De fleste byråer setter deg opp med en prosjektleder, en designer og en
             utvikler. Her er det bare meg, hele veien fra første skisse til siden er
-            oppe og går. Du får én faktura og ett telefonnummer.</p>
+            oppe og går. Du får én faktura og ett telefonnummer. Sitter du i
+            hovedstaden, har jeg skrevet om{' '}
+            <Link to={ruter.webdesignOslo}>webdesign i Oslo</Link> for seg.</p>
           </div>
           <div data-reveal className="tjenester inn" style={{ '--d': '80ms' }}>
             {tjenester.map((t) => (
@@ -234,46 +235,6 @@ const TjenesteSeksjon = () => {
                 <p>{t.tekst}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-const CaseSeksjon = () => {
-  const container = useReveal(100);
-  return (
-    <section ref={container} className="hvit">
-      <div className="wrap seksjon">
-        <div data-reveal className="casedel inn">
-          <h2>Hvordan én person rekker dette på tre dager</h2>
-          <div className="brod">
-            <p>Fordi jeg bygger med AI. Ikke for å ta snarveier, men fordi den fjerner
-            delene som pleide å ta uker: første utkast, standardkode, bildearbeid,
-            femten varianter av en tekst. Igjen står den delen som faktisk trenger et
-            menneske, som er å bestemme hva som er riktig.</p>
-            <p>Det er derfor prisen står på <b>9 999</b> og ikke 40 000, og derfor demoen
-            er ferdig på <b>tre virkedager</b> og ikke fire uker. Ingen andre sier det
-            høyt, men det er hele forklaringen.</p>
-            <p>Og det samme går inn i siden din: en chatbot som er trent på bedriften
-            din og svarer mens du sover, automatikk som fjerner det du i dag taster inn
-            to ganger, og struktur som gjør at du blir funnet i ChatGPT og Googles
-            AI-svar, ikke bare i de blå lenkene.</p>
-            {/* Redaksjonell lenke til landingssiden, ikke pynt. Målt i Search
-                Console over 28 dager: på «webdesign i oslo» lå forsiden på
-                snittposisjon 17,5 med 42 visninger, /webdesign-oslo på 66,3 med
-                51 visninger. Forsiden nevner «webdesign» én gang og «Oslo» tre
-                ganger, landingssiden fem og tolv, så det er ikke relevans som
-                skiller dem: /webdesign-oslo hadde bare footerlenken å leve av.
-
-                Lenken lå opprinnelig i Hvorfor-seksjonen. Den seksjonen er ute
-                av forsiden nå, siden demoen ikke hadde den, men lenken skulle
-                ikke ut med den: da ville et målt SEO-grep fra 19. august vært
-                reversert uten at noen mente det. Derfor står den her. */}
-            <p>Sitter du i hovedstaden, har jeg skrevet om{' '}
-            <Link to={ruter.webdesignOslo}>webdesign i Oslo</Link>{' '}
-            for seg, med fast pris og hva som følger med.</p>
           </div>
         </div>
       </div>
@@ -362,7 +323,6 @@ const Home = () => (
     <ArbeidSeksjon />
     <SitatSeksjon />
     <TjenesteSeksjon />
-    <CaseSeksjon />
     <Priser visAlltidMed={false} />
     <FaqSeksjon />
     <DemoSkjema
