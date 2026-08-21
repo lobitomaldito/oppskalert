@@ -562,10 +562,24 @@
   /* ----------------------------------------------------------------
      Tjenester. Hvite kort på feltet.
      ---------------------------------------------------------------- */
-  .tjeneste-rad { display: grid; gap: clamp(2rem, 4vw, 3rem); }
-  @media (min-width: 64rem) { .tjeneste-rad { grid-template-columns: 14rem minmax(0, 1fr) } }
+  /* Demoen hadde etiketten og knappen i en egen 14rem-kolonne til venstre,
+     med kortene i kolonnen ved siden av. Målt på 1280 startet kortgriddet
+     da 344 px fra venstre og 72 fra høyre, mens porteføljerammene,
+     priskortene og FAQ alle starter på 72. Firkantene var altså de eneste
+     boksene på siden som ikke sto i linje med resten, og det er synlig
+     nettopp fordi de har hvit fyll og skarpe kanter.
+
+     Nå ligger etiketten og knappen over kortene i stedet, og griddet
+     bruker hele kolonnebredden som alt annet. Rekkefølgen i DOM-en er
+     uendret, så tastaturrekkefølgen er den samme. */
+  .tjeneste-rad { display: grid; gap: clamp(1.75rem, 3vw, 2.5rem); }
+  .tjeneste-side {
+    display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 1rem;
+  }
   .tjenester { display: grid; gap: 1rem; }
   @media (min-width: 40rem) { .tjenester { grid-template-columns: 1fr 1fr } }
+  @media (min-width: 64rem) { .tjenester { grid-template-columns: repeat(3, 1fr) } }
   .tjeneste {
     background: var(--hvit); border-radius: var(--rund);
     padding: clamp(1.5rem, 2.5vw, 2rem);
@@ -577,8 +591,6 @@
   .tjeneste svg { width: 1.5rem; height: 1.5rem; stroke: currentColor; fill: none; stroke-width: 1.4; }
   .tjeneste h3 { font-weight: 600; font-size: 1.0625rem; letter-spacing: -.012em; }
   .tjeneste p { color: var(--blekk-mykt); font-size: .9375rem; }
-  .tjeneste-side { display: grid; gap: 1.5rem; align-content: start; }
-  .tjeneste-side .knapp { justify-self: start; }
 
   /* ----------------------------------------------------------------
      Sitat. Eneste sted GT Sectra Fine får slippe til, sammen med
