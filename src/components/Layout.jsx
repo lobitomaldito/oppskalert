@@ -136,6 +136,16 @@ export const Footer = () => (
           <span className="text-ink/70 font-semibold mb-1">Verktøy</span>
           <Link to={ruter.kalkulator} className="text-ink/70 hover:text-ink transition-colors">Priskalkulator</Link>
           <Link to={ruter.sammenlign} className="text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
+          {/* De to undersidene lenkes herfra, ikke bare fra /sammenlign.
+
+             Målt i Search Console 22. august: /sammenlign har aldri blitt
+             crawlet av Google, og de to undersidene var kun lenket derfra.
+             En side Google ikke crawler kan ikke sende den videre til
+             barna sine, så begge sto som «Discovered, currently not
+             indexed» med null kjente lenker. Footeren ligger på hver
+             eneste crawlet side, så herfra finner Googlebot dem. */}
+          <Link to={ruter.sammenlignWix} className="text-ink/70 hover:text-ink transition-colors">Meg mot Wix</Link>
+          <Link to={ruter.sammenlignWordpress} className="text-ink/70 hover:text-ink transition-colors">Meg mot WordPress</Link>
           <Link to={RUTE_VANLIGE_SPORSMAL} className="text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
         </div>
       </div>
