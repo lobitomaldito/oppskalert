@@ -26,7 +26,7 @@ const BloggKort = ({ article, index = 0 }) => {
   }, []);
 
   return (
-    <Link ref={cardRef} to={`/blogg/${article.slug}`} className="group block bg-surface/30 border border-room-ink/10 rounded-[2.5rem] overflow-hidden hover:border-room-ink/40 transition-all duration-500 hover:-translate-y-1">
+    <Link ref={cardRef} to={`/blogg/${article.slug}`} className="group block bg-surface/30 border border-room-ink/10 rounded-flate overflow-hidden hover:border-room-ink/40 transition-all duration-500 hover:-translate-y-1">
       {article.image && (
         <div className="relative h-56 overflow-hidden">
           <img

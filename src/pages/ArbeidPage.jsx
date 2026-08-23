@@ -6,7 +6,7 @@ import BransjeEksempler from '../components/BransjeEksempler';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
 import { caser, omtaler } from '../lib/demo-innhold';
-import { prosjekter } from '../lib/site';
+import { prosjekter, toganger } from '../lib/site';
 
 const arbeidSchema = {
   '@context': 'https://schema.org',
@@ -91,6 +91,7 @@ const ArbeiderGrid = () => (
               <div className="ramme-vindu">
                 <img
                   src={p.full}
+                  srcSet={toganger(p.full)}
                   alt={`Nettsiden til ${p.navn}`}
                   loading="lazy"
                   width="620"

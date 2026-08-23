@@ -185,7 +185,7 @@ const TidligCta = ({ tekst }) => (
       fyll og kantlinje, tekstlenke i stedet for fylt knapp. Den fylte
       knappen er reservert til den siste. */
 const MidtCta = ({ tittel, tekst }) => (
-  <aside className="my-12 rounded-[2rem] border border-room-ink/10 bg-room-ink/[0.04] p-7 md:p-8">
+  <aside className="my-12 rounded-kort border border-room-ink/10 bg-room-ink/[0.04] p-7 md:p-8">
     <h3 className="font-sans font-bold text-lg md:text-xl tracking-tight mb-2.5">{tittel}</h3>
     <p className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed mb-5 max-w-[52ch]">{tekst}</p>
     <Link
@@ -199,7 +199,7 @@ const MidtCta = ({ tittel, tekst }) => (
 
 /* 3. Slutt. Den ene fylte knappen i artikkelen. */
 const CTA = () => (
-  <div className="mt-20 bg-surface/30 border border-room-ink/10 rounded-[2.5rem] p-10 text-center">
+  <div className="mt-20 bg-surface/30 border border-room-ink/10 rounded-flate p-10 text-center">
     <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink mb-3 block">Klar for neste steg?</span>
     <h3 className="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-4">Jeg bygger din salgsmaskin.</h3>
     <p className="font-body text-room-ink/70 text-[0.95rem] mb-8 max-w-md mx-auto leading-relaxed">
@@ -304,7 +304,7 @@ const LocalArticle = ({ article }) => {
 
       {article.hero && (
         <div className="px-6 md:px-12 lg:px-24 mb-16">
-        <div className="max-w-3xl mx-auto rounded-[2.5rem] overflow-hidden h-64 md:h-96">
+        <div className="max-w-3xl mx-auto rounded-flate overflow-hidden h-64 md:h-96">
           <img src={article.hero} alt={article.title} className="w-full h-full object-cover" />
         </div>
       </div>
@@ -333,7 +333,7 @@ const LocalArticle = ({ article }) => {
         <section className="px-6 md:px-12 lg:px-24 pb-32">
           <div className="max-w-3xl mx-auto border-t border-room-ink/10 pt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
             {prevArticle ? (
-              <Link to={`/blogg/${prevArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-[2rem] border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1">
+              <Link to={`/blogg/${prevArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-kort border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1">
                 <span className="font-body text-xs uppercase tracking-widest text-room-ink/70 flex items-center gap-2">
                   <ArrowLeft className="w-3 h-3" /> Forrige
                 </span>
@@ -341,7 +341,7 @@ const LocalArticle = ({ article }) => {
               </Link>
             ) : <div />}
             {nextArticle ? (
-              <Link to={`/blogg/${nextArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-[2rem] border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1 text-right md:items-end">
+              <Link to={`/blogg/${nextArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-kort border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1 text-right md:items-end">
                 <span className="font-body text-xs uppercase tracking-widest text-room-ink/70 flex items-center gap-2">
                   Neste <ArrowRight className="w-3 h-3" />
                 </span>

@@ -13,7 +13,7 @@ const feltKlasse =
 // overført til rommets farger. Tidligere versjon var tynne piller uten
 // beskrivelse, for lite fysisk tilstedeværelse til å føles trykkbare.
 const kortKlasse = (valgt) =>
-  `text-left rounded-2xl border px-5 py-4 transition-all duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50 ${
+  `text-left rounded-kort border px-5 py-4 transition-all duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50 ${
     valgt ? 'border-room-ink bg-room-ink/10' : 'border-room-ink/20 bg-room-ink/10 hover:border-room-ink/40'
   }`;
 
@@ -91,7 +91,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
     <section id="bestill-demo" className="scroll-mt-28 seksjon bg-room text-room-ink rom">
       <div className="wrap">
         <div className="max-w-[38rem] mx-auto flex flex-col items-center text-center">
-          <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.022em]">
             {tittel} <span>{uthevet}</span>
           </h2>
           <p className="font-body text-[0.95rem] md:text-base text-room-ink/90 mt-5 mb-9 leading-relaxed max-w-[46ch]">
@@ -99,7 +99,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
           </p>
 
           {status === 'success' ? (
-            <div className="w-full bg-room-ink/5 border border-room-ink/20 rounded-2xl p-9" role="status">
+            <div className="w-full bg-room-ink/5 border border-room-ink/20 rounded-kort p-9" role="status">
               <p className="font-sans font-bold text-2xl mb-2">Takk! Den er mottatt.</p>
               <p className="font-body text-[0.95rem] text-room-ink/90 leading-relaxed">
                 Jeg tar kontakt på e-post innen 24 timer. Haster det, ring meg på{' '}

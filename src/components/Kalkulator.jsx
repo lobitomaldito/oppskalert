@@ -8,7 +8,7 @@ import { SeksjonTopp } from './Layout';
 import { kalkulatorOmfang, kalkulatorTillegg, kalkulatorHaster, ruter } from '../lib/site';
 
 const pillBase =
-  'text-left rounded-2xl border px-5 py-4 font-body text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50';
+  'text-left rounded-kort border px-5 py-4 font-body text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50';
 
 /* Valgt tilstand bærer ingen aksentfarge lenger, samme "fylt kant"-taktikk
    som DemoSkjema.jsx (se kommentar der): full blekk-kant og lett tint mot
@@ -139,10 +139,10 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
             </div>
           </div>
 
-          <div data-reveal className="lg:sticky lg:top-28 rounded-2xl border border-room-ink/40 bg-surface/25 p-7 flex flex-col gap-5">
+          <div data-reveal className="lg:sticky lg:top-28 rounded-kort border border-room-ink/40 bg-surface/25 p-7 flex flex-col gap-5">
             <div>
               <span className="font-body text-xs uppercase tracking-widest text-room-ink/70">Estimert pris</span>
-              <div className="font-display font-extrabold text-[2.1rem] leading-none tracking-[-0.02em] mt-2">
+              <div className="font-display font-light text-[2.1rem] leading-none tracking-[-0.018em] mt-2">
                 {formatKr(min)}–{formatKr(max)} <span className="text-lg font-sans font-bold text-room-ink/70">kr</span>
               </div>
               <span className="font-body text-sm text-room-ink/70 mt-1 block">{omfang.label}{valgteTillegg.length > 0 ? ` + ${valgteTillegg.length} tillegg` : ''}{haster ? ', haster' : ''}</span>

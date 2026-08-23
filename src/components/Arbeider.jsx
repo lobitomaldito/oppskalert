@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { prosjekter } from '../lib/site';
+import { prosjekter, toganger } from '../lib/site';
 import { caser } from '../lib/demo-innhold';
 
 /* Bransje og tittel er hentet ordrett fra ARBEIDER-konstanten i
@@ -69,6 +69,7 @@ const Arbeider = ({ antall = 4 }) => {
               <div className="ramme-vindu">
                 <img
                   src={a.full}
+                  srcSet={toganger(a.full)}
                   alt={`Nettsiden til ${a.navn}`}
                   loading="lazy"
                   width="620"

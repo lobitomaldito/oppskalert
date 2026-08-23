@@ -230,8 +230,10 @@ const TjenesteSeksjon = () => {
           <div data-reveal className="tjenester inn" style={{ '--d': '80ms' }}>
             {tjenester.map((t) => (
               <article className="tjeneste" key={t.navn}>
-                <svg viewBox="0 0 24 24" aria-hidden="true" dangerouslySetInnerHTML={{ __html: t.ikon }} />
-                <h3>{t.navn}</h3>
+                <div className="tjeneste-topp">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" dangerouslySetInnerHTML={{ __html: t.ikon }} />
+                  <h3>{t.navn}</h3>
+                </div>
                 <p>{t.tekst}</p>
               </article>
             ))}

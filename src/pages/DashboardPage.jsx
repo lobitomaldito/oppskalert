@@ -6,7 +6,7 @@ import { Navbar, Footer } from '../components/Layout';
 const STORAGE_KEY = 'oppskalert_dashboard_pin';
 const PERIODER = [7, 30, 90];
 
-const kort = 'bg-surface/30 border border-room-ink/10 rounded-[2rem] p-6 md:p-8';
+const kort = 'bg-surface/30 border border-room-ink/10 rounded-kort p-6 md:p-8';
 
 const nb = (n) => new Intl.NumberFormat('nb-NO').format(n);
 const prosent = (andel) => `${Math.round(andel * 100)} %`;
@@ -104,7 +104,7 @@ const Trafikkgraf = ({ dager, antallDager }) => {
               </div>
             ))}
             {hover && (
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-surface text-room-ink text-xs font-body px-3 py-1.5 rounded-lg whitespace-nowrap pointer-events-none z-10 border border-room-ink/10 shadow-sm">
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 -translate-y-full bg-surface text-room-ink text-xs font-body px-3 py-1.5 rounded-liten whitespace-nowrap pointer-events-none z-10 border border-room-ink/10 shadow-sm">
                 {datoKort(hover.dato)}: {nb(hover.visninger)} visninger, {nb(hover.personer)} ekte besøkende
               </div>
             )}
@@ -295,7 +295,7 @@ const Besokende = ({ liste }) => (
             {b.vei.map((v, j) => (
               <span key={`${v.sti}-${j}`} className="flex items-center gap-1.5">
                 {j > 0 && <span className="text-room-ink/30">→</span>}
-                <span className="bg-room-ink/5 rounded-md px-2 py-0.5">
+                <span className="bg-room-ink/5 rounded-liten px-2 py-0.5">
                   {v.sti}{v.ganger > 1 && <span className="text-room-ink/40"> ×{v.ganger}</span>}
                 </span>
               </span>
@@ -397,7 +397,7 @@ const UkentligeRapporter = ({ rapporter }) => {
               </div>
               <p className="font-body text-sm text-room-ink/80 mt-1.5 leading-relaxed">{r.summary}</p>
               {erApen && (
-                <pre className="font-body text-xs text-room-ink/70 mt-3 leading-relaxed whitespace-pre-wrap bg-room-ink/5 rounded-2xl p-4">
+                <pre className="font-body text-xs text-room-ink/70 mt-3 leading-relaxed whitespace-pre-wrap bg-room-ink/5 rounded-kort p-4">
                   {r.report_markdown}
                 </pre>
               )}
@@ -522,7 +522,7 @@ const DashboardPage = () => {
             </div>
 
             {!data.posthogTilgjengelig && (
-              <p className="font-body text-sm text-red-500 bg-red-500/5 border border-red-500/20 rounded-2xl px-5 py-4">
+              <p className="font-body text-sm text-red-500 bg-red-500/5 border border-red-500/20 rounded-kort px-5 py-4">
                 PostHog svarte ikke. Trafikktall, sider og feil er tomme fordi de hentes derfra, ikke fordi det ikke
                 skjedde noe. Henvendelsene under er hentet fra Supabase og stemmer.
               </p>

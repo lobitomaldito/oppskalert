@@ -5,29 +5,31 @@ import { SeksjonTopp, KortRad } from './Layout';
 import { cn } from '../lib/utils';
 import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
 
-/* To modeller side om side, og to ulike verdener. Engangspris er kortet du
-   eier og går videre med: hvitt, ferdig, avsluttet. Drift er kortet jeg
-   passer på for deg: en pågående avtale i stedet for en kvittering, tonet
-   mot feltfargen i stedet for hvit. Kontrasten er meningsbærende, ikke
-   dekorativ, den samme forskjellen som modellene faktisk representerer.
-   Ingen av kortene går mørke: skallet har ingen mørk variant lenger, den
-   er reservert til bunntekst, sitatkort og fylte knapper. className kommer
-   fra KortRad (bredden på mobil), derfor cn() i stedet for en ren streng. */
+/* Alle tre kortene er hvite på feltet. Driftskortet var tidligere tonet mot
+   feltfargen for å skille seg fra engangsprisen, men denne seksjonen står
+   selv på feltet: kortet med «Mest valgt» ble dermed det eneste som ikke
+   løftet seg fra bakgrunnen, altså det motsatte av jobben badgen har.
+   Skillet ligger nå i kanten i stedet, en hårstrek i full blekk mot de
+   andres tjue prosent, samme grep som .pris.fremhevet bruker på /priser.
+   Ingen av kortene går mørke: mørkt er reservert til bunntekst, sitatkort
+   og fylte knapper. className kommer fra KortRad (bredden på mobil),
+   derfor cn() i stedet for en ren streng. */
 const Modell = ({ m, visPasserDeg = false, className }) => {
-  const paDrift = m.id === 'drift';
   return (
     <div
       data-reveal
       className={cn(
-        'relative flex flex-col rounded-2xl p-7 md:p-8 border',
-        paDrift
-          ? 'bg-room text-room-ink border-room-ink/20'
-          : 'bg-surface text-room-ink border-room-ink/20',
+        'relative flex flex-col rounded-kort p-7 md:p-8 border bg-surface text-room-ink',
+        m.fremhevet ? 'border-room-ink' : 'border-room-ink/20',
         className,
       )}
     >
       {m.fremhevet && (
-        <span className="absolute top-0 right-7 -translate-y-1/2 bg-room-ink text-room text-sm font-body px-3.5 py-1 rounded-full font-semibold">
+        /* Den ene flaten aksenten dekker. Punktumfargen fantes bare i
+           ordmerket og i noen prikker, og en aksent som aldri dekker noe
+           er ikke en aksent. Hvit tekst, ikke kritt: kritt gir 4,3:1 mot
+           clay og faller under kravet, hvit gir 4,8:1. */
+        <span className="absolute top-0 right-7 -translate-y-1/2 bg-[var(--prikk)] text-white text-sm font-body px-3.5 py-1 rounded-full font-semibold">
           Mest valgt
         </span>
       )}
@@ -37,10 +39,20 @@ const Modell = ({ m, visPasserDeg = false, className }) => {
         {m.tagline}
       </p>
 
-      <div className="mt-6 flex items-baseline gap-1.5">
-        <span className="font-body text-sm text-room-ink/70">fra</span>
-        <span className="font-display font-extrabold text-[2.75rem] leading-none tracking-[-0.03em]">{m.fra}</span>
-        <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
+      {/* «Forespør pris» er tekst, ikke et beløp. Uten dette skillet leste
+          kortet «fra Forespør pris», som er en setning ingen kan lese, og
+          «fra» lovet dessuten et startbeløp jeg ikke oppgir her. Samme
+          skille som på /priser, se erForesporsel i site.js. */}
+      <div className="mt-6 flex items-baseline gap-1.5 min-h-[2.75rem]">
+        {m.erForesporsel ? (
+          <span className="font-display font-normal text-[1.5rem] leading-none tracking-[-0.018em]">{m.fra}</span>
+        ) : (
+          <>
+            <span className="font-body text-sm text-room-ink/70">fra</span>
+            <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
+            <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
+          </>
+        )}
       </div>
       <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>
 
@@ -93,15 +105,43 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
     <section id="priser" ref={container} className="seksjon">
       <div className="wrap">
         <SeksjonTopp
-          tittel="To måter å eie"
-          uthevet="en nettside på."
-          lede="Begge starter med en gratis demo. Du bestemmer deg etterpå, ikke før."
+          tittel="Tre måter å"
+          uthevet="komme i gang på."
+          lede="Alle tre starter med en gratis demo, ferdig innen tre virkedager. Du bestemmer deg etterpå, ikke før."
           midtstilt={midtstilt}
         />
 
-        <KortRad gridKlasser="md:grid-cols-2" kortBredde="w-[86%]" className="gap-5 items-stretch max-w-[52rem]">
-          {prismodeller.map((m) => <Modell key={m.id} m={m} visPasserDeg={visPasserDeg} />)}
+        {/* Tre modeller i to spalter ga ett kort alene på en tredje rad, med
+            halve raden tom. Fra lg står de tre i linje. Mellom md og lg får
+            forespørselskortet hele bredden i stedet, så det ser bevisst ut
+            og ikke som et kort som ble til overs. */}
+        <KortRad
+          gridKlasser="md:grid-cols-2 lg:grid-cols-3"
+          kortBredde="w-[86%]"
+          className="gap-5 items-stretch max-w-[52rem] lg:max-w-[72rem]"
+        >
+          {prismodeller.map((m) => (
+            <Modell
+              key={m.id}
+              m={m}
+              visPasserDeg={visPasserDeg}
+              className={m.erForesporsel ? 'md:col-span-2 lg:col-span-1' : undefined}
+            />
+          ))}
         </KortRad>
+
+        {/* Hva som IKKE er med. Uten denne listen ser fastprisen ut som om
+            den dekker alt, og da blir hver samtale en forhandling om hvor
+            grensen går. Å si nei på forhånd er også det tydeligste signalet
+            om at prisen er regnet på en avgrenset jobb. */}
+        <div data-reveal className="mt-10 pt-6 border-t border-room-ink/15 max-w-[52rem]">
+          <p className="font-sans font-bold text-sm">Dette ligger utenfor fastprisen</p>
+          <p className="font-body text-sm text-room-ink/70 mt-2 leading-relaxed">
+            Nettbutikk med varianter og lagerstyring, innlogging og kundeportal,
+            flerspråklig innhold, og ny visuell identitet. Alt sammen kan jeg gjøre.
+            Det får bare sin egen pris, avtalt før jeg begynner, som ellers.
+          </p>
+        </div>
 
         <p data-reveal className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
         <p data-reveal className="font-body text-sm text-room-ink/70 mt-3 max-w-[52rem]">
@@ -112,7 +152,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         </p>
 
         {visAlltidMed ? (
-          <div data-reveal className="mt-12 rounded-2xl border border-room-ink/20 p-7 md:p-9 max-w-[52rem]">
+          <div data-reveal className="mt-12 rounded-kort border border-room-ink/20 p-7 md:p-9 max-w-[52rem]">
             <h3 className="font-sans font-bold text-lg mb-6">Alt dette følger med, uansett modell.</h3>
             <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
               {alltidMed.map((f) => (

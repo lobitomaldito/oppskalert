@@ -64,7 +64,7 @@ const Sammenligning = () => (
         <p className="etikett">Sammenligning</p>
         <h2>Hva inngår i hver modell?</h2>
       </div>
-      <div className="inn overflow-x-auto rounded-2xl border border-room-ink/15" style={{ '--d': '80ms' }}>
+      <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
         <table className="w-full border-collapse min-w-[34rem]">
           <caption className="sr-only">Sammenligning av engangspris og driftsavtale</caption>
           <thead>

@@ -40,7 +40,7 @@ const BransjeEksempler = () => {
               key={n.tag}
               to={n.route}
               data-reveal
-              className="group block rounded-2xl overflow-hidden border border-room-ink/10 bg-room-ink/5 hover:border-room-ink/25 transition-colors duration-300"
+              className="group block rounded-kort overflow-hidden border border-room-ink/10 bg-room-ink/5 hover:border-room-ink/25 transition-colors duration-300"
             >
               {/* Nettleserlinjen er fjernet her av samme grunn som på
                   porteføljekortene: tre prikker og et domene på 11 piksler

@@ -3,7 +3,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { KortRad, SeksjonTopp } from './Layout';
 import { cn } from '../lib/utils';
-import { prosjekter, ruter } from '../lib/site';
+import { prosjekter, ruter, toganger } from '../lib/site';
 
 /* Rutenett i stedet for den gamle marquee-en. Marquee-en så levende ut,
    men den doblet hele listen i DOM-en, flyttet seg under pekeren når du
@@ -27,7 +27,7 @@ const Kort = ({ p, className, forsinkelse = 0, varighet = 34 }) => (
     rel="noopener noreferrer"
     data-reveal
     className={cn(
-      'group block rounded-2xl overflow-hidden border transition-[border-color,transform] duration-300 ease-lett hover:-translate-y-1',
+      'group block rounded-kort overflow-hidden border transition-[border-color,transform] duration-300 ease-lett hover:-translate-y-1',
       'border-room-ink/10 bg-surface hover:border-room-ink/40',
       className,
     )}
@@ -53,6 +53,7 @@ const Kort = ({ p, className, forsinkelse = 0, varighet = 34 }) => (
     <div className={cn('relative overflow-hidden', p.full ? 'aspect-[4/3]' : 'aspect-[16/10]', 'bg-surface/20')}>
       <img
         src={p.full || p.img}
+        srcSet={toganger(p.full || p.img)}
         alt={`Nettsiden til ${p.navn}`}
         loading="lazy"
         style={p.full ? { '--til': p.til, animationDelay: `${forsinkelse}s`, animationDuration: `${varighet}s` } : undefined}

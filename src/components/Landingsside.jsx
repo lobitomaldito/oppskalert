@@ -18,7 +18,7 @@ export const Avsnitt = ({ tittel, uthevet, children }) => (
     {/* Uthevet ord bærer ingen aksentfarge lenger, se Layout.jsx sin
         SideTopp/SeksjonTopp for samme grep: hele overskriften er allerede
         extrabold, så tittel og uthevet er typografisk like uansett. */}
-    <h2 className="font-display font-extrabold text-[clamp(1.5rem,3.2vw,2.15rem)] leading-[1.1] tracking-[-0.03em] mb-4">
+    <h2 className="font-display font-light text-[clamp(1.5rem,3.2vw,2.15rem)] leading-[1.1] tracking-[-0.022em] mb-4">
       {tittel} {uthevet}
     </h2>
     <div className="font-body text-[0.98rem] md:text-base text-room-ink/70 leading-relaxed flex flex-col gap-4">

@@ -22,7 +22,7 @@ const Metode = ({ utdypet = false }) => {
       className={
         utdypet
           ? 'md:grid md:grid-cols-[auto_1fr] md:gap-8'
-          : 'relative rounded-2xl border border-room-ink/20 bg-room-ink/10 p-6'
+          : 'relative rounded-kort border border-room-ink/20 bg-room-ink/10 p-6'
       }
     >
       <div className="flex items-center gap-4 mb-4">
@@ -89,7 +89,7 @@ const Metode = ({ utdypet = false }) => {
     <section id="metode" ref={container} className="seksjon bg-room text-room-ink rom">
       <div className="wrap">
         <div className="mb-12 md:mb-16">
-          <h2 className="font-display font-extrabold text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.03em]">
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.022em]">
             Demoen kommer først. Regningen kommer sist.
           </h2>
           <p className="font-body text-sm md:text-base mt-4 max-w-[54ch] leading-relaxed text-room-ink/80">

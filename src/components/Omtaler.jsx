@@ -35,7 +35,7 @@ const Omtaler = ({ flate = '' }) => {
               <figure
                 key={t.navn}
                 data-reveal
-                className="rounded-2xl border border-room-ink/10 bg-surface p-7 md:p-9 flex flex-col lg:col-start-1 lg:row-start-1 lg:row-span-3"
+                className="rounded-kort border border-room-ink/10 bg-surface p-7 md:p-9 flex flex-col lg:col-start-1 lg:row-start-1 lg:row-span-3"
               >
                 <Stjerner />
                 <blockquote className="font-body text-[0.95rem] md:text-base leading-[1.75] text-room-ink/70 flex-1">
@@ -50,7 +50,7 @@ const Omtaler = ({ flate = '' }) => {
               <figure
                 key={t.navn}
                 data-reveal
-                className="rounded-2xl border border-room-ink/10 bg-surface p-6 flex flex-col"
+                className="rounded-kort border border-room-ink/10 bg-surface p-6 flex flex-col"
               >
                 <Stjerner />
                 <blockquote className="font-body text-[0.95rem] leading-relaxed text-room-ink/70 flex-1">«{t.sitat}»</blockquote>

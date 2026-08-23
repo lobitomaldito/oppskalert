@@ -23,22 +23,22 @@ typography:
     lineHeight: 1
   hero:
     fontFamily: "'Suisse', system-ui, sans-serif"
-    fontWeight: 700
+    fontWeight: 300
     fontSize: "clamp(2.0625rem, 8.4vw, 5.25rem)"
     lineHeight: 1
-    letterSpacing: "-0.04em"
+    letterSpacing: "-0.028em"
   page-heading:
     fontFamily: "'Suisse', system-ui, sans-serif"
-    fontWeight: 700
+    fontWeight: 300
     fontSize: "clamp(2rem, 5.2vw, 3.75rem)"
     lineHeight: 1.02
-    letterSpacing: "-0.038em"
+    letterSpacing: "-0.028em"
   section-heading:
     fontFamily: "'Suisse', system-ui, sans-serif"
-    fontWeight: 700
+    fontWeight: 300
     fontSize: "clamp(1.5rem, 3.2vw, 2.375rem)"
     lineHeight: 1.12
-    letterSpacing: "-0.028em"
+    letterSpacing: "-0.022em"
   title:
     fontFamily: "'Suisse', system-ui, sans-serif"
     fontWeight: 600
@@ -68,6 +68,7 @@ typography:
     lineHeight: 1
     letterSpacing: "-0.025em"
 rounded:
+  liten: "8px"
   base: "14px"
   lg: "22px"
   full: "999px"
@@ -201,14 +202,26 @@ mørk bakgrunn uansett hvilken seksjon de står i). Utenfor de tre stedene er
 
 ### Navngitte regler
 
-**Ingen-aksent-regelen.** Det finnes ingen aksentfarge i skallet. All farge på
-siden kommer fra kundearbeidet som vises fram, i nettleserrammene på
-arbeidssiden og forsiden. Punktumet i ordmerket er det ENESTE unntaket, og det
-er et bevisst, rasjonert signaturgrep, ikke en åpning for mer farge andre
-steder. Legg aldri til en fargeflate, en gradient eller en farget kant i
-skallet selv. Beviset skal komme fra jobben, ikke fra byrået. Se seksjon 5 for
-det fulle bildet av hvor punktumfargen faktisk brukes i koden i dag, for det
-er noen flere steder enn selve ordmerket.
+**Rasjonert-aksent-regelen.** Skallet har én farge, `--prikk`, og den er
+rasjonert. All annen farge på siden kommer fra kundearbeidet som vises fram, i
+nettleserrammene på arbeidssiden og forsiden. Legg aldri til en gradient, en
+farget kant eller en andre merkefarge.
+
+Regelen het tidligere «ingen aksent», og punktumet i ordmerket var eneste
+unntak. Målt mot både referansebiblioteket og konkurrentene var det ett steg
+for langt: en farge som aldri dekker en flate leses ikke som en farge siden
+har, den leses som at siden ikke har noen. Fra 24. august 2026 har clay derfor
+tre jobber, og bare tre:
+
+1. Punktumet i ordmerket (`--prikk` på lyst felt, `--prikk-lys` på mørkt).
+2. Prikken foran `.etikett` og `.pille`, altså én gang per seksjon.
+3. «Mest valgt»-merket på priskortet, den ene flaten fargen dekker. Teksten
+   der er ren hvit og ikke kritt: kritt gir 4,3:1 mot clay og faller under
+   kravet, hvit gir 4,8:1.
+
+Clay mot feltet er målt til 3,9:1. Det holder for grafikk (kravet er 3:1) og
+holder ikke for løpende tekst (kravet er 4,5:1). Sett derfor aldri brødtekst
+i clay på feltet.
 
 **Kritt-fellen.** `--kritt` (og Tailwind-klassene `text-ink` / `text-primary`,
 som peker på samme token) er lys tekst, og den er KUN riktig på mørk bakgrunn.
@@ -247,12 +260,12 @@ en byggesperre for hele branchen, ikke bare en fotnote her.
 ### Hierarki
 - **Wordmark** (Merke, 800, lowercase, tracking −0,035em): «oppskalert.» i
   toppnavigasjon og bunntekst, samt vannmerket blåst opp bak hero-h1.
-- **Hero** (Suisse, 700, `clamp(2,0625rem, 8,4vw, 5,25rem)`, line-height 1,
-  tracking −0,04em): forsidens h1 alene.
-- **Sidetopp** (Suisse, 700, `clamp(2rem, 5,2vw, 3,75rem)`, line-height 1,02,
-  tracking −0,038em): h1 på undersider som `/arbeid`, `/priser`.
-- **Seksjonsoverskrift** (Suisse, 700, `clamp(1,5rem, 3,2vw, 2,375rem)`,
-  line-height 1,12, tracking −0,028em): h2 i introduksjon, seksjonstopp, FAQ.
+- **Hero** (Suisse, **300**, `clamp(2,0625rem, 8,4vw, 5,25rem)`, line-height 1,
+  tracking −0,028em): forsidens h1 alene.
+- **Sidetopp** (Suisse, **300**, `clamp(2rem, 5,2vw, 3,75rem)`, line-height 1,02,
+  tracking −0,028em): h1 på undersider som `/arbeid`, `/priser`.
+- **Seksjonsoverskrift** (Suisse, **300**, `clamp(1,5rem, 3,2vw, 2,375rem)`,
+  line-height 1,12, tracking −0,022em): h2 i introduksjon, seksjonstopp, FAQ.
 - **Tittel** (Suisse, 600, 1,0625rem, tracking −0,012em): kortoverskrifter i
   tjenestekort.
 - **Brødtekst** (Suisse, 400, `clamp(0,9375rem, 0,3vw + 0,875rem, 1rem)`,
@@ -270,6 +283,15 @@ en byggesperre for hele branchen, ikke bare en fotnote her.
 **SectraFine er rasjonert.** Antikvaen får to og bare to jobber: sitatet og
 pristallet. Legg den aldri på en overskrift, en knapp eller en etikett.
 Overforbruk fjerner nøyaktig den vekten unntaket har i dag.
+
+**Display står i 300, aldri i 700.** Vekten lå på 700 i åtte regler fram til
+24. august 2026. Målt mot referansebiblioteket er 700 malvekten: urban.partners,
+malling.no og de øvrige målte sidene ligger alle på 300, og det samme gjør de
+dyre konkurrentene i samme marked. Vekten bor nå i `--display-vekt` i `:root`,
+sammen med `--display-sperre` (−0,022em) og `--display-sperre-stor` (−0,028em).
+Sperringen løsnet samtidig, fordi −4 % på en tynn vekt lukker nøyaktig den luften
+vekten er valgt for. Kontrasten lages av avstanden ned til `.tjeneste h3` på 600,
+altså to vekter og ingenting imellom, slik malling.no gjør det.
 
 **Ingen sperret VERSAL-eyebrow.** Etiketter (`.etikett`) står med vanlig
 bokstavform og en liten prikk foran, aldri i sperret store bokstaver. Det er
@@ -300,6 +322,29 @@ det:
 er løftet fysisk over resten av flaten: skjermbilde-rammen og en flytende
 meny. Trenger et flatt innholdskort mer hierarki, er svaret en kant eller en
 tonevalg, ikke en skygge.
+
+**Fire radier, ikke seks.** Målt 23. august 2026 hadde forsiden alene seks
+ulike hjørneradier: 2, 5,6, 8, 14, 22 og 32 px. Priskortene sto i 32 fordi
+Tailwind hadde sin egen skala (`2xl: 2rem`), mens tjenestekortene rett under
+sto i 14 fra CSS-en. To radier på samme skjerm leses som to design limt
+sammen. Skalaen er nå fire verdier, og de heter det samme begge steder:
+
+| Bruk | Token | Tailwind |
+|---|---|---|
+| Klikkflater, menylenker | `--rund-liten` 8px | `rounded-liten` |
+| Kort, rammer, felt | `--rund` 14px | `rounded-kort` |
+| Store paneler, sitatkort | `--rund-stor` 22px | `rounded-flate` |
+| Piller og knapper | 999px | `rounded-full` |
+
+`2xl`, `3xl` og `4xl` står igjen i `tailwind.config.js` fordi demosidene under
+`/eksempler` bruker dem som sin egen stil. De skal ikke arve skallets hjørner,
+og skallet skal ikke bruke dem.
+
+**Skjermbilder skytes i to oppløsninger.** Porteføljebildene er den eneste
+fotografien på siden. De lå i 640 px bredde og ble vist på 646, altså halv
+oppløsning på enhver 2x-skjerm. Hvert bilde finnes nå som `<navn>.webp` (1x)
+og `<navn>@2x.webp`, og `toganger()` i `site.js` bygger `srcSet`. Da slipper
+1x-skjermer den tunge fila. Legger du inn et nytt prosjekt, skyt begge to.
 
 ## 5. Components
 
@@ -338,7 +383,7 @@ bevisst blir nøytralisert igjen.
 Tre kortvarianter, alle på hvitt (`--hvit`) mot det blekke feltet, alle uten
 skygge i ro:
 - **Tjenestekort** (`.tjeneste`): 14px-radius, kant som dukker opp først på
-  hover.
+  hover. Ikonet står på samme linje som tittelen, ikke i egen rad over den.
 - **Priskort** (`.pris`): samme radius, fremhevet variant får en 1px
   blekk-kant, aldri en aksentkant.
 - **Faktapanel** (`.fakta`, på case-sider): 22px-radius, bakgrunn `--felt`

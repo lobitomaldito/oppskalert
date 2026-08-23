@@ -3,7 +3,7 @@ import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import { useReveal } from '../lib/useReveal';
 import { caser } from '../lib/demo-innhold';
-import { prosjekter } from '../lib/site';
+import { prosjekter, toganger } from '../lib/site';
 
 /* Casesiden er ordrett fra studio-mal-demoen (mal3.src.html, byggCase-
    funksjonen rundt linje 1465), portet til React i stedet for innerHTML.
@@ -96,6 +96,7 @@ const CasePage = () => {
                   <div className="ramme-vindu">
                     <img
                       src={prosjekt.full}
+                  srcSet={toganger(prosjekt.full)}
                       alt={`Nettsiden til ${prosjekt.navn}`}
                       loading="lazy"
                       width="620"

@@ -217,41 +217,41 @@ export const caser = [
 ];
 
 /* Sju tjenester. De tre siste er AI-tilbudet: chatbot, automatikk og app. */
+/* Seks kort, ikke sju. Sju ga en tredje rad med to tomme plasser i et
+   tre-kolonners grid, altså en hel rad brukt på ett kort. Chatbot og app
+   er slått sammen til ett kort, samme navn som prismodellen de hører til.
+   Teksten er kuttet til én til to linjer per kort med vilje: kortet skal
+   kunne leses i forbifarten, detaljene ligger på undersidene. */
 export const tjenester = [
   {
     "ikon": "<rect x=\"2.5\" y=\"4\" width=\"19\" height=\"16\" rx=\"2\"/><path d=\"M2.5 9h19\"/><path d=\"M6 6.5h.01M8.5 6.5h.01\"/>",
     "navn": "Ny nettside",
-    "tekst": "Jeg koder den for hånd i stedet for å dra den sammen i en byggeklossbygger. Da laster den på under ett sekund, den ser ut som deg og ikke som en mal, og du slipper en side som blir tregere for hvert år som går."
+    "tekst": "Håndkodet, ikke dratt sammen av moduler. Laster på under ett sekund."
   },
   {
     "ikon": "<path d=\"M4 7h16l-1.2 12.2a2 2 0 0 1-2 1.8H7.2a2 2 0 0 1-2-1.8Z\"/><path d=\"M8.5 7V5.5a3.5 3.5 0 0 1 7 0V7\"/>",
     "navn": "Nettbutikk",
-    "tekst": "Betaling, frakt og lager som virker fra første dag. Du legger inn varene selv, det er lettere enn du tror, og jeg ordner resten."
+    "tekst": "Betaling, frakt og lager som virker fra dag én. Du legger inn varene, jeg tar resten."
   },
   {
     "ikon": "<circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\"/><path d=\"M15.5 15.5 21 21\"/><path d=\"M10.5 7v7M7 10.5h7\"/>",
-    "navn": "Bli funnet i Google og i AI-søk",
-    "tekst": "Jeg legger struktur, tekst og fart på plass fra start. Analytics settes opp samtidig, så du kan se selv hvem som faktisk finner deg."
+    "navn": "Bli funnet i Google",
+    "tekst": "Struktur, tekst og fart fra start. Du ser selv hvem som finner deg, også i AI-søk."
   },
   {
     "ikon": "<path d=\"M12 3 4 6v6c0 4.5 3.2 7.9 8 9 4.8-1.1 8-4.5 8-9V6Z\"/><path d=\"m9 12 2.2 2.2L15.5 10\"/>",
-    "navn": "Jeg passer på siden, hvis du vil",
-    "tekst": "Vil du slippe å tenke på det tekniske, tar jeg hosting, backup og overvåking. Trenger du å bytte et bilde, sender du en e-post, og som regel er det gjort samme dag."
+    "navn": "Jeg passer på siden",
+    "tekst": "Hosting, backup og overvåking. Skal et bilde byttes, tar det som regel én e-post."
   },
   {
     "ikon": "<path d=\"M4 5.5h16v10H12l-4.5 3.5V15.5H4Z\"/><path d=\"M8.5 10h.01M12 10h.01M15.5 10h.01\"/>",
-    "navn": "Chatbot som svarer for deg",
-    "tekst": "En robot trent på din egen bedrift, som svarer på de vanlige spørsmålene hele døgnet og sier fra til deg når noen er klar til å kjøpe. Den kobles på nettsiden din, og du kan overta samtalen selv når du vil."
+    "navn": "Chatbot eller app",
+    "tekst": "Skal siden svare på spørsmålene selv, eller kundene logge inn?"
   },
   {
     "ikon": "<path d=\"M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21\"/><path d=\"m5.6 5.6 2.5 2.5M15.9 15.9l2.5 2.5M18.4 5.6l-2.5 2.5M8.1 15.9l-2.5 2.5\"/><circle cx=\"12\" cy=\"12\" r=\"3.2\"/>",
-    "navn": "Få bort det du gjør manuelt",
-    "tekst": "Skjemaer som må skrives inn et annet sted, tilbud som skal sendes, purringer som glemmes. Jeg kobler sammen verktøyene du allerede bruker og lar maskinen ta mellomarbeidet. Du bytter ikke ut noe, du slipper bare å gjøre det to ganger."
-  },
-  {
-    "ikon": "<rect x=\"7\" y=\"2.5\" width=\"10\" height=\"19\" rx=\"2.5\"/><path d=\"M10.5 5.5h3\"/><path d=\"M11 18.5h2\"/>",
-    "navn": "App, hvis du faktisk trenger en",
-    "tekst": "De fleste trenger det ikke, og da sier jeg det. Men skal kundene dine bestille, logge inn eller følge noe over tid, bygger jeg app til iPhone og Android på samme måte som nettsidene: håndkodet, ikke satt sammen av moduler."
+    "navn": "Mindre dobbeltarbeid",
+    "tekst": "Skjemaer som tastes inn to steder, tilbud som skal sendes. Jeg kobler sammen det du har."
   }
 ];
 

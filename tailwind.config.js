@@ -48,7 +48,14 @@ export default {
         merke: ['Merke', 'system-ui', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
+      // Skallet har tre radier, ikke seks: liten til klikkflater, kort til
+      // kort og rammer, flate til store paneler. Piller bruker rounded-full.
+      // 2xl/3xl/4xl står igjen fordi demosidene under /eksempler bruker dem
+      // som sin egen stil, og de skal ikke arve skallets hjørner.
       borderRadius: {
+        liten: '8px',
+        kort: '14px',
+        flate: '22px',
         '2xl': '2rem',
         '3xl': '3rem',
         '4xl': '4rem',

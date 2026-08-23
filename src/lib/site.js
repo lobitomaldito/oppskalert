@@ -539,6 +539,13 @@ export const landingsSporsmal = {
    står i CLAUDE.md som utenfor rekkevidde. De ligger igjen nederst uten
    `full`, så de fortsatt finnes for eventuelle lenker, men de vises ikke
    i rammene på forsiden. */
+/* Porteføljebildene finnes i to oppløsninger. Filnavnet er 1x, det samme
+   navnet med @2x er dobbelt så bredt. Skjermbildene ble tidligere servert
+   i 640 px og vist på 646, altså halv oppløsning på enhver 2x-skjerm, og
+   det er den eneste fotografien på siden. srcSet lar 1x-skjermer slippe å
+   laste den tunge fila. Legger du inn et nytt prosjekt, skyt begge to. */
+export const toganger = (src) => `${src} 1x, ${src.replace('.webp', '@2x.webp')} 2x`;
+
 export const prosjekter = [
   { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
   { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
@@ -551,7 +558,7 @@ export const prosjekter = [
      Scenekunst, ikke en lang side. Vinduet viser derfor 67 % av bildet av
      gangen i stedet for 19 %, og rullelengden må regnes ut fra det.
      Kopierer man -79% hit, ruller kortet langt forbi bunnen av bildet. */
-  { img: '/websider/melanie-dahl.webp', slug: 'melanie-dahl', full: '/websider/full/melanie-dahl.webp', til: '-33%', navn: 'Melanie Dahl', bransje: 'Skuespill · mental trening', url: 'https://www.melaniedahl.com/', domene: 'melaniedahl.com' },
+  { img: '/websider/melanie-dahl.webp', slug: 'melanie-dahl', full: '/websider/full/melanie-dahl.webp', til: '-34%', navn: 'Melanie Dahl', bransje: 'Skuespill · mental trening', url: 'https://www.melaniedahl.com/', domene: 'melaniedahl.com' },
   { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
   { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
   { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },

@@ -17,7 +17,7 @@ const SammenlignDetalj = ({ data }) => {
       />
       <section ref={container} className="seksjon pt-0">
         <div className="wrap">
-          <div data-reveal className="overflow-x-auto rounded-2xl border border-room-ink/10">
+          <div data-reveal className="overflow-x-auto rounded-kort border border-room-ink/10">
             <table className="w-full border-collapse min-w-[38rem]">
               <caption className="sr-only">Sammenligning av meg og {data.navn}</caption>
               <thead>
@@ -42,7 +42,7 @@ const SammenlignDetalj = ({ data }) => {
             </table>
           </div>
 
-          <div data-reveal className="mt-8 rounded-2xl border border-room-ink/10 bg-room-ink/5 p-7 md:p-8 max-w-[52rem]">
+          <div data-reveal className="mt-8 rounded-kort border border-room-ink/10 bg-room-ink/5 p-7 md:p-8 max-w-[52rem]">
             <h2 className="font-sans font-bold text-lg mb-3">Så hva passer deg?</h2>
             <p className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed">{data.konklusjon}</p>
             <Link

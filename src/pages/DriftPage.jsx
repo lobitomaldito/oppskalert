@@ -23,7 +23,7 @@ const driftSchema = {
 const DriftKort = ({ nivaa }) => (
   <div
     data-reveal
-    className={`relative flex flex-col h-full rounded-2xl p-7 md:p-8 border ${
+    className={`relative flex flex-col h-full rounded-kort p-7 md:p-8 border ${
       nivaa.fremhevet ? 'border-room-ink/40 bg-surface' : 'border-room-ink/10 bg-surface'
     }`}
   >
@@ -36,7 +36,7 @@ const DriftKort = ({ nivaa }) => (
     <p className="font-body text-[0.95rem] text-room-ink/70 mt-2.5 leading-relaxed min-h-[3em]">{nivaa.tagline}</p>
     <div className="mt-6 flex items-baseline gap-1.5">
       <span className="font-body text-sm text-room-ink/70">fra</span>
-      <span className="font-display font-extrabold text-[2.75rem] leading-none tracking-[-0.03em]">{nivaa.fra}</span>
+      <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{nivaa.fra}</span>
       <span className="font-body text-sm text-room-ink/70">{nivaa.enhet}</span>
     </div>
     <ul className="mt-6 flex flex-col gap-3 flex-1">
@@ -83,7 +83,7 @@ const Sammenligning = () => {
     <section ref={container} className="seksjon">
       <div className="wrap">
         <SeksjonTopp tittel="Full oversikt," uthevet="rad for rad." />
-        <div data-reveal className="overflow-x-auto rounded-2xl border border-room-ink/10">
+        <div data-reveal className="overflow-x-auto rounded-kort border border-room-ink/10">
           <table className="w-full border-collapse min-w-[36rem]">
             <caption className="sr-only">Sammenligning av de tre driftsnivåene</caption>
             <thead>
