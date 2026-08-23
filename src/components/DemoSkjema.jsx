@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { submitDemoRequest } from '../lib/demoRequest';
 import { kontakt } from '../lib/site';
 import { track, identify } from '../lib/analytics';
@@ -7,38 +7,16 @@ import { track, identify } from '../lib/analytics';
 /* Plassholder på 70% blekk mot krem gir 6.3:1, godt over AA. Den vanlige
    feilen er lysegrå plassholdertekst «for elegansen»; den er uleselig. */
 const feltKlasse =
-  'w-full bg-room-ink/5 border border-room-ink/25 rounded-full px-6 py-4 font-body text-sm text-room-ink placeholder:text-room-ink/70 focus:outline-none focus:border-room-ink/60 transition-colors';
+  'w-full bg-surface border border-room-ink/20 rounded-kort px-5 py-3.5 font-body text-sm text-room-ink placeholder:text-room-ink/70 focus:outline-none focus:border-room-ink transition-colors';
 
-// Samme korttaktikk som priskalkulatoren (valgt = fylt kant + hake), bare
-// overført til rommets farger. Tidligere versjon var tynne piller uten
-// beskrivelse, for lite fysisk tilstedeværelse til å føles trykkbare.
-const kortKlasse = (valgt) =>
-  `text-left rounded-kort border px-5 py-4 transition-all duration-200 hover:scale-[1.015] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50 ${
-    valgt ? 'border-room-ink bg-room-ink/10' : 'border-room-ink/20 bg-room-ink/10 hover:border-room-ink/40'
+/* Ja/nei er to ord og fortjener ikke to kort. Som piller lager de heller
+   ingen halvtom rad, og de leser som ett valg, ikke som et skjema i seg selv. */
+const pilleKlasse = (valgt) =>
+  `rounded-full border px-5 py-2.5 font-sans font-bold text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-room-ink/50 ${
+    valgt ? 'bg-room-ink text-surface border-room-ink' : 'bg-surface text-room-ink border-room-ink/20 hover:border-room-ink/45'
   }`;
 
-const Hake = ({ valgt }) => (
-  <span
-    className={`flex-shrink-0 w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${
-      valgt ? 'bg-room-ink border-room-ink' : 'border-room-ink/30'
-    }`}
-    aria-hidden="true"
-  >
-    {valgt && <Check className="w-3 h-3 text-room" strokeWidth={3} />}
-  </span>
-);
-
-const behovOpsjoner = [
-  { id: 'nettside', label: 'Nettside', beskrivelse: 'Ny side eller redesign' },
-  { id: 'nettbutikk', label: 'Nettbutikk', beskrivelse: 'Selge produkter på nett' },
-  { id: 'vet-ikke', label: 'Vet ikke helt enda', beskrivelse: 'Vi finner ut av det sammen' },
-];
-
-const behovLabel = (id) => behovOpsjoner.find((b) => b.id === id)?.label;
-
 const DemoSkjema = ({ tittel, uthevet, lede }) => {
-  const [steg, setSteg] = useState(1);
-  const [behov, setBehov] = useState(null);
   const [harNettside, setHarNettside] = useState(null); // null | true | false
   const [navn, setNavn] = useState('');
   const [epost, setEpost] = useState('');
@@ -53,9 +31,14 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
   const apnetRef = useRef(0);
   useEffect(() => { apnetRef.current = Date.now(); }, []);
 
-  const gaTilSteg2 = () => {
-    track('demo_form_steg1_fullfort', { behov, har_nettside: harNettside });
-    setSteg(2);
+  /* Skjemaet var todelt: to kvalifiseringsspørsmål før navn og e-post.
+     Det første spurte om kategori, og et av de tre svarene var nettbutikk,
+     en leveranse som ikke finnes i porteføljen. Nå står det ene spørsmålet
+     som betyr noe for demoen, og adressen til dagens side, som er det mest
+     nyttige jeg kan få inn. Hendelsen beholder trinnet i trakten. */
+  const velgHarNettside = (verdi) => {
+    if (harNettside === null) track('demo_form_paabegynt', { har_nettside: verdi });
+    setHarNettside(verdi);
   };
 
   const handleSubmit = async (e) => {
@@ -67,7 +50,6 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
     }
     setStatus('sending');
     const meldingDeler = [];
-    if (behov) meldingDeler.push(`Trenger hjelp til: ${behovLabel(behov)}.`);
     if (harNettside !== null) meldingDeler.push(`Har nettside fra før: ${harNettside ? 'Ja' : 'Nei'}.`);
     try {
       await submitDemoRequest({
@@ -79,7 +61,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
         msPaSkjema: Date.now() - apnetRef.current,
       });
       identify({ email: epost.trim(), name: navn.trim() });
-      track('demo_request_submitted', { has_company: Boolean(firma.trim()), behov, har_nettside: harNettside });
+      track('demo_request_submitted', { has_company: Boolean(firma.trim()), har_nettside: harNettside });
       setStatus('success');
     } catch (err) {
       console.error('Demo request failed:', err);
@@ -99,81 +81,15 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
           </p>
 
           {status === 'success' ? (
-            <div className="w-full bg-room-ink/5 border border-room-ink/20 rounded-kort p-9" role="status">
+            <div className="w-full bg-surface border border-room-ink/20 rounded-kort p-9" role="status">
               <p className="font-sans font-bold text-2xl mb-2">Takk! Den er mottatt.</p>
               <p className="font-body text-[0.95rem] text-room-ink/90 leading-relaxed">
                 Jeg tar kontakt på e-post innen 24 timer. Haster det, ring meg på{' '}
                 <a href={`tel:${kontakt.tel}`} className="underline hover:opacity-70 transition-opacity">{kontakt.telefon}</a>.
               </p>
             </div>
-          ) : steg === 1 ? (
-            <div className="w-full flex flex-col gap-7 text-left">
-              <span className="font-body text-sm text-room-ink/75 text-center">Steg 1 av 2</span>
-
-              <div>
-                <span className="font-sans font-bold text-sm block mb-3">Hva trenger du demo til?</span>
-                <div className="grid sm:grid-cols-3 gap-3">
-                  {behovOpsjoner.map((b) => {
-                    const valgt = behov === b.id;
-                    return (
-                      <button
-                        key={b.id} type="button" aria-pressed={valgt}
-                        onClick={() => setBehov(b.id)}
-                        className={kortKlasse(valgt)}
-                      >
-                        <div className="flex items-start justify-between gap-2">
-                          <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{b.label}</span>
-                          <Hake valgt={valgt} />
-                        </div>
-                        <span className="block font-body text-sm text-room-ink/70 mt-1">{b.beskrivelse}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div>
-                <span className="font-sans font-bold text-sm block mb-3">Har du en nettside fra før?</span>
-                <div className="grid grid-cols-2 gap-3 max-w-sm">
-                  {[
-                    { verdi: true, label: 'Ja', beskrivelse: 'Jeg vil bygge om' },
-                    { verdi: false, label: 'Nei', beskrivelse: 'Jeg starter fra bunn' },
-                  ].map((o) => {
-                    const valgt = harNettside === o.verdi;
-                    return (
-                      <button
-                        key={o.label} type="button" aria-pressed={valgt}
-                        onClick={() => setHarNettside(o.verdi)}
-                        className={kortKlasse(valgt)}
-                      >
-                        <div className="flex items-start justify-between gap-2">
-                          <span className={`font-sans font-bold text-sm ${valgt ? 'text-room-ink' : 'text-room-ink/90'}`}>{o.label}</span>
-                          <Hake valgt={valgt} />
-                        </div>
-                        <span className="block font-body text-sm text-room-ink/70 mt-1">{o.beskrivelse}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="flex flex-col items-center gap-3 mt-2">
-                <button
-                  type="button"
-                  onClick={gaTilSteg2}
-                  className="group bg-room-ink text-room px-10 py-5 rounded-full font-sans font-bold text-lg transition-transform duration-300 hover:scale-[1.02] w-full sm:w-auto"
-                >
-                  <span className="flex items-center justify-center gap-2">Neste <ArrowRight className="w-5 h-5" /></span>
-                </button>
-                <button type="button" onClick={() => setSteg(2)} className="font-body text-sm text-room-ink/75 hover:text-room-ink underline underline-offset-2">
-                  Hopp over, jeg vil bare legge igjen kontaktinfo
-                </button>
-              </div>
-            </div>
           ) : (
-            <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-left">
-              <span className="font-body text-sm text-room-ink/75 text-center -mt-1 mb-1">Steg 2 av 2</span>
-
+            <form onSubmit={handleSubmit} noValidate className="w-full flex flex-col gap-4 text-center">
               {/* Honeypot. Plassert utenfor skjermen i stedet for display:none,
                   fordi en del bots hopper over skjulte felt men ikke
                   forflyttede. aria-hidden + tabIndex holder den unna
@@ -197,22 +113,44 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                   className={feltKlasse}
                 />
               </div>
+
+              <div className="mt-2">
+                <span className="font-sans font-bold text-sm block mb-3">Har du en nettside i dag?</span>
+                <div className="flex flex-wrap justify-center gap-3">
+                  {[
+                    { verdi: true, label: 'Ja, den skal bygges om' },
+                    { verdi: false, label: 'Nei, jeg starter fra bunn' },
+                  ].map((o) => (
+                    <button
+                      key={o.label} type="button" aria-pressed={harNettside === o.verdi}
+                      onClick={() => velgHarNettside(o.verdi)}
+                      className={pilleKlasse(harNettside === o.verdi)}
+                    >
+                      {o.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Samme felt, samme kolonne i basen. Bare etiketten flytter
+                  seg: har de en side, er adressen det mest verdifulle jeg
+                  kan få, fordi demoen blir bedre av å se den først. */}
               <input
-                type="text" value={firma} autoComplete="organization" aria-label="Bedrift" placeholder="Bedrift eller nettside (valgfritt)"
+                type="text" value={firma} autoComplete="organization"
+                aria-label={harNettside ? 'Adressen til nettsiden din' : 'Bedrift'}
+                placeholder={harNettside ? 'dittfirma.no' : 'Bedrift (valgfritt)'}
                 onChange={(e) => setFirma(e.target.value)}
                 className={feltKlasse}
               />
+
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="group bg-room-ink text-room px-10 py-5 rounded-full font-sans font-bold text-lg transition-transform duration-300 hover:scale-[1.02] disabled:opacity-60 disabled:hover:scale-100 mt-1"
+                className="group bg-room-ink text-surface px-7 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] disabled:opacity-60 disabled:hover:scale-100 mt-3 self-center"
               >
                 <span className="flex items-center justify-center gap-2">
-                  {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-5 h-5" /></>}
+                  {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-4 h-4" /></>}
                 </span>
-              </button>
-              <button type="button" onClick={() => setSteg(1)} className="font-body text-sm text-room-ink/75 hover:text-room-ink self-center underline underline-offset-2">
-                Tilbake
               </button>
 
               {status === 'error' && (
@@ -223,7 +161,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
               )}
 
               <p className="font-body text-sm text-room-ink/70 text-center mt-1">
-                Uforpliktende. Jeg svarer innen 24 timer, eller ring direkte:{' '}
+                Vil du heller snakke med noen først? Ring{' '}
                 <a href={`tel:${kontakt.tel}`} className="text-room-ink underline underline-offset-2 hover:opacity-70 transition-opacity">{kontakt.telefon}</a>
               </p>
             </form>
