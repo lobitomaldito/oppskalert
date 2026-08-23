@@ -159,6 +159,7 @@ export const Footer = () => (
           <Link to={ruter.om}>Om meg</Link>
           <Link to={ruter.blogg}>Blogg</Link>
           <Link to={ruter.kontakt}>Kontakt</Link>
+          <Link to={ruter.personvern}>Personvern</Link>
         </nav>
         {/* Kapasitetssignalet sto på hver side i den gamle footeren.
             Det er den eneste opplysningen der som endrer seg, så det er

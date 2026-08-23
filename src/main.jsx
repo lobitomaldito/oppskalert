@@ -61,6 +61,7 @@ const WebdesignOsloPage = lazySide(() => import('./pages/WebdesignOsloPage.jsx')
 const NettsideDesignPage = lazySide(() => import('./pages/NettsideDesignPage.jsx'))
 const NettsideBedriftPage = lazySide(() => import('./pages/NettsideBedriftPage.jsx'))
 const NettbutikkPage = lazySide(() => import('./pages/NettbutikkPage.jsx'))
+const PersonvernPage = lazySide(() => import('./pages/PersonvernPage.jsx'))
 const DashboardPage = lazySide(() => import('./pages/DashboardPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
@@ -90,6 +91,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/metode" element={<MetodePage />} />
           <Route path="/om" element={<OmPage />} />
           <Route path="/kontakt" element={<KontaktPage />} />
+          <Route path="/personvern" element={<PersonvernPage />} />
           {/* /kom-i-gang redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/blogg" element={<BlogPage />} />
           <Route path="/blogg/:slug" element={<ArticlePage />} />

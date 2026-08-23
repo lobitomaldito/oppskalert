@@ -15,7 +15,7 @@ const STATIC_PATHS = [
   '/sammenlign',
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
   '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/lage-nettbutikk',
-  '/metode', '/om', '/kontakt', '/blogg',
+  '/metode', '/om', '/kontakt', '/blogg', '/personvern',
   ...caser.map((c) => `/arbeid/${c.slug}`),
 ];
 
