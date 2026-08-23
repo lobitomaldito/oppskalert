@@ -38,7 +38,7 @@ const ROUTES = [
   '/sokemotoroptimalisering', '/webdesign-oslo', '/nettside-design',
   '/nettside-til-bedrift', '/lage-nettbutikk',
   ...caser.map((c) => `/arbeid/${c.slug}`),
-  '/blogg',
+  '/blogg', '/personvern',
   ...articles.map((a) => `/blogg/${a.slug}`),
   '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',
   '/admin/dashboard',

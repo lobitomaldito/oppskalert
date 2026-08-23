@@ -31,6 +31,7 @@ export const ruter = {
   nettsideDesign: '/nettside-design',
   nettsideBedrift: '/nettside-til-bedrift',
   nettbutikk: '/lage-nettbutikk',
+  personvern: '/personvern',
 };
 
 export const navLenker = [
@@ -285,7 +286,7 @@ export const sammenlignWordpress = {
 export const stegene = [
   {
     tittel: 'Jeg bygger demoen din',
-    tid: 'Få dager',
+    tid: '48 timer',
     kort: 'Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse.',
     desc: 'Du sender meg noen linjer om bedriften, eller bare navnet, så finner jeg resten selv. Så bygger jeg et ferdig utkast av den nye siden din. Ikke en skisse i PowerPoint, men en ekte side du kan åpne på mobilen og klikke rundt i.',
     punkter: ['Koster ingenting, uansett hva du lander på', 'Du trenger ikke levere noe på forhånd', 'Demoen ligger på en privat lenke bare du får'],
@@ -327,7 +328,7 @@ export const sporsmal = [
   },
   {
     q: 'Hvor lang tid tar det?',
-    a: 'Demoen er som regel klar på få dager. Fra du godkjenner den til siden er oppe på ditt eget domene, går det vanligvis en til to uker. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding. Jeg er sjelden flaskehalsen.',
+    a: 'Demoen er som regel klar på 48 timer. Fra du godkjenner den til siden er oppe på ditt eget domene, går det vanligvis en til to uker. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding. Jeg er sjelden flaskehalsen.',
   },
   {
     q: 'Eier jeg nettsiden selv?',
@@ -453,7 +454,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hvor lang tid tar det fra start til lansering?',
-      a: 'Demoen er som regel klar på få dager. Fra du godkjenner den til siden er oppe på ditt eget domene går det vanligvis en til to uker. Har du en gammel side, byttes den uten nedetid. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding.',
+      a: 'Demoen er som regel klar på 48 timer. Fra du godkjenner den til siden er oppe på ditt eget domene går det vanligvis en til to uker. Har du en gammel side, byttes den uten nedetid. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding.',
     },
   ],
 
