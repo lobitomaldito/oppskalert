@@ -68,7 +68,8 @@
     ],
     "searchVolume": 320,
     "difficulty": 16,
-    "status": "pending"
+    "status": "published",
+    "publishedDate": "2026-08-24"
   },
   {
     "slug": "seo-eller-google-annonser",
