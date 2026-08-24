@@ -31,10 +31,19 @@ import { articles } from '../src/lib/articles.js';
 // crawlere, og Google ser den nye casen som en duplikat av forsiden.
 import { caser } from '../src/lib/demo-innhold.js';
 
+// Femten spørsmålssider utledes herfra, så et nytt spørsmål i arrayen
+// automatisk blir en snapshottet rute. Fila er ren ESM uten Vite-API-er,
+// akkurat som articles.js, så den er trygg å importere i Node.
+import { populaereSok } from '../src/lib/populaere-sok.js';
+import { ordliste } from '../src/lib/ordliste.js';
+
 const ROUTES = [
   '/', '/arbeid', '/priser', '/metode', '/om', '/kontakt', '/drift',
   '/sammenlign', '/sammenlign/wix', '/sammenlign/wordpress', '/kalkulator',
   '/vanlige-sporsmal',
+  ...populaereSok.map((s) => `/vanlige-sporsmal/${s.slug}`),
+  '/ordliste',
+  ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sokemotoroptimalisering', '/webdesign-oslo', '/nettside-design',
   '/nettside-til-bedrift', '/lage-nettbutikk',
   ...caser.map((c) => `/arbeid/${c.slug}`),

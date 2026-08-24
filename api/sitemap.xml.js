@@ -1,5 +1,7 @@
 import { articles } from '../src/lib/articles.js';
 import { caser } from '../src/lib/demo-innhold.js';
+import { populaereSok } from '../src/lib/populaere-sok.js';
+import { ordliste } from '../src/lib/ordliste.js';
 
 /* Alt innhold er nå lokalt (src/lib/articles.js + src/content/generated/),
    så denne kunne i prinsippet vært generert ved build. Den blir stående som
@@ -13,6 +15,9 @@ const SITE_URL = 'https://oppskalert.no';
 const STATIC_PATHS = [
   '/', '/arbeid', '/priser', '/kalkulator', '/drift', '/vanlige-sporsmal',
   '/sammenlign',
+  ...populaereSok.map((s) => `/vanlige-sporsmal/${s.slug}`),
+  '/ordliste',
+  ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
   '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/lage-nettbutikk',
   '/metode', '/om', '/kontakt', '/blogg', '/personvern',

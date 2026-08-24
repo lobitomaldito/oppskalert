@@ -367,6 +367,39 @@ export const lagFaqSchema = (liste) => ({
 
 export const faqSchema = lagFaqSchema(sporsmal);
 
+/* Nettstedets adresse ett sted, så schema-hjelperne under slipper å
+   gjenta den i hver fil. */
+export const NETTSTED = 'https://oppskalert.no';
+
+/* Brødsmuler som strukturert data.
+ *
+ * Google bruker dem til å bytte ut den nakne URL-en i søkeresultatet med
+ * en lesbar sti («oppskalert.no › Vanlige spørsmål › Hva koster …»), og
+ * de forteller samtidig hvilken side som er forelder til hvilken. Uten
+ * dem framstår hver underside som løsrevet, også når den ligger tre nivå
+ * ned i menyen.
+ *
+ * Tar en liste av { navn, rute }. Forsiden legges på som første ledd her,
+ * så ingen kaller kan glemme den. Siste ledd skal være siden man står
+ * på, og den skal ha `rute` selv om den peker på seg selv: Google
+ * forventer et item på hvert ledd.
+ *
+ *   lagBrodsmuleSchema([
+ *     { navn: 'Vanlige spørsmål', rute: '/vanlige-sporsmal' },
+ *     { navn: item.q, rute: `/vanlige-sporsmal/${item.slug}` },
+ *   ])
+ */
+export const lagBrodsmuleSchema = (steg) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [{ navn: 'Forside', rute: '/' }, ...steg].map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: s.navn,
+    item: `${NETTSTED}${s.rute === '/' ? '/' : s.rute}`,
+  })),
+});
+
 /* ---------------------------------------------------------------
    FAQ per side.
 

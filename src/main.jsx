@@ -54,6 +54,9 @@ const KalkulatorPage = lazySide(() => import('./pages/KalkulatorPage.jsx'))
 const DriftPage = lazySide(() => import('./pages/DriftPage.jsx'))
 const SammenlignPage = lazySide(() => import('./pages/SammenlignPage.jsx'))
 import PopulaereSokPage from './pages/PopulaereSokPage';
+import SporsmalPage from './pages/SporsmalPage';
+import OrdlistePage from './pages/OrdlistePage';
+import BegrepPage from './pages/BegrepPage';
 const VsWixPage = lazySide(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazySide(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 const SeoPage = lazySide(() => import('./pages/SeoPage.jsx'))
@@ -81,6 +84,9 @@ createRoot(document.getElementById('root')).render(
           <Route path="/drift" element={<DriftPage />} />
           <Route path="/sammenlign" element={<SammenlignPage />} />
         <Route path="/vanlige-sporsmal" element={<PopulaereSokPage />} />
+        <Route path="/vanlige-sporsmal/:slug" element={<SporsmalPage />} />
+        <Route path="/ordliste" element={<OrdlistePage />} />
+        <Route path="/ordliste/:slug" element={<BegrepPage />} />
           <Route path="/sammenlign/wix" element={<VsWixPage />} />
           <Route path="/sammenlign/wordpress" element={<VsWordPressPage />} />
           <Route path="/sokemotoroptimalisering" element={<SeoPage />} />
