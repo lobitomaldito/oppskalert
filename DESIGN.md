@@ -75,7 +75,7 @@ rounded:
 spacing:
   maks: "78rem"
   kant: "clamp(1.25rem, 5vw, 3.5rem)"
-  luft: "clamp(5rem, 10vw, 9rem)"
+  luft: "clamp(3.5rem, 6vw, 5.5rem)"
 components:
   button:
     backgroundColor: "{colors.blekk}"
@@ -104,8 +104,9 @@ components:
     rounded: "{rounded.base}"
     border: "1px solid transparent, {colors.blekk} when featured"
   card-testimonial:
-    backgroundColor: "{colors.blekk}"
-    textColor: "{colors.kritt}"
+    backgroundColor: "{colors.hvit}"
+    textColor: "{colors.blekk}"
+    border: "1px solid {colors.felt-kant}"
     rounded: "{rounded.lg}"
   panel-fact:
     backgroundColor: "{colors.felt}"
@@ -142,10 +143,16 @@ Sitat fra designnotatet, som er selve grunnlaget for alt i denne fila:
 > Ingen aksentfarge. All farge på siden kommer fra kundearbeidet, som er den
 > eneste fargen som beviser noe.
 
-Mørkt forekommer nøyaktig tre steder på hele siden: bunnteksten (`.bunn`),
-sitatkortet (`.sitatkort`) og fylte knapper (`.knapp`, som som standard har
-mørk bakgrunn uansett hvilken seksjon de står i). Utenfor de tre stedene er
-`--blekk` alltid tekst, aldri bakgrunn.
+Mørkt forekommer nøyaktig to steder på hele siden: bunnteksten (`.bunn`) og
+fylte knapper (`.knapp`, som som standard har mørk bakgrunn uansett hvilken
+seksjon de står i). Utenfor de to stedene er `--blekk` alltid tekst, aldri
+bakgrunn.
+
+Sitatkortet var det tredje til 24. august 2026. Det er lysnet til et hvitt
+kort med hårstrek, fordi det er sidens største flate etter bunnteksten: som
+eneste mørke blokk midt i en lys side dro den blikket hardere til seg enn
+innholdet fortjener. Antikvaen i sitatet gjør fortsatt jobben med å skille
+kortet fra resten.
 
 **Nøkkelegenskaper:**
 - Ett blekt nøytralt felt og ett hvitt, ingen tredje flate
@@ -177,12 +184,12 @@ mørk bakgrunn uansett hvilken seksjon de står i). Utenfor de tre stedene er
 
 ### Blekket
 - **Blekk** (`#12111d`): standard tekstfarge på feltet og på hvitt, **15,0:1**
-  på felt. Samme verdi er også den ENESTE bakgrunnsfargen i de tre mørke
-  sonene (bunntekst, sitatkort, fylte knapper). Blekk bytter altså jobb alt
-  ettersom hvor den står, aldri begge samtidig i samme setning.
+  på felt. Samme verdi er også den ENESTE bakgrunnsfargen i de to mørke
+  sonene (bunntekst og fylte knapper). Blekk bytter altså jobb alt ettersom
+  hvor den står, aldri begge samtidig i samme setning.
 - **Blekk-flate** (`#1c1a2b`): en anelse lysere enn blekk, brukt inni de mørke
-  sonene selv (f.eks. hover på sitatkortets pilknapper), for å gi dem egen
-  dybde uten å forlate mørket.
+  sonene selv, for å gi dem egen dybde uten å forlate mørket. Etter at
+  sitatkortet ble lyst har den bare bunnteksten igjen.
 - **Blekk-kant** (`#2e2b42`): hårfine kanter inni de mørke sonene.
 - **Blekk-mykt** (`#5c5a70`): dempet tekst på feltet og på hvitt. **5,4:1** på
   felt, godkjent for løpende tekst.
@@ -196,7 +203,7 @@ mørk bakgrunn uansett hvilken seksjon de står i). Utenfor de tre stedene er
 - **Prikk** (`#b8551a`, clay): punktumet i ordmerket når det står på det lyse
   feltet.
 - **Prikk-lys** (`#ffb17a`, peach): punktumet når ordmerket står på mørk
-  bakgrunn (bunntekst, sitatkort). To verdier av samme grunn: fersken faller
+  bakgrunn, altså i bunnteksten. To verdier av samme grunn: fersken faller
   til **1,4:1** på det blekke feltet og blir praktisk talt usynlig der, clay
   gjør ikke det.
 
@@ -303,7 +310,7 @@ looken forøvrig.
 Flatt som standard. Dybde kommer av tone (hvitt kort på blekt felt) og
 hårfine kanter (`--felt-kant`, `--blekk-kant`), ikke av en skyggeskala.
 Tjenestekort, priskort, faktapanelet og sitatkortet har alle null skygge i
-hviletilstand.
+hviletilstand. Sitatkortet er hvitt med hårstrek som de andre, ikke mørkt.
 
 Kun to komponenter har en ekte `box-shadow`, og begge har en fysisk grunn til
 det:
@@ -390,10 +397,24 @@ skygge i ro:
   i stedet for hvitt, altså den eneste kortformen som IKKE er hvit.
 
 ### Sitatkort
-`.sitatkort` er den andre av de tre mørke sonene: bakgrunn blekk, tekst
-kritt, 22px-radius. Selve sitatet står i GT Sectra Fine. Karuselknappene
-bruker `--blekk-flate` og `--blekk-kant` for egen dybde inni det mørke
-kortet.
+`.sitatkort` er et hvitt kort med hårstrek på feltet, 22px-radius. Selve
+sitatet står i GT Sectra Fine, som er det eneste som skiller kortet fra de
+andre kortformene, og det holder: antikvaen finnes to steder på hele siden.
+
+Kortet var mørkt fram til 24. august 2026. Det ble lysnet fordi det er
+sidens største flate etter bunnteksten, og som eneste mørke blokk midt i en
+lys side dro den blikket hardere til seg enn innholdet fortjener.
+
+Alle omtalene ligger i DOM-en samtidig, stablet i samme rutenettcelle
+(`.sitat-scene` / `.sitat-slide`), og bare den aktive har `opacity: 1`.
+Kortet er derfor alltid like høyt som den lengste omtalen, og et bytte
+flytter ingenting under seg. Kilden er festet til bunnlinjen med
+`grid-template-rows: 1fr auto`, ellers hopper navnet mens teksten toner.
+
+Byttet skjer av seg selv hvert syvende sekund, styrt av `useKarusell` i
+`src/lib/`. Den samme hooken driver hero-beviset, som viser de samme
+omtalene forskjøvet ett hakk. Klokka står stille ved `prefers-reduced-motion`
+og pauser på hover og fokus.
 
 ### Nettleserramme (arbeid)
 `.ramme` er stedet all faktisk farge på siden kommer fra: et hvitt, skygget

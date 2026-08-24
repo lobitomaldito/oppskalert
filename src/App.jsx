@@ -8,6 +8,7 @@ import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, heroBevis, kontakt, ruter, vurdering } from './lib/site';
 import { omtaler, sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
+import { useKarusell } from './lib/useKarusell';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
    linje 693 til 797, se inspirasjon/demo-studio-mal.md). Alt CSS ligger
@@ -86,30 +87,43 @@ const Vurdering = () => {
 
    Sitatet hentes fra samme liste som omtaleseksjonen lenger nede, så
    de to aldri kan komme ut av synk. */
+/* Heroen viste én fast omtale, valgt med heroBevis.indeks. Nå toner den
+   gjennom alle sammen, de samme fire som sitatkortet lenger nede, og
+   indeksen bestemmer bare hvilken som står der først. Lenken peker på
+   Google-profilen og ikke på en enkelt uttalelse, så den er like gyldig
+   uansett hvilket sitat som vises. */
 const HeroBevis = () => {
-  if (vurdering || !heroBevis) return null;
-  const o = omtaler[heroBevis.indeks];
-  if (!o) return null;
-
-  const kilde = (
-    <span className="hero-bevis-kilde">
-      {o.navn}, {o.rolle}
-    </span>
-  );
+  const { i, pauseProps } = useKarusell(omtaler.length, 7000, heroBevis?.indeks ?? 0);
+  if (vurdering || !heroBevis || !omtaler.length) return null;
 
   return (
-    <figure data-reveal className="hero-bevis inn" style={{ '--d': '400ms' }}>
-      <blockquote>«{o.sitat}»</blockquote>
-      <figcaption>
-        {heroBevis.url ? (
-          <a href={heroBevis.url} target="_blank" rel="noopener noreferrer">
-            {kilde}
-            <span className="skjult"> (åpnes i ny fane)</span>
-          </a>
-        ) : (
-          kilde
-        )}
-      </figcaption>
+    <figure data-reveal className="hero-bevis inn" style={{ '--d': '400ms' }} {...pauseProps}>
+      {omtaler.map((o, n) => {
+        const kilde = (
+          <span className="hero-bevis-kilde">
+            {o.navn}, {o.rolle}
+          </span>
+        );
+        return (
+          <div
+            key={o.navn}
+            className={n === i ? 'hero-bevis-slide aktiv' : 'hero-bevis-slide'}
+            aria-hidden={n !== i}
+          >
+            <blockquote>«{o.sitat}»</blockquote>
+            <figcaption>
+              {heroBevis.url ? (
+                <a href={heroBevis.url} target="_blank" rel="noopener noreferrer" tabIndex={n === i ? 0 : -1}>
+                  {kilde}
+                  <span className="skjult"> (åpnes i ny fane)</span>
+                </a>
+              ) : (
+                kilde
+              )}
+            </figcaption>
+          </div>
+        );
+      })}
     </figure>
   );
 };
