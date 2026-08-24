@@ -287,6 +287,16 @@ const homeSchema = {
     addressCountry: 'NO',
   },
   geo: { '@type': 'GeoCoordinates', latitude: 59.9482, longitude: 10.6483 },
+  /* areaServed og priceRange sto tidligere i en egen ProfessionalService på
+     /webdesign-oslo. To URL-er som meldte seg som samme foretak på samme
+     adresse delte de lokale signalene i to. Målt 24. august 2026 lå forsiden
+     på 17,7 og /webdesign-oslo på 61,6 for «webdesign i oslo». Nodene er
+     slått sammen her, der Google allerede rangerer foretaket. */
+  areaServed: [
+    { '@type': 'City', name: 'Oslo' },
+    { '@type': 'AdministrativeArea', name: 'Viken' },
+  ],
+  priceRange: 'fra 9 999 kr',
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -311,11 +321,21 @@ const Home = () => (
         12,7 på «webdesign firma» og 12,9 på «webdesigner oslo», med en
         title som ikke inneholdt ordet én eneste gang. Særskriving er ikke
         et alternativ, så preposisjonen bærer det: «webdesign for
-        bedrifter». Se SEO.md punkt 12. */}
+        bedrifter». Se SEO.md punkt 12.
+
+        «i Oslo» kom inn 24. august 2026 av samme grunn. Siste 28 dager sto
+        forsiden på 17,7 for «webdesign i oslo» (47 visninger), 12,3 for
+        «webdesigner oslo» (27 visninger) og 23,8 for «web designer oslo»
+        (10 visninger), uten ordet Oslo i title én eneste gang. Landingssiden
+        /webdesign-oslo, som har ordet i både title og H1, lå på 61,6 på det
+        samme søket. Google har altså allerede valgt forsiden tre ganger, og
+        halve førstesiden på «webdesign i Oslo» er byråenes rotdomener.
+        Preposisjonen bærer også her, «for bedrifter i Oslo», aldri
+        særskriving. 57 tegn med suffikset. */}
     <SEO
-      title="Webdesign for bedrifter til fast pris"
-      description="Webdesign for norske bedrifter til fast pris. Jeg bygger hjemmesiden ferdig, og du ser en gratis demo før du betaler en krone. Ingen binding."
-      keywords={['webdesign for bedrifter', 'webdesign firma', 'hjemmeside til bedrift', 'nettside til fast pris']}
+      title="Webdesign for bedrifter i Oslo, til fast pris"
+      description="Webdesign for bedrifter i Oslo og resten av landet, til fast pris. Jeg bygger hjemmesiden ferdig, og du ser en gratis demo før du betaler en krone."
+      keywords={['webdesign for bedrifter', 'webdesign i Oslo', 'webdesign firma', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />
