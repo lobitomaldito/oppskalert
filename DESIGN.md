@@ -405,6 +405,13 @@ Kortet var mørkt fram til 24. august 2026. Det ble lysnet fordi det er
 sidens største flate etter bunnteksten, og som eneste mørke blokk midt i en
 lys side dro den blikket hardere til seg enn innholdet fortjener.
 
+Sliden sentreres i scenen (`align-content: center`). Kilden var festet til
+bunnlinjen først, og da ble det et hull på et par hundre piksler midt i
+kortet hver gang en kort omtale sto for tur, siden scenen er like høy som
+den lengste. Seksjonen `.sitatblokk` har symmetrisk `padding-block`: sto den
+på 0 i toppen, begynte feltet nøyaktig der kortet begynner, og kortet så
+limt til fargeskiftet ut.
+
 Alle omtalene ligger i DOM-en samtidig, stablet i samme rutenettcelle
 (`.sitat-scene` / `.sitat-slide`), og bare den aktive har `opacity: 1`.
 Kortet er derfor alltid like høyt som den lengste omtalen, og et bytte

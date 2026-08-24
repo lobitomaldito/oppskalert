@@ -638,7 +638,11 @@
      Sitat. Eneste sted GT Sectra Fine får slippe til, sammen med
      pristallene.
      ---------------------------------------------------------------- */
-  .sitatblokk { background: var(--felt); padding-block: 0 var(--luft); }
+  /* Padding-toppen sto på 0. Da begynner feltet nøyaktig der kortet
+     begynner, og kortet ser limt til fargeskiftet ut i stedet for å ligge
+     på en flate. Det var mindre synlig da kortet var mørkt, fordi kanten
+     mellom hvitt og blekk uansett var hard. Nå er den symmetrisk. */
+  .sitatblokk { background: var(--felt); padding-block: var(--luft); }
   /* Kortet var blekk-svart. Det er sidens største flate etter bunnteksten,
      og som eneste mørke blokk midt i en lys side dro den blikket til seg
      hardere enn innholdet fortjener. Nå er det et hvitt kort på feltet, som
@@ -656,10 +660,16 @@
   /* Alle omtalene ligger stablet i samme celle. Scenen er dermed alltid så
      høy som den lengste, og et bytte flytter ingenting under seg. */
   .sitat-scene { display: grid; }
+  /* Scenen er like høy som den lengste omtalen, ellers hopper siden ved
+     hvert bytte. Kilden var festet til bunnlinjen med `1fr auto`, og det
+     ga et hull på et par hundre piksler midt i kortet hver gang en kort
+     omtale sto for tur: «Jeg ble veldig fornøyd» er én linje mot tre.
+     Nå sentreres hele sliden i stedet, så luften fordeler seg likt over og
+     under, og navnet blir hengende sammen med sitatet det hører til. */
   .sitat-slide {
     grid-area: 1 / 1;
-    display: grid; grid-template-rows: 1fr auto;
-    gap: clamp(1.5rem, 3vw, 2.25rem);
+    display: grid; align-content: center;
+    gap: clamp(1.25rem, 2.5vw, 1.75rem);
     opacity: 0; transition: opacity .7s var(--e);
   }
   .sitat-slide.aktiv { opacity: 1; }
