@@ -7,13 +7,23 @@ import Portfolio from '../components/Portfolio';
 import DemoSkjema from '../components/DemoSkjema';
 import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
-import { kontakt, lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
+import { lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 /* Bygget på faktiske Search Console-data, ikke på søkeordslisten. Forsiden
    fikk i uke 31 visninger på «webdesign i oslo», «webdesigner oslo»,
    «webdesign firma» og «webdesign bedrift» uten at noen side var laget for
-   dem. Google prøvde å rangere forsiden på lokale søk fordi det ikke fantes
-   noe bedre. Denne siden er det bedre.
+   dem, og denne siden ble laget for å ta dem.
+
+   Det slo ikke til. Målt 24. august 2026, 28 dager: forsiden 17,7 på
+   «webdesign i oslo», denne siden 61,6, til sammen 110 visninger og null
+   klikk. Google valgte forsiden også på «webdesigner oslo» (12,3 mot 43,7)
+   og «web designer oslo» (23,8 mot 50,6). På førstesiden for «webdesign i
+   Oslo» ligger byråene med rotdomenet sitt, ikke med en underside. Forsiden
+   er derfor Oslo-siden nå, og fikk «i Oslo» inn i title samme dag.
+
+   Denne siden er støtte, ikke konkurrent: den utdyper det lokale for den
+   som allerede er her, og har sluppet foretaksnoden sin. Ikke skjerp title
+   eller H1 her mot hodesøket igjen uten å måle først.
 
    Avgrensning mot naboinnhold: /blogg/webutvikler-oslo eier «webutvikler
    oslo» (informasjonssøk, priser og leverandørtyper). Denne eier «webdesign
@@ -22,31 +32,16 @@ import { kontakt, lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 const CANONICAL = 'https://oppskalert.no/webdesign-oslo';
 
+/* Ingen ProfessionalService her. Den sto her fram til 24. august 2026, med
+   samme adresse, samme geo og samme grunnlegger som forsidens. To URL-er
+   som melder seg som det samme foretaket deler de lokale signalene i to, og
+   målingen viste nøyaktig det: forsiden 17,7 og denne siden 61,6 på
+   «webdesign i oslo», 110 visninger og null klikk til sammen. Samme mønster
+   på «webdesigner oslo» (12,3 mot 43,7) og «web designer oslo» (23,8 mot
+   50,6). Foretaksnoden bor nå bare på forsiden, med areaServed og
+   priceRange flyttet med. Denne siden beholder brødsmulene og FAQ-en, som
+   hører til siden og ikke til foretaket. Ikke legg den tilbake. */
 const webdesignOsloSchema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: 'Oppskalert, webdesign i Oslo',
-    description:
-      'Webdesign i Oslo for små og mellomstore bedrifter. Håndkodede nettsider med fast pris, gratis demo før du bestemmer deg, og én kontaktperson hele veien.',
-    url: CANONICAL,
-    telephone: kontakt.tel,
-    email: kontakt.epost,
-    founder: { '@type': 'Person', name: kontakt.navn },
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Ostadalsveien 66',
-      addressLocality: 'Oslo',
-      postalCode: '0753',
-      addressCountry: 'NO',
-    },
-    geo: { '@type': 'GeoCoordinates', latitude: 59.9482, longitude: 10.6483 },
-    areaServed: [
-      { '@type': 'City', name: 'Oslo' },
-      { '@type': 'AdministrativeArea', name: 'Viken' },
-    ],
-    priceRange: 'fra 9 999 kr',
-  },
   {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -171,9 +166,13 @@ const Inkludert = () => {
 
 const WebdesignOsloPage = () => (
   <Shell>
+    {/* Beskrivelsen var 159 tegn og ble kuttet til 152 den 24. august 2026.
+        Title og H1 står med vilje urørt denne runden: forsiden fikk «i Oslo»
+        i sin title samtidig, og skal måles alene før denne siden også
+        skrives om. Se kommentaren øverst i fila. */}
     <SEO
       title="Webdesign i Oslo til fast pris"
-      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 9 999 kr, og en ferdig demo gratis før du bestemmer deg."
+      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 9 999 kr, og en gratis demo før du bestemmer deg."
       keywords={['webdesign oslo', 'webdesigner oslo', 'webdesign firma', 'webdesign bedrift']}
       canonical={CANONICAL}
       jsonLd={webdesignOsloSchema}
