@@ -2,6 +2,7 @@ import { Children, cloneElement, isValidElement, useEffect, useRef } from 'react
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { kontakt, navLenker, ruter } from '../lib/site';
 import { RUTE_VANLIGE_SPORSMAL } from '../lib/populaere-sok';
+import { RUTE_ORDLISTE } from '../lib/ordliste';
 import { cn } from '../lib/utils';
 
 /* Uten dette beholder React Router scrollposisjonen mellom ruter, så du
@@ -147,6 +148,7 @@ export const Footer = () => (
           <Link to={ruter.sammenlignWix} className="text-ink/70 hover:text-ink transition-colors">Meg mot Wix</Link>
           <Link to={ruter.sammenlignWordpress} className="text-ink/70 hover:text-ink transition-colors">Meg mot WordPress</Link>
           <Link to={RUTE_VANLIGE_SPORSMAL} className="text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
+          <Link to={RUTE_ORDLISTE} className="text-ink/70 hover:text-ink transition-colors">Ordliste</Link>
         </div>
       </div>
 
