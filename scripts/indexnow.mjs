@@ -21,7 +21,27 @@
 
 const HOST = 'oppskalert.no';
 const KEY = '08b4b4d36bf172a50dfe1e71f2abe687';
-const ENDEPUNKT = 'https://api.indexnow.org/indexnow';
+/* To endepunkt, ikke ett.
+ *
+ * Målt 24. august 2026: api.indexnow.org og www.bing.com/indexnow svarer
+ * begge 403 UserForbiddedToAccessSite på vår nøkkel, mens yandex.com
+ * svarer 202. Nøkkelfilen er den samme i alle tre kallene, og den er
+ * verifisert lesbar: 200, ingen redirect, riktig innhold, riktig
+ * content-type, og lesbar med bingbots egen user agent. Nettstedet er
+ * dessuten verifisert i Bing Webmaster Tools, sjekket mot deres eget
+ * API. Det er altså Bings forkontroll av nøkkelen som avviser, ikke noe
+ * på vår side.
+ *
+ * Det gjør ikke innsendingen tapt. IndexNow er et delt nettverk: en
+ * innsending til én deltaker deles med de andre. Etter Yandex-kallet
+ * dukket URL-en opp i Bings egen IndexNow-logg med kilde «Self».
+ *
+ * Derfor sendes det til begge. Slutter Bing å avvise nøkkelen, virker
+ * det direkte uten at noen må huske å endre noe her. */
+const ENDEPUNKTER = [
+  'https://api.indexnow.org/indexnow',
+  'https://yandex.com/indexnow',
+];
 const SITEMAP = `https://${HOST}/sitemap.xml`;
 
 // IndexNow tar opptil 10 000 URL-er per kall. Vi er langt under, men behold
@@ -54,16 +74,36 @@ async function main() {
     return;
   }
 
-  const res = await fetch(ENDEPUNKT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    body: JSON.stringify({ host: HOST, key: KEY, keyLocation: `https://${HOST}/${KEY}.txt`, urlList }),
+  const body = JSON.stringify({
+    host: HOST,
+    key: KEY,
+    keyLocation: `https://${HOST}/${KEY}.txt`,
+    urlList,
   });
 
-  // 200 og 202 betyr mottatt. 403 betyr at nøkkelfilen ikke ble funnet, som
-  // nesten alltid er at deployen ikke er ute ennå.
-  const merknad = { 200: 'mottatt', 202: 'mottatt, valideres', 403: 'nøkkelfilen ble ikke funnet' }[res.status] || '';
-  console.log(`indexnow: ${urlList.length} URLer -> ${res.status} ${merknad}`);
+  /* Feilmeldingen skrives ut ordrett fra svaret, ikke oversatt fra
+     statuskoden. Den forrige versjonen mappet 403 til «nøkkelfilen ble
+     ikke funnet», og den etiketten kostet en time med å lete etter en
+     fil som hele tiden svarte 200. Den ekte teksten fra Bing er
+     «UserForbiddedToAccessSite», som peker et helt annet sted. */
+  for (const endepunkt of ENDEPUNKTER) {
+    const navn = new URL(endepunkt).hostname;
+    try {
+      const res = await fetch(endepunkt, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+        body,
+      });
+      const tekst = (await res.text().catch(() => '')).trim().slice(0, 200);
+      const ok = res.status === 200 || res.status === 202;
+      console.log(
+        `indexnow: ${urlList.length} URLer -> ${navn} ${res.status}${ok ? ' mottatt' : ''}${tekst && !ok ? ` ${tekst}` : ''}`,
+      );
+    } catch (err) {
+      // Ett endepunkt som er nede skal ikke stanse det andre.
+      console.log(`indexnow: ${navn} feilet, ${err.message}`);
+    }
+  }
 }
 
 main().catch((err) => {
