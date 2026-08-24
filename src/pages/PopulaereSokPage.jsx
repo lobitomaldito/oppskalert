@@ -4,7 +4,8 @@ import SEO from '../components/SEO';
 import { Shell, SideTopp } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
-import { populaereSok, populaereSokSchema } from '../lib/populaere-sok';
+import { lagBrodsmuleSchema } from '../lib/site';
+import { RUTE_VANLIGE_SPORSMAL, populaereSok, populaereSokSchema, sporsmalRute } from '../lib/populaere-sok';
 
 /* Samleside for populære søk.
  *
@@ -32,7 +33,10 @@ const PopulaereSokPage = () => {
           'hvordan lage nettside',
         ]}
         canonical="https://oppskalert.no/vanlige-sporsmal"
-        jsonLd={populaereSokSchema}
+        jsonLd={[
+          populaereSokSchema,
+          lagBrodsmuleSchema([{ navn: 'Vanlige spørsmål', rute: RUTE_VANLIGE_SPORSMAL }]),
+        ]}
       />
 
       <SideTopp
@@ -44,10 +48,20 @@ const PopulaereSokPage = () => {
       <section ref={container} className="seksjon pt-0">
         <div className="wrap">
           <div className="max-w-[46rem] flex flex-col gap-11">
+            {/* Overskriften er lenken til spørsmålets egen side, og
+                `til` beholdes som lenken videre til temasiden. To ulike
+                mål med to ulike roller: den ene utdyper spørsmålet, den
+                andre selger tjenesten bak det. Hele svaret blir stående
+                her, så siden fortsatt gir mening uten et eneste klikk. */}
             {populaereSok.map((item) => (
-              <article key={item.q} data-reveal>
+              <article key={item.slug} data-reveal>
                 <h2 className="font-sans font-bold text-[1.35rem] sm:text-2xl leading-snug tracking-tight">
-                  {item.q}
+                  <Link
+                    to={sporsmalRute(item.slug)}
+                    className="underline underline-offset-4 decoration-room-ink/25 hover:decoration-room-ink transition-colors"
+                  >
+                    {item.q}
+                  </Link>
                 </h2>
                 <p className="font-body text-room-ink/70 leading-relaxed mt-3">{item.a}</p>
                 <Link
