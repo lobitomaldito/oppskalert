@@ -278,6 +278,19 @@ export const stegene = [
   }
 ];
 
+/* Omtalene.  kobler en omtale til casesiden den handler om,
+   der det finnes en. To av fire har en i dag: Guro Brakestad og Irmelin
+   Drake står uten fordi prosjektene deres ikke ligger som case.
+
+   Grunnen til at koblingen er et felt og ikke et navneoppslag: «Katrin
+   Brubakk» er både et personnavn og en slug, mens «Thoralf Stenvold» og
+   «progressive-diplomacy» ikke ligner på hverandre i det hele tatt. Et
+   oppslag på navn ville truffet den ene og bommet på den andre.
+
+   Poenget med koblingen: omtalen gjør mest nytte på siden som viser
+   arbeidet den handler om. På forsiden er den én av fire i en karusell
+   der leseren ikke vet hvilket prosjekt sitatet gjelder. På casesiden
+   står den rett under arbeidet den beskriver. */
 export const omtaler = [
   {
     "sitat": "Jeg fikk en vennlig henvendelse fra Aleksander i Oppskalert, og ble raskt imponert over kunnskapen og kompetansen deres. Det var lett å si ja.",
@@ -287,12 +300,14 @@ export const omtaler = [
   {
     "sitat": "Jeg ble veldig fornøyd med resultatet, og de leverte raskt!",
     "navn": "Katrin Brubakk",
-    "rolle": "katrinbrubakk.no"
+    "rolle": "katrinbrubakk.no",
+    "caseSlug": "katrin-brubakk"
   },
   {
     "sitat": "Oppskalert forsto raskt hva vi trengte og leverte en nettside som virkelig representerer oss. Profesjonelt, effektivt og en glede å samarbeide med.",
     "navn": "Thoralf Stenvold",
-    "rolle": "Progressive Diplomacy"
+    "rolle": "Progressive Diplomacy",
+    "caseSlug": "progressive-diplomacy"
   },
   {
     "sitat": "Kjempefornøyd :)",
@@ -332,3 +347,7 @@ export const sporsmal = [
     "Meg. Aleksander. Jeg tegner, koder, skriver og setter opp serveren selv. Sender du en e-post, blir den lest av personen som faktisk bygger siden din, ikke av en support-adresse."
   ]
 ];
+
+/* Slår opp omtalen som hører til én casesiden. Returnerer undefined for
+   de casene som ikke har en, og da vises ingen sitatblokk. */
+export const omtaleForCase = (slug) => omtaler.find((o) => o.caseSlug === slug);

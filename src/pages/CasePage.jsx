@@ -2,8 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import { useReveal } from '../lib/useReveal';
-import { caser } from '../lib/demo-innhold';
-import { prosjekter, toganger } from '../lib/site';
+import { caser, omtaleForCase } from '../lib/demo-innhold';
+import { prosjekter, toganger, lagBrodsmuleSchema } from '../lib/site';
 
 /* Casesiden er ordrett fra studio-mal-demoen (mal3.src.html, byggCase-
    funksjonen rundt linje 1465), portet til React i stedet for innerHTML.
@@ -57,6 +57,7 @@ const CasePage = () => {
   const nesteProsjekt = finnProsjekt(neste.slug);
   if (!prosjekt) return <IkkeFunnet />;
   const canonical = `https://oppskalert.no/arbeid/${c.slug}`;
+  const omtale = omtaleForCase(c.slug);
 
   return (
     <Shell>
@@ -64,6 +65,10 @@ const CasePage = () => {
         title={c.tittel}
         description={kuttBeskrivelse(c.ingress)}
         canonical={canonical}
+        jsonLd={lagBrodsmuleSchema([
+          { navn: 'Arbeid', rute: '/arbeid' },
+          { navn: prosjekt.navn, rute: `/arbeid/${c.slug}` },
+        ])}
       />
 
       <div ref={container}>
@@ -156,6 +161,37 @@ const CasePage = () => {
             </div>
           </div>
         </section>
+
+        {/* Omtalen står her, etter løsningen og før neste-lenken, fordi
+            det er punktet der leseren nettopp har lest hva som ble gjort
+            og lurer på om det stemmer. To av seks caser har en omtale i
+            dag. De fire andre viser ingenting her, heller enn en tom
+            ramme eller et sitat fra et annet prosjekt.
+
+            Ingen Review-oppmerking. Google regner vurderinger en
+            virksomhet publiserer om seg selv som self-serving og viser
+            dem ikke som stjerner uansett, og site.js advarer allerede
+            mot å prøve. Sitatet står her for leseren, ikke for roboten.
+
+            Merk at blokken ikke bruker .casedel, som resten av seksjonene
+            over gjør. Den klassen er et todelt rutenett (15rem
+            etikettkolonne + resten), og en figur som eneste barn havner i
+            den smale kolonnen og blir 240 px bred. */}
+        {omtale && (
+          <section className="seksjon pt-0">
+            <div className="wrap" data-reveal>
+              <figure className="max-w-[46rem] border-t border-room-ink/15 pt-9">
+                <blockquote className="font-display font-light text-[clamp(1.4rem,3vw,1.9rem)] leading-[1.25] tracking-[-0.015em]">
+                  «{omtale.sitat}»
+                </blockquote>
+                <figcaption className="font-body text-sm text-room-ink/70 mt-5">
+                  <span className="font-sans font-bold text-room-ink">{omtale.navn}</span>
+                  {omtale.rolle ? `, ${omtale.rolle}` : ''}
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+        )}
 
         <section className="wrap" style={{ paddingBottom: 'var(--luft)' }}>
           <div className="casebunn">
