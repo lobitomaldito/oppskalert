@@ -173,11 +173,14 @@ rekkevidde og skal ikke følges opp videre.
 
 **Kjent gjeld:**
 
-- `alphanegotiations.com` ligger fortsatt i `prosjekter`-arrayen i
-  `src/lib/site.js`, men er fjernet fra de seks prosjektene som faktisk vises
-  på forsiden og på `/arbeid`. Målt 19. august 2026 svarte siden HTTP 500.
-  Footeren der krediterer i tillegg et annet byrå. Den bør fjernes helt fra
-  arrayen også, ikke bare fra visningslisten.
+- `alphanegotiations.com` er tilbake som ett av de fire kortene på forsiden
+  (25. august 2026, byttet inn for Samtaleverkstedet). Sto ute siden
+  21. august fordi siden svarte HTTP 500 og footeren krediterte et annet
+  byrå, men begge var feil ved ny måling: siden svarer 200, og footeren
+  peker nå til oppskalert.no. Bilder tatt på nytt samtidig, det gamle
+  skjermbildet hadde en Design Lab-knapp brent inn fra en tidligere
+  demo-versjon. Har ingen case-side ennå, så kortet lenker rett ut til
+  kundens egen side, samme mønster som Melanie Dahl.
 - Tankestrek finnes i rundt ni kodekommentarer. Ikke i kundevendt tekst.
 - Forsidens H1 er «Nettsiden din er ikke et visittkort. Den avgjør om de
   ringer deg.» Heroen er innholdshøy, ikke skjermhøy: den har ingen
