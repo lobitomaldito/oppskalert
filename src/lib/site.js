@@ -567,12 +567,14 @@ export const landingsSporsmal = {
    0,75 / 3,906 = 19,2 % av bildet av gangen. Endres fangsthøyden eller
    vindusformatet, må `til` regnes om for alle.
 
-   alphanegotiations.com og irmelindrake.no er ute av visningslisten.
-   Alpha svarte HTTP 500 da fangstene ble tatt, og footeren der krediterer
-   et annet byrå. Irmelin er en kollegas prosjekt uten vår tilgang. Begge
-   står i CLAUDE.md som utenfor rekkevidde. De ligger igjen nederst uten
-   `full`, så de fortsatt finnes for eventuelle lenker, men de vises ikke
-   i rammene på forsiden. */
+   irmelindrake.no er ute av visningslisten. Det er en kollegas prosjekt
+   uten vår tilgang, står i CLAUDE.md som utenfor rekkevidde. Den ligger
+   igjen nederst uten `full`, så den fortsatt finnes for eventuelle
+   lenker, men vises ikke i rammene på forsiden.
+
+   alphanegotiations.com var ute av samme grunn (HTTP 500, footer som
+   krediterte et annet byrå), men er tilbake fra 25. august 2026: begge
+   feilene var rettet ved ny måling. Se kommentaren ved oppføringen. */
 /* Porteføljebildene finnes i to oppløsninger. Filnavnet er 1x, det samme
    navnet med @2x er dobbelt så bredt. Skjermbildene ble tidligere servert
    i 640 px og vist på 646, altså halv oppløsning på enhver 2x-skjerm, og
@@ -593,6 +595,18 @@ export const prosjekter = [
      gangen i stedet for 19 %, og rullelengden må regnes ut fra det.
      Kopierer man -79% hit, ruller kortet langt forbi bunnen av bildet. */
   { img: '/websider/melanie-dahl.webp', slug: 'melanie-dahl', full: '/websider/full/melanie-dahl.webp', til: '-34%', navn: 'Melanie Dahl', bransje: 'Skuespill · mental trening', url: 'https://www.melaniedahl.com/', domene: 'melaniedahl.com' },
+  /* Alpha Negotiations. Satt tilbake 25. august 2026. Sto ute av arrayen
+     siden 21. august fordi siden svarte HTTP 500 og footeren krediterte
+     et annet byrå, se CLAUDE.md. Begge var feil ved ny måling: siden
+     svarer 200, og footeren peker nå til oppskalert.no. Både --til og
+     bildene er tatt på nytt, det gamle skjermbildet hadde en Design
+     Lab-knapp brent inn nede til venstre fra en tidligere demo-versjon.
+     @2x skutt samtidig med samme rådata, se toganger() over.
+
+     Til er -71%, ikke -79% som de fleste andre: forsiden er 3319 px høy,
+     ikke lang nok til å fylle den vanlige 5000 px-fangsten, så bildet er
+     640 x 1660, samme prinsipp som Melanie Dahl over. */
+  { img: '/websider/alpha-negotiations.webp', slug: 'alpha-negotiations', full: '/websider/full/alpha-negotiations.webp', til: '-71%', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
   { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
   { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
   { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
