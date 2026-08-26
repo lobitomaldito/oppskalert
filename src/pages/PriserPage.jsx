@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Check, Minus } from 'lucide-react';
 import SEO from '../components/SEO';
-import { Shell } from '../components/Layout';
+import { Shell, KortRad } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
-import { lagFaqSchema, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
+import { Modell } from '../components/Priser';
+import { lagFaqSchema, prisNotat, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
 /* Skjemaet bygges av nøyaktig de spørsmålene som vises lenger nede på
@@ -16,6 +17,19 @@ import { sporsmal } from '../lib/demo-innhold';
    med sitt eget skjema, så det er fortsatt to ulike FAQPage-sett på to
    URLer. Det var hele poenget med å skille dem 13. august: identiske
    skjemaer på to ruter gjør at Google beholder bare den ene. */
+/* Nøyaktig samme rutenett som forsiden bruker i Priser.jsx: tre kort i
+   linje fra lg, to fra md, og vannrett sveip på mobil. Sto det med egne
+   verdier her, ville radene sprikt igjen første gang én av dem ble endret. */
+const KortRadPris = ({ children }) => (
+  <KortRad
+    gridKlasser="md:grid-cols-2 lg:grid-cols-3"
+    kortBredde="w-[86%]"
+    className="gap-5 items-stretch max-w-[52rem] lg:max-w-[72rem]"
+  >
+    {children}
+  </KortRad>
+);
+
 const prisFaqSchema = lagFaqSchema(sporsmal.map(([q, a]) => ({ q, a })));
 
 const priserSchema = {
@@ -85,7 +99,7 @@ const Sammenligning = () => (
           </tbody>
         </table>
       </div>
-      <p className="prisnotat">
+      <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">
         Begge modellene gjelder nye nettsider. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
       </p>
     </div>
@@ -117,49 +131,20 @@ const PriserPage = () => (
           <p className="etikett">Tre modeller</p>
           <h2>Eie den selv, la meg passe på, eller be om noe eget</h2>
         </div>
-        {/* Kortene bygges fra prismodeller i site.js, ikke skrevet inn her.
-            De sto tidligere hardkodet, og da fantes den samme teksten to
-            steder: her og i Priser.jsx på forsiden. En prisendring måtte
-            gjøres begge steder for å ikke sprike. Nå er site.js eneste
-            kilde, slik toppen av den fila alltid har hevdet. */}
-        <div className="priser tre inn" style={{ '--d': '80ms' }}>
+        {/* Kortene bygges fra prismodeller i site.js, og rendres av det
+            samme Modell-kortet som forsiden. De hadde tidligere sin egen
+            CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme
+            data, to ulike produkter for den som så begge rutene. */}
+        <KortRadPris>
           {prismodeller.map((m) => (
-            <article key={m.id} className={m.fremhevet ? 'pris fremhevet' : 'pris'}>
-              <p className="modell">{m.navn}{m.periode ? ` · ${m.periode}` : ''}</p>
-              {m.erForesporsel ? (
-                /* Ingen «fra» og ingen enhet her: det ville lest som at
-                   «Forespør pris» er et beløp. Tallet er også mindre, siden
-                   det er tekst og ikke et siffer som skal bære vekten. */
-                <p className="tall foresporsel">{m.fra}</p>
-              ) : (
-                <p className="tall">
-                  <span className="fra">fra</span>{m.fra}<span>{m.enhet}</span>
-                </p>
-              )}
-              <p className="tagline">{m.tagline}</p>
-              {m.id === 'engangs' && (
-                <Link
-                  to={ruter.kalkulator}
-                  className="self-start text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
-                >
-                  Regn ut prisen for din side →
-                </Link>
-              )}
-              {m.erForesporsel && (
-                <Link
-                  to={ruter.kontakt}
-                  className="self-start text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
-                >
-                  Fortell meg hva du trenger →
-                </Link>
-              )}
-              <ul>
-                {m.inkludert.map((f) => <li key={f}>{f}</li>)}
-              </ul>
-            </article>
+            <Modell
+              key={m.id}
+              m={m}
+              className={m.erForesporsel ? 'md:col-span-2 lg:col-span-1' : undefined}
+            />
           ))}
-        </div>
-        <p className="prisnotat">Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.</p>
+        </KortRadPris>
+        <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
       </div>
     </section>
 
@@ -173,19 +158,14 @@ const PriserPage = () => (
           <p>Velger du at jeg skal passe på siden, er dette nivåene. Du kan gå opp eller
           ned, eller avslutte, uten oppsigelsestid.</p>
         </div>
-        <div className="priser tre inn" style={{ '--d': '80ms' }}>
+        {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
+            «Bestill gratis demo» ville lovet en demo av en driftsavtale. */}
+        <KortRadPris>
           {driftNivaer.map((n) => (
-            <article key={n.id} className={n.fremhevet ? 'pris fremhevet' : 'pris'}>
-              <p className="modell">{n.navn}</p>
-              <p className="tall"><span className="fra">fra</span>{n.fra}<span>{n.enhet}</span></p>
-              <p className="tagline">{n.tagline}</p>
-              <ul>
-                {n.inkludert.map((f) => <li key={f}>{f}</li>)}
-              </ul>
-            </article>
+            <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
           ))}
-        </div>
-        <p className="prisnotat">{driftNotat}</p>
+        </KortRadPris>
+        <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{driftNotat}</p>
       </div>
     </section>
 

@@ -14,7 +14,12 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
    Ingen av kortene går mørke: mørkt er reservert til bunntekst, sitatkort
    og fylte knapper. className kommer fra KortRad (bredden på mobil),
    derfor cn() i stedet for en ren streng. */
-const Modell = ({ m, visPasserDeg = false, className }) => {
+/* Eksportert fordi /priser rendrer nøyaktig det samme kortet. Prissiden
+   hadde tidligere sine egne kort i CSS (.pris): serif-tall, punktumliste,
+   ingen knapp. Det ga to ulike utgaver av «Driftet av meg» på to ruter.
+   Kortet bor ett sted nå. `cta` finnes bare fordi driftsnivåene ikke skal
+   si «Bestill gratis demo», de skal si «Velg Grunndrift». */
+export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis demo', className }) => {
   return (
     <div
       data-reveal
@@ -92,7 +97,7 @@ const Modell = ({ m, visPasserDeg = false, className }) => {
         to={ruter.kontakt}
         className="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] bg-room-ink text-surface"
       >
-        Bestill gratis demo <ArrowRight className="w-4 h-4" />
+        {cta} <ArrowRight className="w-4 h-4" />
       </Link>
     </div>
   );
