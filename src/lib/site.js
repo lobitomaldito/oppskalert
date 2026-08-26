@@ -190,9 +190,15 @@ export const driftNivaer = [
     fremhevet: true,
   },
   {
+    /* Hevet fra 1 290 til 1 490 den 27. august 2026, og det er en
+       lesbarhetsendring før det er en prisendring: Nettside på abonnement
+       koster 1 290 kr/mnd, og de to sto to blokker fra hverandre på
+       /priser med samme tall. To ulike produkter til samme pris på samme
+       side er den samme forvekslingen som «Driftet av meg» skapte med
+       navn. Tallene på prissiden skal ikke gjenbrukes på tvers. */
     id: 'prioritert',
     navn: 'Prioritert',
-    fra: '1 290',
+    fra: '1 490',
     enhet: 'kr/mnd',
     tagline: 'For deg som vil ha raskest svar og en side som stadig forbedres.',
     inkludert: [
