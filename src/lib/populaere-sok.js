@@ -58,7 +58,7 @@ export const populaereSok = [
     q: 'Hva koster en nettside i Norge?',
     tittel: 'Hva koster en nettside i Norge?',
     beskrivelse: 'Malbasert side ligger på 5 000 til 15 000 kroner, byråer fra bunnen på 25 000 og oppover. Hos meg starter en håndbygd side på 9 999 kroner eks. mva.',
-    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 9 999 kroner eks. mva som engangspris, eller 690 kroner i måneden hvis jeg skal drifte den også. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
+    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 9 999 kroner eks. mva som engangspris, eller 1 290 kroner i måneden på abonnement med 12 måneders binding. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
     utdyping: [
       {
         t: 'Hva er det du faktisk betaler for?',
@@ -318,7 +318,7 @@ export const populaereSok = [
     q: 'Eier jeg nettsiden og koden min selv?',
     tittel: 'Eier du nettsiden og koden din selv?',
     beskrivelse: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert. Velger du drift, eier du fortsatt innhold og design, og kan ta det med deg når du vil.',
-    a: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert og eier hele greia. Velger du at jeg drifter siden, eier du fortsatt både innholdet og designet, og du kan ta det med deg til noen andre når du vil. 0 måneders bindingstid og 0 dagers oppsigelsestid. Det er verdt å spørre enhver leverandør om dette skriftlig før du signerer.',
+    a: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert og eier hele greia med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. På ren drift er det 0 måneders bindingstid og 0 dagers oppsigelsestid. Det er verdt å spørre enhver leverandør om dette skriftlig før du signerer.',
     utdyping: [
       {
         t: 'Hva eierskap betyr i praksis',

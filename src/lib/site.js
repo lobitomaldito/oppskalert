@@ -72,15 +72,29 @@ export const prismodeller = [
     fremhevet: false,
   },
   {
-    id: 'drift',
-    navn: 'Driftet av meg',
-    fra: '690',
+    /* Endret 26. august 2026, og grunnen bør stå her så den ikke blir
+       reversert i god tro. Modellen het «Driftet av meg» og kostet 690
+       kr/mnd, nøyaktig samme navn og samme pris som driftsnivået lenger
+       nede i denne fila. Forskjellen var at lista her begynte med «Alt i
+       engangspris, pluss:». Hele nettsiden fulgte altså med til samme
+       pris som rent vedlikehold på en side kunden allerede hadde betalt
+       9 999 for. Byggingen var i praksis gratis, og «ingen binding» gjorde
+       at avtalen kunne sies opp etter én måned.
+
+       Nå er det en nedbetaling, og den heter det: 1 290 kr/mnd i 12
+       måneder (15 480 kr), så går kunden over på Driftet av meg til 690
+       kr/mnd uten binding. Bindingen er et vilkår, ikke en detalj, så den
+       står som `periode` rett under tallet på kortet. Drift og abonnement
+       er to ulike ting, og skal aldri bære samme navn igjen. */
+    id: 'abonnement',
+    navn: 'Nettside på abonnement',
+    fra: '1 290',
     enhet: 'kr/mnd',
-    periode: 'ingen binding',
-    tagline: 'Jeg passer på alt. Du slipper å tenke teknisk igjen.',
+    periode: '12 måneders binding',
+    tagline: 'Hele nettsiden fordelt over året. Jeg passer på alt underveis.',
     passerDeg: [
+      'Du vil ha nettsiden nå, ikke når budsjettet tillater det',
       'Du vil bruke tiden på bedriften, ikke på nettsiden',
-      'Du vil sende en e-post og få ting endret',
       'Du vil ha én forutsigbar månedskostnad',
     ],
     inkludert: [
@@ -89,6 +103,7 @@ export const prismodeller = [
       'Rimelige innholdsendringer inkludert',
       'Backup og oppetidsovervåking',
       'Support direkte fra meg, ikke en helpdesk',
+      'Etter 12 måneder: 690 kr/mnd, oppsigelig når du vil',
     ],
     fremhevet: true,
   },
@@ -140,7 +155,8 @@ export const alltidMed = [
 ];
 
 /* ---------------------------------------------------------------
-   DRIFT. Tre nivåer under "Driftet av meg"-paraplyen. Prisene her
+   DRIFT. Vedlikehold av en side som allerede står der, ikke en måte
+   å få bygget en. Det er abonnementsmodellen over som bygger. Prisene her
    er den eneste kilden. /drift, forsidens Priser-kort og FAQ leser
    alle herfra, så en prisjustering skjer på ett sted.
    --------------------------------------------------------------- */
@@ -199,16 +215,22 @@ export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå e
    her, så følger kalkulatoren automatisk med.
 
    manedspris er det veiledende "eller X kr/mnd"-alternativet til
-   engangsestimatet (godkjent 2026-08-04), Driftet av meg skalert med
-   omfang, siden en flat 690 kr/mnd uansett prosjektstørrelse ville
-   undervurdert et stort nettbutikk-prosjekt kraftig. Upåvirket av
-   tillegg/haster, med vilje: et enkelt tall er lettere å stå for enn et
-   utregnet ett. */
+   engangsestimatet, altså Nettside på abonnement skalert med omfang,
+   siden ett flatt tall uansett prosjektstørrelse ville undervurdert et
+   stort nettbutikk-prosjekt kraftig. Upåvirket av tillegg/haster, med
+   vilje: et enkelt tall er lettere å stå for enn et utregnet ett.
+
+   Tallene ble hevet 26. august 2026, fra 690/890/1190/1590. Den gamle
+   skalaen var den samme som driftsnivåene koster alene, altså uten at
+   selve byggingen var betalt. Den nye holder samme form som den gamle
+   (+31 %, +70 %, +132 % over startnivået), men er forankret i 1 290,
+   prisen på abonnementsmodellen. Etter de 12 bundne månedene går kunden
+   uansett over på driftsprisen, ikke på dette tallet. */
 export const kalkulatorOmfang = [
-  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 9999, max: 12900, manedspris: 690 },
-  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900, manedspris: 890 },
-  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900, manedspris: 1190 },
-  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900, manedspris: 1590 },
+  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 9999, max: 12900, manedspris: 1290 },
+  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900, manedspris: 1690 },
+  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900, manedspris: 2190 },
+  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900, manedspris: 2990 },
 ];
 
 export const kalkulatorTillegg = [
@@ -251,7 +273,10 @@ export const sammenlignWix = {
   intro: 'Wix er et solid verktøy for å bygge en nettside selv. Spørsmålet er ikke om det virker, men om det er din tid eller din nettside som skal betale for det.',
   rader: [
     ['Hvem bygger siden', 'Du, i byggeren deres', 'Jeg, fra første skisse til lansering'],
-    ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller drift du kan si opp'],
+    /* Jeg selger selv et abonnement nå, så raden må si hva forskjellen
+       faktisk er: deres løper så lenge siden skal stå, mitt slutter
+       etter 12 måneder og faller ned på drift du kan si opp. */
+    ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller abonnement som ender etter 12 måneder'],
     ['Eierskap', 'Låst til Wix sin plattform', 'Du eier filene, kan ta dem med deg videre'],
     ['Hastighet og SEO', 'Tyngre byggerkode, varierende', 'Håndkodet og lettvekt fra dag én'],
     ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner en gratis demo først'],
@@ -320,7 +345,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'Engangspris starter på 9 999 kr eks. mva, og da eier du alt. Vil du heller at jeg drifter siden for deg, starter det på 690 kr i måneden. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
+    a: 'Engangspris starter på 9 999 kr eks. mva, og da eier du alt fra dag én. Vil du heller fordele det over året, starter Nettside på abonnement på 1 290 kr i måneden med 12 måneders binding, og etter det går du over på drift til 690 kr i måneden uten binding. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er en gratis demo, og hva forplikter det meg til?',
@@ -332,7 +357,7 @@ export const sporsmal = [
   },
   {
     q: 'Eier jeg nettsiden selv?',
-    a: 'Ja. Med engangspris får du alle filene overlevert og eier hele løsningen. Velger du drift hos meg, eier du fortsatt innholdet og designet, og du kan når som helst ta med deg siden videre til noen andre. Ingen binding, ingen låsing.',
+    a: 'Ja. Med engangspris får du alle filene overlevert og eier hele løsningen med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
   },
   {
     q: 'Hva om jeg ikke liker utkastet?',
@@ -426,7 +451,7 @@ export const prisSporsmal = [
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Engangspris betyr at du betaler én gang, får alle filene og eier hele løsningen. Driftsavtale betyr at jeg bygger siden og passer på den videre, fra 690 kr i måneden, med hosting, backup, overvåking og rimelige endringer inkludert. Det er den samme siden i begge tilfeller. Forskjellen er om du vil eie det tekniske selv, eller la meg ta det.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 9 999 kr én gang, får alle filene og eier hele løsningen. Abonnement: jeg bygger den samme siden, du betaler 1 290 kr i måneden i 12 måneder, og selve byggingen nedbetales over det året. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
@@ -438,7 +463,7 @@ export const prisSporsmal = [
   },
   {
     q: 'Kan jeg bytte mellom modellene senere?',
-    a: 'Ja, begge veier. Det er ingen bindingstid på driftsavtalen, så du kan si opp når du vil. Innholdet og designet er ditt uansett hvilken modell du står på, så du står aldri fast, og overgangen finner vi ut av når den er aktuell.',
+    a: 'Ja. På ren drift er det ingen bindingstid, så du kan bytte nivå eller si opp når du vil. På abonnement løper de 12 første månedene, siden det er der byggingen nedbetales, og etterpå står du fritt. Vil du gå fra abonnement til engangspris før tiden, gjør vi opp resten av byggesummen og setter strek. Innholdet og designet er ditt uansett.',
   },
   {
     q: 'Hvorfor fast pris og ikke timepris?',

@@ -63,6 +63,10 @@ const rader = [
   ['Rimelige innholdsendringer inkludert', false, true],
   ['Backup og oppetidsovervåking', false, true],
   ['Support direkte fra meg', false, true],
+  /* Den raden som gjør at tabellen faktisk sammenligner to ulike
+     avtaler og ikke bare to funksjonslister. Uten den ser abonnementet
+     ut som engangsprisen med flere haker. */
+  ['Bindingstid', 'Ingen', '12 måneder, deretter ingen'],
 ];
 
 const Celle = ({ v }) => {
@@ -80,12 +84,12 @@ const Sammenligning = () => (
       </div>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
         <table className="w-full border-collapse min-w-[34rem]">
-          <caption className="sr-only">Sammenligning av engangspris og driftsavtale</caption>
+          <caption className="sr-only">Sammenligning av engangspris og nettside på abonnement</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
               <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Engangspris</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Driftet av meg</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Nettside på abonnement</th>
             </tr>
           </thead>
           <tbody>
@@ -100,7 +104,7 @@ const Sammenligning = () => (
         </table>
       </div>
       <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">
-        Begge modellene gjelder nye nettsider. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
+        Begge modellene gjelder nye nettsider. Har du allerede en side som står der, er det drift du ser etter, ikke disse to. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
       </p>
     </div>
   </section>
@@ -110,7 +114,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 9 999 kr, eller driftet av meg fra 690 kr/mnd. Du får fast pris og en gratis demo før du bestemmer deg. Ingen binding."
+      description="Pris på hjemmeside og nettside: engangspris fra 9 999 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris og gratis demo før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -129,7 +133,7 @@ const PriserPage = () => (
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
           <p className="etikett">Tre modeller</p>
-          <h2>Eie den selv, la meg passe på, eller be om noe eget</h2>
+          <h2>Eie den selv, betale månedlig, eller be om noe eget</h2>
         </div>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen

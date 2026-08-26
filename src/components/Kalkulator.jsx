@@ -274,7 +274,7 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
                   </div>
                   <span className="font-body text-sm text-room-ink/70 mt-1 block">{sammendrag}</span>
                   <span className="font-body text-sm text-room-ink/70 mt-1 block">
-                    eller fra <span className="text-room-ink font-semibold">{formatKr(omfang.manedspris)} kr/mnd</span>, driftet av meg
+                    eller fra <span className="text-room-ink font-semibold">{formatKr(omfang.manedspris)} kr/mnd</span> på abonnement, 12 måneders binding
                   </span>
                 </div>
 
