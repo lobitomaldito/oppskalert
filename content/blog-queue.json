@@ -80,7 +80,8 @@
     ],
     "searchVolume": 260,
     "difficulty": 13,
-    "status": "pending"
+    "status": "published",
+    "publishedDate": "2026-08-27"
   },
   {
     "slug": "hjemmesider-for-sma-bedrifter",
