@@ -45,7 +45,7 @@ const ROUTES = [
   '/ordliste',
   ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sokemotoroptimalisering', '/webdesign-oslo', '/nettside-design',
-  '/nettside-til-bedrift', '/lage-nettbutikk',
+  '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
   ...caser.map((c) => `/arbeid/${c.slug}`),
   '/blogg', '/personvern',
   ...articles.map((a) => `/blogg/${a.slug}`),

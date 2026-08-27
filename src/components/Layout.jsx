@@ -128,6 +128,7 @@ export const Footer = () => (
           <span className="text-ink/70 font-semibold mb-1">Tjenester</span>
           <Link to={ruter.nettsideDesign} className="text-ink/70 hover:text-ink transition-colors">Nettsidedesign</Link>
           <Link to={ruter.nettsideBedrift} className="text-ink/70 hover:text-ink transition-colors">Nettside til bedrift</Link>
+          <Link to={ruter.nyNettside} className="text-ink/70 hover:text-ink transition-colors">Ny nettside</Link>
           <Link to={ruter.nettbutikk} className="text-ink/70 hover:text-ink transition-colors">Lage nettbutikk</Link>
           <Link to={ruter.webdesignOslo} className="text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
           <Link to={ruter.seo} className="text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>

@@ -19,7 +19,7 @@ const STATIC_PATHS = [
   '/ordliste',
   ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
-  '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/lage-nettbutikk',
+  '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
   '/metode', '/om', '/kontakt', '/blogg', '/personvern',
   ...caser.map((c) => `/arbeid/${c.slug}`),
 ];
