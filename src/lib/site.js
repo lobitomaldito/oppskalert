@@ -30,6 +30,7 @@ export const ruter = {
   webdesignOslo: '/webdesign-oslo',
   nettsideDesign: '/nettside-design',
   nettsideBedrift: '/nettside-til-bedrift',
+  nyNettside: '/ny-nettside',
   nettbutikk: '/lage-nettbutikk',
   personvern: '/personvern',
 };
@@ -557,6 +558,29 @@ export const landingsSporsmal = {
     {
       q: 'Hvem eier nettsiden etterpå?',
       a: 'Du. Domenet står i ditt navn fra dag én, og du eier innholdet og designet uansett hvilken modell du velger. Velger du driftsavtale, er det fordi du vil slippe det tekniske, ikke fordi du er låst. Du kan når som helst ta med deg siden videre til noen andre.',
+    },
+  ],
+
+  nyNettside: [
+    {
+      q: 'Mister jeg plasseringene i Google når jeg bytter nettside?',
+      a: 'Ikke hvis flyttingen gjøres riktig. Hver adresse på den gamle siden kartlegges før noe annet skjer, og hver av dem får en permanent videresending til den nye adressen. Da følger verdien som er bygget opp i Google med over, og lenker fra andre nettsteder fortsetter å virke. Det er når den gamle adressen bare forsvinner at trafikken gjør det samme.',
+    },
+    {
+      q: 'Blir siden borte mens den nye bygges?',
+      a: 'Nei. Den gamle siden står live helt til du har sett den nye og sagt ja. Selve byttet tar minutter, og e-posten på domenet flyttes først, slik at den aldri er nede. Kundene dine merker ingenting annet enn at siden plutselig ser annerledes ut.',
+    },
+    {
+      q: 'Hva om domenet står i den gamle leverandørens navn?',
+      a: 'Det er vanligere enn folk tror, og det løses. Jeg hjelper deg med å få domenet overført til ditt eget navn, og fra da av står det der uansett hvem som drifter siden. Du skal eie adressen din selv, ellers er du låst til en leverandør du kanskje ikke vil ha.',
+    },
+    {
+      q: 'Kan jeg beholde tekstene og bildene fra den gamle siden?',
+      a: 'Ja, og det som allerede rangerer i Google blir med over uten å skrives om. Det er ingen grunn til å kaste innhold som virker. Det som pleier å endres er strukturen rundt det, altså hva som står øverst, hvor kontaktpunktet er, og hvor raskt siden laster.',
+    },
+    {
+      q: 'Hvor lang tid tar en ny nettside?',
+      a: 'Dager, ikke måneder. Du får en første versjon å se på kort tid etter at vi har snakket sammen, og du trenger bare å oppgi navnet på bedriften for at jeg skal komme i gang. Et byrå bruker gjerne seks til ti uker på det samme, og det er koordineringsleddene som tar tiden, ikke arbeidet.',
     },
   ],
 
