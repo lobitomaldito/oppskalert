@@ -92,7 +92,8 @@
     ],
     "searchVolume": 50,
     "difficulty": 26,
-    "status": "pending"
+    "status": "published",
+    "publishedDate": "2026-08-31"
   },
   {
     "slug": "webutvikler-oslo",
