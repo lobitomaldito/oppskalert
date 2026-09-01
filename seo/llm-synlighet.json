@@ -1,0 +1,134 @@
+{
+  "kilde": "Opinly LLM-synlighet, betalt tillegg. Company comp_sxXDjK6dR7x4EX6pkkMxx.",
+  "maales": "Hver mandag ettermiddag. Leses av seo-maskin-ukentlig på torsdager.",
+  "merk": "Opinly rapporterer to ulike tall for samme maaling: sammendragsfeltet og trendserien. Begge er tatt med. Les trenden, ikke enkelttallet.",
+  "malinger": [
+    {
+      "completedAt": "2026-08-03T21:11:03.000Z",
+      "synlighetTrend": 33.3,
+      "nevntAndelTrend": 0.3,
+      "kataloger": {
+        "sortlist.com": 6,
+        "techradar.com": 5,
+        "goodfirms.co": 4,
+        "hostadvice.com": 3,
+        "clutch.co": 2,
+        "techbehemoths.com": 2,
+        "designrush.com": 1,
+        "ndw.no": 1
+      },
+      "notat": "Katalogtallene hentet fra punkt 9 i SEO.md, malt 3. august 2026. Sortlist-profilen ble opprettet 19. august, altsaa etter denne maalingen."
+    },
+    {
+      "completedAt": "2026-08-10T14:49:06.000Z",
+      "synlighetTrend": 16.7,
+      "nevntAndelTrend": 0.2
+    },
+    {
+      "completedAt": "2026-08-17T14:49:42.000Z",
+      "synlighetTrend": 33.3,
+      "nevntAndelTrend": 0.3
+    },
+    {
+      "completedAt": "2026-08-24T14:49:14.000Z",
+      "synlighetTrend": 41.7,
+      "nevntAndelTrend": 0.4,
+      "synlighetSammendrag": 33.3,
+      "nevntAndelSammendrag": 0.3,
+      "svarAnalysert": 42,
+      "svarFeilet": 24,
+      "snittPosisjon": 1,
+      "snittSentiment": 1,
+      "leaderboard": [
+        {
+          "domene": "ndw.no",
+          "synlighet": 47.6,
+          "nevntAndel": 0.5,
+          "erOss": false
+        },
+        {
+          "domene": "oppskalert.no",
+          "synlighet": 33.3,
+          "nevntAndel": 0.3,
+          "erOss": true
+        },
+        {
+          "domene": "webaas.no",
+          "synlighet": 2.4,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "raskweb.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        }
+      ],
+      "kataloger": {
+        "techradar.com": 15,
+        "sortlist.com": 10,
+        "hostadvice.com": 9,
+        "goodfirms.co": 7,
+        "nettsidedesign.no": 6,
+        "ndw.no": 6,
+        "clutch.co": 3,
+        "designrush.com": 3,
+        "techbehemoths.com": 3
+      },
+      "notat": "Malt 30. august 2026. Sortlist 6 til 10, goodfirms 4 til 7, designrush 1 til 3 siden 3. august. ndw.no gikk 1 til 6 i samme periode."
+    },
+    {
+      "completedAt": "2026-08-31T14:49:51.000Z",
+      "synlighetTrend": 33.3,
+      "nevntAndelTrend": 0.3,
+      "synlighetSammendrag": 33.3,
+      "nevntAndelSammendrag": 0.3,
+      "svarAnalysert": 54,
+      "svarFeilet": 30,
+      "snittPosisjon": 1,
+      "snittSentiment": 1.2,
+      "biasedWinRate": 0.1,
+      "leaderboard": [
+        {
+          "domene": "ndw.no",
+          "synlighet": 46.3,
+          "nevntAndel": 0.5,
+          "erOss": false
+        },
+        {
+          "domene": "oppskalert.no",
+          "synlighet": 33.3,
+          "nevntAndel": 0.3,
+          "erOss": true
+        },
+        {
+          "domene": "webaas.no",
+          "synlighet": 1.9,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "raskweb.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        }
+      ],
+      "kataloger": {
+        "techradar.com": 18,
+        "sortlist.com": 13,
+        "hostadvice.com": 11,
+        "goodfirms.co": 10,
+        "ndw.no": 7,
+        "clutch.co": 5,
+        "techbehemoths.com": 5,
+        "designrush.com": 4,
+        "nettsidedesign.no": 6,
+        "oppskalert.no": 2
+      },
+      "notat": "Malt 1. september 2026. Foerste gang oppskalert.no selv er sitert, klassifisert 'own', 2 ganger. Foerste biasedWinRate over null, 0,1. Feilraten passerte halvparten: 30 av 54 svar feilet."
+    }
+  ],
+  "merk2": "Katalogtall er raatall, ikke andel. Antall analyserte svar gikk 42 til 54 mellom 24. og 31. august, saa raatallene stiger av seg selv. Regn siteringer delt paa svarAnalysert foer du kaller det vekst."
+}
