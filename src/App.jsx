@@ -157,7 +157,7 @@ const Hero = () => {
             fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
         <p data-reveal className="inn" style={{ '--d': '220ms' }}>
           Design, tekst, koding og lansering, gjort av én person du kan ringe.
-          Demoen er klar på tre virkedager.
+          Demoen er klar på 48 timer.
         </p>
         <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
           <Link className="knapp" to={ruter.kontakt}>

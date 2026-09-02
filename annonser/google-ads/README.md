@@ -68,9 +68,9 @@ kampanje som blander de to lærer ingenting om noen av dem. Det er fase to.
 | Se alle priser | Engangspris eller drift | Fast pris, ingen binding | `/priser` |
 | Regn ut din pris | Kalkulator med fast pris | Svar på under ett minutt | `/kalkulator` |
 | Se sider jeg har bygget | Ekte kundeprosjekter | Med tall fra hver lansering | `/arbeid` |
-| Slik jobber jeg | Demo før du bestemmer deg | Ingen timepris som løper | `/metode` |
+| Slik jobber jeg | Demo ferdig på 48 timer | Ingen timepris som løper | `/metode` |
 
-**Forklaringer:** Fast pris · Ingen bindingstid · Du eier alt · Gratis demo først · Bygget i Norge
+**Forklaringer:** Fast pris · Ingen bindingstid · Du eier alt · Gratis demo på 48 timer · Bygget i Norge
 
 ## Konverteringssporing
 

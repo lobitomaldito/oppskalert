@@ -117,8 +117,8 @@ const MetodePage = () => (
       <p className="etikett inn">Metode</p>
       <h1 className="inn" style={{ '--d': '60ms' }}>Du ser resultatet før du betaler.</h1>
       <p className="inn" style={{ '--d': '140ms' }}>
-        Fire steg. De tre første koster deg ingenting, og det første er ferdig innen tre
-        virkedager. Det er ikke et salgstriks, det er bare den eneste måten jeg vet å
+        Fire steg. De tre første koster deg ingenting, og det første er ferdig innen
+        48 timer. Det er ikke et salgstriks, det er bare den eneste måten jeg vet å
         bevise at det er verdt pengene, i stedet for å påstå det.
       </p>
     </section>
