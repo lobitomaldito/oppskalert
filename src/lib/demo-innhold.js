@@ -257,7 +257,7 @@ export const tjenester = [
 
 export const stegene = [
   {
-    "tid": "3 virkedager",
+    "tid": "48 timer",
     "navn": "Jeg bygger demoen din",
     "tekst": "Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse i PowerPoint. Den ligger på en privat lenke bare du får."
   },
@@ -332,7 +332,7 @@ export const sporsmal = [
   ],
   [
     "Hvor lang tid tar det?",
-    "Demoen er klar innen tre virkedager. Fra du sier ja til at siden står på ditt eget domene, går det stort sett en til to uker. Det som styrer tempoet er som regel hvor fort du rekker å svare meg, ikke hvor fort jeg jobber."
+    "Demoen er klar innen 48 timer. Fra du sier ja til at siden står på ditt eget domene, går det stort sett en til to uker. Det som styrer tempoet er som regel hvor fort du rekker å svare meg, ikke hvor fort jeg jobber."
   ],
   [
     "Eier jeg siden selv etterpå?",
