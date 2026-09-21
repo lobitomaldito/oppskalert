@@ -53,7 +53,7 @@ const NettbutikkPage = () => (
   <Shell>
     <SEO
       title="Lage nettbutikk for norske småbedrifter"
-      description="Skal du lage nettbutikk? Slik ser en butikk ut som faktisk selger: Vipps og kort, frakt som stemmer i kassen, og produktsider som blir funnet i søk. Pris etter en kort samtale."
+      description="Skal du lage nettbutikk? Stegene fra samtale til første ordre, det loven krever før lansering, og Vipps og frakt som stemmer i kassen."
       keywords={['lage nettbutikk', 'nettbutikk', 'starte nettbutikk', 'nettbutikk pris']}
       canonical={CANONICAL}
       jsonLd={nettbutikkSchema}
@@ -91,6 +91,37 @@ const NettbutikkPage = () => (
           lagerstatus. Da kan Google vise pris rett i søkeresultatet, og en AI som
           får spørsmål om produktet har noe å svare med.
         </p>
+      </Avsnitt>
+
+      {/* Lagt til 21. sep 2026 av SEO-rutinen. Search Console, 28 dager:
+          «lage nettbutikk» 404 visninger, denne siden pos 30, 0 klikk.
+          Topp 10 er i hovedsak veiledninger med steg og sjekklister, og
+          siden hadde ingen av delene. De to avsnittene under svarer på
+          den halvdelen av søket uten å gjøre siden om til en guide. */}
+      <Avsnitt tittel="Slik lager jeg" uthevet="en nettbutikk, steg for steg.">
+        <ol className="list-decimal pl-5 flex flex-col gap-2">
+          <li>En samtale om hva du selger: antall produkter, varianter som størrelse og farge, og hvordan varene sendes. Du får en fast pris etterpå.</li>
+          <li>Kassen og betalingen settes opp først, med Vipps og kort, og testes med ekte betalinger.</li>
+          <li>Frakt kobles mot Bring eller Posten, så prisen kunden ser stemmer med det du betaler.</li>
+          <li>Produktsidene bygges, hver med egen tittel, beskrivelse og strukturerte data med pris og lagerstatus.</li>
+          <li>Vilkår, angrerett og personvernerklæring legges inn.</li>
+          <li>En testordre går hele veien fra handlekurv til pakke, før butikken åpner.</li>
+        </ol>
+      </Avsnitt>
+
+      <Avsnitt tittel="Det loven krever" uthevet="før første ordre.">
+        <p>
+          En nettbutikk som selger til forbrukere har flere plikter enn en vanlig
+          nettside. Dette må være på plass fra dag én:
+        </p>
+        <ul className="list-disc pl-5 flex flex-col gap-2">
+          <li>14 dagers angrerett etter angrerettloven, med angreskjema kunden får tilsendt.</li>
+          <li>Navn, adresse, e-post og organisasjonsnummer synlig i butikken, etter ehandelsloven.</li>
+          <li>Totalpris med mva og frakt vist før kunden bekrefter kjøpet.</li>
+          <li>Salgsbetingelser. Forbrukertilsynet har standardvilkår for netthandel som er et trygt utgangspunkt.</li>
+          <li>Personvernerklæring, og samtykke før informasjonskapsler til analyse eller annonser settes.</li>
+          <li>MVA-registrering når omsetningen passerer 50 000 kroner i løpet av tolv måneder.</li>
+        </ul>
       </Avsnitt>
 
       <Avsnitt tittel="Hva det koster," uthevet="og hvorfor jeg ikke sier det her.">
