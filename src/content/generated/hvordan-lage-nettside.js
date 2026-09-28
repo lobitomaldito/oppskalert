@@ -1,13 +1,43 @@
 export default {
   slug: "hvordan-lage-nettside",
-  title: "Hvordan lage nettside: gjøre det selv, eller sette det bort?",
-  description: "Bør du lage nettsiden selv med et byggeverktøy, eller sette den bort? Her er tidsbruken, kostnadene og spørsmålene som avgjør hva som lønner seg.",
+  /* SEO-rutinen 28. sep 2026, GSC 28 dager: denne artikkelen og
+     /vanlige-sporsmal/hvordan-lage-nettside delte 81 søk i «lage nettside»-klyngen,
+     ca. 3 000 visninger. Her snitt pos 30-55, FAQ-siden 60-85, 0 klikk på begge.
+     Norske topptreff er steg-for-steg-guider («8 steg», «6 steg»), artikkelen var en
+     valgartikkel. Stegene er lagt inn, title har «lage nettside» først (176 visninger,
+     pos 52), og FAQ-siden lenker hit. Mål igjen om 4 uker. */
+  title: "Lage nettside: 5 steg, selv eller med hjelp",
+  description: "Slik lager du nettside i fem steg: domene, mål, tekst, bygging og måling. Pluss timene det tar selv, og når det lønner seg å sette det bort.",
   publishDate: "2026-08-13",
-  keywords: ["hvordan lage nettside", "lage nettside selv"],
+  keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
   hero: "",
   content: `## Tre veier til en nettside i dag
 
 Du har i praksis tre valg når bedriften din trenger nettside. Du kan bygge den selv med et byggeverktøy som Wix eller Squarespace, du kan leie inn en frilanser eller et byrå, eller du kan kombinere begge deler ved å starte selv og hente inn hjelp der du står fast. Ingen av alternativene er feil i seg selv. Det som avgjør riktig valg er hvor mye tid du faktisk har, hvor teknisk du er fra før, og hvor mye nettsiden skal bety for inntektene dine det første året.
+
+## Slik lager du en nettside, steg for steg
+
+Rekkefølgen under gjelder uansett om du bruker et byggeverktøy eller setter jobben bort. De fleste som står fast, har gjort steg 4 før steg 3.
+
+### 1. Sikre domenet
+
+Kjøp domenet før du bestemmer navnet endelig. Et .no-domene koster rundt 150 kroner i året hos en norsk registrar, og det skal stå registrert på deg eller bedriften din, aldri på leverandøren. Sjekk samtidig at navnet er ledig på Facebook og Instagram, og sett opp e-post på domenet med en gang. En henvendelse fra post@dittfirma.no leses annerledes enn en fra en gratisadresse.
+
+### 2. Bestem hva siden skal få folk til å gjøre
+
+Skriv én setning: hva skal en besøkende gjøre når de har lest siden? Ringe, bestille time, sende en forespørsel eller finne veien til butikken. Den setningen avgjør hvilke sider du trenger. For de fleste små bedrifter holder fire: forside, tjenester, om og kontakt.
+
+### 3. Skriv teksten før du tegner noe
+
+Nesten alle nettsideprosjekter som stopper opp, stopper på tekst. Designet står ferdig, og så ligger prosjektet stille i seks uker fordi ingen har skrevet hva bedriften faktisk gjør. Start med fire spørsmål: hva selger du, hvem er det til, hva koster det, og hva skal folk gjøre nå. Fire svar gir fire avsnitt, og da har du en forside.
+
+### 4. Bygg siden
+
+Nå velger du verktøy: et byggeverktøy som Wix eller Squarespace, WordPress, eller en leverandør som bygger for deg. Test på mobil før alt annet, for der kommer de fleste besøkende. Siden bør laste på under to sekunder på 4G, og telefonnummeret bør kunne trykkes på.
+
+### 5. Koble på måling og meld siden inn til Google
+
+Legg inn Google Search Console, som viser hva folk søkte på før de fant deg, og et enkelt besøksverktøy. Begge er gratis. Send inn sitemapen i Search Console samme dag som siden går live. Kobler du på måling i etterkant, mister du tallene fra de første månedene, og det er akkurat den perioden du vil sammenligne mot senere.
 
 ## Når gjør-det-selv faktisk er riktig valg
 

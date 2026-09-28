@@ -170,7 +170,10 @@ export const populaereSok = [
       },
     ],
     relatert: ['hvor-lang-tid-tar-en-nettside', 'wordpress-wix-eller-handkodet'],
-    til: { tekst: 'Se de fire stegene', rute: '/metode' },
+    // 28. sep 2026: denne siden og /blogg/hvordan-lage-nettside delte 81 søk (ca. 3 000
+    // visninger, 28 dager). Artikkelen rangerer 20-30 plasser høyere og skal eie
+    // klyngen, så lenkemålet peker dit i stedet for til /metode.
+    til: { tekst: 'Les hele guiden, steg for steg', rute: '/blogg/hvordan-lage-nettside' },
   },
   {
     // «billig nettside» 70/mnd KD 0, høy CPC
