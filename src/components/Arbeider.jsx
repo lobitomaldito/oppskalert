@@ -18,6 +18,7 @@ import { caser } from '../lib/demo-innhold';
    nøkkel kan lista sorteres om uten at noe glipper, og et prosjekt uten
    tekst her faller pent ut i stedet for å arve naboens. */
 const ARBEIDER_TEKST = {
+  'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
   'woxen-hage': { bransje: 'Hagestell', tittel: 'Hagehjelp i Oslo, bestilt på under ett minutt' },
   'katrin-brubakk': { bransje: 'Psykolog', tittel: 'Foredrag og terapi samlet på én rolig side' },
   'melanie-dahl': { bransje: 'Skuespill · mental trening', tittel: 'To yrker, to innganger, én rolig side' },
