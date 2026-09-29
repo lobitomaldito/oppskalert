@@ -16,6 +16,38 @@
    Feltet i peker pa indeksen i prosjekter i site.js, som eier bildene. */
 export const caser = [
   {
+    "slug": "appstart",
+    "tittel": "Apper til fast pris, med prisen på forsiden",
+    "ingress": "Appstart er mitt eget selskap, sammen med Magnus. Vi bygger apper for folk som har gått med en idé i årevis og har hørt at en app koster flere hundre tusen.",
+    "gjort": [
+      "Nettside fra bunnen",
+      "Tekster og prisstruktur",
+      "Idéskjema i fire steg",
+      "Blogg med fast publiseringsrutine",
+      "Søkeoppsett"
+    ],
+    "tek": [
+      "Next.js",
+      "Forhåndsrendret på Vercel",
+      "Samtykke før sporing"
+    ],
+    "utfordring": {
+      "t": "Kjøperen tror en app koster 300 000 kr",
+      "a": [
+        "Appstart selger til folk med én idé og ingen utviklere: privatpersoner og små bedrifter. Tallet de har hørt fra bransjen, er flere hundre tusen kroner. Der stopper de fleste før de har spurt noen.",
+        "De er også redde for to ting: at idéen blir tatt, og at regningen vokser underveis. Begge deler må være besvart før de tør å fortelle hva idéen er."
+      ]
+    },
+    "losning": {
+      "t": "Prisen står før alt annet",
+      "a": [
+        "Rett under heroen står det gamle tallet, 300 000 kr, strøket over, og ved siden av <b>fra 15 000 kr</b>. Hva som er med, står i en liste under prisen, merket eks. mva.",
+        "Skjemaet spør om én ting av gangen, i fire steg. Det første spørsmålet er hva slags idé du har, med fire valg å trykke på. Under står det at idéen behandles konfidensielt og at du eier den.",
+        "Siden sier også hva vi ikke bygger: sosiale nettverk, datingapper og apper med sensitive helsedata. Den som har en slik idé, får vite det før praten."
+      ]
+    }
+  },
+  {
     "slug": "woxen-hage",
     "i": 0,
     "tittel": "Hagehjelp bestilt på under ett minutt",
