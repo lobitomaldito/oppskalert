@@ -120,11 +120,9 @@ const Trafikkgraf = ({ dager, antallDager }) => {
   );
 };
 
-// «Hvor mange gjorde dette», ikke en streng sekvens: kalkulatoren er en
-// sidevei, og skjemaet har en «hopp over»-lenke som lar noen sende inn uten
-// å fullføre steg 1. Frafall vises derfor bare mellom de to stegene der det
-// faktisk er en rekkefølge, ellers leses et lavt kalkulatortall som at folk
-// forsvant, når de bare aldri gikk den veien.
+// «Hvor mange gjorde dette», ikke en streng sekvens: skjemaet har en
+// «hopp over»-lenke som lar noen sende inn uten å fullføre steg 1. Frafall
+// vises derfor bare mellom de to stegene der det faktisk er en rekkefølge.
 const FRAFALL_ETTER = 'Åpnet skjemaet';
 
 const Trakt = ({ steg }) => {
@@ -133,7 +131,7 @@ const Trakt = ({ steg }) => {
     <div className={kort}>
       <h2 className="font-sans font-bold text-lg mb-1">Veien til en henvendelse</h2>
       <p className="font-body text-xs text-room-ink/60 mb-6">
-        Målt mot ekte besøkende, ikke mot skannerne. Kalkulatoren er en sidevei, ikke et krav for å sende inn.
+        Målt mot ekte besøkende, ikke mot skannerne.
       </p>
       <div className="flex flex-col gap-4">
         {steg.map((s, i) => {

@@ -1,4 +1,4 @@
-/* FAQ for de fire rutene som manglet en, og som samtidig lå under 310 ord
+/* FAQ for rutene som manglet en, og som samtidig lå under 310 ord
  * i rå HTML. Begge problemene løses av det samme grepet.
  *
  * Egen fil fordi site.js var under arbeid i en annen sesjon. Slå den
@@ -7,29 +7,6 @@
  * Samme regler som resten: svaret begynner med svaret, hvert svar har et
  * tall, og ingen særskriving.
  */
-
-export const faqKalkulator = [
-  {
-    q: 'Hvor nøyaktig er kalkulatoren?',
-    a: 'Den treffer som regel innenfor et par tusen kroner, fordi den regner på de samme faktorene jeg selv bruker: antall sider, om du trenger nettbutikk eller booking, og om teksten finnes fra før. Den vet derimot ingenting om bedriften din, så tallet er et anslag og ikke et tilbud. Prisen du får skriftlig fra meg er fast.',
-  },
-  {
-    q: 'Må jeg oppgi e-post for å se prisen?',
-    a: 'Nei. Du får tallet på skjermen med en gang, uten skjema og uten at jeg vet at du var her. Jeg synes det er rart å kreve kontaktinfo for å svare på hva noe koster.',
-  },
-  {
-    q: 'Hvorfor er prisen lavere enn hos andre?',
-    a: 'Fordi jeg er én person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Det er hele forklaringen på at en håndbygd side starter på 6 990 kroner og ikke 25 000.',
-  },
-  {
-    q: 'Hva er ikke med i prisen?',
-    a: 'Domenet ditt, som koster rundt 100 til 200 kroner i året hos registraren, og innhold jeg ikke kan lage selv, som profesjonell fotografering. Hosting, SSL, oppsett og tekstene er med. Trenger du noe utover det, sier jeg fra før vi starter, ikke etterpå.',
-  },
-  {
-    q: 'Hva om jeg vil ha noe kalkulatoren ikke dekker?',
-    a: 'Send meg en linje om hva det er, så regner jeg på det. Kalkulatoren dekker det de fleste trenger, men innlogging, integrasjon mot et fagsystem eller flerspråklig innhold krever at jeg ser på det konkret. Du får uansett fast pris før jeg begynner.',
-  },
-];
 
 export const faqSammenlign = [
   {

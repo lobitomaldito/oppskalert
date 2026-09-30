@@ -136,7 +136,6 @@ export const Footer = () => (
         </div>
         <div className="flex flex-col gap-3">
           <span className="text-ink/70 font-semibold mb-1">Verktøy</span>
-          <Link to={ruter.kalkulator} className="text-ink/70 hover:text-ink transition-colors">Priskalkulator</Link>
           <Link to={ruter.sammenlign} className="text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
           {/* De to undersidene lenkes herfra, ikke bare fra /sammenlign.
 

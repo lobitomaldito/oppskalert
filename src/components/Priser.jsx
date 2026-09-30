@@ -65,18 +65,6 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis demo', c
       </div>
       <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>
 
-      {/* Kun på engangspris-kortet: kalkulatoren regner ut et scope-basert
-          engangsestimat, ikke et månedsbeløp, så den hører hjemme her og
-          ikke på driftskortet ved siden av. */}
-      {m.id === 'engangs' && (
-        <Link
-          to={ruter.kalkulator}
-          className="font-body text-sm text-room-ink hover:opacity-70 transition-opacity underline underline-offset-2 mt-2 inline-block w-fit"
-        >
-          Regn ut prisen for din side →
-        </Link>
-      )}
-
       {visPasserDeg && (
         <ul className="mt-6 pt-5 border-t flex flex-col gap-2.5 border-room-ink/20">
           <li className="font-body text-sm mb-1 text-room-ink/70">Passer deg som</li>

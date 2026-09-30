@@ -5,7 +5,7 @@
    Kilden er mal3.src.html, se inspirasjon/demo-studio-mal.md.
 
    Prisene er det ene unntaket: demoen sier 9 999, siden sier 6 990 fra
-   30. september 2026, se kalkulatorOmfang i site.js for grunnen.
+   30. september 2026, se prismodeller i site.js.
 
    Feltet ikon er ra SVG-innmat og settes med dangerouslySetInnerHTML. Det er
    trygt her fordi strengene er vare egne konstanter i denne fila, ikke noe
