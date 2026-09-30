@@ -310,7 +310,7 @@ const homeSchema = {
     { '@type': 'City', name: 'Oslo' },
     { '@type': 'AdministrativeArea', name: 'Viken' },
   ],
-  priceRange: 'fra 9 999 kr',
+  priceRange: 'fra 6 990 kr',
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],

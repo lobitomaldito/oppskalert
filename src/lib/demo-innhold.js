@@ -4,8 +4,8 @@
    skrevet av for hand, sa teksten er identisk med den som ble godkjent.
    Kilden er mal3.src.html, se inspirasjon/demo-studio-mal.md.
 
-   Prisene er det ene unntaket: demoen sier 9 999, og den er hevet til 9 999
-   etter beslutning 19. august 2026.
+   Prisene er det ene unntaket: demoen sier 9 999, siden sier 6 990 fra
+   30. september 2026, se kalkulatorOmfang i site.js for grunnen.
 
    Feltet ikon er ra SVG-innmat og settes med dangerouslySetInnerHTML. Det er
    trygt her fordi strengene er vare egne konstanter i denne fila, ikke noe
@@ -320,11 +320,11 @@ export const omtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "Engangspris begynner på 9 999 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller fordele det over året, starter abonnementet på 1 290 i måneden med 12 måneders binding, og etterpå går du over på drift til 690 i måneden uten binding. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se demoen først, så du vet nøyaktig hva du betaler for."
+    "Engangspris begynner på 6 990 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller fordele det over året, starter abonnementet på 1 290 i måneden med 12 måneders binding, og etterpå går du over på drift til 690 i måneden uten binding. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se demoen først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",
-    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Det er hele forklaringen p\u00e5 at en h\u00e5ndbygd side starter p\u00e5 9 999 kroner og ikke 25 000."
+    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Det er hele forklaringen p\u00e5 at en h\u00e5ndbygd side starter p\u00e5 6 990 kroner og ikke 25 000."
   ],
   [
     "Hva forplikter en gratis demo meg til?",

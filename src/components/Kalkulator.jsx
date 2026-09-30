@@ -119,12 +119,12 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
     let maxSum = omfangValgt.max;
     valgte.forEach((t) => { minSum += t.min; maxSum += t.max; });
     if (haster) {
-      minSum *= kalkulatorHaster.minFaktor;
-      maxSum *= kalkulatorHaster.maxFaktor;
+      // Avrund til nærmeste hundre, så tallet ikke ser ut som et regnestykke.
+      // Bare her: uten hastepåslag er summen allerede prislistetall, og en
+      // avrunding gjorde 6 990 om til 7 000, altså over «fra»-prisen på siden.
+      minSum = Math.round((minSum * kalkulatorHaster.minFaktor) / 100) * 100;
+      maxSum = Math.round((maxSum * kalkulatorHaster.maxFaktor) / 100) * 100;
     }
-    // Avrund til nærmeste hundre, så tallet ikke ser ut som et regnestykke.
-    minSum = Math.round(minSum / 100) * 100;
-    maxSum = Math.round(maxSum / 100) * 100;
     return { min: minSum, max: maxSum, valgteTillegg: valgte, omfang: omfangValgt };
   }, [omfangId, tillegg, haster]);
 

@@ -35,10 +35,9 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis demo', c
            er ikke en aksent. Hvit tekst, ikke kritt: kritt gir 4,3:1 mot
            clay og faller under kravet, hvit gir 4,8:1.
 
-           «Anbefalt», ikke «Mest valgt»: per 30. september 2026 har
-           ingen kunde valgt abonnementet, alle har betalt engangspris.
-           «Mest valgt» var en påstand om noe som ikke har skjedd.
-           «Anbefalt» er min egen anbefaling og kan stå uten tall bak. */
+           «Anbefalt», ikke «Mest valgt»: «Mest valgt» er en påstand som
+           må kunne dokumenteres med tall. «Anbefalt» er min egen
+           anbefaling og kan stå uten. */
         <span className="absolute top-0 right-7 -translate-y-1/2 bg-[var(--prikk)] text-white text-sm font-body px-3.5 py-1 rounded-full font-semibold">
           Anbefalt
         </span>

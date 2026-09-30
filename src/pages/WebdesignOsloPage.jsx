@@ -172,7 +172,7 @@ const WebdesignOsloPage = () => (
         skrives om. Se kommentaren øverst i fila. */}
     <SEO
       title="Webdesign i Oslo til fast pris"
-      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 9 999 kr, og en gratis demo før du bestemmer deg."
+      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 6 990 kr, og en gratis demo før du bestemmer deg."
       keywords={['webdesign oslo', 'webdesigner oslo', 'webdesign firma', 'webdesign bedrift']}
       canonical={CANONICAL}
       jsonLd={webdesignOsloSchema}
