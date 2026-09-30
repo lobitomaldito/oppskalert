@@ -18,6 +18,11 @@ const FORMATER = {
 };
 const MOBIL_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1';
 
+// Rullepunkt i piksler for sider der toppen ikke viser noe. Forsiden til
+// Kolflaath åpner med ordmerket alene på en lys flate, som blir en nesten
+// tom flis. 620 px ned står overskrift, tekst og portrett i samme skjerm.
+const RULL = { 'kolflaath-mobil': 620 };
+
 const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
 
 for (const p of prosjekter.filter((p) => p.slug)) {
@@ -38,6 +43,11 @@ for (const p of prosjekter.filter((p) => p.slug)) {
           if ((s.position === 'fixed' || s.position === 'sticky') && treff.test(e.className + ' ' + e.id + ' ' + e.textContent.slice(0, 200))) e.remove();
         });
       });
+      const rull = RULL[`${p.slug}-${enhet}`];
+      if (rull) {
+        await side.evaluate((y) => scrollTo(0, y), rull);
+        await new Promise((r) => setTimeout(r, 1200));
+      }
       await side.screenshot({ path: `${ut}/${p.slug}-${enhet}.png` });
       console.log('ok', p.slug, enhet);
     } catch (e) {
