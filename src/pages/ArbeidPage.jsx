@@ -77,16 +77,11 @@ const ArbeidPage = () => {
       />
 
       <div ref={container}>
-        <section className="wrap sidetopp">
-          <p className="etikett" data-reveal>Arbeid</p>
-          <h1 data-reveal>Sider jeg har bygget.</h1>
-          <p data-reveal>
-            Hagestell, psykologi, scenekunst, forhandling, foredrag, terapi og rådgivning. Alle sammen norske
-            småbedrifter, alle sammen i drift akkurat nå. Rammene ruller gjennom sidene
-            slik de står, så du slipper å ta mitt ord for det. Klikk deg gjerne innom,
-            de tåler et besøk.
-          </p>
-        </section>
+        {/* Sidetoppen med stor overskrift og ingress er tatt ut: den skjøv
+            det første prosjektet under folden, og siden er til for å vise
+            prosjektene. H1-en står igjen for skjermlesere og søkemotorer,
+            så siden fortsatt har en overskrift over h2-ene i rutenettet. */}
+        <h1 className="skjult">Sider jeg har bygget</h1>
 
         <section className="hvit">
           <div className="wrap seksjon">
