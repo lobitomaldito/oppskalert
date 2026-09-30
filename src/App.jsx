@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell } from './components/Layout';
-import Arbeider from './components/Arbeider';
+import { ArbeidSeksjon } from './components/Arbeider';
 import Sitatkort from './components/Sitatkort';
 import Priser from './components/Priser';
 import DemoSkjema from './components/DemoSkjema';
@@ -189,26 +189,6 @@ const VeienInn = () => {
           <li><Link to={ruter.metode}><span className="nr">Prosess</span> Se hvordan det går til <span className="pil" aria-hidden="true">→</span></Link></li>
           <li><Link to={ruter.kontakt}><span className="nr">Neste</span> Ta en uforpliktende prat <span className="pil" aria-hidden="true">→</span></Link></li>
         </ul>
-      </div>
-    </section>
-  );
-};
-
-const ArbeidSeksjon = () => {
-  const container = useReveal(100);
-  return (
-    <section ref={container} className="hvit">
-      <div className="wrap seksjon">
-        <div data-reveal className="seksjonstopp inn">
-          <p className="etikett">Noe av det jeg har laget</p>
-          <h2>Sider som er i drift nå</h2>
-          <p>Rammene under ruller gjennom de ekte sidene. Ingen mockup. Ingen utsnitt.
-          Bare siden slik den står akkurat nå.</p>
-        </div>
-        <Arbeider antall={4} />
-        <p style={{ marginTop: 'clamp(2.5rem,5vw,3.5rem)' }}>
-          <Link className="knapp" to={ruter.arbeid}>Se alle sidene <span className="pil" aria-hidden="true">↗</span></Link>
-        </p>
       </div>
     </section>
   );

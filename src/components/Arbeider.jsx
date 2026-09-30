@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { prosjekter, toganger } from '../lib/site';
+import { prosjekter, ruter, toganger } from '../lib/site';
 import { caser } from '../lib/demo-innhold';
+import { useReveal } from '../lib/useReveal';
 
 /* Bransje og tittel er hentet ordrett fra ARBEIDER-konstanten i
    studio-mal-demoen (mal3.src.html, linje 1162), ikke fra prosjekter i
@@ -52,7 +53,7 @@ const ConditionalLink = ({ harCase, slug, url, children }) =>
     </a>
   );
 
-const Arbeider = ({ antall = 4, nivaa = 3, reveal = false }) => {
+const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false }) => {
   const Tittel = `h${nivaa}`;
   const kort = prosjekter
     .filter((p) => p.slug && ARBEIDER_TEKST[p.slug])
@@ -66,7 +67,7 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false }) => {
     }));
 
   return (
-    <div className="arbeider" data-antall={kort.length} data-nivaa={nivaa}>
+    <div className={kompakt ? 'arbeider kompakt' : 'arbeider'} data-antall={kort.length} data-nivaa={nivaa}>
       {kort.map((a, i) => (
         <article className="arbeid" key={a.domene} data-reveal={reveal ? '' : undefined}>
           {/* Har prosjektet en case-side, går kortet dit. Har det ikke
@@ -96,6 +97,36 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false }) => {
         </article>
       ))}
     </div>
+  );
+};
+
+/* Hele blokken slik den står på forsiden: etikett, overskrift, fire kort
+   og en utgang til /arbeid. Flyttet hit fra App.jsx 30. september 2026,
+   da /priser og /om fikk den samme blokken. Ingen av de to sidene viste
+   et eneste eksempel.
+
+   `hvit` styrer flaten, så blokken kan veksle mot seksjonen over.
+   `kompakt` viser to kort i stedet for fire på smal skjerm, se
+   .arbeider.kompakt i index.css: på de to sidene er kortene et bevis ved
+   siden av hovedsaken, og fire stablede rammer skyver resten av siden
+   langt ned på mobil. */
+export const ArbeidSeksjon = ({ hvit = true, kompakt = false }) => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className={hvit ? 'hvit' : undefined}>
+      <div className="wrap seksjon">
+        <div data-reveal className="seksjonstopp inn">
+          <p className="etikett">Noe av det jeg har laget</p>
+          <h2>Sider som er i drift nå</h2>
+          <p>Rammene under ruller gjennom de ekte sidene. Ingen mockup. Ingen utsnitt.
+          Bare siden slik den står akkurat nå.</p>
+        </div>
+        <Arbeider antall={4} kompakt={kompakt} />
+        <p style={{ marginTop: 'clamp(2.5rem,5vw,3.5rem)' }}>
+          <Link className="knapp" to={ruter.arbeid}>Se alle sidene <span className="pil" aria-hidden="true">↗</span></Link>
+        </p>
+      </div>
+    </section>
   );
 };
 

@@ -3,6 +3,7 @@ import { Check, Minus } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Shell, KortRad } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
+import { ArbeidSeksjon } from '../components/Arbeider';
 import { Modell } from '../components/Priser';
 import { lagFaqSchema, prisNotat, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
@@ -151,6 +152,10 @@ const PriserPage = () => (
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
       </div>
     </section>
+
+    {/* Eksemplene står rett etter prisene: først hva det koster, så hva
+        prisen kjøper. */}
+    <ArbeidSeksjon hvit={false} kompakt />
 
     <Sammenligning />
 

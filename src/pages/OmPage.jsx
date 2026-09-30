@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
+import { ArbeidSeksjon } from '../components/Arbeider';
 import { ruter } from '../lib/site';
 import { tjenester } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
@@ -65,6 +66,10 @@ const OmPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Portrett-teksten slutter med at jeg heller vil vise enn forklare.
+          Da skal det som vises, stå rett under. */}
+      <ArbeidSeksjon hvit={false} kompakt />
 
       <section ref={tjenesteRef} className="seksjon">
         <div className="wrap tjeneste-rad">
