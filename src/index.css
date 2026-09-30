@@ -498,53 +498,16 @@
   @keyframes vegg-opp { to { transform: translate3d(0, -50%, 0); } }
   @keyframes vegg-ned { from { transform: translate3d(0, -50%, 0); } }
 
-  /* Flisa er en container, så rammene under kan måles i cqw og holder
-     samme proporsjoner på en 110 px bred flis på mobil som på 230 px. */
+  /* Flisa er et ferdig bilde med enheten fotografert inn. Bakgrunnen er
+     bare det som vises til bildet er lastet. */
   .flis {
-    --ramme: var(--blekk);
-    flex: none; display: grid; place-items: center;
-    container-type: inline-size; aspect-ratio: 4 / 5;
+    flex: none; display: block; overflow: hidden; aspect-ratio: 4 / 5;
     margin-bottom: var(--vegg-luft); border-radius: var(--rund);
-    background: var(--hvit);
+    background: var(--felt-dyp);
   }
   .flis-kvadrat { aspect-ratio: 1; }
   .flis-hoy { aspect-ratio: 2 / 3; }
-  .flis-blekk { background: var(--blekk); --ramme: var(--kritt-mykt); }
-  .flis-fersken { background: var(--prikk-lys); }
-  .flis-dyp { background: var(--felt-dyp); border: 1px solid var(--felt-kant); }
-
-  /* Laptop: skjerm med ramme, og en fot som stikker ut på hver side. */
-  .enhet-pc { display: block; width: 78cqw; }
-  .enhet-pc-skjerm {
-    display: block; overflow: hidden;
-    border: 1.6cqw solid var(--ramme); border-bottom-width: 2.2cqw;
-    border-radius: 2.4cqw 2.4cqw 0 0; background: var(--ramme);
-  }
-  .enhet-pc-skjerm img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
-  .enhet-pc-fot {
-    display: block; position: relative;
-    height: 2.2cqw; margin-inline: -7cqw; border-radius: 0 0 2.4cqw 2.4cqw;
-    background: var(--ramme);
-    box-shadow: 0 4cqw 6cqw -1.5cqw rgb(18 17 29 / .35);
-  }
-  .enhet-pc-fot::before {
-    content: ''; position: absolute; left: 50%; top: 0; translate: -50% 0;
-    width: 16cqw; height: .9cqw; border-radius: 0 0 1cqw 1cqw;
-    background: rgb(255 255 255 / .2);
-  }
-
-  /* Telefon: avrundet ramme med øy øverst. */
-  .enhet-mobil {
-    display: block; position: relative; overflow: hidden;
-    width: 50cqw; aspect-ratio: 390 / 844;
-    border: 1.8cqw solid var(--ramme); border-radius: 8cqw; background: var(--ramme);
-    box-shadow: 0 5cqw 8cqw -3cqw rgb(18 17 29 / .4);
-  }
-  .enhet-mobil::before {
-    content: ''; position: absolute; z-index: 1; top: 1.6cqw; left: 50%; translate: -50% 0;
-    width: 14cqw; height: 3.2cqw; border-radius: 99px; background: var(--blekk);
-  }
-  .enhet-mobil img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 6.2cqw; }
+  .flis img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
   .vegg-pause {
     position: absolute; right: 0; bottom: .75rem; z-index: 1;
