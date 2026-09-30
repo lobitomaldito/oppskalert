@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
+import Arbeider from '../components/Arbeider';
 import BransjeEksempler from '../components/BransjeEksempler';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
-import { caser, omtaler } from '../lib/demo-innhold';
-import { prosjekter, toganger } from '../lib/site';
+import { omtaler } from '../lib/demo-innhold';
+import { prosjekter } from '../lib/site';
 
 const arbeidSchema = {
   '@context': 'https://schema.org',
@@ -63,52 +63,6 @@ const SitatKort = () => {
   );
 };
 
-/* Arbeidsrutenettet fra studio-mal-demoen (data-arbeider, mal3.src.html
-   rundt linje 1360). H-nivået er h2 på denne siden (data-nivaa="2" i
-   demoen), fordi seksjonen selv ikke har noen egen H2 over rutenettet.
-   Kortets tittel er case-tittelen fra demo-innhold.js: i demoen har
-   ARBEIDER-oppføringene sin egen (nesten identiske) tagline, men den
-   teksten er ikke del av det ordrett uthentede innholdet, så case-
-   tittelen brukes her for begge steder teksten vises. */
-/* Prosjektet slås opp på slug, ikke på indeksen c.i.
-
-   c.i var en posisjon inn i prosjekter-arrayen, og den brøt stille da et
-   nytt prosjekt ble satt inn midt i lista 21. august: case-sidene pekte
-   da på nabo-prosjektets bilder og domene, uten noen feilmelding. */
-const ArbeiderGrid = () => (
-  <div className="arbeider">
-    {caser.map((c, i) => {
-      const p = prosjekter.find((rad) => rad.slug === c.slug);
-      if (!p) return null;
-      return (
-        <article className="arbeid" key={c.slug} data-reveal>
-          <Link to={`/arbeid/${c.slug}`}>
-            <div className="ramme">
-              <div className="ramme-topp">
-                <i aria-hidden="true" /><i aria-hidden="true" /><i aria-hidden="true" />
-                <p>{p.domene}</p>
-              </div>
-              <div className="ramme-vindu">
-                <img
-                  src={p.full}
-                  srcSet={toganger(p.full)}
-                  alt={`Nettsiden til ${p.navn}`}
-                  loading="lazy"
-                  width="620"
-                  height="2422"
-                  style={{ '--til': p.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` }}
-                />
-              </div>
-            </div>
-            <p className="etikett">{p.bransje}</p>
-            <h2>{c.tittel} <span className="ut" aria-hidden="true">→</span></h2>
-          </Link>
-        </article>
-      );
-    })}
-  </div>
-);
-
 const ArbeidPage = () => {
   const container = useReveal(80);
 
@@ -127,7 +81,7 @@ const ArbeidPage = () => {
           <p className="etikett" data-reveal>Arbeid</p>
           <h1 data-reveal>Sider jeg har bygget.</h1>
           <p data-reveal>
-            Hagestell, psykologi, foredrag, terapi og rådgivning. Alle sammen norske
+            Hagestell, psykologi, scenekunst, forhandling, foredrag, terapi og rådgivning. Alle sammen norske
             småbedrifter, alle sammen i drift akkurat nå. Rammene ruller gjennom sidene
             slik de står, så du slipper å ta mitt ord for det. Klikk deg gjerne innom,
             de tåler et besøk.
@@ -136,7 +90,9 @@ const ArbeidPage = () => {
 
         <section className="hvit">
           <div className="wrap seksjon">
-            <ArbeiderGrid />
+            {/* Alle prosjekter med en fangst, ikke bare de seks med case-side.
+                h2 fordi seksjonen ikke har noen egen H2 over rutenettet. */}
+            <Arbeider antall={prosjekter.length} nivaa={2} reveal />
           </div>
         </section>
 

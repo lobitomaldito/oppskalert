@@ -60,8 +60,16 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
         honeypot,
         msPaSkjema: Date.now() - apnetRef.current,
       });
-      identify({ email: epost.trim(), name: navn.trim() });
-      track('demo_request_submitted', { has_company: Boolean(firma.trim()), har_nettside: harNettside });
+      /* Roboter som fyller ut lokkefeltet får samme kvittering som alle
+         andre, men skal ikke telles. Uten denne sperren ble fem
+         spam-innsendinger i september ført som demoforespørsler i
+         PostHog, og track() sender det samme videre til GA4 og Google
+         Ads som konvertering. Serveren har flere signaler enn dette ene,
+         men de er skjult for klienten med vilje, se api/demo-request.js. */
+      if (!honeypot) {
+        identify({ email: epost.trim(), name: navn.trim() });
+        track('demo_request_submitted', { has_company: Boolean(firma.trim()), har_nettside: harNettside });
+      }
       setStatus('success');
     } catch (err) {
       console.error('Demo request failed:', err);

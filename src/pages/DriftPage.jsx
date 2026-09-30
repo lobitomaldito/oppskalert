@@ -29,7 +29,7 @@ const DriftKort = ({ nivaa }) => (
   >
     {nivaa.fremhevet && (
       <span className="absolute top-0 right-7 -translate-y-1/2 bg-room-ink text-room text-[11px] font-body uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
-        Mest valgt
+        Anbefalt
       </span>
     )}
     <h3 className="font-sans font-bold text-xl">{nivaa.navn}</h3>

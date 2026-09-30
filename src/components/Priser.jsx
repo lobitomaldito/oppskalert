@@ -7,7 +7,7 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
 
 /* Alle tre kortene er hvite på feltet. Driftskortet var tidligere tonet mot
    feltfargen for å skille seg fra engangsprisen, men denne seksjonen står
-   selv på feltet: kortet med «Mest valgt» ble dermed det eneste som ikke
+   selv på feltet: kortet med merkelappen ble dermed det eneste som ikke
    løftet seg fra bakgrunnen, altså det motsatte av jobben badgen har.
    Skillet ligger nå i kanten i stedet, en hårstrek i full blekk mot de
    andres tjue prosent, samme grep som .pris.fremhevet bruker på /priser.
@@ -33,9 +33,14 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis demo', c
         /* Den ene flaten aksenten dekker. Punktumfargen fantes bare i
            ordmerket og i noen prikker, og en aksent som aldri dekker noe
            er ikke en aksent. Hvit tekst, ikke kritt: kritt gir 4,3:1 mot
-           clay og faller under kravet, hvit gir 4,8:1. */
+           clay og faller under kravet, hvit gir 4,8:1.
+
+           «Anbefalt», ikke «Mest valgt»: per 30. september 2026 har
+           ingen kunde valgt abonnementet, alle har betalt engangspris.
+           «Mest valgt» var en påstand om noe som ikke har skjedd.
+           «Anbefalt» er min egen anbefaling og kan stå uten tall bak. */
         <span className="absolute top-0 right-7 -translate-y-1/2 bg-[var(--prikk)] text-white text-sm font-body px-3.5 py-1 rounded-full font-semibold">
-          Mest valgt
+          Anbefalt
         </span>
       )}
 

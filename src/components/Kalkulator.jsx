@@ -178,8 +178,11 @@ const Kalkulator = ({ tittel, uthevet, lede }) => {
         honeypot,
         msPaSkjema: Date.now() - apnetRef.current,
       });
-      identify({ email: epost.trim(), name: navn.trim() });
-      track('kalkulator_lead_sendt', hendelsesdata());
+      // Samme sperre som i DemoSkjema: utfylt lokkefelt telles ikke som lead.
+      if (!honeypot) {
+        identify({ email: epost.trim(), name: navn.trim() });
+        track('kalkulator_lead_sendt', hendelsesdata());
+      }
       setSteg('sendt');
       setStatus('idle');
     } catch (err) {

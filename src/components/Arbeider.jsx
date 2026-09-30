@@ -23,16 +23,25 @@ const ARBEIDER_TEKST = {
   'katrin-brubakk': { bransje: 'Psykolog', tittel: 'Foredrag og terapi samlet på én rolig side' },
   'melanie-dahl': { bransje: 'Skuespill · mental trening', tittel: 'To yrker, to innganger, én rolig side' },
   'alpha-negotiations': { bransje: 'Forhandling', tittel: 'En forhandlingsekspert, forklart på ett kvarter' },
+  'kolflaath': { bransje: 'Investor', tittel: '25 år og fire selskaper, på én side' },
   'samtaleverkstedet': { bransje: 'Terapi', tittel: 'Terapi som tør å være varm i tonen' },
   'steinar-husby': { bransje: 'Foredrag', tittel: 'Én foredragsholder, ett tydelig løfte' },
   'progressive-diplomacy': { bransje: 'Rådgivning', tittel: 'Rådgivning over landegrenser, forklart enkelt' },
   'tore-sunde-rasmussen': { bransje: 'Rådgivning', tittel: 'Fra visittkort til noe som faktisk ringer' },
 };
 
-/* Portføljegridet på forsiden. Egen fil, ikke Portfolio.jsx, fordi den
-   filen bygges om et annet sted samtidig. Samme grid-markup som
+/* Portføljegridet på forsiden og på /arbeid. Egen fil, ikke Portfolio.jsx,
+   fordi den filen bygges om et annet sted samtidig. Samme grid-markup som
    studio-mal-demoen (data-arbeider), bare uten den vanilla-JS-genererte
-   innmaten: React gjør jobben querySelectorAll-malen gjorde der. */
+   innmaten: React gjør jobben querySelectorAll-malen gjorde der.
+
+   /arbeid hadde sitt eget rutenett, bygget av caser i stedet for
+   prosjekter. Prosjekter uten case-side (Appstart, Melanie Dahl, Alpha
+   Negotiations) sto dermed i arrayen og i skjemaet, men aldri på siden
+   som heter «Sider jeg har bygget». Nå er det ett rutenett: `antall`
+   klipper på forsiden, `nivaa` er overskriftsnivået (h2 på /arbeid, som
+   ikke har noen H2 over rutenettet), `reveal` kobler kortene på
+   useReveal der siden bruker den. */
 const ConditionalLink = ({ harCase, slug, url, children }) =>
   harCase ? (
     <Link to={`/arbeid/${slug}`}>{children}</Link>
@@ -43,7 +52,8 @@ const ConditionalLink = ({ harCase, slug, url, children }) =>
     </a>
   );
 
-const Arbeider = ({ antall = 4 }) => {
+const Arbeider = ({ antall = 4, nivaa = 3, reveal = false }) => {
+  const Tittel = `h${nivaa}`;
   const kort = prosjekter
     .filter((p) => p.slug && ARBEIDER_TEKST[p.slug])
     .slice(0, antall)
@@ -56,9 +66,9 @@ const Arbeider = ({ antall = 4 }) => {
     }));
 
   return (
-    <div className="arbeider" data-antall={antall} data-nivaa="3">
+    <div className="arbeider" data-antall={kort.length} data-nivaa={nivaa}>
       {kort.map((a, i) => (
-        <article className="arbeid" key={a.domene}>
+        <article className="arbeid" key={a.domene} data-reveal={reveal ? '' : undefined}>
           {/* Har prosjektet en case-side, går kortet dit. Har det ikke
               det, går det ut til kundens egen side. Uten dette ville et
               nytt prosjekt uten case landet på en 404-lignende side. */}
@@ -81,7 +91,7 @@ const Arbeider = ({ antall = 4 }) => {
               </div>
             </div>
             <p className="etikett">{a.bransje}</p>
-            <h3>{a.tittel} <span className="ut" aria-hidden="true">→</span></h3>
+            <Tittel>{a.tittel} <span className="ut" aria-hidden="true">→</span></Tittel>
           </ConditionalLink>
         </article>
       ))}
