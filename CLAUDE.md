@@ -109,7 +109,8 @@ men den måtte vekk fordi den drepte sitemap-ruten. Se felle 2 over.
 
 ### Case-sidene under `/arbeid`
 
-Redesignet la til seks case-ruter, `/arbeid/<slug>`, én per kundeprosjekt.
+Case-rutene ligger under `/arbeid/<slug>`, én per kundeprosjekt. Åtte per
+30. september 2026.
 Slugene ligger i `caser`-arrayen i `src/lib/demo-innhold.js`. Som alle andre
 ruter må de registreres tre steder, ikke bare i router-en:
 
@@ -118,8 +119,15 @@ ruter må de registreres tre steder, ikke bare i router-en:
 - `STATIC_PATHS` i `api/sitemap.xml.js`, samme mønster
 
 Se felle 1 over: glemmer du ett av de tre, får ruten forsidens HTML og title
-hos crawlere. Bygget rapporterer nå 39 ruter snapshottet, opp fra 33 før
-case-sidene ble lagt til.
+hos crawlere. Bygget rapporterte 72 ruter snapshottet 30. september 2026.
+
+**Før og etter.** En case kan ha et valgfritt `forEtter`-felt i
+`demo-innhold.js`: bilde av den gamle forsiden og en rad per målt punkt, med
+en `hvorfor` uten fagord. Tallene kommer fra
+`~/.claude/assets/for-etter/<domene>/<dato>/`, se regel 17 i
+`~/.claude/assets/nettside-regler.md`. Melanie Dahl og Alpha Negotiations har
+bilde og rader, Steinar Husby bare rader, fordi nettarkivet hadde den gamle
+siden hans uten stilark. Spør kunden før en gammel side vises.
 
 ---
 
@@ -179,8 +187,7 @@ rekkevidde og skal ikke følges opp videre.
   byrå, men begge var feil ved ny måling: siden svarer 200, og footeren
   peker nå til oppskalert.no. Bilder tatt på nytt samtidig, det gamle
   skjermbildet hadde en Design Lab-knapp brent inn fra en tidligere
-  demo-versjon. Har ingen case-side ennå, så kortet lenker rett ut til
-  kundens egen side, samme mønster som Melanie Dahl.
+  demo-versjon. Fikk case-side 30. september 2026, sammen med Melanie Dahl.
 - Tankestrek finnes i rundt ni kodekommentarer. Ikke i kundevendt tekst.
 - Forsidens H1 er «Nettsiden din er ikke et visittkort. Den avgjør om de
   ringer deg.» Heroen er innholdshøy, ikke skjermhøy: den har ingen

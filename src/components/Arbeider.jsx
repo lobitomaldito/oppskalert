@@ -37,8 +37,8 @@ const ARBEIDER_TEKST = {
    innmaten: React gjør jobben querySelectorAll-malen gjorde der.
 
    /arbeid hadde sitt eget rutenett, bygget av caser i stedet for
-   prosjekter. Prosjekter uten case-side (Appstart, Melanie Dahl, Alpha
-   Negotiations) sto dermed i arrayen og i skjemaet, men aldri på siden
+   prosjekter. Prosjekter uten case-side (Appstart og Kolflaath i dag)
+   sto dermed i arrayen og i skjemaet, men aldri på siden
    som heter «Sider jeg har bygget». Nå er det ett rutenett: `antall`
    klipper på forsiden, `nivaa` er overskriftsnivået (h2 på /arbeid, som
    ikke har noen H2 over rutenettet), `reveal` kobler kortene på

@@ -145,6 +145,35 @@ export const caser = [
         "Så kommer tre harde tall: land besøkt, bøker solgt, score på Talerlisten. Målte tall, ikke adjektiver.",
         "Selve foredraget er delt i tre navngitte temaer i et trekkspill, så en kurskomité kan lese akkurat det de lurer på uten å lese alt. Anmeldelsene nederst er signert med navn og stilling."
       ]
+    },
+    "forEtter": {
+      "kilde": "Den gamle siden lå på medutlagtsjarm.no og er hentet fra nettarkivet slik den sto 14. mars 2025. Den nye er målt 30. september 2026.",
+      "rader": [
+        {
+          "punkt": "Adresse",
+          "for": "medutlagtsjarm.no",
+          "na": "steinarhusby.no",
+          "hvorfor": "Den som har hørt ham, søker på navnet hans. Den gamle adressen sender videre."
+        },
+        {
+          "punkt": "Tittelen i søketreffet",
+          "for": "«Start - Steinar Husby»",
+          "na": "Navnet, yrket og hva foredraget heter",
+          "hvorfor": "Tittelen er den blå lenken folk klikker på. «Start» sier ingenting om hva han gjør."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "Ingen",
+          "na": "«Steinar Husby holder humørfylte foredrag om livsmestring og positiv holdning. Book ham til ditt neste arrangement.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "Fem, to av dem tomme",
+          "na": "Én",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. Fem stykker gir fem ulike svar."
+        }
+      ]
     }
   },
   {
@@ -211,6 +240,154 @@ export const caser = [
         "Fotografiene fra ekspedisjonene er ikke pynt, de er selve argumentet, og de får fylle flatene helt ut.",
         "<b>Video ligger midt på siden</b>, ikke gjemt under «Om». En arrangør som skal bruke penger vil høre stemmen før hun bestemmer seg, og da skal hun slippe å lete.",
         "Tallene står som en rad rett under heroen: to Everest-turer, seks av sju topper, score på Talerlisten. Bookingknappen følger med hele veien ned."
+      ]
+    }
+  },
+  /* Melanie Dahl og Alpha Negotiations. Lagt inn 30. september 2026, de
+     to første casene med før og etter.
+
+     forEtter er valgfritt. Hvert tall under er målt: den gamle
+     siden fra nettarkivet (web.archive.org) på datoen i `kilde`, den nye
+     direkte samme dag, begge med ~/.claude/assets/for-etter/ta-for.mjs.
+     `for.bilde` er de øverste 1440 x 1080 px av den gamle forsiden, og
+     finnes bare der arkivet hadde siden med stilarket i behold. Steinar
+     Husby over har derfor tabell uten bilde.
+
+     Hver rad har en `hvorfor` uten fagord. Klarer du ikke å skrive den,
+     skal raden ut. Og spør kunden før en gammel side vises her. */
+  {
+    "slug": "melanie-dahl",
+    "tittel": "To yrker, to innganger, én rolig side",
+    "ingress": "Skuespiller og mental trener for scenekunstnere. De to yrkene henger sammen, men de har hver sin kjøper: den ene skal booke en forestilling, den andre leter etter en coach.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Innholdsstruktur med to innganger",
+      "Redigering rett på siden",
+      "Domenet flyttet, 56 gamle adresser sendt videre",
+      "Hosting"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Innebygd redigering"
+    ],
+    "utfordring": {
+      "t": "43 undersider og to helt ulike besøkende",
+      "a": [
+        "Den gamle siden hadde vokst med karrieren. Hver forestilling, hvert kurs og hver film hadde fått sin egen side, og fra forsiden gikk det lenker til 43 av dem.",
+        "En teatersjef som vil se hva hun har spilt, og en skuespiller som sliter med prestasjonsangst, kom inn samme sted og måtte finne fram selv."
+      ]
+    },
+    "losning": {
+      "t": "To dører på forsiden",
+      "a": [
+        "Forsiden er delt i to: <b>Coaching</b> til venstre og <b>Scenekunst</b> til høyre. Du velger side før du har lest en eneste setning, og derfra handler alt om det du kom for.",
+        "Scenearbeidet er det som gir coachingen troverdighet, så de to halvdelene ligger under samme navn. Coachingsiden er lys, scenesiden er mørk.",
+        "Melanie endrer tekst og bilder selv, rett på siden. De 56 gamle adressene sender videre til riktig ny side, så ingen lenke fra før ender i en feilmelding."
+      ]
+    },
+    "forEtter": {
+      "for": { "bilde": "/websider/for/melanie-dahl.webp", "tatt": "mars 2025" },
+      "kilde": "Den gamle siden er hentet fra nettarkivet slik den sto 16. mars 2025. Den nye er målt 30. september 2026.",
+      "rader": [
+        {
+          "punkt": "Undersider lenket fra forsiden",
+          "for": "43",
+          "na": "5",
+          "hvorfor": "Den som leter etter en coach, slipper å lete seg forbi tretti teaterforestillinger først."
+        },
+        {
+          "punkt": "Sideadresser med navn som «new-page-5»",
+          "for": "5",
+          "na": "Ingen",
+          "hvorfor": "Adressen står i søketreffet og i hver lenke som deles. Den skal si hva siden handler om."
+        },
+        {
+          "punkt": "Hovedoverskrift på forsiden",
+          "for": "Sto som vanlig tekst",
+          "na": "«Hva kan jeg hjelpe deg med?»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "«Melanie Dahl, skuespiller, skuespillerinne, oslo»",
+          "na": "«Skuespiller på scenen, mental trener bak den. Melanie Dahl hjelper scenekunstnere gjennom prestasjonsangst, usikkerhet og frykten for ikke å være god nok.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        },
+        {
+          "punkt": "Filer som hentes før forsiden vises",
+          "for": "12",
+          "na": "6",
+          "hvorfor": "Færre filer gir kortere ventetid på mobilnett."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "alpha-negotiations",
+    "tittel": "En forhandlingsekspert, forklart på ett kvarter",
+    "ingress": "Kurs og foredrag om forhandlinger, holdt av en foreleser ved Handelshøyskolen BI med bakgrunn fra Nordea, HSBC London og Danske Markets. Den gamle siden viste lite av det.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Innholdsstruktur",
+      "Presseside og e-bok",
+      "Søkeoppsett",
+      "Hosting"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Selvhostede fonter"
+    ],
+    "utfordring": {
+      "t": "Tung fagbakgrunn i en ferdig mal",
+      "a": [
+        "Stein-Erik Mellemseter foreleser ved Handelshøyskolen BI og har skrevet om forhandlinger i E24. Den gamle siden var en ferdig WordPress-mal med arkivbilder av håndtrykk, og hovedoverskriften på forsiden var «Hjem».",
+        "Den som vurderer en foredragsholder til ledergruppa, bruker noen minutter på å avgjøre om han er verdt en telefon. På den gamle siden gikk de minuttene med til å lete."
+      ]
+    },
+    "losning": {
+      "t": "Bevisene først",
+      "a": [
+        "Rett under overskriften står <b>tolv logoer</b> fra kunder og samarbeidspartnere, og portrettet er tatt foran BI. Svaret på om han er verdt en telefon kommer før du har rullet.",
+        "Anmeldelsene følger rett etter, signert med navn og arbeidsgiver.",
+        "Fagstoffet har fått egne sider: 52 forhandlingsråd som hver svarer på ett spørsmål, i tillegg til presseoppslag og e-bok."
+      ]
+    },
+    "forEtter": {
+      "for": { "bilde": "/websider/for/alpha-negotiations.webp", "tatt": "april 2026" },
+      "kilde": "Den gamle siden er hentet fra nettarkivet slik den sto 12. april 2026. Den nye er målt 30. september 2026.",
+      "rader": [
+        {
+          "punkt": "Filer som hentes før forsiden vises",
+          "for": "54",
+          "na": "6",
+          "hvorfor": "Færre filer gir kortere ventetid på mobilnett."
+        },
+        {
+          "punkt": "Andre selskaper som får beskjed om hvert besøk",
+          "for": "To: Google og HubSpot",
+          "na": "Ingen",
+          "hvorfor": "Hver av dem ser IP-adressen til den som åpner siden."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "To: «Hjem» og «Alpha Negotiations»",
+          "na": "Én: «Skap større verdi i forhandlinger.»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. «Hjem» forteller ingenting."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "«Enda bedre forhandlinger»",
+          "na": "«Kurs og foredrag om forhandlinger. Mange års erfaring fra Nordea, HSBC London og Danske Markets. Foreleser ved Handelshøyskolen BI.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        },
+        {
+          "punkt": "Bilde når lenken deles",
+          "for": "Ingen",
+          "na": "Eget bilde",
+          "hvorfor": "En lenke uten bilde blir lett oversett på LinkedIn og i en melding."
+        }
       ]
     }
   }

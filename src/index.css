@@ -860,6 +860,52 @@
   .casebunn a.etikett { padding: .55rem 0; transition: color .2s var(--e); }
   .casebunn a.etikett:hover { color: var(--blekk); }
 
+  /* Før og etter på case-sidene. Hvitt kort med hårstrek på feltet, som
+     de andre kortene, og ingen farget kolonne: «Ny side» skilles fra
+     «Gammel side» med vekt og blekk, slik resten av skallet lager
+     kontrast. Se ForEtter i CasePage.jsx for hvorfor dette ikke er en
+     tabell. */
+  .foretter { display: grid; gap: clamp(1.5rem, 3vw, 2.25rem); }
+  /* Side om side også på mobil. Stablet ble seksjonen 570 px høyere på
+     390 enn på 1440, og da ser du aldri de to bildene samtidig, som er
+     hele poenget med å vise dem. */
+  .foretter-bilder { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(.75rem, 2.5vw, 1.75rem); }
+  .foretter-bilder figure { min-width: 0; }
+  .foretter-bilder .ramme-topp p { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .foretter-bilder figcaption { margin-top: .75rem; font-size: .8125rem; color: var(--blekk-mykt); }
+  /* Rammene her står stille. Standard .ramme-vindu ruller gjennom et
+     langt skjermbilde, og to rammer i ulik takt kan ikke sammenlignes. */
+  .ramme-vindu.stille img { animation: none; height: 100%; object-fit: cover; object-position: top; }
+
+  .foretter-rader {
+    background: var(--hvit); border: 1px solid var(--felt-kant);
+    border-radius: var(--rund); overflow: hidden;
+  }
+  .foretter-rader ul { list-style: none; padding: 0; }
+  .foretter-hode, .foretter-rader li { padding: .95rem 1.25rem; }
+  .foretter-hode { display: none; font-size: .8125rem; color: var(--blekk-mykt); }
+  .foretter-rader li { display: grid; gap: .4rem; font-size: .9375rem; }
+  .foretter-rader li + li { border-top: 1px solid var(--felt-kant); }
+  .foretter-rader h3 { font-size: .9375rem; font-weight: 600; letter-spacing: -.012em; }
+  .foretter-rader h3 + p { margin-top: .2rem; font-size: .8125rem; color: var(--blekk-mykt); }
+  .foretter-rader .for { color: var(--blekk-mykt); }
+  .foretter-rader .na { font-weight: 600; }
+  .foretter-rader li > p > span { font-weight: 400; color: var(--blekk-mykt); }
+  @media (min-width: 44rem) {
+    .foretter-hode, .foretter-rader li {
+      display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(1rem, 2vw, 1.75rem); align-items: start;
+    }
+    .foretter-hode { border-bottom: 1px solid var(--felt-kant); }
+    /* Kolonnehodet sier det samme, så merkelappen i cellen skjules for
+       øyet, men ikke for skjermleseren. Samme grep som .skjult. */
+    .foretter-rader li > p > span {
+      position: absolute; width: 1px; height: 1px; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+    }
+  }
+  .foretter-kilde { font-size: .8125rem; color: var(--blekk-mykt); max-width: 62ch; }
+
   /* ----------------------------------------------------------------
      Portrett og signatur
      ---------------------------------------------------------------- */
