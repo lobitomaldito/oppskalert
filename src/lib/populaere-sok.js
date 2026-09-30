@@ -57,8 +57,8 @@ export const populaereSok = [
     slug: 'hva-koster-en-nettside',
     q: 'Hva koster en nettside i Norge?',
     tittel: 'Hva koster en nettside i Norge?',
-    beskrivelse: 'Malbasert side ligger på 5 000 til 15 000 kroner, byråer fra bunnen på 25 000 og oppover. Hos meg starter en håndbygd side på 9 999 kroner eks. mva.',
-    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 9 999 kroner eks. mva som engangspris, eller 1 290 kroner i måneden på abonnement med 12 måneders binding. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
+    beskrivelse: 'Malbasert side ligger på 5 000 til 15 000 kroner, byråer fra bunnen på 25 000 og oppover. Hos meg starter en håndbygd side på 6 990 kroner eks. mva.',
+    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 6 990 kroner eks. mva som engangspris, eller 1 290 kroner i måneden på abonnement med 12 måneders binding. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
     utdyping: [
       {
         t: 'Hva er det du faktisk betaler for?',
@@ -66,7 +66,7 @@ export const populaereSok = [
       },
       {
         t: 'Hvorfor spriker prisene så mye?',
-        a: 'Fordi «nettside» dekker alt fra en ferdig mal du fyller inn selv på en kveld, til noe som er tegnet, skrevet og kodet for deg alene. Et byrå har i tillegg prosjektleder, designer og utvikler på samme jobb, og kontorleie på toppen. Jeg er én person uten mellomledd, og det er hele forklaringen på at samme leveranse kan koste 9 999 hos meg og 40 000 et annet sted.',
+        a: 'Fordi «nettside» dekker alt fra en ferdig mal du fyller inn selv på en kveld, til noe som er tegnet, skrevet og kodet for deg alene. Et byrå har i tillegg prosjektleder, designer og utvikler på samme jobb, og kontorleie på toppen. Jeg er én person uten mellomledd, og det er hele forklaringen på at samme leveranse kan koste 6 990 hos meg og 40 000 et annet sted.',
       },
       {
         t: 'Hva bør du ha skriftlig før du sier ja?',
@@ -200,8 +200,8 @@ export const populaereSok = [
     slug: 'hva-koster-webdesign-i-oslo',
     q: 'Hva koster webdesign i Oslo?',
     tittel: 'Hva koster webdesign i Oslo?',
-    beskrivelse: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 9 999 kroner eks. mva.',
-    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 9 999 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
+    beskrivelse: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 6 990 kroner eks. mva.',
+    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 6 990 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
     utdyping: [
       {
         t: 'Hvorfor Oslo-prisene ligger høyere',

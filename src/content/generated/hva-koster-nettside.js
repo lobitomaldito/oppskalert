@@ -11,7 +11,7 @@ Søker du på dette spørsmålet, møter du svar fra 3 000 til 300 000 kroner, o
 
 ## Prisene mine, uten omveier
 
-En landingsside eller et digitalt visittkort starter på 9 999 kroner. En vanlig bedriftsnettside med to til fem sider starter på 12 900 kroner. Trenger du seks til ti sider, med plass til flere tjenester og mer innhold, starter det på 18 900 kroner. Har du en stor struktur eller trenger egen funksjonalitet utover det, starter det på 27 900 kroner. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
+En landingsside eller et digitalt visittkort starter på 6 990 kroner. En vanlig bedriftsnettside med to til fem sider starter på 7 990 kroner. Trenger du seks til ti sider, med plass til flere tjenester og mer innhold, starter det på 9 990 kroner. Har du en stor struktur eller trenger egen funksjonalitet utover det, starter det på 14 900 kroner. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
 
 ## Hva som avgjør hvilket nivå du havner på
 

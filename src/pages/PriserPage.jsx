@@ -114,7 +114,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 9 999 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris og gratis demo før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: engangspris fra 6 990 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris og gratis demo før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}

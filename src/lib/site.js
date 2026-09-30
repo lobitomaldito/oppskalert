@@ -53,7 +53,7 @@ export const prismodeller = [
   {
     id: 'engangs',
     navn: 'Engangspris',
-    fra: '9 999',
+    fra: '6 990',
     enhet: 'kr',
     // Tom med vilje: navnet er allerede «Engangspris», så en periode som
     // sier «engangspris» ble til «Engangspris · engangspris» på kortet.
@@ -218,7 +218,7 @@ export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå e
    KALKULATOR. Selvbetjent prisestimat. Grunnpris etter omfang,
    pluss flate påslag per funksjon. Alt er fortsatt skreddersydd og
    håndkodet. Det finnes bevisst ingen "mal"-tier, siden det ville
-   motsagt alltidMed over. Tallene er godkjent 2026-08-03; endre kun
+   motsagt alltidMed over. Tillegg og haster er godkjent 2026-08-03; endre kun
    her, så følger kalkulatoren automatisk med.
 
    manedspris er det veiledende "eller X kr/mnd"-alternativet til
@@ -232,12 +232,21 @@ export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå e
    selve byggingen var betalt. Den nye holder samme form som den gamle
    (+31 %, +70 %, +132 % over startnivået), men er forankret i 1 290,
    prisen på abonnementsmodellen. Etter de 12 bundne månedene går kunden
-   uansett over på driftsprisen, ikke på dette tallet. */
+   uansett over på driftsprisen, ikke på dette tallet.
+
+   Engangsprisene ble senket 30. september 2026, fra 9 999–12 900,
+   12 900–16 900, 18 900–24 900 og 27 900–36 900. De gamle tallene var
+   aldri prisene jeg solgte for: for alle sju solgte sider med målt
+   sidetall lå kalkulatorens laveste tall over salgsprisen. Siden lover
+   «de samme fastprisene jeg bruker i ekte prosjekter», så tallene her
+   skal følge salgene. `fra` på engangskortet over er laveste `min`
+   her, hold dem like.
+   manedspris er ikke rørt i denne runden. */
 export const kalkulatorOmfang = [
-  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 9999, max: 12900, manedspris: 1290 },
-  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900, manedspris: 1690 },
-  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900, manedspris: 2190 },
-  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900, manedspris: 2990 },
+  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 6990, max: 8990, manedspris: 1290 },
+  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 7990, max: 11900, manedspris: 1690 },
+  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 9990, max: 14900, manedspris: 2190 },
+  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 14900, max: 22900, manedspris: 2990 },
 ];
 
 export const kalkulatorTillegg = [
@@ -352,7 +361,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'Engangspris starter på 9 999 kr eks. mva, og da eier du alt fra dag én. Vil du heller fordele det over året, starter Nettside på abonnement på 1 290 kr i måneden med 12 måneders binding, og etter det går du over på drift til 690 kr i måneden uten binding. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
+    a: 'Engangspris starter på 6 990 kr eks. mva, og da eier du alt fra dag én. Vil du heller fordele det over året, starter Nettside på abonnement på 1 290 kr i måneden med 12 måneders binding, og etter det går du over på drift til 690 kr i måneden uten binding. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er en gratis demo, og hva forplikter det meg til?',
@@ -454,11 +463,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg starter en enkel landingsside på 9 999 kr eks. mva. En vanlig bedriftsnettside på to til fem sider ligger mellom 12 900 og 16 900 kr, seks til ti sider mellom 18 900 og 24 900 kr, og over ti sider fra 27 900 kr. Du får alltid en fast pris før jeg skriver en linje kode, og du kan regne ut ditt eget estimat i kalkulatoren.',
+    a: 'Hos meg starter en enkel landingsside på 6 990 kr eks. mva. En vanlig bedriftsnettside på to til fem sider ligger mellom 7 990 og 11 900 kr, seks til ti sider mellom 9 990 og 14 900 kr, og over ti sider fra 14 900 kr. Du får alltid en fast pris før jeg skriver en linje kode, og du kan regne ut ditt eget estimat i kalkulatoren.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 9 999 kr én gang, får alle filene og eier hele løsningen. Abonnement: jeg bygger den samme siden, du betaler 1 290 kr i måneden i 12 måneder, og selve byggingen nedbetales over det året. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler fra 6 990 kr én gang, får alle filene og eier hele løsningen. Abonnement: jeg bygger den samme siden, du betaler 1 290 kr i måneden i 12 måneder, og selve byggingen nedbetales over det året. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
