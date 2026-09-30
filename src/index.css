@@ -440,6 +440,96 @@
   }
   .hero-bevis a:hover { border-color: var(--blekk-mykt); }
 
+  /* ----------------------------------------------------------------
+     Hero med gallerivegg (Vegg.jsx). Tekst til venstre, kundesidene i
+     tre rullende kolonner til høyre. Under 64rem står veggen under
+     teksten, som før sentrert.
+
+     Proporsjonene er målt på en referanse 30. september 2026: rutenett
+     1fr / 1.06fr, 20 px mellom flisene (10 px på mobil), maske som
+     toner ut de øverste 9 % og de nederste 12 %, og rundt 9 px i
+     sekundet. Her er halve sporet 982 px ved 1440, så 108 s gir 9,1 px
+     i sekundet. Tre ulike varigheter, og midtkolonnen går motsatt vei,
+     så kolonnene aldri går i takt.
+     ---------------------------------------------------------------- */
+  .hero-vegg { padding-bottom: 0; }
+  .vegg {
+    --vegg-luft: .625rem;
+    position: relative; isolation: isolate;
+    height: 22rem; margin-top: 2.5rem;
+  }
+  @media (min-width: 64rem) {
+    .hero-vegg { padding-block: 0; text-align: left; }
+    .hero-vegg > .wrap {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
+      /* minmax(0, 1fr), ikke auto: en auto-rad tar høyden til sporene i
+         veggen, flere tusen piksler, og teksten sentreres i den. */
+      grid-template-rows: minmax(0, 1fr);
+      gap: clamp(2rem, 4vw, 3.5rem); align-items: center;
+      height: clamp(40rem, calc(100svh - 7.25rem), 47.5rem);
+    }
+    /* Tre setninger, tre linjer. Den lengste, «Webdesign for bedrifter.»,
+       måler 9,55 ganger fontstørrelsen: 535 px ved 56 px, målt. Kolonnen
+       er 524 px ved 1440, så taket er 3.25rem (497 px). */
+    .hero-vegg h1 { font-size: clamp(2.25rem, 3.6vw, 3.25rem); margin-inline: 0; max-width: none; }
+    .hero-vegg h1 span { display: block; }
+    .hero-vegg p, .hero-vegg .hero-bevis { margin-inline: 0; }
+    .hero-vegg .hero-handling { justify-content: flex-start; }
+    .vegg { --vegg-luft: 1.25rem; height: 100%; margin-top: 0; }
+  }
+  /* .vurdering står i sin egen blokk med vilje. `if (!vurdering)` i App.jsx
+     leses av Tailwind som klassen !vurdering, og den lager da en
+     !important-kopi av hele @media-blokken regelen står i. Sto den sammen
+     med reglene over, ble kopiene av dem stående uten velger, og bygget
+     ga tre css-syntax-error. */
+  @media (min-width: 64rem) {
+    .hero-vegg .vurdering { justify-content: flex-start; }
+  }
+  .vegg-kolonner {
+    height: 100%;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--vegg-luft);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 88%, transparent 100%);
+  }
+  .vegg-kolonne { overflow: hidden; }
+  /* Sporet har flisene to ganger og flyttes halve høyden sin. Derfor
+     margin-bottom på flisa og ikke gap på sporet: med gap mangler det
+     siste mellomrommet, og sløyfen hopper en halv luft ved omstart. */
+  .vegg-spor {
+    display: flex; flex-direction: column;
+    animation: vegg-opp 108s linear infinite; animation-delay: -12s;
+    will-change: transform;
+  }
+  .vegg-kolonne:nth-child(2) .vegg-spor { animation-name: vegg-ned; animation-duration: 120s; animation-delay: -29s; }
+  .vegg-kolonne:nth-child(3) .vegg-spor { animation-duration: 100s; animation-delay: -52s; }
+  .vegg.er-pauset .vegg-spor, .vegg.er-ute .vegg-spor { animation-play-state: paused; }
+  @keyframes vegg-opp { to { transform: translate3d(0, -50%, 0); } }
+  @keyframes vegg-ned { from { transform: translate3d(0, -50%, 0); } }
+
+  /* Flisa er et ferdig bilde med enheten fotografert inn. Bakgrunnen er
+     bare det som vises til bildet er lastet. */
+  .flis {
+    flex: none; display: block; overflow: hidden; aspect-ratio: 4 / 5;
+    margin-bottom: var(--vegg-luft); border-radius: var(--rund);
+    background: var(--felt-dyp);
+  }
+  .flis-kvadrat { aspect-ratio: 1; }
+  .flis-hoy { aspect-ratio: 2 / 3; }
+  .flis img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  .vegg-pause {
+    position: absolute; right: 0; bottom: .75rem; z-index: 1;
+    min-height: 2.75rem; padding: 0 1rem; border-radius: 99px;
+    background: var(--hvit); border: 1px solid var(--felt-kant);
+    color: var(--blekk-mykt); font-size: .8125rem; cursor: pointer;
+    transition: color .2s var(--e), border-color .2s var(--e);
+  }
+  .vegg-pause:hover { color: var(--blekk); border-color: var(--blekk-mykt); }
+  @media (prefers-reduced-motion: reduce) {
+    .vegg-spor { animation: none; }
+    .vegg-pause { display: none; }
+  }
+
   .statuslinje {
     display: flex; align-items: center; justify-content: center; gap: 1rem;
     padding-block: 1.25rem clamp(3rem, 6vw, 5rem);
