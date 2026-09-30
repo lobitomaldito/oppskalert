@@ -3,7 +3,8 @@
   "redirects": [
     { "source": "/r", "destination": "https://oppskalert-ringeapp.vercel.app/api/track-klikk", "permanent": false },
     { "source": "/vårt-arbeid", "destination": "/arbeid", "permanent": true },
-    { "source": "/kom-i-gang", "destination": "/kontakt", "permanent": true }
+    { "source": "/kom-i-gang", "destination": "/kontakt", "permanent": true },
+    { "source": "/kalkulator", "destination": "/priser", "permanent": true }
   ],
   "rewrites": [
     { "source": "/arbeid", "destination": "/arbeid/index.html" },
@@ -12,7 +13,6 @@
     { "source": "/om", "destination": "/om/index.html" },
     { "source": "/kontakt", "destination": "/kontakt/index.html" },
     { "source": "/eksempler/:slug", "destination": "/eksempler/:slug/index.html" },
-    { "source": "/kalkulator", "destination": "/kalkulator/index.html" },
     { "source": "/drift", "destination": "/drift/index.html" },
     { "source": "/sammenlign", "destination": "/sammenlign/index.html" },
     { "source": "/sammenlign/:slug", "destination": "/sammenlign/:slug/index.html" },

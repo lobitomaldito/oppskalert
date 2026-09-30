@@ -50,7 +50,6 @@ const FrisorDemo = lazySide(() => import('./pages/eksempler/FrisorDemo.jsx'))
 const HandverkerDemo = lazySide(() => import('./pages/eksempler/HandverkerDemo.jsx'))
 const RestaurantDemo = lazySide(() => import('./pages/eksempler/RestaurantDemo.jsx'))
 const TannlegeDemo = lazySide(() => import('./pages/eksempler/TannlegeDemo.jsx'))
-const KalkulatorPage = lazySide(() => import('./pages/KalkulatorPage.jsx'))
 const DriftPage = lazySide(() => import('./pages/DriftPage.jsx'))
 const SammenlignPage = lazySide(() => import('./pages/SammenlignPage.jsx'))
 import PopulaereSokPage from './pages/PopulaereSokPage';
@@ -81,7 +80,6 @@ createRoot(document.getElementById('root')).render(
           <Route path="/arbeid/:slug" element={<CasePage />} />
           {/* /vårt-arbeid redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/priser" element={<PriserPage />} />
-          <Route path="/kalkulator" element={<KalkulatorPage />} />
           <Route path="/drift" element={<DriftPage />} />
           <Route path="/sammenlign" element={<SammenlignPage />} />
         <Route path="/vanlige-sporsmal" element={<PopulaereSokPage />} />

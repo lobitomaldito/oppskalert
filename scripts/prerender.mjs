@@ -39,7 +39,7 @@ import { ordliste } from '../src/lib/ordliste.js';
 
 const ROUTES = [
   '/', '/arbeid', '/priser', '/metode', '/om', '/kontakt', '/drift',
-  '/sammenlign', '/sammenlign/wix', '/sammenlign/wordpress', '/kalkulator',
+  '/sammenlign', '/sammenlign/wix', '/sammenlign/wordpress',
   '/vanlige-sporsmal',
   ...populaereSok.map((s) => `/vanlige-sporsmal/${s.slug}`),
   '/ordliste',

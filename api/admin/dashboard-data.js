@@ -332,15 +332,14 @@ async function hentFeil(dager) {
 
 // Alle track()-kall går også til PostHog (se lib/analytics.js), så hele
 // veien fram til en henvendelse kan telles på samme distinct_id som
-// sidevisningene. Kalkulatoren er en sidevei og ikke et obligatorisk steg,
-// så tallene er «hvor mange gjorde dette», ikke en streng sekvens.
+// sidevisningene. Skjemaet har en «hopp over»-lenke, så tallene er «hvor
+// mange gjorde dette», ikke en streng sekvens.
 async function hentTrakt(dager) {
   const rader = await posthogSporring(
     `
     SELECT
       multiIf(
         event = '$pageview', 'besok',
-        startsWith(event, 'kalkulator_'), 'kalkulator',
         event = 'demo_form_steg1_fullfort', 'steg1',
         event = 'demo_request_submitted', 'sendt',
         'annet'
@@ -351,7 +350,6 @@ async function hentTrakt(dager) {
       AND ${PRODUKSJONSVERT}
       AND (
         (event = '$pageview' AND ${IKKE_ADMIN})
-        OR startsWith(event, 'kalkulator_')
         OR event IN ('demo_form_steg1_fullfort', 'demo_request_submitted')
       )
     GROUP BY steg
@@ -364,7 +362,6 @@ async function hentTrakt(dager) {
   const besok = personer.besok || 0;
   const steg = [
     { navn: 'Besøkte siden', personer: besok },
-    { navn: 'Brukte priskalkulatoren', personer: personer.kalkulator || 0 },
     // Navnet må stemme med FRAFALL_ETTER i DashboardPage.jsx, som bruker
     // det til å avgjøre hvor et frafallstall faktisk gir mening.
     { navn: 'Åpnet skjemaet', personer: personer.steg1 || 0 },
@@ -448,7 +445,7 @@ export default async function handler(req, res) {
   ]);
 
   // Trakten må måle mot samme nevner som «Ekte besøkende» over. Ellers står
-  // det at 1 av 71 brukte kalkulatoren, altså 1 %, når sannheten er 1 av 7
+  // det at 1 av 71 åpnet skjemaet, altså 1 %, når sannheten er 1 av 7
   // mennesker. De 64 andre var skannere som aldri kunne blitt en henvendelse.
   // Stegene under toppen teller allerede bare folk som gjorde noe aktivt, så
   // bare nevneren trenger å byttes.

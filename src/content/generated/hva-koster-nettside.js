@@ -25,11 +25,11 @@ Alle nivåene kan kjøpes på to måter. Betaler du engangspris, eier du koden o
 
 Priser for tilsynelatende samme leveranse kan variere med 200 til 400 prosent mellom ulike leverandører i Norge. Det skyldes sjelden at noen jukser, men at «en nettside» betyr helt forskjellige ting avhengig av hvor mye administrasjon, møtetid og mellomledd som er bakt inn i prisen. Et større byrå med prosjektledere og kontorleie legger nødvendigvis til et påslag du ikke betaler for hos en mindre leverandør som gjør jobben selv. Spør alltid hvor mye av prisen som går til selve produksjonen, ikke bare til det ferdige resultatet.
 
-## Få et konkret tall på under to minutter
+## Få en fast pris på din side
 
-Skal du ha et tall tilpasset akkurat din bedrift, uten å vente på et tilbud i innboksen, kan du bruke [kalkulatoren min](/kalkulator). Du legger inn antall sider og hvilke funksjoner du trenger, og får et estimat med det samme, basert på de samme prisnivåene som over.
+Skal du ha et tall for akkurat din bedrift, [send meg en linje](/kontakt) om hva du driver med. Du får en fast pris skriftlig og en ferdig demo innen 48 timer, før du bestemmer deg.
 
 ## Hva du bør gjøre nå
 
-Tell opp hvor mange sider bedriften din faktisk trenger, ikke hvor mange du tror ser bra ut. De fleste klarer seg med mellom to og fem: forside, tjenester, om oss og kontakt. Sammenlign så det tallet mot stigen over, eller kjør det gjennom kalkulatoren, så vet du omtrent hva du bør budsjettere før du tar kontakt med noen.`,
+Tell opp hvor mange sider bedriften din faktisk trenger, ikke hvor mange du tror ser bra ut. De fleste klarer seg med mellom to og fem: forside, tjenester, om oss og kontakt. Sammenlign så det tallet mot stigen over, så vet du omtrent hva du bør budsjettere før du tar kontakt med noen.`,
 };

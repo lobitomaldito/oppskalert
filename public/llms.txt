@@ -9,7 +9,6 @@
 
 ## Priser
 - [Priser](https://oppskalert.no/priser): Engangspris fra 6 990 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris før jeg begynner.
-- [Priskalkulator](https://oppskalert.no/kalkulator): Selvbetjent prisestimat basert på omfang og tilleggsfunksjoner.
 - [Drift og support](https://oppskalert.no/drift): Tre driftsnivåer fra 149 kr/mnd, ingen bindingstid.
 
 ## Sammenligning

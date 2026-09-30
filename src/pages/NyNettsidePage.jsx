@@ -152,11 +152,7 @@ const NyNettsidePage = () => (
           <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             prissiden
           </Link>
-          . Vil du regne på ditt eget omfang først, tar{' '}
-          <Link to={ruter.kalkulator} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
-            kalkulatoren
-          </Link>{' '}
-          under ett minutt og krever ingen e-postadresse.
+          .
         </p>
       </Avsnitt>
     </Brodtekst>

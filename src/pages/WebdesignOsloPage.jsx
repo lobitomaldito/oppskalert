@@ -108,10 +108,6 @@ const Innhold = () => {
             Prisen er fast og oppgitt på forhånd. Se{' '}
             <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
               hva en nettside koster
-            </Link>{' '}
-            eller regn det ut selv i{' '}
-            <Link to={ruter.kalkulator} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
-              kalkulatoren
             </Link>
             .
           </p>
