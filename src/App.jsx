@@ -5,6 +5,7 @@ import { ArbeidSeksjon } from './components/Arbeider';
 import Sitatkort from './components/Sitatkort';
 import Priser from './components/Priser';
 import DemoSkjema from './components/DemoSkjema';
+import Vegg from './components/Vegg';
 import { faqSchema, heroBevis, kontakt, ruter, vurdering } from './lib/site';
 import { omtaler, sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
@@ -131,41 +132,46 @@ const HeroBevis = () => {
 const Hero = () => {
   const container = useReveal(100);
   return (
-    <section ref={container} className="hero">
-      <span className="vannmerke merke" aria-hidden="true">oppskalert<i>.</i></span>
+    <section ref={container} className="hero hero-vegg">
       <div className="wrap">
-        {/* Overskriften er tre korte setninger, ikke én lang. Målt hos ti
-            norske konkurrenter 20. august 2026 ligger H1 på 5,5 ord i snitt,
-            og den forrige versjonen her var 12 ord over to setninger, altså
-            dobbelt så lang som normen. Staccato med punktum der man
-            instinktivt ville satt komma er samtidig det grepet norske sider
-            faktisk bruker, se inspirasjon/norsk-cta.md.
+        <div className="hero-tekst">
+          {/* Overskriften er tre korte setninger, ikke én lang. Målt hos ti
+              norske konkurrenter 20. august 2026 ligger H1 på 5,5 ord i snitt,
+              og den forrige versjonen her var 12 ord over to setninger, altså
+              dobbelt så lang som normen. Staccato med punktum der man
+              instinktivt ville satt komma er samtidig det grepet norske sider
+              faktisk bruker, se inspirasjon/norsk-cta.md.
 
-            Den bærer også de tre søkeordene Search Console måler forsiden på:
-            webdesign, bedrifter, Oslo. */}
-        <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
-          Webdesign for bedrifter. Basert i Oslo. Alltid gratis demo.
-        </h1>
-        {/* Ingressen sier bevisst noe annet enn overskriften.
+              Den bærer også de tre søkeordene Search Console måler forsiden på:
+              webdesign, bedrifter, Oslo. */}
+          {/* Én span per setning: ved siden av galleriveggen står de på hver
+              sin linje, se .hero-vegg h1 span i index.css. Teksten er uendret. */}
+          <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
+            <span>Webdesign for bedrifter.</span> <span>Basert i Oslo.</span>{' '}
+            <span>Alltid gratis demo.</span>
+          </h1>
+          {/* Ingressen sier bevisst noe annet enn overskriften.
 
-            Den forrige gjentok «bedrifter», «Oslo» og «gratis demo», altså
-            alt overskriften og knappen allerede sa, innenfor 400 piksler.
-            Nå bærer den det de tre setningene over ikke rekker: hva som
-            faktisk inngår, hvem som gjør det, og hvor lang tid det tar.
+              Den forrige gjentok «bedrifter», «Oslo» og «gratis demo», altså
+              alt overskriften og knappen allerede sa, innenfor 400 piksler.
+              Nå bærer den det de tre setningene over ikke rekker: hva som
+              faktisk inngår, hvem som gjør det, og hvor lang tid det tar.
 
-            Malen er den målte: konkret liste, hvem, så én setning som
-            fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
-        <p data-reveal className="inn" style={{ '--d': '220ms' }}>
-          Design, tekst, koding og lansering, gjort av én person du kan ringe.
-          Demoen er klar på 48 timer.
-        </p>
-        <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
-          <Link className="knapp" to={ruter.kontakt}>
-            Få en gratis demo <span className="pil" aria-hidden="true">↗</span>
-          </Link>
+              Malen er den målte: konkret liste, hvem, så én setning som
+              fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
+          <p data-reveal className="inn" style={{ '--d': '220ms' }}>
+            Design, tekst, koding og lansering, gjort av én person du kan ringe.
+            Demoen er klar på 48 timer.
+          </p>
+          <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
+            <Link className="knapp" to={ruter.kontakt}>
+              Få en gratis demo <span className="pil" aria-hidden="true">↗</span>
+            </Link>
+          </div>
+          <Vurdering />
+          <HeroBevis />
         </div>
-        <Vurdering />
-        <HeroBevis />
+        <Vegg />
       </div>
     </section>
   );
