@@ -671,6 +671,15 @@ export const prosjekter = [
   { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
   { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
   { img: '/websider/tore-sunde-rasmussen.webp', slug: 'tore-sunde-rasmussen', full: '/websider/full/tore-sunde-rasmussen.webp', til: '-74%', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
+  /* Tor Magnus Kolflaath. Lagt inn 30. september 2026. Levert og satt
+     live 10. august, men aldri ført opp her. Ingen case-side, så kortet
+     lenker rett ut til kolflaath.com. Står sist blant dem med fangst,
+     så de seks første (Portfolio med limit 6) er uendret.
+
+     Til er -67%: forsiden er 2912 px høy, så bildet er 640 x 1456 og
+     vinduet viser 480 / 1456 = 33 % av det av gangen. Samme prinsipp som
+     Melanie Dahl og Alpha Negotiations over. */
+  { img: '/websider/kolflaath.webp', slug: 'kolflaath', full: '/websider/full/kolflaath.webp', til: '-67%', navn: 'Tor Magnus Kolflaath', bransje: 'Investor', url: 'https://kolflaath.com', domene: 'kolflaath.com' },
   { img: '/websider/oppskalert.webp', navn: 'Oppskalert', bransje: 'Denne siden', url: 'https://oppskalert.no', domene: 'oppskalert.no' },
   { img: '/websider/irmelin-drake-ny.webp', navn: 'Irmelin Drake', bransje: 'Ledelse', url: 'https://irmelindrake.no', domene: 'irmelindrake.no' },
 ];
