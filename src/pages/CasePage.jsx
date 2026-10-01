@@ -145,7 +145,7 @@ const CasePage = () => {
       />
 
       <div ref={container}>
-        <section className="wrap sidetopp">
+        <section className="wrap sidetopp casehode">
           <nav className="brodsmuler" aria-label="Brødsmuler" data-reveal>
             <Link to="/">Forside</Link>
             <span aria-hidden="true">/</span>
@@ -154,16 +154,13 @@ const CasePage = () => {
             <span>{prosjekt.navn}</span>
           </nav>
           <div className="casetopp">
-            <div data-reveal>
-              <p className="etikett" style={{ marginBottom: '1rem' }}>{prosjekt.navn}</p>
-              <h1>{c.tittel}</h1>
-            </div>
+            <h1 data-reveal>{c.tittel}</h1>
             <p className="ingress" data-reveal>{c.ingress}</p>
           </div>
         </section>
 
         <section className="hvit">
-          <div className="wrap seksjon">
+          <div className="wrap seksjon casebilde">
             <div className="caseramme" data-reveal>
               <article className="arbeid">
                 <div className="ramme">

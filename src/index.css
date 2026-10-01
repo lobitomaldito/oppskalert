@@ -824,13 +824,25 @@
   .brodsmuler a:hover { border-color: var(--blekk-mykt); }
   .brodsmuler span { opacity: .5; }
 
-  .casetopp { display: grid; gap: clamp(1.5rem, 3vw, 3rem); align-items: end; margin-top: 1.5rem; }
+  /* Kort topp. Skjermbildet av kundesiden er det casen handler om, og
+     målt 1. oktober 2026 begynte rammen 596 px ned på 1440 x 900 og 543 px
+     ned på 1000 x 570, altså nesten under folden. Kundenavnet som etikett
+     er fjernet (det står i brødsmulene rett over), tittelen er satt ned til
+     seksjonsoverskriftens størrelse, og luften over og under er halvert. */
+  .casehode { padding-block: clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.25rem); }
+  .seksjon.casebilde { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+  /* Rammen på casesiden er én .arbeid alene, og arvet dermed
+     rutenettets forskyvning for første kort (.arbeid:nth-child(6n+1),
+     3.5rem) på bred skjerm. 56 px luft ingen hadde valgt. */
+  .caseramme .arbeid { margin-top: 0; }
+  .casetopp { display: grid; gap: clamp(1rem, 2.5vw, 3rem); align-items: end; margin-top: 1.25rem; }
   @media (min-width: 56rem) { .casetopp { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) } }
   .casetopp h1 {
-    font-weight: var(--display-vekt); font-size: clamp(1.9rem, 4.4vw, 3.25rem);
+    font-weight: var(--display-vekt); font-size: clamp(1.6rem, 3vw, 2.375rem);
     line-height: 1.04; letter-spacing: var(--display-sperre-stor); text-wrap: balance;
+    margin-top: 0;
   }
-  .casetopp .ingress { color: var(--blekk-mykt); font-size: clamp(1rem, 1.4vw, 1.0625rem); }
+  .casetopp .ingress { color: var(--blekk-mykt); font-size: clamp(1rem, 1.4vw, 1.0625rem); margin-top: 0; }
 
   /* Faktapanelet betjener den som skanner, den som kjøper og intern
      lenking samtidig. */
