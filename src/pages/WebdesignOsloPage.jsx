@@ -28,7 +28,14 @@ import { lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
    Avgrensning mot naboinnhold: /blogg/webutvikler-oslo eier «webutvikler
    oslo» (informasjonssøk, priser og leverandørtyper). Denne eier «webdesign
    oslo» og bedriftsvariantene, altså kommersielt søk. Ikke skriv prisguide
-   her, lenk til /priser i stedet. */
+   her, lenk til /priser i stedet.
+
+   31. august 2026: den avgrensningen sto bare i denne kommentaren. I HTML-en
+   fantes den ikke, for ingen side lenket til artikkelen, mens denne siden
+   lenket tre ganger til seg selv fra den. Ordet «webutvikler» sto null
+   ganger i tekst her, bare i kommentaren over. Nå står avgrensningen som en
+   lenke i «Hvorfor Oslo faktisk spiller inn», med «webutvikler i Oslo» som
+   anker. Tallene ligger ved lenken. */
 
 const CANONICAL = 'https://oppskalert.no/webdesign-oslo';
 
@@ -90,6 +97,27 @@ const Innhold = () => {
             adresseinformasjon på tvers av oppføringer, og struktur på siden som
             gjør det tydelig for søkemotorene hvor du holder til. Det bygger jeg
             inn fra starten, ikke som et tillegg etterpå.
+          </p>
+          {/* Lenken ut hit er hele poenget med denne setningen, ikke teksten.
+              Målt 31. august 2026, 90 dager: /blogg/webutvikler-oslo eier
+              webutvikler-klyngen alene på «webutvikling oslo» (394 visninger,
+              36,2), «bra webutviklere» (24, 17,5) og «oslo webutvikler» (6,
+              14,5), men hadde null interne lenker inn fra noen side. Denne
+              siden hadde tre lenker ut til /webdesign-oslo og ingen tilbake.
+              På «webutvikler oslo» sto de to sidene mot hverandre med 181
+              visninger til sammen, artikkelen best på 36,5 og denne siden på
+              45,2. Anker-teksten sier «webutvikler i Oslo» med vilje: det er
+              den frasen artikkelen skal eie, og som denne siden ikke skal
+              konkurrere om. Speilvending av b5c32c4, som flyttet
+              /webdesign-oslo fra 64,5 til 45,2 på elleve dager. */}
+          <p>
+            Skal du sammenligne leverandører før du velger, har jeg skrevet en
+            gjennomgang av hva en{' '}
+            <Link to="/blogg/webutvikler-oslo" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+              webutvikler i Oslo
+            </Link>{' '}
+            koster, hva som skiller frilanser fra byrå, og de fem spørsmålene
+            det lønner seg å stille før du signerer.
           </p>
         </Avsnitt>
 
