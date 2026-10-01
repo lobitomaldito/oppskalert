@@ -606,8 +606,8 @@ export const toganger = (src) => `${src} 1x, ${src.replace('.webp', '@2x.webp')}
 
 export const prosjekter = [
   /* Appstart. Lagt inn 29. september 2026. Aleksanders eget selskap
-     sammen med Magnus, ikke et kundeoppdrag, derfor ingen case-side:
-     kortet lenker rett ut til appstart.no. Fangsten er vanlig 5000 px
+     sammen med Magnus, ikke et kundeoppdrag. Case-siden kom samme dag,
+     se caser i demo-innhold.js. Fangsten er vanlig 5000 px
      (forsiden er 6370 px høy), så --til er -81% som Woxen Hage. */
   { img: '/websider/appstart.webp', slug: 'appstart', full: '/websider/full/appstart.webp', til: '-81%', navn: 'Appstart', bransje: 'Apputvikling', url: 'https://appstart.no/', domene: 'appstart.no' },
   { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
