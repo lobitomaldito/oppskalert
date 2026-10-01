@@ -16,16 +16,32 @@
    Fortsatt åpent: hero-feltet er tomt, så siden har ingen og:image og ingen
    miniatyr i mobilsøk. Fire av åtte artikler mangler det samme. */
 
+/* 2026-10-01, ukentlig SEO-rutine. Search Console, 28 dager: posisjon 15,0
+   på «responsiv nettside», 146 visninger, 0 klikk, ned fra 9,3 etter
+   tittelbyttet 27. august. /ordliste/responsivt-design byr på samme søk fra
+   posisjon 59 (20 visninger).
+
+   SERP-en lest baklengs (seo-sxo): 6 av 9 treff er guider som definerer
+   begrepet i første setning, og fire har «Hva er» i tittel eller H1. Den
+   forrige titlen lovet en test, søkeren spør hva det er. Titlen leder nå med
+   definisjonsspørsmålet og beholder testen som grunn til å klikke, og
+   artikkelen åpner med et kort svar. Ordlisten lenkes herfra, så de to
+   sidene peker på hverandre i stedet for å konkurrere.
+
+   Mål igjen tidligst 22. oktober. Fortsatt åpent: hero og og:image mangler. */
+
 export default {
   slug: "responsiv-nettside",
-  title: "Responsiv nettside: slik tester du siden din",
-  description: "Responsiv nettside betyr at den tilpasser seg mobilen av seg selv. Her er de tre tegnene på at din ikke gjør det, og testen du kjører på egen telefon.",
+  title: "Hva er en responsiv nettside? Test din selv",
+  description: "En responsiv nettside tilpasser seg skjermen av seg selv. Slik ser du om din gjør det, med en test på egen telefon som tar ett minutt.",
   publishDate: "2026-08-10",
   keywords: ["responsiv nettside", "mobiltilpasset nettside"],
   hero: "",
-  content: `## Hva "responsiv nettside" faktisk betyr
+  content: `**Kort svar:** En responsiv nettside endrer oppsettet etter skjermen den vises på. Det finnes én side for både mobil og PC, og teksten kan leses uten å zoome. Lenger ned viser jeg hvordan du sjekker din egen på ett minutt.
 
-En responsiv nettside tilpasser layout, tekststørrelse og bilder automatisk til skjermen den vises på, enten det er en mobil på 375 piksler bred eller en skjerm på 1920. Det er ikke det samme som å ha en egen "mobilversjon" av siden. God responsiv design bruker én kodebase som endrer seg fleksibelt, i stedet for to separate sider som må vedlikeholdes hver for seg. Uten dette må mobilbrukere pinsje, zoome og skrolle sidelengs for å lese teksten, og de fleste gir opp før de kommer gjennom hele siden.
+## Hva "responsiv nettside" faktisk betyr
+
+En responsiv nettside tilpasser layout, tekststørrelse og bilder automatisk til skjermen den vises på, enten det er en mobil på 375 piksler bred eller en skjerm på 1920. Det er ikke det samme som å ha en egen "mobilversjon" av siden. God responsiv design bruker én kodebase som endrer seg fleksibelt, i stedet for to separate sider som må vedlikeholdes hver for seg. Den korte definisjonen står i ordlisten under [responsivt design](/ordliste/responsivt-design). Uten dette må mobilbrukere pinsje, zoome og skrolle sidelengs for å lese teksten, og de fleste gir opp før de kommer gjennom hele siden.
 
 ## Hvorfor mobil kommer først, ikke sist
 
