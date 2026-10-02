@@ -52,7 +52,7 @@ const NettsideDesignPage = () => (
   <Shell>
     <SEO
       title="Design av nettsider som selger"
-      description="Design av nettsider for norske bedrifter. Egen visuell retning, ingen maler, og struktur bygget for at besøkende faktisk skal ta kontakt. Se en ferdig demo før du bestemmer deg."
+      description="Design av nettsider for norske bedrifter. Egen visuell retning, ingen maler, og struktur bygget for at besøkende faktisk skal ta kontakt. Se et ferdig utkast før du bestemmer deg."
       keywords={['nettside design', 'design nettsider', 'webdesign', 'designe nettside']}
       canonical={CANONICAL}
       jsonLd={designSchema}
@@ -106,7 +106,7 @@ const NettsideDesignPage = () => (
           Du godkjenner en skisse, betaler et forskudd, og håper.
         </p>
         <p>
-          Jeg snur det. Du får en ferdig demo av din egen side, bygget med ditt
+          Jeg snur det. Du får et ferdig utkast til din egen side, bygget med ditt
           innhold, før vi snakker om kontrakt. Er retningen feil, sier du det, og
           det har ikke kostet deg noe. Det gjør designdiskusjonen konkret i stedet
           for teoretisk, og det er raskere for begge to.

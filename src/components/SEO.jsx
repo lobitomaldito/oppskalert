@@ -33,7 +33,7 @@ const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogIm
 
     // Primary Meta Tags
     setMetaByName('title', finalTitle);
-    setMetaByName('description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo før du betaler en krone. Ingen binding.');
+    setMetaByName('description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis utkast før du betaler en krone. Ingen binding.');
     
     if (keywords) {
       setMetaByName('keywords', Array.isArray(keywords) ? keywords.join(', ') : keywords);
@@ -56,14 +56,14 @@ const SEO = ({ title, description, keywords, canonical, ogType = 'website', ogIm
     // Open Graph / Facebook
     const finalOgImage = ogImage || 'https://oppskalert.no/oppskalert%20fav.png';
     setMetaByProperty('og:title', finalTitle);
-    setMetaByProperty('og:description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo først.');
+    setMetaByProperty('og:description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis utkast først.');
     setMetaByProperty('og:type', ogType);
     setMetaByProperty('og:url', finalCanonical);
     setMetaByProperty('og:image', finalOgImage);
 
     // Twitter
     setMetaByName('twitter:title', finalTitle);
-    setMetaByName('twitter:description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis demo først.');
+    setMetaByName('twitter:description', description || 'Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis utkast først.');
     setMetaByName('twitter:image', finalOgImage);
     setMetaByName('twitter:url', finalCanonical);
 

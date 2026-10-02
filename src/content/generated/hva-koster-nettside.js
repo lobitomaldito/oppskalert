@@ -27,7 +27,7 @@ Priser for tilsynelatende samme leveranse kan variere med 200 til 400 prosent me
 
 ## Få en fast pris på din side
 
-Skal du ha et tall for akkurat din bedrift, [send meg en linje](/kontakt) om hva du driver med. Du får en fast pris skriftlig og en ferdig demo innen 48 timer, før du bestemmer deg.
+Skal du ha et tall for akkurat din bedrift, [send meg en linje](/kontakt) om hva du driver med. Du får en fast pris skriftlig og et ferdig utkast innen 48 timer, før du bestemmer deg.
 
 ## Hva du bør gjøre nå
 

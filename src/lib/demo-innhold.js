@@ -435,7 +435,7 @@ export const tjenester = [
 export const stegene = [
   {
     "tid": "48 timer",
-    "navn": "Jeg bygger demoen din",
+    "navn": "Jeg bygger utkastet ditt",
     "tekst": "Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse i PowerPoint. Den ligger på en privat lenke bare du får."
   },
   {
@@ -497,19 +497,19 @@ export const omtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "Engangspris begynner på 6 990 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller fordele det over året, starter abonnementet på 1 290 i måneden med 12 måneders binding, og etterpå går du over på drift til 690 i måneden uten binding. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se demoen først, så du vet nøyaktig hva du betaler for."
+    "Engangspris begynner på 6 990 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller fordele det over året, starter abonnementet på 1 290 i måneden med 12 måneders binding, og etterpå går du over på drift til 690 i måneden uten binding. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",
     "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Det er hele forklaringen p\u00e5 at en h\u00e5ndbygd side starter p\u00e5 6 990 kroner og ikke 25 000."
   ],
   [
-    "Hva forplikter en gratis demo meg til?",
-    "Ingenting i det hele tatt. Jeg lager et ferdig utkast av siden din, med ditt innhold, og sender deg en privat lenke. Liker du den ikke, sier du fra, så sletter jeg den. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med."
+    "Hva forplikter et gratis utkast meg til?",
+    "Ingenting i det hele tatt. Jeg lager et ferdig utkast av siden din, med ditt innhold, og sender deg en privat lenke. Liker du det ikke, sier du fra, så sletter jeg det. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med."
   ],
   [
     "Hvor lang tid tar det?",
-    "Demoen er klar innen 48 timer. Fra du sier ja til at siden står på ditt eget domene, går det stort sett en til to uker. Det som styrer tempoet er som regel hvor fort du rekker å svare meg, ikke hvor fort jeg jobber."
+    "Utkastet er klart innen 48 timer. Fra du sier ja til at siden står på ditt eget domene, går det stort sett en til to uker. Det som styrer tempoet er som regel hvor fort du rekker å svare meg, ikke hvor fort jeg jobber."
   ],
   [
     "Eier jeg siden selv etterpå?",

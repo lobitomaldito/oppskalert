@@ -49,7 +49,7 @@ const OmPage = () => {
                 </p>
                 <p>
                   Det jeg liker best er å ta en side som ikke gjør noe, og gjøre den om til
-                  noe som faktisk ringer telefonen. Det er derfor jeg bygger demoen først.
+                  noe som faktisk ringer telefonen. Det er derfor jeg bygger utkastet først.
                   Jeg vil heller vise deg forskjellen enn å forklare den.
                 </p>
               </div>
@@ -101,7 +101,7 @@ const OmPage = () => {
       <DemoSkjema
         tittel="Skal vi bygge noe"
         uthevet="sammen?"
-        lede="Send meg noen linjer om bedriften din, så bygger jeg en gratis demo. Det er den enkleste måten å bli kjent på."
+        lede="Send meg noen linjer om bedriften din, så bygger jeg et gratis utkast. Det er den enkleste måten å bli kjent på."
       />
     </Shell>
   );
