@@ -82,13 +82,13 @@ const BransjeEksempler = () => {
         {/* Avslutning: knytter til "jeg lager alle slags sider" */}
         <div data-reveal className="mt-12 md:mt-14 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border-t border-room-ink/10 pt-10">
           <p className="font-body text-[0.95rem] md:text-base text-room-ink/70 max-w-md leading-relaxed">
-            Finner du ikke din bransje? Jeg lager nettsider for alle, og bygger gjerne en gratis demo av nettopp din.
+            Finner du ikke din bransje? Jeg lager nettsider for alle, og bygger gjerne et gratis utkast til nettopp din.
           </p>
           <Link
             to={ruter.kontakt}
             className="flex-shrink-0 inline-flex items-center gap-2 bg-room-ink text-room px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
           >
-            Bestill gratis demo <ArrowRight className="w-4 h-4" />
+            Bestill gratis utkast <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

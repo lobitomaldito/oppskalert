@@ -73,12 +73,12 @@ const BlogPage = () => {
             La oss bygge din salgsmaskin.
           </h2>
           <p style={{ marginTop: '1rem', color: 'var(--blekk-mykt)' }}>
-            Ingen langvarige strategiprosesser. Du får se en fungerende demo før du
+            Ingen langvarige strategiprosesser. Du får se et fungerende utkast før du
             bestemmer deg.
           </p>
           <p style={{ marginTop: '2rem' }}>
             <Link className="knapp" to={ruter.kontakt}>
-              Bestill gratis demo <span className="pil" aria-hidden="true">↗</span>
+              Bestill gratis utkast <span className="pil" aria-hidden="true">↗</span>
             </Link>
           </p>
         </div>

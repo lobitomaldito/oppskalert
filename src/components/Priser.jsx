@@ -18,8 +18,8 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
    hadde tidligere sine egne kort i CSS (.pris): serif-tall, punktumliste,
    ingen knapp. Det ga to ulike utgaver av «Driftet av meg» på to ruter.
    Kortet bor ett sted nå. `cta` finnes bare fordi driftsnivåene ikke skal
-   si «Bestill gratis demo», de skal si «Velg Grunndrift». */
-export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis demo', className }) => {
+   si «Bestill gratis utkast», de skal si «Velg Grunndrift». */
+export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis utkast', className }) => {
   return (
     <div
       data-reveal
@@ -104,7 +104,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         <SeksjonTopp
           tittel="Tre måter å"
           uthevet="komme i gang på."
-          lede="Alle tre starter med en gratis demo, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
+          lede="Alle tre starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
           midtstilt={midtstilt}
         />
 

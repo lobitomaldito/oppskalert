@@ -157,7 +157,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 className="group bg-room-ink text-surface px-7 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] disabled:opacity-60 disabled:hover:scale-100 mt-3 self-center"
               >
                 <span className="flex items-center justify-center gap-2">
-                  {status === 'sending' ? 'Sender …' : <>Bestill gratis demo <ArrowRight className="w-4 h-4" /></>}
+                  {status === 'sending' ? 'Sender …' : <>Bestill gratis utkast <ArrowRight className="w-4 h-4" /></>}
                 </span>
               </button>
 

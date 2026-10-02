@@ -90,7 +90,7 @@ const Metode = ({ utdypet = false }) => {
       <div className="wrap">
         <div className="mb-12 md:mb-16">
           <h2 className="font-display font-light text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.022em]">
-            Demoen kommer først. Regningen kommer sist.
+            Utkastet kommer først. Regningen kommer sist.
           </h2>
           <p className="font-body text-sm md:text-base mt-4 max-w-[54ch] leading-relaxed text-room-ink/80">
             De fleste vil ha møter, tilbud og forskudd før du ser noe som helst. Jeg snur på det: du får en ferdig side å klikke i før du har betalt en krone.

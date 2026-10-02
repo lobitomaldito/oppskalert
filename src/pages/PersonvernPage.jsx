@@ -48,7 +48,7 @@ const PersonvernPage = () => {
     <Shell>
       <SEO
         title="Personvernerklæring"
-        description="Hva jeg samler inn når du besøker oppskalert.no eller ber om en demo, hvorfor jeg gjør det, hvor lenge det lagres, og hvilke rettigheter du har."
+        description="Hva jeg samler inn når du besøker oppskalert.no eller ber om et utkast, hvorfor jeg gjør det, hvor lenge det lagres, og hvilke rettigheter du har."
         canonical="https://oppskalert.no/personvern"
       />
 
@@ -66,7 +66,7 @@ const PersonvernPage = () => {
           <div data-reveal className="ramme inn" style={{ padding: '1.75rem' }}>
             <p style={{ fontWeight: 600, marginBottom: '.85rem' }}>Kort fortalt</p>
             <div className="intro-brod" style={{ marginTop: 0 }}>
-              <p>Ber du om en demo, lagrer jeg det du skriver i skjemaet, så jeg kan svare deg.</p>
+              <p>Ber du om et utkast, lagrer jeg det du skriver i skjemaet, så jeg kan svare deg.</p>
               <p>Jeg måler hvordan siden brukes, for å gjøre den bedre. Ikke for å selge noe videre.</p>
               <p>Jeg selger aldri opplysningene dine, og bruker dem ikke til å bygge profiler hos andre.</p>
               <p>Vil du se hva jeg har om deg, eller ha det slettet, sender du en e-post.</p>
@@ -91,8 +91,8 @@ const PersonvernPage = () => {
               ingen deling med annonsenettverk.
             </p>
             <Rad
-              hva="Det du skriver i demoskjemaet"
-              hvorfor="Navn, e-post, og eventuelt bedriftsnavn eller nettadresse, hva du trenger hjelp til, og om du har nettside i dag. Jeg trenger dette for å kunne svare deg og lage demoen. Behandlingsgrunnlaget er at du har bedt om det, altså tiltak før en avtale inngås."
+              hva="Det du skriver i skjemaet"
+              hvorfor="Navn, e-post, og eventuelt bedriftsnavn eller nettadresse, hva du trenger hjelp til, og om du har nettside i dag. Jeg trenger dette for å kunne svare deg og lage utkastet. Behandlingsgrunnlaget er at du har bedt om det, altså tiltak før en avtale inngås."
               hvor="Supabase"
             />
             <Rad
@@ -127,7 +127,7 @@ const PersonvernPage = () => {
 
           <Bolk tittel="Hvor lenge det lagres">
             <p>
-              Demoforespørsler slettes 24 måneder etter siste kontakt, med mindre du blir kunde.
+              Forespørsler om utkast slettes 24 måneder etter siste kontakt, med mindre du blir kunde.
               Blir du kunde, følger opplysningene kundeforholdet, og regnskapsdata beholdes i
               fem år slik bokføringsloven krever.
             </p>

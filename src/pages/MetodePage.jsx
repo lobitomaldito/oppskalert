@@ -18,7 +18,7 @@ const vanlig = [
 ];
 
 const mitt = [
-  'En ferdig, klikkbar demo først',
+  'Et ferdig, klikkbart utkast først',
   'Ingen forpliktelse før du sier ja',
   'En ekte side du kan åpne på mobilen',
   'Fast pris, avtalt før jeg gjør ferdig',
@@ -108,7 +108,7 @@ const MetodePage = () => (
   <Shell>
     <SEO
       title="Metode"
-      description="Slik jobber jeg: jeg bygger en ferdig demo av din nye nettside gratis, du gir tilbakemelding, jeg lanserer. Null risiko før du har sett resultatet."
+      description="Slik jobber jeg: jeg bygger et ferdig utkast til din nye nettside gratis, du gir tilbakemelding, jeg lanserer. Null risiko før du har sett resultatet."
       keywords={['gratis nettside demo', 'prosess webutvikling', 'nettside uten binding']}
       canonical="https://oppskalert.no/metode"
     />
@@ -147,7 +147,7 @@ const MetodePage = () => (
     <DemoSkjema
       tittel="Klar for"
       uthevet="steg én?"
-      lede="Fortell meg hvem du er, så bygger jeg demoen. Det er hele jobben din i første omgang."
+      lede="Fortell meg hvem du er, så bygger jeg utkastet. Det er hele jobben din i første omgang."
     />
   </Shell>
 );
