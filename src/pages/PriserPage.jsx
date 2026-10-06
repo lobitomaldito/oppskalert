@@ -185,7 +185,8 @@ const PriserPage = () => (
             <p className="etikett" style={{ marginBottom: '1.25rem' }}>Spørsmål</p>
             <h2>Greit å vite</h2>
             <p className="faq-intro">Er det noe jeg ikke har svart på, er det bare å{' '}
-            <Link to={ruter.kontakt}>ta kontakt</Link>. Jeg svarer selv.</p>
+            <Link to={ruter.kontakt}>ta kontakt</Link>. Jeg svarer selv. Hva andre tar, og hvorfor prisene spriker, står i{' '}
+            <Link to="/blogg/hva-koster-nettside">hva koster en nettside i Norge</Link>.</p>
           </div>
           {/* Disse seks spørsmålene er studio-mal-demoens egne, ordrett fra
               demo-innhold.js, og FAQPage-skjemaet over bygges av nøyaktig

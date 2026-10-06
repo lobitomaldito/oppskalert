@@ -53,30 +53,6 @@ export const RUTE_VANLIGE_SPORSMAL = '/vanlige-sporsmal';
 
 export const populaereSok = [
   {
-    // «hva koster en nettside» 70/mnd KD 0, pluss prisklyngen på 720/mnd samlet
-    slug: 'hva-koster-en-nettside',
-    q: 'Hva koster en nettside i Norge?',
-    tittel: 'Hva koster en nettside i Norge?',
-    beskrivelse: 'Malbasert side ligger på 5 000 til 15 000 kroner, byråer fra bunnen på 25 000 og oppover. Hos meg starter en håndbygd side på 6 990 kroner eks. mva.',
-    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 6 990 kroner eks. mva som engangspris, eller 1 290 kroner i måneden på abonnement med 12 måneders binding. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
-    utdyping: [
-      {
-        t: 'Hva er det du faktisk betaler for?',
-        a: 'Ikke koden. Selve byggingen er den minste posten. Det meste av tiden går til å bestemme hva siden skal få folk til å gjøre, skrive teksten som får dem til å gjøre det, og finne bilder som ikke ser ut som stockfoto. En side med ferdig tekst og ferdige bilder er billigere enn en der jeg må lage begge deler, og det er der spennet mellom to tilbud som ser like ut som regel ligger.',
-      },
-      {
-        t: 'Hvorfor spriker prisene så mye?',
-        a: 'Fordi «nettside» dekker alt fra en ferdig mal du fyller inn selv på en kveld, til noe som er tegnet, skrevet og kodet for deg alene. Et byrå har i tillegg prosjektleder, designer og utvikler på samme jobb, og kontorleie på toppen. Jeg er én person uten mellomledd, og det er hele forklaringen på at samme leveranse kan koste 6 990 hos meg og 40 000 et annet sted.',
-      },
-      {
-        t: 'Hva bør du ha skriftlig før du sier ja?',
-        a: 'Fire ting: totalprisen, ikke et timeestimat. Hva som skjer hvis omfanget endrer seg underveis. At du eier filene når siden er levert. Og hva det koster å drifte den etterpå. Mangler ett av de fire i tilbudet, er det verdt å spørre om det før du signerer, ikke etter.',
-      },
-    ],
-    relatert: ['hva-koster-drift-av-nettside', 'er-billig-nettside-verdt-det'],
-    til: { tekst: 'Se hele prislisten', rute: '/priser' },
-  },
-  {
     // «nettsideleverandør» 90/mnd KD 0, høyest CPC i tabellen
     slug: 'krav-til-nettsideleverandor',
     q: 'Hva bør jeg kreve av en nettsideleverandør?',
@@ -192,7 +168,7 @@ export const populaereSok = [
         a: 'Tiden din, når du må mase på noen for å endre et telefonnummer. Kundene som ikke ringte, fordi siden brukte fem sekunder på å laste på mobil. Og regningen for å bygge alt på nytt om to år, fordi den gamle siden ikke kan flyttes. Ingen av de tre står i prisen du sammenligner på. De dukker opp etterpå, og til sammen er de nesten alltid større enn det du sparte.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'wordpress-wix-eller-handkodet'],
+    relatert: ['wordpress-wix-eller-handkodet'],
     til: { tekst: 'Sammenlign alternativene', rute: '/sammenlign' },
   },
   {
@@ -212,7 +188,7 @@ export const populaereSok = [
         a: 'Sjelden, men det er greit å ha muligheten. De fleste prosjektene mine går på telefon og e-post, og siden demoen er noe du kan åpne på mobilen, er det lite som må forklares i et møte. Vil du likevel ta en kaffe før du bestemmer deg, holder jeg til i Oslo og stiller opp. Er du utenfor byen, endrer det verken pris eller leveringstid.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'byra-eller-frilanser'],
+    relatert: ['byra-eller-frilanser'],
     til: { tekst: 'Webdesign i Oslo', rute: '/webdesign-oslo' },
   },
   {
@@ -250,7 +226,7 @@ export const populaereSok = [
         a: 'Siden er bygget på en plattform som ikke støttes lenger, og ingen tør å røre den. Den er treg på mobil uansett hva som fjernes. Eller den er bygget slik at innholdet ikke finnes i kildekoden, som betyr at både Google og AI-modeller ser en tom side. Det siste er det dyreste å leve med, fordi det ikke synes for deg og likevel koster deg alle besøkende du kunne fått fra søk.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'synlig-i-chatgpt-og-ai-sok'],
+    relatert: ['synlig-i-chatgpt-og-ai-sok'],
     til: { tekst: 'Ta kontakt', rute: '/kontakt' },
   },
   {
@@ -270,7 +246,7 @@ export const populaereSok = [
         a: 'Betalingsløsningen tar en andel av hvert salg, typisk rundt 2 prosent pluss et fast beløp per transaksjon. Kommer det en fraktintegrasjon eller et regnskapssystem på toppen, har de egne månedspriser. Regn ut hva de faste kostnadene blir ved null salg før du starter, så vet du hva butikken må omsette for bare for å gå i null.',
       },
     ],
-    relatert: ['hvor-lang-tid-tar-en-nettside', 'hva-koster-en-nettside'],
+    relatert: ['hvor-lang-tid-tar-en-nettside'],
     til: { tekst: 'Om nettbutikk', rute: '/lage-nettbutikk' },
   },
   {
@@ -370,7 +346,7 @@ export const populaereSok = [
         a: 'Sjelden noe, i lang tid. Så utløper domenet en fredag, eller et sikkerhetshull i en plugin blir utnyttet, og siden er borte eller full av lenker du ikke har lagt inn. Google fjerner den fra søkeresultatene raskt når det skjer, og å komme tilbake tar lenger tid enn å falle ut. Kjøper du ikke drift av meg, sørg for at noen har ansvaret. Det viktigste er at det ikke er ingen.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'eier-jeg-nettsiden-selv'],
+    relatert: ['eier-jeg-nettsiden-selv'],
     til: { tekst: 'Se driftsnivåene', rute: '/drift' },
   },
 ];
