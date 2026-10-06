@@ -57,7 +57,7 @@ Ved å bruke AI-verktøy kan jeg generere struktur, skrive innhold basert på ku
 
 ## Hvorfor «strategiske workshops» spiser budsjettet ditt
 
-Etter to måneder med «strategiprosesser» sitter mange SMB-eiere igjen med en powerpoint og et budsjett som er 30 % overskredet. Min tilnærming er den stikk motsatte: jeg bygger demoen først. Jeg tar risikoen ved å investere mine egne timer i å vise deg resultatet før vi i det hele tatt diskuterer pris.
+Etter to måneder med «strategiprosesser» sitter mange SMB-eiere igjen med en powerpoint og et budsjett som er 30 % overskredet. Min tilnærming er den stikk motsatte: jeg bygger utkastet først. Jeg tar risikoen ved å investere mine egne timer i å vise deg resultatet før vi i det hele tatt diskuterer pris.
 
 Når du ser en fungerende side, forsvinner behovet for lange, fakturerbare brief-møter. Enten fungerer siden for din bedrift, eller så gjør den det ikke. Det er ingen «strategisk partner»-avgift på 20 000 kroner for å sitte i et møterom og snakke om visjoner.
 
@@ -71,7 +71,7 @@ En nettside er ikke et kunstverk som skal diskuteres i måneder; det er en salgs
 
 Hvis du vurderer ny nettside i år, bør du stille tre spørsmål til ethvert byrå du vurderer:
 
-1. Kan dere vise meg en ferdig demo før vi signerer kontrakt?
+1. Kan dere vise meg et ferdig utkast før vi signerer kontrakt?
 2. Hvor mange timer går med til administrasjon vs. faktisk produksjon?
 3. Hvordan sikrer dere en lastetid under 1,5 sekunder på mobil?
 

@@ -23,7 +23,7 @@ export const faqSammenlign = [
   },
   {
     q: 'Hvor mye tid må jeg regne med å bruke selv?',
-    a: 'Bygger du selv, regn med 20 til 40 timer for en enkel bedriftsside, og at du fortsatt eier vedlikeholdet etterpå. Bygger jeg den, bruker du typisk 1 til 2 timer til sammen: du sender meg navnet på bedriften, ser på demoen, og sier hva du vil endre.',
+    a: 'Bygger du selv, regn med 20 til 40 timer for en enkel bedriftsside, og at du fortsatt eier vedlikeholdet etterpå. Bygger jeg den, bruker du typisk 1 til 2 timer til sammen: du sender meg navnet på bedriften, ser på utkastet, og sier hva du vil endre.',
   },
 ];
 
@@ -34,7 +34,7 @@ export const faqWix = [
   },
   {
     q: 'Kan jeg flytte en Wix-side til deg?',
-    a: 'Innholdet ja, selve siden nei. Wix-sider kan ikke eksporteres, så en flytting betyr i praksis at jeg bygger på nytt med teksten og bildene dine som utgangspunkt. Det er mindre arbeid enn det høres ut, og det tar de samme 3 virkedagene til demoen står klar.',
+    a: 'Innholdet ja, selve siden nei. Wix-sider kan ikke eksporteres, så en flytting betyr i praksis at jeg bygger på nytt med teksten og bildene dine som utgangspunkt. Det er mindre arbeid enn det høres ut, og det tar de samme 3 virkedagene til utkastet står klart.',
   },
   {
     q: 'Blir en Wix-side funnet i Google?',

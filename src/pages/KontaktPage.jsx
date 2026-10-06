@@ -15,7 +15,7 @@ const KontaktPage = () => {
     <Shell>
       <SEO
         title="Kontakt"
-        description="Be om en gratis demo av din nye nettside. Jeg svarer innen 24 timer. Ingen selgere, ingen kø."
+        description="Be om et gratis utkast til din nye nettside. Jeg svarer innen 24 timer. Ingen selgere, ingen kø."
         keywords={['kontakt webutvikler', 'gratis nettside demo', 'bestill nettside']}
         canonical="https://oppskalert.no/kontakt"
       />

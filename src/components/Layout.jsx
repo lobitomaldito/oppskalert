@@ -97,7 +97,7 @@ export const Footer = () => (
       <div className="bunn-cta">
         <h2>La oss bygge noe bra sammen.</h2>
         <Link className="knapp" to={ruter.kontakt}>
-          Bestill gratis demo <span className="pil" aria-hidden="true">↗</span>
+          Bestill gratis utkast <span className="pil" aria-hidden="true">↗</span>
         </Link>
       </div>
 

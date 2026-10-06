@@ -253,7 +253,7 @@ export const sammenlignWix = {
     ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller abonnement som ender etter 12 måneder'],
     ['Eierskap', 'Låst til Wix sin plattform', 'Du eier filene, kan ta dem med deg videre'],
     ['Hastighet og SEO', 'Tyngre byggerkode, varierende', 'Håndkodet og lettvekt fra dag én'],
-    ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner en gratis demo først'],
+    ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner et gratis utkast først'],
     ['Support', 'Generisk chat-support', 'Direkte med meg, ikke en helpdesk'],
   ],
   konklusjon: 'Har du tid og lyst til å lære et byggeverktøy, og bedriften tåler at nettsiden ser sånn ut, er Wix et fint sted å starte. Vil du ha en side som er bygget for å konvertere, uten at du selv må bli webdesigner, er det dette jeg gjør.',
@@ -284,11 +284,11 @@ export const sammenlignWordpress = {
    --------------------------------------------------------------- */
 export const stegene = [
   {
-    tittel: 'Jeg bygger demoen din',
+    tittel: 'Jeg bygger utkastet ditt',
     tid: '48 timer',
     kort: 'Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse.',
     desc: 'Du sender meg noen linjer om bedriften, eller bare navnet, så finner jeg resten selv. Så bygger jeg et ferdig utkast av den nye siden din. Ikke en skisse i PowerPoint, men en ekte side du kan åpne på mobilen og klikke rundt i.',
-    punkter: ['Koster ingenting, uansett hva du lander på', 'Du trenger ikke levere noe på forhånd', 'Demoen ligger på en privat lenke bare du får'],
+    punkter: ['Koster ingenting, uansett hva du lander på', 'Du trenger ikke levere noe på forhånd', 'Utkastet ligger på en privat lenke bare du får'],
   },
   {
     tittel: 'Du sier hva du synes',
@@ -319,15 +319,15 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'Engangspris starter på 6 990 kr eks. mva, og da eier du alt fra dag én. Vil du heller fordele det over året, starter Nettside på abonnement på 1 290 kr i måneden med 12 måneders binding, og etter det går du over på drift til 690 kr i måneden uten binding. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
+    a: 'Engangspris starter på 6 990 kr eks. mva, og da eier du alt fra dag én. Vil du heller fordele det over året, starter Nettside på abonnement på 1 290 kr i måneden med 12 måneders binding, og etter det går du over på drift til 690 kr i måneden uten binding. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
-    q: 'Hva er en gratis demo, og hva forplikter det meg til?',
-    a: 'Absolutt ingenting. Jeg bygger et ferdig, klikkbart utkast av din nye nettside, med ditt innhold, helt uten kostnad. Liker du den ikke, sletter jeg den og du har ikke betalt en krone. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med.',
+    q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
+    a: 'Absolutt ingenting. Jeg bygger et ferdig, klikkbart utkast av din nye nettside, med ditt innhold, helt uten kostnad. Liker du det ikke, sletter jeg det og du har ikke betalt en krone. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med.',
   },
   {
     q: 'Hvor lang tid tar det?',
-    a: 'Demoen er som regel klar på 48 timer. Fra du godkjenner den til siden er oppe på ditt eget domene, går det vanligvis en til to uker. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding. Jeg er sjelden flaskehalsen.',
+    a: 'Utkastet er som regel klart på 48 timer. Fra du godkjenner det til siden er oppe på ditt eget domene, går det vanligvis en til to uker. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding. Jeg er sjelden flaskehalsen.',
   },
   {
     q: 'Eier jeg nettsiden selv?',
@@ -335,7 +335,7 @@ export const sporsmal = [
   },
   {
     q: 'Hva om jeg ikke liker utkastet?',
-    a: 'Da sier du fra, så justerer vi. Eller vi avslutter der, helt uforpliktende. Det er hele poenget med å bygge demoen først: du risikerer ingenting ved å la meg prøve.',
+    a: 'Da sier du fra, så justerer vi. Eller vi avslutter der, helt uforpliktende. Det er hele poenget med å bygge utkastet først: du risikerer ingenting ved å la meg prøve.',
   },
   {
     q: 'Er siden optimalisert for Google og mobil?',
@@ -486,7 +486,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hvor lang tid tar det fra start til lansering?',
-      a: 'Demoen er som regel klar på 48 timer. Fra du godkjenner den til siden er oppe på ditt eget domene går det vanligvis en til to uker. Har du en gammel side, byttes den uten nedetid. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding.',
+      a: 'Utkastet er som regel klart på 48 timer. Fra du godkjenner det til siden er oppe på ditt eget domene går det vanligvis en til to uker. Har du en gammel side, byttes den uten nedetid. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding.',
     },
   ],
 
@@ -516,7 +516,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva trenger jeg å ha klart før vi setter i gang?',
-      a: 'Navnet på bedriften. Resten finner jeg selv, og jeg bygger demoen før du har levert noe som helst. Har du bilder, tekster eller en logo du vil bruke, tar jeg gjerne imot det, men det er ikke noe du trenger å vente på før vi kommer i gang.',
+      a: 'Navnet på bedriften. Resten finner jeg selv, og jeg bygger utkastet før du har levert noe som helst. Har du bilder, tekster eller en logo du vil bruke, tar jeg gjerne imot det, men det er ikke noe du trenger å vente på før vi kommer i gang.',
     },
     {
       q: 'Kan du flytte nettsiden vi har i dag?',

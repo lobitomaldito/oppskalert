@@ -175,7 +175,7 @@ const TidligCta = ({ tekst }) => (
     </Link>
     , eller{' '}
     <Link to={ruter.kontakt} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
-      be om en gratis demo
+      be om et gratis utkast
     </Link>
     .
   </p>
@@ -192,7 +192,7 @@ const MidtCta = ({ tittel, tekst }) => (
       to={ruter.kontakt}
       className="inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors"
     >
-      Bestill gratis demo <ArrowRight className="w-4 h-4" />
+      Bestill gratis utkast <ArrowRight className="w-4 h-4" />
     </Link>
   </aside>
 );
@@ -203,13 +203,13 @@ const CTA = () => (
     <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink mb-3 block">Klar for neste steg?</span>
     <h3 className="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-4">Jeg bygger din salgsmaskin.</h3>
     <p className="font-body text-room-ink/70 text-[0.95rem] mb-8 max-w-md mx-auto leading-relaxed">
-      Ingen binding, ingen lange prosesser. Du ser en ferdig demo før du bestemmer deg.
+      Ingen binding, ingen lange prosesser. Du ser et ferdig utkast før du bestemmer deg.
     </p>
     <Link to="/kontakt" className="group relative inline-flex overflow-hidden bg-room-ink text-room px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
       {/* Teksten bytter til room-ink samtidig som det hvite panelet dekker knappen,
           samme varighet som glidningen (300ms), så den aldri blir hvit på hvitt. */}
       <span className="relative z-10 group-hover:text-room-ink transition-colors duration-300 flex items-center gap-2">
-        Bestill gratis demo <ArrowRight className="w-4 h-4" />
+        Bestill gratis utkast <ArrowRight className="w-4 h-4" />
       </span>
       <div className="absolute inset-0 bg-surface translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
     </Link>

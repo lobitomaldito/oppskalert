@@ -37,7 +37,7 @@ const nyNettsideSchema = [
     name: 'Ny nettside',
     serviceType: 'Ny nettside for små og mellomstore bedrifter',
     description:
-      'Ny nettside til fast pris, med flytting fra den gamle uten nedetid og uten å miste plasseringene i Google. Ferdig demo før du bestemmer deg.',
+      'Ny nettside til fast pris, med flytting fra den gamle uten nedetid og uten å miste plasseringene i Google. Ferdig utkast før du bestemmer deg.',
     areaServed: { '@type': 'Country', name: 'Norge' },
     provider: { '@type': 'Organization', name: 'Oppskalert', url: 'https://oppskalert.no' },
     url: CANONICAL,
@@ -60,14 +60,14 @@ const punkter = [
   'E-post på domenet flyttes først, så den aldri er nede',
   'Den gamle siden står live til den nye er testet og godkjent av deg',
   'Ny side lastes på under ett sekund, håndkodet uten maler og plugins',
-  'Du ser en ferdig demo med ditt eget innhold før du betaler noe',
+  'Du ser et ferdig utkast med ditt eget innhold før du betaler noe',
 ];
 
 const NyNettsidePage = () => (
   <Shell>
     <SEO
       title="Ny nettside til fast pris, uten nedetid"
-      description="Ny nettside for små bedrifter. Jeg flytter deg fra den gamle uten nedetid og uten å miste plasseringene i Google, og du ser en ferdig demo før du betaler."
+      description="Ny nettside for små bedrifter. Jeg flytter deg fra den gamle uten nedetid og uten å miste plasseringene i Google, og du ser et ferdig utkast før du betaler."
       keywords={['ny nettside', 'nye nettsider', 'ny hjemmeside', 'bytte nettside']}
       canonical={CANONICAL}
       jsonLd={nyNettsideSchema}

@@ -58,7 +58,7 @@ export const populaereSok = [
     q: 'Hva bør jeg kreve av en nettsideleverandør?',
     tittel: 'Hva bør du kreve av en nettsideleverandør?',
     beskrivelse: 'Fast pris før arbeidet starter, eierskap til kode og innhold, ingen bindingstid, og noe ferdig å se på før du betaler. Klarer ikke leverandøren alle fire, spør hvorfor.',
-    a: 'Fire ting: fast pris før arbeidet starter, at du eier koden og innholdet etterpå, ingen bindingstid, og at du får se noe ferdig før du betaler. Klarer ikke leverandøren å love alle fire, er det verdt å spørre hvorfor. Selv bygger jeg hele demoen ferdig innen 48 timer, og du bestemmer deg etterpå.',
+    a: 'Fire ting: fast pris før arbeidet starter, at du eier koden og innholdet etterpå, ingen bindingstid, og at du får se noe ferdig før du betaler. Klarer ikke leverandøren å love alle fire, er det verdt å spørre hvorfor. Selv bygger jeg hele utkastet ferdig innen 48 timer, og du bestemmer deg etterpå.',
     utdyping: [
       {
         t: 'Fast pris, ikke timeestimat',
@@ -185,7 +185,7 @@ export const populaereSok = [
       },
       {
         t: 'Trenger du å møte noen fysisk?',
-        a: 'Sjelden, men det er greit å ha muligheten. De fleste prosjektene mine går på telefon og e-post, og siden demoen er noe du kan åpne på mobilen, er det lite som må forklares i et møte. Vil du likevel ta en kaffe før du bestemmer deg, holder jeg til i Oslo og stiller opp. Er du utenfor byen, endrer det verken pris eller leveringstid.',
+        a: 'Sjelden, men det er greit å ha muligheten. De fleste prosjektene mine går på telefon og e-post, og siden utkastet er noe du kan åpne på mobilen, er det lite som må forklares i et møte. Vil du likevel ta en kaffe før du bestemmer deg, holder jeg til i Oslo og stiller opp. Er du utenfor byen, endrer det verken pris eller leveringstid.',
       },
     ],
     relatert: ['byra-eller-frilanser'],
@@ -195,8 +195,8 @@ export const populaereSok = [
     slug: 'hvor-lang-tid-tar-en-nettside',
     q: 'Hvor lang tid tar det å lage en nettside?',
     tittel: 'Hvor lang tid tar det å lage en nettside?',
-    beskrivelse: 'Demoen er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker.',
-    a: 'Demoen din er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker. Det som styrer tempoet er nesten alltid hvor fort du rekker å svare, ikke hvor fort jeg jobber. Større løsninger med nettbutikk eller innlogging tar lenger, og da sier jeg fra på forhånd.',
+    beskrivelse: 'Utkastet er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker.',
+    a: 'Utkastet ditt er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker. Det som styrer tempoet er nesten alltid hvor fort du rekker å svare, ikke hvor fort jeg jobber. Større løsninger med nettbutikk eller innlogging tar lenger, og da sier jeg fra på forhånd.',
     utdyping: [
       {
         t: 'Hva som faktisk styrer tempoet',

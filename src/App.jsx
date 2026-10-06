@@ -148,7 +148,7 @@ const Hero = () => {
               sin linje, se .hero-vegg h1 span i index.css. Teksten er uendret. */}
           <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
             <span>Webdesign for bedrifter.</span> <span>Basert i Oslo.</span>{' '}
-            <span>Alltid gratis demo.</span>
+            <span>Alltid gratis utkast.</span>
           </h1>
           {/* Ingressen sier bevisst noe annet enn overskriften.
 
@@ -161,11 +161,11 @@ const Hero = () => {
               fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
           <p data-reveal className="inn" style={{ '--d': '220ms' }}>
             Design, tekst, koding og lansering, gjort av én person du kan ringe.
-            Demoen er klar på 48 timer.
+            Utkastet er klart på 48 timer.
           </p>
           <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
             <Link className="knapp" to={ruter.kontakt}>
-              Få en gratis demo <span className="pil" aria-hidden="true">↗</span>
+              Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
             </Link>
           </div>
           <Vurdering />
@@ -275,7 +275,7 @@ const homeSchema = {
   '@type': 'ProfessionalService',
   name: 'Oppskalert',
   image: 'https://oppskalert.no/oppskalert%20fav.png',
-  description: 'Jeg bygger lynraske nettsider som skalerer norske bedrifter. Gratis demo før du betaler en krone.',
+  description: 'Jeg bygger lynraske nettsider som skalerer norske bedrifter. Gratis utkast før du betaler en krone.',
   url: 'https://oppskalert.no',
   telephone: kontakt.tel,
   founder: { '@type': 'Person', name: kontakt.navn },
@@ -334,7 +334,7 @@ const Home = () => (
         særskriving. 57 tegn med suffikset. */}
     <SEO
       title="Webdesign for bedrifter i Oslo, til fast pris"
-      description="Webdesign for bedrifter i Oslo og resten av landet, til fast pris. Jeg bygger hjemmesiden ferdig, og du ser en gratis demo før du betaler en krone."
+      description="Webdesign for bedrifter i Oslo og resten av landet, til fast pris. Jeg bygger hjemmesiden ferdig, og du ser et gratis utkast før du betaler en krone."
       keywords={['webdesign for bedrifter', 'webdesign i Oslo', 'webdesign firma', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
@@ -350,7 +350,7 @@ const Home = () => (
     <DemoSkjema
       tittel="Klar for en nettside"
       uthevet="som selger?"
-      lede="Legg igjen navn og e-post, så bygger jeg en gratis demo av din nye side. Uforpliktende, og jeg svarer innen 24 timer."
+      lede="Legg igjen navn og e-post, så bygger jeg et gratis utkast til din nye side. Uforpliktende, og jeg svarer innen 24 timer."
     />
   </Shell>
 );

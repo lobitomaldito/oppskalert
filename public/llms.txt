@@ -1,10 +1,10 @@
 # Oppskalert
 
-> Norsk webutvikling – én person, hele jobben. Aleksander MacKee bygger håndkodede, konverteringsoptimaliserte nettsider for norske bedrifter. Du ser en ferdig, gratis demo før du bestemmer deg for om du vil betale noe.
+> Norsk webutvikling – én person, hele jobben. Aleksander MacKee bygger håndkodede, konverteringsoptimaliserte nettsider for norske bedrifter. Du ser et ferdig, gratis utkast før du bestemmer deg for om du vil betale noe.
 
 ## Om
 - [Om meg](https://oppskalert.no/om): Hvem som bygger sidene, og hvorfor det ikke er noe mellomledd.
-- [Metode](https://oppskalert.no/metode): Fra gratis demo til lansering, i fire steg.
+- [Metode](https://oppskalert.no/metode): Fra gratis utkast til lansering, i fire steg.
 - [Arbeid](https://oppskalert.no/arbeid): Ekte nettsider i drift for norske kunder, pluss bransjeeksempler.
 
 ## Priser

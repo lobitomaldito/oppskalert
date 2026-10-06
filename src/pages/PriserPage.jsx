@@ -55,7 +55,7 @@ const priserSchema = {
 /* Sammenligningen svarer på det ene spørsmålet prismodellene ikke gjør
    alene: hva er egentlig forskjellen, rad for rad. */
 const rader = [
-  ['Gratis demo før du bestemmer deg', true, true],
+  ['Gratis utkast før du bestemmer deg', true, true],
   ['Design og utvikling av komplett nettside', true, true],
   ['Håndkodet, uten tunge plugins', true, true],
   ['Søkemotor-grunnoppsett', true, true],
@@ -115,7 +115,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 6 990 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris og gratis demo før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: engangspris fra 6 990 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -125,7 +125,7 @@ const PriserPage = () => (
       <p className="etikett inn">Priser</p>
       <h1 className="inn" style={{ '--d': '60ms' }}>Fast pris på nettside og drift.</h1>
       <p className="inn" style={{ '--d': '140ms' }}>
-        Du får en fast pris fra meg før jeg skriver en linje kode, og du ser demoen
+        Du får en fast pris fra meg før jeg skriver en linje kode, og du ser utkastet
         innen 48 timer. Ingen timepris som løper. Ingen overraskelser på slutten.
       </p>
     </section>
@@ -168,7 +168,7 @@ const PriserPage = () => (
           ned, eller avslutte, uten oppsigelsestid.</p>
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
-            «Bestill gratis demo» ville lovet en demo av en driftsavtale. */}
+            «Bestill gratis utkast» ville lovet et utkast av en driftsavtale. */}
         <KortRadPris>
           {driftNivaer.map((n) => (
             <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
@@ -215,7 +215,7 @@ const PriserPage = () => (
     <DemoSkjema
       tittel="Vil du se hva"
       uthevet="din ville kostet?"
-      lede="Fortell meg kort om bedriften, så får du en fast pris, og en gratis demo før du bestemmer deg."
+      lede="Fortell meg kort om bedriften, så får du en fast pris, og et gratis utkast før du bestemmer deg."
     />
   </Shell>
 );
