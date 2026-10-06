@@ -4,7 +4,8 @@
     { "source": "/r", "destination": "https://oppskalert-ringeapp.vercel.app/api/track-klikk", "permanent": false },
     { "source": "/vårt-arbeid", "destination": "/arbeid", "permanent": true },
     { "source": "/kom-i-gang", "destination": "/kontakt", "permanent": true },
-    { "source": "/kalkulator", "destination": "/priser", "permanent": true }
+    { "source": "/kalkulator", "destination": "/priser", "permanent": true },
+    { "source": "/vanlige-sporsmal/hva-koster-en-nettside", "destination": "/blogg/hva-koster-nettside", "permanent": true }
   ],
   "rewrites": [
     { "source": "/arbeid", "destination": "/arbeid/index.html" },
