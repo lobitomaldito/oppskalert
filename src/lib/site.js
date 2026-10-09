@@ -610,6 +610,12 @@ export const prosjekter = [
      kortet lenker rett ut til appstart.no. Fangsten er vanlig 5000 px
      (forsiden er 6370 px høy), så --til er -81% som Woxen Hage. */
   { img: '/websider/appstart.webp', slug: 'appstart', full: '/websider/full/appstart.webp', til: '-81%', navn: 'Appstart', bransje: 'Apputvikling', url: 'https://appstart.no/', domene: 'appstart.no' },
+  /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Fanget med hero 2
+     (den klassiske, med logomerket over overskriften) aktiv: demoen har
+     to heroer, valgt via localStorage-nøkkelen dl-hero. Domenet er ennå
+     ikke flyttet, jtob.no kjører den gamle siden, så url peker på
+     demoen til DNS er byttet. Bytt url til https://jtob.no/ da. */
+  { img: '/websider/jakobsen-takst.webp', slug: 'jakobsen-takst', full: '/websider/full/jakobsen-takst.webp', til: '-81%', navn: 'Jakobsen Takst & Bygg', bransje: 'Takst · Harstad', url: 'https://jakobsen-takst-demo.vercel.app/', domene: 'jtob.no' },
   { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
   { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
   /* Melanie Dahl. Lagt inn 21. august 2026, hentet fra arbeid en annen
