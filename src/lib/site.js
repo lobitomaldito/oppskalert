@@ -72,26 +72,28 @@ export const prismodeller = [
     fremhevet: false,
   },
   {
-    /* Endret 26. august 2026, og grunnen bør stå her så den ikke blir
-       reversert i god tro. Modellen het «Driftet av meg» og kostet 690
-       kr/mnd, nøyaktig samme navn og samme pris som driftsnivået lenger
-       nede i denne fila. Forskjellen var at lista her begynte med «Alt i
-       engangspris, pluss:». Hele nettsiden fulgte altså med til samme
-       pris som rent vedlikehold på en side kunden allerede hadde betalt
-       9 999 for. Byggingen var i praksis gratis, og «ingen binding» gjorde
-       at avtalen kunne sies opp etter én måned.
+    /* To endringer, og grunnene bør stå her så de ikke blir reversert i
+       god tro.
 
-       Nå er det en nedbetaling, og den heter det: 1 290 kr/mnd i 12
-       måneder (15 480 kr), så går kunden over på Driftet av meg til 690
-       kr/mnd uten binding. Bindingen er et vilkår, ikke en detalj, så den
-       står som `periode` rett under tallet på kortet. Drift og abonnement
-       er to ulike ting, og skal aldri bære samme navn igjen. */
+       26. august 2026: modellen het «Driftet av meg» og kostet 690 kr/mnd,
+       samme navn og pris som driftsnivået lenger nede, men med hele
+       nettsiden inkludert. Byggingen var i praksis gratis og kunne sies
+       opp etter én måned. Svaret den gang var 12 måneders binding.
+
+       9. oktober 2026: bindingen er fjernet, og modellen heter leie til
+       eie. Konkurrentene som selger samme modell har ingen binding, og
+       kortet skjulte poenget (0 kr i dag, siden blir din). Vernet mot
+       gratis bygging er nå eierskapet: filene blir kundens først når 12
+       måneder er betalt. Sier kunden opp før det, gjør vi opp resten av
+       byggesummen, eller siden tas ned når den betalte perioden er slutt.
+       Tekster, bilder og domene er kundens uansett. Drift og leie til eie
+       er to ulike ting, og skal aldri bære samme navn. */
     id: 'abonnement',
-    navn: 'Nettside på abonnement',
+    navn: 'Leie til eie',
     fra: '1 290',
     enhet: 'kr/mnd',
-    periode: '12 måneders binding',
-    tagline: 'Hele nettsiden fordelt over året. Jeg passer på alt underveis.',
+    periode: 'ingen binding, kjøp ut når du vil',
+    tagline: '0 kr i dag. Siden er din etter 12 måneder.',
     passerDeg: [
       'Du vil ha nettsiden nå, ikke når budsjettet tillater det',
       'Du vil bruke tiden på bedriften, ikke på nettsiden',
@@ -103,7 +105,8 @@ export const prismodeller = [
       'Rimelige innholdsendringer inkludert',
       'Backup og oppetidsovervåking',
       'Support direkte fra meg, ikke en helpdesk',
-      'Etter 12 måneder: 690 kr/mnd, oppsigelig når du vil',
+      'Siden og filene er dine etter 12 måneder',
+      'Deretter drift til 690 kr/mnd, oppsigelig når du vil',
     ],
     fremhevet: true,
   },
@@ -156,7 +159,7 @@ export const alltidMed = [
 
 /* ---------------------------------------------------------------
    DRIFT. Vedlikehold av en side som allerede står der, ikke en måte
-   å få bygget en. Det er abonnementsmodellen over som bygger. Prisene her
+   å få bygget en. Det er leie til eie over som bygger. Prisene her
    er den eneste kilden. /drift, forsidens Priser-kort og FAQ leser
    alle herfra, så en prisjustering skjer på ett sted.
    --------------------------------------------------------------- */
@@ -247,10 +250,10 @@ export const sammenlignWix = {
   intro: 'Wix er et solid verktøy for å bygge en nettside selv. Spørsmålet er ikke om det virker, men om det er din tid eller din nettside som skal betale for det.',
   rader: [
     ['Hvem bygger siden', 'Du, i byggeren deres', 'Jeg, fra første skisse til lansering'],
-    /* Jeg selger selv et abonnement nå, så raden må si hva forskjellen
+    /* Jeg selger selv leie til eie, så raden må si hva forskjellen
        faktisk er: deres løper så lenge siden skal stå, mitt slutter
-       etter 12 måneder og faller ned på drift du kan si opp. */
-    ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller abonnement som ender etter 12 måneder'],
+       etter 12 måneder, og da er siden din. */
+    ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller leie til eie som ender etter 12 måneder'],
     ['Eierskap', 'Låst til Wix sin plattform', 'Du eier filene, kan ta dem med deg videre'],
     ['Hastighet og SEO', 'Tyngre byggerkode, varierende', 'Håndkodet og lettvekt fra dag én'],
     ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner et gratis utkast først'],
@@ -319,7 +322,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'Engangspris starter på 6 990 kr eks. mva, og da eier du alt fra dag én. Vil du heller fordele det over året, starter Nettside på abonnement på 1 290 kr i måneden med 12 måneders binding, og etter det går du over på drift til 690 kr i måneden uten binding. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'Engangspris starter på 6 990 kr eks. mva, og da eier du alt fra dag én. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Etter det kan du ta drift til 690 kr i måneden, eller la være. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -331,7 +334,7 @@ export const sporsmal = [
   },
   {
     q: 'Eier jeg nettsiden selv?',
-    a: 'Ja. Med engangspris får du alle filene overlevert og eier hele løsningen med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
+    a: 'Ja. Med engangspris får du alle filene overlevert og eier hele løsningen med en gang. Med leie til eie er tekstene, bildene og domenet dine hele veien, og filene blir dine når 12 måneder er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
   },
   {
     q: 'Hva om jeg ikke liker utkastet?',
@@ -425,7 +428,7 @@ export const prisSporsmal = [
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler fra 6 990 kr én gang, får alle filene og eier hele løsningen. Abonnement: jeg bygger den samme siden, du betaler 1 290 kr i måneden i 12 måneder, og selve byggingen nedbetales over det året. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler fra 6 990 kr én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den samme siden, du betaler 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
@@ -437,7 +440,7 @@ export const prisSporsmal = [
   },
   {
     q: 'Kan jeg bytte mellom modellene senere?',
-    a: 'Ja. På ren drift er det ingen bindingstid, så du kan bytte nivå eller si opp når du vil. På abonnement løper de 12 første månedene, siden det er der byggingen nedbetales, og etterpå står du fritt. Vil du gå fra abonnement til engangspris før tiden, gjør vi opp resten av byggesummen og setter strek. Innholdet og designet er ditt uansett.',
+    a: 'Ja. På ren drift er det ingen bindingstid, så du kan bytte nivå eller si opp når du vil. Leie til eie har heller ingen binding. Sier du opp før 12 måneder, gjør vi opp resten av byggesummen og filene blir dine, eller siden tas ned når den betalte perioden er slutt. Tekstene, bildene og domenet er dine uansett.',
   },
   {
     q: 'Hvorfor fast pris og ikke timepris?',

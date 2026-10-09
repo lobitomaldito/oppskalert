@@ -59,15 +59,16 @@ const rader = [
   ['Design og utvikling av komplett nettside', true, true],
   ['Håndkodet, uten tunge plugins', true, true],
   ['Søkemotor-grunnoppsett', true, true],
-  ['Du eier alle filene', true, 'Ja, også her'],
+  ['Du eier alle filene', true, 'Etter 12 måneder'],
   ['Hosting, domene og SSL', 'Eget ansvar', true],
   ['Rimelige innholdsendringer inkludert', false, true],
   ['Backup og oppetidsovervåking', false, true],
   ['Support direkte fra meg', false, true],
-  /* Den raden som gjør at tabellen faktisk sammenligner to ulike
-     avtaler og ikke bare to funksjonslister. Uten den ser abonnementet
-     ut som engangsprisen med flere haker. */
-  ['Bindingstid', 'Ingen', '12 måneder, deretter ingen'],
+  /* Radene som gjør at tabellen sammenligner to ulike avtaler og ikke
+     bare to funksjonslister. Uten dem ser leie til eie ut som
+     engangsprisen med flere haker. */
+  ['Betaling', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 290 kr/mnd'],
+  ['Bindingstid', 'Ingen', 'Ingen, kjøp ut når du vil'],
 ];
 
 const Celle = ({ v }) => {
@@ -85,12 +86,12 @@ const Sammenligning = () => (
       </div>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
         <table className="w-full border-collapse min-w-[34rem]">
-          <caption className="sr-only">Sammenligning av engangspris og nettside på abonnement</caption>
+          <caption className="sr-only">Sammenligning av engangspris og leie til eie</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
               <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Engangspris</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Nettside på abonnement</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Leie til eie</th>
             </tr>
           </thead>
           <tbody>
@@ -115,7 +116,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 6 990 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris og gratis utkast før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: engangspris fra 6 990 kr, eller leie til eie fra 1 290 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}

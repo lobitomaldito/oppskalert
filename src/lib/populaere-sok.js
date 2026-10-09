@@ -297,7 +297,7 @@ export const populaereSok = [
     q: 'Eier jeg nettsiden og koden min selv?',
     tittel: 'Eier du nettsiden og koden din selv?',
     beskrivelse: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert. Velger du drift, eier du fortsatt innhold og design, og kan ta det med deg når du vil.',
-    a: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert og eier hele greia med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. På ren drift er det 0 måneders bindingstid og 0 dagers oppsigelsestid. Det er verdt å spørre enhver leverandør om dette skriftlig før du signerer.',
+    a: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert og eier hele greia med en gang. Velger du leie til eie, er tekstene, bildene og domenet dine hele veien, og filene blir dine når 12 måneder er betalt. På ren drift er det 0 måneders bindingstid og 0 dagers oppsigelsestid. Det er verdt å spørre enhver leverandør om dette skriftlig før du signerer.',
     utdyping: [
       {
         t: 'Hva eierskap betyr i praksis',
