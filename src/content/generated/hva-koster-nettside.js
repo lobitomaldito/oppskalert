@@ -17,9 +17,9 @@ En landingsside eller et digitalt visittkort starter på 6 990 kroner. En vanlig
 
 Det som flytter deg opp eller ned på denne stigen, er stort sett tre ting: antall sider, hvor mye tekst og research som må lages fra bunnen, og om du trenger noe utover en standard bedriftsside, som booking eller egne integrasjoner. En bedrift med tre klare tjenester og eksisterende tekst havner som regel i det billigste eller nest billigste sjiktet. En bedrift med mange tjenester, flere lokasjoner eller behov for skreddersøm havner lenger opp.
 
-## Engangspris eller abonnement
+## Engangspris eller leie til eie
 
-Alle nivåene kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller fordele kostnaden over året, starter abonnementet på 1 290 kroner i måneden med 12 måneders binding, med hosting, sikkerhet og vedlikehold inkludert. Etter de 12 månedene går du over på drift til 690 kroner i måneden, og den kan du si opp når du vil.
+Alle nivåene kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du ta drift til 690 kroner i måneden, og den kan du si opp når du vil.
 
 ## Hva andre i bransjen tar, og hvorfor det varierer så mye
 

@@ -567,7 +567,7 @@ export const omtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "Engangspris begynner på 6 990 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller fordele det over året, starter abonnementet på 1 290 i måneden med 12 måneders binding, og etterpå går du over på drift til 690 i måneden uten binding. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
+    "Engangspris begynner på 6 990 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 i måneden uten binding, og siden er din når 12 måneder er betalt. Etterpå kan du ta drift til 690 i måneden, eller la være. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",
@@ -583,7 +583,7 @@ export const sporsmal = [
   ],
   [
     "Eier jeg siden selv etterpå?",
-    "Ja. Betaler du engangspris, får du alle filene og eier hele greia med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. På ren drift er det ingen binding og ingen oppsigelsestid, og uansett modell låser jeg ingenting inne."
+    "Ja. Betaler du engangspris, får du alle filene og eier hele greia med en gang. Velger du leie til eie, er tekstene, bildene og domenet dine hele veien, og filene blir dine når 12 måneder er betalt. Ingen av modellene har binding, og uansett modell låser jeg ingenting inne."
   ],
   [
     "Jeg har allerede en nettside. Trenger jeg ny?",
