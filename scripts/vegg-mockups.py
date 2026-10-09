@@ -73,6 +73,7 @@ JOBBER = {
     "samtaleverkstedet-pc": ("4:5", "an open silver laptop seen from the front at a slight angle, sitting on a pale travertine stone block, with a saturated terracotta clay (#b8551a) wall behind, hard sunlight casting a crisp diagonal shadow."),
     "kolflaath-mobil": ("2:3", "a smartphone standing upright and turned slightly to the left on a seamless soft lilac (#e6e5f6) backdrop, with a soft long shadow falling to the right."),
     "katrin-brubakk-pc": ("1:1", "an open dark graphite laptop seen from a three-quarter angle on a matte near-black ink-coloured surface (#12111d), moody low-key light with one soft warm peach (#ffb17a) rim light from the left."),
+    "jakobsen-takst-mobil": ("2:3", "a smartphone leaning upright against a rough dark slate stone block on a pale limestone surface, with a soft lilac (#e6e5f6) wall behind, soft cool daylight from the right."),
     "woxen-hage-mobil": ("2:3", "a smartphone leaning upright against two stacked pale limestone blocks, with a warm peach (#ffb17a) wall behind, hard late-afternoon sunlight casting a crisp diagonal shadow."),
 }
 
