@@ -390,6 +390,76 @@ export const caser = [
         }
       ]
     }
+  },
+  /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Forsiden som vises
+     er hero 2, den klassiske, som tar opp igjen den gamle forsiden. Robert
+     har sagt ja til at den gamle siden vises. Hele den frosne kopien ligger
+     i kunderepoet under arkiv/gammel-side-2026-09-30. */
+  {
+    "slug": "jakobsen-takst",
+    "tittel": "Takst i Harstad, med prisestimat før du ringer",
+    "ingress": "Robert Jakobsen er sertifisert takstmann i Norsk Takst og tømrermester, og har taksert boliger i Harstad-regionen siden 2015. Oppdragene kommer fra boligselgere, meglere, advokater og banker.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Prisestimat med spesifikasjon",
+      "Egen side for hver tjeneste",
+      "Søkeoppsett for lokale søk",
+      "Hosting"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Selvhostede fonter",
+      "Redigering rett på siden"
+    ],
+    "utfordring": {
+      "t": "Prisen lå på en egen side, med «fra» foran",
+      "a": [
+        "Den gamle siden var bygget på et ferdig WordPress-tema. Prislista lå på en underside, og nesten hver linje endte med «avhengig av størrelse og type, be om tilbud». Reisetid, kilometer og ferje sto i et eget avsnitt over.",
+        "Den som skal selge bolig, vil vite omtrent hva taksten koster før de ringer. På den gamle siden måtte de regne det ut selv."
+      ]
+    },
+    "losning": {
+      "t": "Kjent forside, prisen regnet ut",
+      "a": [
+        "Forsiden beholder det kundene kjenner fra før: huset, logomerket og den røde knappen. Det nye ligger under.",
+        "Rett etter tjenestene står et <b>prisestimat</b>. Du velger oppdrag, boligtype, areal og antall våtrom, og får en pris med hver linje spesifisert. Reise og energimerking står forklart der de gjelder.",
+        "Hver av de fem tjenestene har fått sin egen side, og uttalelsene står med fullt navn, blant dem to fra DNB Eiendom og en advokat."
+      ]
+    },
+    "forEtter": {
+      "for": {
+        "bilde": "/websider/for/jakobsen-takst.webp",
+        "tatt": "september 2026"
+      },
+      "kilde": "Den gamle siden er frosset 30. september 2026. Den nye er målt 9. oktober 2026.",
+      "rader": [
+        {
+          "punkt": "Hvor du finner prisen",
+          "for": "På en egen side, med «fra» og «be om tilbud»",
+          "na": "Regnes ut på forsiden, linje for linje",
+          "hvorfor": "Den som skal selge bolig, vil vite omtrent hva taksten koster før de tar kontakt."
+        },
+        {
+          "punkt": "Andre selskaper som får beskjed om hvert besøk",
+          "for": "To: Google Fonts og BootstrapCDN",
+          "na": "Ingen",
+          "hvorfor": "Hver av dem ser IP-adressen til den som åpner siden."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "To: «Din Takstmann i Harstad Regionen» og «Viktighet av tilstandsrapporten»",
+          "na": "Én: «Din takstmann i Harstad-regionen»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. To overskrifter gir to svar."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "«Din Takstmann i Harstad Regionen Tjenester En grundig og detaljert beskrivelse av boligens status. En vurdering av markedsverdien på boligen/eiendommen. Vur ...»",
+          "na": "«Sertifisert takstmann i Harstad. Tilstandsrapport, verditakst, forhåndstakst og skadetakst for bolig, tomt og fritidsbolig. Ring 928 42 296.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        }
+      ]
+    }
   }
 ];
 

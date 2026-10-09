@@ -29,7 +29,7 @@ import { caser } from '../lib/demo-innhold';
 const KOLONNER = [
   [['woxen-hage', 'pc', 'flis-kvadrat'], ['katrin-brubakk', 'mobil', 'flis-hoy'], ['alpha-negotiations', 'pc', ''], ['steinar-husby', 'mobil', 'flis-hoy']],
   [['melanie-dahl', 'mobil', 'flis-hoy'], ['appstart', 'pc', 'flis-kvadrat'], ['tore-sunde-rasmussen', 'mobil', 'flis-hoy'], ['progressive-diplomacy', 'pc', '']],
-  [['samtaleverkstedet', 'pc', ''], ['kolflaath', 'mobil', 'flis-hoy'], ['katrin-brubakk', 'pc', 'flis-kvadrat'], ['woxen-hage', 'mobil', 'flis-hoy']],
+  [['samtaleverkstedet', 'pc', ''], ['kolflaath', 'mobil', 'flis-hoy'], ['katrin-brubakk', 'pc', 'flis-kvadrat'], ['jakobsen-takst', 'mobil', 'flis-hoy']],
 ];
 
 const HOYDE = { 'flis-kvadrat': 480, 'flis-hoy': 720, '': 600 };
