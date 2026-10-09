@@ -20,6 +20,7 @@ import { useReveal } from '../lib/useReveal';
    tekst her faller pent ut i stedet for å arve naboens. */
 const ARBEIDER_TEKST = {
   'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
+  'jakobsen-takst': { bransje: 'Takstmann', tittel: 'Takst i Harstad, med prisestimat før du ringer' },
   'woxen-hage': { bransje: 'Hagestell', tittel: 'Hagehjelp i Oslo, bestilt på under ett minutt' },
   'katrin-brubakk': { bransje: 'Psykolog', tittel: 'Foredrag og terapi samlet på én rolig side' },
   'melanie-dahl': { bransje: 'Skuespill · mental trening', tittel: 'To yrker, to innganger, én rolig side' },
