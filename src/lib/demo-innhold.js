@@ -391,8 +391,8 @@ export const caser = [
       ]
     }
   },
-  /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Forsiden som vises
-     er hero 2, den klassiske, som tar opp igjen den gamle forsiden. Robert
+  /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Forsiden på jtob.no
+     tar opp igjen den gamle, men med Harstad sett fra Immelen bak (15. okt). Robert
      har sagt ja til at den gamle siden vises. Hele den frosne kopien ligger
      i kunderepoet under arkiv/gammel-side-2026-09-30. */
   {
@@ -422,7 +422,7 @@ export const caser = [
     "losning": {
       "t": "Kjent forside, prisen regnet ut",
       "a": [
-        "Forsiden beholder det kundene kjenner fra før: huset, logomerket og den røde knappen. Det nye ligger under.",
+        "Forsiden beholder det kundene kjenner fra før: logomerket, overskriften og den røde knappen. Bildet bak er Harstad sett fra Immelen. Det nye ligger under.",
         "Rett etter tjenestene står et <b>prisestimat</b>. Du velger oppdrag, boligtype, areal og antall våtrom, og får en pris med hver linje spesifisert. Reise og energimerking står forklart der de gjelder.",
         "Hver av de fem tjenestene har fått sin egen side, og uttalelsene står med fullt navn, blant dem to fra DNB Eiendom og en advokat."
       ]
