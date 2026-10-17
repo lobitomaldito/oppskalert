@@ -25,17 +25,12 @@ const priserSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
   name: 'Oppskalert prismodeller',
-  /* Modeller uten fast pris får ikke price-felt. Schema.org tillater et
-     Offer uten pris, men ikke en pris som ikke er et tall: «Forespør pris»
-     ville blitt sendt som price: "Forespørpris", og det er ugyldig
-     strukturert data Google kan flagge. */
   itemListElement: prismodeller.map((p) => ({
     '@type': 'Offer',
     name: p.navn,
     description: p.tagline,
-    ...(p.erForesporsel
-      ? {}
-      : { price: p.fra.replace(/\s/g, ''), priceCurrency: 'NOK' }),
+    price: p.fra.replace(/\s/g, ''),
+    priceCurrency: 'NOK',
     url: 'https://oppskalert.no/priser',
   })),
 };
@@ -43,20 +38,19 @@ const priserSchema = {
 /* Sammenligningen svarer på det ene spørsmålet prismodellene ikke gjør
    alene: hva er egentlig forskjellen, rad for rad. */
 const rader = [
-  ['Gratis utkast før du bestemmer deg', true, true],
-  ['Design og utvikling av komplett nettside', true, true],
-  ['Håndkodet, uten tunge plugins', true, true],
-  ['Søkemotor-grunnoppsett', true, true],
-  ['Du eier alle filene', true, 'Etter 12 måneder'],
-  ['Hosting, domene og SSL', 'Eget ansvar', true],
-  ['Rimelige innholdsendringer inkludert', false, true],
-  ['Backup og oppetidsovervåking', false, true],
-  ['Support direkte fra meg', false, true],
-  /* Radene som gjør at tabellen sammenligner to ulike avtaler og ikke
-     bare to funksjonslister. Uten dem ser leie til eie ut som
+  ['Gratis utkast før du bestemmer deg', true, true, true],
+  ['Håndbygd nettside, uten tunge plugins', true, true, true],
+  ['Søkemotor-grunnoppsett', true, true, true],
+  ['Tekstene skrevet om for Google og AI-søk', false, true, true],
+  ['Admin-panel, endre tekst og bilder selv', false, true, true],
+  ['Du eier alle filene', true, true, 'Etter 12 måneder'],
+  ['Hosting og SSL', true, true, true],
+  ['Serviceavtale: endringer, backup og support', '450 kr/mnd', '450 kr/mnd', 'Inkludert i 12 måneder'],
+  /* Radene som gjør at tabellen sammenligner ulike avtaler og ikke
+     bare funksjonslister. Uten dem ser leie til eie ut som
      engangsprisen med flere haker. */
-  ['Betaling', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 290 kr/mnd'],
-  ['Bindingstid', 'Ingen', 'Ingen, kjøp ut når du vil'],
+  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 590 kr/mnd'],
+  ['Bindingstid', 'Ingen', 'Ingen', 'Ingen, kjøp ut når du vil'],
 ];
 
 const Celle = ({ v }) => {
@@ -73,28 +67,30 @@ const Sammenligning = () => (
         <h2>Hva inngår i hver modell?</h2>
       </div>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
-        <table className="w-full border-collapse min-w-[34rem]">
-          <caption className="sr-only">Sammenligning av engangspris og leie til eie</caption>
+        <table className="w-full border-collapse min-w-[42rem]">
+          <caption className="sr-only">Sammenligning av Enkel, Komplett og leie til eie</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
               <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Engangspris</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Enkel</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Komplett</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Leie til eie</th>
             </tr>
           </thead>
           <tbody>
-            {rader.map(([navn, a, b]) => (
+            {rader.map(([navn, a, b, c]) => (
               <tr key={navn} className="border-b border-room-ink/10 last:border-b-0">
                 <th scope="row" className="text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
                 <td className="text-center py-3.5 px-4"><Celle v={a} /></td>
                 <td className="text-center py-3.5 px-4"><Celle v={b} /></td>
+                <td className="text-center py-3.5 px-4"><Celle v={c} /></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">
-        Begge modellene gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter, ikke disse to. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
+        Alle tre gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
       </p>
     </div>
   </section>
@@ -104,7 +100,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 6 990 kr, eller leie til eie fra 1 290 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: enkel side 6 990 kr, komplett fra 12 900 kr, hosting inkludert, eller leie til eie fra 1 590 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -123,18 +119,18 @@ const PriserPage = () => (
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
           <p className="etikett">Tre modeller</p>
-          <h2>Eie den selv, betale månedlig, eller be om noe eget</h2>
+          <h2>Enkel eller komplett, eller betale månedlig</h2>
         </div>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme
             data, to ulike produkter for den som så begge rutene. */}
         <PrisRad>
-          {prismodeller.map((m) => (
+          {prismodeller.map((m, i) => (
             <Modell
               key={m.id}
               m={m}
-              className={[m.erForesporsel && 'md:col-span-2 lg:col-span-1', m.fremhevet && 'order-first md:order-none'].filter(Boolean).join(' ') || undefined}
+              className={[i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1', m.fremhevet && 'order-first md:order-none'].filter(Boolean).join(' ') || undefined}
             />
           ))}
         </PrisRad>
@@ -151,14 +147,14 @@ const PriserPage = () => (
     <section className="seksjon">
       <div className="wrap">
         <div className="seksjonstopp inn">
-          <p className="etikett">Drift</p>
-          <h2>Tre nivåer, bytt når du vil</h2>
-          <p>Velger du at jeg skal passe på siden, er dette nivåene. Du kan gå opp eller
-          ned, eller avslutte, uten oppsigelsestid.</p>
+          <p className="etikett">Etter lansering</p>
+          <h2>Serviceavtale og SEO</h2>
+          <p>Hosting er med i prisen på siden. Vil du at jeg gjør endringene, eller
+          jobber med søk hver måned, er dette tilleggene. Ingen oppsigelsestid.</p>
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
             «Få et gratis utkast» ville lovet et utkast av en driftsavtale. */}
-        <PrisRad>
+        <PrisRad className="lg:grid-cols-2 lg:max-w-[52rem]">
           {driftNivaer.map((n) => (
             <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
           ))}

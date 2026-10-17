@@ -141,9 +141,9 @@ const Inkludert = () => {
           ))}
         </ul>
         <p data-reveal className="font-body text-[0.95rem] text-room-ink/70 mt-8 max-w-[54ch] leading-relaxed">
-          Søkemotoroptimalisering inngår som en kvartalsvis gjennomgang i det øverste
-          driftsnivået. Se <Link to={ruter.drift} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">drift og support</Link> for
-          hva de tre nivåene koster, eller <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">prissiden</Link> for
+          Vil du at jeg jobber med søk hver måned, finnes det som abonnement fra 1 490
+          kr/mnd. Se <Link to={ruter.drift} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">serviceavtale og SEO</Link> for
+          hva det inneholder, eller <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">prissiden</Link> for
           nye nettsider.
         </p>
       </div>

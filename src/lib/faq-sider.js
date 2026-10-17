@@ -15,7 +15,7 @@ export const faqSammenlign = [
   },
   {
     q: 'Hva koster de ulike alternativene over tid?',
-    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 6 990 kroner én gang, og så 0 hvis du hoster den selv. Krysningspunktet ligger typisk mellom år 2 og år 5, avhengig av hvilken plan du velger.',
+    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 6 990 kroner én gang, og så 0, for hostingen er med i prisen. Krysningspunktet ligger typisk mellom år 2 og år 5, avhengig av hvilken plan du velger.',
   },
   {
     q: 'Kan jeg flytte siden min bort fra deg senere?',
@@ -57,7 +57,7 @@ export const faqWordPress = [
   },
   {
     q: 'Kan du overta WordPress-siden jeg allerede har?',
-    a: 'Ja. Jeg kan enten drifte den som den er fra 149 kroner i måneden, eller bygge den om hvis det lønner seg. Send meg adressen, så ser jeg over den gratis og sier ærlig fra hva jeg ville gjort. Det tar meg under 30 minutter.',
+    a: 'Ja. Jeg kan ta den på serviceavtale fra 450 kroner i måneden, eller bygge den om hvis det lønner seg. Send meg adressen, så ser jeg over den gratis og sier ærlig fra hva jeg ville gjort. Det tar meg under 30 minutter.',
   },
   {
     q: 'Hvorfor bygger du ikke i WordPress?',
