@@ -54,6 +54,17 @@ const ConditionalLink = ({ harCase, slug, url, children }) =>
     </a>
   );
 
+/* Hvit eller blekk på kundefargen, det som gir høyest kontrast. Domenet i
+   stripen er lite, så det må leses uansett hvilken farge kunden har. */
+const lys = (hex) => {
+  const [r, g, b] = [1, 3, 5].map((i) => {
+    const c = parseInt(hex.slice(i, i + 2), 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const tekstPaa = (hex) => (1.05 / (lys(hex) + 0.05) >= (lys(hex) + 0.05) / 0.0574 ? '#fff' : 'var(--blekk)');
+
 const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett = false }) => {
   const Tittel = `h${nivaa}`;
   const kort = prosjekter
@@ -76,7 +87,10 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett
               nytt prosjekt uten case landet på en 404-lignende side. */}
           <ConditionalLink harCase={a.harCase} slug={a.slug} url={a.url}>
             <div className="ramme">
-              <div className="ramme-topp">
+              <div
+                className={a.farge ? 'ramme-topp merket' : 'ramme-topp'}
+                style={a.farge ? { '--merke': a.farge, '--merke-tekst': tekstPaa(a.farge) } : undefined}
+              >
                 <i aria-hidden="true" /><i aria-hidden="true" /><i aria-hidden="true" />
                 <p>{a.domene}</p>
               </div>

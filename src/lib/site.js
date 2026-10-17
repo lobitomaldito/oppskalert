@@ -594,18 +594,25 @@ export const landingsSporsmal = {
    laste den tunge fila. Legger du inn et nytt prosjekt, skyt begge to. */
 export const toganger = (src) => `${src} 1x, ${src.replace('.webp', '@2x.webp')} 2x`;
 
+/* `farge` er kundens farge på toppstripen i nettleserrammene (se
+   .ramme-topp.merket i index.css). Regnet ut 17. oktober 2026 fra
+   skjermbildet i public/websider/full: snittet av den vanligste sterke
+   fargetonen øverst på siden. Det gir en mørkere og roligere farge enn
+   knappefargene på kundenes sider. Valgt av
+   Aleksander fra en prøve med fire varianter. Nytt prosjekt: regn ut på
+   samme måte, eller sett fargen for hånd. */
 export const prosjekter = [
   /* Appstart. Lagt inn 29. september 2026. Aleksanders eget selskap
      sammen med Magnus, ikke et kundeoppdrag, derfor ingen case-side:
      kortet lenker rett ut til appstart.no. Fangsten er vanlig 5000 px
      (forsiden er 6370 px høy), så --til er -81% som Woxen Hage. */
-  { img: '/websider/appstart.webp', slug: 'appstart', full: '/websider/full/appstart.webp', til: '-81%', navn: 'Appstart', bransje: 'Apputvikling', url: 'https://appstart.no/', domene: 'appstart.no' },
+  { img: '/websider/appstart.webp', slug: 'appstart', farge: '#114b35', full: '/websider/full/appstart.webp', til: '-81%', navn: 'Appstart', bransje: 'Apputvikling', url: 'https://appstart.no/', domene: 'appstart.no' },
   /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Skjermbildene er
      tatt på nytt 15. oktober 2026 fra jtob.no etter at siden gikk live,
      med heroen som viser Harstad sett fra Immelen. */
-  { img: '/websider/jakobsen-takst.webp', slug: 'jakobsen-takst', full: '/websider/full/jakobsen-takst.webp', til: '-81%', navn: 'Jakobsen Takst & Bygg', bransje: 'Takst · Harstad', url: 'https://jtob.no/', domene: 'jtob.no' },
-  { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
-  { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
+  { img: '/websider/jakobsen-takst.webp', slug: 'jakobsen-takst', farge: '#b71817', full: '/websider/full/jakobsen-takst.webp', til: '-81%', navn: 'Jakobsen Takst & Bygg', bransje: 'Takst · Harstad', url: 'https://jtob.no/', domene: 'jtob.no' },
+  { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', farge: '#5d7f35', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
+  { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', farge: '#461823', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
   /* Melanie Dahl. Lagt inn 21. august 2026, hentet fra arbeid en annen
      sesjon hadde liggende ukommittert i hovedtreet.
 
@@ -615,7 +622,7 @@ export const prosjekter = [
      Scenekunst, ikke en lang side. Vinduet viser derfor 67 % av bildet av
      gangen i stedet for 19 %, og rullelengden må regnes ut fra det.
      Kopierer man -79% hit, ruller kortet langt forbi bunnen av bildet. */
-  { img: '/websider/melanie-dahl.webp', slug: 'melanie-dahl', full: '/websider/full/melanie-dahl.webp', til: '-34%', navn: 'Melanie Dahl', bransje: 'Skuespill · mental trening', url: 'https://www.melaniedahl.com/', domene: 'melaniedahl.com' },
+  { img: '/websider/melanie-dahl.webp', slug: 'melanie-dahl', farge: '#3d6516', full: '/websider/full/melanie-dahl.webp', til: '-34%', navn: 'Melanie Dahl', bransje: 'Skuespill · mental trening', url: 'https://www.melaniedahl.com/', domene: 'melaniedahl.com' },
   /* Alpha Negotiations. Satt tilbake 25. august 2026. Sto ute av arrayen
      siden 21. august fordi siden svarte HTTP 500 og footeren krediterte
      et annet byrå, se CLAUDE.md. Begge var feil ved ny måling: siden
@@ -627,11 +634,11 @@ export const prosjekter = [
      Til er -71%, ikke -79% som de fleste andre: forsiden er 3319 px høy,
      ikke lang nok til å fylle den vanlige 5000 px-fangsten, så bildet er
      640 x 1660, samme prinsipp som Melanie Dahl over. */
-  { img: '/websider/alpha-negotiations.webp', slug: 'alpha-negotiations', full: '/websider/full/alpha-negotiations.webp', til: '-71%', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
-  { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
-  { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
-  { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
-  { img: '/websider/tore-sunde-rasmussen.webp', slug: 'tore-sunde-rasmussen', full: '/websider/full/tore-sunde-rasmussen.webp', til: '-74%', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
+  { img: '/websider/alpha-negotiations.webp', slug: 'alpha-negotiations', farge: '#0d1d55', full: '/websider/full/alpha-negotiations.webp', til: '-71%', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
+  { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', farge: '#815c39', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
+  { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', farge: '#1c304d', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
+  { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', farge: '#418bbf', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
+  { img: '/websider/tore-sunde-rasmussen.webp', slug: 'tore-sunde-rasmussen', farge: '#2a3a60', full: '/websider/full/tore-sunde-rasmussen.webp', til: '-74%', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
   /* Tor Magnus Kolflaath. Lagt inn 30. september 2026. Levert og satt
      live 10. august, men aldri ført opp her. Ingen case-side, så kortet
      lenker rett ut til kolflaath.com. Står sist blant dem med fangst,
@@ -640,7 +647,7 @@ export const prosjekter = [
      Til er -67%: forsiden er 2912 px høy, så bildet er 640 x 1456 og
      vinduet viser 480 / 1456 = 33 % av det av gangen. Samme prinsipp som
      Melanie Dahl og Alpha Negotiations over. */
-  { img: '/websider/kolflaath.webp', slug: 'kolflaath', full: '/websider/full/kolflaath.webp', til: '-67%', navn: 'Tor Magnus Kolflaath', bransje: 'Investor', url: 'https://kolflaath.com', domene: 'kolflaath.com' },
+  { img: '/websider/kolflaath.webp', slug: 'kolflaath', farge: '#2a6372', full: '/websider/full/kolflaath.webp', til: '-67%', navn: 'Tor Magnus Kolflaath', bransje: 'Investor', url: 'https://kolflaath.com', domene: 'kolflaath.com' },
   { img: '/websider/oppskalert.webp', navn: 'Oppskalert', bransje: 'Denne siden', url: 'https://oppskalert.no', domene: 'oppskalert.no' },
   { img: '/websider/irmelin-drake-ny.webp', navn: 'Irmelin Drake', bransje: 'Ledelse', url: 'https://irmelindrake.no', domene: 'irmelindrake.no' },
 ];
