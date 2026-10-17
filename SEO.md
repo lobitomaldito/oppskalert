@@ -555,6 +555,12 @@ på, og eier nå ordet «webhosting» som forsiden fanget opp på posisjon 16.
 Heroens H1 er ikke rørt. Den er låst av layouten, og title er uansett det
 sterkere signalet.
 
+17. oktober 2026: H1 er byttet fra «Webdesign for bedrifter. Basert i Oslo.
+Alltid gratis utkast.» til «Se den nye nettsiden din før du betaler en
+krone.», med etiketten «Webdesign for bedrifter» rett over. Title er uendret.
+Sjekk posisjonen på «webdesign i oslo», «webdesign bedrift» og «webdesigner
+oslo» i Search Console rundt 14. november 2026, mot tallene i tabellen over.
+
 ### Fem feller i Search Console-APIet
 
 Alle fem er funnet ved å bomme på dem. De er designkravene til rutinen.
