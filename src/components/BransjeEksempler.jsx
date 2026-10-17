@@ -88,7 +88,7 @@ const BransjeEksempler = () => {
             to={ruter.kontakt}
             className="flex-shrink-0 inline-flex items-center gap-2 bg-room-ink text-room px-7 py-3.5 rounded-full font-sans font-bold text-sm hover:scale-[1.03] transition-transform duration-300"
           >
-            Bestill gratis utkast <ArrowRight className="w-4 h-4" />
+            Få et gratis utkast <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
