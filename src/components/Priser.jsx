@@ -3,7 +3,7 @@ import { ArrowRight, Check } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp, KortRad } from './Layout';
 import { cn } from '../lib/utils';
-import { alltidMed, prisNotat, prismodeller, prisRad, ruter } from '../lib/site';
+import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
 
 /* Alle tre kortene er hvite på feltet. Driftskortet var tidligere tonet mot
    feltfargen for å skille seg fra engangsprisen, men denne seksjonen står
@@ -48,20 +48,10 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis utkast',
         {m.tagline}
       </p>
 
-      {/* «Forespør pris» er tekst, ikke et beløp. Uten dette skillet leste
-          kortet «fra Forespør pris», som er en setning ingen kan lese, og
-          «fra» lovet dessuten et startbeløp jeg ikke oppgir her. Samme
-          skille som på /priser, se erForesporsel i site.js. */}
       <div className="mt-6 flex items-baseline gap-1.5 min-h-[2.75rem]">
-        {m.erForesporsel ? (
-          <span className="font-display font-normal text-[1.5rem] leading-none tracking-[-0.018em]">{m.fra}</span>
-        ) : (
-          <>
-            <span className="font-body text-sm text-room-ink/70">fra</span>
-            <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
-            <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
-          </>
-        )}
+        <span className="font-body text-sm text-room-ink/70">fra</span>
+        <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
+        <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
       </div>
       <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>
 
@@ -102,15 +92,29 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
     <section id="priser" ref={container} className="seksjon">
       <div className="wrap">
         <SeksjonTopp
-          tittel="Fire måter å"
+          tittel="Tre måter å"
           uthevet="komme i gang på."
-          lede="Alle starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
+          lede="Alle tre starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
           midtstilt={midtstilt}
         />
 
-        <KortRad {...prisRad}>
-          {prismodeller.map((m) => (
-            <Modell key={m.id} m={m} visPasserDeg={visPasserDeg} />
+        {/* Tre modeller i to spalter ga ett kort alene på en andre rad, med
+            halve raden tom. Fra lg står de tre i linje. Mellom md og lg får
+            det siste kortet hele bredden, så det ser bevisst ut og ikke som
+            et kort som ble til overs. Chatbot eller app er tatt ut av
+            prislisten 17. oktober 2026: ingen spurte etter det der. */}
+        <KortRad
+          gridKlasser="md:grid-cols-2 lg:grid-cols-3"
+          kortBredde="w-[86%]"
+          className="gap-5 items-stretch max-w-[52rem] lg:max-w-[72rem]"
+        >
+          {prismodeller.map((m, i) => (
+            <Modell
+              key={m.id}
+              m={m}
+              visPasserDeg={visPasserDeg}
+              className={i === prismodeller.length - 1 ? 'md:col-span-2 lg:col-span-1' : undefined}
+            />
           ))}
         </KortRad>
 

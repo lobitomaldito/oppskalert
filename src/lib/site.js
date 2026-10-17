@@ -135,51 +135,7 @@ export const prismodeller = [
     ],
     fremhevet: true,
   },
-  {
-    /* Tredje modell, lagt til 21. august 2026. To grunner.
-
-       Kommersielt: chatbot og web-app er tjenester som skal selges, og de
-       sto bare nevnt i tjenestekortene uten noe sted å be om pris.
-
-       Visuelt: to kort i et 1fr 1fr-rutenett stod tynt på brede skjermer,
-       og drift-rutenettet rett under har allerede tre. Nå er de like.
-
-       `fra` er en tekst og ikke et tall her, med vilje. Disse prosjektene
-       har ikke en meningsfull startpris: en chatbot trent på fem sider og
-       en app med innlogging er ikke samme jobb. Å oppgi et «fra»-tall
-       ville vært et tall jeg ikke kan stå for, og prissiden finnes for å
-       unngå nettopp det. Se `erForesporsel` der kortet rendres. */
-    id: 'skreddersom',
-    navn: 'Chatbot eller app',
-    fra: 'Forespør pris',
-    erForesporsel: true,
-    enhet: '',
-    periode: 'etter omfang',
-    tagline: 'Skal siden svare for deg, eller skal kundene logge inn?',
-    passerDeg: [
-      'Du får de samme spørsmålene om og om igjen',
-      'Du taster det samme inn i to systemer',
-      'Kundene dine skal bestille eller følge noe over tid',
-    ],
-    inkludert: [
-      'Chatbot trent på din egen bedrift',
-      'Automatikk mellom verktøyene du har fra før',
-      'App til iPhone og Android, hvis du faktisk trenger en',
-      'Fast pris før jeg begynner, som ellers',
-    ],
-    fremhevet: false,
-  },
 ];
-
-/* Fire modeller fra 17. oktober 2026 (Enkel og Komplett erstattet ett
-   engangskort). To og to fra md, fire i linje først fra xl: ved lg var
-   kortene for smale til «fra 12 900 kr» på én linje. Forsiden og /priser
-   bruker begge dette, så radene ikke spriker. */
-export const prisRad = {
-  gridKlasser: 'md:grid-cols-2 xl:grid-cols-4',
-  kortBredde: 'w-[86%]',
-  className: 'gap-5 items-stretch max-w-[52rem] xl:max-w-[80rem]',
-};
 
 export const alltidMed = [
   'Skreddersydd design, håndkodet',

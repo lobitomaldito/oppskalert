@@ -5,7 +5,7 @@ import { Shell, KortRad } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { ArbeidSeksjon } from '../components/Arbeider';
 import { Modell } from '../components/Priser';
-import { lagFaqSchema, prisNotat, prismodeller, prisRad, driftNivaer, driftNotat, ruter } from '../lib/site';
+import { lagFaqSchema, prisNotat, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
 /* Skjemaet bygges av nøyaktig de spørsmålene som vises lenger nede på
@@ -18,9 +18,9 @@ import { sporsmal } from '../lib/demo-innhold';
    med sitt eget skjema, så det er fortsatt to ulike FAQPage-sett på to
    URLer. Det var hele poenget med å skille dem 13. august: identiske
    skjemaer på to ruter gjør at Google beholder bare den ene. */
-/* Driftsnivåene: tre kort i linje fra lg, to fra md, og vannrett sveip på
-   mobil. Prismodellene over har fire kort og bruker prisRad fra site.js,
-   samme rutenett som forsiden. */
+/* Nøyaktig samme rutenett som forsiden bruker i Priser.jsx: tre kort i
+   linje fra lg, to fra md, og vannrett sveip på mobil. Sto det med egne
+   verdier her, ville radene sprikt igjen første gang én av dem ble endret. */
 const KortRadPris = ({ children }) => (
   <KortRad
     gridKlasser="md:grid-cols-2 lg:grid-cols-3"
@@ -37,17 +37,12 @@ const priserSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
   name: 'Oppskalert prismodeller',
-  /* Modeller uten fast pris får ikke price-felt. Schema.org tillater et
-     Offer uten pris, men ikke en pris som ikke er et tall: «Forespør pris»
-     ville blitt sendt som price: "Forespørpris", og det er ugyldig
-     strukturert data Google kan flagge. */
   itemListElement: prismodeller.map((p) => ({
     '@type': 'Offer',
     name: p.navn,
     description: p.tagline,
-    ...(p.erForesporsel
-      ? {}
-      : { price: p.fra.replace(/\s/g, ''), priceCurrency: 'NOK' }),
+    price: p.fra.replace(/\s/g, ''),
+    priceCurrency: 'NOK',
     url: 'https://oppskalert.no/priser',
   })),
 };
@@ -137,18 +132,22 @@ const PriserPage = () => (
     <section className="hvit">
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
-          <p className="etikett">Fire modeller</p>
-          <h2>Enkel eller komplett, betale månedlig, eller be om noe eget</h2>
+          <p className="etikett">Tre modeller</p>
+          <h2>Enkel eller komplett, eller betale månedlig</h2>
         </div>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme
             data, to ulike produkter for den som så begge rutene. */}
-        <KortRad {...prisRad}>
-          {prismodeller.map((m) => (
-            <Modell key={m.id} m={m} />
+        <KortRadPris>
+          {prismodeller.map((m, i) => (
+            <Modell
+              key={m.id}
+              m={m}
+              className={i === prismodeller.length - 1 ? 'md:col-span-2 lg:col-span-1' : undefined}
+            />
           ))}
-        </KortRad>
+        </KortRadPris>
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
       </div>
     </section>
