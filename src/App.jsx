@@ -119,20 +119,21 @@ const Hero = () => {
     <section ref={container} className="hero hero-vegg">
       <div className="wrap">
         <div className="hero-tekst">
-          {/* Overskriften er tre korte setninger, ikke én lang. Målt hos ti
-              norske konkurrenter 20. august 2026 ligger H1 på 5,5 ord i snitt,
-              og den forrige versjonen her var 12 ord over to setninger, altså
-              dobbelt så lang som normen. Staccato med punktum der man
-              instinktivt ville satt komma er samtidig det grepet norske sider
-              faktisk bruker, se inspirasjon/norsk-cta.md.
+          {/* Overskriften selger det kunden får, søkeordene står i etiketten.
 
-              Den bærer også de tre søkeordene Search Console måler forsiden på:
-              webdesign, bedrifter, Oslo. */}
-          {/* Én span per setning: ved siden av galleriveggen står de på hver
-              sin linje, se .hero-vegg h1 span i index.css. Teksten er uendret. */}
+              Til 17. oktober 2026 var H1 «Webdesign for bedrifter. Basert i
+              Oslo. Alltid gratis utkast.», skrevet for de tre ordene Search
+              Console måler forsiden på. «Basert i Oslo» sa ingenting til en
+              kunde i Harstad. Nå bærer etiketten «webdesign» og «bedrifter»,
+              og title-taggen bærer alle tre, som er det sterkeste signalet
+              uansett. Se SEO.md, punkt 12.
+
+              To spans: ved siden av galleriveggen står de på hver sin linje,
+              se .hero-vegg h1 span i index.css. */}
+          <p data-reveal className="etikett hero-etikett inn" style={{ '--d': '60ms' }}>Webdesign for bedrifter</p>
           <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
-            <span>Webdesign for bedrifter.</span> <span>Basert i Oslo.</span>{' '}
-            <span>Alltid gratis utkast.</span>
+            <span>Se den nye nettsiden din</span>{' '}
+            <span>før du betaler en krone.</span>
           </h1>
           {/* Ingressen sier bevisst noe annet enn overskriften.
 
