@@ -372,7 +372,9 @@
   }
   .hero p {
     margin-top: 1.5rem; margin-inline: auto; max-width: 46ch;
-    color: var(--blekk-mykt); font-size: .9375rem; line-height: 1.65;
+    /* Var 15 px under en H1 på 52 px. Kontrasten holdt (5,4:1), men
+       spranget fikk ingressen til å lese som en fotnote. */
+    color: var(--blekk-mykt); font-size: clamp(1rem, .9rem + .3vw, 1.125rem); line-height: 1.6;
   }
   .hero-handling { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
 
@@ -410,21 +412,8 @@
   .hero-bevis {
     margin: 1.5rem auto 0;
     max-width: 44ch;
-    display: grid;
+    display: grid; gap: .5rem;
   }
-  /* Samme stabling som sitatkortet. Høyden settes av den lengste omtalen,
-     så knappen under står stille mens sitatene toner forbi. */
-  .hero-bevis-slide {
-    grid-area: 1 / 1;
-    /* start, ikke end: sitatet skal alltid begynne på samme linje rett
-       under knappen. Med end ble det i stedet et hull under knappen hver
-       gang en kort omtale sto for tur, og «Kjempefornøyd :)» er én linje
-       mot fire på den lengste. */
-    display: grid; gap: .5rem; align-content: start;
-    opacity: 0; transition: opacity .7s var(--e);
-  }
-  .hero-bevis-slide.aktiv { opacity: 1; }
-  @media (prefers-reduced-motion: reduce) { .hero-bevis-slide { transition: none; } }
   .hero-bevis blockquote {
     font-family: 'SectraFine', Georgia, serif;
     font-size: clamp(1rem, 1.8vw, 1.1875rem);
@@ -617,6 +606,19 @@
     .arbeid:nth-child(6n+5) { grid-column: 1 / span 7; }
     .arbeid:nth-child(6n+6) { grid-column: 8 / span 5; margin-top: 3.5rem; }
   }
+  /* Tett: forsidens variant, åtte små kort i stedet for fire store. Mange
+     rammer leses som en portefølje, fire store leses som fire prosjekter.
+     Overstyrer den asymmetriske plasseringen over. */
+  .arbeider.tett { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem .875rem; }
+  @media (min-width: 52rem) {
+    .arbeider.tett { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem 1.25rem; }
+    .arbeider.tett .arbeid { grid-column: auto; margin-top: 0; }
+  }
+  .arbeider.tett .etikett { margin-top: .75rem; font-size: .75rem; }
+  .arbeider.tett .arbeid h3 { margin-top: .3rem; font-size: clamp(.875rem, .8rem + .25vw, 1rem); line-height: 1.4; }
+  .arbeider.tett .ramme-topp { padding: .45rem .6rem; }
+  .arbeider.tett .ramme-topp p { margin-left: .35rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
   .arbeid a { display: block; }
   .arbeid .etikett { margin-top: 1.1rem; }
   .arbeid h3 {
@@ -701,6 +703,23 @@
      bruker hele kolonnebredden som alt annet. Rekkefølgen i DOM-en er
      uendret, så tastaturrekkefølgen er den samme. */
   .tjeneste-rad { display: grid; gap: clamp(1.75rem, 3vw, 2.5rem); }
+
+  /* Forsidens tjenester: en linjert liste med navnet i egen spalte, så
+     øyet kan skumme navnene ovenfra og ned. Kortgitteret over brukes
+     fortsatt på /om. */
+  .tjenesteliste { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--felt-kant); }
+  .tjenesteliste li {
+    display: grid; gap: .4rem 2rem; padding-block: 1.25rem;
+    border-bottom: 1px solid var(--felt-kant);
+  }
+  @media (min-width: 48rem) {
+    .tjenesteliste li { grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); align-items: baseline; padding-block: 1.6rem; }
+  }
+  .tjenesteliste h3 {
+    font-weight: var(--display-vekt); font-size: clamp(1.3125rem, 2vw, 1.75rem);
+    line-height: 1.15; letter-spacing: var(--display-sperre);
+  }
+  .tjenesteliste p { color: var(--blekk-mykt); max-width: 52ch; text-wrap: pretty; }
   .tjeneste-side {
     display: flex; flex-wrap: wrap; align-items: center;
     justify-content: space-between; gap: 1rem;
@@ -788,6 +807,30 @@
        må trekkes smalere og havne ut av linje med resten av siden. */
     max-width: 42ch; text-wrap: balance;
   }
+  /* Forsidens omtaler: alle synlige samtidig, tre i bredden. Mobil viser
+     to og lenken til Google (regel 20 i byggereglene). */
+  .omtaler { display: grid; gap: clamp(1.25rem, 2.5vw, 1.75rem); }
+  .omtaler-topp { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1rem; }
+  .omtaler-lenke {
+    display: inline-block; padding-block: .75rem; font-size: .875rem; color: var(--blekk);
+    text-decoration: underline; text-decoration-color: var(--felt-kant); text-underline-offset: .25em;
+    transition: text-decoration-color .2s var(--e);
+  }
+  .omtaler-lenke:hover { text-decoration-color: var(--blekk); }
+  .omtaler-rad { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+  @media (min-width: 52rem) { .omtaler-rad { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 51.99rem) { .omtale:nth-child(n+3) { display: none; } }
+  .omtale {
+    background: var(--hvit); border: 1px solid var(--felt-kant); border-radius: var(--rund-stor);
+    padding: clamp(1.5rem, 2.5vw, 2rem);
+    display: grid; gap: 1.5rem; align-content: space-between;
+  }
+  .omtale blockquote {
+    font-family: 'SectraFine', Georgia, serif; font-weight: 400;
+    font-size: clamp(1.125rem, 1.5vw, 1.3125rem); line-height: 1.4; letter-spacing: -.012em;
+    text-wrap: pretty;
+  }
+
   .sitat-kilde { display: flex; align-items: center; gap: .9rem; }
   .sitat-kilde .initial {
     width: 2.75rem; height: 2.75rem; border-radius: 50%; flex: none;

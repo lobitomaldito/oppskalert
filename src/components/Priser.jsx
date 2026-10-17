@@ -18,8 +18,8 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
    hadde tidligere sine egne kort i CSS (.pris): serif-tall, punktumliste,
    ingen knapp. Det ga to ulike utgaver av «Driftet av meg» på to ruter.
    Kortet bor ett sted nå. `cta` finnes bare fordi driftsnivåene ikke skal
-   si «Bestill gratis utkast», de skal si «Velg Serviceavtale». */
-export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis utkast', className }) => {
+   si «Få et gratis utkast», de skal si «Velg Serviceavtale». */
+export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', className }) => {
   return (
     <div
       data-reveal
@@ -79,6 +79,8 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis utkast',
         to={ruter.kontakt}
         className="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] bg-room-ink text-surface"
       >
+        {/* Et gratis utkast av en chatbot gir ingen mening. Kortet uten
+            fast pris ber om pris i stedet. */}
         {cta} <ArrowRight className="w-4 h-4" />
       </Link>
     </div>
@@ -106,14 +108,27 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         <KortRad
           gridKlasser="md:grid-cols-2 lg:grid-cols-3"
           kortBredde="w-[86%]"
-          className="gap-5 items-stretch max-w-[52rem] lg:max-w-[72rem]"
+          className="gap-5 items-stretch lg:items-start pt-4 sm:pt-0 scroll-px-4 max-w-[52rem] lg:max-w-[72rem]"
         >
+          {/* På mobil sveipes kortene, og det anbefalte lå bak sveipet som
+              nummer to. order-first legger det først der, uten å endre
+              rekkefølgen i rutenettet fra sm og opp.
+
+              pt-4 og scroll-px-4 bare på mobil: sveiperaden klipper i
+              høyden, så «Anbefalt»-merket ble kuttet, og snap la første
+              kort helt inntil skjermkanten.
+
+              lg:items-start: med lik høyde fikk Engangspris rundt 250 px
+              tomrom over knappen på 1440 og så uferdig ut. */}
           {prismodeller.map((m, i) => (
             <Modell
               key={m.id}
               m={m}
               visPasserDeg={visPasserDeg}
-              className={i === prismodeller.length - 1 ? 'md:col-span-2 lg:col-span-1' : undefined}
+              className={cn(
+                i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1',
+                m.fremhevet && 'order-first sm:order-none',
+              )}
             />
           ))}
         </KortRad>
@@ -121,23 +136,35 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         {/* Hva som IKKE er med. Uten denne listen ser fastprisen ut som om
             den dekker alt, og da blir hver samtale en forhandling om hvor
             grensen går. Å si nei på forhånd er også det tydeligste signalet
-            om at prisen er regnet på en avgrenset jobb. */}
-        <div data-reveal className="mt-10 pt-6 border-t border-room-ink/15 max-w-[52rem]">
-          <p className="font-sans font-bold text-sm">Dette ligger utenfor fastprisen</p>
-          <p className="font-body text-sm text-room-ink/70 mt-2 leading-relaxed">
-            Nettbutikk med varianter og lagerstyring, innlogging og kundeportal,
-            flerspråklig innhold, og ny visuell identitet. Alt sammen kan jeg gjøre.
-            Det får bare sin egen pris, avtalt før jeg begynner, som ellers.
-          </p>
-        </div>
+            om at prisen er regnet på en avgrenset jobb.
 
-        <p data-reveal className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
-        <p data-reveal className="font-body text-sm text-room-ink/70 mt-3 max-w-[52rem]">
-          Vil du at jeg gjør endringene, eller jobber med søk hver måned?{' '}
-          <Link to={ruter.drift} className="text-room-ink hover:opacity-70 transition-opacity underline underline-offset-2">
-            Se serviceavtale og SEO
-          </Link>
-        </p>
+            Forsiden (visAlltidMed=false) får bare én linje under kortene.
+            Der skal leseren bestemme seg, og fem ting å lese i tillegg
+            trakk blikket bort fra knappene. Hele forbeholdet står på
+            /priser. */}
+        {visAlltidMed && (
+          <>
+            <div data-reveal className="mt-10 pt-6 border-t border-room-ink/15 max-w-[52rem]">
+              <p className="font-sans font-bold text-sm">Dette ligger utenfor fastprisen</p>
+              <p className="font-body text-sm text-room-ink/70 mt-2 leading-relaxed">
+                Nettbutikk med varianter og lagerstyring, innlogging og kundeportal,
+                flerspråklig innhold, og ny visuell identitet. Alt sammen kan jeg gjøre.
+                Det får bare sin egen pris, avtalt før jeg begynner, som ellers.
+              </p>
+            </div>
+
+            <p data-reveal className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
+            <p data-reveal className="font-body text-sm text-room-ink/70 mt-3 max-w-[52rem]">
+              Vil du at jeg gjør endringene, eller jobber med søk hver måned?{' '}
+              <Link to={ruter.drift} className="text-room-ink hover:opacity-70 transition-opacity underline underline-offset-2">
+                Se serviceavtale og SEO
+              </Link>
+            </p>
+          </>
+        )}
+        {!visAlltidMed && (
+          <p data-reveal className="font-body text-sm text-room-ink/70 mt-10 max-w-[52rem]">{prisNotat}</p>
+        )}
 
         {visAlltidMed ? (
           <div data-reveal className="mt-12 rounded-kort border border-room-ink/20 p-7 md:p-9 max-w-[52rem]">
@@ -157,9 +184,12 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
           <Link
             data-reveal
             to={ruter.priser}
-            className="mt-10 inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+            className="mt-4 inline-block font-sans font-bold text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
           >
-            Se alt som er inkludert, og sammenlign modellene i detalj <ArrowRight className="w-4 h-4" />
+            <span>
+              Se alt som er inkludert, og sammenlign modellene i detalj
+              <ArrowRight className="inline w-4 h-4 ml-1.5 -mt-0.5" aria-hidden="true" />
+            </span>
           </Link>
         )}
       </div>

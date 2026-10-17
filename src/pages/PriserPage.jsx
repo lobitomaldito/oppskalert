@@ -165,7 +165,7 @@ const PriserPage = () => (
           jobber med søk hver måned, er dette tilleggene. Ingen oppsigelsestid.</p>
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
-            «Bestill gratis utkast» ville lovet et utkast av en driftsavtale. */}
+            «Få et gratis utkast» ville lovet et utkast av en driftsavtale. */}
         <KortRad gridKlasser="md:grid-cols-2" kortBredde="w-[86%]" className="gap-5 items-stretch max-w-[52rem]">
           {driftNivaer.map((n) => (
             <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />

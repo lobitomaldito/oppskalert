@@ -192,7 +192,7 @@ const MidtCta = ({ tittel, tekst }) => (
       to={ruter.kontakt}
       className="inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors"
     >
-      Bestill gratis utkast <ArrowRight className="w-4 h-4" />
+      Få et gratis utkast <ArrowRight className="w-4 h-4" />
     </Link>
   </aside>
 );
@@ -209,7 +209,7 @@ const CTA = () => (
       {/* Teksten bytter til room-ink samtidig som det hvite panelet dekker knappen,
           samme varighet som glidningen (300ms), så den aldri blir hvit på hvitt. */}
       <span className="relative z-10 group-hover:text-room-ink transition-colors duration-300 flex items-center gap-2">
-        Bestill gratis utkast <ArrowRight className="w-4 h-4" />
+        Få et gratis utkast <ArrowRight className="w-4 h-4" />
       </span>
       <div className="absolute inset-0 bg-surface translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
     </Link>

@@ -58,7 +58,7 @@ export const Navbar = () => {
         </nav>
 
         <Link className="knapp" to={ruter.kontakt}>
-          Ta kontakt <span className="pil" aria-hidden="true">↗</span>
+          Gratis utkast <span className="pil" aria-hidden="true">↗</span>
         </Link>
 
         <details className="meny" ref={menyRef}>
@@ -87,19 +87,23 @@ export const Navbar = () => {
    Verktøy-sidene, ni ruter demoens egen bunnmeny ikke kjente til. De
    lenkene bærer internlenking SEO-arbeidet er avhengig av, så de er
    lagt til i en egen rad over bunn-rad i stedet for droppet. */
-export const Footer = () => (
+export const Footer = ({ utenCta = false }) => (
   <footer className="bunn paa-blekk">
     <div className="wrap bunn-inn">
       {/* Avslutnings-CTA-en. Den sto på hver side i den gamle footeren og
           forsvant i porten, siden demoens footer bare hadde e-postadressen.
           Den store adressen under er fortsatt hovedgrepet, men en knapp
           fanger dem som vil trykke i stedet for å skrive selv. */}
-      <div className="bunn-cta">
-        <h2>La oss bygge noe bra sammen.</h2>
-        <Link className="knapp" to={ruter.kontakt}>
-          Bestill gratis utkast <span className="pil" aria-hidden="true">↗</span>
-        </Link>
-      </div>
+      {/* Forsiden slutter med skjemaet, så der blir dette en slutt nummer to
+          rett etter den første. utenCta settes fra Shell. */}
+      {!utenCta && (
+        <div className="bunn-cta">
+          <h2>Første utkast er gratis.</h2>
+          <Link className="knapp" to={ruter.kontakt}>
+            Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      )}
 
       <a className="bunn-post" href={`mailto:${kontakt.epost}`}>{kontakt.epost}</a>
       <p style={{ marginTop: '1rem', color: 'var(--kritt-mykt)', fontSize: '.9375rem' }}>
@@ -182,12 +186,12 @@ export const Footer = () => (
 /* Felles skall: hopp-lenke, nav på toppen, innhold, fot. Alle ruter
    bruker denne, så navigasjonen aldri kommer ut av synk mellom sidene
    igjen. */
-export const Shell = ({ children }) => (
+export const Shell = ({ children, utenBunnCta = false }) => (
   <div className="min-h-screen">
     <a className="hopp" href="#innhold">Hopp til innhold</a>
     <Navbar />
     <main id="innhold" tabIndex={-1}>{children}</main>
-    <Footer />
+    <Footer utenCta={utenBunnCta} />
   </div>
 );
 

@@ -9,7 +9,6 @@ import Vegg from './components/Vegg';
 import { faqSchema, heroBevis, kontakt, ruter, vurdering } from './lib/site';
 import { omtaler, sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
-import { useKarusell } from './lib/useKarusell';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
    linje 693 til 797, se inspirasjon/demo-studio-mal.md). Alt CSS ligger
@@ -88,43 +87,28 @@ const Vurdering = () => {
 
    Sitatet hentes fra samme liste som omtaleseksjonen lenger nede, så
    de to aldri kan komme ut av synk. */
-/* Heroen viste én fast omtale, valgt med heroBevis.indeks. Nå toner den
-   gjennom alle sammen, de samme fire som sitatkortet lenger nede, og
-   indeksen bestemmer bare hvilken som står der først. Lenken peker på
-   Google-profilen og ikke på en enkelt uttalelse, så den er like gyldig
-   uansett hvilket sitat som vises. */
+/* Én fast omtale, valgt med heroBevis.indeks. Den tonet gjennom alle
+   fire en periode, men de samme fire står i omtaleseksjonen lenger nede,
+   så leseren så samme sitat to ganger. Nå står én her, og seksjonen viser
+   de andre (se utenom i Sitatkort). */
 const HeroBevis = () => {
-  const { i, pauseProps } = useKarusell(omtaler.length, 7000, heroBevis?.indeks ?? 0);
-  if (vurdering || !heroBevis || !omtaler.length) return null;
+  const o = heroBevis && omtaler[heroBevis.indeks];
+  if (vurdering || !o) return null;
+  const kilde = <span className="hero-bevis-kilde">{o.navn}, {o.rolle}</span>;
 
   return (
-    <figure data-reveal className="hero-bevis inn" style={{ '--d': '400ms' }} {...pauseProps}>
-      {omtaler.map((o, n) => {
-        const kilde = (
-          <span className="hero-bevis-kilde">
-            {o.navn}, {o.rolle}
-          </span>
-        );
-        return (
-          <div
-            key={o.navn}
-            className={n === i ? 'hero-bevis-slide aktiv' : 'hero-bevis-slide'}
-            aria-hidden={n !== i}
-          >
-            <blockquote>«{o.sitat}»</blockquote>
-            <figcaption>
-              {heroBevis.url ? (
-                <a href={heroBevis.url} target="_blank" rel="noopener noreferrer" tabIndex={n === i ? 0 : -1}>
-                  {kilde}
-                  <span className="skjult"> (åpnes i ny fane)</span>
-                </a>
-              ) : (
-                kilde
-              )}
-            </figcaption>
-          </div>
-        );
-      })}
+    <figure data-reveal className="hero-bevis inn" style={{ '--d': '400ms' }}>
+      <blockquote>«{o.sitat}»</blockquote>
+      <figcaption>
+        {heroBevis.url ? (
+          <a href={heroBevis.url} target="_blank" rel="noopener noreferrer">
+            {kilde}
+            <span className="skjult"> (åpnes i ny fane)</span>
+          </a>
+        ) : (
+          kilde
+        )}
+      </figcaption>
     </figure>
   );
 };
@@ -179,66 +163,51 @@ const Hero = () => {
 
 const Statuslinje = () => (
   <div className="wrap statuslinje">
-    <a className="pille" href="#veien-inn">Se mer ↓</a>
+    <a className="pille" href="#arbeid">Se mer ↓</a>
   </div>
 );
 
-const VeienInn = () => {
-  const container = useReveal(80);
-  return (
-    <section ref={container} className="wrap" id="veien-inn" style={{ paddingBottom: 'var(--luft)' }}>
-      <div className="intro">
-        <p data-reveal className="etikett inn">Kom i gang</p>
-        <ul data-reveal className="nummerert inn" style={{ '--d': '80ms' }}>
-          <li><Link to={ruter.arbeid}><span className="nr">Arbeid</span> Se hva jeg har laget <span className="pil" aria-hidden="true">→</span></Link></li>
-          <li><Link to={ruter.priser}><span className="nr">Pris</span> Se hva det koster <span className="pil" aria-hidden="true">→</span></Link></li>
-          <li><Link to={ruter.metode}><span className="nr">Prosess</span> Se hvordan det går til <span className="pil" aria-hidden="true">→</span></Link></li>
-          <li><Link to={ruter.kontakt}><span className="nr">Neste</span> Ta en uforpliktende prat <span className="pil" aria-hidden="true">→</span></Link></li>
-        </ul>
-      </div>
-    </section>
-  );
-};
+/* «Kom i gang»-blokken som sto her (Arbeid / Pris / Prosess / Neste) er
+   fjernet 17. oktober 2026. Den gjentok toppmenyen og skjøv de første
+   kundesidene 1,6 skjermhøyder ned på mobil. «Se mer» går rett til
+   arbeidet nå. */
 
 const SitatSeksjon = () => {
   const container = useReveal(100);
   return (
-    <section ref={container} className="sitatblokk">
-      <div className="wrap"><Sitatkort /></div>
+    /* Uten egen luft: seksjonene over og under står på samme felt og har
+       luften sin allerede. Med begge ble hullet over 250 px på 1440. */
+    <section ref={container} className="sitatblokk" style={{ paddingBlock: 0 }}>
+      <div className="wrap"><Sitatkort utenom={heroBevis?.indeks} /></div>
     </section>
   );
 };
+
+/* Tre tjenester som en linjert liste, ikke seks like kort. Kortgitteret
+   var den mest malaktige seksjonen på siden (regel 7 i byggereglene), og
+   seks like tunge valg ga øyet ingenting å stoppe på. Chatbot og drift
+   står allerede som egne priskort rett under. Knappen «Ta kontakt» ved
+   siden av etiketten er tatt ut: headeren har den samme rett over. */
+const TJENESTER_FORSIDE = ['Ny nettside', 'Nettbutikk', 'Bli funnet i Google'];
 
 const TjenesteSeksjon = () => {
   const container = useReveal(80);
   return (
     <section ref={container} className="seksjon">
-      <div className="wrap tjeneste-rad">
-        <div data-reveal className="tjeneste-side inn">
+      <div className="wrap">
+        <div data-reveal className="seksjonstopp inn">
           <p className="etikett">Tjenester</p>
-          <Link className="knapp" to={ruter.kontakt}>Ta kontakt <span className="pil" aria-hidden="true">↗</span></Link>
+          <h2>Dette kan jeg hjelpe deg med</h2>
+          <p>Bare meg, hele veien fra første skisse til siden er oppe og går.</p>
         </div>
-        <div>
-          <div data-reveal className="seksjonstopp inn">
-            <h2>Dette kan jeg hjelpe deg med</h2>
-            <p>De fleste byråer setter deg opp med en prosjektleder, en designer og en
-            utvikler. Her er det bare meg, hele veien fra første skisse til siden er
-            oppe og går. Du får én faktura og ett telefonnummer. Sitter du i
-            hovedstaden, har jeg skrevet om{' '}
-            <Link to={ruter.webdesignOslo}>webdesign i Oslo</Link> for seg.</p>
-          </div>
-          <div data-reveal className="tjenester inn" style={{ '--d': '80ms' }}>
-            {tjenester.map((t) => (
-              <article className="tjeneste" key={t.navn}>
-                <div className="tjeneste-topp">
-                  <svg viewBox="0 0 24 24" aria-hidden="true" dangerouslySetInnerHTML={{ __html: t.ikon }} />
-                  <h3>{t.navn}</h3>
-                </div>
-                <p>{t.tekst}</p>
-              </article>
-            ))}
-          </div>
-        </div>
+        <ul data-reveal className="tjenesteliste inn" style={{ '--d': '80ms' }}>
+          {tjenester.filter((t) => TJENESTER_FORSIDE.includes(t.navn)).map((t) => (
+            <li key={t.navn}>
+              <h3>{t.navn}</h3>
+              <p>{t.tekst}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -311,7 +280,7 @@ const homeSchema = {
 const homeJsonLd = [homeSchema, faqSchema];
 
 const Home = () => (
-  <Shell>
+  <Shell utenBunnCta>
     {/* Tittel og beskrivelse er skrevet for søk, ikke for merkevare.
         «Nettsider som faktisk selger» er god copy og null søkevolum, så den
         lever videre som H1 i heroen i stedet. Se SEO.md punkt 4.
@@ -341,16 +310,15 @@ const Home = () => (
     />
     <Hero />
     <Statuslinje />
-    <VeienInn />
-    <ArbeidSeksjon />
-    <SitatSeksjon />
+    <ArbeidSeksjon id="arbeid" tett />
     <TjenesteSeksjon />
+    <SitatSeksjon />
     <Priser visAlltidMed={false} />
     <FaqSeksjon />
     <DemoSkjema
       tittel="Klar for en nettside"
       uthevet="som selger?"
-      lede="Legg igjen navn og e-post, så bygger jeg et gratis utkast til din nye side. Uforpliktende, og jeg svarer innen 24 timer."
+      lede="Legg igjen navn og e-post, så bygger jeg et gratis utkast til din nye side. Uforpliktende, og klart på 48 timer."
     />
   </Shell>
 );

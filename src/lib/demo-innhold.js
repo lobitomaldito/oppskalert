@@ -557,7 +557,7 @@ export const omtaler = [
     "caseSlug": "progressive-diplomacy"
   },
   {
-    "sitat": "Kjempefornøyd :)",
+    "sitat": "Kjempefornøyd",
     "navn": "Irmelin Drake",
     "rolle": "irmelindrake.no"
   }

@@ -54,7 +54,7 @@ const ConditionalLink = ({ harCase, slug, url, children }) =>
     </a>
   );
 
-const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false }) => {
+const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett = false }) => {
   const Tittel = `h${nivaa}`;
   const kort = prosjekter
     .filter((p) => p.slug && ARBEIDER_TEKST[p.slug])
@@ -68,7 +68,7 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false }) =>
     }));
 
   return (
-    <div className={kompakt ? 'arbeider kompakt' : 'arbeider'} data-antall={kort.length} data-nivaa={nivaa}>
+    <div className={['arbeider', kompakt && 'kompakt', tett && 'tett'].filter(Boolean).join(' ')} data-antall={kort.length} data-nivaa={nivaa}>
       {kort.map((a, i) => (
         <article className="arbeid" key={a.domene} data-reveal={reveal ? '' : undefined}>
           {/* Har prosjektet en case-side, går kortet dit. Har det ikke
@@ -110,21 +110,25 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false }) =>
    `kompakt` viser to kort i stedet for fire på smal skjerm, se
    .arbeider.kompakt i index.css: på de to sidene er kortene et bevis ved
    siden av hovedsaken, og fire stablede rammer skyver resten av siden
-   langt ned på mobil. */
-export const ArbeidSeksjon = ({ hvit = true, kompakt = false }) => {
+   langt ned på mobil.
+
+   `tett` (forsiden) gir åtte mindre kort, fire i bredden på desktop og to
+   på mobil. Fire store rammer tok 1,9 skjermhøyder på 1440 og 2,3 på 390,
+   og fire store kort leses som «fire prosjekter». Mange små leses som en
+   portefølje. */
+export const ArbeidSeksjon = ({ hvit = true, kompakt = false, tett = false, id }) => {
   const container = useReveal(100);
   return (
-    <section ref={container} className={hvit ? 'hvit' : undefined}>
+    <section ref={container} id={id} className={hvit ? 'hvit' : undefined}>
       <div className="wrap seksjon">
         <div data-reveal className="seksjonstopp inn">
           <p className="etikett">Noe av det jeg har laget</p>
           <h2>Sider som er i drift nå</h2>
-          <p>Rammene under ruller gjennom de ekte sidene. Ingen mockup. Ingen utsnitt.
-          Bare siden slik den står akkurat nå.</p>
+          <p>Rammene ruller gjennom de ekte sidene, slik de står i dag.</p>
         </div>
-        <Arbeider antall={4} kompakt={kompakt} />
+        <Arbeider antall={tett ? 8 : 4} kompakt={kompakt} tett={tett} />
         <p style={{ marginTop: 'clamp(2.5rem,5vw,3.5rem)' }}>
-          <Link className="knapp" to={ruter.arbeid}>Se alle sidene <span className="pil" aria-hidden="true">↗</span></Link>
+          <Link className="knapp" to={ruter.arbeid}>Se flere sider <span className="pil" aria-hidden="true">↗</span></Link>
         </p>
       </div>
     </section>
