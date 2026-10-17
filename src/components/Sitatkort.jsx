@@ -12,7 +12,8 @@ import { heroBevis } from '../lib/site';
    sitat ikke dukker opp to ganger på samme side. Mobil viser to omtaler
    og lenken (regel 20 i byggereglene), se .omtale:nth-child(n+3). */
 const Sitatkort = ({ utenom }) => {
-  const liste = omtaler.filter((_, n) => n !== utenom);
+  // Tre i bredden på desktop. En fjerde ville stått alene på en ny rad.
+  const liste = omtaler.filter((_, n) => n !== utenom).slice(0, 3);
 
   return (
     <div className="omtaler" data-reveal>
