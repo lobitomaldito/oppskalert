@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
-import { SeksjonTopp, KortRad } from './Layout';
+import { SeksjonTopp } from './Layout';
 import { cn } from '../lib/utils';
 import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
 
@@ -12,8 +12,8 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
    Skillet ligger nå i kanten i stedet, en hårstrek i full blekk mot de
    andres tjue prosent, samme grep som .pris.fremhevet bruker på /priser.
    Ingen av kortene går mørke: mørkt er reservert til bunntekst, sitatkort
-   og fylte knapper. className kommer fra KortRad (bredden på mobil),
-   derfor cn() i stedet for en ren streng. */
+   og fylte knapper. className kommer fra den som rendrer kortet, derfor
+   cn() i stedet for en ren streng. */
 /* Eksportert fordi /priser rendrer nøyaktig det samme kortet. Prissiden
    hadde tidligere sine egne kort i CSS (.pris): serif-tall, punktumliste,
    ingen knapp. Det ga to ulike utgaver av «Driftet av meg» på to ruter.
@@ -87,6 +87,17 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
   );
 };
 
+/* Rutenettet for priskortene, her og på /priser. Stablet på mobil.
+
+   Til 17. oktober 2026 lå kortene i en vannrett sveiperad (KortRad) på
+   mobil. Folk skjønte ikke at det fantes flere kort til siden, og så
+   bare det første. Stablet er siden lengre, men alle tre prisene blir sett. */
+export const PrisRad = ({ children, className }) => (
+  <div className={cn('grid gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-[52rem] lg:max-w-[72rem]', className)}>
+    {children}
+  </div>
+);
+
 const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }) => {
   const container = useReveal(90);
 
@@ -104,22 +115,14 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
             halve raden tom. Fra lg står de tre i linje. Mellom md og lg får
             det siste kortet hele bredden, så det ser bevisst ut og ikke som
             et kort som ble til overs. Chatbot eller app er tatt ut av
-            prislisten 17. oktober 2026: ingen spurte etter det der. */}
-        <KortRad
-          gridKlasser="md:grid-cols-2 lg:grid-cols-3"
-          kortBredde="w-[86%]"
-          className="gap-5 items-stretch lg:items-start pt-4 sm:pt-0 scroll-px-4 max-w-[52rem] lg:max-w-[72rem]"
-        >
-          {/* På mobil sveipes kortene, og det anbefalte lå bak sveipet som
-              nummer to. order-first legger det først der, uten å endre
-              rekkefølgen i rutenettet fra sm og opp.
+            prislisten 17. oktober 2026: ingen spurte etter det der.
 
-              pt-4 og scroll-px-4 bare på mobil: sveiperaden klipper i
-              høyden, så «Anbefalt»-merket ble kuttet, og snap la første
-              kort helt inntil skjermkanten.
+            Anbefalt kort først på mobil, der kortene står under hverandre.
+            Fra md står de i rutenettets egen rekkefølge.
 
-              lg:items-start: med lik høyde fikk Engangspris rundt 250 px
-              tomrom over knappen på 1440 og så uferdig ut. */}
+            lg:items-start: med lik høyde fikk Engangspris rundt 250 px
+            tomrom over knappen på 1440 og så uferdig ut. */}
+        <PrisRad className="lg:items-start">
           {prismodeller.map((m, i) => (
             <Modell
               key={m.id}
@@ -127,11 +130,11 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
               visPasserDeg={visPasserDeg}
               className={cn(
                 i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1',
-                m.fremhevet && 'order-first sm:order-none',
+                m.fremhevet && 'order-first md:order-none',
               )}
             />
           ))}
-        </KortRad>
+        </PrisRad>
 
         {/* Hva som IKKE er med. Uten denne listen ser fastprisen ut som om
             den dekker alt, og da blir hver samtale en forhandling om hvor

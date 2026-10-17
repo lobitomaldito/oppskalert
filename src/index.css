@@ -658,6 +658,12 @@
   }
   .ramme-topp i { width: .4375rem; height: .4375rem; border-radius: 50%; background: var(--felt-kant); flex: none; }
   .ramme-topp p { margin-left: .6rem; font-size: .6875rem; color: var(--blekk-mykt); letter-spacing: .01em; }
+  /* Kundens egen farge i stripen, satt fra `farge` i site.js. Rammene var
+     like lilla alle sammen og forsvant mot feltet. Med merkefargen leses
+     hver ramme som en egen kunde. */
+  .ramme-topp.merket { background: var(--merke); border-bottom-color: var(--merke); color: var(--merke-tekst); }
+  .ramme-topp.merket p { color: inherit; }
+  .ramme-topp.merket i { background: currentColor; opacity: .4; }
   .ramme-vindu { position: relative; aspect-ratio: 4/3; overflow: hidden; }
   .ramme-vindu img {
     width: 100%; height: auto; display: block;

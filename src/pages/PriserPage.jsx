@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Check, Minus } from 'lucide-react';
 import SEO from '../components/SEO';
-import { Shell, KortRad } from '../components/Layout';
+import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { ArbeidSeksjon } from '../components/Arbeider';
-import { Modell } from '../components/Priser';
+import { Modell, PrisRad } from '../components/Priser';
 import { lagFaqSchema, prisNotat, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
@@ -18,18 +18,6 @@ import { sporsmal } from '../lib/demo-innhold';
    med sitt eget skjema, så det er fortsatt to ulike FAQPage-sett på to
    URLer. Det var hele poenget med å skille dem 13. august: identiske
    skjemaer på to ruter gjør at Google beholder bare den ene. */
-/* Nøyaktig samme rutenett som forsiden bruker i Priser.jsx: tre kort i
-   linje fra lg, to fra md, og vannrett sveip på mobil. Sto det med egne
-   verdier her, ville radene sprikt igjen første gang én av dem ble endret. */
-const KortRadPris = ({ children }) => (
-  <KortRad
-    gridKlasser="md:grid-cols-2 lg:grid-cols-3"
-    kortBredde="w-[86%]"
-    className="gap-5 items-stretch max-w-[52rem] lg:max-w-[72rem]"
-  >
-    {children}
-  </KortRad>
-);
 
 const prisFaqSchema = lagFaqSchema(sporsmal.map(([q, a]) => ({ q, a })));
 
@@ -137,15 +125,15 @@ const PriserPage = () => (
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme
             data, to ulike produkter for den som så begge rutene. */}
-        <KortRadPris>
+        <PrisRad>
           {prismodeller.map((m, i) => (
             <Modell
               key={m.id}
               m={m}
-              className={i === prismodeller.length - 1 ? 'md:col-span-2 lg:col-span-1' : undefined}
+              className={[i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1', m.fremhevet && 'order-first md:order-none'].filter(Boolean).join(' ') || undefined}
             />
           ))}
-        </KortRadPris>
+        </PrisRad>
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
       </div>
     </section>
@@ -166,11 +154,11 @@ const PriserPage = () => (
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
             «Få et gratis utkast» ville lovet et utkast av en driftsavtale. */}
-        <KortRad gridKlasser="md:grid-cols-2" kortBredde="w-[86%]" className="gap-5 items-stretch max-w-[52rem]">
+        <PrisRad className="lg:grid-cols-2 lg:max-w-[52rem]">
           {driftNivaer.map((n) => (
             <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
           ))}
-        </KortRad>
+        </PrisRad>
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{driftNotat}</p>
       </div>
     </section>
