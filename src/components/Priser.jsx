@@ -18,7 +18,7 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
    hadde tidligere sine egne kort i CSS (.pris): serif-tall, punktumliste,
    ingen knapp. Det ga to ulike utgaver av «Driftet av meg» på to ruter.
    Kortet bor ett sted nå. `cta` finnes bare fordi driftsnivåene ikke skal
-   si «Få et gratis utkast», de skal si «Velg Grunndrift». */
+   si «Få et gratis utkast», de skal si «Velg Serviceavtale». */
 export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', className }) => {
   return (
     <div
@@ -48,20 +48,10 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
         {m.tagline}
       </p>
 
-      {/* «Forespør pris» er tekst, ikke et beløp. Uten dette skillet leste
-          kortet «fra Forespør pris», som er en setning ingen kan lese, og
-          «fra» lovet dessuten et startbeløp jeg ikke oppgir her. Samme
-          skille som på /priser, se erForesporsel i site.js. */}
       <div className="mt-6 flex items-baseline gap-1.5 min-h-[2.75rem]">
-        {m.erForesporsel ? (
-          <span className="font-display font-normal text-[1.5rem] leading-none tracking-[-0.018em]">{m.fra}</span>
-        ) : (
-          <>
-            <span className="font-body text-sm text-room-ink/70">fra</span>
-            <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
-            <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
-          </>
-        )}
+        {!m.fast && <span className="font-body text-base text-room-ink">fra</span>}
+        <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
+        <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
       </div>
       <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>
 
@@ -91,7 +81,7 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
       >
         {/* Et gratis utkast av en chatbot gir ingen mening. Kortet uten
             fast pris ber om pris i stedet. */}
-        {m.erForesporsel ? 'Be om pris' : cta} <ArrowRight className="w-4 h-4" />
+        {cta} <ArrowRight className="w-4 h-4" />
       </Link>
     </div>
   );
@@ -110,10 +100,11 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
           midtstilt={midtstilt}
         />
 
-        {/* Tre modeller i to spalter ga ett kort alene på en tredje rad, med
+        {/* Tre modeller i to spalter ga ett kort alene på en andre rad, med
             halve raden tom. Fra lg står de tre i linje. Mellom md og lg får
-            forespørselskortet hele bredden i stedet, så det ser bevisst ut
-            og ikke som et kort som ble til overs. */}
+            det siste kortet hele bredden, så det ser bevisst ut og ikke som
+            et kort som ble til overs. Chatbot eller app er tatt ut av
+            prislisten 17. oktober 2026: ingen spurte etter det der. */}
         <KortRad
           gridKlasser="md:grid-cols-2 lg:grid-cols-3"
           kortBredde="w-[86%]"
@@ -129,13 +120,13 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
 
               lg:items-start: med lik høyde fikk Engangspris rundt 250 px
               tomrom over knappen på 1440 og så uferdig ut. */}
-          {prismodeller.map((m) => (
+          {prismodeller.map((m, i) => (
             <Modell
               key={m.id}
               m={m}
               visPasserDeg={visPasserDeg}
               className={cn(
-                m.erForesporsel && 'md:col-span-2 lg:col-span-1',
+                i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1',
                 m.fremhevet && 'order-first sm:order-none',
               )}
             />
@@ -164,9 +155,9 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
 
             <p data-reveal className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
             <p data-reveal className="font-body text-sm text-room-ink/70 mt-3 max-w-[52rem]">
-              Vil du redigere selv, eller ha enda raskere respons?{' '}
+              Vil du at jeg gjør endringene, eller jobber med søk hver måned?{' '}
               <Link to={ruter.drift} className="text-room-ink hover:opacity-70 transition-opacity underline underline-offset-2">
-                Se alle driftsnivåer
+                Se serviceavtale og SEO
               </Link>
             </p>
           </>

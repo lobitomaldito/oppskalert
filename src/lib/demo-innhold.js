@@ -4,8 +4,8 @@
    skrevet av for hand, sa teksten er identisk med den som ble godkjent.
    Kilden er mal3.src.html, se inspirasjon/demo-studio-mal.md.
 
-   Prisene er det ene unntaket: demoen sier 9 999, siden sier 6 990 fra
-   30. september 2026, se prismodeller i site.js.
+   Prisene er det ene unntaket: demoen sier 9 999, siden har to nivåer
+   (6 990 og 12 900) fra 17. oktober 2026, se prismodeller i site.js.
 
    Feltet ikon er ra SVG-innmat og settes med dangerouslySetInnerHTML. Det er
    trygt her fordi strengene er vare egne konstanter i denne fila, ikke noe
@@ -567,11 +567,11 @@ export const omtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "Engangspris begynner på 6 990 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 i måneden uten binding, og siden er din når 12 måneder er betalt. Etterpå kan du ta drift til 690 i måneden, eller la være. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
+    "En enkel side med innholdet du har i dag koster 6 990 kroner eks. mva. En komplett side, med tekster skrevet for Google og et redigeringspanel så du endrer siden selv, begynner på 12 900. I begge tilfeller eier du alt med en gang, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",
-    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Det er hele forklaringen p\u00e5 at en h\u00e5ndbygd side starter p\u00e5 6 990 kroner og ikke 25 000."
+    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Derfor koster en komplett side hos meg fra 12 900 kroner, der mange byr\u00e5er starter p\u00e5 25 000."
   ],
   [
     "Hva forplikter et gratis utkast meg til?",

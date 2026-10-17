@@ -9,7 +9,7 @@ import { driftNivaer, driftNotat, ruter } from '../lib/site';
 const driftSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
-  name: 'Oppskalert driftsnivåer',
+  name: 'Oppskalert serviceavtale og SEO',
   itemListElement: driftNivaer.map((n) => ({
     '@type': 'Offer',
     name: n.navn,
@@ -58,17 +58,17 @@ const DriftKort = ({ nivaa }) => (
   </div>
 );
 
-// Funksjonsmatrisen svarer på det tre kortene ikke gjør alene: hva er
-// forskjellen rad for rad, ikke bare hva som er "med".
+// Funksjonsmatrisen svarer på det kortene ikke gjør alene: hva er
+// forskjellen rad for rad. Hosting står ikke her: den er med i prisen på
+// alle sider jeg bygger (fra 17. oktober 2026).
 const rader = [
-  ['Hosting, domene og SSL', true, true, true],
-  ['Sikkerhets- og programvareoppdateringer', true, true, true],
-  ['Backup', 'Månedlig', 'Ukentlig', 'Daglig'],
-  ['Oppetidsovervåking', false, true, true],
-  ['Innholdsendringer inkludert', false, 'Rimelige endringer', 'Flere endringer'],
-  ['Kvartalsvis SEO-gjennomgang', false, false, true],
-  ['Support', 'Innen 3 virkedager', 'Direkte med meg', 'Raskest, direkte med meg'],
-  ['Bindingstid', 'Ingen', 'Ingen', 'Ingen'],
+  ['Rimelige tekst- og bildeendringer', true, true],
+  ['Backup og oppetidsovervåking', true, true],
+  ['Sikkerhets- og programvareoppdateringer', true, true],
+  ['Support direkte fra meg', true, true],
+  ['Månedlig rapport om hvem som fant deg', false, true],
+  ['En ny side eller artikkel i måneden', false, true],
+  ['Bindingstid', 'Ingen', 'Ingen'],
 ];
 
 const Celle = ({ v }) => {
@@ -85,7 +85,7 @@ const Sammenligning = () => {
         <SeksjonTopp tittel="Full oversikt," uthevet="rad for rad." />
         <div data-reveal className="overflow-x-auto rounded-kort border border-room-ink/10">
           <table className="w-full border-collapse min-w-[36rem]">
-            <caption className="sr-only">Sammenligning av de tre driftsnivåene</caption>
+            <caption className="sr-only">Sammenligning av serviceavtale og SEO</caption>
             <thead>
               <tr className="border-b border-room-ink/15 bg-room-ink/5">
                 <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Funksjon</th>
@@ -121,7 +121,7 @@ const DriftPage = () => (
         noe sted. Se SEO.md punkt 12. */}
     <SEO
       title="Webhosting og drift av nettside"
-      description="Webhosting, drift og support for nettsiden din, fra 149 kr/mnd. Hosting, domene og SSL inkludert. Du velger nivå, jeg tar resten. Ingen bindingstid."
+      description="Hosting er med i prisen på alle nettsider jeg bygger. Serviceavtale med endringer og support fra 450 kr/mnd, og SEO fra 1 490 kr/mnd. Ingen bindingstid."
       keywords={['webhosting', 'drift av nettside', 'support nettside abonnement', 'vedlikehold nettside']}
       canonical="https://oppskalert.no/drift"
       jsonLd={driftSchema}
@@ -129,11 +129,11 @@ const DriftPage = () => (
     <SideTopp
       tittel="Hold nettsiden"
       uthevet="trygg og oppdatert."
-      lede="Tre nivåer av drift og support, fra 149 kr/mnd. Du velger hva som passer for deg, jeg tar meg av resten. Ingen bindingstid."
+      lede="Hosting er med i prisen på alle sider jeg bygger. Serviceavtale fra 450 kr/mnd hvis du vil at jeg gjør endringene, og SEO fra 1 490 kr/mnd hvis du vil bli funnet på flere søk. Ingen bindingstid."
     />
     <section className="seksjon pt-0">
       <div className="wrap">
-        <div data-reveal className="grid gap-5 md:grid-cols-3 items-stretch">
+        <div data-reveal className="grid gap-5 md:grid-cols-2 items-stretch max-w-[52rem]">
           {driftNivaer.map((n) => <DriftKort key={n.id} nivaa={n} />)}
         </div>
       </div>
