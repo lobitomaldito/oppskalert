@@ -61,7 +61,7 @@ const rader = [
   /* Radene som gjør at tabellen sammenligner ulike avtaler og ikke
      bare funksjonslister. Uten dem ser leie til eie ut som
      engangsprisen med flere haker. */
-  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 290 kr/mnd'],
+  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 590 kr/mnd'],
   ['Bindingstid', 'Ingen', 'Ingen', 'Ingen, kjøp ut når du vil'],
 ];
 
@@ -112,7 +112,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: enkel side 6 990 kr, komplett fra 12 900 kr, hosting inkludert, eller leie til eie fra 1 290 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: enkel side 6 990 kr, komplett fra 12 900 kr, hosting inkludert, eller leie til eie fra 1 590 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}

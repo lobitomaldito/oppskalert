@@ -54,7 +54,11 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    så dobbelt så dyr ut som engangsprisen. Skillet mellom nivåene går på
    funksjoner, aldri på antall sider (se tilbud/MAL.md): Komplett er
    grunnpakken pluss admin-panel og omskrevet SEO-tekst, 14 880 i moduler,
-   rundet ned. Endres et tall her, endres MAL.md også. */
+   rundet ned. Leie til eie ble hevet fra 1 290 til 1 590 samme dag: med
+   serviceavtalen inkludert det første året var 1 290 billigere enn å kjøpe
+   Komplett og ta serviceavtale (15 480 mot 18 300). Nå er den 780 dyrere,
+   og tallet kolliderer ikke med SEO fra 1 490. Endres et tall her, endres
+   MAL.md også. */
 export const prismodeller = [
   {
     /* Enkel er en fast pakke, derfor uten «fra» (fast: true). Komplett
@@ -121,7 +125,7 @@ export const prismodeller = [
        er to ulike ting, og skal aldri bære samme navn. */
     id: 'abonnement',
     navn: 'Leie til eie',
-    fra: '1 290',
+    fra: '1 590',
     enhet: 'kr/mnd',
     periode: 'ingen binding, kjøp ut når du vil',
     tagline: '0 kr i dag. Siden er din etter 12 måneder.',
@@ -305,7 +309,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'En enkel side med innholdet du har i dag koster 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google og et redigeringspanel så du endrer siden selv, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 290 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel side med innholdet du har i dag koster 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google og et redigeringspanel så du endrer siden selv, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 590 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -411,7 +415,7 @@ export const prisSporsmal = [
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel) eller fra 12 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den komplette siden, du betaler 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 450 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel) eller fra 12 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den komplette siden, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 450 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',

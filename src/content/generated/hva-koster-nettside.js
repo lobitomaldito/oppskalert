@@ -19,7 +19,7 @@ Det som avgjør nivået, er to ting: om tekstene du har i dag holder, og om du v
 
 ## Engangspris eller leie til eie
 
-Komplett kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med serviceavtale til 450 kroner i måneden, eller la være. Hostingen fortsetter uansett.
+Komplett kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med serviceavtale til 450 kroner i måneden, eller la være. Hostingen fortsetter uansett.
 
 ## Hva andre i bransjen tar, og hvorfor det varierer så mye
 
