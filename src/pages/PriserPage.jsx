@@ -5,7 +5,7 @@ import { Shell, KortRad } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { ArbeidSeksjon } from '../components/Arbeider';
 import { Modell } from '../components/Priser';
-import { lagFaqSchema, prisNotat, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
+import { lagFaqSchema, prisNotat, prismodeller, prisRad, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
 /* Skjemaet bygges av nøyaktig de spørsmålene som vises lenger nede på
@@ -18,9 +18,9 @@ import { sporsmal } from '../lib/demo-innhold';
    med sitt eget skjema, så det er fortsatt to ulike FAQPage-sett på to
    URLer. Det var hele poenget med å skille dem 13. august: identiske
    skjemaer på to ruter gjør at Google beholder bare den ene. */
-/* Nøyaktig samme rutenett som forsiden bruker i Priser.jsx: tre kort i
-   linje fra lg, to fra md, og vannrett sveip på mobil. Sto det med egne
-   verdier her, ville radene sprikt igjen første gang én av dem ble endret. */
+/* Driftsnivåene: tre kort i linje fra lg, to fra md, og vannrett sveip på
+   mobil. Prismodellene over har fire kort og bruker prisRad fra site.js,
+   samme rutenett som forsiden. */
 const KortRadPris = ({ children }) => (
   <KortRad
     gridKlasser="md:grid-cols-2 lg:grid-cols-3"
@@ -55,20 +55,21 @@ const priserSchema = {
 /* Sammenligningen svarer på det ene spørsmålet prismodellene ikke gjør
    alene: hva er egentlig forskjellen, rad for rad. */
 const rader = [
-  ['Gratis utkast før du bestemmer deg', true, true],
-  ['Design og utvikling av komplett nettside', true, true],
-  ['Håndkodet, uten tunge plugins', true, true],
-  ['Søkemotor-grunnoppsett', true, true],
-  ['Du eier alle filene', true, 'Etter 12 måneder'],
-  ['Hosting, domene og SSL', 'Eget ansvar', true],
-  ['Rimelige innholdsendringer inkludert', false, true],
-  ['Backup og oppetidsovervåking', false, true],
-  ['Support direkte fra meg', false, true],
-  /* Radene som gjør at tabellen sammenligner to ulike avtaler og ikke
-     bare to funksjonslister. Uten dem ser leie til eie ut som
+  ['Gratis utkast før du bestemmer deg', true, true, true],
+  ['Håndbygd nettside, uten tunge plugins', true, true, true],
+  ['Søkemotor-grunnoppsett', true, true, true],
+  ['Tekstene skrevet om for Google og AI-søk', false, true, true],
+  ['Admin-panel, endre tekst og bilder selv', false, true, true],
+  ['Du eier alle filene', true, true, 'Etter 12 måneder'],
+  ['Hosting, domene og SSL', 'Eget ansvar', 'Eget ansvar', true],
+  ['Rimelige innholdsendringer inkludert', false, false, true],
+  ['Backup og oppetidsovervåking', false, false, true],
+  ['Support direkte fra meg', false, false, true],
+  /* Radene som gjør at tabellen sammenligner ulike avtaler og ikke
+     bare funksjonslister. Uten dem ser leie til eie ut som
      engangsprisen med flere haker. */
-  ['Betaling', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 290 kr/mnd'],
-  ['Bindingstid', 'Ingen', 'Ingen, kjøp ut når du vil'],
+  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 290 kr/mnd'],
+  ['Bindingstid', 'Ingen', 'Ingen', 'Ingen, kjøp ut når du vil'],
 ];
 
 const Celle = ({ v }) => {
@@ -85,28 +86,30 @@ const Sammenligning = () => (
         <h2>Hva inngår i hver modell?</h2>
       </div>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
-        <table className="w-full border-collapse min-w-[34rem]">
-          <caption className="sr-only">Sammenligning av engangspris og leie til eie</caption>
+        <table className="w-full border-collapse min-w-[42rem]">
+          <caption className="sr-only">Sammenligning av Enkel, Komplett og leie til eie</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
               <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Engangspris</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Enkel</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Komplett</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Leie til eie</th>
             </tr>
           </thead>
           <tbody>
-            {rader.map(([navn, a, b]) => (
+            {rader.map(([navn, a, b, c]) => (
               <tr key={navn} className="border-b border-room-ink/10 last:border-b-0">
                 <th scope="row" className="text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
                 <td className="text-center py-3.5 px-4"><Celle v={a} /></td>
                 <td className="text-center py-3.5 px-4"><Celle v={b} /></td>
+                <td className="text-center py-3.5 px-4"><Celle v={c} /></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">
-        Begge modellene gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter, ikke disse to. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
+        Alle tre gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
       </p>
     </div>
   </section>
@@ -116,7 +119,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 6 990 kr, eller leie til eie fra 1 290 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: enkel side fra 6 990 kr, komplett fra 12 900 kr, eller leie til eie fra 1 290 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -134,22 +137,18 @@ const PriserPage = () => (
     <section className="hvit">
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
-          <p className="etikett">Tre modeller</p>
-          <h2>Eie den selv, betale månedlig, eller be om noe eget</h2>
+          <p className="etikett">Fire modeller</p>
+          <h2>Enkel eller komplett, betale månedlig, eller be om noe eget</h2>
         </div>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme
             data, to ulike produkter for den som så begge rutene. */}
-        <KortRadPris>
+        <KortRad {...prisRad}>
           {prismodeller.map((m) => (
-            <Modell
-              key={m.id}
-              m={m}
-              className={m.erForesporsel ? 'md:col-span-2 lg:col-span-1' : undefined}
-            />
+            <Modell key={m.id} m={m} />
           ))}
-        </KortRadPris>
+        </KortRad>
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
       </div>
     </section>

@@ -3,7 +3,7 @@ import { ArrowRight, Check } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp, KortRad } from './Layout';
 import { cn } from '../lib/utils';
-import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
+import { alltidMed, prisNotat, prismodeller, prisRad, ruter } from '../lib/site';
 
 /* Alle tre kortene er hvite på feltet. Driftskortet var tidligere tonet mot
    feltfargen for å skille seg fra engangsprisen, men denne seksjonen står
@@ -102,28 +102,15 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
     <section id="priser" ref={container} className="seksjon">
       <div className="wrap">
         <SeksjonTopp
-          tittel="Tre måter å"
+          tittel="Fire måter å"
           uthevet="komme i gang på."
-          lede="Alle tre starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
+          lede="Alle starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
           midtstilt={midtstilt}
         />
 
-        {/* Tre modeller i to spalter ga ett kort alene på en tredje rad, med
-            halve raden tom. Fra lg står de tre i linje. Mellom md og lg får
-            forespørselskortet hele bredden i stedet, så det ser bevisst ut
-            og ikke som et kort som ble til overs. */}
-        <KortRad
-          gridKlasser="md:grid-cols-2 lg:grid-cols-3"
-          kortBredde="w-[86%]"
-          className="gap-5 items-stretch max-w-[52rem] lg:max-w-[72rem]"
-        >
+        <KortRad {...prisRad}>
           {prismodeller.map((m) => (
-            <Modell
-              key={m.id}
-              m={m}
-              visPasserDeg={visPasserDeg}
-              className={m.erForesporsel ? 'md:col-span-2 lg:col-span-1' : undefined}
-            />
+            <Modell key={m.id} m={m} visPasserDeg={visPasserDeg} />
           ))}
         </KortRad>
 

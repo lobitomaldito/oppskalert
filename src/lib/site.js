@@ -48,26 +48,51 @@ export const navLenker = [
    --------------------------------------------------------------- */
 export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.';
 
+/* Engangsprisen er delt i to nivåer 17. oktober 2026. Ett kort med «fra
+   6 990» fikk folk til å tro at en nettside koster 6 990, mens de fleste
+   salg går for 12 000 til 15 000, og leie til eie (1 290 x 12 = 15 480)
+   så dobbelt så dyr ut som engangsprisen. Skillet mellom nivåene går på
+   funksjoner, aldri på antall sider (se tilbud/MAL.md): Komplett er
+   grunnpakken pluss admin-panel og omskrevet SEO-tekst, 14 880 i moduler,
+   rundet ned. Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
-    id: 'engangs',
-    navn: 'Engangspris',
+    id: 'enkel',
+    navn: 'Enkel',
     fra: '6 990',
     enhet: 'kr',
-    // Tom med vilje: navnet er allerede «Engangspris», så en periode som
-    // sier «engangspris» ble til «Engangspris · engangspris» på kortet.
-    periode: '',
-    tagline: 'Du eier alt. Én faktura, så er du ferdig.',
+    periode: 'engangspris',
+    tagline: 'En ny og rask side med innholdet du har i dag.',
     passerDeg: [
-      'Du vil eie løsningen hundre prosent',
-      'Du har eget hosting, eller noen som fikser det',
+      'Du trenger en enkel side, og har innholdet klart',
+      'Du endrer sjelden noe på siden',
       'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Komplett nettside, håndbygd for deg',
+      'Håndbygd nettside med innholdet du har i dag',
       'Alle filer overlevert, du eier dem',
       'SEO-grunnoppsett fra dag én',
       'Hjelp med oppsett på ditt eget hosting',
+    ],
+    fremhevet: false,
+  },
+  {
+    id: 'komplett',
+    navn: 'Komplett',
+    fra: '12 900',
+    enhet: 'kr',
+    periode: 'engangspris',
+    tagline: 'Tekster skrevet for Google, og du endrer siden selv.',
+    passerDeg: [
+      'Du vil bli funnet når noen søker på det du gjør',
+      'Du vil endre tekst og bilder uten å ringe noen',
+      'Du vil eie løsningen hundre prosent',
+    ],
+    inkludert: [
+      'Alt i Enkel, pluss:',
+      'Tekstene skrevet om for Google og AI-søk',
+      'Admin-panel: endre tekst og bilder selv',
+      'Alle filer overlevert, du eier dem',
     ],
     fremhevet: false,
   },
@@ -100,7 +125,7 @@ export const prismodeller = [
       'Du vil ha én forutsigbar månedskostnad',
     ],
     inkludert: [
-      'Alt i engangspris, pluss:',
+      'Alt i Komplett, pluss:',
       'Hosting, domene og SSL',
       'Rimelige innholdsendringer inkludert',
       'Backup og oppetidsovervåking',
@@ -145,6 +170,16 @@ export const prismodeller = [
     fremhevet: false,
   },
 ];
+
+/* Fire modeller fra 17. oktober 2026 (Enkel og Komplett erstattet ett
+   engangskort). To og to fra md, fire i linje først fra xl: ved lg var
+   kortene for smale til «fra 12 900 kr» på én linje. Forsiden og /priser
+   bruker begge dette, så radene ikke spriker. */
+export const prisRad = {
+  gridKlasser: 'md:grid-cols-2 xl:grid-cols-4',
+  kortBredde: 'w-[86%]',
+  className: 'gap-5 items-stretch max-w-[52rem] xl:max-w-[80rem]',
+};
 
 export const alltidMed = [
   'Skreddersydd design, håndkodet',
@@ -322,7 +357,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'Engangspris starter på 6 990 kr eks. mva, og da eier du alt fra dag én. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Etter det kan du ta drift til 690 kr i måneden, eller la være. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel side med innholdet du har i dag starter på 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google og et admin-panel så du endrer siden selv, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 290 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -424,11 +459,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg starter en enkel landingsside på 6 990 kr eks. mva. En vanlig bedriftsnettside på to til fem sider ligger mellom 7 990 og 11 900 kr, seks til ti sider mellom 9 990 og 14 900 kr, og over ti sider fra 14 900 kr. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det to nivåer, og antall sider avgjør ikke hvilket. Enkel, fra 6 990 kr eks. mva, er en ny side med innholdet du har i dag. Komplett, fra 12 900 kr, har i tillegg tekster skrevet for Google og AI-søk og et admin-panel så du endrer tekst og bilder selv. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler fra 6 990 kr én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den samme siden, du betaler 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler fra 6 990 kr (Enkel) eller 12 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den komplette siden, du betaler 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',

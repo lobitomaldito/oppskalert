@@ -11,15 +11,15 @@ Søker du på dette spørsmålet, møter du svar fra 3 000 til 300 000 kroner, o
 
 ## Prisene mine, uten omveier
 
-En landingsside eller et digitalt visittkort starter på 6 990 kroner. En vanlig bedriftsnettside med to til fem sider starter på 7 990 kroner. Trenger du seks til ti sider, med plass til flere tjenester og mer innhold, starter det på 9 990 kroner. Har du en stor struktur eller trenger egen funksjonalitet utover det, starter det på 14 900 kroner. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
+Jeg har to nivåer. Enkel starter på 6 990 kroner: en ny og rask side med innholdet du har i dag. Komplett starter på 12 900 kroner: tekstene skrives om for Google og AI-søk, og du får et admin-panel så du endrer tekst og bilder selv. Antall sider avgjør ikke nivået. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
 
 ## Hva som avgjør hvilket nivå du havner på
 
-Det som flytter deg opp eller ned på denne stigen, er stort sett tre ting: antall sider, hvor mye tekst og research som må lages fra bunnen, og om du trenger noe utover en standard bedriftsside, som booking eller egne integrasjoner. En bedrift med tre klare tjenester og eksisterende tekst havner som regel i det billigste eller nest billigste sjiktet. En bedrift med mange tjenester, flere lokasjoner eller behov for skreddersøm havner lenger opp.
+Det som avgjør nivået, er to ting: om tekstene du har i dag holder, og om du vil endre siden selv etterpå. En bedrift med gode tekster som sjelden endrer noe, klarer seg som regel med Enkel. Vil du bli funnet på flere søk, eller oppdatere priser, bilder og tilbud selv, er det Komplett du trenger. Booking, egne integrasjoner og andre tillegg kommer på toppen, med fast pris avtalt før jeg begynner.
 
 ## Engangspris eller leie til eie
 
-Alle nivåene kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du ta drift til 690 kroner i måneden, og den kan du si opp når du vil.
+Komplett kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du ta drift til 690 kroner i måneden, og den kan du si opp når du vil.
 
 ## Hva andre i bransjen tar, og hvorfor det varierer så mye
 
@@ -31,5 +31,5 @@ Skal du ha et tall for akkurat din bedrift, [send meg en linje](/kontakt) om hva
 
 ## Hva du bør gjøre nå
 
-Tell opp hvor mange sider bedriften din faktisk trenger, ikke hvor mange du tror ser bra ut. De fleste klarer seg med mellom to og fem: forside, tjenester, om oss og kontakt. Sammenlign så det tallet mot stigen over, så vet du omtrent hva du bør budsjettere før du tar kontakt med noen.`,
+Still deg to spørsmål: holder tekstene du har i dag, og vil du endre siden selv etterpå? Er svaret ja på det første og nei på det andre, holder Enkel. Ellers er det Komplett du bør budsjettere med før du tar kontakt med noen.`,
 };
