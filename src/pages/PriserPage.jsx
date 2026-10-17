@@ -56,10 +56,8 @@ const rader = [
   ['Tekstene skrevet om for Google og AI-søk', false, true, true],
   ['Admin-panel, endre tekst og bilder selv', false, true, true],
   ['Du eier alle filene', true, true, 'Etter 12 måneder'],
-  ['Hosting, domene og SSL', 'Eget ansvar', 'Eget ansvar', true],
-  ['Rimelige innholdsendringer inkludert', false, false, true],
-  ['Backup og oppetidsovervåking', false, false, true],
-  ['Support direkte fra meg', false, false, true],
+  ['Hosting og SSL', true, true, true],
+  ['Serviceavtale: endringer, backup og support', '450 kr/mnd', '450 kr/mnd', 'Inkludert i 12 måneder'],
   /* Radene som gjør at tabellen sammenligner ulike avtaler og ikke
      bare funksjonslister. Uten dem ser leie til eie ut som
      engangsprisen med flere haker. */
@@ -114,7 +112,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: enkel side fra 6 990 kr, komplett fra 12 900 kr, eller leie til eie fra 1 290 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: enkel side 6 990 kr, komplett fra 12 900 kr, hosting inkludert, eller leie til eie fra 1 290 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -161,18 +159,18 @@ const PriserPage = () => (
     <section className="seksjon">
       <div className="wrap">
         <div className="seksjonstopp inn">
-          <p className="etikett">Drift</p>
-          <h2>Tre nivåer, bytt når du vil</h2>
-          <p>Velger du at jeg skal passe på siden, er dette nivåene. Du kan gå opp eller
-          ned, eller avslutte, uten oppsigelsestid.</p>
+          <p className="etikett">Etter lansering</p>
+          <h2>Serviceavtale og SEO</h2>
+          <p>Hosting er med i prisen på siden. Vil du at jeg gjør endringene, eller
+          jobber med søk hver måned, er dette tilleggene. Ingen oppsigelsestid.</p>
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
             «Bestill gratis utkast» ville lovet et utkast av en driftsavtale. */}
-        <KortRadPris>
+        <KortRad gridKlasser="md:grid-cols-2" kortBredde="w-[86%]" className="gap-5 items-stretch max-w-[52rem]">
           {driftNivaer.map((n) => (
             <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
           ))}
-        </KortRadPris>
+        </KortRad>
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{driftNotat}</p>
       </div>
     </section>

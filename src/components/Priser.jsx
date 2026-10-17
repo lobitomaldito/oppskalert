@@ -18,7 +18,7 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
    hadde tidligere sine egne kort i CSS (.pris): serif-tall, punktumliste,
    ingen knapp. Det ga to ulike utgaver av «Driftet av meg» på to ruter.
    Kortet bor ett sted nå. `cta` finnes bare fordi driftsnivåene ikke skal
-   si «Bestill gratis utkast», de skal si «Velg Grunndrift». */
+   si «Bestill gratis utkast», de skal si «Velg Serviceavtale». */
 export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis utkast', className }) => {
   return (
     <div
@@ -49,7 +49,7 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Bestill gratis utkast',
       </p>
 
       <div className="mt-6 flex items-baseline gap-1.5 min-h-[2.75rem]">
-        <span className="font-body text-sm text-room-ink/70">fra</span>
+        {!m.fast && <span className="font-body text-base text-room-ink">fra</span>}
         <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
         <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
       </div>
@@ -133,9 +133,9 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
 
         <p data-reveal className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
         <p data-reveal className="font-body text-sm text-room-ink/70 mt-3 max-w-[52rem]">
-          Vil du redigere selv, eller ha enda raskere respons?{' '}
+          Vil du at jeg gjør endringene, eller jobber med søk hver måned?{' '}
           <Link to={ruter.drift} className="text-room-ink hover:opacity-70 transition-opacity underline underline-offset-2">
-            Se alle driftsnivåer
+            Se serviceavtale og SEO
           </Link>
         </p>
 

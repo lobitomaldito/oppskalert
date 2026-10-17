@@ -567,7 +567,7 @@ export const omtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "En enkel side med innholdet du har i dag begynner på 6 990 kroner eks. mva. En komplett side, med tekster skrevet for Google og et admin-panel så du endrer siden selv, begynner på 12 900. I begge tilfeller eier du alt med en gang. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
+    "En enkel side med innholdet du har i dag koster 6 990 kroner eks. mva. En komplett side, med tekster skrevet for Google og et redigeringspanel så du endrer siden selv, begynner på 12 900. I begge tilfeller eier du alt med en gang, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",

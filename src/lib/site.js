@@ -57,11 +57,16 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    rundet ned. Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
+    /* Enkel er en fast pakke, derfor uten «fra» (fast: true). Komplett
+       har «fra» og ingen makspris: tillegg som priskalkulator eller booking
+       løfter den, og noen kunder har betalt 19 900. Kontrasten mellom de
+       to kortene er det som gjør «fra» tydelig. */
     id: 'enkel',
     navn: 'Enkel',
     fra: '6 990',
+    fast: true,
     enhet: 'kr',
-    periode: 'engangspris',
+    periode: 'fast pris, én gang',
     tagline: 'En ny og rask side med innholdet du har i dag.',
     passerDeg: [
       'Du trenger en enkel side, og har innholdet klart',
@@ -70,9 +75,10 @@ export const prismodeller = [
     ],
     inkludert: [
       'Håndbygd nettside med innholdet du har i dag',
-      'Alle filer overlevert, du eier dem',
+      'Tilpasset mobil, med kontaktskjema',
       'SEO-grunnoppsett fra dag én',
-      'Hjelp med oppsett på ditt eget hosting',
+      'Hosting og SSL inkludert, ingen månedspris',
+      'Alle filer overlevert, du eier dem',
     ],
     fremhevet: false,
   },
@@ -81,18 +87,18 @@ export const prismodeller = [
     navn: 'Komplett',
     fra: '12 900',
     enhet: 'kr',
-    periode: 'engangspris',
+    periode: 'engangspris, fast før jeg begynner',
     tagline: 'Tekster skrevet for Google, og du endrer siden selv.',
     passerDeg: [
       'Du vil bli funnet når noen søker på det du gjør',
       'Du vil endre tekst og bilder uten å ringe noen',
-      'Du vil eie løsningen hundre prosent',
+      'Du trenger noe mer enn en vanlig side',
     ],
     inkludert: [
       'Alt i Enkel, pluss:',
       'Tekstene skrevet om for Google og AI-søk',
-      'Admin-panel: endre tekst og bilder selv',
-      'Alle filer overlevert, du eier dem',
+      'Eget redigeringspanel: endre tekst og bilder selv',
+      'Tillegg som priskalkulator eller booking etter behov',
     ],
     fremhevet: false,
   },
@@ -126,12 +132,10 @@ export const prismodeller = [
     ],
     inkludert: [
       'Alt i Komplett, pluss:',
-      'Hosting, domene og SSL',
-      'Rimelige innholdsendringer inkludert',
-      'Backup og oppetidsovervåking',
-      'Support direkte fra meg, ikke en helpdesk',
+      'Serviceavtale i 12 måneder: endringer, backup og support',
       'Siden og filene er dine etter 12 måneder',
-      'Deretter drift til 690 kr/mnd, oppsigelig når du vil',
+      'Deretter serviceavtale til 450 kr/mnd, eller ingenting',
+      'Hostingen fortsetter uansett',
     ],
     fremhevet: true,
   },
@@ -143,7 +147,7 @@ export const alltidMed = [
   'Synlig i Google, og i AI-søk',
   'Tekster ferdigskrevet',
   'Kontaktskjema',
-  'Domene- og SSL-oppsett',
+  'Hosting, SSL og domeneoppsett',
   'Google Analytics og Search Console',
   'Lynrask, uten tunge plugins',
 ];
@@ -154,58 +158,46 @@ export const alltidMed = [
    er den eneste kilden. /drift, forsidens Priser-kort og FAQ leser
    alle herfra, så en prisjustering skjer på ett sted.
    --------------------------------------------------------------- */
+/* Fra 17. oktober 2026 er hosting med i prisen på alle sider jeg bygger
+   (statiske sider på Vercel koster meg nesten ingenting per kunde, og 80
+   kr/mnd var en årlig faktura kunden måtte ta stilling til). Grunndrift
+   (149), Driftet av meg (690) og Prioritert (1 490) er erstattet av to
+   tillegg: serviceavtale og SEO. Tallene står også i tilbud/MAL.md. */
 export const driftNivaer = [
   {
-    id: 'grunn',
-    navn: 'Grunndrift',
-    fra: '149',
+    id: 'service',
+    navn: 'Serviceavtale',
+    fra: '450',
+    fast: true,
     enhet: 'kr/mnd',
-    tagline: 'Du redigerer selv. Jeg passer på det tekniske i bakgrunnen.',
+    periode: 'ingen binding',
+    tagline: 'Jeg gjør endringene og passer på siden. Du sender en e-post.',
     inkludert: [
-      'Hosting, domene og SSL',
-      'Månedlig backup',
+      'Rimelige tekst- og bildeendringer, uten timeteller',
+      'Backup og oppetidsovervåking',
       'Sikkerhets- og programvareoppdateringer',
-      'E-post support innen 3 virkedager',
-    ],
-    fremhevet: false,
-  },
-  {
-    id: 'drift',
-    navn: 'Driftet av meg',
-    fra: '690',
-    enhet: 'kr/mnd',
-    tagline: 'Jeg passer på alt. Du slipper å tenke teknisk igjen.',
-    inkludert: [
-      'Alt i Grunndrift, pluss:',
-      'Rimelige innholdsendringer inkludert',
-      'Backup og oppetidsovervåking hyppigere',
       'Support direkte fra meg, ikke en helpdesk',
     ],
     fremhevet: true,
   },
   {
-    /* Hevet fra 1 290 til 1 490 den 27. august 2026, og det er en
-       lesbarhetsendring før det er en prisendring: Nettside på abonnement
-       koster 1 290 kr/mnd, og de to sto to blokker fra hverandre på
-       /priser med samme tall. To ulike produkter til samme pris på samme
-       side er den samme forvekslingen som «Driftet av meg» skapte med
-       navn. Tallene på prissiden skal ikke gjenbrukes på tvers. */
-    id: 'prioritert',
-    navn: 'Prioritert',
+    id: 'seo',
+    navn: 'SEO',
     fra: '1 490',
     enhet: 'kr/mnd',
-    tagline: 'For deg som vil ha raskest svar og en side som stadig forbedres.',
+    periode: 'etter omfang, ingen binding',
+    tagline: 'For deg som vil bli funnet på flere søk, måned for måned.',
     inkludert: [
-      'Alt i Driftet av meg, pluss:',
-      'Raskere responstid på endringer',
-      'Flere endringer inkludert per måned',
-      'Kvartalsvis SEO-gjennomgang',
+      'Alt i serviceavtalen, pluss:',
+      'Månedlig rapport med vanlige ord: hvem som fant deg, og på hva',
+      'En ny side eller artikkel i måneden',
+      'Retting av det rapporten finner',
     ],
     fremhevet: false,
   },
 ];
 
-export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå eller avslutt når du vil.';
+export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid, avslutt når du vil.';
 
 /* Priskalkulatoren er fjernet 30. september 2026. Den regnet pris av
    sidetall, fem tillegg og hastepåslag, og hver variabel måtte legge noe
@@ -313,7 +305,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'En enkel side med innholdet du har i dag starter på 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google og et admin-panel så du endrer siden selv, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 290 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel side med innholdet du har i dag koster 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google og et redigeringspanel så du endrer siden selv, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 290 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -415,11 +407,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg er det to nivåer, og antall sider avgjør ikke hvilket. Enkel, fra 6 990 kr eks. mva, er en ny side med innholdet du har i dag. Komplett, fra 12 900 kr, har i tillegg tekster skrevet for Google og AI-søk og et admin-panel så du endrer tekst og bilder selv. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det to nivåer, og antall sider avgjør ikke hvilket. Enkel, 6 990 kr eks. mva, er en ny side med innholdet du har i dag. Komplett, fra 12 900 kr, har i tillegg tekster skrevet for Google og AI-søk, et redigeringspanel så du endrer tekst og bilder selv, og tillegg som priskalkulator eller booking etter behov. Hosting er med i begge. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler fra 6 990 kr (Enkel) eller 12 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den komplette siden, du betaler 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel) eller fra 12 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den komplette siden, du betaler 1 290 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 450 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
@@ -461,7 +453,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva koster søkemotoroptimalisering hos deg?',
-      a: 'Det er ikke et eget abonnement. Søkemotoroptimalisering ligger inne som grunnarbeid i alle nye sider jeg bygger, og som en kvartalsvis gjennomgang i det øverste driftsnivået. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
+      a: 'SEO-abonnementet starter på 1 490 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
     },
   ],
 

@@ -11,7 +11,7 @@ Søker du på dette spørsmålet, møter du svar fra 3 000 til 300 000 kroner, o
 
 ## Prisene mine, uten omveier
 
-Jeg har to nivåer. Enkel starter på 6 990 kroner: en ny og rask side med innholdet du har i dag. Komplett starter på 12 900 kroner: tekstene skrives om for Google og AI-søk, og du får et admin-panel så du endrer tekst og bilder selv. Antall sider avgjør ikke nivået. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
+Jeg har to nivåer. Enkel koster 6 990 kroner: en ny og rask side med innholdet du har i dag. Komplett starter på 12 900 kroner: tekstene skrives om for Google og AI-søk, og du får et admin-panel så du endrer tekst og bilder selv. Antall sider avgjør ikke nivået. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
 
 ## Hva som avgjør hvilket nivå du havner på
 
@@ -19,7 +19,7 @@ Det som avgjør nivået, er to ting: om tekstene du har i dag holder, og om du v
 
 ## Engangspris eller leie til eie
 
-Komplett kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du ta drift til 690 kroner i måneden, og den kan du si opp når du vil.
+Komplett kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 290 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med serviceavtale til 450 kroner i måneden, eller la være. Hostingen fortsetter uansett.
 
 ## Hva andre i bransjen tar, og hvorfor det varierer så mye
 

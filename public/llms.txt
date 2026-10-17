@@ -8,8 +8,8 @@
 - [Arbeid](https://oppskalert.no/arbeid): Ekte nettsider i drift for norske kunder, pluss bransjeeksempler.
 
 ## Priser
-- [Priser](https://oppskalert.no/priser): Enkel fra 6 990 kr, Komplett (omskrevne tekster og admin-panel) fra 12 900 kr, eller leie til eie fra 1 290 kr/mnd uten binding, siden er din etter 12 måneder. Fast pris før jeg begynner.
-- [Drift og support](https://oppskalert.no/drift): Tre driftsnivåer fra 149 kr/mnd, ingen bindingstid.
+- [Priser](https://oppskalert.no/priser): Enkel 6 990 kr, Komplett (omskrevne tekster og redigeringspanel) fra 12 900 kr, hosting inkludert, eller leie til eie fra 1 290 kr/mnd uten binding, siden er din etter 12 måneder. Fast pris før jeg begynner.
+- [Serviceavtale og SEO](https://oppskalert.no/drift): Hosting inkludert i alle sider. Serviceavtale 450 kr/mnd, SEO fra 1 490 kr/mnd, ingen binding.
 
 ## Sammenligning
 - [Sammenlign](https://oppskalert.no/sammenlign): Oppskalert mot Wix og WordPress, side om side.
