@@ -124,7 +124,7 @@ export const ArbeidSeksjon = ({ hvit = true, kompakt = false }) => {
         </div>
         <Arbeider antall={4} kompakt={kompakt} />
         <p style={{ marginTop: 'clamp(2.5rem,5vw,3.5rem)' }}>
-          <Link className="knapp" to={ruter.arbeid}>Se alle sidene <span className="pil" aria-hidden="true">↗</span></Link>
+          <Link className="knapp" to={ruter.arbeid}>Se flere sider <span className="pil" aria-hidden="true">↗</span></Link>
         </p>
       </div>
     </section>
