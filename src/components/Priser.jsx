@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, ChevronDown } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp } from './Layout';
 import { cn } from '../lib/utils';
@@ -19,12 +20,18 @@ import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
    ingen knapp. Det ga to ulike utgaver av «Driftet av meg» på to ruter.
    Kortet bor ett sted nå. `cta` finnes bare fordi driftsnivåene ikke skal
    si «Få et gratis utkast», de skal si «Velg Serviceavtale». */
+/* Lavere kort på mobil: punktlisten er lukket der, bak en knapp, så navn,
+   pris og knapp for alle kortene får plass på et par skjermhøyder. Stablet
+   med full liste var hvert kort rundt 600 px høyt. Fra md står listen
+   alltid åpen. Listen ligger i DOM-en uansett, så den prerendrede HTML-en
+   har den med. */
 export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', className }) => {
+  const [apen, setApen] = useState(false);
   return (
     <div
       data-reveal
       className={cn(
-        'relative flex flex-col rounded-kort p-7 md:p-8 border bg-surface text-room-ink',
+        'relative flex flex-col rounded-kort p-5 md:p-8 border bg-surface text-room-ink',
         m.fremhevet ? 'border-room-ink' : 'border-room-ink/20',
         className,
       )}
@@ -44,11 +51,11 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
       )}
 
       <h3 className="font-sans font-bold text-xl">{m.navn}</h3>
-      <p className="font-body text-[0.95rem] mt-2.5 leading-relaxed min-h-[3em] text-room-ink/70">
+      <p className="font-body text-[0.95rem] mt-1.5 md:mt-2.5 leading-relaxed md:min-h-[3em] text-room-ink/70">
         {m.tagline}
       </p>
 
-      <div className="mt-6 flex items-baseline gap-1.5 min-h-[2.75rem]">
+      <div className="mt-4 md:mt-6 flex items-baseline gap-1.5 md:min-h-[2.75rem]">
         {!m.fast && <span className="font-body text-base text-room-ink">fra</span>}
         <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
         <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
@@ -66,7 +73,18 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
         </ul>
       )}
 
-      <ul className="mt-6 flex flex-col gap-3 flex-1">
+      <button
+        type="button"
+        onClick={() => setApen((v) => !v)}
+        aria-expanded={apen}
+        aria-controls={`inkludert-${m.id}`}
+        className="md:hidden mt-4 min-h-11 inline-flex items-center gap-1.5 self-start font-body text-sm text-room-ink underline underline-offset-4 decoration-room-ink/30"
+      >
+        {apen ? 'Skjul hva som er med' : `Se hva som er med (${m.inkludert.length})`}
+        <ChevronDown className={cn('w-4 h-4 transition-transform duration-200', apen && 'rotate-180')} aria-hidden="true" />
+      </button>
+
+      <ul id={`inkludert-${m.id}`} className={cn('mt-3 md:mt-6 flex-col gap-3 flex-1', apen ? 'flex' : 'hidden md:flex')}>
         {m.inkludert.map((f) => (
           <li key={f} className="flex items-start gap-2.5 font-body text-[0.95rem] leading-relaxed text-room-ink/70">
             <Check className="w-4 h-4 mt-0.5 flex-shrink-0 text-room-ink" aria-hidden="true" />
@@ -77,10 +95,8 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
 
       <Link
         to={ruter.kontakt}
-        className="mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] bg-room-ink text-surface"
+        className="mt-4 md:mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] bg-room-ink text-surface"
       >
-        {/* Et gratis utkast av en chatbot gir ingen mening. Kortet uten
-            fast pris ber om pris i stedet. */}
         {cta} <ArrowRight className="w-4 h-4" />
       </Link>
     </div>

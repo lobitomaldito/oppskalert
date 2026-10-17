@@ -713,7 +713,9 @@ export const vurdering = null;
    Bytt til `vurdering`-visningen når profilen har nok anmeldelser til
    at snittet betyr noe. Rundt ti er der tallet begynner å bære. */
 export const heroBevis = {
-  indeks: 1,
+  /* Katrin. Mélanie Dahl ble lagt først i omtaler 17. oktober 2026, så
+     indeksen flyttet seg fra 1 til 2. */
+  indeks: 2,
   /* Google Bedriftsprofilen. kgmid-formen er kanonisk og knyttet til
      oppføringen selv, i motsetning til en share.google-lenke, som er en
      delingslenke og kan slutte å virke.

@@ -540,6 +540,12 @@ export const stegene = [
    står den rett under arbeidet den beskriver. */
 export const omtaler = [
   {
+    "sitat": "Jeg opplever å ha fått en hel ny og spennende hjemmeside - som viser tydelig hva jeg jobber med og hva jeg tilbyr av tjenester. Aleks var lyttende til mine ønsker og kom også med gode forslag.",
+    "navn": "Mélanie Dahl",
+    "rolle": "melaniedahl.com, omtale på Google",
+    "caseSlug": "melanie-dahl"
+  },
+  {
     "sitat": "Jeg fikk en vennlig henvendelse fra Aleksander i Oppskalert, og ble raskt imponert over kunnskapen og kompetansen deres. Det var lett å si ja.",
     "navn": "Guro Brakestad",
     "rolle": "Familieterapeut og foredragsholder"
