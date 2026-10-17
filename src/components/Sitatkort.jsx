@@ -1,48 +1,33 @@
 import { omtaler } from '../lib/demo-innhold';
-import { useKarusell } from '../lib/useKarusell';
+import { heroBevis } from '../lib/site';
 
-/* Sitatkarusellen fra studio-mal-demoen (mal3.src.html, linje 1425).
-   Der bygde en vanilla-JS-løkke markupet og byttet tekstinnhold på klikk.
+/* Omtalene side om side, uten karusell.
 
-   To ting er endret 24. august 2026. Kortet bytter omtale selv hvert
-   syvende sekund, fordi tre av fire besøkende aldri trykket på pilene og
-   dermed bare så én av fire omtaler. Og alle fire ligger i DOM-en samtidig,
-   stablet i samme rutenettcelle, ikke byttet ut som tekstinnhold: da er
-   kortet alltid like høyt som den lengste omtalen, og et bytte flytter
-   ingenting på siden. Crawlere får dessuten alle fire sitatene i den
-   prerendrede HTML-en i stedet for ett.
+   Fram til 17. oktober 2026 var dette en karusell med én omtale synlig av
+   gangen. Den byttet selv hvert syvende sekund, men leseren så likevel
+   bare den som tilfeldigvis sto framme, og på desktop sto halve kortet
+   tomt. Nå står alle samtidig, korte nok til å leses i ett blikk.
 
-   Kilden er festet til bunnlinjen (`1fr auto`) slik at navnet står på samme
-   sted i alle fire. Uten det hopper det opp og ned mens teksten toner. */
-const Sitatkort = () => {
-  const { i, gaa, pauseProps } = useKarusell(omtaler.length, 7000);
+   `utenom` er indeksen til omtalen som allerede står i heroen, så samme
+   sitat ikke dukker opp to ganger på samme side. Mobil viser to omtaler
+   og lenken (regel 20 i byggereglene), se .omtale:nth-child(n+3). */
+const Sitatkort = ({ utenom }) => {
+  const liste = omtaler.filter((_, n) => n !== utenom);
 
   return (
-    <div className="sitatkort inn" data-reveal {...pauseProps}>
-      <div className="sitat-topp">
-        <div className="sitat-styring">
-          <button type="button" onClick={() => gaa(-1)} aria-label="Forrige omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="M14 5 7 12l7 7" />
-            </svg>
-          </button>
-          <button type="button" onClick={() => gaa(1)} aria-label="Neste omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="m10 5 7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-        <p className="sitat-teller">{i + 1} / {omtaler.length}</p>
-        <p className="etikett" style={{ marginLeft: 'auto' }}>Fra kundene</p>
+    <div className="omtaler" data-reveal>
+      <div className="omtaler-topp">
+        <p className="etikett">Fra kundene</p>
+        {heroBevis?.url && (
+          <a href={heroBevis.url} target="_blank" rel="noopener noreferrer" className="omtaler-lenke">
+            Se omtalene på Google <span aria-hidden="true">↗</span>
+            <span className="skjult"> (åpnes i ny fane)</span>
+          </a>
+        )}
       </div>
-
-      <div className="sitat-scene">
-        {omtaler.map((o, n) => (
-          <div
-            key={o.navn}
-            className={n === i ? 'sitat-slide aktiv' : 'sitat-slide'}
-            aria-hidden={n !== i}
-          >
+      <ul className="omtaler-rad">
+        {liste.map((o) => (
+          <li className="omtale" key={o.navn}>
             <blockquote>«{o.sitat}»</blockquote>
             <div className="sitat-kilde">
               <span className="initial" aria-hidden="true">
@@ -53,9 +38,9 @@ const Sitatkort = () => {
                 <p className="rolle">{o.rolle}</p>
               </div>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

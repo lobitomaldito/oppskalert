@@ -78,7 +78,7 @@ const BlogPage = () => {
           </p>
           <p style={{ marginTop: '2rem' }}>
             <Link className="knapp" to={ruter.kontakt}>
-              Bestill gratis utkast <span className="pil" aria-hidden="true">↗</span>
+              Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
             </Link>
           </p>
         </div>

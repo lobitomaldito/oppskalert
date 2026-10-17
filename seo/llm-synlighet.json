@@ -128,6 +128,220 @@
         "oppskalert.no": 2
       },
       "notat": "Malt 1. september 2026. Foerste gang oppskalert.no selv er sitert, klassifisert 'own', 2 ganger. Foerste biasedWinRate over null, 0,1. Feilraten passerte halvparten: 30 av 54 svar feilet."
+    },
+    {
+      "completedAt": "2026-09-28T14:28:12.000Z",
+      "synlighetTrend": 33.3,
+      "nevntAndelTrend": 0.3,
+      "synlighetSammendrag": 33.3,
+      "nevntAndelSammendrag": 0.3,
+      "svarAnalysert": 66,
+      "svarFeilet": 30,
+      "snittPosisjon": 1,
+      "snittSentiment": 1.7,
+      "biasedWinRate": 0.1,
+      "leaderboard": [
+        {
+          "domene": "ndw.no",
+          "synlighet": 43.9,
+          "nevntAndel": 0.4,
+          "erOss": false
+        },
+        {
+          "domene": "oppskalert.no",
+          "synlighet": 33.3,
+          "nevntAndel": 0.3,
+          "erOss": true
+        },
+        {
+          "domene": "webaas.no",
+          "synlighet": 1.5,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "raskweb.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        }
+      ],
+      "kataloger": {
+        "techradar.com": 20,
+        "sortlist.com": 13,
+        "ndw.no": 12,
+        "goodfirms.co": 11,
+        "hostadvice.com": 11,
+        "oppskalert.no": 7,
+        "nettsidedesign.no": 6,
+        "clutch.co": 5,
+        "techbehemoths.com": 5,
+        "designrush.com": 4
+      },
+      "notat": "Lest 1. oktober 2026. Ingen ny maaling 7., 14. eller 21. september. Andel av 66 svar: sortlist 24,1 til 19,7 %, goodfirms 18,5 til 16,7, clutch og techbehemoths 9,3 til 7,6, designrush 7,4 til 6,1. oppskalert.no own 3,7 til 10,6 % (2 til 7). ndw.no sitert 13,0 til 18,2 %, men forspranget i synlighet krympet 13,0 til 10,6 poeng. 30 av 66 svar feilet, under halvparten."
+    },
+    {
+      "completedAt": "2026-10-05T15:03:02.000Z",
+      "synlighetTrend": 50,
+      "nevntAndelTrend": 0.5,
+      "synlighetSammendrag": 35.9,
+      "nevntAndelSammendrag": 0.359,
+      "svarAnalysert": 78,
+      "svarFeilet": 30,
+      "snittPosisjon": 1,
+      "snittSentiment": 2.1,
+      "biasedWinRate": 0.1026,
+      "leaderboard": [
+        {
+          "domene": "oppskalert.no",
+          "synlighet": 35.9,
+          "nevntAndel": 0.359,
+          "erOss": true
+        },
+        {
+          "domene": "webnow.no",
+          "synlighet": 8.3,
+          "nevntAndel": 0.0833,
+          "erOss": false
+        },
+        {
+          "domene": "raskweb.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "getonnet.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "webtoget.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "studiox.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "appivate.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "tek-norge.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "takstogmiljo.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        }
+      ],
+      "kataloger": {
+        "techradar.com": 20,
+        "sortlist.com": 15,
+        "oppskalert.no": 13,
+        "ndw.no": 12,
+        "goodfirms.co": 12,
+        "hostadvice.com": 12,
+        "nettsidedesign.no": 6,
+        "clutch.co": 5,
+        "techbehemoths.com": 5,
+        "designrush.com": 4
+      },
+      "notat": "Lest 8. oktober 2026. Konkurrentlisten i Opinly er byttet ut: ndw.no og webaas.no spores ikke lenger, nye er webnow.no, getonnet.no, webtoget.no, studiox.no, appivate.no, tek-norge.no, takstogmiljo.no. Avstanden til ndw.no kan derfor ikke maales. Telleverkene er kumulative (svar 66 til 78, feilet uendret 30, altsaa 0 feil denne uka). Andel av 78: sortlist 19,7 til 19,2 %, goodfirms 16,7 til 15,4, clutch og techbehemoths 7,6 til 6,4, designrush 6,1 til 5,1. oppskalert.no own 10,6 til 16,7 % (7 til 13, seks av tolv nye svar). ndw.no sitert 18,2 til 15,4 % (ingen nye). Trendserien 33,3 til 50."
+    },
+    {
+      "completedAt": "2026-10-12T14:59:06.000Z",
+      "synlighetTrend": 49.8,
+      "nevntAndelTrend": 0.5,
+      "synlighetSammendrag": 37.7,
+      "nevntAndelSammendrag": 0.3778,
+      "svarAnalysert": 12,
+      "svarFeilet": 0,
+      "snittPosisjon": 1.5,
+      "snittSentiment": 3.8,
+      "biasedWinRate": 0,
+      "leaderboard": [
+        {
+          "domene": "oppskalert.no",
+          "synlighet": 37.7,
+          "nevntAndel": 0.3778,
+          "erOss": true
+        },
+        {
+          "domene": "webnow.no",
+          "synlighet": 4.2,
+          "nevntAndel": 0.0417,
+          "erOss": false
+        },
+        {
+          "domene": "raskweb.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "getonnet.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "webtoget.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "studiox.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "appivate.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "tek-norge.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        },
+        {
+          "domene": "takstogmiljo.no",
+          "synlighet": 0,
+          "nevntAndel": 0,
+          "erOss": false
+        }
+      ],
+      "kataloger": {
+        "oppskalert.no": 7,
+        "shopify.com": 3,
+        "norgesdomene.no": 2,
+        "lovable.dev": 2,
+        "goodfirms.co": 1,
+        "hostadvice.com": 1,
+        "techradar.com": 1,
+        "sortlist.com": 0,
+        "clutch.co": 0,
+        "designrush.com": 0,
+        "techbehemoths.com": 0
+      },
+      "notat": "Lest 15. oktober 2026. Opinly svarer naa med telling for EN maaling (12 svar), ikke kumulativt som 8. okt (78). Sammenlign derfor mot forrige maaling slik APIet gir den (previous, 12 svar). Andel av 12: oppskalert.no own 50,0 til 58,3 % (6 til 7). sortlist 16,7 til 0 % (2 til 0), goodfirms 8,3 til 8,3, clutch, designrush og techbehemoths 0 begge uker. ndw.no spores ikke lenger, avstand kan ikke maales; naermeste sporede er webnow.no, 4,2 mot 37,7. 0 av 12 feilet. n=12, enkeltuker er stoey."
     }
   ],
   "merk2": "Katalogtall er raatall, ikke andel. Antall analyserte svar gikk 42 til 54 mellom 24. og 31. august, saa raatallene stiger av seg selv. Regn siteringer delt paa svarAnalysert foer du kaller det vekst."

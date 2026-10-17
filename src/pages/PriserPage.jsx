@@ -169,7 +169,7 @@ const PriserPage = () => (
           ned, eller avslutte, uten oppsigelsestid.</p>
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
-            «Bestill gratis utkast» ville lovet et utkast av en driftsavtale. */}
+            «Få et gratis utkast» ville lovet et utkast av en driftsavtale. */}
         <KortRadPris>
           {driftNivaer.map((n) => (
             <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
