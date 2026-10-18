@@ -603,8 +603,8 @@ export const toganger = (src) => `${src} 1x, ${src.replace('.webp', '@2x.webp')}
    samme måte, eller sett fargen for hånd. */
 export const prosjekter = [
   /* Appstart. Lagt inn 29. september 2026. Aleksanders eget selskap
-     sammen med Magnus, ikke et kundeoppdrag, derfor ingen case-side:
-     kortet lenker rett ut til appstart.no. Fangsten er vanlig 5000 px
+     sammen med Magnus, ikke et kundeoppdrag. Case-siden kom samme dag,
+     se caser i demo-innhold.js. Fangsten er vanlig 5000 px
      (forsiden er 6370 px høy), så --til er -81% som Woxen Hage. */
   { img: '/websider/appstart.webp', slug: 'appstart', farge: '#114b35', full: '/websider/full/appstart.webp', til: '-81%', navn: 'Appstart', bransje: 'Apputvikling', url: 'https://appstart.no/', domene: 'appstart.no' },
   /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Skjermbildene er
