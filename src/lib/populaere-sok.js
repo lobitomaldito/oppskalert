@@ -231,9 +231,14 @@ export const populaereSok = [
   },
   {
     // «lage nettbutikk» 210/mnd KD 15
+    // GSC 28 dager til 12. okt 2026: «lage nettbutikk» delt mellom denne
+    // (pos 12,3, 7 visninger) og /lage-nettbutikk (pos 21,6, 108). Samtidig
+    // «nettbutikk pris» pos 44,6 (61) og «hva koster en nettbutikk» pos 18,2
+    // (33). «lage» ut av title og spørsmål: denne eier prisen,
+    // /lage-nettbutikk eier «lage».
     slug: 'hva-koster-nettbutikk',
-    q: 'Hva koster det å lage nettbutikk?',
-    tittel: 'Hva koster det å lage nettbutikk?',
+    q: 'Hva koster en nettbutikk?',
+    tittel: 'Hva koster en nettbutikk? Pris og drift',
     beskrivelse: 'En nettbutikk starter et sted mellom 2 og 3 ganger prisen på en vanlig nettside, fordi betaling, frakt og lager må virke sammen.',
     a: 'En nettbutikk koster mer enn en vanlig nettside, fordi betaling, frakt og lager må virke sammen. Regn med at det starter et sted mellom 2 og 3 ganger prisen på en vanlig side. Til gjengjeld er det ett av få nettsideprosjekter der du kan regne hjem investeringen direkte, siden butikken selger mens du sover.',
     utdyping: [
