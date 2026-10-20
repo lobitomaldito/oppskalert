@@ -194,6 +194,7 @@ export const driftNivaer = [
     inkludert: [
       'Alt i serviceavtalen, pluss:',
       'Månedlig rapport med vanlige ord: hvem som fant deg, og på hva',
+      'AI-sjekk: om ChatGPT, Google AI og Copilot nevner deg',
       'En ny side eller artikkel i måneden',
       'Retting av det rapporten finner',
     ],
@@ -457,7 +458,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva koster søkemotoroptimalisering hos deg?',
-      a: 'SEO-abonnementet starter på 1 490 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
+      a: 'SEO-abonnementet starter på 1 490 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Hver måned får du en rapport med vanlige ord, en AI-sjekk av om ChatGPT og de andre nevner deg, en ny side eller artikkel, og retting av det rapporten finner. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
     },
   ],
 

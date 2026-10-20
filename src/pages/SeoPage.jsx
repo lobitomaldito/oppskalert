@@ -6,7 +6,7 @@ import { Avsnitt } from '../components/Landingsside';
 import DemoSkjema from '../components/DemoSkjema';
 import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
-import { lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
+import { driftNivaer, lagFaqSchema, landingsSporsmal, ruter } from '../lib/site';
 
 /* Dedikert landingsside for søkeordet «søkemotoroptimalisering» (590 søk/mnd,
    KD 9 per SEO.md punkt 4). Mønsteret er hentet fra konkurrentene som faktisk
@@ -90,6 +90,11 @@ const Innhold = () => {
             strukturerte data og en llms.txt, så det er tydelig hva bedriften gjør og hvor den
             holder til.
           </p>
+          <p>
+            Om det virker, kan måles. Har du SEO-abonnementet, stiller jeg ChatGPT, Google AI
+            og Copilot de samme fem spørsmålene hver måned, de kundene dine faktisk stiller, og
+            skriver ned om du ble nevnt og hvem som ble nevnt i stedet.
+          </p>
         </Avsnitt>
 
         <Avsnitt tittel="Hva du" uthevet="kan forvente.">
@@ -140,10 +145,59 @@ const Inkludert = () => {
             </li>
           ))}
         </ul>
-        <p data-reveal className="font-body text-[0.95rem] text-room-ink/70 mt-8 max-w-[54ch] leading-relaxed">
-          Vil du at jeg jobber med søk hver måned, finnes det som abonnement fra 1 490
-          kr/mnd. Se <Link to={ruter.drift} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">serviceavtale og SEO</Link> for
-          hva det inneholder, eller <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">prissiden</Link> for
+      </div>
+    </section>
+  );
+};
+
+/* Det abonnementet leverer, måned for måned. Egen seksjon fordi en pris
+   uten innhold er et nakent tall (regel 13): kunden skal se hva som kommer
+   i innboksen hver måned. Innholdet står også i tilbud/MAL.md, og prisen
+   leses fra driftNivaer så den bare finnes ett sted. */
+const maanedlig = [
+  {
+    navn: 'Rapport med vanlige ord',
+    tekst: 'Hvem som fant deg, på hvilke søk, og om kurven går riktig vei. Tallene er fra Search Console på ditt eget domene, så du kan sjekke dem selv.',
+  },
+  {
+    navn: 'AI-sjekk',
+    tekst: 'Fem spørsmål kundene dine stiller, til ChatGPT, Google AI og Copilot. Du får se om du ble nevnt, og hvem som ble nevnt i stedet.',
+  },
+  {
+    navn: 'En ny side eller artikkel',
+    tekst: 'Skrevet om et søk kundene dine har, valgt ut fra det rapporten viser.',
+  },
+  {
+    navn: 'Retting av funnene',
+    tekst: 'Det rapporten finner, retter jeg samme måned. Du trenger ikke be om det.',
+  },
+];
+
+const lenke =
+  'text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors';
+
+const Maanedlig = () => {
+  const container = useReveal(60);
+  const seo = driftNivaer.find((n) => n.id === 'seo');
+  return (
+    <section ref={container} className="seksjon pt-0">
+      <div className="wrap">
+        <SeksjonTopp
+          tittel="Det du får"
+          uthevet="hver måned."
+          lede={`SEO-abonnementet koster fra ${seo.fra} ${seo.enhet}, uten binding. Du får alt i serviceavtalen, og i tillegg dette hver måned:`}
+        />
+        <dl data-reveal className="grid gap-x-12 gap-y-8 md:grid-cols-2 max-w-[62rem]">
+          {maanedlig.map((m) => (
+            <div key={m.navn} className="border-t border-room-ink/15 pt-5">
+              <dt className="font-sans font-bold text-[1.05rem] mb-2">{m.navn}</dt>
+              <dd className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed max-w-[48ch]">{m.tekst}</dd>
+            </div>
+          ))}
+        </dl>
+        <p data-reveal className="font-body text-[0.95rem] text-room-ink/70 mt-10 max-w-[56ch] leading-relaxed">
+          Se <Link to={ruter.drift} className={lenke}>serviceavtale og SEO</Link> for
+          resten av vilkårene, eller <Link to={ruter.priser} className={lenke}>prissiden</Link> for
           nye nettsider.
         </p>
       </div>
@@ -170,15 +224,17 @@ const SeoPage = () => (
     />
     <Innhold />
     <Inkludert />
+    <Maanedlig />
     <FAQ
       tittel="Det folk lurer på"
       uthevet="om søk."
       sporsmal={landingsSporsmal.seo}
     />
     <DemoSkjema
-      tittel="Vil du vite hva"
-      uthevet="som blokkerer deg?"
-      lede="Fortell meg kort om bedriften, så henter jeg siden din slik en robot gjør og sier hva jeg finner. Uforpliktende."
+      analyse
+      tittel="Gratis"
+      uthevet="synlighetsanalyse."
+      lede="Skriv inn adressen til nettsiden din. Jeg henter den slik Google og ChatGPT gjør, og sender deg det som står i veien for at du blir funnet, med det viktigste først. Gratis, også om du ikke blir kunde."
     />
   </Shell>
 );

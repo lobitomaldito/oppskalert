@@ -16,7 +16,11 @@ const pilleKlasse = (valgt) =>
     valgt ? 'bg-room-ink text-surface border-room-ink' : 'bg-surface text-room-ink border-room-ink/20 hover:border-room-ink/45'
   }`;
 
-const DemoSkjema = ({ tittel, uthevet, lede }) => {
+/* analyse: samme skjema brukt som bestilling av gratis synlighetsanalyse
+   (/sokemotoroptimalisering). Ja/nei-spørsmålet faller bort, for uten en
+   side finnes det ingenting å analysere, og adressen blir det andre feltet.
+   Meldingen merkes, så dashbordet skiller analysen fra et utkast. */
+const DemoSkjema = ({ tittel, uthevet, lede, analyse = false }) => {
   const [harNettside, setHarNettside] = useState(null); // null | true | false
   const [navn, setNavn] = useState('');
   const [epost, setEpost] = useState('');
@@ -49,8 +53,8 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
       return;
     }
     setStatus('sending');
-    const meldingDeler = [];
-    if (harNettside !== null) meldingDeler.push(`Har nettside fra før: ${harNettside ? 'Ja' : 'Nei'}.`);
+    const meldingDeler = analyse ? ['Ønsker gratis synlighetsanalyse.'] : [];
+    if (!analyse && harNettside !== null) meldingDeler.push(`Har nettside fra før: ${harNettside ? 'Ja' : 'Nei'}.`);
     try {
       await submitDemoRequest({
         navn,
@@ -68,7 +72,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
          men de er skjult for klienten med vilje, se api/demo-request.js. */
       if (!honeypot) {
         identify({ email: epost.trim(), name: navn.trim() });
-        track('demo_request_submitted', { has_company: Boolean(firma.trim()), har_nettside: harNettside });
+        track('demo_request_submitted', { has_company: Boolean(firma.trim()), har_nettside: analyse ? true : harNettside, type: analyse ? 'analyse' : 'utkast' });
       }
       setStatus('success');
     } catch (err) {
@@ -92,7 +96,9 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
             <div className="w-full bg-surface border border-room-ink/20 rounded-kort p-9" role="status">
               <p className="font-sans font-bold text-2xl mb-2">Takk! Den er mottatt.</p>
               <p className="font-body text-[0.95rem] text-room-ink/90 leading-relaxed">
-                Jeg tar kontakt på e-post innen 24 timer. Haster det, ring meg på{' '}
+                {analyse
+                  ? 'Du får funnene på e-post innen to virkedager.'
+                  : 'Jeg tar kontakt på e-post innen 24 timer.'}{' '}Haster det, ring meg på{' '}
                 <a href={`tel:${kontakt.tel}`} className="underline hover:opacity-70 transition-opacity">{kontakt.telefon}</a>.
               </p>
             </div>
@@ -122,6 +128,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 />
               </div>
 
+              {!analyse && (
               <div className="mt-2">
                 <span className="font-sans font-bold text-sm block mb-3">Har du en nettside i dag?</span>
                 <div className="flex flex-wrap justify-center gap-3">
@@ -139,14 +146,15 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                   ))}
                 </div>
               </div>
+              )}
 
               {/* Samme felt, samme kolonne i basen. Bare etiketten flytter
                   seg: har de en side, er adressen det mest verdifulle jeg
                   kan få, fordi demoen blir bedre av å se den først. */}
               <input
                 type="text" value={firma} autoComplete="organization"
-                aria-label={harNettside ? 'Adressen til nettsiden din' : 'Bedrift'}
-                placeholder={harNettside ? 'dittfirma.no' : 'Bedrift (valgfritt)'}
+                aria-label={analyse || harNettside ? 'Adressen til nettsiden din' : 'Bedrift'}
+                placeholder={analyse || harNettside ? 'dittfirma.no' : 'Bedrift (valgfritt)'}
                 onChange={(e) => setFirma(e.target.value)}
                 className={feltKlasse}
               />
@@ -157,7 +165,7 @@ const DemoSkjema = ({ tittel, uthevet, lede }) => {
                 className="group bg-room-ink text-surface px-7 py-3.5 rounded-full font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] disabled:opacity-60 disabled:hover:scale-100 mt-3 self-center"
               >
                 <span className="flex items-center justify-center gap-2">
-                  {status === 'sending' ? 'Sender …' : <>Få et gratis utkast <ArrowRight className="w-4 h-4" /></>}
+                  {status === 'sending' ? 'Sender …' : <>{analyse ? 'Bestill gratis analyse' : 'Få et gratis utkast'} <ArrowRight className="w-4 h-4" /></>}
                 </span>
               </button>
 
