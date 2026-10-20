@@ -1,5 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
-
 // Klient for analytics_events, pinnet til "oppskalert"-prosjektet så
 // sporingen virker uavhengig av appens VITE_SUPABASE_URL. Anon-nøkkelen er
 // offentlig med vilje, og analytics_events har kun en INSERT-policy for
@@ -24,9 +22,20 @@ const DEMO_SUPABASE_ANON_KEY =
 // tvers av faner. Med flere faner åpne kolliderer de om samme lock-navn og
 // kaster en uhåndtert "Lock ... was released because another request stole
 // it"-exception, fanget opp av PostHog error tracking i produksjon.
-export const demoClient = createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY, {
-  auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
-});
+//
+// supabase-js (50 kB gzip) importeres først ved første hendelse, så det ikke
+// ligger i lasten forsiden venter på.
+let klient = null;
+export function hentDemoClient() {
+  if (!klient) {
+    klient = import('@supabase/supabase-js').then(({ createClient }) =>
+      createClient(DEMO_SUPABASE_URL, DEMO_SUPABASE_ANON_KEY, {
+        auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+      }),
+    );
+  }
+  return klient;
+}
 
 /**
  * Sender skjemaet til api/demo-request.js, som skriver til Supabase med

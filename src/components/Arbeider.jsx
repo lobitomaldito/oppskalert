@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { prosjekter, ruter, toganger } from '../lib/site';
 import { caser } from '../lib/demo-innhold';
@@ -65,6 +66,25 @@ const lys = (hex) => {
 };
 const tekstPaa = (hex) => (1.05 / (lys(hex) + 0.05) >= (lys(hex) + 0.05) / 0.0574 ? '#fff' : 'var(--blekk)');
 
+/* Fullsidesfangstene er 80–430 kB hver. Med loading="lazy" henter Chrome dem
+   allerede 1250 px før de vises, og på mobil lå alle åtte i lasten forsiden
+   ventet på (LCP 4,5 s i Lighthouse). Nå får bildet src først når kortet er
+   300 px unna skjermen. */
+const NaerBilde = ({ src, srcSet, ...rest }) => {
+  const ref = useRef(null);
+  const [naer, setNaer] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setNaer(true); io.disconnect(); }
+    }, { rootMargin: '300px 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return <img ref={ref} src={naer ? src : undefined} srcSet={naer ? srcSet : undefined} {...rest} />;
+};
+
 const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett = false }) => {
   const Tittel = `h${nivaa}`;
   const kort = prosjekter
@@ -95,7 +115,7 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett
                 <p>{a.domene}</p>
               </div>
               <div className="ramme-vindu">
-                <img
+                <NaerBilde
                   src={a.full}
                   srcSet={toganger(a.full)}
                   alt={`Nettsiden til ${a.navn}`}

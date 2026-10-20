@@ -1,5 +1,3 @@
-import posthog from 'posthog-js';
-
 const token = import.meta.env.VITE_POSTHOG_TOKEN;
 
 // scripts/prerender.mjs laster hver rute i en ekte Chromium for å ta
@@ -11,12 +9,27 @@ const token = import.meta.env.VITE_POSTHOG_TOKEN;
 // window.__PRERENDER__ før noe sidescript kjører.
 const erPrerender = typeof window !== 'undefined' && window.__PRERENDER__ === true;
 
-if (token && !erPrerender) {
-  posthog.init(token, {
-    api_host: import.meta.env.VITE_POSTHOG_HOST || 'https://eu.i.posthog.com',
-    person_profiles: 'identified_only',
-    capture_exceptions: true,
-  });
+// posthog-js er rundt 50 kB gzip. Lå det i hovedbunten, ble det lastet før
+// forsiden fikk tegnet, og Lighthouse mobil målte LCP 4,6 s. Nå hentes det
+// etter load-eventet. Hendelser som spores før det, venter på løftet.
+let lastet = null;
+export function hentPosthog() {
+  if (!lastet) {
+    lastet = import('posthog-js').then(({ default: posthog }) => {
+      if (token && !erPrerender) {
+        posthog.init(token, {
+          api_host: import.meta.env.VITE_POSTHOG_HOST || 'https://eu.i.posthog.com',
+          person_profiles: 'identified_only',
+          capture_exceptions: true,
+        });
+      }
+      return posthog;
+    });
+  }
+  return lastet;
 }
 
-export default posthog;
+if (typeof window !== 'undefined') {
+  if (document.readyState === 'complete') hentPosthog();
+  else window.addEventListener('load', () => hentPosthog(), { once: true });
+}
