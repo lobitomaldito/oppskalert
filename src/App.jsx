@@ -131,7 +131,10 @@ const Hero = () => {
               To spans: ved siden av galleriveggen står de på hver sin linje,
               se .hero-vegg h1 span i index.css. */}
           <p data-reveal className="etikett hero-etikett inn" style={{ '--d': '60ms' }}>Webdesign for bedrifter</p>
-          <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
+          {/* Tittel og ingress står uten fade-inn. React bygger forsiden på nytt
+              oppå den prerendrede HTML-en, og en tittel som starter på opacity 0
+              teller som en ny LCP først når den toner inn (målt 4,6 s mobil). */}
+          <h1>
             <span>Se den nye nettsiden din</span>{' '}
             <span>før du betaler en krone.</span>
           </h1>
@@ -144,7 +147,7 @@ const Hero = () => {
 
               Malen er den målte: konkret liste, hvem, så én setning som
               fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
-          <p data-reveal className="inn" style={{ '--d': '220ms' }}>
+          <p>
             Design, tekst, koding og lansering, gjort av én person du kan ringe.
             Utkastet er klart på 48 timer.
           </p>

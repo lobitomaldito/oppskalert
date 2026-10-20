@@ -1,5 +1,5 @@
-import posthog from './posthog';
-import { demoClient } from './demoRequest';
+import { hentPosthog } from './posthog';
+import { hentDemoClient } from './demoRequest';
 
 // Én kilde til sannhet for sporing. Alle event-kall går gjennom track()/
 // identify() her i stedet for å ringe posthog direkte, så et bytte av
@@ -13,9 +13,9 @@ import { demoClient } from './demoRequest';
 // anon_id kom tidligere fra Opinly-pikselen. PostHogs distinct id gjør samme
 // nytte og lever så lenge PostHog gjør. Kallet er pakket inn fordi det kaster
 // hvis posthog.init() aldri kjørte (mangler token, eller prerender).
-const anonId = () => {
+const anonId = async () => {
   try {
-    return posthog.get_distinct_id() || null;
+    return (await hentPosthog()).get_distinct_id() || null;
   } catch {
     return null;
   }
@@ -23,12 +23,13 @@ const anonId = () => {
 
 async function logOwnEvent(event, properties) {
   try {
+    const demoClient = await hentDemoClient();
     await demoClient.from('analytics_events').insert([
       {
         event,
         properties,
         path: typeof window !== 'undefined' ? window.location.pathname : null,
-        anon_id: anonId(),
+        anon_id: await anonId(),
       },
     ]);
   } catch {
@@ -53,7 +54,7 @@ function sendToGa4(event, properties) {
 }
 
 export function track(event, properties = {}) {
-  posthog.capture(event, properties);
+  hentPosthog().then((posthog) => posthog.capture(event, properties)).catch(() => {});
   logOwnEvent(event, properties);
   sendToGa4(event, properties);
 }
@@ -64,5 +65,5 @@ export function track(event, properties = {}) {
 // fra anonym til en profil.
 export function identify({ email, userId, ...traits } = {}) {
   if (!email) return;
-  posthog.identify(userId || email, { email, ...traits });
+  hentPosthog().then((posthog) => posthog.identify(userId || email, { email, ...traits })).catch(() => {});
 }
