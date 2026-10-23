@@ -1,4 +1,4 @@
-# E-postsignatur – Aleksander MacKee (Oppskalert)
+# E-postsignatur – Aleksander Ditlefsen MacKee (Oppskalert)
 
 ## Filer
 
