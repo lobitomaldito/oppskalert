@@ -256,6 +256,8 @@
   }
   .knapp:hover { color: var(--blekk); }
   .knapp:hover::before { transform: translateY(0); }
+  /* Lucide-ikonene fra Ikon.jsx. 1em, så de følger teksten de står i. */
+  .ikon { width: 1em; height: 1em; flex: none; display: inline-block; vertical-align: -.125em; }
   .knapp .pil { transition: transform .3s var(--e); }
   .knapp:hover .pil { transform: translateX(.2rem); }
   .paa-blekk .knapp { background: var(--kritt); color: var(--blekk); border-color: var(--kritt); }
@@ -423,6 +425,7 @@
   }
   .galleri-pause {
     position: absolute; right: var(--kant); bottom: .75rem;
+    display: inline-flex; align-items: center; gap: .45rem;
     min-height: 2.75rem; padding: 0 1rem; border-radius: 999px;
     background: var(--hvit); border: 1px solid var(--felt-kant);
     color: var(--blekk-mykt); font-size: .8125rem; cursor: pointer;
@@ -690,6 +693,12 @@
      skjermhøyde for to setninger. */
   .tjenester-forside { grid-template-columns: 1fr 1fr; }
   .tjenester-forside .tjeneste { padding: clamp(1.125rem, 2.5vw, 2rem); gap: clamp(.35rem, 1vw, .75rem); }
+  /* Ikonet står i en hvit rute over tittelen, i aksentfargen. */
+  .tjeneste svg.tjeneste-ikon {
+    width: 2.75rem; height: 2.75rem; padding: .7rem; margin-bottom: .5rem;
+    border-radius: var(--rund-liten); background: var(--hvit); color: var(--prikk);
+    stroke-width: 2;
+  }
   .tjenester-forside .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: var(--display-sperre); }
   .tjeneste p { color: var(--blekk-mykt); font-size: .9375rem; text-wrap: pretty; }
 

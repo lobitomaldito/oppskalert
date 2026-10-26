@@ -4,6 +4,7 @@ import DemoSkjema from '../components/DemoSkjema';
 import { kontakt } from '../lib/site';
 import { useReveal } from '../lib/useReveal';
 import { track } from '../lib/analytics';
+import { PilHoyre } from '../components/Ikon';
 
 const PORTRETT = '/founders/aleksander.webp';
 
@@ -48,12 +49,12 @@ const KontaktPage = () => {
               <ol className="nummerert" style={{ maxWidth: 'none' }}>
                 <li>
                   <a href={`tel:${kontakt.tel}`} onClick={() => track('contact_phone_clicked')}>
-                    <span className="nr">Ring</span> {kontakt.telefon} <span className="pil" aria-hidden="true">→</span>
+                    <span className="nr">Ring</span> {kontakt.telefon} <PilHoyre className="pil" />
                   </a>
                 </li>
                 <li>
                   <a href={`mailto:${kontakt.epost}`} onClick={() => track('contact_email_clicked')}>
-                    <span className="nr">E-post</span> {kontakt.epost} <span className="pil" aria-hidden="true">→</span>
+                    <span className="nr">E-post</span> {kontakt.epost} <PilHoyre className="pil" />
                   </a>
                 </li>
                 <li>
@@ -65,7 +66,7 @@ const KontaktPage = () => {
                   >
                     <span className="nr">LinkedIn</span> Aleksander MacKee
                     <span className="skjult"> (åpner i ny fane)</span>{' '}
-                    <span className="pil" aria-hidden="true">→</span>
+                    <PilHoyre className="pil" />
                   </a>
                 </li>
               </ol>

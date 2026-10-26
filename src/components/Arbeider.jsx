@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { prosjekter, ruter, toganger } from '../lib/site';
 import { caser } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
+import { PilHoyre, PilOpp } from './Ikon';
 
 /* Bransje og tittel er hentet ordrett fra ARBEIDER-konstanten i
    studio-mal-demoen (mal3.src.html, linje 1162), ikke fra prosjekter i
@@ -107,7 +108,7 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett
               </div>
             </div>
             <p className="etikett">{a.bransje}</p>
-            <Tittel>{a.tittel} <span className="ut" aria-hidden="true">→</span></Tittel>
+            <Tittel>{a.tittel} <PilHoyre className="ut" /></Tittel>
           </ConditionalLink>
         </article>
       ))}
@@ -142,7 +143,7 @@ export const ArbeidSeksjon = ({ hvit = true, kompakt = false, tett = false, id }
         </div>
         <Arbeider antall={tett ? 8 : 4} kompakt={kompakt} tett={tett} />
         <p style={{ marginTop: 'clamp(2.5rem,5vw,3.5rem)' }}>
-          <Link className="knapp" to={ruter.arbeid}>Se flere sider <span className="pil" aria-hidden="true">↗</span></Link>
+          <Link className="knapp" to={ruter.arbeid}>Se flere sider <PilOpp className="pil" /></Link>
         </p>
       </div>
     </section>
