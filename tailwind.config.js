@@ -34,15 +34,12 @@ export default {
         flyt: '60',
       },
       fontFamily: {
-        // Studio-mal-redesignet: Suisse Int'l bærer alt. Kontrasten gjøres
-        // med vekt og størrelse, ikke med flere familier. Navnene body,
-        // sans og display peker derfor på samme familie, så de øvrige
-        // rutene som bruker font-display eller font-body treffer riktig
-        // typografi uten at hver side må skrives om.
-        body: ['Suisse', 'Suisse reserve', 'system-ui', 'sans-serif'],
-        sans: ['Suisse', 'Suisse reserve', 'system-ui', 'sans-serif'],
-        display: ['Suisse', 'Suisse reserve', 'system-ui', 'sans-serif'],
-        // GT Sectra Fine slipper til to steder: sitatet og pristallene.
+        // Switzer til tekst, Cabinet Grotesk til overskrifter. Byttet fra
+        // Suisse Int'l 26.10.2026, se SKRIFT øverst i src/index.css.
+        body: ['Switzer', 'system-ui', 'sans-serif'],
+        sans: ['Switzer', 'system-ui', 'sans-serif'],
+        display: ['Cabinet Grotesk', 'Switzer', 'system-ui', 'sans-serif'],
+        // GT Sectra Fine, bare for demosiden under /eksempler.
         serif: ['SectraFine', 'Georgia', 'serif'],
         // Ordmerket, og kun det. Plus Jakarta Sans 800.
         merke: ['Merke', 'system-ui', 'sans-serif'],

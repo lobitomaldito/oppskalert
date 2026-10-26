@@ -26,7 +26,9 @@ const Sitatkort = ({ utenom }) => {
           </a>
         )}
       </div>
-      <ul className="omtaler-rad">
+      {/* tabIndex: på mobil er lista en sveipbar rad uten lenker i, så
+          tastaturbrukere trenger fokus på selve raden for å kunne rulle. */}
+      <ul className="omtaler-rad" tabIndex={0} aria-label="Omtaler fra kunder">
         {liste.map((o) => (
           <li className="omtale" key={o.navn}>
             <blockquote>«{o.sitat}»</blockquote>

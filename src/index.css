@@ -1,17 +1,15 @@
 /* ==================================================================
    SKRIFT
 
-   Portert fra studio-mal-demoen, se inspirasjon/demo-studio-mal.md.
-
    «Merke» er Plus Jakarta Sans 800 og er låst til ordmerket. Den brukes
    ingen andre steder. Logoen står i sitt opprinnelige format:
    «oppskalert» med liten forbokstav og punktumet i signalfargen.
 
-   Suisse Int'l bærer alt annet, også sitatene.
-
-   LISENSSPERRE: Suisse Int'l er ikke lisensiert for
-   kommersiell bruk i filene som ligger her. Se FONTLISENS.md i roten.
-   Branchen skal ikke deployes før lisensene er kjøpt og filene byttet.
+   Cabinet Grotesk bærer overskriftene, Switzer all tekst. Begge er
+   variable filer fra fontbiblioteket med ITF Free Font License (fri
+   kommersiell bruk, se public/fonts/ITF-Free-Font-License.txt). Valgt
+   26.10.2026 sammen med den hvite forsiden, og erstatter Suisse Int'l,
+   som aldri var lisensiert for kommersiell bruk.
    ================================================================== */
 @font-face {
   font-family: 'Merke';
@@ -21,30 +19,16 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'Suisse';
-  src: url('/fonts/suisse-intl-300-normal.woff2') format('woff2');
-  font-weight: 300;
+  font-family: 'Cabinet Grotesk';
+  src: url('/fonts/cabinet-grotesk-normal.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Suisse';
-  src: url('/fonts/suisse-intl-400-normal.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Suisse';
-  src: url('/fonts/suisse-intl-600-normal.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Suisse';
-  src: url('/fonts/suisse-intl-700-normal.woff2') format('woff2');
-  font-weight: 700;
+  font-family: 'Switzer';
+  src: url('/fonts/switzer-normal.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -64,47 +48,6 @@
   font-display: swap;
 }
 
-/* Reservefont med Suisses mål. Den prerendrede H1-en males med reserven
-   før Suisse er lastet. Når React bygger siden på nytt, blir H1 en ny node
-   i Suisse, og var den større, telte nettleseren den som ny LCP, flere
-   sekunder senere. Med samme bredde blir LCP stående på første maling.
-   Tallene er regnet ut fra fontfilene (snittbredde mot Arial på ekte
-   tekst fra siden, og hhea for høyden). Byttes Suisse-filene, må de
-   regnes ut på nytt.
-
-   300 er H1-vekten og står på 99,5 % i stedet for utregnede 97,53 %.
-   Målt ved 360 til 1920 px: under 99 % ble den bredeste H1-linjen
-   smalere i reserven enn i Suisse, og LCP flyttet seg igjen. Med 99,5 %
-   er reserven minst like stor ved alle breddene. Arial finnes ikke på
-   Android, der gjelder system-ui som før. */
-@font-face {
-  font-family: 'Suisse reserve';
-  src: local('Arial'), local('ArialMT');
-  font-weight: 300;
-  size-adjust: 99.5%;
-  ascent-override: 99.09%;
-  descent-override: 31.26%;
-  line-gap-override: 0%;
-}
-@font-face {
-  font-family: 'Suisse reserve';
-  src: local('Arial'), local('ArialMT');
-  font-weight: 400;
-  size-adjust: 102.76%;
-  ascent-override: 90.99%;
-  descent-override: 18.98%;
-  line-gap-override: 2.72%;
-}
-@font-face {
-  font-family: 'Suisse reserve';
-  src: local('Arial Bold'), local('Arial-BoldMT');
-  font-weight: 600 700;
-  size-adjust: 103.91%;
-  ascent-override: 89.98%;
-  descent-override: 18.77%;
-  line-gap-override: 2.69%;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -112,9 +55,9 @@
 /* ==================================================================
    TOKENS
 
-   Skallet er tonet ned til to nøytraler og et blekk. All farge på
-   siden kommer fra kundearbeidet. Det er hele disiplinen: byrået
-   holder kjeft, jobben snakker.
+   Hvitt papir, lys grå kortflate og nærsvart blekk, etter Solid Media-
+   retningen (preset hvit-luft-byra i referansebiblioteket, 26.10.2026).
+   All farge på siden kommer fra kundearbeidet og punktumet i ordmerket.
 
    Verdiene finnes i to former med vilje. Hex-navnene (--felt, --blekk)
    er demoens egne og brukes av komponentklassene under. RGB-triplene
@@ -126,16 +69,20 @@
 @layer base {
   :root {
     /* Demoens egne navn */
-    --felt:       #e6e5f6;
-    --felt-dyp:   #dcdaf1;
-    --felt-kant:  #cbc9e4;
+    /* --felt er sideflaten, --kort er de grå kortene på den. Målt på
+       solidmedia.no: hvitt 60 %, #f5f5f5 32 %, nesten ingen skygge. */
+    --felt:       #ffffff;
+    --felt-dyp:   #f0f0f0;
+    --felt-kant:  #e4e4e7;
+    --kort:       #f5f5f5;
     --hvit:       #ffffff;
-    --blekk:      #12111d;
-    --blekk-flate:#1c1a2b;
-    --blekk-kant: #2e2b42;
-    --blekk-mykt: #5c5a70;
-    --kritt:      #f3f2fb;
-    --kritt-mykt: #a09eb8;
+    --blekk:      #111113;
+    --blekk-flate:#1b1b1f;
+    --blekk-kant: #2f2f35;
+    /* 6,9:1 mot hvitt og 6,3:1 mot --kort. */
+    --blekk-mykt: #5a5a62;
+    --kritt:      #f4f4f5;
+    --kritt-mykt: #a1a1aa;
 
     /* Punktumet i ordmerket. To varianter, én per grunn: fersken faller
        til 1,4:1 på det blekke feltet og forsvinner, clay gjør ikke det. */
@@ -143,15 +90,15 @@
     --prikk-lys: #ffb17a;
 
     /* Samme palett som RGB-tripler, for Tailwind */
-    --bg:          18 17 29;      /* blekk */
-    --bg-deep:     12 11 20;
+    --bg:          17 17 19;      /* blekk */
+    --bg-deep:     10 10 12;
     --surface:     255 255 255;   /* hvit */
-    --ink:         243 242 251;   /* kritt */
+    --ink:         244 244 245;   /* kritt */
     --signal:      255 177 122;   /* prikk-lys */
     --signal-hi:   252 231 98;
-    --room:        230 229 246;   /* felt */
-    --room-deep:   220 218 241;   /* felt-dyp */
-    --room-ink:    18 17 29;      /* blekk som blekk på felt */
+    --room:        255 255 255;   /* felt */
+    --room-deep:   245 245 245;   /* kort */
+    --room-ink:    17 17 19;      /* blekk som blekk på felt */
     --room-signal: 184 85 26;     /* prikk */
 
     --ink-muted: 0.75;
@@ -165,10 +112,10 @@
        nabo-seksjoner 272 til 340 px på 1440. Luft er bra, men to og en halv
        gang høyden på et tjenestekort er ikke luft lenger, det er et hull.
        5,5rem gir rundt 190. */
-    --luft:   clamp(3.5rem, 6vw, 5.5rem);
+    --luft:   clamp(2.5rem, 6vw, 5.5rem);
     --rund-liten: 8px;
     --rund:   14px;
-    --rund-stor: 22px;
+    --rund-stor: 18px;
 
     /* Display-typografi. Vekten sto hardkodet som 700 i åtte regler, og 700
        er det maler bruker: alle fire målte referansene i referansebiblioteket
@@ -176,9 +123,14 @@
        Tallet står ett sted nå, så registeret kan justeres uten å lete.
        Sperringen løsnet samtidig: -4 % på en tynn vekt lukker luften mellom
        bokstavene som er hele poenget med vekten. */
-    --display-vekt: 300;
-    --display-sperre: -.022em;
-    --display-sperre-stor: -.028em;
+    /* Cabinet Grotesk i 500. Solid Media står på 400 og -4 %, men Cabinet
+       er lysere i 400 enn Geist og trenger et hakk mer vekt for å bære
+       80 px. -3 % holder bokstavene fra å kollidere i «nettsiden». */
+    --display-vekt: 500;
+    --display-sperre: -.025em;
+    --display-sperre-stor: -.035em;
+    --tekstfont: 'Switzer', system-ui, sans-serif;
+    --displayfont: 'Cabinet Grotesk', 'Switzer', system-ui, sans-serif;
     --e: cubic-bezier(.22, 1, .36, 1);
 
     /* Beholdt under de gamle navnene, brukt av eksisterende sider */
@@ -206,7 +158,7 @@
     margin: 0;
     background: var(--felt);
     color: var(--blekk);
-    font-family: 'Suisse', 'Suisse reserve', system-ui, sans-serif;
+    font-family: var(--tekstfont);
     font-weight: 400;
     font-synthesis: none;
     font-size: clamp(.9375rem, .3vw + .875rem, 1rem);
@@ -227,7 +179,7 @@
   }
   .paa-blekk :focus-visible { outline-color: var(--kritt); }
 
-  h1, h2, h3 { text-wrap: balance; }
+  h1, h2, h3 { text-wrap: balance; font-family: var(--displayfont); }
   p { text-wrap: pretty; }
 }
 
@@ -287,6 +239,7 @@
 
   .knapp {
     --slide: 101%;
+    min-height: 2.75rem; /* 44 px, regel 8 */
     position: relative; overflow: hidden; isolation: isolate;
     display: inline-flex; align-items: center; gap: .6rem;
     padding: .75rem 1.25rem; border-radius: 999px;
@@ -380,53 +333,48 @@
     z-index: 90;
   }
   .meny-liste a { padding: .55rem .7rem; border-radius: var(--rund-liten); font-size: .9375rem; color: var(--blekk-mykt); }
-  .meny-liste a:hover, .meny-liste a.aktiv { background: var(--felt); color: var(--blekk); }
+  .meny-liste a:hover, .meny-liste a.aktiv { background: var(--kort); color: var(--blekk); }
 
   /* ----------------------------------------------------------------
-     Hero. Sentrert, tungt, med ordmerket blåst opp til vannmerke bak.
+     Hero. Sentrert på hvitt, kundesidene i én rad under.
+     Målt på solidmedia.no ved 1440: overskrift 80 px, vekt 400,
+     linjehøyde 1,05, sperring -4 %. Se --display-vekt for hvorfor
+     Cabinet står på 500.
      ---------------------------------------------------------------- */
   .hero {
-    position: relative; text-align: center;
-    padding-block: clamp(3.5rem, 8vw, 7rem) clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    padding-block: clamp(3rem, 8vw, 7rem) 0;
     overflow: hidden;
   }
-  /* Flat tint, så punktumet ikke blir en oransje kloss på 200 piksler. */
-  .vannmerke {
-    position: absolute; left: 50%; top: 50%; translate: -50% -50%;
-    font-size: clamp(9rem, 27vw, 23rem); line-height: 1; letter-spacing: -.055em;
-    color: var(--felt-dyp);
-    pointer-events: none; user-select: none; z-index: 0;
-    white-space: nowrap;
-  }
-  .vannmerke i { color: inherit; }
-  .hero > .wrap { position: relative; z-index: 1; }
   .hero-etikett { margin-bottom: 1.25rem; }
   .hero h1 {
-    margin-top: 0; font-weight: var(--display-vekt);
-    font-size: clamp(2.0625rem, 8.4vw, 5.25rem);
-    line-height: 1; letter-spacing: var(--display-sperre-stor);
-    margin-inline: auto; text-wrap: balance;
+    font-weight: var(--display-vekt);
+    font-size: clamp(2.375rem, 7.4vw, 5rem);
+    line-height: 1.02; letter-spacing: var(--display-sperre-stor);
+    max-width: 16ch; margin-inline: auto; text-wrap: balance;
   }
-  /* Målet på store skjermer er tre linjer. På mobil får den bruke hele
-     bredden, ellers presses den til fem linjer og spiser skjermen. */
-  @media (min-width: 48rem) {
-    .hero h1 { max-width: 15ch; line-height: .98; letter-spacing: -.042em }
-  }
-  .hero p {
-    margin-top: 1.5rem; margin-inline: auto; max-width: 46ch;
-    /* Var 15 px under en H1 på 52 px. Kontrasten holdt (5,4:1), men
-       spranget fikk ingressen til å lese som en fotnote. */
-    color: var(--blekk-mykt); font-size: clamp(1rem, .9rem + .3vw, 1.125rem); line-height: 1.6;
+  /* Aksentfargen fra punktumet i ordmerket. 4,9:1 mot hvitt, godt over
+     3:1 for stor tekst. Kursiv er slått av: aksenten er fargen. */
+  .aksent { font-style: normal; color: var(--prikk); }
+  .hero h1 + p {
+    margin-top: 1.5rem; margin-inline: auto; max-width: 44ch;
+    color: var(--blekk-mykt); font-size: clamp(1rem, .9rem + .35vw, 1.1875rem); line-height: 1.55;
   }
   .hero-handling { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
 
-  /* Kundevurdering under knappen. Bevisst liten og dempet: den skal
-     bekrefte, ikke rope. Roper den, konkurrerer den med overskriften og
-     leser som et banner i stedet for som et faktum.
+  .hero-person {
+    margin-top: 1.75rem;
+    display: inline-flex; align-items: center; gap: .75rem;
+    text-align: left; font-size: .875rem; color: var(--blekk-mykt);
+  }
+  .hero-person img {
+    width: 2.5rem; height: 2.5rem; border-radius: 50%; flex: none;
+    object-fit: cover; object-position: 50% 20%;
+  }
+  .hero-person b { display: block; font-weight: 600; color: var(--blekk); }
 
-     Stjernene er clay, ikke fersken. Fersken faller til 1,4:1 på det
-     blekke feltet og forsvinner, som er den samme grunnen til at
-     punktumet i ordmerket har to verdier. */
+  /* Kundevurdering under knappen. Bevisst liten og dempet: den skal
+     bekrefte, ikke rope. */
   .vurdering {
     margin-top: 1.25rem;
     display: flex; align-items: center; justify-content: center;
@@ -447,123 +395,43 @@
   }
   .stjerner svg.fylt { fill: var(--prikk); }
 
-  /* Navngitt kundeuttalelse i heroen. Sitatet skal lese som en stemme,
-     ikke som en påstand fra siden selv, derfor antikva og ikke grotesk.
-     Samme font som det store sitatkortet lenger nede, bare mye mindre,
-     så de to leser som samme slags bevis i to størrelser. */
-  .hero-bevis {
-    margin: 1.5rem auto 0;
-    max-width: 44ch;
-    display: grid; gap: .5rem;
+  /* Raden er bredere enn vinduet og sentrert med justify-content, så
+     overflow: hidden på .hero beskjærer begge kanter likt. Høyden er
+     fast og bredden følger bildeformatet. */
+  .hero-galleri {
+    margin-top: clamp(2rem, 6vw, 4.5rem);
+    display: flex; justify-content: center; gap: clamp(.625rem, 1.2vw, 1rem);
+    height: clamp(11rem, 27vw, 24rem);
   }
-  .hero-bevis blockquote {
-    font-size: clamp(1rem, 1.8vw, 1.1875rem);
-    line-height: 1.4; letter-spacing: -.012em;
-    color: var(--blekk);
-    text-wrap: balance;
+  .hero-galleri img {
+    height: 100%; width: auto; flex: none;
+    border-radius: var(--rund); object-fit: cover;
+    background: var(--kort);
   }
-  .hero-bevis figcaption { font-size: .8125rem; color: var(--blekk-mykt); }
-  .hero-bevis a {
-    color: inherit;
-    border-bottom: 1px solid var(--felt-kant);
-    transition: border-color .2s var(--e);
-  }
-  .hero-bevis a:hover { border-color: var(--blekk-mykt); }
+
+  .knapp-tom { background: var(--hvit); color: var(--blekk); border-color: var(--felt-kant); }
+  .knapp-tom::before { background: var(--kort); }
+  .knapp-tom:hover { color: var(--blekk); }
 
   /* ----------------------------------------------------------------
-     Hero med gallerivegg (Vegg.jsx). Tekst til venstre, kundesidene i
-     tre rullende kolonner til høyre. Under 64rem står veggen under
-     teksten, som før sentrert.
-
-     Proporsjonene er målt på en referanse 30. september 2026: rutenett
-     1fr / 1.06fr, 20 px mellom flisene (10 px på mobil), maske som
-     toner ut de øverste 9 % og de nederste 12 %, og rundt 9 px i
-     sekundet. Her er halve sporet 982 px ved 1440, så 108 s gir 9,1 px
-     i sekundet. Tre ulike varigheter, og midtkolonnen går motsatt vei,
-     så kolonnene aldri går i takt.
+     Om meg. Portrett i 3:4 ved siden av ett langt utsagn.
      ---------------------------------------------------------------- */
-  .hero-vegg { padding-bottom: 0; }
-  .vegg {
-    --vegg-luft: .625rem;
-    position: relative; isolation: isolate;
-    height: 22rem; margin-top: 2.5rem;
+  .ommeg { display: grid; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  @media (min-width: 52rem) { .ommeg { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+  .ommeg-bilde { border-radius: var(--rund-stor); overflow: hidden; background: var(--kort); aspect-ratio: 3 / 4; }
+  /* På mobil er et helt 3:4-portrett nesten en skjermhøyde. Der får det
+     16:10 og beskjæres rundt ansiktet. */
+  @media (max-width: 51.99rem) { .ommeg-bilde { aspect-ratio: 16 / 10; } }
+  .ommeg-bilde img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+  .utsagn {
+    margin-top: 1.25rem;
+    font-weight: var(--display-vekt); font-size: clamp(1.75rem, 3.6vw, 3rem);
+    line-height: 1.1; letter-spacing: var(--display-sperre); text-wrap: pretty;
   }
-  @media (min-width: 64rem) {
-    .hero-vegg { padding-block: 0; text-align: left; }
-    .hero-vegg > .wrap {
-      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.06fr);
-      /* minmax(0, 1fr), ikke auto: en auto-rad tar høyden til sporene i
-         veggen, flere tusen piksler, og teksten sentreres i den. */
-      grid-template-rows: minmax(0, 1fr);
-      gap: clamp(2rem, 4vw, 3.5rem); align-items: center;
-      height: clamp(40rem, calc(100svh - 7.25rem), 47.5rem);
-    }
-    /* Tre setninger, tre linjer. Den lengste, «Webdesign for bedrifter.»,
-       måler 9,55 ganger fontstørrelsen: 535 px ved 56 px, målt. Kolonnen
-       er 524 px ved 1440, så taket er 3.25rem (497 px). */
-    .hero-vegg h1 { font-size: clamp(2.25rem, 3.6vw, 3.25rem); margin-inline: 0; max-width: none; }
-    .hero-vegg h1 span { display: block; }
-    .hero-vegg p, .hero-vegg .hero-bevis { margin-inline: 0; }
-    .hero-vegg .hero-handling { justify-content: flex-start; }
-    .vegg { --vegg-luft: 1.25rem; height: 100%; margin-top: 0; }
-  }
-  /* .vurdering står i sin egen blokk med vilje. `if (!vurdering)` i App.jsx
-     leses av Tailwind som klassen !vurdering, og den lager da en
-     !important-kopi av hele @media-blokken regelen står i. Sto den sammen
-     med reglene over, ble kopiene av dem stående uten velger, og bygget
-     ga tre css-syntax-error. */
-  @media (min-width: 64rem) {
-    .hero-vegg .vurdering { justify-content: flex-start; }
-  }
-  .vegg-kolonner {
-    height: 100%;
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--vegg-luft);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0, #000 9%, #000 88%, transparent 100%);
-  }
-  .vegg-kolonne { overflow: hidden; }
-  /* Sporet har flisene to ganger og flyttes halve høyden sin. Derfor
-     margin-bottom på flisa og ikke gap på sporet: med gap mangler det
-     siste mellomrommet, og sløyfen hopper en halv luft ved omstart. */
-  .vegg-spor {
-    display: flex; flex-direction: column;
-    animation: vegg-opp 108s linear infinite; animation-delay: -12s;
-    will-change: transform;
-  }
-  .vegg-kolonne:nth-child(2) .vegg-spor { animation-name: vegg-ned; animation-duration: 120s; animation-delay: -29s; }
-  .vegg-kolonne:nth-child(3) .vegg-spor { animation-duration: 100s; animation-delay: -52s; }
-  .vegg.er-pauset .vegg-spor, .vegg.er-ute .vegg-spor { animation-play-state: paused; }
-  @keyframes vegg-opp { to { transform: translate3d(0, -50%, 0); } }
-  @keyframes vegg-ned { from { transform: translate3d(0, -50%, 0); } }
-
-  /* Flisa er et ferdig bilde med enheten fotografert inn. Bakgrunnen er
-     bare det som vises til bildet er lastet. */
-  .flis {
-    flex: none; display: block; overflow: hidden; aspect-ratio: 4 / 5;
-    margin-bottom: var(--vegg-luft); border-radius: var(--rund);
-    background: var(--felt-dyp);
-  }
-  .flis-kvadrat { aspect-ratio: 1; }
-  .flis-hoy { aspect-ratio: 2 / 3; }
-  .flis img { display: block; width: 100%; height: 100%; object-fit: cover; }
-
-  .vegg-pause {
-    position: absolute; right: 0; bottom: .75rem; z-index: 1;
-    min-height: 2.75rem; padding: 0 1rem; border-radius: 99px;
-    background: var(--hvit); border: 1px solid var(--felt-kant);
-    color: var(--blekk-mykt); font-size: .8125rem; cursor: pointer;
-    transition: color .2s var(--e), border-color .2s var(--e);
-  }
-  .vegg-pause:hover { color: var(--blekk); border-color: var(--blekk-mykt); }
-  @media (prefers-reduced-motion: reduce) {
-    .vegg-spor { animation: none; }
-    .vegg-pause { display: none; }
-  }
-
-  .statuslinje {
-    display: flex; align-items: center; justify-content: center; gap: 1rem;
-    padding-block: 1.25rem clamp(3rem, 6vw, 5rem);
-  }
+  /* 4,6:1 mot hvitt. Lysere enn dette og andre halvdel faller under
+     kravet for stor tekst på dårlige skjermer. */
+  .utsagn span { color: #75757d; }
+  .ommeg-lenke { margin-top: 2rem; }
 
   /* Undersidetopp. Kort blekt band, ikke full skjermhøyde. */
   .sidetopp { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4.5rem); }
@@ -707,7 +575,7 @@
   }
   .ramme-topp {
     display: flex; align-items: center; gap: .35rem;
-    padding: .55rem .8rem; background: var(--felt);
+    padding: .55rem .8rem; background: var(--kort);
     border-bottom: 1px solid var(--felt-kant);
   }
   .ramme-topp i { width: .4375rem; height: .4375rem; border-radius: 50%; background: var(--felt-kant); flex: none; }
@@ -764,22 +632,6 @@
      uendret, så tastaturrekkefølgen er den samme. */
   .tjeneste-rad { display: grid; gap: clamp(1.75rem, 3vw, 2.5rem); }
 
-  /* Forsidens tjenester: en linjert liste med navnet i egen spalte, så
-     øyet kan skumme navnene ovenfra og ned. Kortgitteret over brukes
-     fortsatt på /om. */
-  .tjenesteliste { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--felt-kant); }
-  .tjenesteliste li {
-    display: grid; gap: .4rem 2rem; padding-block: 1.25rem;
-    border-bottom: 1px solid var(--felt-kant);
-  }
-  @media (min-width: 48rem) {
-    .tjenesteliste li { grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); align-items: baseline; padding-block: 1.6rem; }
-  }
-  .tjenesteliste h3 {
-    font-weight: var(--display-vekt); font-size: clamp(1.3125rem, 2vw, 1.75rem);
-    line-height: 1.15; letter-spacing: var(--display-sperre);
-  }
-  .tjenesteliste p { color: var(--blekk-mykt); max-width: 52ch; text-wrap: pretty; }
   .tjeneste-side {
     display: flex; flex-wrap: wrap; align-items: center;
     justify-content: space-between; gap: 1rem;
@@ -788,7 +640,7 @@
   @media (min-width: 40rem) { .tjenester { grid-template-columns: 1fr 1fr } }
   @media (min-width: 64rem) { .tjenester { grid-template-columns: repeat(3, 1fr) } }
   .tjeneste {
-    background: var(--hvit); border-radius: var(--rund);
+    background: var(--kort); border-radius: var(--rund);
     padding: clamp(1.25rem, 1.9vw, 1.65rem);
     display: grid; gap: .45rem; align-content: start;
     border: 1px solid transparent;
@@ -805,6 +657,13 @@
     stroke: currentColor; fill: none; stroke-width: 1.5;
   }
   .tjeneste h3 { font-weight: 600; font-size: 1.0625rem; letter-spacing: -.012em; }
+  /* Forsidens tre kort: større tittel og mer luft, som solidmedia.no. */
+  .tjenester-forside { list-style: none; padding: 0; margin: 0; }
+  /* Side om side også på 390: to korte kort stablet kostet en halv
+     skjermhøyde for to setninger. */
+  .tjenester-forside { grid-template-columns: 1fr 1fr; }
+  .tjenester-forside .tjeneste { padding: clamp(1.125rem, 2.5vw, 2rem); gap: clamp(.35rem, 1vw, .75rem); }
+  .tjenester-forside .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: var(--display-sperre); }
   .tjeneste p { color: var(--blekk-mykt); font-size: .9375rem; text-wrap: pretty; }
 
   /* ----------------------------------------------------------------
@@ -822,8 +681,7 @@
      det fra resten. Mørkt finnes etter dette to steder: bunnteksten og
      fylte knapper. */
   .sitatkort {
-    background: var(--hvit); color: var(--blekk);
-    border: 1px solid var(--felt-kant);
+    background: var(--kort); color: var(--blekk);
     border-radius: var(--rund-stor);
     padding: clamp(1.75rem, 4vw, 3.25rem);
     display: grid; gap: clamp(1.5rem, 3vw, 2.25rem);
@@ -854,7 +712,7 @@
     display: grid; place-items: center; cursor: pointer;
     transition: background .2s var(--e), border-color .2s var(--e);
   }
-  .sitat-styring button:hover { background: var(--felt); border-color: var(--blekk-mykt); }
+  .sitat-styring button:hover { background: var(--felt-dyp); border-color: var(--blekk-mykt); }
   .sitat-teller { font-size: .8125rem; color: var(--blekk-mykt); font-variant-numeric: tabular-nums; }
   .sitatkort blockquote {
     font-weight: 400;
@@ -878,9 +736,21 @@
   .omtaler-lenke:hover { text-decoration-color: var(--blekk); }
   .omtaler-rad { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
   @media (min-width: 52rem) { .omtaler-rad { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  @media (max-width: 51.99rem) { .omtale:nth-child(n+3) { display: none; } }
+  /* Mobil: alle tre i en sveipbar rad, ett kort og en flik av det neste
+     synlig. To stablede kort tok 500 px og skjulte det tredje; raden tar
+     ett korts høyde og viser alle (regel 2: rute, ikke ramse opp). */
+  @media (max-width: 51.99rem) {
+    .omtaler-rad {
+      grid-auto-flow: column; grid-auto-columns: 86%;
+      overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+      margin-inline: calc(var(--kant) * -1); padding-inline: var(--kant);
+      scroll-padding-inline: var(--kant); scrollbar-width: none;
+    }
+    .omtaler-rad::-webkit-scrollbar { display: none; }
+    .omtale { scroll-snap-align: start; }
+  }
   .omtale {
-    background: var(--hvit); border: 1px solid var(--felt-kant); border-radius: var(--rund-stor);
+    background: var(--kort); border-radius: var(--rund-stor);
     padding: clamp(1.5rem, 2.5vw, 2rem);
     display: grid; gap: 1.5rem; align-content: space-between;
   }
@@ -894,7 +764,7 @@
   .sitat-kilde .initial {
     width: 2.75rem; height: 2.75rem; border-radius: 50%; flex: none;
     display: grid; place-items: center;
-    background: var(--felt); border: 1px solid var(--felt-kant);
+    background: var(--hvit);
     font-weight: 600; font-size: .9375rem;
   }
   .sitat-kilde .navn { font-size: .9375rem; }
@@ -949,7 +819,7 @@
   /* Faktapanelet betjener den som skanner, den som kjøper og intern
      lenking samtidig. */
   .fakta {
-    background: var(--felt); border-radius: var(--rund-stor);
+    background: var(--kort); border-radius: var(--rund-stor);
     padding: clamp(1.5rem, 3vw, 2.25rem);
     display: grid; gap: clamp(1.5rem, 3vw, 2.5rem);
   }
@@ -1019,6 +889,17 @@
     }
   }
   .foretter-kilde { font-size: .8125rem; color: var(--blekk-mykt); max-width: 62ch; }
+
+  /* Det anbefalte priskortet står i svart. Kortet bruker Tailwind-fargene
+     room-deep, room-ink og surface, så det holder å snu tripplene her:
+     teksten blir hvit, knappen blir hvit med svart tekst, og ingen klasse
+     i Priser.jsx trenger en svart-variant (regel 4 i byggereglene). */
+  .prisvalg-svart {
+    --room-deep: 17 17 19;
+    --room-ink: 255 255 255;
+    --surface: 17 17 19;
+  }
+  .prisvalg-svart :focus-visible { outline-color: var(--kritt); }
 
   /* ----------------------------------------------------------------
      Portrett og signatur
