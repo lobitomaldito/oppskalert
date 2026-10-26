@@ -42,7 +42,7 @@ const rader = [
   ['Håndbygd nettside, uten tunge plugins', true, true, true],
   ['Søkemotor-grunnoppsett', true, true, true],
   ['Tekstene skrevet om for Google og AI-søk', false, true, true],
-  ['Admin-panel, endre tekst og bilder selv', false, true, true],
+  ['Admin-panel, endre tekst og bilder selv', true, true, true],
   ['Du eier alle filene', true, true, 'Etter 12 måneder'],
   ['Hosting og SSL', true, true, true],
   ['Serviceavtale: endringer, backup og support', '450 kr/mnd', '450 kr/mnd', 'Inkludert i 12 måneder'],
