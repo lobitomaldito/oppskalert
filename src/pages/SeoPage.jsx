@@ -91,8 +91,8 @@ const Innhold = () => {
             holder til.
           </p>
           <p>
-            Om det virker, kan måles. Har du SEO-abonnementet, stiller jeg ChatGPT, Google AI
-            og Copilot de samme fem spørsmålene hver måned, de kundene dine faktisk stiller, og
+            Om det virker, kan måles. Har du SEO-abonnementet, stiller jeg ChatGPT og Google AI
+            de samme fem spørsmålene hver måned, de kundene dine faktisk stiller, og
             skriver ned om du ble nevnt og hvem som ble nevnt i stedet.
           </p>
         </Avsnitt>
@@ -161,7 +161,7 @@ const maanedlig = [
   },
   {
     navn: 'AI-sjekk',
-    tekst: 'Fem spørsmål kundene dine stiller, til ChatGPT, Google AI og Copilot. Du får se om du ble nevnt, og hvem som ble nevnt i stedet.',
+    tekst: 'Fem spørsmål kundene dine stiller, til ChatGPT og Google AI. Du får se om du ble nevnt, og hvem som ble nevnt i stedet.',
   },
   {
     navn: 'En ny side eller artikkel',

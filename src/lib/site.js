@@ -194,7 +194,7 @@ export const driftNivaer = [
     inkludert: [
       'Alt i serviceavtalen, pluss:',
       'Månedlig rapport med vanlige ord: hvem som fant deg, og på hva',
-      'AI-sjekk: om ChatGPT, Google AI og Copilot nevner deg',
+      'AI-sjekk: om ChatGPT og Google AI nevner deg',
       'En ny side eller artikkel i måneden',
       'Retting av det rapporten finner',
     ],
