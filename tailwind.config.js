@@ -39,9 +39,9 @@ export default {
         // sans og display peker derfor på samme familie, så de øvrige
         // rutene som bruker font-display eller font-body treffer riktig
         // typografi uten at hver side må skrives om.
-        body: ['Suisse', 'system-ui', 'sans-serif'],
-        sans: ['Suisse', 'system-ui', 'sans-serif'],
-        display: ['Suisse', 'system-ui', 'sans-serif'],
+        body: ['Suisse', 'Suisse reserve', 'system-ui', 'sans-serif'],
+        sans: ['Suisse', 'Suisse reserve', 'system-ui', 'sans-serif'],
+        display: ['Suisse', 'Suisse reserve', 'system-ui', 'sans-serif'],
         // GT Sectra Fine slipper til to steder: sitatet og pristallene.
         serif: ['SectraFine', 'Georgia', 'serif'],
         // Ordmerket, og kun det. Plus Jakarta Sans 800.
