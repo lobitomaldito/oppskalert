@@ -49,6 +49,47 @@
   font-display: swap;
 }
 
+/* Reservefont med Suisses mål. Den prerendrede H1-en males med reserven
+   før Suisse er lastet. Når React bygger siden på nytt, blir H1 en ny node
+   i Suisse, og var den større, telte nettleseren den som ny LCP, flere
+   sekunder senere. Med samme bredde blir LCP stående på første maling.
+   Tallene er regnet ut fra fontfilene (snittbredde mot Arial på ekte
+   tekst fra siden, og hhea for høyden). Byttes Suisse-filene, må de
+   regnes ut på nytt.
+
+   300 er H1-vekten og står på 99,5 % i stedet for utregnede 97,53 %.
+   Målt ved 360 til 1920 px: under 99 % ble den bredeste H1-linjen
+   smalere i reserven enn i Suisse, og LCP flyttet seg igjen. Med 99,5 %
+   er reserven minst like stor ved alle breddene. Arial finnes ikke på
+   Android, der gjelder system-ui som før. */
+@font-face {
+  font-family: 'Suisse reserve';
+  src: local('Arial'), local('ArialMT');
+  font-weight: 300;
+  size-adjust: 99.5%;
+  ascent-override: 99.09%;
+  descent-override: 31.26%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Suisse reserve';
+  src: local('Arial'), local('ArialMT');
+  font-weight: 400;
+  size-adjust: 102.76%;
+  ascent-override: 90.99%;
+  descent-override: 18.98%;
+  line-gap-override: 2.72%;
+}
+@font-face {
+  font-family: 'Suisse reserve';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 600 700;
+  size-adjust: 103.91%;
+  ascent-override: 89.98%;
+  descent-override: 18.77%;
+  line-gap-override: 2.69%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -150,7 +191,7 @@
     margin: 0;
     background: var(--felt);
     color: var(--blekk);
-    font-family: 'Suisse', system-ui, sans-serif;
+    font-family: 'Suisse', 'Suisse reserve', system-ui, sans-serif;
     font-weight: 400;
     font-synthesis: none;
     font-size: clamp(.9375rem, .3vw + .875rem, 1rem);
