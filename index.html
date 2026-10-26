@@ -38,12 +38,13 @@
     <meta name="twitter:description" content="Jeg bygger lynraske, konverteringsoptimaliserte nettsider for norske bedrifter. Gratis utkast før du betaler en krone. Ingen binding." />
     <meta name="twitter:image" content="https://oppskalert.no/oppskalert%20fav.png" />
 
-    <!-- Brødtekstfonten og display-fonten brukes begge over folden. Uten
-         preload rekker nettleseren å male ett bilde med fallback-fonten
-         først, som gir en synlig ombrekking idet fontene lander. Alle
-         fonter er selvhostet i public/fonts/, se src/index.css. -->
-    <link rel="preload" href="/fonts/suisse-intl-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/suisse-intl-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- Vektene som står over folden på alle sidene: 300 er H1 og ingress
+         (LCP-elementet), 600 er knappen i toppen. 400 (menyen) og 700
+         (/priser, /blogg) lastes uten preload og vises i «Suisse reserve»
+         med samme mål til de lander. Alle fonter er selvhostet i
+         public/fonts/, se src/index.css. -->
+    <link rel="preload" href="/fonts/suisse-intl-300-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/suisse-intl-600-normal.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/PlusJakartaSans-800.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Microsoft Clarity: heatmaps og session recordings -->
