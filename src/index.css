@@ -7,10 +7,9 @@
    ingen andre steder. Logoen står i sitt opprinnelige format:
    «oppskalert» med liten forbokstav og punktumet i signalfargen.
 
-   Suisse Int'l bærer alt annet. GT Sectra Fine dukker opp to steder, i
-   sitatet og i pristallene, og aldri mer.
+   Suisse Int'l bærer alt annet, også sitatene.
 
-   LISENSSPERRE: Suisse Int'l og GT Sectra Fine er ikke lisensiert for
+   LISENSSPERRE: Suisse Int'l er ikke lisensiert for
    kommersiell bruk i filene som ligger her. Se FONTLISENS.md i roten.
    Branchen skal ikke deployes før lisensene er kjøpt og filene byttet.
    ================================================================== */
@@ -45,20 +44,6 @@
 @font-face {
   font-family: 'Suisse';
   src: url('/fonts/suisse-intl-700-normal.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'SectraFine';
-  src: url('/fonts/gt-sectra-fine-300-normal.woff2') format('woff2');
-  font-weight: 300 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'SectraFine';
-  src: url('/fonts/gt-sectra-fine-700-normal.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -416,7 +401,6 @@
     display: grid; gap: .5rem;
   }
   .hero-bevis blockquote {
-    font-family: 'SectraFine', Georgia, serif;
     font-size: clamp(1rem, 1.8vw, 1.1875rem);
     line-height: 1.4; letter-spacing: -.012em;
     color: var(--blekk);
@@ -755,8 +739,7 @@
   .tjeneste p { color: var(--blekk-mykt); font-size: .9375rem; text-wrap: pretty; }
 
   /* ----------------------------------------------------------------
-     Sitat. Eneste sted GT Sectra Fine får slippe til, sammen med
-     pristallene.
+     Sitat.
      ---------------------------------------------------------------- */
   /* Padding-toppen sto på 0. Da begynner feltet nøyaktig der kortet
      begynner, og kortet ser limt til fargeskiftet ut i stedet for å ligge
@@ -805,7 +788,7 @@
   .sitat-styring button:hover { background: var(--felt); border-color: var(--blekk-mykt); }
   .sitat-teller { font-size: .8125rem; color: var(--blekk-mykt); font-variant-numeric: tabular-nums; }
   .sitatkort blockquote {
-    font-family: 'SectraFine', Georgia, serif; font-weight: 400;
+    font-weight: 400;
     font-size: clamp(1.25rem, 2.9vw, 2rem);
     line-height: 1.34; letter-spacing: -.018em;
     /* 32ch etterlot nesten halve kortet tomt på 1440, fordi kortet ligger
@@ -833,7 +816,7 @@
     display: grid; gap: 1.5rem; align-content: space-between;
   }
   .omtale blockquote {
-    font-family: 'SectraFine', Georgia, serif; font-weight: 400;
+    font-weight: 400;
     font-size: clamp(1.125rem, 1.5vw, 1.3125rem); line-height: 1.4; letter-spacing: -.012em;
     text-wrap: pretty;
   }
