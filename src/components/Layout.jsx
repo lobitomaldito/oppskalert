@@ -4,7 +4,8 @@ import { kontakt, navLenker, ruter } from '../lib/site';
 import { RUTE_VANLIGE_SPORSMAL } from '../lib/populaere-sok';
 import { RUTE_ORDLISTE } from '../lib/ordliste';
 import { cn } from '../lib/utils';
-import { PilOpp } from './Ikon';
+import { LinkedIn, PilOpp } from './Ikon';
+import { track } from '../lib/analytics';
 
 /* Uten dette beholder React Router scrollposisjonen mellom ruter, så du
    lander midt på prissiden når du klikker deg dit fra bunnen av forsiden.
@@ -126,6 +127,16 @@ export const Footer = ({ utenCta = false }) => (
           <p className="navn">{kontakt.navn}</p>
           <p className="rolle">Grunnlegger, Oppskalert</p>
         </div>
+        <a
+          className="signatur-li"
+          href={kontakt.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${kontakt.navn} på LinkedIn (åpner i ny fane)`}
+          onClick={() => track('linkedin_clicked', { sted: 'bunn' })}
+        >
+          <LinkedIn />
+        </a>
       </div>
 
       <div className="flex flex-wrap gap-x-14 gap-y-8 pt-10 font-body text-sm">
