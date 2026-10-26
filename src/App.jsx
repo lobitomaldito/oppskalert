@@ -9,7 +9,8 @@ import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
-import { Pause, PilHoyre, PilOpp, SokSjekk, Skjermer, Spill } from './components/Ikon';
+import { LinkedIn, Pause, PilHoyre, PilOpp, SokSjekk, Skjermer, Spill } from './components/Ikon';
+import { track } from './lib/analytics';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
    linje 693 til 797, se inspirasjon/demo-studio-mal.md). Alt CSS ligger
@@ -181,6 +182,15 @@ const OmMegSeksjon = () => {
           </h2>
           <p className="ommeg-lenke">
             <Link className="knapp knapp-tom" to={ruter.om}>Mer om meg <PilHoyre className="pil" /></Link>
+            <a
+              className="knapp knapp-tom"
+              href={kontakt.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track('linkedin_clicked', { sted: 'forside' })}
+            >
+              <LinkedIn /> LinkedIn<span className="skjult"> (åpner i ny fane)</span>
+            </a>
           </p>
         </div>
       </div>

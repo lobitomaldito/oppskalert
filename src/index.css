@@ -461,7 +461,7 @@
   /* 4,6:1 mot hvitt. Lysere enn dette og andre halvdel faller under
      kravet for stor tekst på dårlige skjermer. */
   .utsagn span { color: #75757d; }
-  .ommeg-lenke { margin-top: 2rem; }
+  .ommeg-lenke { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; }
 
   /* Undersidetopp. Kort blekt band, ikke full skjermhøyde. */
   .sidetopp { padding-block: clamp(2.5rem, 5vw, 4rem) clamp(3rem, 6vw, 4.5rem); }
@@ -953,6 +953,16 @@
   .signatur .navn { font-size: .9375rem; }
   .signatur .rolle { font-size: .8125rem; color: var(--blekk-mykt); }
   .paa-blekk .signatur .rolle { color: var(--kritt-mykt); }
+  /* LinkedIn ved navnet i bunnen. 44 x 44 trykkflate rundt et 20 px ikon. */
+  .signatur-li {
+    display: grid; place-items: center; width: 2.75rem; height: 2.75rem;
+    border-radius: 50%; border: 1px solid var(--blekk-kant);
+    font-size: 1.25rem; color: var(--kritt-mykt);
+    transition: color .2s var(--e), border-color .2s var(--e);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .signatur-li:hover { color: var(--kritt); border-color: var(--kritt-mykt); }
+  }
 
   /* ----------------------------------------------------------------
      Spørsmål. details/summary, ingen JavaScript.

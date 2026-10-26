@@ -51,3 +51,15 @@ export const Pause = (p) => (
 export const Spill = (p) => (
   <Svg {...p}><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></Svg>
 );
+
+// tabler/outline/brand-linkedin. Lucide har ingen merkeikoner. Tabler
+// outline har samme strek (2) og runde ender, så det står likt ved siden av.
+export const LinkedIn = (p) => (
+  <Svg {...p}>
+    <path d="M8 11v5" />
+    <path d="M8 8v.01" />
+    <path d="M12 16v-5" />
+    <path d="M16 16v-3a2 2 0 1 0 -4 0" />
+    <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" />
+  </Svg>
+);
