@@ -31,7 +31,12 @@ const escapeXml = (s) =>
 export default async function handler(req, res) {
   const urls = [
     ...STATIC_PATHS.map((path) => ({ loc: `${SITE_URL}${path}`, lastmod: null })),
-    ...articles.map((a) => ({ loc: `${SITE_URL}/blogg/${a.slug}`, lastmod: a.publishDate })),
+    /* SEO-rutinen 26. okt 2026: lastmod var alltid publishDate. Artikkelen
+       /blogg/hvordan-lage-nettside ble skrevet om 28. sep, men sitemapen sa
+       fortsatt 13. aug, og GSC viste sist crawlet 14. aug. Fire uker etter
+       omskrivingen fikk FAQ-siden 147 av 162 visninger på «lage nettside»
+       (pos 50,8), artikkelen 2. Google hadde aldri sett de fem stegene. */
+    ...articles.map((a) => ({ loc: `${SITE_URL}/blogg/${a.slug}`, lastmod: a.updatedDate || a.publishDate })),
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

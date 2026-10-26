@@ -35,6 +35,7 @@ export default {
   title: "Hva er en responsiv nettside? Test din selv",
   description: "En responsiv nettside tilpasser seg skjermen av seg selv. Slik ser du om din gjør det, med en test på egen telefon som tar ett minutt.",
   publishDate: "2026-08-10",
+  updatedDate: "2026-10-01",
   keywords: ["responsiv nettside", "mobiltilpasset nettside"],
   hero: "",
   content: `**Kort svar:** En responsiv nettside endrer oppsettet etter skjermen den vises på. Det finnes én side for både mobil og PC, og teksten kan leses uten å zoome. Lenger ned viser jeg hvordan du sjekker din egen på ett minutt.

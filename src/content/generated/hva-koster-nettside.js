@@ -3,6 +3,7 @@ export default {
   title: "Hva koster en nettside i Norge i 2026? Her er tallene mine",
   description: "Hva koster en nettside i Norge i 2026? Her er de ekte prisene mine per nivå, fra enkel landingsside til stor struktur, uten et vagt «fra»-tall.",
   publishDate: "2026-08-20",
+  updatedDate: "2026-10-17",
   keywords: ["hva koster en nettside", "pris på nettside", "nettside til bedrift pris"],
   hero: "",
   content: `## Hvorfor "hva koster en nettside" ikke har ett svar
