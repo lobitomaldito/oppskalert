@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell } from './components/Layout';
@@ -80,12 +81,12 @@ const Vurdering = () => {
 /* Kundesidene i én rad under heroen, slik solidmedia.no viser
    kundecasene sine rett under folden. Bildene er de ferdige flisene i
    public/websider/vegg (laget av scripts/vegg-mockups.py), med det ekte
-   skjermbildet av kundens side på skjermen. Raden står stille: den
-   rullende galleriveggen som sto her til 26.10.2026 trengte pauseknapp
-   og observer, og en stille rad sier det samme.
+   skjermbildet av kundens side på skjermen.
 
-   Raden er bredere enn skjermen og sentrert, så kantene beskjæres. På
-   390 ser du de to midterste, på 1440 alle seks. Dekor for skjermlesere:
+   Raden ruller sakte mot venstre (ønsket av Aleksander 26.10.2026). Sporet
+   har bildene to ganger og flyttes halve bredden sin, så sløyfen er sømløs
+   uten JavaScript. JavaScript styrer bare pauseknappen: WCAG 2.2.2 krever
+   at bevegelse som varer over fem sekunder kan stoppes. Dekor for skjermlesere:
    knappen «Se hva jeg har laget» rett over går til /arbeid, der de samme
    prosjektene står med navn og lenke.
 
@@ -100,21 +101,29 @@ const GALLERI = [
   ['appstart-pc', 1],
 ];
 
-const HeroGalleri = () => (
-  <div className="hero-galleri" aria-hidden="true">
-    {GALLERI.map(([fil, forhold]) => (
-      <img
-        key={fil}
-        src={`/websider/vegg/${fil}.webp`}
-        alt=""
-        width="480"
-        height={Math.round(480 / forhold)}
-        style={{ aspectRatio: forhold }}
-        decoding="async"
-      />
-    ))}
-  </div>
-);
+const HeroGalleri = () => {
+  const [pause, setPause] = useState(false);
+  return (
+    <div className={pause ? 'hero-galleri er-pauset' : 'hero-galleri'}>
+      <div className="galleri-spor" aria-hidden="true">
+        {[...GALLERI, ...GALLERI].map(([fil, forhold], i) => (
+          <img
+            key={i}
+            src={`/websider/vegg/${fil}.webp`}
+            alt=""
+            width="480"
+            height={Math.round(480 / forhold)}
+            style={{ aspectRatio: forhold }}
+            decoding="async"
+          />
+        ))}
+      </div>
+      <button type="button" className="galleri-pause" aria-pressed={pause} onClick={() => setPause((p) => !p)}>
+        {pause ? 'Spill av' : 'Pause'}
+      </button>
+    </div>
+  );
+};
 
 const Hero = () => {
   const container = useReveal(100);
@@ -185,9 +194,9 @@ const OmMegSeksjon = () => {
 const SitatSeksjon = () => {
   const container = useReveal(100);
   return (
-    /* Uten egen luft: seksjonene over og under står på samme felt og har
-       luften sin allerede. Med begge ble hullet over 250 px på 1440. */
-    <section ref={container} className="sitatblokk" style={{ paddingBlock: 0 }}>
+    /* Eget grått bånd med hvite kort, så omtalene leses som en egen del
+       av siden (ønsket av Aleksander 26.10.2026). */
+    <section ref={container} className="sitatblokk">
       <div className="wrap"><Sitatkort /></div>
     </section>
   );
