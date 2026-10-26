@@ -91,6 +91,11 @@ Innholdet ble hentet live fra Opinlys API. Det er migrert ut. Kildene er:
 - `src/content/generated/*.js` for genererte og migrerte, registrert i
   `index.js` i samme mappe
 
+**Endrer du innholdet i en artikkel, sett `updatedDate: "ÅÅÅÅ-MM-DD"` ved siden av
+`publishDate`.** Sitemapens `lastmod` og `dateModified` i schemaet leses derfra.
+Uten den står `lastmod` på publiseringsdatoen, og Google ser ingen grunn til å
+crawle siden på nytt (målt 26. oktober 2026).
+
 `scripts/migrate-opinly.mjs` er engangsskriptet som hentet dem ut. Det virker
 fortsatt så lenge abonnementet lever, men henter kun **publiserte** innlegg.
 

@@ -264,6 +264,7 @@ const LocalArticle = ({ article }) => {
     description: article.description,
     ...(heroUrl ? { image: heroUrl } : {}),
     datePublished: article.publishDate,
+    dateModified: article.updatedDate || article.publishDate,
     author: { '@type': 'Organization', name: 'Oppskalert' },
     publisher: {
       '@type': 'Organization',

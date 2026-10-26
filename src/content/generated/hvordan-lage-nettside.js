@@ -9,6 +9,7 @@ export default {
   title: "Lage nettside: 5 steg, selv eller med hjelp",
   description: "Slik lager du nettside i fem steg: domene, mål, tekst, bygging og måling. Pluss timene det tar selv, og når det lønner seg å sette det bort.",
   publishDate: "2026-08-13",
+  updatedDate: "2026-09-28",
   keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
   hero: "",
   content: `## Tre veier til en nettside i dag
