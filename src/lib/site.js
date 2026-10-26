@@ -74,7 +74,7 @@ export const prismodeller = [
     tagline: 'En ny og rask side med innholdet du har i dag.',
     passerDeg: [
       'Du trenger en enkel side, og har innholdet klart',
-      'Du endrer sjelden noe på siden',
+      'Teksten du har i dag gjør jobben',
       'Du vil bli ferdig og videre',
     ],
     inkludert: [
@@ -82,6 +82,7 @@ export const prismodeller = [
       'Tilpasset mobil, med kontaktskjema',
       'SEO-grunnoppsett fra dag én',
       'Hosting og SSL inkludert, ingen månedspris',
+      'Eget redigeringspanel: endre tekst og bilder selv',
       'Alle filer overlevert, du eier dem',
     ],
     fremhevet: false,
@@ -92,16 +93,14 @@ export const prismodeller = [
     fra: '12 900',
     enhet: 'kr',
     periode: 'engangspris, fast før jeg begynner',
-    tagline: 'Tekster skrevet for Google, og du endrer siden selv.',
+    tagline: 'Tekster skrevet for Google og AI-søk, så du blir funnet.',
     passerDeg: [
       'Du vil bli funnet når noen søker på det du gjør',
-      'Du vil endre tekst og bilder uten å ringe noen',
       'Du trenger noe mer enn en vanlig side',
     ],
     inkludert: [
       'Alt i Enkel, pluss:',
       'Tekstene skrevet om for Google og AI-søk',
-      'Eget redigeringspanel: endre tekst og bilder selv',
       'Tillegg som priskalkulator eller booking etter behov',
     ],
     fremhevet: false,
@@ -310,7 +309,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'En enkel side med innholdet du har i dag koster 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google og et redigeringspanel så du endrer siden selv, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 590 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel side med innholdet du har i dag koster 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 590 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -412,7 +411,7 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg er det to nivåer, og antall sider avgjør ikke hvilket. Enkel, 6 990 kr eks. mva, er en ny side med innholdet du har i dag. Komplett, fra 12 900 kr, har i tillegg tekster skrevet for Google og AI-søk, et redigeringspanel så du endrer tekst og bilder selv, og tillegg som priskalkulator eller booking etter behov. Hosting er med i begge. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det to nivåer, og antall sider avgjør ikke hvilket. Enkel, 6 990 kr eks. mva, er en ny side med innholdet du har i dag. Komplett, fra 12 900 kr, har i tillegg tekster skrevet for Google og AI-søk, og tillegg som priskalkulator eller booking etter behov. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i begge. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
