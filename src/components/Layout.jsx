@@ -4,6 +4,7 @@ import { kontakt, navLenker, ruter } from '../lib/site';
 import { RUTE_VANLIGE_SPORSMAL } from '../lib/populaere-sok';
 import { RUTE_ORDLISTE } from '../lib/ordliste';
 import { cn } from '../lib/utils';
+import { PilOpp } from './Ikon';
 
 /* Uten dette beholder React Router scrollposisjonen mellom ruter, så du
    lander midt på prissiden når du klikker deg dit fra bunnen av forsiden.
@@ -58,7 +59,7 @@ export const Navbar = () => {
         </nav>
 
         <Link className="knapp" to={ruter.kontakt}>
-          Gratis utkast <span className="pil" aria-hidden="true">↗</span>
+          Gratis utkast <PilOpp className="pil" />
         </Link>
 
         <details className="meny" ref={menyRef}>
@@ -100,7 +101,7 @@ export const Footer = ({ utenCta = false }) => (
         <div className="bunn-cta">
           <h2>Første utkast er gratis.</h2>
           <Link className="knapp" to={ruter.kontakt}>
-            Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
+            Få et gratis utkast <PilOpp className="pil" />
           </Link>
         </div>
       )}

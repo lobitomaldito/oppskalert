@@ -6,6 +6,7 @@ import { ArbeidSeksjon } from '../components/Arbeider';
 import { ruter } from '../lib/site';
 import { tjenester } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
+import { PilOpp } from '../components/Ikon';
 
 const PORTRETT = '/founders/aleksander.webp';
 
@@ -76,7 +77,7 @@ const OmPage = () => {
           <div data-reveal className="tjeneste-side inn">
             <p className="etikett">Tjenester</p>
             <Link className="knapp" to={ruter.kontakt}>
-              Ta kontakt <span className="pil" aria-hidden="true">↗</span>
+              Ta kontakt <PilOpp className="pil" />
             </Link>
           </div>
           <div>

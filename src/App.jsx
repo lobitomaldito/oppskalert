@@ -9,6 +9,7 @@ import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
+import { Pause, PilHoyre, PilOpp, SokSjekk, Skjermer, Spill } from './components/Ikon';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
    linje 693 til 797, se inspirasjon/demo-studio-mal.md). Alt CSS ligger
@@ -119,7 +120,7 @@ const HeroGalleri = () => {
         ))}
       </div>
       <button type="button" className="galleri-pause" aria-pressed={pause} onClick={() => setPause((p) => !p)}>
-        {pause ? 'Spill av' : 'Pause'}
+        {pause ? <><Spill /> Spill av</> : <><Pause /> Pause</>}
       </button>
     </div>
   );
@@ -143,7 +144,7 @@ const Hero = () => {
         </p>
         <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
           <Link className="knapp" to={ruter.kontakt}>
-            Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
+            Få et gratis utkast <PilOpp className="pil" />
           </Link>
           <Link className="knapp knapp-tom" to={ruter.arbeid}>Se hva jeg har laget</Link>
         </div>
@@ -179,7 +180,7 @@ const OmMegSeksjon = () => {
             <span>Du får ett telefonnummer og samme person fra første skisse til siden er oppe.</span>
           </h2>
           <p className="ommeg-lenke">
-            <Link className="knapp knapp-tom" to={ruter.om}>Mer om meg <span className="pil" aria-hidden="true">→</span></Link>
+            <Link className="knapp knapp-tom" to={ruter.om}>Mer om meg <PilHoyre className="pil" /></Link>
           </p>
         </div>
       </div>
@@ -206,6 +207,7 @@ const SitatSeksjon = () => {
    og drift står som egne priskort rett under. Nettbutikk ble tatt ut av
    forsiden 26.10.2026 etter ønske fra Aleksander. */
 const TJENESTER_FORSIDE = ['Ny nettside', 'Bli funnet i Google'];
+const TJENESTEIKON = { 'Ny nettside': Skjermer, 'Bli funnet i Google': SokSjekk };
 
 const TjenesteSeksjon = () => {
   const container = useReveal(80);
@@ -217,12 +219,16 @@ const TjenesteSeksjon = () => {
           <h2>Dette kan jeg hjelpe deg med</h2>
         </div>
         <ul data-reveal className="tjenester tjenester-forside inn" style={{ '--d': '80ms' }}>
-          {tjenester.filter((t) => TJENESTER_FORSIDE.includes(t.navn)).map((t) => (
+          {tjenester.filter((t) => TJENESTER_FORSIDE.includes(t.navn)).map((t) => {
+            const Ikon = TJENESTEIKON[t.navn];
+            return (
             <li key={t.navn} className="tjeneste">
+              <Ikon className="tjeneste-ikon" />
               <h3>{t.navn}</h3>
               <p>{t.tekst}</p>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </section>

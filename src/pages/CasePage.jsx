@@ -4,6 +4,7 @@ import { Shell } from '../components/Layout';
 import { useReveal } from '../lib/useReveal';
 import { caser, omtaleForCase } from '../lib/demo-innhold';
 import { prosjekter, toganger, lagBrodsmuleSchema } from '../lib/site';
+import { PilOpp } from '../components/Ikon';
 
 /* Casesiden er ordrett fra studio-mal-demoen (mal3.src.html, byggCase-
    funksjonen rundt linje 1465), portet til React i stedet for innerHTML.
@@ -268,7 +269,7 @@ const CasePage = () => {
         <section className="wrap" style={{ paddingBottom: 'var(--luft)' }}>
           <div className="casebunn">
             <Link className="knapp" to="/kontakt">
-              Vil du ha noe lignende? <span className="pil" aria-hidden="true">↗</span>
+              Vil du ha noe lignende? <PilOpp className="pil" />
             </Link>
             <Link className="etikett" to={`/arbeid/${neste.slug}`}>
               Neste: {nesteProsjekt.navn} →

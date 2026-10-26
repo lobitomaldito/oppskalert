@@ -1,5 +1,6 @@
 import { omtaler } from '../lib/demo-innhold';
 import { heroBevis } from '../lib/site';
+import { PilOpp } from './Ikon';
 
 /* Omtalene side om side, uten karusell.
 
@@ -21,7 +22,7 @@ const Sitatkort = ({ utenom }) => {
         <p className="etikett">Fra kundene</p>
         {heroBevis?.url && (
           <a href={heroBevis.url} target="_blank" rel="noopener noreferrer" className="omtaler-lenke">
-            Se omtalene på Google <span aria-hidden="true">↗</span>
+            Se omtalene på Google <PilOpp />
             <span className="skjult"> (åpnes i ny fane)</span>
           </a>
         )}
