@@ -631,6 +631,19 @@
   .hvorfor dd { margin-top: .25rem; color: var(--blekk-mykt); font-size: .9375rem; }
 
   /* ----------------------------------------------------------------
+     Redigering. Tekst først på mobil, opptaket til venstre på desktop.
+     ---------------------------------------------------------------- */
+  .redigering { display: grid; gap: 2.5rem clamp(2rem, 5vw, 4.5rem); }
+  @media (min-width: 56rem) {
+    .redigering { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: center; }
+    .redigering figure { order: -1; }
+  }
+  .redigering .seksjonstopp { margin-bottom: 0; }
+  .ramme-video { display: block; width: 100%; height: auto; aspect-ratio: 960 / 660; object-fit: cover; background: var(--felt); }
+  @media (max-width: 40rem) { .ramme-video { aspect-ratio: 480 / 470; } }
+  .redigering figcaption { margin-top: .9rem; font-size: .8125rem; color: var(--blekk-mykt); }
+
+  /* ----------------------------------------------------------------
      Arbeid. Asymmetrisk rutenett, bildene bærer all farge på siden.
      ---------------------------------------------------------------- */
   .arbeider { display: grid; gap: clamp(1.75rem, 3vw, 2.5rem); }
