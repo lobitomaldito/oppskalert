@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell } from './components/Layout';
@@ -214,6 +215,64 @@ const TjenesteSeksjon = () => {
   );
 };
 
+/* Redigeringspanelet følger med i alle pakkene, men sto ingen steder på
+   forsiden. Opptaket er tatt lokalt med `oppskalert-admin dev` på
+   Jakobsen-prosjektet, så ingen endring nådde kundens ekte side.
+   Videoen spilles bare mens den er synlig, og står stille med kontroller
+   ved prefers-reduced-motion. */
+const RedigeringSeksjon = () => {
+  const container = useReveal(80);
+  const video = useRef(null);
+  useEffect(() => {
+    const v = video.current;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.controls = true; return; }
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+    });
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <section ref={container} className="seksjon">
+      <div className="wrap redigering">
+        <div data-reveal className="seksjonstopp inn">
+          <p className="etikett">Redigering</p>
+          <h2>Du endrer siden selv</h2>
+          <p>Klikk på teksten du vil bytte, skriv det nye og trykk Publiser. Rundt ett minutt senere ser alle den nye versjonen.</p>
+          <p>Du logger inn med en PIN-kode og redigerer rett på siden, slik kundene ser den. Priser, åpningstider, bilder og nye kundeomtaler bytter du uten å ringe meg.</p>
+          <p>Redigeringspanelet følger med i alle pakkene. Vil du heller at jeg gjør endringene, dekker serviceavtalen det for 450 kr i måneden.</p>
+        </div>
+        <figure data-reveal className="inn" style={{ '--d': '80ms' }}>
+          <div className="ramme">
+            <div className="ramme-topp">
+              <i aria-hidden="true" /><i aria-hidden="true" /><i aria-hidden="true" />
+              <p>jtob.no</p>
+            </div>
+            <video
+              ref={video}
+              className="ramme-video"
+              poster="/redigering/jakobsen-redigering.webp"
+              width="960"
+              height="660"
+              muted
+              loop
+              playsInline
+              preload="none"
+              aria-label="Opptak av redigeringspanelet: prisen i et tjenestekort markeres, skrives om og publiseres."
+            >
+              {/* Utsnitt for mobil: hele vinduet på 390 px gjør teksten i
+                  opptaket uleselig, så mobil får bare kortet og panelet. */}
+              <source src="/redigering/jakobsen-redigering-mobil.mp4" type="video/mp4" media="(max-width: 40rem)" />
+              <source src="/redigering/jakobsen-redigering.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <figcaption>Redigeringspanelet på siden til Jakobsen Takst &amp; Bygg i Harstad.</figcaption>
+        </figure>
+      </div>
+    </section>
+  );
+};
+
 const FaqSeksjon = () => {
   const container = useReveal(80);
   return (
@@ -314,6 +373,7 @@ const Home = () => (
     <ArbeidSeksjon id="arbeid" tett />
     <TjenesteSeksjon />
     <SitatSeksjon />
+    <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
     <FaqSeksjon />
     <DemoSkjema
