@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell } from './components/Layout';
-import { ArbeidSeksjon } from './components/Arbeider';
 import Sitatkort from './components/Sitatkort';
 import Priser from './components/Priser';
 import DemoSkjema from './components/DemoSkjema';
@@ -15,7 +14,7 @@ import { useReveal } from './lib/useReveal';
    allerede i index.css, denne fila bygger bare den samme markupen i
    React. 26.10.2026 ble skallet hvitt etter Solid Media-retningen: sentrert
    hero med kundesidene i en rad under, og en Om meg-seksjon med portrett
-   rett etter arbeidet.
+   rett etter heroen.
 
    Forsiden følger demoens rekkefølge. Priser og DemoSkjema er de eneste
    tilleggene: prisen fordi den er det folk leter etter, skjemaet fordi
@@ -87,8 +86,11 @@ const Vurdering = () => {
 
    Raden er bredere enn skjermen og sentrert, så kantene beskjæres. På
    390 ser du de to midterste, på 1440 alle seks. Dekor for skjermlesere:
-   de samme prosjektene står med navn og lenke i «Sider som er i drift
-   nå» rett under. */
+   knappen «Se hva jeg har laget» rett over går til /arbeid, der de samme
+   prosjektene står med navn og lenke.
+
+   Seksjonen «Sider som er i drift nå» sto rett under til 26.10.2026.
+   Aleksander tok den ut: raden viser allerede eksemplene. */
 const GALLERI = [
   ['katrin-brubakk-mobil', 2 / 3],
   ['woxen-hage-pc', 1],
@@ -134,7 +136,7 @@ const Hero = () => {
           <Link className="knapp" to={ruter.kontakt}>
             Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
           </Link>
-          <a className="knapp knapp-tom" href="#arbeid">Se hva jeg har laget</a>
+          <Link className="knapp knapp-tom" to={ruter.arbeid}>Se hva jeg har laget</Link>
         </div>
         {/* Ansiktet bak siden, rett under knappene. Hele salgsargumentet er
             at det er én person, og da skal personen synes før folden. */}
@@ -178,8 +180,7 @@ const OmMegSeksjon = () => {
 
 /* «Kom i gang»-blokken som sto her (Arbeid / Pris / Prosess / Neste) er
    fjernet 17. oktober 2026. Den gjentok toppmenyen og skjøv de første
-   kundesidene 1,6 skjermhøyder ned på mobil. «Se mer» går rett til
-   arbeidet nå. */
+   kundesidene 1,6 skjermhøyder ned på mobil. */
 
 const SitatSeksjon = () => {
   const container = useReveal(100);
@@ -192,10 +193,10 @@ const SitatSeksjon = () => {
   );
 };
 
-/* Tre tjenester i grå kort, som tjenestekortene på solidmedia.no. Tre,
-   ikke seks: seks like tunge valg ga øyet ingenting å stoppe på, og
-   chatbot og drift står allerede som egne priskort rett under. */
-const TJENESTER_FORSIDE = ['Ny nettside', 'Nettbutikk', 'Bli funnet i Google'];
+/* To tjenester i grå kort, som tjenestekortene på solidmedia.no. Chatbot
+   og drift står som egne priskort rett under. Nettbutikk ble tatt ut av
+   forsiden 26.10.2026 etter ønske fra Aleksander. */
+const TJENESTER_FORSIDE = ['Ny nettside', 'Bli funnet i Google'];
 
 const TjenesteSeksjon = () => {
   const container = useReveal(80);
@@ -205,7 +206,6 @@ const TjenesteSeksjon = () => {
         <div data-reveal className="seksjonstopp inn">
           <p className="etikett">Tjenester</p>
           <h2>Dette kan jeg hjelpe deg med</h2>
-          <p>Bare meg, hele veien fra første skisse til siden er oppe og går.</p>
         </div>
         <ul data-reveal className="tjenester tjenester-forside inn" style={{ '--d': '80ms' }}>
           {tjenester.filter((t) => TJENESTER_FORSIDE.includes(t.navn)).map((t) => (
@@ -374,7 +374,6 @@ const Home = () => (
       jsonLd={homeJsonLd}
     />
     <Hero />
-    <ArbeidSeksjon id="arbeid" tett />
     <OmMegSeksjon />
     <TjenesteSeksjon />
     <SitatSeksjon />

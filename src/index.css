@@ -112,7 +112,7 @@
        nabo-seksjoner 272 til 340 px på 1440. Luft er bra, men to og en halv
        gang høyden på et tjenestekort er ikke luft lenger, det er et hull.
        5,5rem gir rundt 190. */
-    --luft:   clamp(3rem, 6vw, 5.5rem);
+    --luft:   clamp(2.5rem, 6vw, 5.5rem);
     --rund-liten: 8px;
     --rund:   14px;
     --rund-stor: 18px;
@@ -399,9 +399,9 @@
      overflow: hidden på .hero beskjærer begge kanter likt. Høyden er
      fast og bredden følger bildeformatet. */
   .hero-galleri {
-    margin-top: clamp(3rem, 6vw, 4.5rem);
+    margin-top: clamp(2rem, 6vw, 4.5rem);
     display: flex; justify-content: center; gap: clamp(.625rem, 1.2vw, 1rem);
-    height: clamp(13rem, 27vw, 24rem);
+    height: clamp(11rem, 27vw, 24rem);
   }
   .hero-galleri img {
     height: 100%; width: auto; flex: none;
@@ -420,8 +420,8 @@
   @media (min-width: 52rem) { .ommeg { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
   .ommeg-bilde { border-radius: var(--rund-stor); overflow: hidden; background: var(--kort); aspect-ratio: 3 / 4; }
   /* På mobil er et helt 3:4-portrett nesten en skjermhøyde. Der får det
-     3:2 og beskjæres rundt ansiktet. */
-  @media (max-width: 51.99rem) { .ommeg-bilde { aspect-ratio: 3 / 2; } }
+     16:10 og beskjæres rundt ansiktet. */
+  @media (max-width: 51.99rem) { .ommeg-bilde { aspect-ratio: 16 / 10; } }
   .ommeg-bilde img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
   .utsagn {
     margin-top: 1.25rem;
@@ -536,11 +536,6 @@
     .arbeider.tett { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2.5rem 1.25rem; }
     .arbeider.tett .arbeid { grid-column: auto; margin-top: 0; }
   }
-  /* To av åtte på mobil. Med alle åtte ble forsiden lengre på 390 enn
-     på 1440 (8 033 mot 7 356 px, målt 26.10.2026), og regel 2 sier at
-     mobilen skal være kortest. Raden i heroen viser allerede seks
-     kundesider, og «Se flere sider» rett under tar resten. */
-  @media (max-width: 51.99rem) { .arbeider.tett .arbeid:nth-child(n+3) { display: none; } }
   .arbeider.tett .etikett { margin-top: .75rem; font-size: .75rem; }
   .arbeider.tett .arbeid h3 { margin-top: .3rem; font-size: clamp(.875rem, .8rem + .25vw, 1rem); line-height: 1.4; }
   .arbeider.tett .ramme-topp { padding: .45rem .6rem; }
@@ -664,6 +659,9 @@
   .tjeneste h3 { font-weight: 600; font-size: 1.0625rem; letter-spacing: -.012em; }
   /* Forsidens tre kort: større tittel og mer luft, som solidmedia.no. */
   .tjenester-forside { list-style: none; padding: 0; margin: 0; }
+  /* Side om side også på 390: to korte kort stablet kostet en halv
+     skjermhøyde for to setninger. */
+  .tjenester-forside { grid-template-columns: 1fr 1fr; }
   .tjenester-forside .tjeneste { padding: clamp(1.125rem, 2.5vw, 2rem); gap: clamp(.35rem, 1vw, .75rem); }
   .tjenester-forside .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: var(--display-sperre); }
   .tjeneste p { color: var(--blekk-mykt); font-size: .9375rem; text-wrap: pretty; }
@@ -738,7 +736,19 @@
   .omtaler-lenke:hover { text-decoration-color: var(--blekk); }
   .omtaler-rad { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
   @media (min-width: 52rem) { .omtaler-rad { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  @media (max-width: 51.99rem) { .omtale:nth-child(n+3) { display: none; } }
+  /* Mobil: alle tre i en sveipbar rad, ett kort og en flik av det neste
+     synlig. To stablede kort tok 500 px og skjulte det tredje; raden tar
+     ett korts høyde og viser alle (regel 2: rute, ikke ramse opp). */
+  @media (max-width: 51.99rem) {
+    .omtaler-rad {
+      grid-auto-flow: column; grid-auto-columns: 86%;
+      overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+      margin-inline: calc(var(--kant) * -1); padding-inline: var(--kant);
+      scroll-padding-inline: var(--kant); scrollbar-width: none;
+    }
+    .omtaler-rad::-webkit-scrollbar { display: none; }
+    .omtale { scroll-snap-align: start; }
+  }
   .omtale {
     background: var(--kort); border-radius: var(--rund-stor);
     padding: clamp(1.5rem, 2.5vw, 2rem);
