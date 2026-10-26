@@ -395,18 +395,45 @@
   }
   .stjerner svg.fylt { fill: var(--prikk); }
 
-  /* Raden er bredere enn vinduet og sentrert med justify-content, så
-     overflow: hidden på .hero beskjærer begge kanter likt. Høyden er
-     fast og bredden følger bildeformatet. */
+  /* Rullende rad. Høyden er fast og bredden følger bildeformatet.
+     Luften mellom bildene er margin-right, ikke gap: med gap mangler det
+     siste mellomrommet, og sløyfen hopper en luft ved omstart.
+
+     Fart: ett sett er rundt 1 940 px bredt på 1440 og 900 px på 390.
+     70 s gir 28 px i sekundet på desktop og 13 på mobil, rolig nok til
+     at øyet kan følge et bilde. Lineær med vilje: en sløyfe med easing
+     stopper opp ved hver omstart. */
   .hero-galleri {
+    --galleri-luft: clamp(.625rem, 1.2vw, 1rem);
+    position: relative; overflow: hidden;
     margin-top: clamp(2rem, 6vw, 4.5rem);
-    display: flex; justify-content: center; gap: clamp(.625rem, 1.2vw, 1rem);
     height: clamp(11rem, 27vw, 24rem);
   }
-  .hero-galleri img {
+  .galleri-spor {
+    display: flex; width: max-content; height: 100%;
+    animation: galleri-rull 70s linear infinite;
+  }
+  .hero-galleri.er-pauset .galleri-spor { animation-play-state: paused; }
+  @keyframes galleri-rull { to { transform: translate3d(-50%, 0, 0); } }
+  .galleri-spor img {
     height: 100%; width: auto; flex: none;
+    margin-right: var(--galleri-luft);
     border-radius: var(--rund); object-fit: cover;
     background: var(--kort);
+  }
+  .galleri-pause {
+    position: absolute; right: var(--kant); bottom: .75rem;
+    min-height: 2.75rem; padding: 0 1rem; border-radius: 999px;
+    background: var(--hvit); border: 1px solid var(--felt-kant);
+    color: var(--blekk-mykt); font-size: .8125rem; cursor: pointer;
+    transition: color .2s var(--e), border-color .2s var(--e);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .galleri-pause:hover { color: var(--blekk); border-color: var(--blekk-mykt); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .galleri-spor { animation: none; }
+    .galleri-pause { display: none; }
   }
 
   .knapp-tom { background: var(--hvit); color: var(--blekk); border-color: var(--felt-kant); }
@@ -673,7 +700,11 @@
      begynner, og kortet ser limt til fargeskiftet ut i stedet for å ligge
      på en flate. Det var mindre synlig da kortet var mørkt, fordi kanten
      mellom hvitt og blekk uansett var hard. Nå er den symmetrisk. */
-  .sitatblokk { background: var(--felt); padding-block: var(--luft); }
+  /* Grått bånd i full bredde med hvite kort, så omtalene skiller seg
+     fra seksjonene over og under. */
+  .sitatblokk { background: var(--kort); padding-block: var(--luft); }
+  .sitatblokk .omtale { background: var(--hvit); }
+  .sitatblokk .sitat-kilde .initial { background: var(--kort); }
   /* Kortet var blekk-svart. Det er sidens største flate etter bunnteksten,
      og som eneste mørke blokk midt i en lys side dro den blikket til seg
      hardere enn innholdet fortjener. Nå er det et hvitt kort på feltet, som
