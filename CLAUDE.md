@@ -20,14 +20,16 @@ Serverless-funksjoner ligger i `api/`.
 
 ---
 
-## Deploysperre: `FONTLISENS.md`
+## Fonter og lisens
 
-**Branchen `redesign/studio-mal` skal ikke deployes eller merges til master
-før hele sjekklisten i `FONTLISENS.md` i repo-roten er krysset av.**
-Redesignet bruker Suisse Int'l og GT Sectra Fine, og filene som ligger i
-`public/fonts/` nå er ulisensierte konverteringer, ikke rettighetshavernes
-egne. Se `FONTLISENS.md` for hva som må kjøpes og byttes ut først. Dette er
-en hard sperre, ikke en påminnelse.
+Siden 26. oktober 2026 bruker oppskalert.no **Cabinet Grotesk** (overskrifter)
+og **Switzer** (tekst) fra fontbiblioteket, begge ITF Free Font License.
+Suisse Int'l er fjernet fra repoet. Plus Jakarta Sans 800 er låst til
+ordmerket.
+
+**Ett unntak gjenstår:** GT Sectra Fine ligger fortsatt i `public/fonts/` for
+`font-serif` i `FrisorDemo.jsx` under `/eksempler`. Filen er en ulisensiert
+konvertering, se `FONTLISENS.md`. Ikke bruk den noe annet sted.
 
 ---
 
