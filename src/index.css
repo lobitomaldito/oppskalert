@@ -48,6 +48,21 @@
   font-style: normal;
   font-display: swap;
 }
+/* Bare for font-serif på demosiden under /eksempler, ikke på oppskalert.no selv. */
+@font-face {
+  font-family: 'SectraFine';
+  src: url('/fonts/gt-sectra-fine-300-normal.woff2') format('woff2');
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SectraFine';
+  src: url('/fonts/gt-sectra-fine-700-normal.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* Reservefont med Suisses mål. Den prerendrede H1-en males med reserven
    før Suisse er lastet. Når React bygger siden på nytt, blir H1 en ny node
