@@ -31,8 +31,8 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
     <div
       data-reveal
       className={cn(
-        'relative flex flex-col rounded-kort p-5 md:p-8 border bg-surface text-room-ink',
-        m.fremhevet ? 'border-room-ink' : 'border-room-ink/20',
+        'relative flex flex-col rounded-kort p-5 md:p-8 bg-room-deep text-room-ink',
+        m.fremhevet && 'prisvalg-svart',
         className,
       )}
     >
@@ -57,7 +57,7 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
 
       <div className="mt-4 md:mt-6 flex items-baseline gap-1.5 md:min-h-[2.75rem]">
         {!m.fast && <span className="font-body text-base text-room-ink">fra</span>}
-        <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
+        <span className="font-display font-medium text-[2.75rem] leading-none tracking-[-0.03em]">{m.fra}</span>
         <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
       </div>
       <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>

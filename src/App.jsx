@@ -5,17 +5,16 @@ import { ArbeidSeksjon } from './components/Arbeider';
 import Sitatkort from './components/Sitatkort';
 import Priser from './components/Priser';
 import DemoSkjema from './components/DemoSkjema';
-import Vegg from './components/Vegg';
-import { faqSchema, heroBevis, kontakt, ruter, vurdering } from './lib/site';
-import { omtaler, sporsmal, tjenester } from './lib/demo-innhold';
+import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
+import { sporsmal, tjenester } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
    linje 693 til 797, se inspirasjon/demo-studio-mal.md). Alt CSS ligger
    allerede i index.css, denne fila bygger bare den samme markupen i
-   React: .hero blir en H1-seksjon på det lyse feltet med vannmerket bak,
-   .statuslinje blir en enkel "se mer"-pille, og resten følger demoens
-   seksjoner i samme rekkefølge.
+   React. 26.10.2026 ble skallet hvitt etter Solid Media-retningen: sentrert
+   hero med kundesidene i en rad under, og en Om meg-seksjon med portrett
+   rett etter arbeidet.
 
    Forsiden følger demoens rekkefølge. Priser og DemoSkjema er de eneste
    tilleggene: prisen fordi den er det folk leter etter, skjemaet fordi
@@ -78,95 +77,103 @@ const Vurdering = () => {
   );
 };
 
-/* Én navngitt kundeuttalelse under knappen, som sosialt bevis i heroen.
+/* Kundesidene i én rad under heroen, slik solidmedia.no viser
+   kundecasene sine rett under folden. Bildene er de ferdige flisene i
+   public/websider/vegg (laget av scripts/vegg-mockups.py), med det ekte
+   skjermbildet av kundens side på skjermen. Raden står stille: den
+   rullende galleriveggen som sto her til 26.10.2026 trengte pauseknapp
+   og observer, og en stille rad sier det samme.
 
-   Står her i stedet for en stjernescore så lenge Bedriftsprofilen har
-   for få anmeldelser til at et snitt sier noe. Se heroBevis i site.js
-   for hele begrunnelsen. Vises `vurdering` (altså er den ikke null),
-   viker sitatet, siden to bevis på rad i heroen blir støy.
+   Raden er bredere enn skjermen og sentrert, så kantene beskjæres. På
+   390 ser du de to midterste, på 1440 alle seks. Dekor for skjermlesere:
+   de samme prosjektene står med navn og lenke i «Sider som er i drift
+   nå» rett under. */
+const GALLERI = [
+  ['katrin-brubakk-mobil', 2 / 3],
+  ['woxen-hage-pc', 1],
+  ['melanie-dahl-mobil', 2 / 3],
+  ['alpha-negotiations-pc', 4 / 5],
+  ['jakobsen-takst-mobil', 2 / 3],
+  ['appstart-pc', 1],
+];
 
-   Sitatet hentes fra samme liste som omtaleseksjonen lenger nede, så
-   de to aldri kan komme ut av synk. */
-/* Én fast omtale, valgt med heroBevis.indeks. Den tonet gjennom alle
-   fire en periode, men de samme fire står i omtaleseksjonen lenger nede,
-   så leseren så samme sitat to ganger. Nå står én her, og seksjonen viser
-   de andre (se utenom i Sitatkort). */
-const HeroBevis = () => {
-  const o = heroBevis && omtaler[heroBevis.indeks];
-  if (vurdering || !o) return null;
-  const kilde = <span className="hero-bevis-kilde">{o.navn}, {o.rolle}</span>;
-
-  return (
-    <figure data-reveal className="hero-bevis inn" style={{ '--d': '400ms' }}>
-      <blockquote>«{o.sitat}»</blockquote>
-      <figcaption>
-        {heroBevis.url ? (
-          <a href={heroBevis.url} target="_blank" rel="noopener noreferrer">
-            {kilde}
-            <span className="skjult"> (åpnes i ny fane)</span>
-          </a>
-        ) : (
-          kilde
-        )}
-      </figcaption>
-    </figure>
-  );
-};
+const HeroGalleri = () => (
+  <div className="hero-galleri" aria-hidden="true">
+    {GALLERI.map(([fil, forhold]) => (
+      <img
+        key={fil}
+        src={`/websider/vegg/${fil}.webp`}
+        alt=""
+        width="480"
+        height={Math.round(480 / forhold)}
+        style={{ aspectRatio: forhold }}
+        decoding="async"
+      />
+    ))}
+  </div>
+);
 
 const Hero = () => {
   const container = useReveal(100);
   return (
-    <section ref={container} className="hero hero-vegg">
+    <section ref={container} className="hero">
       <div className="wrap">
-        <div className="hero-tekst">
-          {/* Overskriften selger det kunden får, søkeordene står i etiketten.
-
-              Til 17. oktober 2026 var H1 «Webdesign for bedrifter. Basert i
-              Oslo. Alltid gratis utkast.», skrevet for de tre ordene Search
-              Console måler forsiden på. «Basert i Oslo» sa ingenting til en
-              kunde i Harstad. Nå bærer etiketten «webdesign» og «bedrifter»,
-              og title-taggen bærer alle tre, som er det sterkeste signalet
-              uansett. Se SEO.md, punkt 12.
-
-              To spans: ved siden av galleriveggen står de på hver sin linje,
-              se .hero-vegg h1 span i index.css. */}
-          <p data-reveal className="etikett hero-etikett inn" style={{ '--d': '60ms' }}>Webdesign for bedrifter</p>
-          <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
-            <span>Se den nye nettsiden din</span>{' '}
-            <span>før du betaler en krone.</span>
-          </h1>
-          {/* Ingressen sier bevisst noe annet enn overskriften.
-
-              Den forrige gjentok «bedrifter», «Oslo» og «gratis demo», altså
-              alt overskriften og knappen allerede sa, innenfor 400 piksler.
-              Nå bærer den det de tre setningene over ikke rekker: hva som
-              faktisk inngår, hvem som gjør det, og hvor lang tid det tar.
-
-              Malen er den målte: konkret liste, hvem, så én setning som
-              fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
-          <p data-reveal className="inn" style={{ '--d': '220ms' }}>
-            Design, tekst, koding og lansering, gjort av én person du kan ringe.
-            Utkastet er klart på 48 timer.
-          </p>
-          <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
-            <Link className="knapp" to={ruter.kontakt}>
-              Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
-            </Link>
-          </div>
-          <Vurdering />
-          <HeroBevis />
+        {/* Overskriften selger det kunden får, søkeordene står i etiketten
+            og i title-taggen. Se SEO.md, punkt 12. Aksentfargen ligger på
+            løftet, ikke på «nettsiden». */}
+        <p data-reveal className="etikett hero-etikett inn" style={{ '--d': '60ms' }}>Webdesign for bedrifter</p>
+        <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
+          Se den nye nettsiden din <em className="aksent">før du betaler en krone.</em>
+        </h1>
+        <p data-reveal className="inn" style={{ '--d': '220ms' }}>
+          Design, tekst, koding og lansering, gjort av én person du kan ringe.
+          Utkastet er klart på 48 timer.
+        </p>
+        <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
+          <Link className="knapp" to={ruter.kontakt}>
+            Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
+          </Link>
+          <a className="knapp knapp-tom" href="#arbeid">Se hva jeg har laget</a>
         </div>
-        <Vegg />
+        {/* Ansiktet bak siden, rett under knappene. Hele salgsargumentet er
+            at det er én person, og da skal personen synes før folden. */}
+        <p data-reveal className="hero-person inn" style={{ '--d': '400ms' }}>
+          <img src="/founders/aleksander-160.webp" alt="" width="80" height="80" />
+          <span><b>{kontakt.navn}</b> Jeg bygger siden og tar telefonen selv.</span>
+        </p>
+        <Vurdering />
       </div>
+      <HeroGalleri />
     </section>
   );
 };
 
-const Statuslinje = () => (
-  <div className="wrap statuslinje">
-    <a className="pille" href="#arbeid">Se mer ↓</a>
-  </div>
-);
+/* Om meg. Portrettet i stort format ved siden av ett langt utsagn, der
+   siste del er tonet ned i grått. Grepet er fra solidmedia.no («Bak alt
+   vi leverer sitter …»): første halvdel er påstanden, andre halvdel er
+   det den betyr for kunden. */
+const OmMegSeksjon = () => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className="seksjon">
+      <div className="wrap ommeg">
+        <figure data-reveal className="ommeg-bilde inn">
+          <img src="/founders/aleksander.webp" alt={`${kontakt.navn}, som driver Oppskalert`} width="1792" height="2400" loading="lazy" />
+        </figure>
+        <div data-reveal className="inn" style={{ '--d': '100ms' }}>
+          <p className="etikett">Om meg</p>
+          <h2 className="utsagn">
+            Jeg heter Aleksander og bygger hver side selv.{' '}
+            <span>Du får ett telefonnummer og samme person fra første skisse til siden er oppe.</span>
+          </h2>
+          <p className="ommeg-lenke">
+            <Link className="knapp knapp-tom" to={ruter.om}>Mer om meg <span className="pil" aria-hidden="true">→</span></Link>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 /* «Kom i gang»-blokken som sto her (Arbeid / Pris / Prosess / Neste) er
    fjernet 17. oktober 2026. Den gjentok toppmenyen og skjøv de første
@@ -179,16 +186,14 @@ const SitatSeksjon = () => {
     /* Uten egen luft: seksjonene over og under står på samme felt og har
        luften sin allerede. Med begge ble hullet over 250 px på 1440. */
     <section ref={container} className="sitatblokk" style={{ paddingBlock: 0 }}>
-      <div className="wrap"><Sitatkort utenom={heroBevis?.indeks} /></div>
+      <div className="wrap"><Sitatkort /></div>
     </section>
   );
 };
 
-/* Tre tjenester som en linjert liste, ikke seks like kort. Kortgitteret
-   var den mest malaktige seksjonen på siden (regel 7 i byggereglene), og
-   seks like tunge valg ga øyet ingenting å stoppe på. Chatbot og drift
-   står allerede som egne priskort rett under. Knappen «Ta kontakt» ved
-   siden av etiketten er tatt ut: headeren har den samme rett over. */
+/* Tre tjenester i grå kort, som tjenestekortene på solidmedia.no. Tre,
+   ikke seks: seks like tunge valg ga øyet ingenting å stoppe på, og
+   chatbot og drift står allerede som egne priskort rett under. */
 const TJENESTER_FORSIDE = ['Ny nettside', 'Nettbutikk', 'Bli funnet i Google'];
 
 const TjenesteSeksjon = () => {
@@ -201,9 +206,9 @@ const TjenesteSeksjon = () => {
           <h2>Dette kan jeg hjelpe deg med</h2>
           <p>Bare meg, hele veien fra første skisse til siden er oppe og går.</p>
         </div>
-        <ul data-reveal className="tjenesteliste inn" style={{ '--d': '80ms' }}>
+        <ul data-reveal className="tjenester tjenester-forside inn" style={{ '--d': '80ms' }}>
           {tjenester.filter((t) => TJENESTER_FORSIDE.includes(t.navn)).map((t) => (
-            <li key={t.navn}>
+            <li key={t.navn} className="tjeneste">
               <h3>{t.navn}</h3>
               <p>{t.tekst}</p>
             </li>
@@ -310,8 +315,8 @@ const Home = () => (
       jsonLd={homeJsonLd}
     />
     <Hero />
-    <Statuslinje />
     <ArbeidSeksjon id="arbeid" tett />
+    <OmMegSeksjon />
     <TjenesteSeksjon />
     <SitatSeksjon />
     <Priser visAlltidMed={false} />
