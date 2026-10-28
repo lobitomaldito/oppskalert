@@ -30,18 +30,28 @@
 
    Mål igjen tidligst 22. oktober. Fortsatt åpent: hero og og:image mangler. */
 
+/* 2026-10-28: målt igjen. Posisjon 9,1 på «responsiv nettside» (203 visninger),
+   tilbake fra 15,0, så titlen står. Svakheten er synonymet: «mobiltilpasset
+   nettside», «mobiltilpasset hjemmeside» og «mobilvennlig nettside» gir 66
+   visninger på posisjon 26-29, og ordet sto bare i keywords. Ny H2 svarer på
+   om det er det samme, og beskrivelsen har ordet. Mål igjen rundt 25. november. */
+
 export default {
   slug: "responsiv-nettside",
   title: "Hva er en responsiv nettside? Test din selv",
-  description: "En responsiv nettside tilpasser seg skjermen av seg selv. Slik ser du om din gjør det, med en test på egen telefon som tar ett minutt.",
+  description: "En responsiv nettside, også kalt mobiltilpasset, tilpasser seg skjermen av seg selv. Slik ser du om din gjør det, med en test på egen telefon som tar ett minutt.",
   publishDate: "2026-08-10",
-  keywords: ["responsiv nettside", "mobiltilpasset nettside"],
+  keywords: ["responsiv nettside", "mobiltilpasset nettside", "mobilvennlig nettside", "responsiv hjemmeside"],
   hero: "",
   content: `**Kort svar:** En responsiv nettside endrer oppsettet etter skjermen den vises på. Det finnes én side for både mobil og PC, og teksten kan leses uten å zoome. Lenger ned viser jeg hvordan du sjekker din egen på ett minutt.
 
 ## Hva "responsiv nettside" faktisk betyr
 
 En responsiv nettside tilpasser layout, tekststørrelse og bilder automatisk til skjermen den vises på, enten det er en mobil på 375 piksler bred eller en skjerm på 1920. Det er ikke det samme som å ha en egen "mobilversjon" av siden. God responsiv design bruker én kodebase som endrer seg fleksibelt, i stedet for to separate sider som må vedlikeholdes hver for seg. Den korte definisjonen står i ordlisten under [responsivt design](/ordliste/responsivt-design). Uten dette må mobilbrukere pinsje, zoome og skrolle sidelengs for å lese teksten, og de fleste gir opp før de kommer gjennom hele siden.
+
+## Er en mobiltilpasset nettside det samme som en responsiv nettside?
+
+I dagligtale, ja. Når noen sier mobiltilpasset nettside, mobilvennlig nettside eller responsiv hjemmeside, mener de nesten alltid det samme: én side som fungerer like godt på telefonen som på PC. Det finnes én teknisk forskjell. En side kan være tilpasset mobil ved at leverandøren har laget en egen mobilversjon på en egen adresse, gjerne m.dittfirma.no. Det var vanlig for ti år siden, og det betyr to sider å holde oppdatert. En responsiv nettside er én side som endrer seg etter skjermen, og det er slik nesten alle nye nettsider bygges i dag.
 
 ## Hvorfor mobil kommer først, ikke sist
 

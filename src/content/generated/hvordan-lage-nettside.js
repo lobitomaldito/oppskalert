@@ -5,13 +5,21 @@ export default {
      ca. 3 000 visninger. Her snitt pos 30-55, FAQ-siden 60-85, 0 klikk på begge.
      Norske topptreff er steg-for-steg-guider («8 steg», «6 steg»), artikkelen var en
      valgartikkel. Stegene er lagt inn, title har «lage nettside» først (176 visninger,
-     pos 52), og FAQ-siden lenker hit. Mål igjen om 4 uker. */
+     pos 52), og FAQ-siden lenker hit. Mål igjen om 4 uker.
+
+     28. okt 2026: målt igjen. Google valgte FAQ-siden likevel, den fikk nesten
+     hele klyngen (153 visninger på «lage nettside», pos 42-62) mens artikkelen
+     fikk en håndfull. FAQ-siden er slått sammen hit med 301 i vercel.json, og
+     kortsvaret derfra står nå øverst her, så «hvordan lager man en nettside»
+     (pos 15) har et svar i første avsnitt. Mål igjen rundt 25. november. */
   title: "Lage nettside: 5 steg, selv eller med hjelp",
   description: "Slik lager du nettside i fem steg: domene, mål, tekst, bygging og måling. Pluss timene det tar selv, og når det lønner seg å sette det bort.",
   publishDate: "2026-08-13",
   keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
   hero: "",
-  content: `## Tre veier til en nettside i dag
+  content: `**Kort svar:** Slik lager man en nettside: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. Gjør du det selv, går det med 20 til 40 timer. Setter du det bort til meg, tar det 1 til 2 uker fra du sier ja.
+
+## Tre veier til en nettside i dag
 
 Du har i praksis tre valg når bedriften din trenger nettside. Du kan bygge den selv med et byggeverktøy som Wix eller Squarespace, du kan leie inn en frilanser eller et byrå, eller du kan kombinere begge deler ved å starte selv og hente inn hjelp der du står fast. Ingen av alternativene er feil i seg selv. Det som avgjør riktig valg er hvor mye tid du faktisk har, hvor teknisk du er fra før, og hvor mye nettsiden skal bety for inntektene dine det første året.
 

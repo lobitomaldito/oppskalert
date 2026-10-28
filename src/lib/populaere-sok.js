@@ -54,10 +54,14 @@ export const RUTE_VANLIGE_SPORSMAL = '/vanlige-sporsmal';
 export const populaereSok = [
   {
     // «nettsideleverandør» 90/mnd KD 0, høyest CPC i tabellen
+    // 28. okt 2026, GSC 28 dager: posisjon 10,6, 119 visninger, 0 klikk. SERP-en
+    // (mobil, Norge) er leverandørsider og guider med nummererte råd. Title leder
+    // nå med søkeordet og et tall, og siden har fått det fjerde kravet
+    // (bindingstid) og spørsmålene å stille. Mål igjen rundt 25. november.
     slug: 'krav-til-nettsideleverandor',
     q: 'Hva bør jeg kreve av en nettsideleverandør?',
-    tittel: 'Hva bør du kreve av en nettsideleverandør?',
-    beskrivelse: 'Fast pris før arbeidet starter, eierskap til kode og innhold, ingen bindingstid, og noe ferdig å se på før du betaler. Klarer ikke leverandøren alle fire, spør hvorfor.',
+    tittel: 'Nettsideleverandør: fire krav før du signerer',
+    beskrivelse: 'Fast pris, eierskap til kode og innhold, ingen bindingstid, og noe ferdig å se på før du betaler. Fire krav til en nettsideleverandør, og spørsmålene som avslører svaret.',
     a: 'Fire ting: fast pris før arbeidet starter, at du eier koden og innholdet etterpå, ingen bindingstid, og at du får se noe ferdig før du betaler. Klarer ikke leverandøren å love alle fire, er det verdt å spørre hvorfor. Selv bygger jeg hele utkastet ferdig innen 48 timer, og du bestemmer deg etterpå.',
     utdyping: [
       {
@@ -71,6 +75,14 @@ export const populaereSok = [
       {
         t: 'Se noe ferdig før du betaler',
         a: 'En skisse i PowerPoint sier lite om hvordan siden føles å bruke. Be om noe du kan åpne på mobilen og klikke rundt i. Klarer ikke leverandøren å vise deg det uten forskudd, har du ingen måte å vurdere kvaliteten på før pengene er ute.',
+      },
+      {
+        t: 'Ingen bindingstid',
+        a: 'Mange nettsideleverandører tar lite for selve siden og henter resten inn på en avtale med 12, 24 eller 36 måneders binding. Regn ut totalen for hele perioden, ikke månedsprisen. Og spør hva som skjer med siden den dagen avtalen går ut: får du den med deg, eller slutter den å virke? En leverandør som er trygg på jobben sin, trenger ikke binde deg for å beholde deg.',
+      },
+      {
+        t: 'Fem spørsmål å stille før du signerer',
+        a: 'Hva er totalprisen, skrevet ned? Hvem eier domenet, koden og teksten etter levering? Hvor lang er bindingstiden, og hva koster det å si opp? Kan jeg se noe ferdig før jeg betaler? Hvem ringer jeg når noe er galt, og hvor raskt svarer dere? Får du et klart svar på alle fem i første samtale, har du en leverandør som har tenkt gjennom det. Blir svarene runde, vet du hvor du skal grave videre.',
       },
     ],
     relatert: ['byra-eller-frilanser', 'eier-jeg-nettsiden-selv'],
@@ -123,33 +135,6 @@ export const populaereSok = [
     ],
     relatert: ['hva-er-sokemotoroptimalisering', 'krav-til-nettsideleverandor'],
     til: { tekst: 'Slik jobber jeg med søk', rute: '/sokemotoroptimalisering' },
-  },
-  {
-    // «hvordan lage nettside» 210/mnd KD 15
-    slug: 'hvordan-lage-nettside',
-    q: 'Hvordan lager man en nettside?',
-    tittel: 'Hvordan lager man en nettside?',
-    beskrivelse: 'Sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, koble på måling. Rekkefølgen betyr mer enn verktøyet.',
-    a: 'Kort fortalt: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. De fleste begynner med design og oppdager for sent at de mangler tekst. Skal du gjøre det selv, sett av noen kvelder. Skal jeg gjøre det, tar det 1 til 2 uker fra du sier ja.',
-    utdyping: [
-      {
-        t: 'Domenet først, alltid',
-        a: 'Kjøp domenet før du bestemmer navnet endelig. Det koster rundt 150 kroner i året hos en norsk registrar, og et navn du ikke får domenet til er et navn du kommer til å angre på. Sjekk samtidig at det er ledig på Facebook og Instagram hvis du skal bruke dem. Sett opp e-post på domenet med en gang: en henvendelse fra post@dittfirma.no leses annerledes enn en fra en gratis e-postadresse.',
-      },
-      {
-        t: 'Teksten er flaskehalsen, ikke designet',
-        a: 'Nesten alle nettsideprosjekter som stopper opp, stopper på tekst. Designet er ferdig, og så ligger prosjektet stille i seks uker fordi ingen har skrevet hva bedriften faktisk gjør. Skriv derfor teksten før du tegner noe. Trenger du et sted å starte: hva selger du, hvem er det til, hva koster det, og hva skal folk gjøre nå. Fire spørsmål, fire avsnitt, så har du en forside.',
-      },
-      {
-        t: 'Koble på måling fra dag én',
-        a: 'Uten måling vet du ikke om siden virker, og da har du ingen grunnlag for å endre den. Du trenger to ting: Google Search Console, som viser hva folk søkte på før de fant deg, og et enkelt besøksverktøy som viser hvilke sider som leses. Begge er gratis. Kobler du dem på i etterkant, mister du historikken fra de første månedene, som er akkurat den perioden du kommer til å ville sammenligne mot senere.',
-      },
-    ],
-    relatert: ['hvor-lang-tid-tar-en-nettside', 'wordpress-wix-eller-handkodet'],
-    // 28. sep 2026: denne siden og /blogg/hvordan-lage-nettside delte 81 søk (ca. 3 000
-    // visninger, 28 dager). Artikkelen rangerer 20-30 plasser høyere og skal eie
-    // klyngen, så lenkemålet peker dit i stedet for til /metode.
-    til: { tekst: 'Les hele guiden, steg for steg', rute: '/blogg/hvordan-lage-nettside' },
   },
   {
     // «billig nettside» 70/mnd KD 0, høy CPC
@@ -207,7 +192,7 @@ export const populaereSok = [
         a: 'Nettbutikk med betaling, frakt og lager tar 3 til 6 uker fordi tre systemer skal snakke sammen og alle må testes. Innlogging og kundeportaler tar lenger igjen. Skal siden flyttes fra en gammel leverandør, kommer det som regel en uke på toppen til å sette opp videresendinger, slik at gamle lenker ikke dør og rangeringen i Google følger med over.',
       },
     ],
-    relatert: ['hvordan-lage-nettside', 'hva-koster-nettbutikk'],
+    relatert: ['ny-nettside-eller-pusse-opp', 'hva-koster-nettbutikk'],
     til: { tekst: 'Slik går det til', rute: '/metode' },
   },
   {
