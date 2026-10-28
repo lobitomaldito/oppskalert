@@ -344,5 +344,46 @@
       "notat": "Lest 15. oktober 2026. Opinly svarer naa med telling for EN maaling (12 svar), ikke kumulativt som 8. okt (78). Sammenlign derfor mot forrige maaling slik APIet gir den (previous, 12 svar). Andel av 12: oppskalert.no own 50,0 til 58,3 % (6 til 7). sortlist 16,7 til 0 % (2 til 0), goodfirms 8,3 til 8,3, clutch, designrush og techbehemoths 0 begge uker. ndw.no spores ikke lenger, avstand kan ikke maales; naermeste sporede er webnow.no, 4,2 mot 37,7. 0 av 12 feilet. n=12, enkeltuker er stoey."
     }
   ],
-  "merk2": "Katalogtall er raatall, ikke andel. Antall analyserte svar gikk 42 til 54 mellom 24. og 31. august, saa raatallene stiger av seg selv. Regn siteringer delt paa svarAnalysert foer du kaller det vekst."
+  "merk2": "Katalogtall er raatall, ikke andel. Antall analyserte svar gikk 42 til 54 mellom 24. og 31. august, saa raatallene stiger av seg selv. Regn siteringer delt paa svarAnalysert foer du kaller det vekst.",
+  "openseo": {
+    "kilde": "OpenSEO AI-synlighet, prosjekt 0f747780-0f76-4cb2-9f24-4859453923a8. ChatGPT, Google AI Overviews og Gemini, Norge, norsk.",
+    "maales": "Hver onsdag kl. 20:00. Leses av seo-maskin-ukentlig på torsdager.",
+    "merk": "Ikke sammenlignbar med Opinly-radene over: andre spørsmål (norske) og andre motorer. Dag 1 er baseline.",
+    "sporsmal": [
+      "Hva koster en ny nettside for en småbedrift?",
+      "Hvem kan lage en nettside for en liten bedrift i Norge?",
+      "Kan du anbefale et webbyrå for småbedrifter i Norge?",
+      "Hvem lager rimelige nettsider for norske bedrifter?",
+      "Hvem kan hjelpe en liten bedrift med å bli synlig i Google og ChatGPT?"
+    ],
+    "malinger": [
+      {
+        "runId": "6288907c-8c42-47f8-8407-f7a6ec16a34a",
+        "completedAt": "2026-10-28T15:17:02.029Z",
+        "dag1": true,
+        "svarMedInnhold": 13,
+        "svarFeilet": 0,
+        "svarUtenInnhold": 2,
+        "nevnt": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 0,
+          "webaas.no": 1
+        },
+        "sitert": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 0,
+          "webaas.no": 1
+        },
+        "kilder": {
+          "hjemmesidesentralen.no": 2,
+          "kodeks.no": 2,
+          "nettify.no": 2,
+          "snilletips.no": 2
+        },
+        "notat": "Manuell kjøring 28.10.2026, satt som dag 1. Opinlys AI-måling var slått av samme dag."
+      }
+    ]
+  }
 }
