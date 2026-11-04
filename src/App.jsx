@@ -59,8 +59,7 @@ const Vurdering = () => {
     <p data-reveal className="vurdering inn" style={{ '--d': '400ms' }}>
       <Stjerner score={vurdering.score} />
       <span>
-        {score} av 5 fra {vurdering.antall}{' '}
-        {vurdering.antall === 1 ? 'vurdering' : 'vurderinger'} på{' '}
+        {score} av 5 på{' '}
         <a href={vurdering.url} target="_blank" rel="noopener noreferrer">
           {vurdering.kilde}
           <span className="skjult"> (åpnes i ny fane)</span>

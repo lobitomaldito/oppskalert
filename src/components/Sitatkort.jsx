@@ -78,7 +78,7 @@ const Sitatkort = () => {
               <span>
                 <Stjerner score={vurdering.score} />
                 <span className="omtaler-antall">
-                  av 5 fra {vurdering.antall} vurderinger på {vurdering.kilde}
+                  av 5 på {vurdering.kilde}
                 </span>
               </span>
             </p>

@@ -689,8 +689,10 @@ export const omtaler = [
    selv i kartoppføringen, uten at vi trenger å merke dem opp her. */
 /* Fylt ut 4. november 2026: 4,9 er tallet Google selv viser på
    profilen (snittet er 4,875 av åtte, Google runder til én desimal).
-   Antallet står ved siden av, så tallet kan etterprøves via lenken.
-   Oppdater begge når det kommer nye vurderinger. */
+   Antallet vises ikke på siden (Aleksander 4.11.2026: åtte er for få til
+   å skilte med). Lenken til profilen står alltid ved siden av snittet,
+   så antallet kan etterprøves der. Fjern aldri lenken uten å ta antallet
+   tilbake. Oppdater begge feltene når det kommer nye vurderinger. */
 export const vurdering = {
   score: 4.9,
   antall: 8,
