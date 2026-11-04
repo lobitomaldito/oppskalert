@@ -569,6 +569,52 @@ export const omtaler = [
   }
 ];
 
+/* Google-omtalene, ordrett fra Bedriftsprofilen (hentet 4. november 2026
+   via OpenSEO, place_id ChIJ4Z_t3dJtQUYRQEAv4cXLWXM). Åtte vurderinger,
+   seks med tekst. De to uten tekst (bare stjerner) er med i snittet i
+   heroen, men har ingenting å vise her. Nyeste først.
+
+   Teksten er ikke rettet, heller ikke skrivefeil: det er kundens ord.
+   Signaturen Birgitta skrev nederst i sin er flyttet til rolle. */
+export const googleOmtaler = [
+  {
+    "sitat": "Aleksander er positiv, grundig og opptatt av å gi god service! Han er strukturert, målbevisst og lytter samtidig som han forstår at hver kunde har behov for sitt eget unike særpreg. Dessuten er han rask - og DET er ikle alltid ellers forbundet med kvalitet, men det får du her!",
+    "navn": "Birgitta Strobel",
+    "rolle": "Kunstner og forfatter",
+    "stjerner": 5
+  },
+  {
+    "sitat": "God faglig kompetanse og rask hjelp til utforming og design av nettsiden som nå er oppdatert anno 2026. Veldig fornøyd med resultatet!",
+    "navn": "Kirstine Hansen",
+    "rolle": "Omtale på Google",
+    "stjerner": 5
+  },
+  {
+    "sitat": "Aleksander i Oppskalert har vært svært behagelig å jobbe med, og han har gjort en formidabel jobb med å oppgradere hjemmesidene våre. Allerede en par uker etter at han KI-optimerte sidene, tok en kunde kontakt etter et søk / en prompt på Claude! :)",
+    "navn": "Stein-Erik",
+    "rolle": "Omtale på Google",
+    "stjerner": 5
+  },
+  {
+    "sitat": "Servicevennlig og god assistanse når jeg skulle koble en bestillingsside til betaling og gi meg adressene til de som bestiller bøker. :-)",
+    "navn": "Steinar Husby",
+    "rolle": "Omtale på Google",
+    "stjerner": 5
+  },
+  {
+    "sitat": "Veldig fornøyd med ny nettside! Alltid hyggelig dialog og behjelpelige med endringer. Finner gode løsninger og møter behov. Kan anbefales! 🌟",
+    "navn": "Guro Brakestad",
+    "rolle": "Omtale på Google",
+    "stjerner": 4
+  },
+  {
+    "sitat": "Jeg opplever å ha fått en hel ny og spennende hjemmeside - som viser tydelig hva jeg jobber med og hva jeg tilbyr av tjenester. Aleks var lyttende til mine ønsker og kom også med gode forslag som gjør at jeg syns det var et gøy og solid samarbeid. Anbefaler Oppskalert videre til deg som ønsker en tydelig hjemmeside!",
+    "navn": "Mélanie Dahl",
+    "rolle": "Omtale på Google",
+    "stjerner": 5
+  }
+];
+
 /* Sporsmal og svar som par. Forste element er sporsmalet. */
 export const sporsmal = [
   [

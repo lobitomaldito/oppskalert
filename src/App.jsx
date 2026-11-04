@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell } from './components/Layout';
-import Sitatkort from './components/Sitatkort';
+import Sitatkort, { Stjerner } from './components/Sitatkort';
 import Priser from './components/Priser';
 import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
@@ -49,16 +49,6 @@ import { track } from './lib/analytics';
    Stjernene er dekorative og skjult for skjermlesere, siden hele
    opplysningen allerede står i teksten ved siden av. Uten det leses
    «stjerne stjerne stjerne stjerne stjerne 5 av 5» opp. */
-const Stjerner = ({ score }) => (
-  <span className="stjerner" aria-hidden="true">
-    {[1, 2, 3, 4, 5].map((n) => (
-      <svg key={n} viewBox="0 0 24 24" className={n <= Math.round(score) ? 'fylt' : ''}>
-        <path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z" />
-      </svg>
-    ))}
-  </span>
-);
-
 const Vurdering = () => {
   if (!vurdering) return null;
   // Norsk desimalskille er komma. 5 skal stå som «5», ikke «5,0».

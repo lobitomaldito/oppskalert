@@ -687,7 +687,16 @@ export const omtaler = [
    «self-serving», og de er ikke kvalifisert for stjerner i søkeresultatet.
    Ligger vurderingene på Google Bedriftsprofil, viser Google dem uansett
    selv i kartoppføringen, uten at vi trenger å merke dem opp her. */
-export const vurdering = null;
+/* Fylt ut 4. november 2026: 4,9 er tallet Google selv viser på
+   profilen (snittet er 4,875 av åtte, Google runder til én desimal).
+   Antallet står ved siden av, så tallet kan etterprøves via lenken.
+   Oppdater begge når det kommer nye vurderinger. */
+export const vurdering = {
+  score: 4.9,
+  antall: 8,
+  kilde: 'Google',
+  url: 'https://www.google.com/search?kgmid=/g/11z60rck3w',
+};
 
 /* ---------------------------------------------------------------
    HERO-BEVIS. Én navngitt kundeuttalelse rett under knappen.
