@@ -5,6 +5,7 @@ import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { ArbeidSeksjon } from '../components/Arbeider';
 import { Modell, PrisRad } from '../components/Priser';
+import Sitatkort from '../components/Sitatkort';
 import { lagFaqSchema, prisNotat, prismodeller, leieTilEie, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
@@ -118,7 +119,15 @@ const PriserPage = () => (
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
           <p className="etikett">Tre nivåer</p>
-          <h2>Enkel, Medium eller Komplett</h2>
+          <h2>Komplett, Medium eller Enkel</h2>
+          {/* Ett løfte, og bevisene for det (tilbud/MAL.md 3e punkt 5):
+              før-og-etter-målingene på casene under /arbeid. */}
+          <p>Uansett nivå skal siden gjøre det lettere å finne deg på Google.
+          Se hva som ble målt før og etter for{' '}
+          <Link to="/arbeid/steinar-husby" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Steinar Husby</Link>,{' '}
+          <Link to="/arbeid/melanie-dahl" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Mélanie Dahl</Link>,{' '}
+          <Link to="/arbeid/alpha-negotiations" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Alpha Negotiations</Link> og{' '}
+          <Link to="/arbeid/jakobsen-takst" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Jakobsen Takst</Link>.</p>
         </div>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
@@ -129,12 +138,15 @@ const PriserPage = () => (
             <Modell
               key={m.id}
               m={m}
-              className={[i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1', m.fremhevet && 'order-first md:order-none'].filter(Boolean).join(' ') || undefined}
+              className={[i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1'].filter(Boolean).join(' ') || undefined}
             />
           ))}
         </PrisRad>
         <p className="font-body text-[0.95rem] text-room-ink mt-8 max-w-[52rem] leading-relaxed">{leieTilEie.tekst}</p>
         <p className="font-body text-sm text-room-ink/70 mt-4 max-w-[52rem]">{prisNotat}</p>
+        {/* Omtalene står ved prisene (tilbud/MAL.md 3e punkt 4), ordrett
+            fra demo-innhold.js, samme kort som på forsiden. */}
+        <div className="mt-12"><Sitatkort /></div>
       </div>
     </section>
 

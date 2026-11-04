@@ -138,8 +138,8 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
             et kort som ble til overs. Chatbot eller app er tatt ut av
             prislisten 17. oktober 2026: ingen spurte etter det der.
 
-            Anbefalt kort først på mobil, der kortene står under hverandre.
-            Fra md står de i rutenettets egen rekkefølge.
+            Dyreste først, også på mobil (tilbud/MAL.md 3e punkt 2). Fram til
+            4. november 2026 sto det anbefalte kortet først på mobil.
 
             lg:items-start: med lik høyde fikk Engangspris rundt 250 px
             tomrom over knappen på 1440 og så uferdig ut. */}
@@ -151,7 +151,6 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
               visPasserDeg={visPasserDeg}
               className={cn(
                 i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1',
-                m.fremhevet && 'order-first md:order-none',
               )}
             />
           ))}
