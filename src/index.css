@@ -775,29 +775,71 @@
     transition: text-decoration-color .2s var(--e);
   }
   .omtaler-lenke:hover { text-decoration-color: var(--blekk); }
-  .omtaler-rad { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
-  @media (min-width: 52rem) { .omtaler-rad { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  /* Mobil: alle tre i en sveipbar rad, ett kort og en flik av det neste
-     synlig. To stablede kort tok 500 px og skjulte det tredje; raden tar
-     ett korts høyde og viser alle (regel 2: rute, ikke ramse opp). */
-  @media (max-width: 51.99rem) {
-    .omtaler-rad {
-      grid-auto-flow: column; grid-auto-columns: 86%;
-      overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
-      margin-inline: calc(var(--kant) * -1); padding-inline: var(--kant);
-      scroll-padding-inline: var(--kant); scrollbar-width: none;
-    }
-    .omtaler-rad::-webkit-scrollbar { display: none; }
-    .omtale { scroll-snap-align: start; }
+  .omtaler-score { display: flex; align-items: center; gap: .9rem; margin-top: .5rem; }
+  .omtaler-tall {
+    font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 600;
+    line-height: 1; letter-spacing: -.04em;
+  }
+  .omtaler-score .stjerner svg { width: 1.125rem; height: 1.125rem; }
+  .omtaler-antall { display: block; margin-top: .3rem; font-size: .875rem; color: var(--blekk-mykt); }
+
+  /* Rullende kolonner. Fast høyde med myk kant øverst og nederst, så
+     kortene glir inn og ut i stedet for å kuttes. Luften mellom kortene er
+     margin-bottom, ikke gap: med gap mangler siste mellomrom, og sløyfen
+     hopper ved omstart (samme grunn som hero-galleriet).
+
+     Fart: en desktopkolonne er rundt 1 000 px per sett, 46 til 58 s gir
+     17 til 22 px i sekundet, rolig nok til å lese et kort mens det
+     passerer. Ulik fart per kolonne, så rutenettet ikke beveger seg som
+     én blokk. Lineær med vilje: easing ville stoppet opp ved omstart. */
+  .omtaler-vegg {
+    position: relative;
+    height: clamp(30rem, 70vh, 40rem);
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent);
+            mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent);
+  }
+  .omtaler-kolonner { display: none; height: 100%; }
+  .omtaler-mobil { height: 100%; }
+  @media (min-width: 52rem) {
+    .omtaler-kolonner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
+    .omtaler-mobil { display: none; }
+  }
+  .omtale-kolonne { overflow: hidden; height: 100%; }
+  .omtale-spor {
+    list-style: none; padding: 0; margin: 0;
+    animation: omtale-rull var(--fart, 50s) linear infinite;
+  }
+  .omtale-kolonne:nth-child(2) .omtale-spor { animation-delay: -20s; }
+  .omtale-spor .omtale { margin-bottom: .75rem; }
+  @keyframes omtale-rull { to { transform: translate3d(0, -50%, 0); } }
+  .omtaler-vegg.er-pauset .omtale-spor { animation-play-state: paused; }
+  /* Hover pauser bare over kortene, ikke over knappen: ellers ble
+     «Spill av» stående stille til musa forlot feltet. */
+  @media (hover: hover) and (pointer: fine) {
+    .omtaler-kolonner:hover .omtale-spor,
+    .omtaler-mobil:hover .omtale-spor { animation-play-state: paused; }
+  }
+  .omtaler-vegg .galleri-pause { bottom: .5rem; right: .5rem; }
+  .omtale-stjerner { line-height: 0; }
+
+  /* Redusert bevegelse: ingen rulling, alle kortene står stille i full
+     høyde, og kopiene som bare fantes for sløyfen er borte. */
+  @media (prefers-reduced-motion: reduce) {
+    .omtaler-vegg { height: auto; -webkit-mask-image: none; mask-image: none; }
+    .omtale-kolonne { height: auto; }
+    .omtale-spor { animation: none; }
+    .omtale[aria-hidden="true"] { display: none; }
+    .omtaler-vegg .galleri-pause { display: none; }
   }
   .omtale {
     background: var(--kort); border-radius: var(--rund-stor);
     padding: clamp(1.5rem, 2.5vw, 2rem);
-    display: grid; gap: 1.5rem; align-content: space-between;
+    display: grid; gap: 1.25rem; align-content: space-between;
   }
   .omtale blockquote {
     font-weight: 400;
-    font-size: clamp(1.125rem, 1.5vw, 1.3125rem); line-height: 1.4; letter-spacing: -.012em;
+    font-size: clamp(1rem, 1.25vw, 1.125rem); line-height: 1.5; letter-spacing: -.008em;
     text-wrap: pretty;
   }
 
