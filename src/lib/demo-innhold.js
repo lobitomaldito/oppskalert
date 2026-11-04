@@ -4,8 +4,8 @@
    skrevet av for hand, sa teksten er identisk med den som ble godkjent.
    Kilden er mal3.src.html, se inspirasjon/demo-studio-mal.md.
 
-   Prisene er det ene unntaket: demoen sier 9 999, siden har to nivåer
-   (6 990 og 12 900) fra 17. oktober 2026, se prismodeller i site.js.
+   Prisene er det ene unntaket: demoen sier 9 999, siden har tre nivåer
+   (6 990, 12 900 og fra 19 900) fra 4. november 2026, se prismodeller i site.js.
 
    Feltet ikon er ra SVG-innmat og settes med dangerouslySetInnerHTML. Det er
    trygt her fordi strengene er vare egne konstanter i denne fila, ikke noe
@@ -573,7 +573,7 @@ export const omtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "En enkel side med innholdet du har i dag koster 6 990 kroner eks. mva. En komplett side, med tekster skrevet for Google, begynner på 12 900. I begge tilfeller eier du alt med en gang, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
+    "En enkel landingsside koster 6 990 kroner eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900. Komplett, med priskalkulator eller booking og tre måneder SEO, begynner på 19 900. Uansett nivå eier du alt med en gang, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie Medium til eie: 1 590 i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",

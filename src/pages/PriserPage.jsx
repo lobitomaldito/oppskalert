@@ -5,7 +5,7 @@ import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { ArbeidSeksjon } from '../components/Arbeider';
 import { Modell, PrisRad } from '../components/Priser';
-import { lagFaqSchema, prisNotat, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
+import { lagFaqSchema, prisNotat, prismodeller, leieTilEie, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
 /* Skjemaet bygges av nøyaktig de spørsmålene som vises lenger nede på
@@ -25,10 +25,10 @@ const priserSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
   name: 'Oppskalert prismodeller',
-  itemListElement: prismodeller.map((p) => ({
+  itemListElement: [...prismodeller, leieTilEie].map((p) => ({
     '@type': 'Offer',
     name: p.navn,
-    description: p.tagline,
+    description: p.tagline || p.tekst,
     price: p.fra.replace(/\s/g, ''),
     priceCurrency: 'NOK',
     url: 'https://oppskalert.no/priser',
@@ -39,18 +39,17 @@ const priserSchema = {
    alene: hva er egentlig forskjellen, rad for rad. */
 const rader = [
   ['Gratis utkast før du bestemmer deg', true, true, true],
+  ['Sider', 'Én landingsside', 'Alle du har i dag', 'Alle du har i dag'],
   ['Håndbygd nettside, uten tunge plugins', true, true, true],
   ['Søkemotor-grunnoppsett', true, true, true],
   ['Tekstene skrevet om for Google og AI-søk', false, true, true],
+  ['Priskalkulator, velger eller booking', false, false, true],
+  ['SEO med månedlig rapport', false, false, 'Tre måneder'],
   ['Admin-panel, endre tekst og bilder selv', true, true, true],
-  ['Du eier alle filene', true, true, 'Etter 12 måneder'],
+  ['Du eier alle filene', true, true, true],
   ['Hosting og SSL', true, true, true],
-  ['Serviceavtale: endringer, backup og support', '450 kr/mnd', '450 kr/mnd', 'Inkludert i 12 måneder'],
-  /* Radene som gjør at tabellen sammenligner ulike avtaler og ikke
-     bare funksjonslister. Uten dem ser leie til eie ut som
-     engangsprisen med flere haker. */
-  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura når du er fornøyd', '0 kr i dag, så 1 590 kr/mnd'],
-  ['Bindingstid', 'Ingen', 'Ingen', 'Ingen, kjøp ut når du vil'],
+  ['Serviceavtale: endringer, backup og support', '450 kr/mnd', '450 kr/mnd', 'Med i tre måneder, så 450 kr/mnd'],
+  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura, eller 1 590 kr/mnd som leie til eie', 'Én faktura når du er fornøyd'],
 ];
 
 const Celle = ({ v }) => {
@@ -64,17 +63,17 @@ const Sammenligning = () => (
     <div className="wrap">
       <div className="seksjonstopp inn">
         <p className="etikett">Sammenligning</p>
-        <h2>Hva inngår i hver modell?</h2>
+        <h2>Hva inngår i hvert nivå?</h2>
       </div>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
         <table className="w-full border-collapse min-w-[42rem]">
-          <caption className="sr-only">Sammenligning av Enkel, Komplett og leie til eie</caption>
+          <caption className="sr-only">Sammenligning av Enkel, Medium og Komplett</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
               <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Enkel</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Medium</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Komplett</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Leie til eie</th>
             </tr>
           </thead>
           <tbody>
@@ -90,7 +89,7 @@ const Sammenligning = () => (
         </table>
       </div>
       <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">
-        Alle tre gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
+        Alle tre nivåene gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
       </p>
     </div>
   </section>
@@ -100,7 +99,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: enkel side 6 990 kr, komplett fra 12 900 kr, hosting inkludert, eller leie til eie fra 1 590 kr/mnd uten binding. Fast pris og gratis utkast før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: landingsside 6 990 kr, alle sidene dine med tekster for Google 12 900 kr, komplett fra 19 900 kr. Hosting inkludert, fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -118,8 +117,8 @@ const PriserPage = () => (
     <section className="hvit">
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
-          <p className="etikett">Tre modeller</p>
-          <h2>Enkel eller komplett, eller betale månedlig</h2>
+          <p className="etikett">Tre nivåer</p>
+          <h2>Enkel, Medium eller Komplett</h2>
         </div>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
@@ -134,7 +133,8 @@ const PriserPage = () => (
             />
           ))}
         </PrisRad>
-        <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
+        <p className="font-body text-[0.95rem] text-room-ink mt-8 max-w-[52rem] leading-relaxed">{leieTilEie.tekst}</p>
+        <p className="font-body text-sm text-room-ink/70 mt-4 max-w-[52rem]">{prisNotat}</p>
       </div>
     </section>
 

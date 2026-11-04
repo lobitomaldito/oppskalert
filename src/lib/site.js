@@ -43,42 +43,41 @@ export const navLenker = [
 ];
 
 /* ---------------------------------------------------------------
-   PRISER. To modeller. Tallene er plassholdere; endre dem her,
+   PRISER. Tre nivåer. Tallene er plassholdere; endre dem her,
    så følger forsiden, prissiden og FAQ-en etter av seg selv.
    --------------------------------------------------------------- */
 export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.';
 
-/* Engangsprisen er delt i to nivåer 17. oktober 2026. Ett kort med «fra
-   6 990» fikk folk til å tro at en nettside koster 6 990, mens de fleste
-   salg går for 12 000 til 15 000, og leie til eie (1 290 x 12 = 15 480)
-   så dobbelt så dyr ut som engangsprisen. Skillet mellom nivåene går på
-   funksjoner, aldri på antall sider (se tilbud/MAL.md): Komplett er
-   grunnpakken pluss admin-panel og omskrevet SEO-tekst, 14 880 i moduler,
-   rundet ned. Leie til eie ble hevet fra 1 290 til 1 590 samme dag: med
-   serviceavtalen inkludert det første året var 1 290 billigere enn å kjøpe
-   Komplett og ta serviceavtale (15 480 mot 18 300). Nå er den 780 dyrere,
-   og tallet kolliderer ikke med SEO fra 1 490. Endres et tall her, endres
-   MAL.md også. */
+/* Tre nivåer fra 4. november 2026 (var to fra 17. oktober). Enkel er nå én
+   landingsside. Medium er det som het Komplett: alle sidene kunden har i
+   dag, med tekstene skrevet om for Google og AI-søk. Komplett er Medium
+   pluss en lead-modul og tre måneder SEO, summert fra tilbud/MAL.md:
+   6 990 + 4 900 + 3 900 + 3 x 1 490 = 20 260, rundet ned til 19 900.
+   Komplett har «fra» og ingen makspris.
+
+   Hvert kort har en `verdi`: hva nivået gir kunden, uten fagord.
+
+   Leie til eie (1 590 kr/mnd) er ikke et eget kort lenger, men en
+   betalingsmåte for Medium, se `leieTilEie` under. 1 590 x 12 = 19 080
+   er regnet mot Medium 12 900 pluss serviceavtalen det første året.
+   Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
-    /* Enkel er en fast pakke, derfor uten «fra» (fast: true). Komplett
-       har «fra» og ingen makspris: tillegg som priskalkulator eller booking
-       løfter den, og noen kunder har betalt 19 900. Kontrasten mellom de
-       to kortene er det som gjør «fra» tydelig. */
     id: 'enkel',
     navn: 'Enkel',
     fra: '6 990',
     fast: true,
     enhet: 'kr',
     periode: 'fast pris, én gang',
-    tagline: 'En ny og rask side med innholdet du har i dag.',
+    tagline: 'For deg som ønsker en enkel landingsside med godt design.',
+    verdi: 'Kundene ser hva du tilbyr og tar kontakt, alt fra én side.',
     passerDeg: [
-      'Du trenger en enkel side, og har innholdet klart',
-      'Teksten du har i dag gjør jobben',
+      'Du trenger én side som viser hva du gjør',
+      'Du har tekst og bilder klare',
       'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Håndbygd nettside med innholdet du har i dag',
+      'Én håndbygd landingsside med godt design',
       'Tilpasset mobil, med kontaktskjema',
       'SEO-grunnoppsett fra dag én',
       'Hosting og SSL inkludert, ingen månedspris',
@@ -88,61 +87,59 @@ export const prismodeller = [
     fremhevet: false,
   },
   {
-    id: 'komplett',
-    navn: 'Komplett',
+    id: 'medium',
+    navn: 'Medium',
     fra: '12 900',
+    fast: true,
     enhet: 'kr',
-    periode: 'engangspris, fast før jeg begynner',
-    tagline: 'Tekster skrevet for Google og AI-søk, så du blir funnet.',
+    periode: 'fast pris, én gang',
+    tagline: 'Alle sidene du har i dag, med tekster skrevet for Google og AI-søk.',
+    verdi: 'Flere finner deg når de søker på det du gjør, uten at du betaler for annonser.',
     passerDeg: [
+      'Du har flere tjenester eller undersider',
       'Du vil bli funnet når noen søker på det du gjør',
-      'Du trenger noe mer enn en vanlig side',
     ],
     inkludert: [
       'Alt i Enkel, pluss:',
+      'Alle undersidene du har i dag',
       'Tekstene skrevet om for Google og AI-søk',
-      'Tillegg som priskalkulator eller booking etter behov',
-    ],
-    fremhevet: false,
-  },
-  {
-    /* To endringer, og grunnene bør stå her så de ikke blir reversert i
-       god tro.
-
-       26. august 2026: modellen het «Driftet av meg» og kostet 690 kr/mnd,
-       samme navn og pris som driftsnivået lenger nede, men med hele
-       nettsiden inkludert. Byggingen var i praksis gratis og kunne sies
-       opp etter én måned. Svaret den gang var 12 måneders binding.
-
-       9. oktober 2026: bindingen er fjernet, og modellen heter leie til
-       eie. Konkurrentene som selger samme modell har ingen binding, og
-       kortet skjulte poenget (0 kr i dag, siden blir din). Vernet mot
-       gratis bygging er nå eierskapet: filene blir kundens først når 12
-       måneder er betalt. Sier kunden opp før det, gjør vi opp resten av
-       byggesummen, eller siden tas ned når den betalte perioden er slutt.
-       Tekster, bilder og domene er kundens uansett. Drift og leie til eie
-       er to ulike ting, og skal aldri bære samme navn. */
-    id: 'abonnement',
-    navn: 'Leie til eie',
-    fra: '1 590',
-    enhet: 'kr/mnd',
-    periode: 'ingen binding, kjøp ut når du vil',
-    tagline: '0 kr i dag. Siden er din etter 12 måneder.',
-    passerDeg: [
-      'Du vil ha nettsiden nå, ikke når budsjettet tillater det',
-      'Du vil bruke tiden på bedriften, ikke på nettsiden',
-      'Du vil ha én forutsigbar månedskostnad',
-    ],
-    inkludert: [
-      'Alt i Komplett, pluss:',
-      'Serviceavtale i 12 måneder: endringer, backup og support',
-      'Siden og filene er dine etter 12 måneder',
-      'Deretter serviceavtale til 450 kr/mnd, eller ingenting',
-      'Hostingen fortsetter uansett',
+      'Kan også leies til eie: 0 kr i dag, 1 590 kr/mnd',
     ],
     fremhevet: true,
   },
+  {
+    id: 'komplett',
+    navn: 'Komplett',
+    fra: '19 900',
+    enhet: 'kr',
+    periode: 'engangspris, fast før jeg begynner',
+    tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
+    verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
+    passerDeg: [
+      'Du vil ha flere henvendelser fra siden',
+      'Du vil se hva siden faktisk gir deg',
+    ],
+    inkludert: [
+      'Alt i Medium, pluss:',
+      'Priskalkulator, velger eller booking etter behov',
+      'Tre måneder SEO: månedlig rapport med vanlige ord, AI-sjekk og én ny side eller artikkel i måneden',
+      'Retting av det rapporten finner',
+    ],
+    fremhevet: false,
+  },
 ];
+
+/* Leie til eie: grunnene til modellen står i git-historikken for denne
+   fila (26. august og 9. oktober 2026). Kort fortalt: ingen binding, og
+   filene blir kundens først når 12 måneder er betalt. Sier kunden opp
+   før, gjør vi opp resten av byggesummen, eller siden tas ned når betalt
+   periode er slutt. Drift og leie til eie skal aldri bære samme navn. */
+export const leieTilEie = {
+  navn: 'Leie til eie',
+  fra: '1 590',
+  enhet: 'kr/mnd',
+  tekst: 'Vil du heller betale månedlig? Medium kan leies til eie: 0 kr i dag og 1 590 kr/mnd uten binding. Serviceavtalen er med det første året, og siden er din når tolv måneder er betalt.',
+};
 
 export const alltidMed = [
   'Skreddersydd design, håndkodet',
@@ -309,7 +306,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'En enkel side med innholdet du har i dag koster 6 990 kr eks. mva. En komplett side, med tekster skrevet for Google, starter på 12 900 kr. I begge tilfeller eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie til eie: 1 590 kr i måneden uten binding, og den komplette siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel landingsside koster 6 990 kr eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900 kr. Komplett, med priskalkulator eller booking og tre måneder SEO, starter på 19 900 kr. Uansett nivå eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie Medium til eie: 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -411,11 +408,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg er det to nivåer, og antall sider avgjør ikke hvilket. Enkel, 6 990 kr eks. mva, er en ny side med innholdet du har i dag. Komplett, fra 12 900 kr, har i tillegg tekster skrevet for Google og AI-søk, og tillegg som priskalkulator eller booking etter behov. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i begge. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det tre nivåer. Enkel, 6 990 kr eks. mva, er én landingsside med godt design. Medium, 12 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Komplett, fra 19 900 kr, har i tillegg priskalkulator, velger eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel) eller fra 12 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger den komplette siden, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 450 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 450 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
