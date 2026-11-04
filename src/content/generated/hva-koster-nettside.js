@@ -11,15 +11,15 @@ Søker du på dette spørsmålet, møter du svar fra 3 000 til 300 000 kroner, o
 
 ## Prisene mine, uten omveier
 
-Jeg har to nivåer. Enkel koster 6 990 kroner: en ny og rask side med innholdet du har i dag. Komplett starter på 12 900 kroner: tekstene skrives om for Google og AI-søk, og du får et admin-panel så du endrer tekst og bilder selv. Antall sider avgjør ikke nivået. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
+Jeg har tre nivåer. Enkel koster 6 990 kroner: én landingsside med godt design. Medium koster 12 900 kroner: alle sidene du har i dag, med tekstene skrevet om for Google og AI-søk. Komplett starter på 19 900 kroner: alt i Medium, pluss priskalkulator, velger eller booking, og tre måneder der jeg følger med på søkene og rapporterer hver måned. Admin-panelet, der du endrer tekst og bilder selv, er med i alle tre. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
 
 ## Hva som avgjør hvilket nivå du havner på
 
-Det som avgjør nivået, er to ting: om tekstene du har i dag holder, og om du vil endre siden selv etterpå. En bedrift med gode tekster som sjelden endrer noe, klarer seg som regel med Enkel. Vil du bli funnet på flere søk, eller oppdatere priser, bilder og tilbud selv, er det Komplett du trenger. Booking, egne integrasjoner og andre tillegg kommer på toppen, med fast pris avtalt før jeg begynner.
+Det som avgjør nivået, er tre ting: om én side holder, om du vil bli funnet når noen søker på det du gjør, og om siden skal skaffe deg henvendelser du kan måle. Trenger du bare et sted å vise hva du gjør, holder Enkel. Har du flere tjenester og vil bli funnet på dem, er det Medium. Vil du ha et verktøy som gjør besøk til henvendelser, og se hver måned hva siden gir deg, er det Komplett. Egne integrasjoner og andre tillegg avtales med fast pris før jeg begynner.
 
 ## Engangspris eller leie til eie
 
-Komplett kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med serviceavtale til 450 kroner i måneden, eller la være. Hostingen fortsetter uansett.
+Medium kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med serviceavtale til 450 kroner i måneden, eller la være. Hostingen fortsetter uansett.
 
 ## Hva andre i bransjen tar, og hvorfor det varierer så mye
 
@@ -31,5 +31,5 @@ Skal du ha et tall for akkurat din bedrift, [send meg en linje](/kontakt) om hva
 
 ## Hva du bør gjøre nå
 
-Still deg to spørsmål: holder tekstene du har i dag, og vil du endre siden selv etterpå? Er svaret ja på det første og nei på det andre, holder Enkel. Ellers er det Komplett du bør budsjettere med før du tar kontakt med noen.`,
+Still deg to spørsmål: holder det med én side, og skal siden skaffe deg kunder fra søk? Er svaret ja på det første og nei på det andre, holder Enkel til 6 990. Skal den bli funnet, budsjetter med Medium til 12 900, og med Komplett fra 19 900 hvis du vil ha et verktøy som tar imot henvendelser, og at jeg følger med på søkene hver måned.`,
 };

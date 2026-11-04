@@ -62,6 +62,11 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
       </div>
       <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>
 
+      {/* Hva nivået gir kunden, i vanlige ord. Bare engangsnivåene har den. */}
+      {m.verdi && (
+        <p className="font-body text-[0.95rem] mt-4 md:mt-5 leading-relaxed text-room-ink">{m.verdi}</p>
+      )}
+
       {visPasserDeg && (
         <ul className="mt-6 pt-5 border-t flex flex-col gap-2.5 border-room-ink/20">
           <li className="font-body text-sm mb-1 text-room-ink/70">Passer deg som</li>
