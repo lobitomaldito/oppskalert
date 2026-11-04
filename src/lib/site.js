@@ -57,32 +57,31 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
 
    Hvert kort har en `verdi`: hva nivået gir kunden, uten fagord.
 
+   Rekkefølgen er dyreste først (tilbud/MAL.md 3e punkt 2): det store
+   valget gjør de andre lettere å si ja til.
+
    Leie til eie (1 590 kr/mnd) er ikke et eget kort lenger, men en
    betalingsmåte for Medium, se `leieTilEie` under. 1 590 x 12 = 19 080
    er regnet mot Medium 12 900 pluss serviceavtalen det første året.
    Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
-    id: 'enkel',
-    navn: 'Enkel',
-    fra: '6 990',
-    fast: true,
+    id: 'komplett',
+    navn: 'Komplett',
+    fra: '19 900',
     enhet: 'kr',
-    periode: 'fast pris, én gang',
-    tagline: 'For deg som ønsker en enkel landingsside med godt design.',
-    verdi: 'Kundene ser hva du tilbyr og tar kontakt, alt fra én side.',
+    periode: 'engangspris, fast før jeg begynner',
+    tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
+    verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
     passerDeg: [
-      'Du trenger én side som viser hva du gjør',
-      'Du har tekst og bilder klare',
-      'Du vil bli ferdig og videre',
+      'Du vil ha flere henvendelser fra siden',
+      'Du vil se hva siden faktisk gir deg',
     ],
     inkludert: [
-      'Én håndbygd landingsside med godt design',
-      'Tilpasset mobil, med kontaktskjema',
-      'SEO-grunnoppsett fra dag én',
-      'Hosting og SSL inkludert, ingen månedspris',
-      'Eget redigeringspanel: endre tekst og bilder selv',
-      'Alle filer overlevert, du eier dem',
+      'Alt i Medium, pluss:',
+      'Priskalkulator, velger eller booking etter behov',
+      'Tre måneder SEO: månedlig rapport med vanlige ord, AI-sjekk og én ny side eller artikkel i måneden',
+      'Retting av det rapporten finner',
     ],
     fremhevet: false,
   },
@@ -108,25 +107,29 @@ export const prismodeller = [
     fremhevet: true,
   },
   {
-    id: 'komplett',
-    navn: 'Komplett',
-    fra: '19 900',
+    id: 'enkel',
+    navn: 'Enkel',
+    fra: '6 990',
+    fast: true,
     enhet: 'kr',
-    periode: 'engangspris, fast før jeg begynner',
-    tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
-    verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
+    periode: 'fast pris, én gang',
+    tagline: 'For deg som ønsker en enkel landingsside med godt design.',
+    verdi: 'Kundene ser hva du tilbyr og tar kontakt, alt fra én side.',
     passerDeg: [
-      'Du vil ha flere henvendelser fra siden',
-      'Du vil se hva siden faktisk gir deg',
+      'Du trenger én side som viser hva du gjør',
+      'Du har tekst og bilder klare',
+      'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Alt i Medium, pluss:',
-      'Priskalkulator, velger eller booking etter behov',
-      'Tre måneder SEO: månedlig rapport med vanlige ord, AI-sjekk og én ny side eller artikkel i måneden',
-      'Retting av det rapporten finner',
+      'Én håndbygd landingsside med godt design',
+      'Tilpasset mobil, med kontaktskjema',
+      'SEO-grunnoppsett fra dag én',
+      'Hosting og SSL inkludert, ingen månedspris',
+      'Eget redigeringspanel: endre tekst og bilder selv',
+      'Alle filer overlevert, du eier dem',
     ],
     fremhevet: false,
-  },
+  }
 ];
 
 /* Leie til eie: grunnene til modellen står i git-historikken for denne
