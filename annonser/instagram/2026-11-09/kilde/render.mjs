@@ -8,7 +8,7 @@ const p = await b.newPage();
 await p.setViewport({ width: 1200, height: 1400 });
 await p.goto('file://' + path.join(dir, 'poster.html'), { waitUntil: 'networkidle0' });
 await p.evaluateHandle('document.fonts.ready');
-for (const n of [1, 2, 3]) {
+for (const n of [1, 2, 3, 'profil']) {
   await (await p.$('#post-' + n)).screenshot({ path: path.join(dir, '..', `post-${n}.png`) });
 }
 await b.close();
