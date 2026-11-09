@@ -53,6 +53,8 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    dag, med tekstene skrevet om for Google og AI-søk. Komplett er Medium
    pluss en lead-modul og tre måneder SEO, summert fra tilbud/MAL.md:
    6 990 + 4 900 + 3 900 + 3 x 1 490 = 20 260, rundet ned til 19 900.
+   SEO gikk til 2 990 9. november 2026 (3 x 2 990 = 24 760), men
+   Komplett står fortsatt fra 19 900.
    Komplett har «fra» og ingen makspris.
 
    Hvert kort har en `verdi`: hva nivået gir kunden, uten fagord.
@@ -187,7 +189,7 @@ export const driftNivaer = [
   {
     id: 'seo',
     navn: 'SEO',
-    fra: '1 490',
+    fra: '2 990',
     enhet: 'kr/mnd',
     periode: 'etter omfang, ingen binding',
     tagline: 'For deg som vil bli funnet på flere søk, måned for måned.',
@@ -458,7 +460,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva koster søkemotoroptimalisering hos deg?',
-      a: 'SEO-abonnementet starter på 1 490 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Hver måned får du en rapport med vanlige ord, en AI-sjekk av om ChatGPT og de andre nevner deg, en ny side eller artikkel, og retting av det rapporten finner. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
+      a: 'SEO-abonnementet starter på 2 990 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Hver måned får du en rapport med vanlige ord, en AI-sjekk av om ChatGPT og de andre nevner deg, en ny side eller artikkel, og retting av det rapporten finner. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
     },
   ],
 

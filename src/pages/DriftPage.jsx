@@ -121,7 +121,7 @@ const DriftPage = () => (
         noe sted. Se SEO.md punkt 12. */}
     <SEO
       title="Webhosting og drift av nettside"
-      description="Hosting er med i prisen på alle nettsider jeg bygger. Serviceavtale med endringer og support fra 450 kr/mnd, og SEO fra 1 490 kr/mnd. Ingen bindingstid."
+      description="Hosting er med i prisen på alle nettsider jeg bygger. Serviceavtale med endringer og support fra 450 kr/mnd, og SEO fra 2 990 kr/mnd. Ingen bindingstid."
       keywords={['webhosting', 'drift av nettside', 'support nettside abonnement', 'vedlikehold nettside']}
       canonical="https://oppskalert.no/drift"
       jsonLd={driftSchema}
@@ -129,7 +129,7 @@ const DriftPage = () => (
     <SideTopp
       tittel="Hold nettsiden"
       uthevet="trygg og oppdatert."
-      lede="Hosting er med i prisen på alle sider jeg bygger. Serviceavtale fra 450 kr/mnd hvis du vil at jeg gjør endringene, og SEO fra 1 490 kr/mnd hvis du vil bli funnet på flere søk. Ingen bindingstid."
+      lede="Hosting er med i prisen på alle sider jeg bygger. Serviceavtale fra 450 kr/mnd hvis du vil at jeg gjør endringene, og SEO fra 2 990 kr/mnd hvis du vil bli funnet på flere søk. Ingen bindingstid."
     />
     <section className="seksjon pt-0">
       <div className="wrap">
