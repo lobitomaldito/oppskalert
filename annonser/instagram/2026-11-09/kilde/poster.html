@@ -19,9 +19,13 @@ h1 { font-family:Cabinet; font-weight:500; letter-spacing:-.035em; line-height:1
 .fot b { color:var(--blekk); font-weight:600; }
 
 /* 1: hvem */
-.p1 { padding:0; }
-.p1 .bilde { height:760px; background:url(aleksander.jpg) center 48%/cover; }
-.p1 .tekst { flex:1; padding:56px 72px 64px; display:flex; flex-direction:column; }
+.p1 .sider { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:8px 0 64px; }
+.p1 .sider img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover; object-position:top; border-radius:14px; border:1.5px solid var(--kant); }
+.p1 .tekst { flex:1; display:flex; flex-direction:column; }
+
+/* profilbilde */
+.profil { width:1080px; height:1080px; background:var(--felt); display:grid; place-items:center; }
+.profil .merke { font-size:520px; letter-spacing:-.04em; line-height:1; transform:translate(4%, -4%); }
 .p1 .navn { font-size:28px; font-weight:600; margin-bottom:26px; }
 .p1 .navn span { color:var(--mykt); font-weight:400; }
 .p1 h1 { font-size:76px; }
@@ -54,7 +58,12 @@ h1 { font-family:Cabinet; font-weight:500; letter-spacing:-.035em; line-height:1
 <body>
 
 <section class="post p1" id="post-1">
-  <div class="bilde"></div>
+  <div class="sider">
+    <img src="alpha-negotiations.jpg" alt="">
+    <img src="jakobsen-takst.jpg" alt="">
+    <img src="steinar-husby.jpg" alt="">
+    <img src="katrin-brubakk.jpg" alt="">
+  </div>
   <div class="tekst">
     <p class="navn">Aleksander MacKee <span>· Oppskalert</span></p>
     <h1>Jeg lager nettsider for bedrifter. Du ser din <span class="aksent">før du betaler en krone.</span></h1>
@@ -79,6 +88,8 @@ h1 { font-family:Cabinet; font-weight:500; letter-spacing:-.035em; line-height:1
   <p class="vilkar">Eks. mva. Du betaler én gang, og hosting er med. <b>Utkastet er gratis, så du ser siden før du bestemmer deg.</b></p>
   <div class="fot"><span>Ring meg: 974 09 897</span><b>oppskalert.no</b></div>
 </section>
+
+<section class="profil" id="post-profil"><span class="merke">o<i>.</i></span></section>
 
 </body>
 </html>

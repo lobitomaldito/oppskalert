@@ -3,7 +3,7 @@
 ## Slik sto kontoen
 
 - 3 innlegg, 3 følgere. Bioen er bare «oppskalert.», uten hva, hvem eller tilbud.
-- Profilbildet er «o.»-monogrammet på lilla bunn, ingen ansikt.
+- Profilbildet er «o.»-monogrammet på lilla bunn, fra den gamle fargepaletten.
 - Ingen kontaktknapp, bare «Send melding».
 - Alle tre innleggene er i den gamle aubergine-stilen. Siden er hvit med oransje nå.
 - Tekstene bryter reglene: «vi»-form, «demo» (heter «gratis utkast» nå), «lynrask»,
@@ -12,7 +12,7 @@
 
 ## Fiks profilen (ca. 10 minutter i appen)
 
-1. **Profilbilde:** `profilbilde.jpg` i denne mappa.
+1. **Profilbilde:** `profilbilde.png` i denne mappa, «o.» i svart og oransje på hvitt, som logoen på siden.
 2. **Navn:** `Oppskalert | Nettsider for bedrifter`
    (navnefeltet er søkbart, bioen er det ikke)
 3. **Bio:**
@@ -41,6 +41,8 @@ Jeg lager nettsider for små bedrifter: håndverkere, terapeuter, rådgivere og 
 Slik jobber jeg: Du sender meg adressen til siden du har i dag, eller forteller hva du driver med. På 48 timer får du et utkast av den nye siden din. Det koster ingenting, og du skylder meg ingenting om du sier nei.
 
 Liker du det du ser, gjør jeg den ferdig. Jeg skriver teksten, setter opp siden og tar telefonen når du lurer på noe.
+
+På bildet ser du fire av sidene jeg har laget: Alpha Negotiations, Jakobsen Takst, Steinar Husby og Katrin Glatz Brubakk.
 
 Få et gratis utkast: lenke i profilen.
 
@@ -89,6 +91,8 @@ Send meg en melding her, eller ring 974 09 897.
 ```
 
 ## Kilder
+
+- Ingen ansiktsbilder (Aleksander, 09.11.2026). Post 1 viser kundesider, profilbildet er logoen.
 
 - Prisene: `src/lib/site.js` på origin/master og `~/.claude/assets/tilbud/MAL.md`.
 - Melanie Dahl-tallene: `forEtter` i `src/lib/demo-innhold.js`, målt 30.09.2026.
