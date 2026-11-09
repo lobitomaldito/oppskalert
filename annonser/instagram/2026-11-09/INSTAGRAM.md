@@ -10,7 +10,11 @@
   «24/7», doble emneknagger (`##nettside`), #ecommerce og #vibecoding, og
   «Forskning viser 53 %» uten kilde.
 
-## Fiks profilen (ca. 10 minutter i appen)
+## Fiks profilen
+
+Gjort 09.11.2026 på instagram.com: profilbilde, navn og bio (punkt 1 til 3).
+Gjenstår i appen (nettet har ikke valget): lenke, kontaktknapper, feste post 1
+og arkivere de tre gamle postene. Kategorien sto allerede som Webdesigner.
 
 1. **Profilbilde:** `profilbilde.png` i denne mappa, «o.» i svart og oransje på hvitt, som logoen på siden.
 2. **Navn:** `Oppskalert | Nettsider for bedrifter`
