@@ -66,12 +66,15 @@ const Sammenligning = () => (
         <p className="etikett">Sammenligning</p>
         <h2>Hva inngår i hvert nivå?</h2>
       </div>
+      {/* På mobil er tabellen bredere enn skjermen. Radnavnene står fast
+          til venstre, og Medium stikker halvveis inn som hint om å sveipe. */}
+      <p className="md:hidden font-body text-sm text-room-ink/70 mb-3" aria-hidden="true">Sveip sidelengs for Medium og Komplett →</p>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
-        <table className="w-full border-collapse min-w-[42rem]">
+        <table className="w-full border-collapse min-w-[35.5rem] md:min-w-[42rem]">
           <caption className="sr-only">Sammenligning av Enkel, Medium og Komplett</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
-              <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
+              <th scope="col" className="sticky left-0 z-10 bg-room shadow-[inset_0_0_0_999px_rgb(var(--room-ink)/0.05)] border-r border-room-ink/10 md:static md:border-r-0 w-[8.5rem] md:w-auto text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Enkel</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Medium</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Komplett</th>
@@ -80,7 +83,7 @@ const Sammenligning = () => (
           <tbody>
             {rader.map(([navn, a, b, c]) => (
               <tr key={navn} className="border-b border-room-ink/10 last:border-b-0">
-                <th scope="row" className="text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
+                <th scope="row" className="sticky left-0 z-10 bg-room border-r border-room-ink/10 md:static md:border-r-0 text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
                 <td className="text-center py-3.5 px-4"><Celle v={a} /></td>
                 <td className="text-center py-3.5 px-4"><Celle v={b} /></td>
                 <td className="text-center py-3.5 px-4"><Celle v={c} /></td>
@@ -119,7 +122,7 @@ const PriserPage = () => (
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
           <p className="etikett">Tre nivåer</p>
-          <h2>Komplett, Medium eller Enkel</h2>
+          <h2>Enkel, Medium eller Komplett</h2>
           {/* Ett løfte, og bevisene for det (tilbud/MAL.md 3e punkt 5):
               før-og-etter-målingene på casene under /arbeid. */}
           <p>Uansett nivå skal siden gjøre det lettere å finne deg på Google.
