@@ -110,7 +110,8 @@ export const Footer = ({ utenCta = false }) => (
       <a className="bunn-post" href={`mailto:${kontakt.epost}`}>{kontakt.epost}</a>
       <p style={{ marginTop: '1rem', color: 'var(--kritt-mykt)', fontSize: '.9375rem' }}>
         Eller bare ring, jeg tar telefonen selv:{' '}
-        <a href={`tel:${kontakt.tel}`} style={{ borderBottom: '1px solid var(--blekk-kant)' }}>
+        {/* inline-block med py-3 og -my-3: 44 px trykkflate uten å flytte linjen. */}
+        <a href={`tel:${kontakt.tel}`} className="inline-block py-3 -my-3" style={{ borderBottom: '1px solid var(--blekk-kant)' }}>
           {kontakt.telefon}
         </a>
       </p>
@@ -140,19 +141,19 @@ export const Footer = ({ utenCta = false }) => (
       </div>
 
       <div className="flex flex-wrap gap-x-14 gap-y-8 pt-10 font-body text-sm">
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col md:gap-3">
           <span className="text-ink/70 font-semibold mb-1">Tjenester</span>
-          <Link to={ruter.nettsideDesign} className="text-ink/70 hover:text-ink transition-colors">Nettsidedesign</Link>
-          <Link to={ruter.nettsideBedrift} className="text-ink/70 hover:text-ink transition-colors">Nettside til bedrift</Link>
-          <Link to={ruter.nyNettside} className="text-ink/70 hover:text-ink transition-colors">Ny nettside</Link>
-          <Link to={ruter.nettbutikk} className="text-ink/70 hover:text-ink transition-colors">Lage nettbutikk</Link>
-          <Link to={ruter.webdesignOslo} className="text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
-          <Link to={ruter.seo} className="text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
-          <Link to={ruter.drift} className="text-ink/70 hover:text-ink transition-colors">Drift og support</Link>
+          <Link to={ruter.nettsideDesign} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Nettsidedesign</Link>
+          <Link to={ruter.nettsideBedrift} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Nettside til bedrift</Link>
+          <Link to={ruter.nyNettside} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Ny nettside</Link>
+          <Link to={ruter.nettbutikk} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Lage nettbutikk</Link>
+          <Link to={ruter.webdesignOslo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
+          <Link to={ruter.seo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
+          <Link to={ruter.drift} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Drift og support</Link>
         </div>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col md:gap-3">
           <span className="text-ink/70 font-semibold mb-1">Verktøy</span>
-          <Link to={ruter.sammenlign} className="text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
+          <Link to={ruter.sammenlign} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
           {/* De to undersidene lenkes herfra, ikke bare fra /sammenlign.
 
              Målt i Search Console 22. august: /sammenlign har aldri blitt
@@ -161,10 +162,10 @@ export const Footer = ({ utenCta = false }) => (
              barna sine, så begge sto som «Discovered, currently not
              indexed» med null kjente lenker. Footeren ligger på hver
              eneste crawlet side, så herfra finner Googlebot dem. */}
-          <Link to={ruter.sammenlignWix} className="text-ink/70 hover:text-ink transition-colors">Meg mot Wix</Link>
-          <Link to={ruter.sammenlignWordpress} className="text-ink/70 hover:text-ink transition-colors">Meg mot WordPress</Link>
-          <Link to={RUTE_VANLIGE_SPORSMAL} className="text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
-          <Link to={RUTE_ORDLISTE} className="text-ink/70 hover:text-ink transition-colors">Ordliste</Link>
+          <Link to={ruter.sammenlignWix} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Meg mot Wix</Link>
+          <Link to={ruter.sammenlignWordpress} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Meg mot WordPress</Link>
+          <Link to={RUTE_VANLIGE_SPORSMAL} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
+          <Link to={RUTE_ORDLISTE} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Ordliste</Link>
         </div>
       </div>
 
