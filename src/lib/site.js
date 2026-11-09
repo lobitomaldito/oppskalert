@@ -613,7 +613,13 @@ export const prosjekter = [
      med heroen som viser Harstad sett fra Immelen. */
   { img: '/websider/jakobsen-takst.webp', slug: 'jakobsen-takst', farge: '#b71817', full: '/websider/full/jakobsen-takst.webp', til: '-81%', navn: 'Jakobsen Takst & Bygg', bransje: 'Takst · Harstad', url: 'https://jtob.no/', domene: 'jtob.no' },
   { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', farge: '#5d7f35', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
-  { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', farge: '#461823', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
+  /* Prana Yoga Studio. Lagt inn 9. november 2026, live på
+     pranayogakristiansand.no. Tar plassen Katrin Brubakk hadde som fjerde
+     kort, og dermed plassen på /priser og /om (fire kort). Katrin er
+     flyttet til etter Alpha Negotiations og Samtaleverkstedet til sist,
+     begge etter ønske fra Aleksander. Fargen er skiferen fra logoen (#4C6971), målt da siden ble
+     bygget, se research/KILDER.md i prana-yoga-studio. */
+  { img: '/websider/prana-yoga.webp', slug: 'prana-yoga', farge: '#4c6971', full: '/websider/full/prana-yoga.webp', til: '-81%', navn: 'Prana Yoga Studio', bransje: 'Yoga · Kristiansand', url: 'https://www.pranayogakristiansand.no/', domene: 'pranayogakristiansand.no' },
   /* Melanie Dahl. Lagt inn 21. august 2026, hentet fra arbeid en annen
      sesjon hadde liggende ukommittert i hovedtreet.
 
@@ -636,19 +642,20 @@ export const prosjekter = [
      ikke lang nok til å fylle den vanlige 5000 px-fangsten, så bildet er
      640 x 1660, samme prinsipp som Melanie Dahl over. */
   { img: '/websider/alpha-negotiations.webp', slug: 'alpha-negotiations', farge: '#0d1d55', full: '/websider/full/alpha-negotiations.webp', til: '-71%', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
-  { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', farge: '#815c39', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
+  { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', farge: '#461823', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
   { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', farge: '#1c304d', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
   { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', farge: '#418bbf', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
   { img: '/websider/tore-sunde-rasmussen.webp', slug: 'tore-sunde-rasmussen', farge: '#2a3a60', full: '/websider/full/tore-sunde-rasmussen.webp', til: '-74%', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
   /* Tor Magnus Kolflaath. Lagt inn 30. september 2026. Levert og satt
      live 10. august, men aldri ført opp her. Ingen case-side, så kortet
-     lenker rett ut til kolflaath.com. Står sist blant dem med fangst,
-     så de seks første (Portfolio med limit 6) er uendret.
+     lenker rett ut til kolflaath.com. Samtaleverkstedet står etter, sist
+     av dem med fangst, fordi Aleksander vil nedprioritere den (9.11.2026).
 
      Til er -67%: forsiden er 2912 px høy, så bildet er 640 x 1456 og
      vinduet viser 480 / 1456 = 33 % av det av gangen. Samme prinsipp som
      Melanie Dahl og Alpha Negotiations over. */
   { img: '/websider/kolflaath.webp', slug: 'kolflaath', farge: '#2a6372', full: '/websider/full/kolflaath.webp', til: '-67%', navn: 'Tor Magnus Kolflaath', bransje: 'Investor', url: 'https://kolflaath.com', domene: 'kolflaath.com' },
+  { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', farge: '#815c39', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
   { img: '/websider/oppskalert.webp', navn: 'Oppskalert', bransje: 'Denne siden', url: 'https://oppskalert.no', domene: 'oppskalert.no' },
   { img: '/websider/irmelin-drake-ny.webp', navn: 'Irmelin Drake', bransje: 'Ledelse', url: 'https://irmelindrake.no', domene: 'irmelindrake.no' },
 ];

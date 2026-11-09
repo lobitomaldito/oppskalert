@@ -49,6 +49,39 @@ export const caser = [
     }
   },
   {
+    "slug": "prana-yoga",
+    "i": 3,
+    "tittel": "Timeplanen fra bookingen, rett på forsiden",
+    "ingress": "Iyengar yoga, pilates og reformer i Kristiansand sentrum, med tolv lærere og åpent sju dager i uken. Den som vurderer en prøvetime vil vite hva som går i dag, og hvordan man melder seg på.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Timeplan hentet fra bookingsystemet",
+      "Redigering av tekst, bilder og arrangementer",
+      "Søkeoppsett for Kristiansand",
+      "Hosting og drift"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Redigering rett på siden"
+    ],
+    "utfordring": {
+      "t": "Timene lå i et eget system",
+      "a": [
+        "Prana har timer fra morgen til kveld, alle dager. Påmeldingen skjer i bookingsystemet Momoyoga, og den gamle siden sendte folk dit for å se hva som gikk. For en som bare lurer på om det er en time i kveld, er det ett steg for mye.",
+        "I tillegg endrer tilbudet seg hele tiden. Workshops, utdanninger, yogahelger og turer kommer og går, og studioet ville legge dem inn selv uten å vente på noen."
+      ]
+    },
+    "losning": {
+      "t": "Dagens timer rett under filmen",
+      "a": [
+        "Siden henter timeplanen fra Momoyoga og viser den dag for dag rett under toppen, med en <b>bookingknapp på hver time</b>. Bookingsystemet er det samme som før, så studioet slapp å bytte ut noe de allerede bruker.",
+        "Toppen er en film tatt i studioet, med tauveggen Iyengar-yogaen bruker. Du ser hvordan det ser ut der før du har lest et ord.",
+        "Arrangementene ligger i en egen liste som studioet fyller selv, rett fra siden, med dato, sted og bilde. Det samme gjelder tekstene og bildene ellers på siden."
+      ]
+    }
+  },
+  {
     "slug": "katrin-brubakk",
     "i": 1,
     "tittel": "Foredrag og terapi samlet på én rolig side",
@@ -78,39 +111,6 @@ export const caser = [
         "Siden er mørk, stille og satt i antikva. Det er ikke et stilvalg for å være pen, det er fordi tonen må matche innholdet før noen tror på det.",
         "Prisene og foredragene ligger som en <b>tidslinje</b> i stedet for en skrytepunktliste. Den gjør jobben med å bygge tillit uten at hun må skryte i førsteperson.",
         "Booking finnes på hver skjerm, men roper aldri. Arrangøren finner den når hun er klar, ikke før."
-      ]
-    }
-  },
-  {
-    "slug": "samtaleverkstedet",
-    "i": 2,
-    "tittel": "Terapi som tør å være varm i tonen",
-    "ingress": "Veiledning for ledere og folk i omsorgsyrker. Den som leter er som regel sliten når hun leter, og da betyr tonen mer enn tjenestelista.",
-    "gjort": [
-      "Ny nettside fra bunnen",
-      "Tekster og struktur",
-      "Portrettfoto satt inn",
-      "Søkeoppsett",
-      "Hosting og drift"
-    ],
-    "tek": [
-      "Håndkodet front-end",
-      "Statisk hosting",
-      "Kontaktskjema"
-    ],
-    "utfordring": {
-      "t": "Kjøperen er sliten når hun kommer",
-      "a": [
-        "Folk som søker etter veiledning for utbrenthet er ikke i humør til å bli solgt til. En side med store løfter og aggressive knapper skyver dem bort.",
-        "Samtidig må siden fortsatt gjøre en jobb. Det hjelper ikke å være vennlig hvis ingen forstår hva som tilbys eller hvordan man tar kontakt."
-      ]
-    },
-    "losning": {
-      "t": "Rolig først, tydelig rett etterpå",
-      "a": [
-        "Fargene er varme og dempede, og portrettet kommer tidlig. Du ser hvem du skal snakke med før du ser hva det koster.",
-        "I stedet for en tjenesteliste er innholdet delt i <b>tre navngitte veier</b>, så leseren kjenner seg igjen i én av dem i stedet for å måtte velge fra en meny.",
-        "Én setning midt på siden navngir tilstanden leseren er i. Det er den setningen folk husker, og den gjør mer for konverteringen enn noen knapp."
       ]
     }
   },
@@ -458,6 +458,39 @@ export const caser = [
           "na": "«Sertifisert takstmann i Harstad. Tilstandsrapport, verditakst, forhåndstakst og skadetakst for bolig, tomt og fritidsbolig. Ring 928 42 296.»",
           "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
         }
+      ]
+    }
+  },
+  {
+    "slug": "samtaleverkstedet",
+    "i": 2,
+    "tittel": "Terapi som tør å være varm i tonen",
+    "ingress": "Veiledning for ledere og folk i omsorgsyrker. Den som leter er som regel sliten når hun leter, og da betyr tonen mer enn tjenestelista.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Tekster og struktur",
+      "Portrettfoto satt inn",
+      "Søkeoppsett",
+      "Hosting og drift"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Kontaktskjema"
+    ],
+    "utfordring": {
+      "t": "Kjøperen er sliten når hun kommer",
+      "a": [
+        "Folk som søker etter veiledning for utbrenthet er ikke i humør til å bli solgt til. En side med store løfter og aggressive knapper skyver dem bort.",
+        "Samtidig må siden fortsatt gjøre en jobb. Det hjelper ikke å være vennlig hvis ingen forstår hva som tilbys eller hvordan man tar kontakt."
+      ]
+    },
+    "losning": {
+      "t": "Rolig først, tydelig rett etterpå",
+      "a": [
+        "Fargene er varme og dempede, og portrettet kommer tidlig. Du ser hvem du skal snakke med før du ser hva det koster.",
+        "I stedet for en tjenesteliste er innholdet delt i <b>tre navngitte veier</b>, så leseren kjenner seg igjen i én av dem i stedet for å måtte velge fra en meny.",
+        "Én setning midt på siden navngir tilstanden leseren er i. Det er den setningen folk husker, og den gjør mer for konverteringen enn noen knapp."
       ]
     }
   }
