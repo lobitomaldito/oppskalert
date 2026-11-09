@@ -29,7 +29,7 @@
 
 ## Postene
 
-Rekkefølge: legg ut 1, 2 og 3 med en dags mellomrom, og fest post 1 øverst.
+Status: post 1 lagt ut 09.11 kl. 14.41, post 2 planlagt 10.11 kl. 18.00 og post 3 11.11 kl. 18.00, alle via Meta Business Suite og bare på Instagram. Fest post 1 øverst i appen.
 
 ### Post 1: `post-1.png`
 
@@ -67,7 +67,7 @@ Melanie endrer tekst og bilder selv, rett på siden.
 
 Hele caset: oppskalert.no/arbeid/melanie-dahl
 
-#nettside #webdesign #coach #scenekunst
+#nettside #webdesign #coach
 ```
 
 ### Post 3: `post-3.png`
