@@ -57,8 +57,9 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
 
    Hvert kort har en `verdi`: hva nivået gir kunden, uten fagord.
 
-   Rekkefølgen er dyreste først (tilbud/MAL.md 3e punkt 2): det store
-   valget gjør de andre lettere å si ja til.
+   Rekkefølgen på siden er billigste først, Enkel til venstre
+   (Aleksander, 9. november 2026). I tilbud og på telefon gjelder
+   fortsatt dyreste først, se tilbud/MAL.md 3e punkt 2.
 
    Leie til eie (1 590 kr/mnd) er ikke et eget kort lenger, men en
    betalingsmåte for Medium, se `leieTilEie` under. 1 590 x 12 = 19 080
@@ -66,22 +67,26 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
-    id: 'komplett',
-    navn: 'Komplett',
-    fra: '19 900',
+    id: 'enkel',
+    navn: 'Enkel',
+    fra: '6 990',
+    fast: true,
     enhet: 'kr',
-    periode: 'engangspris, fast før jeg begynner',
-    tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
-    verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
+    periode: 'fast pris, én gang',
+    tagline: 'For deg som ønsker en enkel landingsside med godt design.',
+    verdi: 'Kundene ser hva du tilbyr og tar kontakt, alt fra én side.',
     passerDeg: [
-      'Du vil ha flere henvendelser fra siden',
-      'Du vil se hva siden faktisk gir deg',
+      'Du trenger én side som viser hva du gjør',
+      'Du har tekst og bilder klare',
+      'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Alt i Medium, pluss:',
-      'Priskalkulator, velger eller booking etter behov',
-      'Tre måneder SEO: månedlig rapport med vanlige ord, AI-sjekk og én ny side eller artikkel i måneden',
-      'Retting av det rapporten finner',
+      'Én håndbygd landingsside med godt design',
+      'Tilpasset mobil, med kontaktskjema',
+      'SEO-grunnoppsett fra dag én',
+      'Hosting og SSL inkludert, ingen månedspris',
+      'Eget redigeringspanel: endre tekst og bilder selv',
+      'Alle filer overlevert, du eier dem',
     ],
     fremhevet: false,
   },
@@ -107,29 +112,25 @@ export const prismodeller = [
     fremhevet: true,
   },
   {
-    id: 'enkel',
-    navn: 'Enkel',
-    fra: '6 990',
-    fast: true,
+    id: 'komplett',
+    navn: 'Komplett',
+    fra: '19 900',
     enhet: 'kr',
-    periode: 'fast pris, én gang',
-    tagline: 'For deg som ønsker en enkel landingsside med godt design.',
-    verdi: 'Kundene ser hva du tilbyr og tar kontakt, alt fra én side.',
+    periode: 'engangspris, fast før jeg begynner',
+    tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
+    verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
     passerDeg: [
-      'Du trenger én side som viser hva du gjør',
-      'Du har tekst og bilder klare',
-      'Du vil bli ferdig og videre',
+      'Du vil ha flere henvendelser fra siden',
+      'Du vil se hva siden faktisk gir deg',
     ],
     inkludert: [
-      'Én håndbygd landingsside med godt design',
-      'Tilpasset mobil, med kontaktskjema',
-      'SEO-grunnoppsett fra dag én',
-      'Hosting og SSL inkludert, ingen månedspris',
-      'Eget redigeringspanel: endre tekst og bilder selv',
-      'Alle filer overlevert, du eier dem',
+      'Alt i Medium, pluss:',
+      'Interaktive moduler etter behov, som priskalkulator eller booking',
+      'Tre måneder SEO: månedlig rapport med vanlige ord, AI-sjekk og én ny side eller artikkel i måneden',
+      'Retting av det rapporten finner',
     ],
     fremhevet: false,
-  }
+  },
 ];
 
 /* Leie til eie: grunnene til modellen står i git-historikken for denne
@@ -411,7 +412,7 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg er det tre nivåer. Enkel, 6 990 kr eks. mva, er én landingsside med godt design. Medium, 12 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Komplett, fra 19 900 kr, har i tillegg priskalkulator, velger eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det tre nivåer. Enkel, 6 990 kr eks. mva, er én landingsside med godt design. Medium, 12 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Komplett, fra 19 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
