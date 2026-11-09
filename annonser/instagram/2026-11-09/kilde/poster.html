@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<style>
+@font-face { font-family: Cabinet; src: url(cabinet-grotesk-normal.woff2); font-weight: 100 900; }
+@font-face { font-family: Switzer; src: url(switzer-normal.woff2); font-weight: 100 900; }
+@font-face { font-family: Merke; src: url(PlusJakartaSans-800.woff2); font-weight: 800; }
+:root { --blekk:#111113; --felt:#fff; --kort:#f5f5f5; --kant:#e4e4e7; --mykt:#5a5a62; --kritt:#f4f4f5; --kritt-mykt:#a1a1aa; --prikk:#b8551a; --prikk-lys:#ffb17a; }
+* { margin:0; box-sizing:border-box; }
+body { background:#888; font-family:Switzer, sans-serif; -webkit-font-smoothing:antialiased; }
+.post { width:1080px; height:1350px; padding:72px; display:flex; flex-direction:column; background:var(--felt); color:var(--blekk); margin-bottom:40px; overflow:hidden; }
+.merke { font-family:Merke; font-weight:800; font-size:34px; letter-spacing:-.02em; }
+.merke i { font-style:normal; color:var(--prikk); }
+.topp { display:flex; justify-content:space-between; align-items:center; font-size:26px; }
+h1 { font-family:Cabinet; font-weight:500; letter-spacing:-.035em; line-height:1.02; }
+.aksent { color:var(--prikk); }
+.fot { margin-top:auto; display:flex; justify-content:space-between; align-items:baseline; font-size:26px; color:var(--mykt); }
+.fot b { color:var(--blekk); font-weight:600; }
+
+/* 1: hvem */
+.p1 { padding:0; }
+.p1 .bilde { height:760px; background:url(aleksander.jpg) center 48%/cover; }
+.p1 .tekst { flex:1; padding:56px 72px 64px; display:flex; flex-direction:column; }
+.p1 .navn { font-size:28px; font-weight:600; margin-bottom:26px; }
+.p1 .navn span { color:var(--mykt); font-weight:400; }
+.p1 h1 { font-size:76px; }
+
+/* 2: case */
+.p2 { background:var(--blekk); color:var(--kritt); }
+.p2 .merke i { color:var(--prikk-lys); }
+.p2 .topp { color:var(--kritt-mykt); }
+.p2 h1 { font-size:80px; margin:48px 0 44px; }
+.p2 h1 .aksent { color:var(--prikk-lys); }
+.p2 figure { position:relative; border-radius:14px; overflow:hidden; border:1px solid #2f2f35; }
+.p2 figure + figure { margin-top:20px; }
+.p2 figure img { display:block; width:100%; }
+.p2 figcaption { position:absolute; left:18px; top:18px; background:var(--blekk); color:var(--kritt); font-size:22px; font-weight:600; padding:8px 16px; border-radius:8px; }
+.p2 .hvorfor { margin-top:auto; font-size:34px; line-height:1.35; color:var(--kritt); max-width:880px; }
+.p2 .hvorfor span { color:var(--kritt-mykt); }
+
+/* 3: pris */
+.p3 h1 { font-size:96px; margin:64px 0 56px; }
+.rad { display:grid; grid-template-columns:1fr auto; gap:6px 40px; padding:34px 0; border-top:1.5px solid var(--kant); align-items:baseline; }
+.rad:last-of-type { border-bottom:1.5px solid var(--kant); }
+.rad h2 { font-family:Switzer; font-weight:600; font-size:38px; }
+.rad p { grid-column:1; font-size:26px; line-height:1.35; color:var(--mykt); max-width:560px; }
+.rad .pris { grid-column:2; grid-row:1 / span 2; align-self:center; font-family:Cabinet; font-weight:500; font-size:72px; letter-spacing:-.03em; white-space:nowrap; text-align:right; }
+.rad .pris small { font-family:Switzer; font-size:26px; font-weight:400; color:var(--mykt); letter-spacing:0; }
+.p3 .vilkar { margin-top:40px; font-size:27px; line-height:1.4; color:var(--mykt); }
+.p3 .vilkar b { color:var(--blekk); font-weight:600; }
+</style>
+</head>
+<body>
+
+<section class="post p1" id="post-1">
+  <div class="bilde"></div>
+  <div class="tekst">
+    <p class="navn">Aleksander MacKee <span>· Oppskalert</span></p>
+    <h1>Jeg lager nettsider for bedrifter. Du ser din <span class="aksent">før du betaler en krone.</span></h1>
+    <div class="fot"><span>Gratis utkast på 48 timer</span><b>oppskalert.no</b></div>
+  </div>
+</section>
+
+<section class="post p2" id="post-2">
+  <div class="topp"><span>Melanie Dahl, skuespiller og mental trener</span><span class="merke">oppskalert<i>.</i></span></div>
+  <h1>Forsiden lenket til 43 sider. <span class="aksent">Nå lenker den til 5.</span></h1>
+  <figure><img src="for.jpg" alt=""><figcaption>Før, mars 2025</figcaption></figure>
+  <figure><img src="etter.jpg" alt=""><figcaption>Nå</figcaption></figure>
+  <p class="hvorfor">Den som leter etter en coach, slipper å lete seg forbi tretti teaterforestillinger først. <span>Forsiden har to dører: coaching og scenekunst.</span></p>
+</section>
+
+<section class="post p3" id="post-3">
+  <div class="topp"><span class="merke">oppskalert<i>.</i></span><span style="color:var(--mykt)">Priser, november 2026</span></div>
+  <h1>Hva koster en nettside hos meg?</h1>
+  <div class="rad"><h2>Enkel</h2><p>Én side som viser hva du gjør, med kontaktskjema.</p><div class="pris">6 990 <small>kr</small></div></div>
+  <div class="rad"><h2>Medium</h2><p>Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk.</p><div class="pris">12 900 <small>kr</small></div></div>
+  <div class="rad"><h2>Komplett</h2><p>Medium, pluss booking eller priskalkulator og tre måneder SEO.</p><div class="pris"><small>fra</small> 19 900 <small>kr</small></div></div>
+  <p class="vilkar">Eks. mva. Du betaler én gang, og hosting er med. <b>Utkastet er gratis, så du ser siden før du bestemmer deg.</b></p>
+  <div class="fot"><span>Ring meg: 974 09 897</span><b>oppskalert.no</b></div>
+</section>
+
+</body>
+</html>
