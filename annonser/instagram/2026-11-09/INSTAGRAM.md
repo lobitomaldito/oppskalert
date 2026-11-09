@@ -29,7 +29,7 @@
 
 ## Postene
 
-Status: post 1 lagt ut 09.11 kl. 14.41, post 2 planlagt 10.11 kl. 18.00 og post 3 11.11 kl. 18.00, alle via Meta Business Suite og bare på Instagram. Fest post 1 øverst i appen.
+Status: alle tre lagt ut 09.11.2026 via Meta Business Suite, bare på Instagram. Fest post 1 øverst i appen.
 
 ### Post 1: `post-1.png`
 
