@@ -44,7 +44,7 @@ const rader = [
   ['Håndbygd nettside, uten tunge plugins', true, true, true],
   ['Søkemotor-grunnoppsett', true, true, true],
   ['Tekstene skrevet om for Google og AI-søk', false, true, true],
-  ['Priskalkulator, velger eller booking', false, false, true],
+  ['Interaktive moduler: priskalkulator, booking', false, false, true],
   ['SEO med månedlig rapport', false, false, 'Tre måneder'],
   ['Admin-panel, endre tekst og bilder selv', true, true, true],
   ['Du eier alle filene', true, true, true],

@@ -11,7 +11,7 @@ Søker du på dette spørsmålet, møter du svar fra 3 000 til 300 000 kroner, o
 
 ## Prisene mine, uten omveier
 
-Jeg har tre nivåer. Enkel koster 6 990 kroner: én landingsside med godt design. Medium koster 12 900 kroner: alle sidene du har i dag, med tekstene skrevet om for Google og AI-søk. Komplett starter på 19 900 kroner: alt i Medium, pluss priskalkulator, velger eller booking, og tre måneder der jeg følger med på søkene og rapporterer hver måned. Admin-panelet, der du endrer tekst og bilder selv, er med i alle tre. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
+Jeg har tre nivåer. Enkel koster 6 990 kroner: én landingsside med godt design. Medium koster 12 900 kroner: alle sidene du har i dag, med tekstene skrevet om for Google og AI-søk. Komplett starter på 19 900 kroner: alt i Medium, pluss interaktive moduler som priskalkulator eller booking, og tre måneder der jeg følger med på søkene og rapporterer hver måned. Admin-panelet, der du endrer tekst og bilder selv, er med i alle tre. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
 
 ## Hva som avgjør hvilket nivå du havner på
 
