@@ -81,15 +81,19 @@ const Vurdering = () => {
    knappen «Se hva jeg har laget» rett over går til /arbeid, der de samme
    prosjektene står med navn og lenke.
 
+   Prana Yoga Studio fikk første plass 9.11.2026, og Katrin Brubakk ble
+   flyttet bakerst, begge etter ønske fra Aleksander.
+
    Seksjonen «Sider som er i drift nå» sto rett under til 26.10.2026.
    Aleksander tok den ut: raden viser allerede eksemplene. */
 const GALLERI = [
-  ['katrin-brubakk-mobil', 2 / 3],
+  ['prana-yoga-mobil', 2 / 3],
   ['woxen-hage-pc', 1],
   ['melanie-dahl-mobil', 2 / 3],
   ['alpha-negotiations-pc', 4 / 5],
   ['jakobsen-takst-mobil', 2 / 3],
   ['appstart-pc', 1],
+  ['katrin-brubakk-mobil', 2 / 3],
 ];
 
 const HeroGalleri = () => {

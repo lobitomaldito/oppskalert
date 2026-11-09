@@ -23,6 +23,7 @@ const ARBEIDER_TEKST = {
   'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
   'jakobsen-takst': { bransje: 'Takstmann', tittel: 'Takst i Harstad, med prisestimat før du ringer' },
   'woxen-hage': { bransje: 'Hagestell', tittel: 'Hagehjelp i Oslo, bestilt på under ett minutt' },
+  'prana-yoga': { bransje: 'Yoga', tittel: 'Yoga i Kristiansand, med dagens timer på forsiden' },
   'katrin-brubakk': { bransje: 'Psykolog', tittel: 'Foredrag og terapi samlet på én rolig side' },
   'melanie-dahl': { bransje: 'Skuespill · mental trening', tittel: 'To yrker, to innganger, én rolig side' },
   'alpha-negotiations': { bransje: 'Forhandling', tittel: 'En forhandlingsekspert, forklart på ett kvarter' },
