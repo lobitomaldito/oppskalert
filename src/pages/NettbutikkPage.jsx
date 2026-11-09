@@ -52,7 +52,11 @@ const punkter = [
 const NettbutikkPage = () => (
   <Shell>
     <SEO
-      title="Lage nettbutikk for norske småbedrifter"
+      /* SEO-rutinen 9. nov 2026, GSC 28 dager: «lage nettbutikk» 166 visninger,
+         FAQ-siden hva-koster-nettbutikk pos 15,4 mot denne siden pos 28,4. Topptreffene
+         er steg-for-steg-guider, så title tar stegene og lovkravet først. Mål igjen
+         rundt 7. desember. */
+      title="Lage nettbutikk: stegene, lovkrav og Vipps"
       description="Skal du lage nettbutikk? Stegene fra samtale til første ordre, det loven krever før lansering, og Vipps og frakt som stemmer i kassen."
       keywords={['lage nettbutikk', 'nettbutikk', 'starte nettbutikk', 'nettbutikk pris']}
       canonical={CANONICAL}
