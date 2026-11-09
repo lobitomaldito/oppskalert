@@ -127,8 +127,8 @@ hos crawlere. Bygget rapporterte 72 ruter snapshottet 30. september 2026.
 `demo-innhold.js`: bilde av den gamle forsiden og en rad per målt punkt, med
 en `hvorfor` uten fagord. Tallene kommer fra
 `~/.claude/assets/for-etter/<domene>/<dato>/`, se regel 17 i
-`~/.claude/assets/nettside-regler.md`. Melanie Dahl og Alpha Negotiations har
-bilde og rader, Steinar Husby bare rader, fordi nettarkivet hadde den gamle
+`~/.claude/assets/nettside-regler.md`. Melanie Dahl, Alpha Negotiations,
+Jakobsen Takst og Prana Yoga har bilde og rader, Steinar Husby bare rader, fordi nettarkivet hadde den gamle
 siden hans uten stilark. Spør kunden før en gammel side vises.
 
 ---

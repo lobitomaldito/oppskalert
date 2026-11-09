@@ -79,6 +79,45 @@ export const caser = [
         "Toppen er en film tatt i studioet, med tauveggen Iyengar-yogaen bruker. Du ser hvordan det ser ut der før du har lest et ord.",
         "Arrangementene ligger i en egen liste som studioet fyller selv, rett fra siden, med dato, sted og bilde. Det samme gjelder tekstene og bildene ellers på siden."
       ]
+    },
+    "forEtter": {
+      "for": {
+        "bilde": "/websider/for/prana-yoga.webp",
+        "tatt": "oktober 2026"
+      },
+      "kilde": "Den gamle siden er frosset 5. oktober 2026. Den nye er målt 9. november 2026.",
+      "rader": [
+        {
+          "punkt": "Hvor du ser dagens timer",
+          "for": "I bookingsystemet, via en lenke",
+          "na": "På forsiden, dag for dag, med bookingknapp på hver time",
+          "hvorfor": "Den som lurer på om det går en time i kveld, får svaret uten å forlate siden."
+        },
+        {
+          "punkt": "Andre selskaper som får beskjed om hvert besøk",
+          "for": "15 adresser, blant dem Facebook og Google",
+          "na": "Ingen",
+          "hvorfor": "Hver av dem ser IP-adressen til den som åpner siden."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "Fem, blant dem en tom og «B.K.S. Iyengar»",
+          "na": "Én: «Prana Yoga Studio, Iyengar yoga og pilates i Kristiansand»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. Fem overskrifter gir fem svar."
+        },
+        {
+          "punkt": "Filer som hentes før forsiden vises",
+          "for": "20",
+          "na": "8",
+          "hvorfor": "Færre filer gir kortere ventetid på mobilnett."
+        },
+        {
+          "punkt": "Språket siden sier den er skrevet på",
+          "for": "Engelsk",
+          "na": "Norsk",
+          "hvorfor": "Skjermlesere for blinde og svaksynte leser teksten med engelsk uttale når siden sier at den er engelsk."
+        }
+      ]
     }
   },
   {
