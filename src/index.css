@@ -1066,7 +1066,7 @@
     color: var(--kritt-mykt); font-size: .9375rem;
   }
   .bunn-post {
-    display: block; margin-top: 0;
+    display: block; margin-block: -.45rem; padding-block: .45rem; /* 44 px trykkflate, samme plass */
     font-weight: 700; letter-spacing: -.035em; line-height: 1.05;
     font-size: clamp(1.75rem, 5.5vw, 3.75rem);
     width: fit-content; max-width: 100%;
@@ -1081,8 +1081,9 @@
     display: flex; flex-wrap: wrap; gap: .75rem 2rem; justify-content: space-between;
     font-size: .8125rem; color: var(--kritt-mykt);
   }
-  .bunn-lenker { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: -.4rem; }
-  .bunn-lenker a { padding: .4rem; border-radius: var(--rund-liten); }
+  /* .75rem loddrett gir 44 px trykkflate på mobil; marginen spiser den opp igjen. */
+  .bunn-lenker { display: flex; flex-wrap: wrap; gap: 0 1rem; margin: -.75rem -.4rem; }
+  .bunn-lenker a { padding: .75rem .4rem; border-radius: var(--rund-liten); }
   .bunn-lenker a:hover { color: var(--kritt); }
   /* Ordmerket i full bredde, beskåret av sidekanten. Størrelsen er en
      ren clamp i vw, ikke JavaScript-måling: måleversjonen falt sammen
