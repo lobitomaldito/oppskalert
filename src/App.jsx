@@ -263,7 +263,7 @@ const RedigeringSeksjon = () => {
           <h2>Du endrer siden selv</h2>
           <p>Klikk på teksten du vil bytte, skriv det nye og trykk Publiser. Rundt ett minutt senere ser alle den nye versjonen.</p>
           <p>Du logger inn med en PIN-kode og redigerer rett på siden, slik kundene ser den. Priser, åpningstider, bilder og nye kundeomtaler bytter du uten å ringe meg.</p>
-          <p>Redigeringspanelet følger med i alle pakkene. Vil du heller at jeg gjør endringene, dekker serviceavtalen det for 450 kr i måneden.</p>
+          <p>Redigeringspanelet følger med i alle pakkene. Vil du heller at jeg gjør endringene, dekker serviceavtalen det for 550 kr i måneden.</p>
         </div>
         <figure data-reveal className="inn" style={{ '--d': '80ms' }}>
           <div className="ramme">

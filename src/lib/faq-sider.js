@@ -57,7 +57,7 @@ export const faqWordPress = [
   },
   {
     q: 'Kan du overta WordPress-siden jeg allerede har?',
-    a: 'Ja. Jeg kan ta den på serviceavtale fra 450 kroner i måneden, eller bygge den om hvis det lønner seg. Send meg adressen, så ser jeg over den gratis og sier ærlig fra hva jeg ville gjort. Det tar meg under 30 minutter.',
+    a: 'Ja. Jeg kan ta den på serviceavtale fra 550 kroner i måneden, eller bygge den om hvis det lønner seg. Send meg adressen, så ser jeg over den gratis og sier ærlig fra hva jeg ville gjort. Det tar meg under 30 minutter.',
   },
   {
     q: 'Hvorfor bygger du ikke i WordPress?',

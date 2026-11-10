@@ -319,8 +319,8 @@ export const populaereSok = [
     slug: 'hva-koster-drift-av-nettside',
     q: 'Hva koster drift og vedlikehold av en nettside?',
     tittel: 'Hva koster drift og vedlikehold av en nettside?',
-    beskrivelse: 'Hosting er med i prisen på sidene jeg bygger. Serviceavtale med endringer, backup og support koster 450 i måneden. Ingen bindingstid.',
-    a: 'Hosting er med i prisen på sidene jeg bygger, så du betaler ingen månedspris for å ha siden oppe. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 450 i måneden. Til sammenligning starter driftsavtaler hos byråer flest rundt 2 500 i måneden. Alt uten bindingstid, så du kan avslutte når du vil.',
+    beskrivelse: 'Hosting er med i prisen på sidene jeg bygger. Serviceavtale med endringer, backup og support koster 550 i måneden. Ingen bindingstid.',
+    a: 'Hosting er med i prisen på sidene jeg bygger, så du betaler ingen månedspris for å ha siden oppe. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 550 i måneden. Til sammenligning starter driftsavtaler hos byråer flest rundt 2 500 i måneden. Alt uten bindingstid, så du kan avslutte når du vil.',
     utdyping: [
       {
         t: 'Hva som ligger i drift',

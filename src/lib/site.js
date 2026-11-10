@@ -168,12 +168,14 @@ export const alltidMed = [
    (statiske sider på Vercel koster meg nesten ingenting per kunde, og 80
    kr/mnd var en årlig faktura kunden måtte ta stilling til). Grunndrift
    (149), Driftet av meg (690) og Prioritert (1 490) er erstattet av to
-   tillegg: serviceavtale og SEO. Tallene står også i tilbud/MAL.md. */
+   tillegg: serviceavtale og SEO. Tallene står også i tilbud/MAL.md.
+   Serviceavtalen gikk fra 450 til 550 kr/mnd 10. november 2026. Kunder
+   med avtale eller tilbud fra før beholder 450. */
 export const driftNivaer = [
   {
     id: 'service',
     navn: 'Serviceavtale',
-    fra: '450',
+    fra: '550',
     fast: true,
     enhet: 'kr/mnd',
     periode: 'ingen binding',
@@ -418,7 +420,7 @@ export const prisSporsmal = [
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 450 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',

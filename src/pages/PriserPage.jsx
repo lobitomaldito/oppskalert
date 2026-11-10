@@ -49,7 +49,7 @@ const rader = [
   ['Admin-panel, endre tekst og bilder selv', true, true, true],
   ['Du eier alle filene', true, true, true],
   ['Hosting og SSL', true, true, true],
-  ['Serviceavtale: endringer, backup og support', '450 kr/mnd', '450 kr/mnd', 'Med i tre måneder, så 450 kr/mnd'],
+  ['Serviceavtale: endringer, backup og support', '550 kr/mnd', '550 kr/mnd', 'Med i tre måneder, så 550 kr/mnd'],
   ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura, eller 1 590 kr/mnd som leie til eie', 'Én faktura når du er fornøyd'],
 ];
 
