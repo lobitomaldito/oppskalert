@@ -703,6 +703,83 @@
   .tjenester-forside .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.375rem, 2vw, 1.75rem); letter-spacing: var(--display-sperre); }
   .tjeneste p { color: var(--blekk-mykt); font-size: .9375rem; text-wrap: pretty; }
 
+  /* Forsidekortene lenker til sin egen tjenesteside (11.11.2026). Lenken
+     i tittelen strekkes over hele kortet, så hele flaten kan trykkes, og
+     fokusringen legges på kortet i stedet for på tittelen. «Les mer»
+     står nederst i kortet uansett hvor lang teksten er. */
+  .tjenester-forside .tjeneste {
+    position: relative;
+    grid-template-rows: auto auto auto 1fr; align-content: stretch;
+  }
+  .tjeneste-lenke::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+  .tjeneste-lenke:focus-visible { outline: none; }
+  .tjenester-forside .tjeneste:has(.tjeneste-lenke:focus-visible) { outline: 2px solid var(--blekk); outline-offset: 3px; }
+  /* Mobil får én linje per kort (regel 2), resten fra 40rem. */
+  .tjeneste-mer { display: none; }
+  @media (min-width: 40rem) { .tjeneste-mer { display: inline; } }
+  .tjeneste-les {
+    align-self: end; justify-self: start; padding-top: .5rem;
+    display: inline-flex; align-items: center; gap: .35rem;
+    font-size: .875rem; font-weight: 500; color: var(--blekk);
+  }
+  .tjeneste .tjeneste-les svg { width: 1em; height: 1em; stroke-width: 2; }
+  /* Pilen dytter seg fram bare med mus, og står stille ved redusert
+     bevegelse. 200 ms: den skal bekrefte pekeren, ikke vises fram. */
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .tjeneste .tjeneste-les svg { transition: transform .2s var(--e); }
+    .tjeneste:hover .tjeneste-les svg { transform: translateX(.2rem); }
+  }
+
+  /* ----------------------------------------------------------------
+     Faktastripe under kunderaden (11.11.2026). To og to på mobil, fire
+     på rad fra 52rem. Linjer i stedet for kort, så den leses som en
+     del av heroen og ikke som en ny seksjon.
+     ---------------------------------------------------------------- */
+  .faktastripe {
+    list-style: none; padding: 0; margin: clamp(2rem, 4vw, 3rem) 0 0;
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-block: 1px solid var(--felt-kant);
+  }
+  .faktastripe li {
+    padding: 1rem 0; font-size: .875rem; line-height: 1.4; color: var(--blekk-mykt);
+  }
+  .faktastripe li:nth-child(even) { padding-left: 1rem; border-left: 1px solid var(--felt-kant); }
+  .faktastripe li:nth-child(n+3) { border-top: 1px solid var(--felt-kant); }
+  .faktastripe b {
+    display: block; margin-bottom: .15rem; color: var(--blekk);
+    font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem); letter-spacing: var(--display-sperre);
+  }
+  @media (min-width: 52rem) {
+    .faktastripe { grid-template-columns: repeat(4, 1fr); }
+    .faktastripe li { padding: 1.25rem 1.5rem; }
+    .faktastripe li:first-child { padding-left: 0; }
+    .faktastripe li + li { border-left: 1px solid var(--felt-kant); }
+    .faktastripe li:nth-child(n+3) { border-top: 0; }
+  }
+
+  /* ----------------------------------------------------------------
+     Trygghet (11.11.2026). En liste med fet etikett i stedet for enda et
+     kortgitter (regel 7): tittelen står til venstre og blir stående mens
+     lista ruller forbi på desktop.
+     ---------------------------------------------------------------- */
+  .trygghet-seksjon { padding-top: 0; }
+  .trygghet { display: grid; gap: clamp(1.5rem, 4vw, 4rem); }
+  .trygghet .seksjonstopp { margin-bottom: 0; }
+  @media (min-width: 56rem) {
+    .trygghet { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+    .trygghet .seksjonstopp { position: sticky; top: 7rem; }
+  }
+  .trygghet-liste { list-style: none; padding: 0; margin: 0; }
+  .trygghet-liste li {
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem;
+    padding-block: 1.25rem; border-top: 1px solid var(--felt-kant);
+  }
+  .trygghet-liste li:last-child { border-bottom: 1px solid var(--felt-kant); }
+  .trygghet-liste .trygghet-ikon { width: 1.25rem; height: 1.25rem; margin-top: .2rem; color: var(--prikk); }
+  .trygghet-liste p { max-width: 60ch; color: var(--blekk-mykt); font-size: .9375rem; line-height: 1.6; text-wrap: pretty; }
+  .trygghet-liste b { color: var(--blekk); font-weight: 600; }
+
   /* ----------------------------------------------------------------
      Sitat.
      ---------------------------------------------------------------- */

@@ -86,9 +86,9 @@ export const prismodeller = [
       'Én håndbygd landingsside med godt design',
       'Tilpasset mobil, med kontaktskjema',
       'SEO-grunnoppsett fra dag én',
-      'Hosting og SSL inkludert, ingen månedspris',
+      'Hosting og sikker forbindelse inkludert, ingen månedspris',
       'Eget redigeringspanel: endre tekst og bilder selv',
-      'Alle filer overlevert, du eier dem',
+      'Du eier siden, og domenet står i ditt navn',
     ],
     fremhevet: false,
   },
@@ -326,7 +326,11 @@ export const sporsmal = [
   },
   {
     q: 'Eier jeg nettsiden selv?',
-    a: 'Ja. Med engangspris får du alle filene overlevert og eier hele løsningen med en gang. Med leie til eie er tekstene, bildene og domenet dine hele veien, og filene blir dine når 12 måneder er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
+    a: 'Ja. Med engangspris eier du siden med en gang, og domenet står i ditt navn. Vil du flytte den, får du koden når du ber om det. Med leie til eie er tekstene, bildene og domenet dine hele veien, og siden blir din når 12 måneder er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
+  },
+  {
+    q: 'Hva skjer hvis du blir syk eller slutter?',
+    a: 'Siden går videre som før. Den ligger hos Vercel, en stor driftsleverandør, så oppetiden hviler ikke på meg alene. Domenet står i ditt navn, og ber du om koden, får du den, så en annen utvikler kan ta over der jeg slapp.',
   },
   {
     q: 'Hva om jeg ikke liker utkastet?',

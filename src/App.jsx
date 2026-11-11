@@ -7,9 +7,11 @@ import Sitatkort, { Stjerner } from './components/Sitatkort';
 import Priser from './components/Priser';
 import DemoSkjema from './components/DemoSkjema';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
-import { sporsmal, tjenester } from './lib/demo-innhold';
+import { sporsmal } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
-import { LinkedIn, Pause, PilHoyre, PilOpp, SokSjekk, Skjermer, Spill } from './components/Ikon';
+import {
+  Hengelas, HengelasApen, LinkedIn, Livboye, Nokkel, Pause, PilHoyre, PilOpp, SkjoldSjekk, SokSjekk, Skjermer, Spill,
+} from './components/Ikon';
 import { track } from './lib/analytics';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
@@ -155,6 +157,30 @@ const Hero = () => {
   );
 };
 
+/* Fire korte fakta under kunderaden. Grepet er fra en konkurrents
+   gratis-SEO-side (lest 11.11.2026): en stripe som svarer på det folk
+   lurer på før de leser videre. Her er det skepsisen mot en leverandør
+   som er én person og ny.
+
+   21 er prospects med stage='sold' i ringeappen, talt 11.11.2026. Tallet
+   oppdateres for hånd, og det skal være talt, aldri rundet opp. */
+const FAKTA = [
+  ['48 timer', 'til du ser utkastet'],
+  ['Fast pris', 'avtalt før jeg begynner'],
+  ['Ingen binding', 'på noen av avtalene'],
+  ['21 bedrifter', 'har valgt Oppskalert'],
+];
+
+const FaktaStripe = () => (
+  <div className="wrap">
+    <ul className="faktastripe">
+      {FAKTA.map(([tall, tekst]) => (
+        <li key={tall}><b>{tall}</b> {tekst}</li>
+      ))}
+    </ul>
+  </div>
+);
+
 /* Om meg. Portrettet i stort format ved siden av ett langt utsagn, der
    siste del er tonet ned i grått. Grepet er fra solidmedia.no («Bak alt
    vi leverer sitter …»): første halvdel er påstanden, andre halvdel er
@@ -208,9 +234,29 @@ const SitatSeksjon = () => {
 
 /* To tjenester i grå kort, som tjenestekortene på solidmedia.no. Chatbot
    og drift står som egne priskort rett under. Nettbutikk ble tatt ut av
-   forsiden 26.10.2026 etter ønske fra Aleksander. */
-const TJENESTER_FORSIDE = ['Ny nettside', 'Bli funnet i Google'];
-const TJENESTEIKON = { 'Ny nettside': Skjermer, 'Bli funnet i Google': SokSjekk };
+   forsiden 26.10.2026 etter ønske fra Aleksander.
+
+   11.11.2026: hvert kort lover noe og lenker til sin egen side, og hele
+   kortet kan trykkes. Før var det én linje uten lenke, og tjenestesidene
+   var bare å finne i bunnteksten. `kort` vises alltid, `mer` først fra
+   40rem, så mobil får ikon, navn og én linje (regel 2). Teksten står her
+   og ikke i `tjenester`, fordi den lista brukes på andre sider også. */
+const TJENESTER_FORSIDE = [
+  {
+    navn: 'Ny nettside',
+    Ikon: Skjermer,
+    til: ruter.nyNettside,
+    kort: 'Utkast på 48 timer, ferdig side på en til to uker.',
+    mer: 'Du ser utkastet før du bestemmer deg, og siden laster på under ett sekund.',
+  },
+  {
+    navn: 'Bli funnet i Google',
+    Ikon: SokSjekk,
+    til: ruter.seo,
+    kort: 'Synlig i Google og i AI-søk som ChatGPT.',
+    mer: 'Tekstene skrives for det kundene dine søker på. Stein-Erik fikk en henvendelse fra en kunde som hadde funnet ham gjennom Claude, et par uker etter at sidene var KI-optimert.',
+  },
+];
 
 const TjenesteSeksjon = () => {
   const container = useReveal(80);
@@ -222,14 +268,91 @@ const TjenesteSeksjon = () => {
           <h2>Dette kan jeg hjelpe deg med</h2>
         </div>
         <ul data-reveal className="tjenester tjenester-forside inn" style={{ '--d': '80ms' }}>
-          {tjenester.filter((t) => TJENESTER_FORSIDE.includes(t.navn)).map((t) => {
-            const Ikon = TJENESTEIKON[t.navn];
+          {TJENESTER_FORSIDE.map((t) => {
+            const Ikon = t.Ikon;
             return (
-            <li key={t.navn} className="tjeneste">
-              <Ikon className="tjeneste-ikon" />
-              <h3>{t.navn}</h3>
-              <p>{t.tekst}</p>
-            </li>
+              <li key={t.navn} className="tjeneste">
+                <Ikon className="tjeneste-ikon" />
+                <h3><Link className="tjeneste-lenke" to={t.til}>{t.navn}</Link></h3>
+                <p>{t.kort} <span className="tjeneste-mer">{t.mer}</span></p>
+                <span className="tjeneste-les" aria-hidden="true">Les mer <PilHoyre className="pil" /></span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  );
+};
+
+/* Trygghetslisten (11.11.2026). Grepet er fra en konkurrents tjenesteside,
+   der en liste med fet etikett tar frykten for hacking og driftsstans.
+   Her tar den i tillegg skepsisen mot at Oppskalert er én person: «hva
+   skjer hvis du blir borte?» kom opp i salgssamtalen med Stavanger
+   Terapihus 12.10.2026, og svarene under er de Aleksander selv ga der og
+   i tilbudet til NHL.
+
+   Vilkårene er fra ~/.claude/assets/tilbud/MAL.md: domenet står i kundens
+   navn, filene får kunden når de vil flytte (på forespørsel, ikke
+   automatisk), leie til eie blir kundens etter 12 måneder. Endres
+   vilkårene der, må lista endres her.
+
+   Ordet SSL står ikke: ingen kunder vet hva det er (Aleksander
+   11.11.2026). Hengelåsen er det de har sett.
+
+   Mobil får etiketten og første setning, resten fra 40rem (regel 2):
+   med alt synlig var lista 875 px høy på 375 px bredde. */
+const TRYGGHET = [
+  {
+    Ikon: Nokkel,
+    tittel: 'Du eier siden',
+    kort: 'Domenet står i ditt navn.',
+    mer: 'Vil du flytte siden, får du koden når du ber om det. Leier du til eie, blir siden din når 12 måneder er betalt.',
+  },
+  {
+    Ikon: Livboye,
+    tittel: 'Hvis jeg blir syk eller slutter',
+    kort: 'Siden går videre som før. Den ligger hos Vercel, en stor driftsleverandør.',
+    mer: 'Oppetiden hviler ikke på meg alene, og du får koden, så en annen utvikler kan ta over der jeg slapp.',
+  },
+  {
+    Ikon: Hengelas,
+    tittel: 'Hengelåsen i adressefeltet',
+    kort: 'Nettleseren varsler aldri besøkende om en usikker side.',
+    mer: 'Sikker forbindelse er med fra første dag, og hosting er med i prisen.',
+  },
+  {
+    Ikon: SkjoldSjekk,
+    tittel: 'Lite å bryte seg inn i',
+    kort: 'Siden er bygget uten WordPress og programtillegg.',
+    mer: 'Det finnes ingen tillegg som må oppdateres hver uke for å holde den sikker.',
+  },
+  {
+    Ikon: HengelasApen,
+    tittel: 'Ingen binding',
+    kort: 'Ingen av pakkene eller avtalene har bindingstid.',
+    mer: 'Serviceavtalen sier du opp når du vil.',
+  },
+];
+
+const TrygghetSeksjon = () => {
+  const container = useReveal(80);
+  return (
+    <section ref={container} className="seksjon trygghet-seksjon">
+      <div className="wrap trygghet">
+        <div data-reveal className="seksjonstopp inn">
+          <p className="etikett">Trygghet</p>
+          <h2>Siden er din, og den står trygt</h2>
+          <p>Du handler med én person. Dette er på plass uansett hvilken pakke du velger.</p>
+        </div>
+        <ul data-reveal className="trygghet-liste inn" style={{ '--d': '80ms' }}>
+          {TRYGGHET.map((t) => {
+            const Ikon = t.Ikon;
+            return (
+              <li key={t.tittel}>
+                <Ikon className="trygghet-ikon" />
+                <p><b>{t.tittel}.</b> {t.kort} <span className="tjeneste-mer">{t.mer}</span></p>
+              </li>
             );
           })}
         </ul>
@@ -392,8 +515,10 @@ const Home = () => (
       jsonLd={homeJsonLd}
     />
     <Hero />
+    <FaktaStripe />
     <OmMegSeksjon />
     <TjenesteSeksjon />
+    <TrygghetSeksjon />
     <SitatSeksjon />
     <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
