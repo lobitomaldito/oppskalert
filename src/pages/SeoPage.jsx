@@ -208,7 +208,7 @@ const Maanedlig = () => {
 const SeoPage = () => (
   <Shell>
     <SEO
-      title="Søkemotoroptimalisering for norske bedrifter"
+      title="Søkemotoroptimalisering, fra 2 990 kr/mnd"
       description="Søkemotoroptimalisering som starter med det tekniske: hva robotene faktisk ser. Jeg måler, fikser det som blokkerer, og setter opp Search Console så du ser tallene selv."
       keywords={['søkemotoroptimalisering', 'seo norge', 'seo bedrift', 'synlighet i google']}
       canonical="https://oppskalert.no/sokemotoroptimalisering"
@@ -220,7 +220,7 @@ const SeoPage = () => (
          må brytes, og søkemotorer normaliserer det bort ved indeksering. */
       tittel={'Søkemotor­optimalisering'}
       uthevet="som starter med målinger."
-      lede="De fleste SEO-tilbud begynner med en liste over søkeord. Jeg begynner med å sjekke om Google i det hele tatt får se nettsiden din, for det er som regel der problemet ligger."
+      lede="Søkemotoroptimalisering for små bedrifter, fra 2 990 kr i måneden uten binding. Hver måned får du en rapport over hva folk søker på, en sjekk av om ChatGPT nevner deg, én ny side eller artikkel, og retting av det som står i veien. Jeg begynner alltid med å sjekke om Google får lest siden din."
     />
     <Innhold />
     <Inkludert />

@@ -51,7 +51,7 @@ const punkter = [
 const NettsideDesignPage = () => (
   <Shell>
     <SEO
-      title="Design av nettsider som selger"
+      title="Nettsidedesign for små bedrifter, fast pris"
       description="Design av nettsider for norske bedrifter. Egen visuell retning, ingen maler, og struktur bygget for at besøkende faktisk skal ta kontakt. Se et ferdig utkast før du bestemmer deg."
       keywords={['nettside design', 'design nettsider', 'webdesign', 'designe nettside']}
       canonical={CANONICAL}
