@@ -30,7 +30,13 @@ import { PilHoyre } from './Ikon';
    kjenner (Google, ChatGPT, konkurrentene), aldri etter metoden. Ingen
    spør etter «SEO», men alle vil vite hvem kundene finner når de søker.
    Det første spørsmålet er det eneste som bare kartlegger, fordi svaret
-   styrer skjemaet (adressen til dagens side). */
+   styrer skjemaet (adressen til dagens side).
+
+   Andre runde samme dag: spørsmål 3 og 4 ble skrevet om. «Vil du at hver
+   tjeneste skal ha sin egen side» spurte etter metoden, og svarene passet
+   ikke til spørsmålet. «Vil du at siden skal skaffe kunder mens du er
+   opptatt» svarer alle ja på, og da fikk nesten alle Komplett. Begge er
+   nå et øyeblikk kunden kjenner igjen fra sin egen hverdag. */
 const SPORSMAL = [
   {
     id: 'nettside',
@@ -43,54 +49,58 @@ const SPORSMAL = [
   },
   {
     id: 'synlig',
-    tekst: 'Når noen søker etter det du gjør, på Google eller i ChatGPT, hvem finner de da?',
+    tekst: 'Når noen søker på det du gjør, på Google eller i ChatGPT, hvem finner de?',
     svar: [
       'Konkurrentene mine, tror jeg',
       'Vet ikke, jeg har aldri sjekket',
-      'Meg, jeg ligger øverst',
+      'Meg, jeg dukker opp først',
     ],
   },
   {
-    id: 'tjenester',
-    tekst: 'Vil du at hver tjeneste skal ha sin egen side, så de som søker på akkurat den finner deg?',
+    id: 'sporsmal',
+    tekst: 'Får du de samme spørsmålene fra kunder igjen og igjen?',
     svar: [
-      'Ja, jeg tilbyr flere ting',
-      'Nei, jeg har én hovedtjeneste',
-      'Vet ikke ennå',
+      'Ja, om pris, hvordan det foregår og hvor lang tid det tar',
+      'Av og til',
+      'Nei, sjelden',
     ],
   },
   {
-    id: 'mer',
-    tekst: 'Vil du at siden skal skaffe kunder mens du er opptatt med jobben?',
+    id: 'sondag',
+    tekst: 'Hva skjer når noen finner deg en søndag kveld og vil ha hjelp?',
     svar: [
-      'Ja, de skal kunne regne ut pris eller bestille selv',
-      'Kanskje senere',
-      'Nei, et kontaktskjema holder',
+      'De må vente til jeg rekker å svare',
+      'De kan bestille eller se prisen selv',
+      'Kundene mine vil snakke med meg først uansett',
     ],
   },
 ];
 
 const BOKSTAV = ['A', 'B', 'C'];
 
-/* Svarene er indekser 0–2 (A–C). Komplett når siden skal skaffe kunder
-   selv. Medium når kundene ikke finner dem i søk, når de vil ha en side
-   per tjeneste, eller når dagens side ikke gir henvendelser. Enkel bare
-   for den som allerede ligger øverst og har én tjeneste. «Vet ikke» gir
-   Medium, som også er pakken priskortene anbefaler. */
-const velgPakke = ([nettside, synlig, tjenester, mer]) => {
-  if (mer === 0) return 'komplett';
-  if (synlig !== 2 || tjenester !== 1 || nettside === 1) return 'medium';
+/* Svarene er indekser 0–2 (A–C). Komplett når kundene må vente på svar
+   utenfor arbeidstid: priskalkulator eller booking er det Komplett har i
+   tillegg. Medium når kundene ikke finner dem i søk, når de svarer på de
+   samme spørsmålene hele tiden (tekstene på undersidene svarer for dem,
+   og det er de svarene Google og ChatGPT siterer), eller når dagens side
+   ikke gir henvendelser. Enkel bare for den som alt dukker opp først og
+   sjelden får de samme spørsmålene. */
+const velgPakke = ([nettside, synlig, sporsmal, sondag]) => {
+  if (sondag === 0) return 'komplett';
+  if (synlig !== 2 || sporsmal === 0 || nettside === 1) return 'medium';
   return 'enkel';
 };
 
 /* Begrunnelsen bygges av kundens egne svar, så resultatet leses som et
-   svar på det de sa, ikke som en reklame for pakken. */
-const begrunnelse = ([nettside, synlig, , mer]) => {
+   svar på det de sa, ikke som en reklame for pakken. Grunnen som valgte
+   pakken står først. */
+const begrunnelse = ([nettside, synlig, sporsmal, sondag]) => {
   const linjer = [];
+  if (sondag === 0) linjer.push('Kunder som finner deg utenfor arbeidstid, må vente på svar.');
   if (synlig === 0) linjer.push('Du tror kundene finner konkurrentene dine i dag.');
   if (synlig === 1) linjer.push('Du vet ikke om kundene finner deg i dag.');
+  if (sporsmal === 0) linjer.push('Kundene spør deg om det samme gang på gang, og det kan siden svare på.');
   if (nettside === 1) linjer.push('Siden du har i dag gir nesten ingen henvendelser.');
-  if (mer === 0) linjer.push('Du vil at siden skal skaffe kunder mens du jobber.');
   return linjer.slice(0, 2).join(' ');
 };
 
