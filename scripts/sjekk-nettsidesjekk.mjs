@@ -4,7 +4,7 @@
 //   node scripts/sjekk-nettsidesjekk.mjs
 //   node scripts/sjekk-nettsidesjekk.mjs firma.no annenfirma.no
 import assert from 'node:assert/strict';
-import { erStengtIp, rensDomene, sjekkNettside, vurder } from '../api/_lib/nettsidesjekk.js';
+import { erStengtIp, rensDomene, sjekkNettside, synligTekst, vurder } from '../api/_lib/nettsidesjekk.js';
 
 const domener = process.argv.slice(2);
 
@@ -47,6 +47,27 @@ if (!domener.length) {
   // Årstallet bak et spenn teller, ikke det første
   const spenn = vurder({ url: 'https://f.no/', ms: 500, aar: 2026, html: '<body>© 2015–2025 Firma</body>' });
   assert.deepEqual(spenn.punkter.find((p) => p.id === 'oppdatert'), { id: 'oppdatert', status: 'delvis', verdi: { bak: 1 } });
+
+  // Blokker fjernes, også uten sluttag og med store bokstaver
+  assert.equal(synligTekst('<p>a</p><SCRIPT>x</script><p>b</p><!-- c --><style>d'), 'a b');
+
+  // Fiendtlig HTML skal gå i lineær tid. Hvert mønster her var kvadratisk i
+  // første versjon og kunne holde funksjonen opptatt i minutter.
+  const mb = 1_000_000;
+  for (const [navn, ondsinnet] of [
+    ['script uten slutt', '<script '.repeat(mb / 8)],
+    ['kommentar uten slutt', '<!--'.repeat(mb / 4)],
+    ['tagger uten >', '<'.repeat(mb)],
+    ['meta uten >', '<meta '.repeat(mb / 6)],
+    ['title uten slutt', '<title>'.repeat(mb / 7)],
+    ['href uten slutt', 'href='.repeat(mb / 5)],
+    ['tegnkode utenfor Unicode', '&#99999999;'.repeat(1000)],
+  ]) {
+    const t = performance.now();
+    vurder({ html: ondsinnet, url: 'https://f.no/', ms: 100 });
+    const ms = performance.now() - t;
+    assert.ok(ms < 1500, `${navn}: ${Math.round(ms)} ms`);
+  }
 
   // Stengt adresse når domenet peker innover
   await assert.rejects(sjekkNettside('localtest.me'), { code: 'STENGT' });

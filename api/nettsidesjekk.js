@@ -31,23 +31,29 @@ async function overGrensen(req) {
   const supabase = createClient(SUPABASE_URL, nokkel, { auth: { persistSession: false } });
   const tabell = () => supabase.from('nettsidesjekk_kall');
 
-  const { count, error } = await tabell()
-    .select('id', { count: 'exact', head: true })
-    .eq('ip_hash', ipHash)
-    .gte('created_at', new Date(Date.now() - TIME_MS).toISOString());
+  // Kallet skrives FØR det telles. Teller man først, slipper en bølge med
+  // samtidige kall gjennom alle sammen, fordi ingen av dem rakk å skrive sin
+  // rad. Slik ser hvert kall alle rader som ble skrevet før det talte, sitt
+  // eget medregnet. Avviste kall teller også, så den som hamrer, blir stående.
+  const skriv = await tabell().insert({ ip_hash: ipHash });
+  if (skriv.error) {
+    console.error('nettsidesjekk: kunne ikke lagre kallet', skriv.error);
+    return false;
+  }
+  const [{ count, error }, rydd] = await Promise.all([
+    tabell()
+      .select('id', { count: 'exact', head: true })
+      .eq('ip_hash', ipHash)
+      .gte('created_at', new Date(Date.now() - TIME_MS).toISOString()),
+    tabell().delete().lt('created_at', new Date(Date.now() - DOGN_MS).toISOString()),
+  ]);
+  if (rydd.error) console.error('nettsidesjekk: kunne ikke rydde gamle kall', rydd.error);
   // En HEAD-forespørsel mot en tabell som mangler gir count null uten error.
   if (error || count === null) {
     console.error('nettsidesjekk: kunne ikke telle kall', error || 'count er null');
     return false;
   }
-  if (count >= GRENSE_PER_TIME) return true;
-
-  const [skriv, rydd] = await Promise.all([
-    tabell().insert({ ip_hash: ipHash }),
-    tabell().delete().lt('created_at', new Date(Date.now() - DOGN_MS).toISOString()),
-  ]);
-  if (skriv.error || rydd.error) console.error('nettsidesjekk: kunne ikke lagre kallet', skriv.error || rydd.error);
-  return false;
+  return count > GRENSE_PER_TIME;
 }
 
 export default async function handler(req, res) {

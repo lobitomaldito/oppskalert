@@ -18,7 +18,7 @@ import zlib from 'node:zlib';
 
 const TIDSFRIST_MS = 9000;
 const MAKS_HOPP = 4;
-const MAKS_BYTE = 2_000_000;
+const MAKS_BYTE = 1_000_000;
 
 const HODER = {
   'User-Agent':
@@ -108,13 +108,25 @@ function hentEn(url, signal) {
               : res;
       const biter = [];
       let lengde = 0;
-      const ferdig = () => ok({ status, type: headers['content-type'] || '', html: tegnsett(headers['content-type']).decode(Buffer.concat(biter)) });
+      let levert = false;
+      const ferdig = () => {
+        if (levert) return;
+        levert = true;
+        ok({ status, type: headers['content-type'] || '', html: tegnsett(headers['content-type']).decode(Buffer.concat(biter).subarray(0, MAKS_BYTE)) });
+      };
+      // Forsiden trenger ikke mer enn MAKS_BYTE. Over taket stoppes alt med en
+      // gang, også utpakkingen: en liten gzip-bit kan pakkes ut til hundrevis
+      // av megabyte, og zlib fortsetter å sende data så lenge strømmen lever.
       strom.on('data', (bit) => {
+        if (levert) return;
         biter.push(bit);
         lengde += bit.length;
-        // Forsiden trenger ikke mer enn dette. Resten kastes, så en side som
-        // strømmer i det uendelige ikke spiser minnet til funksjonen.
-        if (lengde > MAKS_BYTE) { ferdig(); req.destroy(); }
+        if (lengde > MAKS_BYTE) {
+          ferdig();
+          strom.destroy();
+          res.destroy();
+          req.destroy();
+        }
       });
       strom.on('end', ferdig);
       strom.on('error', feil);
@@ -137,23 +149,45 @@ async function hentSide(start, signal) {
 }
 
 // ── Målingene ───────────────────────────────────────────────────────────────
+//
+// HTML-en kommer fra hvem som helst, så hvert mønster under skal gå i lineær
+// tid. Ingen lat [\s\S]*? over flere tagger, og ingen [^>]* som kan løpe til
+// slutten av dokumentet fra hver eneste «<». Blokkene fjernes med indexOf.
 
 const ENTITETER = { nbsp: ' ', amp: '&', copy: '©', aelig: 'æ', oslash: 'ø', aring: 'å', AElig: 'Æ', Oslash: 'Ø', Aring: 'Å', quot: '"', lt: '<', gt: '>' };
+const tegn = (kode) => (kode > 0 && kode <= 0x10ffff ? String.fromCodePoint(kode) : ' ');
 const avkod = (s) =>
-  s.replace(/&(#x[\da-f]+|#\d+|[a-z]+);/gi, (hele, e) =>
-    e[0] === '#' ? String.fromCodePoint(e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : Number(e.slice(1))) : ENTITETER[e] ?? hele);
+  s.replace(/&(#x[\da-f]{1,6}|#\d{1,7}|[a-z]{2,8});/gi, (hele, e) =>
+    e[0] === '#' ? tegn(e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : Number(e.slice(1))) : ENTITETER[e] ?? hele);
+
+const BLOKKSTART = /<!--|<(head|script|style|noscript|template|svg)\b/gi;
+
+/** Fjerner kommentarer og blokker robotene ikke leser som tekst. Lineær. */
+function utenBlokker(html) {
+  const deler = [];
+  let fra = 0;
+  BLOKKSTART.lastIndex = 0;
+  for (let m = BLOKKSTART.exec(html); m; m = BLOKKSTART.exec(html)) {
+    // Sluttaggen letes fram som en fast streng fra der blokken starter, så
+    // hvert tegn leses høyst én gang uansett hvor mange blokker siden har.
+    const slutt = m[1] ? new RegExp(`</${m[1]}[^<>]{0,20}>?`, 'gi') : /-->/g;
+    slutt.lastIndex = m.index + m[0].length;
+    const treff = slutt.exec(html);
+    deler.push(html.slice(fra, m.index), ' ');
+    if (!treff) return deler.join('');
+    fra = slutt.lastIndex;
+    BLOKKSTART.lastIndex = fra;
+  }
+  deler.push(html.slice(fra));
+  return deler.join('');
+}
 
 /** Synlig tekst slik en robot uten JavaScript leser den. */
 export const synligTekst = (html) =>
-  avkod(
-    html
-      .replace(/<!--[\s\S]*?-->/g, ' ')
-      .replace(/<(head|script|style|noscript|template|svg)\b[\s\S]*?<\/\1>/gi, ' ')
-      .replace(/<[^>]+>/g, ' '),
-  ).replace(/\s+/g, ' ').trim();
+  avkod(utenBlokker(html).replace(/<[^<>]*>/g, ' ')).replace(/\s+/g, ' ').trim();
 
 const metaInnhold = (html, navn) => {
-  for (const tag of html.match(/<meta\b[^>]*>/gi) || []) {
+  for (const tag of html.match(/<meta\b[^<>]*>/gi) || []) {
     if (!new RegExp(`name\\s*=\\s*["']?${navn}["'\\s>]`, 'i').test(tag)) continue;
     const m = /content\s*=\s*(["'])([\s\S]*?)\1/i.exec(tag);
     return m ? avkod(m[2]).trim() : '';
@@ -203,7 +237,11 @@ export function vurder({ html, url, ms, aar = new Date().getFullYear() }) {
   const sek = Math.round(ms / 100) / 10;
   punkter.push({ id: 'fart', status: sek <= 1.0 ? 'ok' : sek <= 2.5 ? 'delvis' : 'feil', verdi: sek });
 
-  const tittel = avkod((/<title[^>]*>([\s\S]*?)<\/title>/i.exec(html)?.[1] || '').replace(/\s+/g, ' ')).trim();
+  const tittelStart = /<title\b[^<>]*>/i.exec(html);
+  const tittelSlutt = tittelStart ? /<\/title/gi : null;
+  if (tittelSlutt) tittelSlutt.lastIndex = tittelStart.index + tittelStart[0].length;
+  const tittelTreff = tittelSlutt?.exec(html);
+  const tittel = tittelTreff ? avkod(html.slice(tittelStart.index + tittelStart[0].length, tittelTreff.index).replace(/\s+/g, ' ')).trim() : '';
   const vert = new URL(url).hostname.replace(/^www\./, '');
   const tittelOk = tittel.length >= 4 && !GENERISK_TITTEL.test(tittel) && tittel.toLowerCase().replace(/^www\./, '') !== vert;
   const beskrivelseOk = Boolean(metaInnhold(html, 'description'));
@@ -216,7 +254,7 @@ export function vurder({ html, url, ms, aar = new Date().getFullYear() }) {
   const ring = /href\s*=\s*["']?\s*tel:/i.test(html);
   const skriv = /href\s*=\s*["']?\s*mailto:/i.test(html) || /<form\b/i.test(html);
   const nummer = TELEFON.test(tekst);
-  const side = /href\s*=\s*["']?[^"'\s>]*(kontakt|contact)/i.test(html);
+  const side = /href\s*=\s*["']?[^"'\s<>]{0,200}(kontakt|contact)/i.test(html);
   punkter.push({
     id: 'kontakt',
     status: ring ? 'ok' : skriv || nummer || side ? 'delvis' : 'feil',
