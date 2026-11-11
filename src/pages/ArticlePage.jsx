@@ -4,9 +4,10 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { getArticleBySlug, articles } from '../lib/articles';
-import { ruter } from '../lib/site';
+import { ruter, kontakt, lagFaqSchema } from '../lib/site';
 import SEO from '../components/SEO';
 import { Navbar, Footer } from '../components/Layout';
+import FAQ from '../components/FAQ';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -252,6 +253,7 @@ const LocalArticle = ({ article }) => {
   const nextArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
 
   const canonical = `https://oppskalert.no/blogg/${article.slug}`;
+  const lesetid = Math.max(1, Math.round(tellOrd(article.content) / 200));
   /* Den ukentlige generatoren har skrevet hero: "" minst én gang. Uten denne
      vakten blir og:image og schema-bildet til den bare "https://oppskalert.no",
      som er en ugyldig bilde-URL, og <img src=""> laster siden på nytt i noen
@@ -264,7 +266,14 @@ const LocalArticle = ({ article }) => {
     description: article.description,
     ...(heroUrl ? { image: heroUrl } : {}),
     datePublished: article.publishDate,
-    author: { '@type': 'Organization', name: 'Oppskalert' },
+    dateModified: article.updatedDate || article.publishDate,
+    author: {
+      '@type': 'Person',
+      name: kontakt.navn,
+      jobTitle: 'Grunnlegger',
+      url: 'https://oppskalert.no/om',
+      sameAs: [kontakt.linkedin],
+    },
     publisher: {
       '@type': 'Organization',
       name: 'Oppskalert',
@@ -282,7 +291,11 @@ const LocalArticle = ({ article }) => {
         canonical={canonical}
         ogType="article"
         ogImage={heroUrl}
-        jsonLd={[articleSchema, breadcrumbSchema(article.title, canonical)]}
+        jsonLd={[
+          articleSchema,
+          breadcrumbSchema(article.title, canonical),
+          ...(article.faq?.length ? [lagFaqSchema(article.faq)] : []),
+        ]}
       />
       <Navbar />
 
@@ -295,9 +308,13 @@ const LocalArticle = ({ article }) => {
             {article.title}
           </h1>
           <div className="hero-elem flex items-center gap-4 font-body text-xs uppercase tracking-widest text-room-ink/70 mb-12">
-            <span>{formatDate(article.publishDate)}</span>
+            <Link to={ruter.om} className="hover:text-room-ink transition-colors">{kontakt.navn}</Link>
             <span className="w-1 h-1 rounded-full bg-room-ink/20" />
-            <span>oppskalert.</span>
+            <span>
+              {article.updatedDate ? `Oppdatert ${formatDate(article.updatedDate)}` : formatDate(article.publishDate)}
+            </span>
+            <span className="w-1 h-1 rounded-full bg-room-ink/20" />
+            <span>{lesetid} min lesing</span>
           </div>
         </div>
       </section>
@@ -312,6 +329,15 @@ const LocalArticle = ({ article }) => {
 
       <article className="px-6 md:px-12 lg:px-24 pb-32">
         <div className="max-w-3xl mx-auto">
+          {/* Svaret først, så både leseren og AI-søk får det uten å lese
+              hele artikkelen. Feltet er valgfritt per artikkel. */}
+          {article.svar && (
+            <aside className="mb-12 rounded-kort border border-room-ink/10 bg-room-ink/[0.04] p-7 md:p-8">
+              <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink/70 mb-3 block">Kort svar</span>
+              <p className="font-body text-room-ink leading-relaxed text-base md:text-lg">{renderInline(article.svar, 'svar')}</p>
+            </aside>
+          )}
+
           {renderContent(article.content, {
             tidligCta: <TidligCta tekst={cta.tidlig} />,
             midtCta: <MidtCta tittel={cta.midt.tittel} tekst={cta.midt.tekst} />,
@@ -328,6 +354,12 @@ const LocalArticle = ({ article }) => {
           <CTA />
         </div>
       </article>
+
+      {/* Eget sett per artikkel. Samme liste går til FAQPage over, så
+          schemaet svarer på de spørsmålene som faktisk står på siden. */}
+      {article.faq?.length > 0 && (
+        <FAQ tittel="Vanlige spørsmål" uthevet="om dette temaet." sporsmal={article.faq} />
+      )}
 
       {(prevArticle || nextArticle) && (
         <section className="px-6 md:px-12 lg:px-24 pb-32">

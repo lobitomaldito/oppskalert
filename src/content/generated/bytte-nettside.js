@@ -5,6 +5,13 @@ export default {
   publishDate: "2026-08-24",
   keywords: ["ny nettside", "bytte nettside"],
   hero: "",
+  updatedDate: "2026-11-11",
+  svar: "Det er tid for ny nettside når to eller flere av disse stemmer: den laster over 2,5 sekunder på mobil, den ser eldre ut enn bransjen, du kan ikke endre tekst selv, færre besøkende tar kontakt enn før, eller den mangler funksjoner konkurrentene har. Mål før du bestemmer deg.",
+  faq: [
+    { q: "Hvordan måler jeg om nettsiden er for treg?", a: "Skriv adressen inn i Google PageSpeed Insights og se på Largest Contentful Paint for mobil. Ligger tallet over 2,5 sekunder, mister du besøkende før de ser innholdet." },
+    { q: "Holder det å oppgradere den gamle siden?", a: "Ofte, hvis problemet er teknisk og avgrenset. Er problemet både treghet, utseende og at du ikke kan oppdatere den selv, er en ny side som regel billigere enn å lappe." },
+    { q: "Hvor ofte bør en bedrift bytte nettside?", a: "Design oppleves som utdatert etter omtrent tre til fem år. Bytt når tallene viser at siden presterer dårligere." },
+  ],
   content: `## Nettsiden slutter ikke å virke, den slutter å prestere
 
 En nettside slutter sjelden å fungere helt. Den blir bare gradvis dårligere til å faktisk skaffe deg kunder, uten at noe konkret går i stykker som varsler deg om det. Det gjør det vanskelig å vite når det er på tide å bytte, fordi siden fortsatt "virker" i teknisk forstand. Problemet er ikke om siden laster i nettleseren, men om den fortsatt gjør jobben den skal gjøre: overbevise en fremmed om å ta kontakt. Fem konkrete tegn avslører som regel om du nærmer deg det punktet.
@@ -31,5 +38,5 @@ Booking direkte på siden, live chat, eller en enkel kalkulator er blitt normale
 
 ## Hva du bør gjøre hvis du kjenner deg igjen
 
-Kjenner du igjen to eller flere av disse tegnene, er det ikke nødvendigvis tid for en full ombygging med det samme. Start med å måle: kjør PageSpeed Insights, se på konverteringstallene dine de siste seks månedene, og noter hvor lang tid siste tekstendring tok. Med de tre tallene foran deg vet du om problemet er teknisk, visuelt eller driftsmessig, og det avgjør om løsningen er en oppgradering eller en helt ny side.`,
+Kjenner du igjen to eller flere av disse tegnene, er det ikke nødvendigvis tid for en full ombygging med det samme. Start med å måle: kjør PageSpeed Insights, se på konverteringstallene dine de siste seks månedene, og noter hvor lang tid siste tekstendring tok. Med de tre tallene foran deg vet du om problemet er teknisk, visuelt eller driftsmessig, og det avgjør om løsningen er en oppgradering eller [en helt ny side](/ny-nettside).`,
 };

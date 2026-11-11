@@ -5,6 +5,13 @@ export default {
   publishDate: "2026-08-06",
   keywords: ["google min bedrift", "google bedriftsprofil"],
   hero: "/blogg/google-min-bedrift.webp",
+  updatedDate: "2026-11-11",
+  svar: "Google Bedriftsprofil er den gratis oppføringen som vises i kartet og i de tre lokale treffene øverst i mobilsøk. Du rangerer høyere med presis kategori, komplette åpningstider, samme adresse og telefonnummer som på nettsiden, bilder, og mange anmeldelser som du svarer på.",
+  faq: [
+    { q: "Er Google Bedriftsprofil gratis?", a: "Ja. Profilen er gratis å opprette og oppdatere." },
+    { q: "Hvordan får jeg flere anmeldelser?", a: "Spør fornøyde kunder direkte, med en lenke på SMS eller e-post rett etter leveransen. Det gir langt flere svar enn å vente på at de husker det selv." },
+    { q: "Er Google Min Bedrift og Google Bedriftsprofil det samme?", a: "Ja. Google Bedriftsprofil er det nye navnet på Google Min Bedrift." },
+  ],
   content: `## Hva Google Bedriftsprofil faktisk er
 
 Google Bedriftsprofil, tidligere kalt Google Min Bedrift, er den gratis oppføringen som dukker opp når noen søker etter bedriften din, eller etter en tjeneste du tilbyr, i nærheten av der de befinner seg. Den vises i kartet, i "lokalpakken" med tre treff øverst på mobilsøk, og som en informasjonsboks til høyre på skjermen ved søk på PC. For en bedrift med fysisk adresse eller et geografisk nedslagsfelt er dette ofte den første kontakten en potensiell kunde har med deg, før de i det hele tatt besøker nettsiden. En ufullstendig eller feil profil er dermed et førsteinntrykk du taper penger på hver eneste dag.
@@ -31,5 +38,5 @@ Den vanligste feilen er å sette opp profilen én gang og aldri røre den igjen.
 
 ## Hva du bør gjøre denne uken
 
-Logg inn på Google Bedriftsprofil og gå gjennom hvert eneste felt: kategori, åpningstider, adresse og beskrivelse. Sammenlign telefonnummer og adresse mot det som står på nettsiden din. Send deretter en direkte lenke til de siste fem kundene dine og be om en ærlig anmeldelse. Disse to grepene tar under en time samlet, og er ofte det raskeste du kan gjøre for å bli mer synlig i søk denne måneden.`,
+Logg inn på Google Bedriftsprofil og gå gjennom hvert eneste felt: kategori, åpningstider, adresse og beskrivelse. Sammenlign telefonnummer og adresse mot det som står på nettsiden din. Send deretter en direkte lenke til de siste fem kundene dine og be om en ærlig anmeldelse. Disse to grepene tar under en time samlet, og er ofte det raskeste du kan gjøre for å [bli mer synlig i søk](/sokemotoroptimalisering) denne måneden.`,
 };
