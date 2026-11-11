@@ -9,7 +9,7 @@ export default {
   svar: "Trenger du kunder innen fire uker, start med Google-annonser. Har du seks måneder eller mer og et stramt budsjett, prioriter SEO. De fleste små bedrifter får best resultat av begge: annonser mens SEO bygges opp, og mindre annonsebudsjett etter hvert som de organiske plasseringene kommer.",
   faq: [
     { q: "Hvor lang tid tar SEO før det gir resultater?", a: "Normalt tre til seks måneder, avhengig av hvor mange andre som konkurrerer om de samme søkene." },
-    { q: "Hva koster et klikk på Google-annonser i Norge?", a: "I bransjer med mye konkurranse ligger klikkprisen ofte på 20 til over 100 kroner. Uten en nettside som gjør besøk til henvendelser, blir prisen per kunde fort for høy." },
+    { q: "Hva koster et klikk på Google-annonser i Norge?", a: "Det avgjøres i en auksjon for hvert søk, så prisen varierer med bransje, sted og hvor mange som byr. Søkeordplanleggeren i Google Ads viser anslag for dine ord før du bruker en krone." },
     { q: "Forsvinner trafikken når jeg slutter med annonser?", a: "Ja, annonsetrafikken stopper samme dag. En side som rangerer organisk fortsetter å gi besøk måneder etter at arbeidet er gjort." },
   ],
   content: `## To helt ulike måter å bli funnet på
@@ -18,7 +18,7 @@ SEO og Google-annonser løser samme problem, å bli synlig når noen søker ette
 
 ## Google-annonser: raskt, men du betaler for hvert klikk
 
-Med annonser kan du ligge øverst på Google samme dag du setter opp kampanjen. Det gjør annonser ideelt når du trenger kunder raskt, for eksempel ved lansering av en ny tjeneste. Ulempen er at trafikken forsvinner i det øyeblikket du slutter å betale. Klikkprisen i konkurranseutsatte bransjer i Norge kan ligge på 20 til over 100 kroner per klikk, og uten en nettside som faktisk konverterer godt, blir kostnaden per kunde fort høy nok til at regnestykket ikke går opp.
+Med annonser kan du ligge øverst på Google samme dag du setter opp kampanjen. Det gjør annonser ideelt når du trenger kunder raskt, for eksempel ved lansering av en ny tjeneste. Ulempen er at trafikken forsvinner i det øyeblikket du slutter å betale. Klikkprisen settes i en auksjon og blir høyest der mange konkurrerer om de samme søkene, og uten en nettside som faktisk konverterer godt, blir kostnaden per kunde fort høy nok til at regnestykket ikke går opp.
 
 ## SEO: tregere å bygge, billigere å holde ved like
 
