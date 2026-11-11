@@ -1181,8 +1181,38 @@
     max-width: 22ch;
   }
   .om-kort { list-style: none; padding: 0; margin: clamp(2rem, 4vw, 3rem) 0 0; }
-  .om-kort .tjeneste:hover { transform: none; border-color: transparent; }
-  .om-kort .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.25rem, 1.8vw, 1.5rem); letter-spacing: var(--display-sperre); }
+  .om-kort .tjeneste:hover, .statisk-kort .tjeneste:hover { transform: none; border-color: transparent; }
+  .statisk-kort { list-style: none; padding: 0; margin: 0; }
+  /* Fire kort står to og to, også på bred skjerm: tre kolonner ga ett kort alene. */
+  @media (min-width: 64rem) { .tjenester.statisk-kort { grid-template-columns: repeat(2, 1fr); } }
+  .om-kort .tjeneste h3, .statisk-kort .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.25rem, 1.8vw, 1.5rem); letter-spacing: var(--display-sperre); }
+  /* SEO-siden (12.11.2026): pris og knapp i et kort i toppen, ved siden
+     av overskriften fra 56rem, rett under den på mobil. */
+  .seo-topp { display: grid; gap: clamp(1.75rem, 4vw, 4rem); align-items: start; }
+  @media (min-width: 56rem) { .seo-topp { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+  .seo-priskort {
+    padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: var(--rund-stor);
+    background: var(--blekk); color: var(--kritt);
+  }
+  .sidetopp .seo-priskort p { margin-top: 0; max-width: none; color: inherit; }
+  .sidetopp .seo-priskort p.seo-priskort-navn { font-size: .875rem; color: var(--kritt-mykt); }
+  .seo-priskort-pris {
+    margin-top: .25rem; font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; letter-spacing: var(--display-sperre-stor);
+  }
+  .sidetopp .seo-priskort-pris { color: var(--kritt); max-width: none; }
+  .seo-priskort-fra, .seo-priskort-enhet { font-size: 1rem; letter-spacing: 0; color: var(--kritt-mykt); }
+  .sidetopp .seo-priskort p.seo-priskort-vilkar { margin-top: .625rem; color: var(--kritt-mykt); font-size: .875rem; }
+  .seo-priskort ul { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: .625rem; }
+  .seo-priskort li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .625rem; font-size: .9375rem; line-height: 1.45; }
+  .seo-priskort li .ikon { margin-top: .2rem; color: var(--prikk-lys); }
+  .seo-priskort .seo-priskort-knapp {
+    margin-top: 1.5rem; width: 100%; justify-content: center;
+    background: var(--kritt); color: var(--blekk); border-color: var(--kritt);
+  }
+  .sidetopp .seo-priskort p.seo-priskort-smaa { margin-top: .875rem; text-align: center; font-size: .875rem; color: var(--kritt-mykt); }
+  .seo-priskort-smaa a { color: var(--kritt); text-decoration: underline; text-underline-offset: 3px; }
+  .seo-priskort :focus-visible { outline-color: var(--kritt); }
   .leie-kort {
     margin-top: 1.5rem; max-width: 52rem; padding: clamp(1.25rem, 2.5vw, 1.75rem);
     background: var(--kort); border-radius: var(--rund);
