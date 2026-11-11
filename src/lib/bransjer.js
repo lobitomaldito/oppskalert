@@ -23,11 +23,18 @@ const pris = (id) => prismodeller.find((p) => p.id === id)?.fra;
 const prisSvar = (hvaDeTrenger) =>
   `Enkel, én side med det viktigste, koster ${pris('enkel')} kr eks. mva. Medium, med alle sidene du har i dag og tekster skrevet for Google og AI-søk, koster ${pris('medium')} kr. Komplett, med ${hvaDeTrenger} og tre måneder SEO, starter på ${pris('komplett')} kr. Hosting er med i prisen, du eier siden, og du ser et gratis utkast før du bestemmer deg.`;
 
+/* Bildene er fra Pexels (gratis til kommersiell bruk). Fotografene står i
+   public/bransjer/KREDITT.md. */
+
 export const RUTE_BRANSJE = (slug) => `/nettside-for-${slug}`;
 
 export const bransjer = [
   {
     slug: 'terapeut',
+    bilder: [
+      { src: '/bransjer/terapeut-1.webp', alt: 'To kvinner i samtale i et lyst terapirom' },
+      { src: '/bransjer/terapeut-2.webp', alt: 'Terapeut som lytter til en klient' },
+    ],
     meny: 'Nettside for terapeut',
     tittel: 'Nettside for terapeut og psykolog, fast pris',
     beskrivelse:
@@ -88,6 +95,10 @@ export const bransjer = [
   },
   {
     slug: 'klinikk',
+    bilder: [
+      { src: '/bransjer/klinikk-1.webp', alt: 'Fysioterapeut som behandler en pasient på benken' },
+      { src: '/bransjer/klinikk-2.webp', alt: 'Behandler som undersøker en pasient på en klinikk' },
+    ],
     meny: 'Nettside for klinikk',
     tittel: 'Nettside for klinikk og behandler, fast pris',
     beskrivelse:
@@ -149,6 +160,10 @@ export const bransjer = [
   },
   {
     slug: 'foredragsholder',
+    bilder: [
+      { src: '/bransjer/foredragsholder-1.webp', alt: 'Foredragsholder på scenen foran et fullt publikum' },
+      { src: '/bransjer/foredragsholder-2.webp', alt: 'Foredragsholder på en scene med skjerm bak seg' },
+    ],
     meny: 'Nettside for foredragsholder',
     tittel: 'Nettside for foredragsholder, fast pris',
     beskrivelse:
@@ -203,6 +218,10 @@ export const bransjer = [
   },
   {
     slug: 'handverker',
+    bilder: [
+      { src: '/bransjer/handverker-1.webp', alt: 'Snekker som måler opp et bord på byggeplassen' },
+      { src: '/bransjer/handverker-2.webp', alt: 'Tømrer med motorsag på en takkonstruksjon' },
+    ],
     meny: 'Nettside for håndverker',
     tittel: 'Nettside for håndverker, fast pris',
     beskrivelse:
@@ -258,6 +277,10 @@ export const bransjer = [
   },
   {
     slug: 'yogastudio',
+    bilder: [
+      { src: '/bransjer/yogastudio-1.webp', alt: 'Yogatime i et lyst studio' },
+      { src: '/bransjer/yogastudio-2.webp', alt: 'Rolig yogatime med nybegynnere' },
+    ],
     meny: 'Nettside for yogastudio',
     tittel: 'Nettside for yogastudio, fast pris',
     beskrivelse:
