@@ -25,39 +25,45 @@ import { PilHoyre } from './Ikon';
    Google Ads teller konverteringen på det navnet. demo_form_paabegynt
    sendes ved første svar av samme grunn: trakten i PostHog starter der. */
 
+/* Spørsmålene skal selge, ikke kartlegge (Aleksander 11.11.2026): hvert
+   spørsmål spør etter utfallet kunden vil ha, med steder og ord kunden
+   kjenner (Google, ChatGPT, konkurrentene), aldri etter metoden. Ingen
+   spør etter «SEO», men alle vil vite hvem kundene finner når de søker.
+   Det første spørsmålet er det eneste som bare kartlegger, fordi svaret
+   styrer skjemaet (adressen til dagens side). */
 const SPORSMAL = [
   {
     id: 'nettside',
     tekst: 'Har du en nettside i dag?',
     svar: [
-      'Ja, men den er utdatert eller treg',
+      'Ja, men den ser gammel ut eller er treg',
       'Ja, men den gir nesten ingen henvendelser',
       'Nei, jeg starter fra bunnen',
     ],
   },
   {
-    id: 'omfang',
-    tekst: 'Hvor mye skal siden fortelle?',
+    id: 'synlig',
+    tekst: 'Når noen søker etter det du gjør, på Google eller i ChatGPT, hvem finner de da?',
     svar: [
-      'Én side holder: hva jeg gjør og hvordan folk tar kontakt',
-      'Flere sider, én for hver tjeneste',
+      'Konkurrentene mine, tror jeg',
+      'Vet ikke, jeg har aldri sjekket',
+      'Meg, jeg ligger øverst',
+    ],
+  },
+  {
+    id: 'tjenester',
+    tekst: 'Vil du at hver tjeneste skal ha sin egen side, så de som søker på akkurat den finner deg?',
+    svar: [
+      'Ja, jeg tilbyr flere ting',
+      'Nei, jeg har én hovedtjeneste',
       'Vet ikke ennå',
     ],
   },
   {
-    id: 'kunder',
-    tekst: 'Hvordan finner kundene deg i dag?',
-    svar: [
-      'De søker på Google',
-      'Mest anbefalinger fra andre',
-      'Sosiale medier eller annonser',
-    ],
-  },
-  {
     id: 'mer',
-    tekst: 'Skal siden gjøre mer enn å vise hva du tilbyr?',
+    tekst: 'Vil du at siden skal skaffe kunder mens du er opptatt med jobben?',
     svar: [
-      'Ja, kundene skal kunne regne ut pris eller bestille selv',
+      'Ja, de skal kunne regne ut pris eller bestille selv',
       'Kanskje senere',
       'Nei, et kontaktskjema holder',
     ],
@@ -66,20 +72,26 @@ const SPORSMAL = [
 
 const BOKSTAV = ['A', 'B', 'C'];
 
-/* Svarene er indekser 0–2 (A–C). Komplett når siden skal gjøre mer,
-   Medium når kunden trenger flere sider, vil bli funnet på Google, eller
-   har en side som ikke gir henvendelser. Ellers Enkel. «Vet ikke» på
-   omfang gir Medium, som også er pakken priskortene anbefaler. */
-const velgPakke = ([nettside, omfang, kunder, mer]) => {
+/* Svarene er indekser 0–2 (A–C). Komplett når siden skal skaffe kunder
+   selv. Medium når kundene ikke finner dem i søk, når de vil ha en side
+   per tjeneste, eller når dagens side ikke gir henvendelser. Enkel bare
+   for den som allerede ligger øverst og har én tjeneste. «Vet ikke» gir
+   Medium, som også er pakken priskortene anbefaler. */
+const velgPakke = ([nettside, synlig, tjenester, mer]) => {
   if (mer === 0) return 'komplett';
-  if (omfang !== 0 || kunder === 0 || nettside === 1) return 'medium';
+  if (synlig !== 2 || tjenester !== 1 || nettside === 1) return 'medium';
   return 'enkel';
 };
 
-const HVORFOR = {
-  enkel: 'Du trenger én side som viser hva du gjør og gjør det lett å ta kontakt.',
-  medium: 'Du trenger flere sider, og tekster skrevet for det kundene dine søker på.',
-  komplett: 'Du vil at siden skal hjelpe kundene videre selv, ikke bare vise hva du gjør.',
+/* Begrunnelsen bygges av kundens egne svar, så resultatet leses som et
+   svar på det de sa, ikke som en reklame for pakken. */
+const begrunnelse = ([nettside, synlig, , mer]) => {
+  const linjer = [];
+  if (synlig === 0) linjer.push('Du tror kundene finner konkurrentene dine i dag.');
+  if (synlig === 1) linjer.push('Du vet ikke om kundene finner deg i dag.');
+  if (nettside === 1) linjer.push('Siden du har i dag gir nesten ingen henvendelser.');
+  if (mer === 0) linjer.push('Du vil at siden skal skaffe kunder mens du jobber.');
+  return linjer.slice(0, 2).join(' ');
 };
 
 const gyldigEpost = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e.trim());
@@ -238,7 +250,9 @@ const Utkastvelger = () => {
                 <h3 ref={overskrift} tabIndex={-1} className="velger-res-tittel">
                   {pakke.navn}, {pakke.fast ? '' : 'fra '}{pakke.fra} kr
                 </h3>
-                <p className="velger-res-tekst">{HVORFOR[pakkeId]} {pakke.verdi}</p>
+                <p className="velger-res-tekst">
+                  {begrunnelse(svar)} {pakke.verdi} I alle pakkene endrer du tekst og bilder selv.
+                </p>
                 <ul className="velger-res-liste">
                   {pakke.inkludert.map((l) => <li key={l}>{l}</li>)}
                 </ul>
