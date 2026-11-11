@@ -5,6 +5,7 @@ import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp } from './Layout';
 import { cn } from '../lib/utils';
 import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
+import { track } from '../lib/analytics';
 
 /* Alle tre kortene er hvite på feltet. Driftskortet var tidligere tonet mot
    feltfargen for å skille seg fra engangsprisen, men denne seksjonen står
@@ -155,6 +156,19 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
             />
           ))}
         </PrisRad>
+
+        {/* Lenke til utkastvelgeren på forsiden (Aleksander 11.11.2026), for
+            den som har lest tre kort og fortsatt ikke vet hvilket. Vanlig
+            <a> og ikke <Link>: på /priser skal den laste forsiden og hoppe
+            til modulen, og på forsiden bare rulle ned. */}
+        <a
+          data-reveal
+          href="/#bestill-demo"
+          onClick={() => track('utkastvelger_lenke_fra_priser', { side: window.location.pathname })}
+          className="mt-8 inline-flex items-center gap-1.5 font-sans font-bold text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+        >
+          Sjekk hvilken pakke som passer for deg <ArrowRight className="w-4 h-4" aria-hidden="true" />
+        </a>
 
         {/* Hva som IKKE er med. Uten denne listen ser fastprisen ut som om
             den dekker alt, og da blir hver samtale en forhandling om hvor

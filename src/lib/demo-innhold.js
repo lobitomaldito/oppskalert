@@ -670,19 +670,19 @@ export const googleOmtaler = [
   {
     "sitat": "Servicevennlig og god assistanse når jeg skulle koble en bestillingsside til betaling og gi meg adressene til de som bestiller bøker. :-)",
     "navn": "Steinar Husby",
-    "rolle": "Omtale på Google",
+    "rolle": "medutlagtsjarm.no, omtale på Google",
     "stjerner": 5
   },
   {
     "sitat": "Veldig fornøyd med ny nettside! Alltid hyggelig dialog og behjelpelige med endringer. Finner gode løsninger og møter behov. Kan anbefales! 🌟",
     "navn": "Guro Brakestad",
-    "rolle": "Omtale på Google",
+    "rolle": "Familieterapeut og foredragsholder, omtale på Google",
     "stjerner": 4
   },
   {
     "sitat": "Jeg opplever å ha fått en hel ny og spennende hjemmeside - som viser tydelig hva jeg jobber med og hva jeg tilbyr av tjenester. Aleks var lyttende til mine ønsker og kom også med gode forslag som gjør at jeg syns det var et gøy og solid samarbeid. Anbefaler Oppskalert videre til deg som ønsker en tydelig hjemmeside!",
     "navn": "Mélanie Dahl",
-    "rolle": "Omtale på Google",
+    "rolle": "melaniedahl.com, omtale på Google",
     "stjerner": 5
   }
 ];
@@ -707,7 +707,11 @@ export const sporsmal = [
   ],
   [
     "Eier jeg siden selv etterpå?",
-    "Ja. Betaler du engangspris, får du alle filene og eier hele greia med en gang. Velger du leie til eie, er tekstene, bildene og domenet dine hele veien, og filene blir dine når 12 måneder er betalt. Ingen av modellene har binding, og uansett modell låser jeg ingenting inne."
+    "Ja. Betaler du engangspris, eier du siden med en gang, og domenet står i ditt navn. Vil du flytte den, får du koden når du ber om det. Velger du leie til eie, er tekstene, bildene og domenet dine hele veien, og siden blir din når 12 måneder er betalt. Ingen av modellene har binding, og jeg låser ingenting inne."
+  ],
+  [
+    "Hva hvis det skjer noe med deg?",
+    "Siden går videre som før. Den ligger hos Vercel, en stor driftsleverandør, så oppetiden hviler ikke på meg alene. Domenet står i ditt navn, og ber du om koden, får du den, så en annen utvikler kan ta over der jeg slapp."
   ],
   [
     "Jeg har allerede en nettside. Trenger jeg ny?",
