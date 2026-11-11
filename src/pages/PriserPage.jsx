@@ -145,7 +145,11 @@ const PriserPage = () => (
             />
           ))}
         </PrisRad>
-        <p className="font-body text-[0.95rem] text-room-ink mt-8 max-w-[52rem] leading-relaxed">{leieTilEie.tekst}</p>
+        {/* Leie til eie som eget kort fra 12.11.2026, ikke løs tekst under prisene. */}
+        <div className="leie-kort">
+          <p className="leie-kort-tittel">{leieTilEie.navn}</p>
+          <p>{leieTilEie.tekst}</p>
+        </div>
         <p className="font-body text-sm text-room-ink/70 mt-4 max-w-[52rem]">{prisNotat}</p>
         {/* Omtalene står ved prisene (tilbud/MAL.md 3e punkt 4), ordrett
             fra demo-innhold.js, samme kort som på forsiden. */}
@@ -153,13 +157,10 @@ const PriserPage = () => (
       </div>
     </section>
 
-    {/* Eksemplene står rett etter prisene: først hva det koster, så hva
-        prisen kjøper. */}
-    <ArbeidSeksjon hvit={false} kompakt />
-
-    <Sammenligning />
-
-    <section className="seksjon">
+    {/* Serviceavtale og SEO sto under sammenligningen, langt nede på siden.
+        Fra 12.11.2026 står de rett etter nettsideprisene (Aleksander: «seo og
+        pris bare på priser undersiden langt nede»). */}
+    <section id="seo-og-service" className="seksjon">
       <div className="wrap">
         <div className="seksjonstopp inn">
           <p className="etikett">Etter lansering</p>
@@ -177,6 +178,12 @@ const PriserPage = () => (
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{driftNotat}</p>
       </div>
     </section>
+
+    {/* Eksemplene står rett etter prisene: først hva det koster, så hva
+        prisen kjøper. */}
+    <ArbeidSeksjon hvit={false} kompakt />
+
+    <Sammenligning />
 
     <section className="hvit">
       <div className="wrap seksjon">

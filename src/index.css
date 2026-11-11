@@ -472,6 +472,12 @@
     max-width: 17ch; margin-top: 1.25rem; text-wrap: balance;
   }
   .sidetopp p { margin-top: 1.25rem; max-width: 52ch; color: var(--blekk-mykt); }
+  /* Seksjonen rett under toppen la sin egen --luft oppå toppens bunnluft,
+     og ga 158 til 243 px tomrom på /priser, /metode, /om og /kontakt ved
+     1440 (målt 12.11.2026, Aleksander: «for mye luft»). Nå står toppens
+     bunnluft alene, som på sidene som allerede brukte pt-0. */
+  .sidetopp:not(.casehode) + .seksjon,
+  .sidetopp:not(.casehode) + .hvit > .seksjon:first-child { padding-top: 0; }
 
   /* ----------------------------------------------------------------
      Introduksjon og nummererte lister
@@ -1160,10 +1166,62 @@
   /* ----------------------------------------------------------------
      Portrett og signatur
      ---------------------------------------------------------------- */
-  .portrettrad { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center; }
+  /* Toppstilt fra 12.11.2026: midtstilt la teksten langt ned ved siden av
+     portrettet, og det så ut som luft under sidetoppen. */
+  .portrettrad { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); align-items: start; }
   @media (min-width: 52rem) { .portrettrad { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) } }
   .portrett { border-radius: var(--rund); overflow: hidden; background: var(--felt-dyp); aspect-ratio: 1; }
   .portrett img { width: 100%; height: 100%; object-fit: cover; }
+  /* Om meg (12.11.2026): én stor setning ved portrettet, resten i tre kort
+     under. Kortene bruker .tjeneste fra forsiden, uten løftet ved hover,
+     siden de ikke kan trykkes. */
+  .om-ingress {
+    font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem); line-height: 1.12; letter-spacing: var(--display-sperre);
+    max-width: 22ch;
+  }
+  .om-kort { list-style: none; padding: 0; margin: clamp(2rem, 4vw, 3rem) 0 0; }
+  .om-kort .tjeneste:hover, .statisk-kort .tjeneste:hover { transform: none; border-color: transparent; }
+  .statisk-kort { list-style: none; padding: 0; margin: 0; }
+  /* Fire kort står to og to, også på bred skjerm: tre kolonner ga ett kort alene. */
+  @media (min-width: 64rem) { .tjenester.statisk-kort { grid-template-columns: repeat(2, 1fr); } }
+  .om-kort .tjeneste h3, .statisk-kort .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.25rem, 1.8vw, 1.5rem); letter-spacing: var(--display-sperre); }
+  /* SEO-siden (12.11.2026): pris og knapp i et kort i toppen, ved siden
+     av overskriften fra 56rem, rett under den på mobil. */
+  .seo-topp { display: grid; gap: clamp(1.75rem, 4vw, 4rem); align-items: start; }
+  @media (min-width: 56rem) { .seo-topp { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+  .seo-priskort {
+    padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: var(--rund-stor);
+    background: var(--blekk); color: var(--kritt);
+  }
+  .sidetopp .seo-priskort p { margin-top: 0; max-width: none; color: inherit; }
+  .sidetopp .seo-priskort p.seo-priskort-navn { font-size: .875rem; color: var(--kritt-mykt); }
+  .seo-priskort-pris {
+    margin-top: .25rem; font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; letter-spacing: var(--display-sperre-stor);
+  }
+  .sidetopp .seo-priskort-pris { color: var(--kritt); max-width: none; }
+  .seo-priskort-fra, .seo-priskort-enhet { font-size: 1rem; letter-spacing: 0; color: var(--kritt-mykt); }
+  .sidetopp .seo-priskort p.seo-priskort-vilkar { margin-top: .625rem; color: var(--kritt-mykt); font-size: .875rem; }
+  .seo-priskort ul { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: .625rem; }
+  .seo-priskort li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .625rem; font-size: .9375rem; line-height: 1.45; }
+  .seo-priskort li .ikon { margin-top: .2rem; color: var(--prikk-lys); }
+  .seo-priskort .seo-priskort-knapp {
+    margin-top: 1.5rem; width: 100%; justify-content: center;
+    background: var(--kritt); color: var(--blekk); border-color: var(--kritt);
+  }
+  .sidetopp .seo-priskort p.seo-priskort-smaa { margin-top: .875rem; text-align: center; font-size: .875rem; color: var(--kritt-mykt); }
+  .seo-priskort-smaa a { color: var(--kritt); text-decoration: underline; text-underline-offset: 3px; }
+  .seo-priskort :focus-visible { outline-color: var(--kritt); }
+  .leie-kort {
+    margin-top: 1.5rem; max-width: 52rem; padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    background: var(--kort); border-radius: var(--rund);
+  }
+  .leie-kort p { color: var(--blekk-mykt); font-size: .9375rem; line-height: 1.6; }
+  .leie-kort .leie-kort-tittel {
+    margin-bottom: .375rem; color: var(--blekk);
+    font-family: var(--displayfont); font-weight: var(--display-vekt); font-size: 1.25rem; letter-spacing: var(--display-sperre);
+  }
   .portrett-rund { border-radius: 50%; width: clamp(4.5rem, 9vw, 6rem); flex: none; }
   .signatur { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
   .signatur .navn { font-size: .9375rem; }
