@@ -127,8 +127,8 @@ const DriftPage = () => (
       jsonLd={driftSchema}
     />
     <SideTopp
-      tittel="Hold nettsiden"
-      uthevet="trygg og oppdatert."
+      tittel="Drift av nettside,"
+      uthevet="hosting inkludert."
       lede="Hosting er med i prisen på alle sider jeg bygger. Serviceavtale fra 550 kr/mnd hvis du vil at jeg gjør endringene, og SEO fra 2 990 kr/mnd hvis du vil bli funnet på flere søk. Ingen bindingstid."
     />
     <section className="seksjon pt-0">

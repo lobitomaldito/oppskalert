@@ -62,7 +62,7 @@ export const populaereSok = [
     q: 'Hva bør jeg kreve av en nettsideleverandør?',
     tittel: 'Nettsideleverandør: fire krav før du signerer',
     beskrivelse: 'Fast pris, eierskap til kode og innhold, ingen bindingstid, og noe ferdig å se på før du betaler. Fire krav til en nettsideleverandør, og spørsmålene som avslører svaret.',
-    a: 'Fire ting: fast pris før arbeidet starter, at du eier koden og innholdet etterpå, ingen bindingstid, og at du får se noe ferdig før du betaler. Klarer ikke leverandøren å love alle fire, er det verdt å spørre hvorfor. Selv bygger jeg hele utkastet ferdig innen 48 timer, og du bestemmer deg etterpå.',
+    a: 'Av en nettsideleverandør bør du kreve fire ting: fast pris før arbeidet starter, at du eier koden og innholdet etterpå, ingen bindingstid, og at du får se noe ferdig før du betaler. Klarer ikke leverandøren å love alle fire, er det verdt å spørre hvorfor. Selv bygger jeg hele utkastet ferdig innen 48 timer, og du bestemmer deg etterpå.',
     utdyping: [
       {
         t: 'Fast pris, ikke timeestimat',
@@ -110,7 +110,7 @@ export const populaereSok = [
       },
     ],
     relatert: ['synlig-i-chatgpt-og-ai-sok', 'google-bedriftsprofil'],
-    til: { tekst: 'Mer om søkemotoroptimalisering', rute: '/sokemotoroptimalisering' },
+    til: { tekst: 'Søkemotoroptimalisering for bedrifter', rute: '/sokemotoroptimalisering' },
   },
   {
     // «nettside ai» 140/mnd KD 0. Spørsmålet er også selve AEO-argumentet.
@@ -142,7 +142,7 @@ export const populaereSok = [
     q: 'Er en billig nettside verdt det?',
     tittel: 'Er en billig nettside verdt det?',
     beskrivelse: 'Noen ganger, ja. Trenger du bare åpningstider og et telefonnummer, holder en enkel side lenge. Problemet er når den er treg, låst til leverandøren eller ulesbar for Google.',
-    a: 'Noen ganger, ja. Trenger du bare et sted å vise åpningstider og et telefonnummer, holder det lenge med en enkel side. Problemet oppstår når den billige siden er treg, ikke kan endres uten leverandøren, eller er bygget slik at Google ikke får lest den. Da har du betalt lite for noe som ikke gjør en jobb, og det er dyrere enn å gjøre det riktig en gang.',
+    a: 'Noen ganger, ja. Den enkleste siden jeg lager koster 6 990 kr eks. mva. Trenger du bare et sted å vise åpningstider og et telefonnummer, holder det lenge med en enkel side. Problemet oppstår når den billige siden er treg, ikke kan endres uten leverandøren, eller er bygget slik at Google ikke får lest den. Da har du betalt lite for noe som ikke gjør en jobb, og det er dyrere enn å gjøre det riktig en gang.',
     utdyping: [
       {
         t: 'Når billig faktisk er riktig valg',
@@ -212,7 +212,7 @@ export const populaereSok = [
       },
     ],
     relatert: ['synlig-i-chatgpt-og-ai-sok'],
-    til: { tekst: 'Ta kontakt', rute: '/kontakt' },
+    til: { tekst: 'Ny nettside uten å miste plassene i Google', rute: '/ny-nettside' },
   },
   {
     // «lage nettbutikk» 210/mnd KD 15
@@ -320,7 +320,7 @@ export const populaereSok = [
     q: 'Hva koster drift og vedlikehold av en nettside?',
     tittel: 'Hva koster drift og vedlikehold av en nettside?',
     beskrivelse: 'Hosting er med i prisen på sidene jeg bygger. Serviceavtale med endringer, backup og support koster 550 i måneden. Ingen bindingstid.',
-    a: 'Hosting er med i prisen på sidene jeg bygger, så du betaler ingen månedspris for å ha siden oppe. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 550 i måneden. Til sammenligning starter driftsavtaler hos byråer flest rundt 2 500 i måneden. Alt uten bindingstid, så du kan avslutte når du vil.',
+    a: 'Drift av nettside koster 0 kr i måneden hos meg, fordi hosting er med i prisen på sidene jeg bygger. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 550 i måneden. Til sammenligning starter driftsavtaler hos byråer flest rundt 2 500 i måneden. Alt uten bindingstid, så du kan avslutte når du vil.',
     utdyping: [
       {
         t: 'Hva som ligger i drift',
