@@ -30,6 +30,7 @@ import { articles } from '../src/lib/articles.js';
 // i CLAUDE.md: en rute som ikke står her serveres som forsidens HTML til
 // crawlere, og Google ser den nye casen som en duplikat av forsiden.
 import { caser } from '../src/lib/demo-innhold.js';
+import { bransjer, RUTE_BRANSJE } from '../src/lib/bransjer.js';
 
 // Femten spørsmålssider utledes herfra, så et nytt spørsmål i arrayen
 // automatisk blir en snapshottet rute. Fila er ren ESM uten Vite-API-er,
@@ -46,6 +47,7 @@ const ROUTES = [
   ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sokemotoroptimalisering', '/webdesign-oslo', '/nettside-design',
   '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
+  ...bransjer.map((b) => RUTE_BRANSJE(b.slug)),
   ...caser.map((c) => `/arbeid/${c.slug}`),
   '/blogg', '/personvern',
   ...articles.map((a) => `/blogg/${a.slug}`),

@@ -59,6 +59,8 @@ import BegrepPage from './pages/BegrepPage';
 const VsWixPage = lazySide(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazySide(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 const SeoPage = lazySide(() => import('./pages/SeoPage.jsx'))
+const BransjePage = lazySide(() => import('./pages/BransjePage.jsx'))
+import { bransjer, RUTE_BRANSJE } from './lib/bransjer.js'
 const WebdesignOsloPage = lazySide(() => import('./pages/WebdesignOsloPage.jsx'))
 const NettsideDesignPage = lazySide(() => import('./pages/NettsideDesignPage.jsx'))
 const NettsideBedriftPage = lazySide(() => import('./pages/NettsideBedriftPage.jsx'))
@@ -92,6 +94,9 @@ createRoot(document.getElementById('root')).render(
           <Route path="/webdesign-oslo" element={<WebdesignOsloPage />} />
           <Route path="/nettside-design" element={<NettsideDesignPage />} />
           <Route path="/nettside-til-bedrift" element={<NettsideBedriftPage />} />
+          {bransjer.map((b) => (
+            <Route key={b.slug} path={RUTE_BRANSJE(b.slug)} element={<BransjePage b={b} />} />
+          ))}
           <Route path="/ny-nettside" element={<NyNettsidePage />} />
           <Route path="/lage-nettbutikk" element={<NettbutikkPage />} />
           <Route path="/metode" element={<MetodePage />} />

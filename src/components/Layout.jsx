@@ -6,6 +6,7 @@ import { RUTE_ORDLISTE } from '../lib/ordliste';
 import { cn } from '../lib/utils';
 import { LinkedIn, PilOpp } from './Ikon';
 import { track } from '../lib/analytics';
+import { bransjer, RUTE_BRANSJE } from '../lib/bransjer';
 
 /* Uten dette beholder React Router scrollposisjonen mellom ruter, så du
    lander midt på prissiden når du klikker deg dit fra bunnen av forsiden.
@@ -150,6 +151,12 @@ export const Footer = ({ utenCta = false }) => (
           <Link to={ruter.webdesignOslo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
           <Link to={ruter.seo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
           <Link to={ruter.drift} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Drift og hosting</Link>
+        </div>
+        <div className="flex flex-col md:gap-3">
+          <span className="text-ink/70 font-semibold mb-1">Bransjer</span>
+          {bransjer.map((b) => (
+            <Link key={b.slug} to={RUTE_BRANSJE(b.slug)} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">{b.meny}</Link>
+          ))}
         </div>
         <div className="flex flex-col md:gap-3">
           <span className="text-ink/70 font-semibold mb-1">Verktøy</span>
