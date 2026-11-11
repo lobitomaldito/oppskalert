@@ -588,12 +588,12 @@ export const stegene = [
   {
     "tid": "1–2 uker",
     "navn": "Jeg lanserer",
-    "tekst": "Domene, SSL og hosting ordner jeg. Har du en gammel side, byttes den uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe."
+    "tekst": "Domene, hosting og sikker forbindelse ordner jeg. Har du en gammel side, byttes den uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe."
   },
   {
     "tid": "Løpende",
     "navn": "Jeg passer på, hvis du vil",
-    "tekst": "Med driftsavtale følger jeg med videre. Trenger du en endring, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, får du alle filene og hjelp til å komme i gang selv."
+    "tekst": "Med driftsavtale følger jeg med videre. Trenger du en endring, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, eier du siden og får hjelp til å komme i gang selv."
   }
 ];
 
@@ -664,7 +664,8 @@ export const googleOmtaler = [
   {
     "sitat": "Aleksander i Oppskalert har vært svært behagelig å jobbe med, og han har gjort en formidabel jobb med å oppgradere hjemmesidene våre. Allerede en par uker etter at han KI-optimerte sidene, tok en kunde kontakt etter et søk / en prompt på Claude! :)",
     "navn": "Stein-Erik",
-    "rolle": "Omtale på Google",
+    "rolle": "alphanegotiations.com, omtale på Google",
+    "caseSlug": "alpha-negotiations",
     "stjerner": 5
   },
   {
@@ -695,7 +696,7 @@ export const sporsmal = [
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",
-    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Derfor koster en komplett side hos meg fra 12 900 kroner, der mange byr\u00e5er starter p\u00e5 25 000."
+    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Derfor koster alle sidene du har i dag, med tekster skrevet for Google og AI-søk, 12 900 kroner hos meg, der mange byr\u00e5er starter p\u00e5 25 000."
   ],
   [
     "Hva forplikter et gratis utkast meg til?",
@@ -724,5 +725,8 @@ export const sporsmal = [
 ];
 
 /* Slår opp omtalen som hører til én casesiden. Returnerer undefined for
-   de casene som ikke har en, og da vises ingen sitatblokk. */
-export const omtaleForCase = (slug) => omtaler.find((o) => o.caseSlug === slug);
+   de casene som ikke har en, og da vises ingen sitatblokk. Google-omtalene
+   er med fra 12.11.2026, så Stein-Eriks omtale (kunden som fant ham
+   gjennom Claude) står på Alpha Negotiations-casen. */
+export const omtaleForCase = (slug) =>
+  omtaler.find((o) => o.caseSlug === slug) || googleOmtaler.find((o) => o.caseSlug === slug);

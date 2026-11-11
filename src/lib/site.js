@@ -153,7 +153,7 @@ export const alltidMed = [
   'Synlig i Google, og i AI-søk',
   'Tekster ferdigskrevet',
   'Kontaktskjema',
-  'Hosting, SSL og domeneoppsett',
+  'Hosting, sikker forbindelse og domeneoppsett',
   'Google Analytics og Search Console',
   'Lynrask, uten tunge plugins',
 ];
@@ -246,7 +246,7 @@ export const sammenlignWix = {
        faktisk er: deres løper så lenge siden skal stå, mitt slutter
        etter 12 måneder, og da er siden din. */
     ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller leie til eie som ender etter 12 måneder'],
-    ['Eierskap', 'Låst til Wix sin plattform', 'Du eier filene, kan ta dem med deg videre'],
+    ['Eierskap', 'Låst til Wix sin plattform', 'Du eier siden og kan ta den med deg videre'],
     ['Hastighet og SEO', 'Tyngre byggerkode, varierende', 'Håndkodet og lettvekt fra dag én'],
     ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner et gratis utkast først'],
     ['Support', 'Generisk chat-support', 'Direkte med meg, ikke en helpdesk'],
@@ -295,15 +295,15 @@ export const stegene = [
   {
     tittel: 'Jeg lanserer',
     tid: '1–2 uker',
-    kort: 'Domene, SSL og hosting ordner jeg. Har du en gammel side, byttes den uten nedetid.',
-    desc: 'Domene, SSL og lynrask hosting. Har du en gammel side, flytter jeg deg over uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe.',
-    punkter: ['Domene og SSL ordner jeg', 'Søkemotor-oppsett fra dag én', 'Gammel side byttes uten nedetid'],
+    kort: 'Domene, hosting og sikker forbindelse ordner jeg. Har du en gammel side, byttes den uten nedetid.',
+    desc: 'Domene, lynrask hosting og sikker forbindelse, så nettleseren aldri varsler om usikker side. Har du en gammel side, flytter jeg deg over uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe.',
+    punkter: ['Domene og sikker forbindelse ordner jeg', 'Søkemotor-oppsett fra dag én', 'Gammel side byttes uten nedetid'],
   },
   {
     tittel: 'Jeg passer på, hvis du vil',
     tid: 'Løpende',
     kort: 'Med driftsavtale følger jeg med videre. Trenger du en endring, sender du en e-post.',
-    desc: 'Velger du driftsavtale, følger jeg med videre: hosting, backup, overvåking og support. Trenger du å bytte et bilde eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, får du alle filene og hjelp til å komme i gang selv.',
+    desc: 'Velger du driftsavtale, følger jeg med videre: hosting, backup, overvåking og support. Trenger du å bytte et bilde eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, eier du siden og får hjelp til å komme i gang selv.',
     punkter: ['Rimelige endringer inkludert i driftsavtalen', 'Du eier innholdet uansett modell', 'Bytt modell senere om behovet endrer seg'],
   },
 ];
@@ -424,7 +424,7 @@ export const prisSporsmal = [
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Komplett) én gang, får alle filene og eier hele løsningen. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Komplett) én gang og eier siden med en gang. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
@@ -432,11 +432,11 @@ export const prisSporsmal = [
   },
   {
     q: 'Hva koster det å endre noe etter at siden er lansert?',
-    a: 'Har du driftsavtale, er rimelige endringer inkludert. Skal du bytte et bilde, rette en tekst eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Har du engangspris, avtaler vi pris per jobb, eller du gjør det selv i filene du allerede eier.',
+    a: 'Har du driftsavtale, er rimelige endringer inkludert. Skal du bytte et bilde, rette en tekst eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Har du engangspris, avtaler vi pris per jobb, eller du gjør det selv i redigeringspanelet.',
   },
   {
     q: 'Kan jeg bytte mellom modellene senere?',
-    a: 'Ja. På ren drift er det ingen bindingstid, så du kan bytte nivå eller si opp når du vil. Leie til eie har heller ingen binding. Sier du opp før 12 måneder, gjør vi opp resten av byggesummen og filene blir dine, eller siden tas ned når den betalte perioden er slutt. Tekstene, bildene og domenet er dine uansett.',
+    a: 'Ja. På ren drift er det ingen bindingstid, så du kan bytte nivå eller si opp når du vil. Leie til eie har heller ingen binding. Sier du opp før 12 måneder, gjør vi opp resten av byggesummen og siden blir din, eller siden tas ned når den betalte perioden er slutt. Tekstene, bildene og domenet er dine uansett.',
   },
   {
     q: 'Hvorfor fast pris og ikke timepris?',
@@ -504,7 +504,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva om jeg vil endre designet senere?',
-      a: 'Det går fint. Siden er håndkodet uten maler og plugins under, så en endring ett sted knekker sjelden noe et annet sted. Har du driftsavtale, sender du en e-post. Har du engangspris, eier du filene og kan gjøre det selv eller sette det bort til hvem du vil.',
+      a: 'Det går fint. Siden er håndkodet uten maler og plugins under, så en endring ett sted knekker sjelden noe et annet sted. Har du driftsavtale, sender du en e-post. Har du engangspris, eier du siden og kan gjøre det selv i redigeringspanelet, eller sette det bort til hvem du vil.',
     },
   ],
 
