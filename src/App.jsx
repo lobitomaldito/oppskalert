@@ -512,10 +512,13 @@ const Home = () => (
     />
     <Hero />
     <FaktaStripe />
-    <OmMegSeksjon />
+    {/* Om meg flyttet ned etter omtalene 12.11.2026 (Aleksander): ansiktet
+        står allerede i heroen, og «én person» leses som en fordel først
+        etter at leseren har sett tjenestene, tryggheten og omtalene. */}
     <TjenesteSeksjon />
     <TrygghetSeksjon />
     <SitatSeksjon />
+    <OmMegSeksjon />
     <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
     <FaqSeksjon />
