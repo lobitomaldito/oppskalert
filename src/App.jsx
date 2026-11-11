@@ -10,7 +10,7 @@ import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
 import {
-  Hengelas, HengelasApen, LinkedIn, Livboye, Nokkel, Pause, PilHoyre, PilOpp, SkjoldSjekk, SokSjekk, Skjermer, Spill,
+  Hengelas, HengelasApen, LinkedIn, Nokkel, Pause, PilHoyre, PilOpp, SkjoldSjekk, SokSjekk, Skjermer, Spill,
 } from './components/Ikon';
 import { track } from './lib/analytics';
 
@@ -287,10 +287,11 @@ const TjenesteSeksjon = () => {
 
 /* Trygghetslisten (11.11.2026). Grepet er fra en konkurrents tjenesteside,
    der en liste med fet etikett tar frykten for hacking og driftsstans.
-   Her tar den i tillegg skepsisen mot at Oppskalert er én person: «hva
-   skjer hvis du blir borte?» kom opp i salgssamtalen med Stavanger
-   Terapihus 12.10.2026, og svarene under er de Aleksander selv ga der og
-   i tilbudet til NHL.
+
+   «Hva skjer hvis du blir borte?» står bevisst ikke her, bare i FAQ-en
+   (Aleksander 11.11.2026): lista skal ikke minne folk på en tanke de ikke
+   har tenkt. Av samme grunn nevner ledeteksten ikke at Oppskalert er én
+   person.
 
    Vilkårene er fra ~/.claude/assets/tilbud/MAL.md: domenet står i kundens
    navn, filene får kunden når de vil flytte (på forespørsel, ikke
@@ -308,12 +309,6 @@ const TRYGGHET = [
     tittel: 'Du eier siden',
     kort: 'Domenet står i ditt navn.',
     mer: 'Vil du flytte siden, får du koden når du ber om det. Leier du til eie, blir siden din når 12 måneder er betalt.',
-  },
-  {
-    Ikon: Livboye,
-    tittel: 'Hvis jeg blir syk eller slutter',
-    kort: 'Siden går videre som før. Den ligger hos Vercel, en stor driftsleverandør.',
-    mer: 'Oppetiden hviler ikke på meg alene, og du får koden, så en annen utvikler kan ta over der jeg slapp.',
   },
   {
     Ikon: Hengelas,
@@ -343,7 +338,7 @@ const TrygghetSeksjon = () => {
         <div data-reveal className="seksjonstopp inn">
           <p className="etikett">Trygghet</p>
           <h2>Siden er din, og den står trygt</h2>
-          <p>Du handler med én person. Dette er på plass uansett hvilken pakke du velger.</p>
+          <p>Dette er på plass uansett hvilken pakke du velger.</p>
         </div>
         <ul data-reveal className="trygghet-liste inn" style={{ '--d': '80ms' }}>
           {TRYGGHET.map((t) => {

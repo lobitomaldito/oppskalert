@@ -329,7 +329,7 @@ export const sporsmal = [
     a: 'Ja. Med engangspris eier du siden med en gang, og domenet står i ditt navn. Vil du flytte den, får du koden når du ber om det. Med leie til eie er tekstene, bildene og domenet dine hele veien, og siden blir din når 12 måneder er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
   },
   {
-    q: 'Hva skjer hvis du blir syk eller slutter?',
+    q: 'Hva hvis det skjer noe med deg?',
     a: 'Siden går videre som før. Den ligger hos Vercel, en stor driftsleverandør, så oppetiden hviler ikke på meg alene. Domenet står i ditt navn, og ber du om koden, får du den, så en annen utvikler kan ta over der jeg slapp.',
   },
   {
