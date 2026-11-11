@@ -883,6 +883,59 @@
   }
 
   /* ----------------------------------------------------------------
+     Gratis nettsidesjekk (/gratis-nettsidesjekk, 12.11.2026). Står i
+     .velger-kortet og låner skjema- og resultatklassene derfra.
+     ---------------------------------------------------------------- */
+  .sjekk-felt { display: grid; gap: .75rem; max-width: 44rem; }
+  .sjekk-etikett { font-size: .875rem; font-weight: 500; }
+  .sjekk-rad { display: flex; flex-wrap: wrap; gap: .75rem; }
+  .sjekk-rad input {
+    flex: 1 1 14rem; min-width: 0; min-height: 3.25rem; padding: 0 1rem;
+    font: inherit; font-size: 1.0625rem; color: var(--blekk); background: var(--hvit);
+    border: 1px solid var(--blekk-mykt); border-radius: var(--rund-liten);
+  }
+  .sjekk-rad input::placeholder { color: var(--blekk-mykt); }
+  .sjekk-rad input[aria-invalid="true"] { border: 2px solid #b3261e; }
+  .sjekk-rad .knapp { min-height: 3.25rem; padding-inline: 1.5rem; }
+
+  .sjekk-karakter { display: flex; align-items: center; gap: 1.25rem; margin-top: 1rem; }
+  .sjekk-karakter:focus { outline: none; }
+  .sjekk-karakter p { max-width: 40ch; color: var(--blekk-mykt); }
+  .sjekk-karakter strong { color: var(--blekk); font-weight: 600; }
+  .sjekk-bokstav {
+    display: grid; place-items: center; flex: none;
+    width: clamp(4.5rem, 10vw, 6rem); aspect-ratio: 1; border-radius: var(--rund);
+    background: var(--blekk); color: var(--kritt);
+    font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(2.75rem, 6vw, 3.75rem); line-height: 1; letter-spacing: var(--display-sperre);
+  }
+  .sjekk-bokstav-D, .sjekk-bokstav-E, .sjekk-bokstav-F { background: var(--prikk); color: var(--hvit); }
+
+  .sjekk-liste { margin: 1.75rem 0 0; padding: 0; list-style: none; border-bottom: 1px solid var(--felt-kant); }
+  .sjekk-liste li { padding: 1rem 0; border-top: 1px solid var(--felt-kant); }
+  .sjekk-liste h3 { font-weight: 600; font-size: 1rem; margin: .25rem 0 .25rem; }
+  .sjekk-liste p { font-size: .9375rem; color: var(--blekk-mykt); max-width: 56ch; }
+  .sjekk-liste .sjekk-hvorfor { margin-top: .375rem; color: var(--blekk); }
+  .sjekk-status { display: flex; align-items: center; gap: .5rem; font-size: .8125rem; font-weight: 600; }
+  .sjekk-status::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--blekk-mykt); }
+  .sjekk-delvis .sjekk-status::before { background: var(--prikk); }
+  .sjekk-feil .sjekk-status::before { background: #9e2118; }
+  .sjekk-feil .sjekk-status { color: #9e2118; }
+  .sjekk-forst {
+    margin-left: .25rem; padding: .125rem .5rem; border-radius: 999px;
+    background: var(--blekk); color: var(--kritt); font-size: .75rem; font-weight: 600;
+  }
+  .sjekk-skjema-tekst { font-size: .875rem; }
+  .sjekk-steg { margin: 0; padding-left: 1.25rem; display: grid; gap: .5rem; color: var(--blekk-mykt); }
+
+  .sjekk-punkter { margin: 0; padding: 0; list-style: none; display: grid; gap: 0 3rem; max-width: 62rem; }
+  @media (min-width: 48rem) { .sjekk-punkter { grid-template-columns: 1fr 1fr; } }
+  .sjekk-punkter li { display: flex; gap: 1rem; padding: 1.125rem 0; border-top: 1px solid var(--felt-kant); }
+  .sjekk-punkter h3 { font-weight: 600; font-size: 1rem; }
+  .sjekk-punkter p { margin-top: .25rem; font-size: .9375rem; color: var(--blekk-mykt); }
+  .sjekk-nr { flex: none; min-width: 1.5rem; font-size: .8125rem; color: var(--blekk-mykt); font-variant-numeric: tabular-nums; padding-top: .125rem; }
+
+  /* ----------------------------------------------------------------
      Sitat.
      ---------------------------------------------------------------- */
   /* Padding-toppen sto på 0. Da begynner feltet nøyaktig der kortet

@@ -160,6 +160,7 @@ export const Footer = ({ utenCta = false }) => (
         </div>
         <div className="flex flex-col md:gap-3">
           <span className="text-ink/70 font-semibold mb-1">Verktøy</span>
+          <Link to={ruter.nettsidesjekk} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Gratis nettsidesjekk</Link>
           <Link to={ruter.sammenlign} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
           {/* De to undersidene lenkes herfra, ikke bare fra /sammenlign.
 
