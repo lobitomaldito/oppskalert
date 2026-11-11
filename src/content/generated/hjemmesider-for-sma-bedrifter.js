@@ -5,6 +5,13 @@ export default {
   publishDate: "2026-08-31",
   keywords: ["hjemmesider for små bedrifter", "hjemmeside liten bedrift"],
   hero: "",
+  updatedDate: "2026-11-11",
+  svar: "En liten bedrift trenger sjelden mer enn fem sider: forside, tjenester, om og kontakt, eventuelt én side per hovedtjeneste. Alle trenger tydelig tilbud, synlig kontaktinfo og minst én kundeanmeldelse. Blogg, chat og flere språk kan vente til du ser et konkret behov.",
+  faq: [
+    { q: "Hvor mye tekst trenger hver side?", a: "Minst rundt 300 ord relevant tekst, så Google forstår hva siden handler om. Flere sider gir ikke bedre synlighet hvis hver av dem er tynn." },
+    { q: "Bør en liten bedrift ha blogg?", a: "Bare hvis du har en plan for å skrive jevnlig. En blogg der siste innlegg er atten måneder gammelt, sier til kunden at bedriften har sluttet å bry seg." },
+    { q: "Når lønner det seg å bygge ut nettsiden?", a: "Når du ser et målt behov, for eksempel at kunder ofte ringer for å bestille time. Da kan en bookingløsning spare deg tid." },
+  ],
   content: `## De fleste små bedrifter overbygger nettsiden sin
 
 Når jeg snakker med små bedrifter om ny nettside, ber de nesten alltid om mer enn de trenger: blogg, medlemsområde, flerspråklig support, avansert booking. Resultatet blir ofte et prosjekt som tar tre ganger så lang tid og koster tre ganger så mye som nødvendig, uten at det faktisk skaffer flere kunder. En liten bedrift trenger sjelden mer enn fem sider for å gjøre jobben en nettside skal gjøre: vise hva du tilbyr, bygge tillit, og gjøre det enkelt å ta kontakt.
@@ -19,7 +26,7 @@ Blogg uten en plan for å faktisk skrive innlegg jevnlig gjør mer skade enn nyt
 
 ## Hvor mange sider er faktisk nok
 
-To til fem sider dekker de fleste små bedrifter godt: forside, tjenester, om oss og kontakt, eventuelt en egen side per hovedtjeneste hvis du har flere klart adskilte tilbud. Har du bare én tjeneste, kan alt samles på én lang forside. Flere sider betyr ikke automatisk bedre synlighet i søk, det som betyr noe er at hver side har nok reelt innhold, minst 300 ord relevant tekst, til at Google forstår hva den faktisk handler om.
+[To til fem sider](/nettside-til-bedrift) dekker de fleste små bedrifter godt: forside, tjenester, om oss og kontakt, eventuelt en egen side per hovedtjeneste hvis du har flere klart adskilte tilbud. Har du bare én tjeneste, kan alt samles på én lang forside. Flere sider betyr ikke automatisk bedre synlighet i søk, det som betyr noe er at hver side har nok reelt innhold, minst 300 ord relevant tekst, til at Google forstår hva den faktisk handler om.
 
 ## Innhold slår funksjoner
 

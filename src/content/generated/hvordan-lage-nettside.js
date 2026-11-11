@@ -17,9 +17,14 @@ export default {
   publishDate: "2026-08-13",
   keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
   hero: "",
-  content: `**Kort svar:** Slik lager man en nettside: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. Gjør du det selv, går det med 20 til 40 timer. Setter du det bort til meg, tar det 1 til 2 uker fra du sier ja.
-
-## Tre veier til en nettside i dag
+  updatedDate: "2026-11-11",
+  svar: "Slik lager man en nettside: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. Gjør du det selv, går det med 20 til 40 timer. Setter du det bort til meg, tar det 1 til 2 uker fra du sier ja.",
+  faq: [
+    { q: "Hvor lang tid tar det å lage en nettside selv?", a: "Regn med 20 til 40 timer med et enkelt byggeverktøy, når research, tekst og design er med." },
+    { q: "Hva koster et .no-domene?", a: "Rundt 150 kroner i året hos en norsk registrar. Domenet skal stå registrert på deg eller bedriften din, aldri på leverandøren." },
+    { q: "Hvilke gratis verktøy bør jeg koble på?", a: "Google Search Console, som viser hva folk søkte på før de fant deg, og et enkelt besøksverktøy. Send inn sitemapen samme dag som siden går live." },
+  ],
+  content: `## Tre veier til en nettside i dag
 
 Du har i praksis tre valg når bedriften din trenger nettside. Du kan bygge den selv med et byggeverktøy som Wix eller Squarespace, du kan leie inn en frilanser eller et byrå, eller du kan kombinere begge deler ved å starte selv og hente inn hjelp der du står fast. Ingen av alternativene er feil i seg selv. Det som avgjør riktig valg er hvor mye tid du faktisk har, hvor teknisk du er fra før, og hvor mye nettsiden skal bety for inntektene dine det første året.
 
@@ -41,7 +46,7 @@ Nesten alle nettsideprosjekter som stopper opp, stopper på tekst. Designet stå
 
 ### 4. Bygg siden
 
-Nå velger du verktøy: et byggeverktøy som Wix eller Squarespace, WordPress, eller en leverandør som bygger for deg. Test på mobil før alt annet, for der kommer de fleste besøkende. Siden bør laste på under to sekunder på 4G, og telefonnummeret bør kunne trykkes på.
+Nå velger du verktøy: et byggeverktøy som Wix eller Squarespace, WordPress, eller [en leverandør som bygger for deg](/nettside-til-bedrift). Test på mobil før alt annet, for der kommer de fleste besøkende. Siden bør laste på under to sekunder på 4G, og telefonnummeret bør kunne trykkes på.
 
 ### 5. Koble på måling og meld siden inn til Google
 

@@ -5,13 +5,20 @@ export default {
   publishDate: "2026-08-20",
   keywords: ["hva koster en nettside", "pris på nettside", "nettside til bedrift pris"],
   hero: "",
+  updatedDate: "2026-11-11",
+  svar: "En nettside hos meg koster 6 990 kr for én landingsside, 12 900 kr for alle sidene du har i dag med tekster skrevet for Google, og fra 19 900 kr med booking eller priskalkulator og tre måneder oppfølging av søkene. Alle tall er eks. mva, og du får fast pris skriftlig før jeg begynner.",
+  faq: [
+    { q: "Er prisene med eller uten mva?", a: "Alle prisene er eks. mva. Du får en fast pris skriftlig før jeg begynner, og den endrer seg ikke underveis." },
+    { q: "Kan jeg betale nettsiden månedlig?", a: "Ja. Medium kan leies til eie for 1 590 kr i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert. Siden er din når 12 måneder er betalt." },
+    { q: "Hva koster det etter at siden er levert?", a: "Hostingen er med i prisen. Vil du at jeg gjør endringene og passer på siden, er serviceavtalen 550 kr i måneden uten binding. Du kan også la være." },
+  ],
   content: `## Hvorfor "hva koster en nettside" ikke har ett svar
 
 Søker du på dette spørsmålet, møter du svar fra 3 000 til 300 000 kroner, og ingen av dem er feil. Prisen avhenger av hvor mange sider du trenger, om du vil eie koden selv eller betale en fast månedspris, og hvor mye research og tekstarbeid som må gjøres fra bunnen. Det som mangler i de fleste svarene, er en konkret prisstige du faktisk kan sjekke mot din egen situasjon. Så her er min, med ekte tall fra prismodellen jeg bruker i dag.
 
 ## Prisene mine, uten omveier
 
-Jeg har tre nivåer. Enkel koster 6 990 kroner: én landingsside med godt design. Medium koster 12 900 kroner: alle sidene du har i dag, med tekstene skrevet om for Google og AI-søk. Komplett starter på 19 900 kroner: alt i Medium, pluss interaktive moduler som priskalkulator eller booking, og tre måneder der jeg følger med på søkene og rapporterer hver måned. Admin-panelet, der du endrer tekst og bilder selv, er med i alle tre. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
+Jeg har tre nivåer. Enkel koster 6 990 kroner: én landingsside med godt design. Medium koster 12 900 kroner: alle sidene du har i dag, med [tekstene skrevet om for Google og AI-søk](/sokemotoroptimalisering). Komplett starter på 19 900 kroner: alt i Medium, pluss interaktive moduler som priskalkulator eller booking, og tre måneder der jeg følger med på søkene og rapporterer hver måned. Admin-panelet, der du endrer tekst og bilder selv, er med i alle tre. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
 
 ## Hva som avgjør hvilket nivå du havner på
 
@@ -19,7 +26,7 @@ Det som avgjør nivået, er tre ting: om én side holder, om du vil bli funnet n
 
 ## Engangspris eller leie til eie
 
-Medium kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med serviceavtale til 550 kroner i måneden, eller la være. Hostingen fortsetter uansett.
+Medium kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med [serviceavtale til 550 kroner i måneden](/drift), eller la være. Hostingen fortsetter uansett.
 
 ## Hva andre i bransjen tar, og hvorfor det varierer så mye
 

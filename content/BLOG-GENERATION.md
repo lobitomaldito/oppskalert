@@ -52,6 +52,10 @@ export default {
   publishDate: "ÅÅÅÅ-MM-DD",
   keywords: ["søkeord 1", "søkeord 2"],
   hero: "/blogg/din-slug.jpg",
+  svar: "Kort svar på søket i 2-3 setninger, med tallet leseren leter etter.",
+  faq: [
+    { q: "Spørsmål folk faktisk søker på?", a: "Svar i 1-3 setninger." },
+  ],
   content: `## Første seksjon
 
 Brødtekst...
@@ -65,6 +69,27 @@ Mer brødtekst...`,
 Feltene må matche nøyaktig det de tre håndskrevne artiklene bruker (se
 `src/lib/articles.js`), samme nøkler, samme typer. `getArticleBySlug` og
 sorteringen i `articles.js` forventer dette uendret.
+
+### Svarboks, FAQ og oppdatert-dato (fra 11. november 2026)
+
+- **`svar`** (påkrevd for nye innlegg): 2-3 setninger som svarer på søket
+  direkte. Vises som «Kort svar» øverst. Ikke start `content` med en egen
+  «Kort svar»-linje i tillegg.
+- **`faq`** (påkrevd, 3 spørsmål): spørsmål leseren har etter å ha lest,
+  besvart med fakta som står i artikkelen eller i `src/lib/site.js`. Aldri
+  samme spørsmål som standardsettet i `sporsmal` i `site.js`: samme FAQ på to
+  ruter gir duplisert FAQPage, og Google forkaster den ene. Settet rendres
+  under artikkelen og går som FAQPage-schema.
+- **`updatedDate`** (valgfritt): settes når en publisert artikkel endres
+  vesentlig. Gir «Oppdatert»-dato på siden og `dateModified` i schemaet.
+- **Lenke til tjenestesiden i første eller andre seksjon.** Hvert innlegg
+  lenker til den landingssiden som selger det innlegget handler om
+  (`/sokemotoroptimalisering`, `/nettside-til-bedrift`, `/ny-nettside`,
+  `/drift`, `/nettside-design`, `/priser`). Det er den lenken som gjør at
+  bloggen hjelper sidene som får henvendelser.
+
+Forfatter er alltid Aleksander (Person i schemaet, lenket til `/om`). Det
+settes i `ArticlePage.jsx`, ikke i artikkelfilen.
 
 ### Valgfritt: egne CTA-tekster
 
