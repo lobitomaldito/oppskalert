@@ -5,6 +5,13 @@ export default {
   publishDate: "2026-08-17",
   keywords: ["nettside ai", "ai nettside"],
   hero: "",
+  updatedDate: "2026-11-11",
+  svar: "AI gjør i 2026 oppsett, førsteutkast til tekst og analyse av besøksdata mye raskere. Det kjenner ikke kundene dine, så teksten og prioriteringene må fortsatt et menneske stå for. For å bli sitert i Googles AI-oversikter trenger siden tydelige overskrifter og konkrete svar tidlig i teksten.",
+  faq: [
+    { q: "Kan AI lage hele nettsiden min?", a: "AI kan lage struktur og et førsteutkast raskt, men utkastet blir generisk. Tekst som selger må skrives for dine kunder og dine innvendinger." },
+    { q: "Hva er AI Overviews?", a: "Oppsummeringer Google lager med AI og viser over de vanlige søketreffene. De henter svar fra sider med tydelig struktur og konkrete svar." },
+    { q: "Bør jeg ha chatbot på nettsiden?", a: "En chatbot kan svare på enkle spørsmål som åpningstider og priser utenfor arbeidstid. Kompliserte spørsmål bør gå raskt videre til deg." },
+  ],
   content: `## Hva "AI-drevet nettside" faktisk betyr i 2026
 
 Begrepet "AI-drevet nettside" brukes om alt fra chatboter som svarer på kundespørsmål til verktøy som genererer hele design-utkast på sekunder. Det er ikke ett produkt, men en samling verktøy som løser ulike deler av jobben. Noen automatiserer koding og oppsett, andre hjelper med tekst, og noen analyserer hvordan besøkende bruker siden din. Forstår du hvilken del av jobben et konkret AI-verktøy faktisk løser, blir det lettere å vurdere om det er verdt å bruke, i stedet for å kjøpe inn teknologi bare fordi den er ny.
@@ -19,7 +26,7 @@ AI-verktøy kjenner ikke kundene dine. Et generert tekstutkast vet ikke hvorfor 
 
 ## AI Overviews endrer hvordan folk finner deg
 
-Google viser nå AI-genererte oppsummeringer øverst i søkeresultatene for mange søk, før de vanlige organiske treffene. Disse oppsummeringene henter informasjon fra sider med tydelig struktur, klare svar og god metadata. En nettside som er rotete bygget opp, blir sjeldnere sitert av disse oppsummeringene, selv om den rangerer greit i det tradisjonelle søkeresultatet under. Det betyr at strukturert innhold, med tydelige overskrifter og konkrete svar tidlig i teksten, er blitt viktigere for synlighet enn det var for bare et par år siden.
+Google viser nå AI-genererte oppsummeringer øverst i søkeresultatene for mange søk, før de vanlige organiske treffene. Disse oppsummeringene henter informasjon fra sider med tydelig struktur, klare svar og god metadata. En nettside som er rotete bygget opp, blir sjeldnere sitert av disse oppsummeringene, selv om den rangerer greit i det tradisjonelle søkeresultatet under. Det betyr at [strukturert innhold](/sokemotoroptimalisering), med tydelige overskrifter og konkrete svar tidlig i teksten, er blitt viktigere for synlighet enn det var for bare et par år siden.
 
 ## Chatboter på nettsiden: nyttig verktøy, ikke erstatning for deg
 

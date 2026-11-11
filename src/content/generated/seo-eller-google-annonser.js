@@ -5,6 +5,13 @@ export default {
   publishDate: "2026-08-27",
   keywords: ["google annonser", "seo eller annonser"],
   hero: "",
+  updatedDate: "2026-11-11",
+  svar: "Trenger du kunder innen fire uker, start med Google-annonser. Har du seks måneder eller mer og et stramt budsjett, prioriter SEO. De fleste små bedrifter får best resultat av begge: annonser mens SEO bygges opp, og mindre annonsebudsjett etter hvert som de organiske plasseringene kommer.",
+  faq: [
+    { q: "Hvor lang tid tar SEO før det gir resultater?", a: "Normalt tre til seks måneder, avhengig av hvor mange andre som konkurrerer om de samme søkene." },
+    { q: "Hva koster et klikk på Google-annonser i Norge?", a: "I bransjer med mye konkurranse ligger klikkprisen ofte på 20 til over 100 kroner. Uten en nettside som gjør besøk til henvendelser, blir prisen per kunde fort for høy." },
+    { q: "Forsvinner trafikken når jeg slutter med annonser?", a: "Ja, annonsetrafikken stopper samme dag. En side som rangerer organisk fortsetter å gi besøk måneder etter at arbeidet er gjort." },
+  ],
   content: `## To helt ulike måter å bli funnet på
 
 SEO og Google-annonser løser samme problem, å bli synlig når noen søker etter det du tilbyr, men på helt ulike måter. Annonser kjøper deg en plass øverst på søkeresultatet umiddelbart, mot betaling per klikk. SEO bygger opp en organisk plassering over tid, uten at du betaler for hvert enkelt besøk. Ingen av dem er universelt riktig. Hvilken som lønner seg mest for din bedrift avhenger av hvor mye tid du har, hvor mye budsjett du kan sette av løpende, og hvor konkurranseutsatt bransjen din er i søkeresultatene akkurat nå.
@@ -31,5 +38,5 @@ De fleste små bedrifter som lykkes best, bruker begge deler samtidig, bare i ul
 
 ## Hva du bør gjøre denne uken
 
-Se på hvor mye du realistisk kan sette av i måneden, og hvor fort du faktisk trenger nye kunder. Trenger du resultater innen fire uker, start med annonser. Har du seks måneder eller mer, og et stramt budsjett, prioriter SEO. Har du begge deler, sett av det meste til SEO og bruk en liten, målrettet annonsesum på søkeordene der du vet konkurrentene dominerer i dag.`,
+Se på hvor mye du realistisk kan sette av i måneden, og hvor fort du faktisk trenger nye kunder. Trenger du resultater innen fire uker, start med annonser. Har du seks måneder eller mer, og et stramt budsjett, [prioriter SEO](/sokemotoroptimalisering). Har du begge deler, sett av det meste til SEO og bruk en liten, målrettet annonsesum på søkeordene der du vet konkurrentene dominerer i dag.`,
 };

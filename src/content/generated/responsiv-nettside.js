@@ -43,9 +43,14 @@ export default {
   publishDate: "2026-08-10",
   keywords: ["responsiv nettside", "mobiltilpasset nettside", "mobilvennlig nettside", "responsiv hjemmeside"],
   hero: "",
-  content: `**Kort svar:** En responsiv nettside endrer oppsettet etter skjermen den vises på. Det finnes én side for både mobil og PC, og teksten kan leses uten å zoome. Lenger ned viser jeg hvordan du sjekker din egen på ett minutt.
-
-## Hva "responsiv nettside" faktisk betyr
+  updatedDate: "2026-11-11",
+  svar: "En responsiv nettside endrer oppsettet etter skjermen den vises på. Det finnes én side for både mobil og PC, og teksten kan leses uten å zoome. Lenger ned viser jeg hvordan du sjekker din egen på ett minutt.",
+  faq: [
+    { q: "Hvordan sjekker jeg om nettsiden min er responsiv?", a: "Åpne den på telefonen. Må du zoome for å lese, bommer du på knapper, eller dekker menyen hele skjermen uten en tydelig lukkeknapp, er den ikke bygget for mobil. Kjør også adressen gjennom Google PageSpeed Insights." },
+    { q: "Hvor store bør knapper være på mobil?", a: "Minst 44 piksler høye, så de er lette å treffe med tommelen." },
+    { q: "Påvirker mobiltilpasning plasseringen i Google?", a: "Ja. Google rangerer sider som ikke fungerer på mobil lavere, og de fleste besøkende kommer fra mobil." },
+  ],
+  content: `## Hva "responsiv nettside" faktisk betyr
 
 En responsiv nettside tilpasser layout, tekststørrelse og bilder automatisk til skjermen den vises på, enten det er en mobil på 375 piksler bred eller en skjerm på 1920. Det er ikke det samme som å ha en egen "mobilversjon" av siden. God responsiv design bruker én kodebase som endrer seg fleksibelt, i stedet for to separate sider som må vedlikeholdes hver for seg. Den korte definisjonen står i ordlisten under [responsivt design](/ordliste/responsivt-design). Uten dette må mobilbrukere pinsje, zoome og skrolle sidelengs for å lese teksten, og de fleste gir opp før de kommer gjennom hele siden.
 

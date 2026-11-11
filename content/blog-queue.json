@@ -136,5 +136,85 @@
     ],
     "status": "skipped",
     "note": "Droppet med vilje. Overlapper direkte med landingssiden /sokemotoroptimalisering, og to sider som slåss om samme søk hjelper ingen av dem."
+  },
+  {
+    "slug": "hvor-lang-tid-tar-nettside",
+    "title": "Hvor lang tid tar det å lage en nettside?",
+    "keywords": [
+      "hvor lang tid tar det å lage en nettside",
+      "lage nettside tid"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Egne tall: utkast innen 48 timer, 1 til 2 uker fra ja, og det som oftest forsinker er tekst og svar fra kunden. Lenk til /metode."
+  },
+  {
+    "slug": "ny-nettside-uten-a-miste-google",
+    "title": "Ny nettside uten å miste plasseringen i Google",
+    "keywords": [
+      "beholde seo ny nettside",
+      "flytte nettside"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Handler om videresending av gamle adresser, før-måling (regel 17) og hva vi sjekker etter flytting. /ny-nettside er den kommersielle siden: lenk dit, ikke konkurrer med den."
+  },
+  {
+    "slug": "synlig-i-chatgpt",
+    "title": "Finner ChatGPT bedriften din? Slik blir du synlig i AI-søk",
+    "keywords": [
+      "synlig i chatgpt",
+      "ai synlighet"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Bruk egne målinger fra seo/llm-synlighet.json. Lenk til /sokemotoroptimalisering."
+  },
+  {
+    "slug": "vanlige-feil-pa-nettsider",
+    "title": "Vanlige feil på nettsider for småbedrifter, målt på egne tall",
+    "keywords": [
+      "vanlige feil på nettsider",
+      "dårlig nettside"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Tallene finnes: nettside_analyse i ringeappens Supabase har tusenvis av målte småbedriftssider. Bruk bare analyser fra 28. august 2026 eller senere, eldre skjermbildeanalyser kan ha falske funn."
+  },
+  {
+    "slug": "pagespeed-score-forklart",
+    "title": "PageSpeed-score: hva tallene betyr for en liten bedrift",
+    "keywords": [
+      "pagespeed insights",
+      "google pagespeed"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Ikke gjenta mobilhastighet-artikkelen. Forklar de tre tallene (LCP, INP, CLS) med grenseverdiene fra web.dev, og hva en bedriftseier skal gjøre med dem."
+  },
+  {
+    "slug": "cookie-banner-nettside",
+    "title": "Trenger nettsiden din cookie-banner?",
+    "keywords": [
+      "cookie banner",
+      "informasjonskapsler nettside"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Juridiske fakta skal ha kilde hos Nkom og Datatilsynet, sjekk gjeldende paragraf i ekomloven før publisering. Egen vinkel: sider uten sporing og uten Google Fonts trenger ofte ingen banner."
+  },
+  {
+    "slug": "vedlikehold-av-nettside",
+    "title": "Hva må vedlikeholdes på en nettside, og hva kan du gjøre selv?",
+    "keywords": [
+      "vedlikehold nettside",
+      "vedlikehold av nettside"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Lenk til /drift og til /vanlige-sporsmal/hva-koster-drift-av-nettside, ikke gjenta prisen der."
+  },
+  {
+    "slug": "gir-nettsiden-kunder",
+    "title": "Slik ser du om nettsiden faktisk gir deg kunder",
+    "keywords": [
+      "måle nettside",
+      "google search console"
+    ],
+    "status": "pending",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Search Console, henvendelser og telefoner, ikke bare besøkstall. Lenk til /sokemotoroptimalisering."
   }
 ]

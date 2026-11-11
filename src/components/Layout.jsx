@@ -149,7 +149,7 @@ export const Footer = ({ utenCta = false }) => (
           <Link to={ruter.nettbutikk} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Lage nettbutikk</Link>
           <Link to={ruter.webdesignOslo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
           <Link to={ruter.seo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
-          <Link to={ruter.drift} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Drift og support</Link>
+          <Link to={ruter.drift} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Drift og hosting</Link>
         </div>
         <div className="flex flex-col md:gap-3">
           <span className="text-ink/70 font-semibold mb-1">Verktøy</span>

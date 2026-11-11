@@ -176,7 +176,7 @@ const WebdesignOsloPage = () => (
     <SideTopp
       tittel="Webdesign i Oslo,"
       uthevet="til fast pris."
-      lede="Håndkodede nettsider for små bedrifter i Oslo-området. Du snakker med meg hele veien, og du ser et ferdig utkast før du bestemmer deg for noe som helst."
+      lede="Håndkodede nettsider for små bedrifter i Oslo-området, til fast pris fra 6 990 kr eks. mva. Du snakker med meg hele veien, og du ser et ferdig utkast før du bestemmer deg for noe som helst."
     />
     <Innhold />
     <Portfolio tittel="Sider jeg" uthevet="har levert." limit={6} visAlleLenke />
