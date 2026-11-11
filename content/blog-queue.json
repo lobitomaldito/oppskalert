@@ -139,82 +139,400 @@
   },
   {
     "slug": "hvor-lang-tid-tar-nettside",
-    "title": "Hvor lang tid tar det å lage en nettside?",
+    "title": "Hvor lang tid tar det å lage en nettside? Mine egne tall",
     "keywords": [
       "hvor lang tid tar det å lage en nettside",
       "lage nettside tid"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Egne tall: utkast innen 48 timer, 1 til 2 uker fra ja, og det som oftest forsinker er tekst og svar fra kunden. Lenk til /metode."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Egne tall: utkast innen 48 timer, 1 til 2 uker fra ja, og det som oftest forsinker er tekst og svar fra kunden. Lenk til /metode.",
+    "publishedDate": "2026-11-12"
   },
   {
     "slug": "ny-nettside-uten-a-miste-google",
-    "title": "Ny nettside uten å miste plasseringen i Google",
+    "title": "Ny nettside uten å miste Google: slik flytter du riktig",
     "keywords": [
       "beholde seo ny nettside",
       "flytte nettside"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Handler om videresending av gamle adresser, før-måling (regel 17) og hva vi sjekker etter flytting. /ny-nettside er den kommersielle siden: lenk dit, ikke konkurrer med den."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Handler om videresending av gamle adresser, før-måling (regel 17) og hva vi sjekker etter flytting. /ny-nettside er den kommersielle siden: lenk dit, ikke konkurrer med den.",
+    "publishedDate": "2026-11-12"
   },
   {
     "slug": "synlig-i-chatgpt",
-    "title": "Finner ChatGPT bedriften din? Slik blir du synlig i AI-søk",
+    "title": "Synlig i ChatGPT: slik finner og nevner AI-en bedriften din",
     "keywords": [
       "synlig i chatgpt",
       "ai synlighet"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Bruk egne målinger fra seo/llm-synlighet.json. Lenk til /sokemotoroptimalisering."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Bruk egne målinger fra seo/llm-synlighet.json. Lenk til /sokemotoroptimalisering.",
+    "publishedDate": "2026-11-12"
   },
   {
     "slug": "vanlige-feil-pa-nettsider",
-    "title": "Vanlige feil på nettsider for småbedrifter, målt på egne tall",
+    "title": "Vanlige feil på nettsider: jeg målte 4 566 småbedriftssider",
     "keywords": [
       "vanlige feil på nettsider",
       "dårlig nettside"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Tallene finnes: nettside_analyse i ringeappens Supabase har tusenvis av målte småbedriftssider. Bruk bare analyser fra 28. august 2026 eller senere, eldre skjermbildeanalyser kan ha falske funn."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Tallene finnes: nettside_analyse i ringeappens Supabase har tusenvis av målte småbedriftssider. Bruk bare analyser fra 28. august 2026 eller senere, eldre skjermbildeanalyser kan ha falske funn.",
+    "publishedDate": "2026-11-12"
   },
   {
     "slug": "pagespeed-score-forklart",
-    "title": "PageSpeed-score: hva tallene betyr for en liten bedrift",
+    "title": "PageSpeed Insights forklart: hva tallene betyr for bedriften",
     "keywords": [
       "pagespeed insights",
       "google pagespeed"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Ikke gjenta mobilhastighet-artikkelen. Forklar de tre tallene (LCP, INP, CLS) med grenseverdiene fra web.dev, og hva en bedriftseier skal gjøre med dem."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Ikke gjenta mobilhastighet-artikkelen. Forklar de tre tallene (LCP, INP, CLS) med grenseverdiene fra web.dev, og hva en bedriftseier skal gjøre med dem.",
+    "publishedDate": "2026-11-12"
   },
   {
     "slug": "cookie-banner-nettside",
-    "title": "Trenger nettsiden din cookie-banner?",
+    "title": "Cookie-banner på nettsiden: når må du be om samtykke?",
     "keywords": [
       "cookie banner",
       "informasjonskapsler nettside"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Juridiske fakta skal ha kilde hos Nkom og Datatilsynet, sjekk gjeldende paragraf i ekomloven før publisering. Egen vinkel: sider uten sporing og uten Google Fonts trenger ofte ingen banner."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Juridiske fakta skal ha kilde hos Nkom og Datatilsynet, sjekk gjeldende paragraf i ekomloven før publisering. Egen vinkel: sider uten sporing og uten Google Fonts trenger ofte ingen banner.",
+    "publishedDate": "2026-11-12"
   },
   {
     "slug": "vedlikehold-av-nettside",
-    "title": "Hva må vedlikeholdes på en nettside, og hva kan du gjøre selv?",
+    "title": "Vedlikehold av nettside: hva du gjør selv og hva du setter bort",
     "keywords": [
       "vedlikehold nettside",
       "vedlikehold av nettside"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Lenk til /drift og til /vanlige-sporsmal/hva-koster-drift-av-nettside, ikke gjenta prisen der."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Lenk til /drift og til /vanlige-sporsmal/hva-koster-drift-av-nettside, ikke gjenta prisen der.",
+    "publishedDate": "2026-11-12"
   },
   {
     "slug": "gir-nettsiden-kunder",
-    "title": "Slik ser du om nettsiden faktisk gir deg kunder",
+    "title": "Måle nettsiden: slik ser du om den gir henvendelser og telefoner",
     "keywords": [
       "måle nettside",
       "google search console"
     ],
-    "status": "pending",
-    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Search Console, henvendelser og telefoner, ikke bare besøkstall. Lenk til /sokemotoroptimalisering."
+    "status": "published",
+    "note": "Emnet er hentet fra innsiktsbloggen til et Vestfold-byrå 11. november 2026. Bare emnet er lånt: skriv fra egne tall og egen erfaring, aldri fra deres tekst, og nevn dem ikke. Søkevolum er ikke målt. Search Console, henvendelser og telefoner, ikke bare besøkstall. Lenk til /sokemotoroptimalisering.",
+    "publishedDate": "2026-11-12"
+  },
+  {
+    "slug": "ai-agenter-smabedrift",
+    "title": "AI-agenter for småbedrifter: hva de kan gjøre for deg i dag",
+    "keywords": [
+      "ai-agenter",
+      "ai for småbedrifter",
+      "hva er en ai-agent"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "ai-i-sosiale-medier",
+    "title": "AI i sosiale medier: hva det klarer, og når du må merke",
+    "keywords": [
+      "ai i sosiale medier",
+      "merking av ai-innhold",
+      "ai innhold facebook instagram"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "ai-oversikter-google",
+    "title": "AI-oversikter i Google: hva de betyr for klikk og bedriften din",
+    "keywords": [
+      "ai-oversikt google",
+      "ai overviews",
+      "ai-modus google"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "alternativer-til-wordpress",
+    "title": "Alternativ til WordPress: når en håndkodet side passer bedre",
+    "keywords": [
+      "alternativ til wordpress",
+      "wordpress alternativ",
+      "nettside uten wordpress"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "design-oker-salget",
+    "title": "Øke salget med design: fem grep uten større annonsebudsjett",
+    "keywords": [
+      "design øke salg",
+      "øke salget med design",
+      "flere henvendelser nettside"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "design-som-gir-kunder",
+    "title": "Førsteinntrykk på nettsiden: slik avgjør designet om kunden blir",
+    "keywords": [
+      "førsteinntrykk nettside",
+      "design nettside kunder"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "grafisk-profil",
+    "title": "Grafisk profil: hva den består av, og hvorfor helhet gir tillit",
+    "keywords": [
+      "grafisk profil",
+      "grafisk profil liten bedrift",
+      "hva er en grafisk profil"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "hva-koster-google-ads",
+    "title": "Hva koster Google Ads? Klikkpris og budsjett forklart",
+    "keywords": [
+      "hva koster google ads",
+      "pris på google ads",
+      "google ads budsjett"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "hva-koster-seo",
+    "title": "Hva koster SEO? Hva som styrer prisen, og hva jeg tar",
+    "keywords": [
+      "hva koster seo",
+      "pris på seo",
+      "hva koster søkemotoroptimalisering"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "lage-logo-selv",
+    "title": "Lage logo selv: når det holder, og fallgruvene du bør kjenne",
+    "keywords": [
+      "lage logo selv",
+      "lage logo gratis",
+      "registrere logo"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "landingsside-for-annonser",
+    "title": "Landingsside for Google Ads: dette gjør klikk til henvendelser",
+    "keywords": [
+      "landingsside",
+      "landingsside google ads",
+      "landingsside for annonser"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "logo-farger-typografi",
+    "title": "Typografi og farger på nettsiden: slik virker logo og skrift",
+    "keywords": [
+      "typografi nettside",
+      "farger logo",
+      "kontrast nettside"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "markedsforing-sosiale-medier",
+    "title": "Markedsføring i sosiale medier for små bedrifter",
+    "keywords": [
+      "markedsføring i sosiale medier",
+      "markedsføring på facebook",
+      "sosiale medier for bedrifter"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "moderne-nettside",
+    "title": "Moderne nettside i 2026: fem krav en bedriftsside må oppfylle",
+    "keywords": [
+      "moderne nettside",
+      "krav til nettside 2026",
+      "moderne hjemmeside bedrift"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "reklame-i-chatgpt",
+    "title": "Reklame i ChatGPT: dette gjelder i Norge nå",
+    "keywords": [
+      "reklame i chatgpt",
+      "annonser i chatgpt",
+      "chatgpt ads norge"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "remarketing",
+    "title": "Remarketing: når lønner det seg for en liten bedrift?",
+    "keywords": [
+      "remarketing",
+      "retargeting",
+      "remarketing google ads"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "seo-for-smabedrifter",
+    "title": "SEO for småbedrifter: hva du gjør først når tiden er knapp",
+    "keywords": [
+      "seo for småbedrifter",
+      "seo for små bedrifter",
+      "gjøre seo selv"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "seo-optimalisert-nettside",
+    "title": "SEO-optimalisert nettside: dette må bygges inn fra start",
+    "keywords": [
+      "seo-optimalisert nettside",
+      "nettside optimalisert for google",
+      "seo-vennlig nettside"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "sokeordsanalyse",
+    "title": "Søkeordsanalyse: finn ordene kundene bruker, gratis",
+    "keywords": [
+      "søkeordsanalyse",
+      "søkeordsanalyse gratis",
+      "finne søkeord"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "synlig-i-google",
+    "title": "Synlig på Google: hvorfor nettsiden din ikke dukker opp",
+    "keywords": [
+      "synlig på google",
+      "komme opp på google",
+      "nettside vises ikke på google"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "ta-merkevaren-pa-alvor",
+    "title": "Merkevarebygging for liten bedrift: tre ting å starte med",
+    "keywords": [
+      "merkevarebygging liten bedrift",
+      "merkevare enkeltpraksis",
+      "bygge merkevare"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "teknisk-seo",
+    "title": "Teknisk SEO: sjekkliste med forklaring for bedriftseiere",
+    "keywords": [
+      "teknisk seo",
+      "teknisk seo sjekkliste"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "tid-pa-sosiale-medier",
+    "title": "Hvor mye tid på sosiale medier bør en bedrift bruke?",
+    "keywords": [
+      "tid på sosiale medier bedrift",
+      "planlegge innlegg sosiale medier",
+      "sosiale medier småbedrift"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "treg-nettside",
+    "title": "Treg nettside? De vanligste årsakene og hva du gjør selv",
+    "keywords": [
+      "treg nettside",
+      "nettsiden laster tregt",
+      "hvorfor er nettsiden treg"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "velge-publiseringsverktoy",
+    "title": "Hvordan velge CMS: start med hva du skal endre selv",
+    "keywords": [
+      "hvordan velge cms",
+      "publiseringsverktøy nettside",
+      "cms for småbedrift"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
+  },
+  {
+    "slug": "wordpress-hacket",
+    "title": "WordPress hacket? Slik tar du det de første timene",
+    "keywords": [
+      "wordpress hacket",
+      "hacket nettside",
+      "wordpress hacket hva gjør jeg"
+    ],
+    "status": "published",
+    "publishedDate": "2026-11-12",
+    "note": "Skrevet 12. november 2026 i samme runde som de andre emnene fra innsiktsbloggen til et Vestfold-byrå. Bare emnet og etterprøvde fakta er brukt."
   }
 ]
