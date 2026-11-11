@@ -781,6 +781,102 @@
   .trygghet-liste b { color: var(--blekk); font-weight: 600; }
 
   /* ----------------------------------------------------------------
+     Utkastvelgeren (11.11.2026). Mønsteret er karrieresjekken i
+     Nettsider/Karrierematch: ett spørsmål om gangen, svar som rader
+     merket A/B/C, fremdriftslinje med scaleX. På desktop står
+     spørsmålet til venstre og svarene til høyre.
+     ---------------------------------------------------------------- */
+  .velger {
+    background: var(--kort); border-radius: var(--rund-stor);
+    padding: clamp(1.25rem, 4vw, 3.5rem);
+  }
+  .velger-hode { display: flex; align-items: center; gap: 1rem; margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .velger-hode img { width: 2.5rem; height: 2.5rem; border-radius: 50%; object-fit: cover; object-position: 50% 20%; flex: none; }
+  .velger-teller { font-size: .8125rem; color: var(--blekk-mykt); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .velger-fremdrift { flex: 1; height: 3px; border-radius: 3px; background: var(--felt-kant); overflow: hidden; }
+  .velger-fremdrift span {
+    display: block; height: 100%; background: var(--prikk);
+    transform-origin: 0 50%; transition: transform .25s var(--e);
+  }
+
+  .velger-sp { border: 0; margin: 0; padding: 0; min-width: 0; display: none; }
+  .velger-sp.er-aktiv { display: grid; gap: 1.25rem 3rem; }
+  @media (min-width: 56rem) {
+    .velger-sp.er-aktiv { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
+  }
+  /* legend kan ikke være et gridelement uten float. */
+  .velger-sp legend {
+    float: left; width: 100%; padding: 0;
+    font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem); line-height: 1.1; letter-spacing: var(--display-sperre);
+  }
+  .velger-sp legend span:focus { outline: none; }
+  .velger-valg { display: grid; gap: .625rem; }
+  .velger-rad {
+    display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: center; gap: .875rem;
+    min-height: 3.75rem; padding: .75rem 1.125rem; text-align: left;
+    border: 1px solid var(--felt-kant); border-radius: var(--rund-liten); background: var(--hvit);
+    font-size: 1rem; line-height: 1.35; cursor: pointer;
+    transition: border-color .15s var(--e), background-color .15s var(--e), color .15s var(--e);
+  }
+  .velger-bokstav {
+    display: grid; place-items: center; width: 1.875rem; height: 1.875rem;
+    border: 1px solid var(--felt-kant); border-radius: 4px;
+    font-size: .8125rem; font-weight: 600; color: var(--blekk-mykt);
+  }
+  @media (hover: hover) and (pointer: fine) { .velger-rad:hover { border-color: var(--blekk); } }
+  .velger-rad[aria-pressed="true"] { background: var(--blekk); border-color: var(--blekk); color: var(--hvit); }
+  .velger-rad[aria-pressed="true"] .velger-bokstav { background: var(--prikk); border-color: var(--prikk); color: var(--hvit); }
+  .velger-tilbake {
+    justify-self: start; min-height: 2.75rem; padding: 0;
+    background: none; border: 0; cursor: pointer;
+    font-size: .875rem; color: var(--blekk-mykt); text-decoration: underline; text-underline-offset: 4px;
+  }
+  @media (min-width: 56rem) { .velger-sp > .velger-tilbake { grid-column: 2; } }
+
+  .velger-res { display: grid; gap: 2.5rem 4rem; }
+  @media (min-width: 56rem) { .velger-res { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); align-items: start; } }
+  .velger-res-tittel {
+    margin-top: .75rem; font-weight: var(--display-vekt);
+    font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.05; letter-spacing: var(--display-sperre);
+  }
+  .velger-res-tittel:focus { outline: none; }
+  .velger-res-tekst { margin-top: .875rem; max-width: 52ch; color: var(--blekk-mykt); }
+  .velger-res-liste { margin: 1.25rem 0 0; padding: 0; list-style: none; border-bottom: 1px solid var(--felt-kant); }
+  .velger-res-liste li { padding: .625rem 0; border-top: 1px solid var(--felt-kant); font-size: .9375rem; }
+  .velger-res-lenker { margin-top: 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.5rem; }
+  .velger-res-lenker a {
+    display: inline-flex; align-items: center; gap: .35rem; min-height: 2.75rem;
+    font-weight: 500; font-size: .9375rem;
+  }
+
+  .velger-skjema, .velger-kvittering {
+    display: grid; gap: 1rem; padding: clamp(1.25rem, 3vw, 2rem);
+    background: var(--hvit); border-radius: var(--rund);
+  }
+  .velger-skjema-tittel {
+    font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.15; letter-spacing: var(--display-sperre);
+  }
+  .velger-kvittering p:not(.velger-skjema-tittel) { color: var(--blekk-mykt); }
+  .velger-kvittering a, .velger-smaa a, .velger-feil a { color: var(--blekk); text-decoration: underline; text-underline-offset: 3px; }
+  .velger-felt { display: grid; gap: .375rem; font-size: .875rem; font-weight: 500; }
+  .velger-felt input {
+    min-height: 3.25rem; padding: 0 1rem; font: inherit; font-size: 1rem; font-weight: 400;
+    border: 1px solid var(--blekk-mykt); border-radius: var(--rund-liten); background: var(--hvit); color: var(--blekk);
+  }
+  .velger-felt input::placeholder { color: var(--blekk-mykt); }
+  .velger-felt input[aria-invalid="true"] { border: 2px solid #b3261e; }
+  .velger-feil { color: #9e2118; font-size: .875rem; font-weight: 500; }
+  .velger-send { justify-self: start; margin-top: .25rem; }
+  .velger-smaa { font-size: .8125rem; color: var(--blekk-mykt); }
+  .velger-lokk { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .velger-fremdrift span { transition: none; }
+  }
+
+  /* ----------------------------------------------------------------
      Sitat.
      ---------------------------------------------------------------- */
   /* Padding-toppen sto på 0. Da begynner feltet nøyaktig der kortet

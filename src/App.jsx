@@ -5,7 +5,7 @@ import SEO from './components/SEO';
 import { Shell } from './components/Layout';
 import Sitatkort, { Stjerner } from './components/Sitatkort';
 import Priser from './components/Priser';
-import DemoSkjema from './components/DemoSkjema';
+import Utkastvelger from './components/Utkastvelger';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
@@ -21,9 +21,10 @@ import { track } from './lib/analytics';
    hero med kundesidene i en rad under, og en Om meg-seksjon med portrett
    rett etter heroen.
 
-   Forsiden følger demoens rekkefølge. Priser og DemoSkjema er de eneste
+   Forsiden følger demoens rekkefølge. Priser og skjemaet er de eneste
    tilleggene: prisen fordi den er det folk leter etter, skjemaet fordi
-   det er hovedkonverteringen. Skjemaet skal alltid stå sist.
+   det er hovedkonverteringen. Skjemaet skal alltid stå sist. Fra
+   11.11.2026 er skjemaet Utkastvelger, de andre sidene har DemoSkjema.
 
    Tre seksjoner er bevisst tatt ut igjen etter at de først ble lagt til:
    - Hvorfor og Metode, fordi demoen ikke hadde dem. Metode lever videre
@@ -518,11 +519,7 @@ const Home = () => (
     <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
     <FaqSeksjon />
-    <DemoSkjema
-      tittel="Klar for en nettside"
-      uthevet="som selger?"
-      lede="Legg igjen navn og e-post, så bygger jeg et gratis utkast til din nye side. Uforpliktende, og klart på 48 timer."
-    />
+    <Utkastvelger />
   </Shell>
 );
 
