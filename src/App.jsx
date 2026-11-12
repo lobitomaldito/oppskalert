@@ -513,7 +513,7 @@ const Home = () => (
         «hjemmeside» (322 visninger, plass 12,8) manglet. */}
     <SEO
       title="Webdesign for bedrifter, til fast pris"
-      description="Webdesign og ny hjemmeside for bedrifter i hele Norge, til fast pris fra 6 990 kr. Jeg bygger siden ferdig, og du ser et gratis utkast før du betaler en krone."
+      description="Webdesign og ny hjemmeside for bedrifter i hele Norge, fast pris fra 6 990 kr. Du ser et gratis utkast før du betaler en krone."
       keywords={['webdesign for bedrifter', 'webdesign firma', 'hjemmeside', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
