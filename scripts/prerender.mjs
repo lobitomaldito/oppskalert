@@ -105,6 +105,10 @@ async function startServer() {
 // needs (the same class of problem the Lambda runtime has). Branch on the
 // VERCEL env var (set automatically in Vercel's build environment) to use
 // a build-friendly Chromium there, and plain puppeteer for local iteration.
+// executablePath() pakker ut Chromium til /tmp. Fire samtidige kall skriver
+// over samme fil mens en annen starter den (spawn ETXTBSY på Vercel), så
+// utpakkingen skjer én gang og alle nettleserne deler stien.
+let chromiumPath;
 async function launchBrowser() {
   const sandboxArgs = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'];
   if (process.env.VERCEL) {
@@ -112,7 +116,7 @@ async function launchBrowser() {
     const puppeteerCore = await import('puppeteer-core');
     return puppeteerCore.launch({
       args: [...chromium.args, ...sandboxArgs],
-      executablePath: await chromium.executablePath(),
+      executablePath: await (chromiumPath ??= chromium.executablePath()),
       headless: chromium.headless,
     });
   }
