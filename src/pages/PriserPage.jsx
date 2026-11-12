@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Check, Minus } from 'lucide-react';
+import { ArrowRight, Check, Minus } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
-import DemoSkjema from '../components/DemoSkjema';
+import Utkastvelger from '../components/Utkastvelger';
 import { ArbeidSeksjon } from '../components/Arbeider';
 import { Modell, PrisRad } from '../components/Priser';
 import Sitatkort from '../components/Sitatkort';
+import { track } from '../lib/analytics';
 import { lagFaqSchema, prisNotat, prismodeller, leieTilEie, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
@@ -145,6 +146,15 @@ const PriserPage = () => (
             />
           ))}
         </PrisRad>
+        {/* Samme lenke som under prisene på forsiden, men her hopper den bare
+            ned til velgeren nederst på siden (12.11.2026). */}
+        <a
+          href="#bestill-demo"
+          onClick={() => track('utkastvelger_lenke_fra_priser', { side: window.location.pathname })}
+          className="mt-6 min-h-11 inline-flex items-center gap-1.5 font-sans font-bold text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+        >
+          Sjekk hvilken pakke som passer for deg <ArrowRight className="w-4 h-4" aria-hidden="true" />
+        </a>
         {/* Leie til eie som eget kort fra 12.11.2026, ikke løs tekst under prisene. */}
         <div className="leie-kort">
           <p className="leie-kort-tittel">{leieTilEie.navn}</p>
@@ -219,11 +229,10 @@ const PriserPage = () => (
       </div>
     </section>
 
-    <DemoSkjema
-      tittel="Vil du se hva"
-      uthevet="din ville kostet?"
-      lede="Fortell meg kort om bedriften, så får du en fast pris, og et gratis utkast før du bestemmer deg."
-    />
+    {/* Utkastvelgeren erstatter DemoSkjema her også (12.11.2026, som på
+        forsiden 11.11): fire spørsmål gir pakken og prisen før e-posten.
+        Sporingen skiller sidene på path, som track() lagrer selv. */}
+    <Utkastvelger />
   </Shell>
 );
 

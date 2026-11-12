@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { submitDemoRequest } from '../lib/demoRequest';
 import { kontakt, prismodeller, ruter } from '../lib/site';
 import { identify, track } from '../lib/analytics';
@@ -115,6 +115,7 @@ const Utkastvelger = () => {
   const [status, setStatus] = useState('idle'); // idle | sending | success | error
   const [feil, setFeil] = useState({});
   const [honeypot, setHoneypot] = useState('');
+  const paPriser = useLocation().pathname === ruter.priser;
   const apnetRef = useRef(0);
   const fokusert = useRef(new Set());
   const overskrift = useRef(null);
@@ -267,9 +268,12 @@ const Utkastvelger = () => {
                   {pakke.inkludert.map((l) => <li key={l}>{l}</li>)}
                 </ul>
                 <p className="velger-res-lenker">
-                  <Link to={ruter.priser} onClick={() => track('utkastvelger_priser_klikket', { pakke: pakkeId })}>
-                    Se alle pakkene <PilHoyre className="pil" />
-                  </Link>
+                  {/* På /priser står pakkene rett over, en lenke dit gjør ingenting. */}
+                  {!paPriser && (
+                    <Link to={ruter.priser} onClick={() => track('utkastvelger_priser_klikket', { pakke: pakkeId })}>
+                      Se alle pakkene <PilHoyre className="pil" />
+                    </Link>
+                  )}
                   <button type="button" className="velger-tilbake" onClick={tilbake}>Tilbake</button>
                   <button type="button" className="velger-tilbake" onClick={startPaNytt}>Start på nytt</button>
                 </p>
