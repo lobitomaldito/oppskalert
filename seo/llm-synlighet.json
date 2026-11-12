@@ -383,6 +383,60 @@
           "snilletips.no": 2
         },
         "notat": "Manuell kjøring 28.10.2026, satt som dag 1. Opinlys AI-måling var slått av samme dag."
+      },
+      {
+        "runId": "34a5ade4-0898-44be-93b0-aea5bd07264d",
+        "completedAt": "2026-10-28T19:03:39.086Z",
+        "completed": 14,
+        "noAnswer": 1,
+        "failed": 0,
+        "nevnt": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 0,
+          "webaas.no": 0
+        },
+        "sitert": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 0,
+          "webaas.no": 0
+        },
+        "kilderTopp": {
+          "nettmakeriet.no": 4,
+          "nettsmed.no": 4,
+          "nettify.no": 3,
+          "webtoget.no": 3,
+          "guwe.no": 2
+        },
+        "notat": "Maaling 28. okt kl. 19 (scheduled). Alle fire 0 av 14 svar. Ikke samme runId som baseline 6288907c."
+      },
+      {
+        "runId": "6dd463be-06f5-4de5-8e77-4269c1f21479",
+        "completedAt": "2026-11-11T19:31:39.382Z",
+        "completed": 15,
+        "noAnswer": 0,
+        "failed": 0,
+        "nevnt": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 0,
+          "webaas.no": 0
+        },
+        "sitert": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 0,
+          "webaas.no": 0
+        },
+        "kilderTopp": {
+          "nettsmed.no": 5,
+          "skailandconsulting.no": 4,
+          "box.no": 2,
+          "kyt.no": 2,
+          "nettify.no": 2
+        },
+        "notat": "Maaling 11. nov kl. 19 (scheduled). Alle fire 0 av 15 svar. Nye domener paa topp: skailandconsulting.no (AI Overview), box.no, kyt.no."
       }
     ]
   }
