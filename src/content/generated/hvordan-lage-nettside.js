@@ -1,5 +1,6 @@
 export default {
   slug: "hvordan-lage-nettside",
+  klynge: "nettside",
   /* SEO-rutinen 28. sep 2026, GSC 28 dager: denne artikkelen og
      /vanlige-sporsmal/hvordan-lage-nettside delte 81 søk i «lage nettside»-klyngen,
      ca. 3 000 visninger. Her snitt pos 30-55, FAQ-siden 60-85, 0 klikk på begge.

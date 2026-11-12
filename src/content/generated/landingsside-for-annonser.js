@@ -1,5 +1,6 @@
 export default {
   slug: "landingsside-for-annonser",
+  klynge: "seo",
   title: "Landingsside for Google Ads: dette gjør klikk til henvendelser",
   description: "En landingsside for Google Ads må gjenta det annonsen lovet, be om én handling, bygge tillit og måle hva som skjer. Slik setter du den opp for småbedrifter.",
   publishDate: "2026-11-12",

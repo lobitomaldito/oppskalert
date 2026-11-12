@@ -1,5 +1,6 @@
 export default {
   slug: "synlig-i-google",
+  klynge: "seo",
   title: "Synlig på Google: hvorfor nettsiden din ikke dukker opp",
   description: "Kommer ikke nettsiden opp på Google? Slik finner, leser og lagrer Google sider, og slik sjekker du i Search Console hva som holder din side ute.",
   publishDate: "2026-11-12",

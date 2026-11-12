@@ -1,5 +1,6 @@
 export default {
   slug: "ai-agenter-smabedrift",
+  klynge: "markedsforing",
   title: "AI-agenter for småbedrifter: hva de kan gjøre for deg i dag",
   description: "Hva er en AI-agent, og hva kan den gjøre for en småbedrift? Fire konkrete oppgaver, hva et menneske fortsatt må gjøre, og hva du sjekker om personvern først.",
   publishDate: "2026-11-12",

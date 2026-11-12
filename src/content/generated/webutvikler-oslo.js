@@ -23,6 +23,7 @@
 
 export default {
   slug: "webutvikler-oslo",
+  klynge: "nettside",
   title: "Webutvikler i Oslo: Priser, alternativer og hva du bør spørre om",
   description: "Hva koster en webutvikler i Oslo i 2026? Priser, leverandørtyper og de rette spørsmålene å stille, forklart uten sjargong av Aleksander hos Oppskalert.",
   publishDate: "2026-08-04",

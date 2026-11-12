@@ -225,7 +225,7 @@ webworld.no (artikler, 898 til 3 005 ord).
 | Side | Søkeord (volum) | Status | Vei videre |
 |---|---|---|---|
 | **Pengeside:** `/sokemotoroptimalisering` | søkemotoroptimalisering (390, KD 3), seo byrå (320, KD 0), lokal seo (50, KD 0) | finnes, løft nå: tittel «Søkemotoroptimalisering for små bedrifter, fra 2 990 kr/mnd», pris og hva som inngår i første avsnitt | `/kontakt` |
-| `/vanlige-sporsmal/hva-koster-seo` | hva koster seo (90, KD 0), seo pris (70, KD 0) | **ny** | `/sokemotoroptimalisering` |
+| `/blogg/hva-koster-seo` | hva koster seo (90, KD 0), seo pris (70, KD 0) | finnes, publisert 12.11.2026 (lag ikke en spørsmålsside i tillegg) | `/sokemotoroptimalisering` |
 | `/blogg/seo-eller-google-annonser` | SEO mot annonser, «hvorfor er seo dyrt» (GSC 30; 18,0) | finnes | `/sokemotoroptimalisering` |
 | `/vanlige-sporsmal/hva-er-sokemotoroptimalisering` | hva er seo (informasjon) | finnes, lenke til pengesiden i første avsnitt | `/sokemotoroptimalisering` |
 | `/vanlige-sporsmal/synlig-i-chatgpt-og-ai-sok` | synlig i ChatGPT | finnes | `/sokemotoroptimalisering` |
@@ -266,6 +266,96 @@ og hosting».
 sidene få `noindex` eller sendes videre, og bunntekstlenken ut. Selges det, trenger klyngen en pris:
 `MAL.md` sier «etter omfang», og nettbutikk med varianter og lager er utenfor fastpris.
 
+## Spørsmålsinnlegg (12.11.2026)
+
+Etter mønsteret fra Veniro (veniro.no/innsikt, 64 innlegg): hvert innlegg svarer på ett spørsmål
+kundene stiller, i formatet fra `~/.claude/assets/seo/artikkel-format.md`. Spørsmålene under er
+hentet, ikke gjettet:
+
+- **Search Console:** `gsc_sok` i Supabase `oppskalert`, 30 dager til 8.11.2026, søk som starter
+  med et spørreord eller har seks ord eller mer.
+- **«Mer å spørre om»** på google.no i Chrome 12.11.2026, elleve søk, ni av dem med spørsmål: hva koster en
+  nettside, hva koster seo, drift av nettside, ny nettside, hvordan bli synlig på google, hvor lang
+  tid tar det å lage en nettside, hva koster det å drifte en nettside, nettside til bedrift,
+  søkemotoroptimalisering, hva koster en enkel nettside. («drift av nettside» og «wix eller
+  wordpress» viste ingen spørsmål.)
+- **Søkeforslag** fra `suggestqueries.google.com` (`hl=no`), 24 startord.
+
+### Det vi har
+
+49 innlegg på `/blogg` og 13 spørsmålssider på `/vanlige-sporsmal`. Hvert innlegg har nå feltet
+`klynge`, som styrer kategorien over tittelen, avslutningen og «Les også»:
+
+| Klynge | Innlegg | Pengeside i avslutningen |
+|---|---|---|
+| Pris | 3 | `/priser` |
+| Ny nettside | 18 | `/ny-nettside` |
+| Design | 7 | `/nettside-design` |
+| Synlighet (SEO og annonser) | 14 | `/sokemotoroptimalisering` |
+| Drift | 3 | `/drift` |
+| Markedsføring (sosiale medier, AI-verktøy) | 4 | `/kontakt` (gratis utkast) |
+
+Markedsføring er de fire innleggene som ikke leder til noe Oppskalert selger. De står, men skal
+ikke få flere innlegg.
+
+36 av 49 titler er formet som «Tema: undertittel» («Remarketing: når lønner det seg for en liten
+bedrift?»). Formatet vil ha spørsmålet som H1. Er spørsmålet allerede i tittelen, holder det.
+Resten kan få spørsmålet først når de løftes, ett og ett.
+
+### Samme spørsmål på to eller flere sider
+
+Hvert spørsmål hører hjemme på én side (`laerdommer.md`, klyngegjennomgangen punkt 4). Disse deler
+i dag plassene mellom seg:
+
+| Spørsmål | Sidene | Forslag |
+|---|---|---|
+| Hvor lang tid tar det å lage en nettside? | `/blogg/hvor-lang-tid-tar-nettside`, `/vanlige-sporsmal/hvor-lang-tid-tar-en-nettside` | Innlegget eier søket, spørsmålssiden lenker dit |
+| Hva koster SEO? | `/blogg/hva-koster-seo` (publisert 12.11) | Lag ikke `/vanlige-sporsmal/hva-koster-seo` fra klynge 4 over. Innlegget har spørsmålet nå |
+| Hvordan bli synlig i ChatGPT? | `/blogg/synlig-i-chatgpt`, `/vanlige-sporsmal/synlig-i-chatgpt-og-ai-sok` | Som over |
+| Google Bedriftsprofil | `/blogg/google-min-bedrift`, `/vanlige-sporsmal/google-bedriftsprofil` | Står i klynge 4 alt. Velg én |
+| WordPress eller noe annet? | `/blogg/alternativer-til-wordpress`, `/blogg/velge-publiseringsverktoy`, `/vanlige-sporsmal/wordpress-wix-eller-handkodet`, `/sammenlign/wordpress` | `/sammenlign/wordpress` er pengesiden for sammenligningen. De tre andre svarer på hvert sitt spørsmål og lenker dit |
+| Hvorfor er nettsiden treg? | `/blogg/treg-nettside`, `/blogg/mobilhastighet-nettside-koster-millioner`, `/blogg/pagespeed-score-forklart` | `treg-nettside` eier det. Det gamle mobilhastighet-innlegget kan sendes dit (301) |
+
+Ingen 301 er satt. Det avgjør Aleksander (spørsmål 7).
+
+### Nye spørsmål, i prioritert rekkefølge
+
+Bare spørsmål som leder til noe Oppskalert selger, og som ingen side svarer på i dag.
+
+| # | Spørsmål (H1) | Kilde | Klynge → pengeside | Når |
+|---|---|---|---|---|
+| 1 | **Kan man lage en nettside gratis?** | «Mer å spørre om» på 4 av 9 søk («Er det gratis å lage en nettside?», «Kan man lage en nettside gratis?»). GSC: «hvordan lage hjemmeside gratis» 19 visninger (plass 58,7), «hvordan lage en nettside gratis» 17 (54,2), «hvordan lage nettside gratis» 15 (50,3), to til med 2 hver: 55 visninger | Ny nettside → `/ny-nettside` | **Skrevet** som eksempel: `/blogg/lage-nettside-gratis`. Kan publiseres nå |
+| 2 | Hvem kan lage en nettside for meg? | GSC, åtte varianter: «trenger hjelp til å lage nettside» 28 (57,8), «noen til å bygge en nettside for meg» 20 (33,9), «hjelp meg med å bygge en nettside» 11 (42,4), «jeg trenger noen til å bygge en nettside for meg» 6, og fire med 4 hver: 81 visninger | Ny nettside → `/ny-nettside` | Etter spørsmål 6. Løft-tabellen over foreslår en H2 i `/blogg/hvordan-lage-nettside` i stedet |
+| 3 | Lønner det seg med SEO for en liten bedrift? | GSC: «er søkemotoroptimalisering viktig» 24 (62,7), «hvorfor søkemotoroptimalisering» 7 (63,3), «hvilken verdi gir seo» 5 (2,2), «hvorfor er søkemotoroptimalisering viktig» 2: 38 visninger | Synlighet → `/sokemotoroptimalisering` | Nå |
+| 4 | Hva er forskjellen på SEO og GEO? | «Mer å spørre om» på «søkemotoroptimalisering». «Hvordan bli synlig i AI-søk?» på «hvordan bli synlig på google» | Synlighet → `/sokemotoroptimalisering` | Nå. Lenk til `/blogg/synlig-i-chatgpt`, som svarer på hvordan |
+| 5 | Hva koster en nettside i måneden? | «Mer å spørre om»: «Hvor mye koster en nettside i måneden?». Søkeforslag: «hva koster det å ha en nettside», «hva koster det å drifte en nettside», «hva koster det å opprette en nettside» | Pris → `/priser`, og `/drift` | **Etter 25.11** (ligger tett på testsøkene). Vinkelen: hosting er med, 0 kr i måneden uten serviceavtale, 550 med, leie til eie 1 590 |
+
+Løft i eksisterende sider, ingen ny side:
+
+- **«Hvor er det best å lage en nettside?»** og «Hvilken gratis nettside er best?» kom på 5 av 9
+  søk. Ny H2 i `/vanlige-sporsmal/wordpress-wix-eller-handkodet`, med lenke til innlegg 1.
+- **«Hva er forskjellen på SEO og SEM?»** (på «hva koster seo»): H2 i
+  `/blogg/seo-eller-google-annonser`.
+- **«kan jeg bygge meg en nettside»** har 68 visninger på plass 9,5, uten klikk. `gsc_sok` har
+  ikke siden søket lander på. Slå det opp i Search Console (søk × side) og les tittelen
+  (`klynger.md` punkt 3).
+- **Nettbutikk** («hva koster en nettbutikk» 73 visninger på plass 14,7, «hva koster nettbutikk»
+  56, «hva koster det å starte nettbutikk» 37) venter på spørsmål 1.
+
+### Slik lages de
+
+1. Les de fem øverste på google.no før hvert innlegg (`klynger.md` punkt 4), og skriv vinkelen inn
+   i tabellen over.
+2. Innlegget lages som én fil i `src/content/generated/` med `klynge`, `svar` («Kort fortalt») og
+   `faq`, se `content/BLOG-GENERATION.md`.
+3. Tall fra `src/lib/site.js` og `~/.claude/assets/tilbud/MAL.md`. Påstander om andre leverandører
+   lenker til leverandørens egen side.
+4. Aleksander leser alle nye innlegg samlet før de går ut.
+5. Etter publisering: be om indeksering i Search Console samme dag.
+
+**Måling:** plass og visninger på søkene i tabellen, 4 og 12 uker etter publisering, mot tallene
+over (30 dager til 8.11.2026).
+
 ## Fakta vi mangler fra Aleksander
 
 1. **Nettbutikk:** skal `/lage-nettbutikk` og nettbutikk-spørsmålet ut av Google, eller selger du
@@ -278,7 +368,14 @@ sidene få `noindex` eller sendes videre, og bunntekstlenken ut. Selges det, tre
    kalkulatoren ble fjernet fordi prisen settes etter samtalen? (Klynge 1.)
 5. **SEO-prisen:** kan `/vanlige-sporsmal/hva-koster-seo` vise SEO fra 2 990 kr/mnd og omskrevet
    SEO-tekst 4 900 kr engangs, og har du en kunde som vil stå med før- og ettertall fra Search
-   Console? (Klynge 4.)
+   Console? (Klynge 4.) `/blogg/hva-koster-seo` viser 2 990 kr/mnd alt, publisert 12.11.
+6. **«Hvem kan lage en nettside for meg?»:** eget innlegg (81 visninger på åtte varianter), eller en
+   H2 i `/blogg/hvordan-lage-nettside` som i løft-tabellen? (Spørsmålsinnlegg nr. 2.)
+7. **Dobbeltsidene:** skal blogginnlegget eie hvert av de seks spørsmålene i tabellen
+   «Samme spørsmål på to eller flere sider», med lenke fra de andre, eller vil du ha 301?
+8. **Forfatter:** innleggene sier «Skrevet av Aleksander MacKee». Formatet sier at AI-skrevet tekst
+   får «Faglig gjennomlest av <navn>» når fagpersonen har lest den. Vil du stå som forfatter på
+   innleggene du har lest, eller som gjennomleser?
 
 ## Utenfor siden
 

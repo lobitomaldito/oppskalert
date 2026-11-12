@@ -1,5 +1,6 @@
 export default {
   slug: "seo-optimalisert-nettside",
+  klynge: "seo",
   title: "SEO-optimalisert nettside: dette må bygges inn fra start",
   description: "Hva gjør en nettside SEO-optimalisert? Dette må være bygget inn før lansering, og disse spørsmålene bør du stille leverandøren før du skriver under.",
   publishDate: "2026-11-12",

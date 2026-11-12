@@ -1,5 +1,6 @@
 export default {
   slug: "ai-oversikter-google",
+  klynge: "seo",
   title: "AI-oversikter i Google: hva de betyr for klikk og bedriften din",
   description: "Googles AI-oversikter vises nå i Norge og på norsk. Her er hva de er, hva de gjør med klikkene til nettsiden din, og hvordan en side blir brukt som kilde.",
   publishDate: "2026-11-12",

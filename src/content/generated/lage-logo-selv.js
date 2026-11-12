@@ -1,5 +1,6 @@
 export default {
   slug: "lage-logo-selv",
+  klynge: "design",
   title: "Lage logo selv: når det holder, og fallgruvene du bør kjenne",
   description: "Kan du lage logo selv? Ofte, ja. Her er verktøyene, filformatene du trenger, og fallgruvene med maler, opphavsrett og varemerke før logoen tas i bruk.",
   publishDate: "2026-11-12",

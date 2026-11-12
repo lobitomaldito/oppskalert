@@ -1,5 +1,6 @@
 export default {
   slug: "google-min-bedrift",
+  klynge: "seo",
   title: "Google Bedriftsprofil: slik blir bedriften synlig i lokale søk",
   description: "Google Bedriftsprofil avgjør om bedriften din vises i lokale søk. Her er feltene som faktisk påvirker rangeringen, og hva du bør fikse først.",
   publishDate: "2026-08-06",

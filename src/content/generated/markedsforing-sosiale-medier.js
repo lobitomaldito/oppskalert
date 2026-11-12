@@ -1,5 +1,6 @@
 export default {
   slug: "markedsforing-sosiale-medier",
+  klynge: "markedsforing",
   title: "Markedsføring i sosiale medier for små bedrifter",
   description: "Markedsføring i sosiale medier: forskjellen på organisk og betalt, hvilke kanaler nordmenn faktisk bruker ifølge SSB, og hvorfor nettsiden må henge med.",
   publishDate: "2026-11-12",

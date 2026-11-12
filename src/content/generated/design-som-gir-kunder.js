@@ -1,5 +1,6 @@
 export default {
   slug: "design-som-gir-kunder",
+  klynge: "design",
   title: "Førsteinntrykk på nettsiden: slik avgjør designet om kunden blir",
   description: "Besøkende vurderer hvor pen nettsiden din er på et halvt tidels sekund. Her er hva som avgjør om de stoler på deg, og hvordan du tester førsteinntrykket.",
   publishDate: "2026-11-12",

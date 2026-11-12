@@ -1,5 +1,6 @@
 export default {
   slug: "pagespeed-score-forklart",
+  klynge: "nettside",
   title: "PageSpeed Insights forklart: hva tallene betyr for bedriften",
   description: "PageSpeed Insights forklart for bedriftseiere: hva LCP, INP og CLS måler, grenseverdiene Google bruker, forskjellen på feltdata og labdata, og hva du gjør nå.",
   publishDate: "2026-11-12",

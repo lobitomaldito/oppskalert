@@ -1,5 +1,6 @@
 export default {
   slug: "reklame-i-chatgpt",
+  klynge: "seo",
   title: "Reklame i ChatGPT: dette gjelder i Norge nå",
   description: "Reklame i ChatGPT er kommet til Norge. Her er hvem som ser annonsene, hvordan de vises, hva annonsøren får vite, og hva det betyr for en liten bedrift i dag.",
   publishDate: "2026-11-12",

@@ -1,5 +1,6 @@
 export default {
   slug: "treg-nettside",
+  klynge: "nettside",
   title: "Treg nettside? De vanligste årsakene og hva du gjør selv",
   description: "Treg nettside? De vanligste årsakene er store bilder, skript fra andre, tunge utvidelser og en treg server. Slik måler du gratis og finner hva som bremser.",
   publishDate: "2026-11-12",

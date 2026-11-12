@@ -11,6 +11,7 @@
 
 export default {
   slug: "utvikling-nettside",
+  klynge: "nettside",
   title: "Utvikling av nettside: alt en liten bedrift trenger å vite",
   description: "Hva koster utvikling av nettside i Norge? Gjennomgang av pris, leveringstid, teknologivalg og hva du bør spørre webutvikleren om før du signerer.",
   publishDate: "2026-08-05",

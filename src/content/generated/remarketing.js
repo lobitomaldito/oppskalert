@@ -1,5 +1,6 @@
 export default {
   slug: "remarketing",
+  klynge: "seo",
   title: "Remarketing: når lønner det seg for en liten bedrift?",
   description: "Remarketing betyr annonser til folk som har besøkt nettsiden din. Her er hvor mye trafikk du trenger, når det lønner seg, og hva samtykkereglene krever.",
   publishDate: "2026-11-12",

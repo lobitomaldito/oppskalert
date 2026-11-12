@@ -1,5 +1,6 @@
 export default {
   slug: "hva-koster-nettside",
+  klynge: "pris",
   title: "Hva koster en nettside i 2027? Prisene mine",
   description: "Hva koster en nettside i 2027? Her er de ekte prisene mine per nivå, fra enkel landingsside til stor struktur, uten et vagt «fra»-tall.",
   publishDate: "2026-08-20",

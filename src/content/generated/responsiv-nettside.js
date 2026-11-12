@@ -38,6 +38,7 @@
 
 export default {
   slug: "responsiv-nettside",
+  klynge: "nettside",
   title: "Hva er en responsiv nettside? Test din selv",
   description: "En responsiv nettside, også kalt mobiltilpasset, tilpasser seg skjermen av seg selv. Slik ser du om din gjør det, med en test på egen telefon som tar ett minutt.",
   publishDate: "2026-08-10",

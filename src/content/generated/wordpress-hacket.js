@@ -1,5 +1,6 @@
 export default {
   slug: "wordpress-hacket",
+  klynge: "drift",
   title: "WordPress hacket? Slik tar du det de første timene",
   description: "WordPress hacket? Tegnene du ser etter, hva du gjør de første timene, når du må melde til Datatilsynet og hvordan du hindrer at det skjer igjen.",
   publishDate: "2026-11-12",

@@ -11,6 +11,7 @@
 
 export default {
   slug: "norsk-domene",
+  klynge: "drift",
   title: "Norsk domene: hva det er, hva det koster og hva du må passe på",
   description: "Hva et .no-domene er, hvorfor det er tryggere enn .com, hva det egentlig koster, og hvorfor du må stå oppført som eier selv.",
   publishDate: "2026-08-05",

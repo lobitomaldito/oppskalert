@@ -47,6 +47,7 @@ både i stemme og struktur.
 ```js
 export default {
   slug: "din-slug",
+  klynge: "nettside",
   title: "Tittel som matcher content/blog-queue.json",
   description: "Meta-beskrivelse, 140-160 tegn, samme funksjon som en SEO snippet.",
   publishDate: "ÅÅÅÅ-MM-DD",
@@ -70,10 +71,18 @@ Feltene må matche nøyaktig det de tre håndskrevne artiklene bruker (se
 `src/lib/articles.js`), samme nøkler, samme typer. `getArticleBySlug` og
 sorteringen i `articles.js` forventer dette uendret.
 
-### Svarboks, FAQ og oppdatert-dato (fra 11. november 2026)
+### Artikkelformatet (fra 12. november 2026, `~/.claude/assets/seo/artikkel-format.md`)
 
+- **`klynge`** (påkrevd): én av `pris`, `nettside`, `design`, `seo`, `drift`,
+  `markedsforing` (definert i `klynger` i `src/lib/articles.js`). Gir
+  kategorien over tittelen, avslutningen med lenke til pengesiden og «Les
+  også» med tre innlegg fra samme klynge. Hvilket spørsmål som hører til
+  hvilken klynge, står i `seo/seo-klynger.md` under «Spørsmålsinnlegg».
+- **H1 er spørsmålet** slik folk skriver det i Google, og hver `##` er et
+  spørsmål med svaret i første setning. Fire `##` eller flere gir
+  «Innhold» (klebrig spalte på stor skjerm, sammenleggbar boks på mobil).
 - **`svar`** (påkrevd for nye innlegg): 2-3 setninger som svarer på søket
-  direkte. Vises som «Kort svar» øverst. Ikke start `content` med en egen
+  direkte. Vises som «Kort fortalt» øverst. Ikke start `content` med en egen
   «Kort svar»-linje i tillegg.
 - **`faq`** (påkrevd, 3 spørsmål): spørsmål leseren har etter å ha lest,
   besvart med fakta som står i artikkelen eller i `src/lib/site.js`. Aldri

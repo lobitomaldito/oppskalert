@@ -1,5 +1,6 @@
 export default {
   slug: "ai-i-sosiale-medier",
+  klynge: "markedsforing",
   title: "AI i sosiale medier: hva det klarer, og når du må merke",
   description: "AI i sosiale medier kan skrive utkast, foreslå ideer og lage bilder. Her er hvor det bommer, og hva Meta krever av merking når innholdet er laget med AI.",
   publishDate: "2026-11-12",

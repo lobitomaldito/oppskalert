@@ -1,5 +1,6 @@
 export default {
   slug: "logo-farger-typografi",
+  klynge: "design",
   title: "Typografi og farger på nettsiden: slik virker logo og skrift",
   description: "Slik virker logo, farger og typografi på nettsiden: kontrastkravene i WCAG, hvor mange skrifter du trenger, og hvorfor skriftene bør ligge på din egen server.",
   publishDate: "2026-11-12",

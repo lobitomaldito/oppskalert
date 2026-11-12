@@ -1,5 +1,6 @@
 export default {
   slug: "moderne-nettside",
+  klynge: "nettside",
   title: "Moderne nettside i 2026: fem krav en bedriftsside må oppfylle",
   description: "En moderne nettside i 2026 må fungere på mobil, laste raskt, følge kravene til universell utforming, spørre om samtykke og vise kontaktinfo tydelig.",
   publishDate: "2026-11-12",

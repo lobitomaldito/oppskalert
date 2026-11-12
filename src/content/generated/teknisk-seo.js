@@ -1,5 +1,6 @@
 export default {
   slug: "teknisk-seo",
+  klynge: "seo",
   title: "Teknisk SEO: sjekkliste med forklaring for bedriftseiere",
   description: "Teknisk SEO forklart som en sjekkliste: indeksering, Core Web Vitals, mobil, HTTPS, videresendinger, sitemap, robots.txt og strukturerte data.",
   publishDate: "2026-11-12",

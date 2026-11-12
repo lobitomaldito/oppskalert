@@ -1,5 +1,6 @@
 export default {
   slug: "cookie-banner-nettside",
+  klynge: "nettside",
   title: "Cookie-banner på nettsiden: når må du be om samtykke?",
   description: "Trenger nettsiden et cookie-banner? Slik er reglene i ekomloven § 3-15 fra 2025, hva Consent Mode v2 er, og når en side klarer seg uten banner i det hele tatt.",
   publishDate: "2026-11-12",
