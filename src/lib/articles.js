@@ -41,48 +41,49 @@ Ikke stol på antakelser eller hva byrået ditt sa for to år siden. Gå til Goo
     slug: "myten-om-den-dyre-nettsiden-ai-prisbilde",
     klynge: "pris",
     title: "Myten om den dyre nettsiden: Slik endrer AI prisbildet",
-    description: "Må en ny nettside koste 100 000 kroner? Svaret er nei. Slik utfordrer AI de tradisjonelle byråprisene, og gir deg mer for pengene.",
+    description: "Må en nettside koste 100 000 kroner? Her er hvorfor prisene spriker, hva AI har endret, og tre spørsmål du bør stille før du signerer.",
     publishDate: "2026-05-01",
     keywords: ["billig nettside norge", "AI nettside"],
     hero: "/blogg/myten-om-den-dyre-nettsiden-ai-prisbilde.jpg",
     svar: "Nei, en nettside til en liten bedrift trenger ikke koste 100 000 kroner. Hos meg koster den fra 6 990 kr eks. mva. Om en billig side er verdt pengene, står i [er en billig nettside verdt det?](/vanlige-sporsmal/er-billig-nettside-verdt-det), og hva AI faktisk klarer i [AI og nettsider](/blogg/nettside-ai).",
-    content: `En lokal rørleggerbedrift fikk nylig et tilbud fra et tradisjonelt byrå: 120 000 kroner for en ny nettside. Leveringstid? Tre måneder. Da jeg tok en titt på prosjektbeskrivelsen, så jeg 60 000 kroner i prosjektledelse, utallige timer med «strategiske avklaringer» og dyre lisenser. Sannheten er at en billig nettside i Norge i 2026 ikke lenger betyr dårlig kvalitet, det betyr bare at noen har sluttet å fakturere for unødvendig byråkrati.
+    /* Skrevet om 12.11.2026. Den gamle teksten (mai 2026) hadde påstander uten
+       kilde: et rørleggertilbud på 120 000 kr, «fra 40 til under 5 timer», «80 %»
+       av timene, «53 %» som forlater en treg side og «30 % overskredet». Prisspennet
+       under er lest i søkeresultatene på «hva koster en nettside» 12.11.2026. */
+    updatedDate: "2026-11-12",
+    content: `Tilbud på nettsider til små bedrifter spriker mye. Prisguidene på første side i Google for «hva koster en nettside» oppga 12. november 2026 alt fra rundt 10 000 til over 150 000 kroner for en bedriftsside. Det meste av forskjellen er timer: hvor mange timer leverandøren regner med, og hva timen koster.
 
-## Timebruk er ikke lenger en målestokk for verdi
+## Hvorfor koster nettsider så forskjellig?
 
-Tradisjonelle byråer selger timer. Når du fakturerer etter medgått tid, er effektivitet en fiende av profitt. Hvis en seniorutvikler bruker 100 timer på å kode det samme som en AI-orkestrert prosess løser på fire timer, taper byrået penger på å være effektive. Ved å bruke verktøy som Claude, Firecrawl og Antigravity, fjerner jeg behovet for å fakturere for 80 % av de manuelle arbeidstimene.
+En nettside priset etter timer blir dyr når mange timer går til noe annet enn selve siden: møter, prosjektledelse, runder med endringer og venting på tekst. Kommer det lisenser eller abonnement på plattformen i tillegg, øker prisen igjen.
 
-Jeg har målt tidsbruk på mine egne prosjekter: Oppgaven med å sette opp en fullverdig, konverteringsoptimalisert landingsside har sunket fra 40 timer til under 5 timer det siste året. Kunden betaler ikke for timene mine lenger; de betaler for resultatet.
+En fast pris snur det. Da har leverandøren regnet på omfanget før arbeidet starter, og timene som går med, er leverandørens problem. Be alltid om prisen skriftlig, og om hva som skjer hvis du vil endre noe underveis.
 
-## Arkitekturen bak en moderne, rimelig nettside
+## Hva har AI endret?
 
-Mange tror fortsatt at en AI nettside er en billig mal som ser ut som alle andre. Det er en utdatert myte. AI-drevet utvikling handler ikke om å generere søppel, men om å bruke maskiner til å utføre den repeterende kodingen, mens menneskelig ekspertise fokuserer på konverteringsdesign og informasjonsarkitektur.
+Jeg bruker AI-verktøy til de delene av jobben som gjentar seg: oppsett, struktur, første utkast av tekstene ut fra det du har fra før, og kontroll av koden. Jeg leser, retter og tester alt selv før du ser det. Det er det som gjør at et ferdig utkast er klart på 48 timer, og at prisen kan være fast fra 6 990 kr eks. mva.
 
-Ved å bruke AI-verktøy kan jeg generere struktur, skrive innhold basert på kundens eksisterende data, og bygge layout som laster på under 1,5 sekunder. Hastighet er den nye valutaen. 53 % av brukerne forlater en side som bruker mer enn tre sekunder på å laste inn – en feil de fleste dyre «håndkodede» sider fra 2022 fortsatt sliter med.
+Hva AI-verktøyene klarer alene, og hva de ikke klarer, står i [AI og nettsider](/blogg/nettside-ai).
 
-## Hvorfor «strategiske workshops» spiser budsjettet ditt
+## Blir en AI-laget side en mal som ligner alle andre?
 
-Etter to måneder med «strategiprosesser» sitter mange SMB-eiere igjen med en powerpoint og et budsjett som er 30 % overskredet. Min tilnærming er den stikk motsatte: jeg bygger utkastet først. Jeg tar risikoen ved å investere mine egne timer i å vise deg resultatet før vi i det hele tatt diskuterer pris.
+Den kan bli det, hvis ingen gjør mer enn å trykke på en knapp. Det som skiller en side fra malen, er det samme som før: tekst med ordene kundene dine bruker, bilder av deg og stedet ditt, og en side per tjeneste.
 
-Når du ser en fungerende side, forsvinner behovet for lange, fakturerbare brief-møter. Enten fungerer siden for din bedrift, eller så gjør den det ikke. Det er ingen «strategisk partner»-avgift på 20 000 kroner for å sitte i et møterom og snakke om visjoner.
+Sidene jeg lager, er håndkodet, uten WordPress og programtillegg. Hvor raskt en side laster, kan du sjekke selv med Googles PageSpeed Insights. Hva tallene betyr, står i [PageSpeed forklart](/blogg/pagespeed-score-forklart).
 
-## Kvalitet uten kostnadspåslag fra 10-mannsteam
+## Hvorfor du ser utkastet før prisen avtales
 
-Tradisjonelle byråer må dekke kontorleie, prosjektledere, juniorsjefer og selgere gjennom påslag på din faktura. Når jeg kutter disse leddene gjennom orkestrering, kan jeg levere et produkt som er teknisk overlegent til en brøkdel av prisen.
+Jeg bygger utkastet først, med ditt innhold, før vi blir enige om noe. Liker du det ikke, sletter jeg det, og ingen skylder noen noe. Liker du retningen, justerer jeg til den sitter, og det er da vi avtaler fast pris.
 
-En nettside er ikke et kunstverk som skal diskuteres i måneder; det er en salgsmaskin. Hvis den ikke selger, er den kostbar uansett om den kostet 5 000 eller 500 000 kroner. Jeg bygger for konvertering, ikke for å fylle en byrå-portefølje.
+Da slipper du å betale for møter om hvordan siden kanskje skal bli. Du ser den, og bestemmer deg ut fra det.
 
-## Hvordan navigere markedet videre
+## Tre spørsmål før du signerer
 
-Hvis du vurderer ny nettside i år, bør du stille tre spørsmål til ethvert byrå du vurderer:
+1. Kan jeg se et ferdig utkast før jeg betaler?
+2. Er prisen fast, og hva er med i den?
+3. Hvem eier domenet, tekstene og koden etterpå?
 
-1. Kan dere vise meg et ferdig utkast før vi signerer kontrakt?
-2. Hvor mange timer går med til administrasjon vs. faktisk produksjon?
-3. Hvordan sikrer dere en lastetid under 1,5 sekunder på mobil?
-
-Hvis de svarer med floskler om «synergier» og «holistisk tilnærming», vet du at du betaler for luft. Hvis de kan vise til konkrete tall og faktiske demoer, er du på rett vei.
-
-For å se hva som er mulig med en moderne, effektiv tilnærming til webutvikling, kan du ta en titt på mine tidligere demoer eller ta kontakt for en gjennomgang av din nåværende nettsides ytelse.`,
+Flere spørsmål og hva svarene bør være, står i [krav til nettsideleverandør](/vanlige-sporsmal/krav-til-nettsideleverandor).`,
   },
   {
     slug: "hvordan-bygge-en-nettside-for-konvertering",
