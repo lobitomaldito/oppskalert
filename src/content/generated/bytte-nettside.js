@@ -5,7 +5,7 @@ export default {
   description: "Fem konkrete tegn på at nettsiden din har sluttet å prestere for bedriften, fra treg lasting til fallende konvertering, og hva du bør sjekke først.",
   publishDate: "2026-08-24",
   keywords: ["ny nettside", "bytte nettside"],
-  hero: "",
+  hero: "/blogg/bytte-nettside.webp",
   updatedDate: "2026-11-11",
   svar: "Det er tid for ny nettside når to eller flere av disse stemmer: den laster over 2,5 sekunder på mobil, den ser eldre ut enn bransjen, du kan ikke endre tekst selv, færre besøkende tar kontakt enn før, eller den mangler funksjoner konkurrentene har. Mål før du bestemmer deg. Om det holder å pusse opp den du har, står i [ny nettside eller pusse opp?](/vanlige-sporsmal/ny-nettside-eller-pusse-opp).",
   faq: [

@@ -5,7 +5,7 @@ export default {
   description: "Vanlige feil på nettsider, målt på 4 566 norske småbedriftssider: 90 % viser ingen priser og 78 % ingen kundeomtaler. Her er hva det koster deg.",
   publishDate: "2026-11-12",
   keywords: ["vanlige feil på nettsider", "dårlig nettside", "forbedre nettside"],
-  hero: "",
+  hero: "/blogg/vanlige-feil-pa-nettsider.webp",
   svar: "Den vanligste feilen er at forsiden ikke svarer på det kunden lurer på før de tar kontakt. Av 4 566 norske småbedriftssider jeg målte, viste 90 % ingen priser, 78 % ingen kundeomtaler og 85 % ingen svar på vanlige spørsmål. Alle tre kan rettes uten å bygge siden på nytt.",
   faq: [
     { q: "Bør jeg vise priser på nettsiden?", a: "Ja, i det minste et prisnivå eller en fra-pris. Ni av ti småbedriftssider jeg målte viste ingen priser på forsiden, så du skiller deg ut bare ved å gjøre det." },

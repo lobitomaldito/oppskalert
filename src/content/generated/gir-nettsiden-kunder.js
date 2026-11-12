@@ -5,7 +5,7 @@ export default {
   description: "Slik måler du om nettsiden gir kunder: telefoner, skjema og henvendelser fra Google, med Search Console, Bedriftsprofilen og ett spørsmål til hver ny kunde.",
   publishDate: "2026-11-12",
   keywords: ["måle nettside", "google search console", "gir nettsiden kunder"],
-  hero: "",
+  hero: "/blogg/gir-nettsiden-kunder.webp",
   svar: "Du ser om nettsiden gir kunder ved å telle handlingene som kan bli til salg: utfylte skjema, trykk på telefonnummeret og samtaler der kunden sier hvor de fant deg. Search Console viser hvilke søk som sender folk til siden, Google Bedriftsprofil viser trykk på ringeknappen, og et merket skjema i Analytics viser hvor mange som tar kontakt.",
   faq: [
     { q: "Er Google Search Console gratis?", a: "Ja. Search Console er Googles egen tjeneste, og den viser klikk, visninger, klikkrate og gjennomsnittlig plassering for siden din i Google-søk." },

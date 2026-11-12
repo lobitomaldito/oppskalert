@@ -5,7 +5,7 @@ export default {
   description: "SEO for småbedrifter med lite tid: hva du bør gjøre først, hva du klarer selv og hva du trygt kan droppe. En prioritert liste du kan starte på i dag.",
   publishDate: "2026-11-12",
   keywords: ["seo for småbedrifter", "seo for små bedrifter", "gjøre seo selv"],
-  hero: "",
+  hero: "/blogg/seo-for-smabedrifter.webp",
   svar: "Med lite tid gir tre grep mest: en fullstendig Google-bedriftsprofil med omtaler, én egen side per tjeneste skrevet med ordene kundene bruker, og en kontroll i Search Console av at Google faktisk har sidene dine. Alle tre kan du gjøre selv, gratis. Meta keywords, kjøpte lenker og innsending til tusenvis av søkemotorer kan du droppe.",
   faq: [
     { q: "Kan jeg gjøre SEO selv?", a: "Ja, det meste av grunnarbeidet: Google-bedriftsprofilen, omtalene og tekstene på tjenestesidene. Det tekniske, som sider som mangler i Google, treg mobilvisning og videresendinger ved flytting, er der det oftest lønner seg å få hjelp." },

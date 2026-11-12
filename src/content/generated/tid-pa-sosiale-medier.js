@@ -5,7 +5,7 @@ export default {
   description: "Hvor mye tid på sosiale medier bør en liten bedrift bruke? Slik regner du ut timene, setter et tak, og kutter tiden med planlegging og gjenbruk av innhold.",
   publishDate: "2026-11-12",
   keywords: ["tid på sosiale medier bedrift", "planlegge innlegg sosiale medier", "sosiale medier småbedrift"],
-  hero: "",
+  hero: "/blogg/tid-pa-sosiale-medier.webp",
   svar: "For de fleste små bedrifter holder én fast økt i uka, der du lager og planlegger alle innleggene på en gang, pluss noen minutter om dagen til å svare på meldinger. Tiden avhenger av hvor mange innlegg og kanaler du velger, så regn ut ditt eget tall: minutter per innlegg ganger antall innlegg. Planlegging i Meta Business Suite og gjenbruk av innhold fra nettsiden kutter mest.",
   faq: [
     { q: "Hvor ofte bør en liten bedrift poste i sosiale medier?", a: "Så ofte du klarer å holde det jevnt over tid. Et fast tempo du holder i et år er bedre enn mange innlegg i to uker og så stillhet." },

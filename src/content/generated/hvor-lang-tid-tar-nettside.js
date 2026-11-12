@@ -5,7 +5,7 @@ export default {
   description: "Hvor lang tid tar det å lage en nettside? Utkastet mitt er klart på 48 timer, lansering en til to uker etter. Her er det som styrer tiden, og hva du kan gjøre.",
   publishDate: "2026-11-12",
   keywords: ["hvor lang tid tar det å lage en nettside", "hvor lang tid tar en nettside", "lage nettside tid"],
-  hero: "",
+  hero: "/blogg/hvor-lang-tid-tar-nettside.webp",
   svar: "Hos meg er et gratis utkast som regel klart på 48 timer, og fra du godkjenner det til siden er live går det vanligvis en til to uker. Tempoet avgjøres mest av hvor raskt tekst, bilder, tilganger og svar på spørsmål kommer på plass.",
   faq: [
     { q: "Hva kan jeg gjøre for at nettsiden blir ferdig raskere?", a: "Samle tilbakemeldingene i én liste fra én person, ha innlogging til domenet klar, og svar på spørsmål samme uke. Det er de tre tingene som oftest forsinker et prosjekt." },

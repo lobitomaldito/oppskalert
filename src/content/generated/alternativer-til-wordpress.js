@@ -5,7 +5,7 @@ export default {
   description: "Alternativ til WordPress for småbedrifter: når WordPress er riktig valg, når en håndkodet side med redigeringspanel passer bedre, og fem spørsmål som avgjør.",
   publishDate: "2026-11-12",
   keywords: ["alternativ til wordpress", "wordpress alternativ", "nettside uten wordpress"],
-  hero: "",
+  hero: "/blogg/alternativer-til-wordpress.webp",
   svar: "WordPress passer når du publiserer ofte, er flere som skriver, eller trenger utvidelser som medlemsområde og kurs. Har du en tjenestebedrift med noen få sider og endrer mest tekst, bilder og priser, er en håndkodet side med redigeringspanel enklere å eie, fordi det ikke finnes utvidelser som må oppdateres.",
   faq: [
     { q: "Er WordPress dårlig for SEO?", a: "Nei. Googles startguide for SEO peker ikke ut noen plattform som gir bedre plassering. En WordPress-side kan rangere godt, så lenge innholdet er godt og siden laster raskt." },

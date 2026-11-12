@@ -5,7 +5,7 @@ export default {
   description: "Kommer ikke nettsiden opp på Google? Slik finner, leser og lagrer Google sider, og slik sjekker du i Search Console hva som holder din side ute.",
   publishDate: "2026-11-12",
   keywords: ["synlig på google", "komme opp på google", "nettside vises ikke på google"],
-  hero: "",
+  hero: "/blogg/synlig-i-google.webp",
   svar: "Før en side kan vises på Google, må Google finne den, lese den og lagre den i indeksen sin. Opprett en gratis konto i Search Console, slå opp adressen i URL-inspeksjonen og be om indeksering hvis den mangler. Det kan ta fra dager til uker, og Google garanterer aldri at en side blir tatt med.",
   faq: [
     { q: "Hvor lang tid tar det før en ny nettside kommer på Google?", a: "Google skriver at gjennomsøkingen kan ta fra dager til uker, og at indeksering aldri er garantert. Å be om indeksering av samme adresse flere ganger gjør det ikke raskere." },

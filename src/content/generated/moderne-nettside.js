@@ -5,7 +5,7 @@ export default {
   description: "En moderne nettside i 2026 må fungere på mobil, laste raskt, følge kravene til universell utforming, spørre om samtykke og vise kontaktinfo tydelig.",
   publishDate: "2026-11-12",
   keywords: ["moderne nettside", "krav til nettside 2026", "moderne hjemmeside bedrift"],
-  hero: "",
+  hero: "/blogg/moderne-nettside.webp",
   svar: "En moderne bedriftsnettside må fungere på mobil, fordi det er mobilversjonen Google leser, og laste raskt nok til å bestå Googles Core Web Vitals. Den må følge minst 35 krav i WCAG 2.0, som gjelder private virksomheter uansett størrelse, spørre om samtykke før sporing, og vise telefon og e-post på hver side.",
   faq: [
     { q: "Må små bedrifter følge kravene til universell utforming?", a: "Ja. Uutilsynet skriver at reglene gjelder uansett hvor mange ansatte virksomheten har, hva den omsetter for og hvilken organisasjonsform den har. Private virksomheter skal minst følge 35 suksesskriterier i WCAG 2.0." },

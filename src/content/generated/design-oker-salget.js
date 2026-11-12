@@ -5,7 +5,7 @@ export default {
   description: "Fem designgrep som gir flere henvendelser fra trafikken du alt har: tydelig hierarki, kontrast, knappetekst, luft og bilder av ekte folk. Med kildene bak.",
   publishDate: "2026-11-12",
   keywords: ["design øke salg", "øke salget med design", "flere henvendelser nettside"],
-  hero: "",
+  hero: "/blogg/design-oker-salget.webp",
   svar: "Design øker salget når det gjør det lettere for besøkende å forstå tilbudet og ta neste steg. Fem grep gir mest for pengene: ett tydelig hovedbudskap per side, kontrast bare der det viktigste står, knapper som sier hva som skjer, luft rundt det som betyr noe, og bilder av deg og de ansatte i stedet for bildebankbilder.",
   faq: [
     { q: "Må jeg ha ny nettside for å få flere henvendelser?", a: "Ikke nødvendigvis. Knappetekst, kontrast og bilder kan ofte endres på siden du har. Er strukturen uklar og alt like viktig, er det som regel enklere å tegne siden på nytt." },

@@ -5,7 +5,7 @@ export default {
   description: "Treg nettside? De vanligste årsakene er store bilder, skript fra andre, tunge utvidelser og en treg server. Slik måler du gratis og finner hva som bremser.",
   publishDate: "2026-11-12",
   keywords: ["treg nettside", "nettsiden laster tregt", "hvorfor er nettsiden treg"],
-  hero: "",
+  hero: "/blogg/treg-nettside.webp",
   svar: "En treg nettside skyldes som regel store bilder, skript fra andre tjenester, tunge utvidelser i publiseringsverktøyet eller en server som svarer sent. Mål siden gratis i PageSpeed Insights, start med bildene og skriptene, og se om tallene for mobil blir bedre.",
   faq: [
     { q: "Hvorfor er nettsiden rask på PC, men treg på mobil?", a: "PageSpeed Insights tester mobilversjonen med en mellomklassetelefon på et tregt mobilnett. Store bilder og mange skript merkes mye mer der enn på en PC med fast linje." },

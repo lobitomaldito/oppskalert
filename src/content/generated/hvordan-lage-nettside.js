@@ -17,7 +17,7 @@ export default {
   description: "Slik lager du nettside i fem steg: domene, mål, tekst, bygging og måling. Pluss timene det tar selv, og når det lønner seg å sette det bort.",
   publishDate: "2026-08-13",
   keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
-  hero: "",
+  hero: "/blogg/hvordan-lage-nettside.webp",
   updatedDate: "2026-11-12",
   svar: "Slik lager man en nettside: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. Gjør du det selv, går det med 20 til 40 timer. Setter du det bort til meg, tar det 1 til 2 uker fra du sier ja.",
   faq: [

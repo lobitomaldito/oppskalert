@@ -5,7 +5,7 @@ export default {
   description: "AI i sosiale medier kan skrive utkast, foreslå ideer og lage bilder. Her er hvor det bommer, og hva Meta krever av merking når innholdet er laget med AI.",
   publishDate: "2026-11-12",
   keywords: ["ai i sosiale medier", "merking av ai-innhold", "ai innhold facebook instagram"],
-  hero: "",
+  hero: "/blogg/ai-i-sosiale-medier.webp",
   svar: "AI kan skrive utkast til innlegg, foreslå ideer og lage eller redigere bilder på sekunder, men det finner også på priser og fakta som ikke stemmer, så alt må leses før det publiseres. Meta krever at du bruker merkeverktøyet når du legger ut realistisk video eller lyd som er laget eller endret med AI, og setter selv merket «AI info» på innhold de gjenkjenner som AI-laget.",
   faq: [
     { q: "Må jeg merke AI-bilder på Instagram og Facebook?", a: "Meta krever at du bruker merkeverktøyet når du legger ut realistisk video eller realistisk lyd som er laget eller endret digitalt, og kan straffe dem som lar være. Bilder får merket «AI info» når Meta gjenkjenner tekniske spor etter AI-verktøy, eller når du merker dem selv." },

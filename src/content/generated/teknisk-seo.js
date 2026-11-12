@@ -5,7 +5,7 @@ export default {
   description: "Teknisk SEO forklart som en sjekkliste: indeksering, Core Web Vitals, mobil, HTTPS, videresendinger, sitemap, robots.txt og strukturerte data.",
   publishDate: "2026-11-12",
   keywords: ["teknisk seo", "teknisk seo sjekkliste"],
-  hero: "",
+  hero: "/blogg/teknisk-seo.webp",
   svar: "Teknisk SEO er det som avgjør om Google kan finne, lese og lagre sidene dine, og hvor raskt de vises. De viktigste punktene er indeksering, fart målt med Core Web Vitals, mobilvisning, HTTPS, videresendinger, sitemap og robots.txt. Med Search Console og PageSpeed Insights, begge gratis fra Google, finner du de fleste feilene selv.",
   faq: [
     { q: "Hva er forskjellen på teknisk SEO og annen SEO?", a: "Teknisk SEO handler om at Google kan finne, lese og lagre sidene, og at de laster raskt. Resten av SEO handler om hva tekstene sier og hvilke søk de svarer på." },

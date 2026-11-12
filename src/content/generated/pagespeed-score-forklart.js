@@ -5,7 +5,7 @@ export default {
   description: "PageSpeed Insights forklart for bedriftseiere: hva LCP, INP og CLS måler, grenseverdiene Google bruker, forskjellen på feltdata og labdata, og hva du gjør nå.",
   publishDate: "2026-11-12",
   keywords: ["pagespeed insights", "pagespeed score", "core web vitals"],
-  hero: "",
+  hero: "/blogg/pagespeed-score-forklart.webp",
   svar: "PageSpeed Insights viser to ting: målinger fra ekte Chrome-brukere de siste 28 dagene, og en poengsum fra en simulert test. Det som teller mest, er de tre målingene fra ekte brukere: LCP bør være 2,5 sekunder eller mindre, INP 200 millisekunder eller mindre, og CLS 0,1 eller mindre. Poengsummen fra 0 til 100 er nyttig for feilsøking.",
   faq: [
     { q: "Hvorfor får jeg ulik PageSpeed-score hver gang jeg tester?", a: "Poengsummen kommer fra en simulert test, og den påvirkes av forhold som nettverk, annonser og A/B-tester på siden, enheten du tester fra og utvidelser i nettleseren. Små utslag fra gang til gang er normalt." },

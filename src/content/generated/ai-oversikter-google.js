@@ -5,7 +5,7 @@ export default {
   description: "Googles AI-oversikter vises nå i Norge og på norsk. Her er hva de er, hva de gjør med klikkene til nettsiden din, og hvordan en side blir brukt som kilde.",
   publishDate: "2026-11-12",
   keywords: ["ai-oversikt google", "ai overviews", "ai-modus google"],
-  hero: "",
+  hero: "/blogg/ai-oversikter-google.webp",
   svar: "En AI-oversikt er et KI-skrevet sammendrag øverst i Google-søket, med lenker til sidene svaret bygger på. De vises i Norge og på norsk. For å bli brukt som kilde må siden være indeksert og kunne vises med tekstutdrag i vanlig søk, og Google sier at det ikke trengs egne filer eller egen merking.",
   faq: [
     { q: "Kan man slå av AI-oversikter i Google?", a: "Nei. Google sier at funksjonen ikke kan slås av, men brukeren kan velge filteret «Nett» etter et søk for å få bare tekstlenker." },

@@ -5,7 +5,7 @@ export default {
   description: "Reklame i ChatGPT er kommet til Norge. Her er hvem som ser annonsene, hvordan de vises, hva annonsøren får vite, og hva det betyr for en liten bedrift i dag.",
   publishDate: "2026-11-12",
   keywords: ["reklame i chatgpt", "annonser i chatgpt", "chatgpt ads norge"],
-  hero: "",
+  hero: "/blogg/reklame-i-chatgpt.webp",
   svar: "Ja, ChatGPT viser reklame i Norge. OpenAI utvidet annonsene til 31 europeiske land, Norge inkludert, i august 2026, og norske bedrifter kan nå kjøpe annonser selv i Ads Manager. Annonsene vises bare for brukere på gratisplanen og Go, under svaret og tydelig merket, og OpenAI sier at de ikke påvirker hva ChatGPT svarer.",
   faq: [
     { q: "Hvem ser reklame i ChatGPT?", a: "Brukere på Free og Go kan få annonser. Plus, Pro, Business, Enterprise og Edu har ikke annonser, og OpenAI viser ikke annonser til kontoer som er identifisert som under 18 år." },
