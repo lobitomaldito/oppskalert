@@ -32,6 +32,7 @@ export const ruter = {
   nyNettside: '/ny-nettside',
   nettbutikk: '/lage-nettbutikk',
   personvern: '/personvern',
+  nettsidesjekk: '/gratis-nettsidesjekk',
 };
 
 export const navLenker = [

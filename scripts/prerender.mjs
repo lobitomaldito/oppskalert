@@ -49,7 +49,7 @@ const ROUTES = [
   '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
   ...bransjer.map((b) => RUTE_BRANSJE(b.slug)),
   ...caser.map((c) => `/arbeid/${c.slug}`),
-  '/blogg', '/personvern',
+  '/blogg', '/personvern', '/gratis-nettsidesjekk',
   ...articles.map((a) => `/blogg/${a.slug}`),
   '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',
   '/admin/dashboard',

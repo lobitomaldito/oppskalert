@@ -21,7 +21,7 @@ const STATIC_PATHS = [
   ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
   '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
-  '/metode', '/om', '/kontakt', '/blogg', '/personvern',
+  '/metode', '/om', '/kontakt', '/blogg', '/personvern', '/gratis-nettsidesjekk',
   ...bransjer.map((b) => RUTE_BRANSJE(b.slug)),
   ...caser.map((c) => `/arbeid/${c.slug}`),
 ];
