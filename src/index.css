@@ -472,6 +472,12 @@
     max-width: 17ch; margin-top: 1.25rem; text-wrap: balance;
   }
   .sidetopp p { margin-top: 1.25rem; max-width: 52ch; color: var(--blekk-mykt); }
+  /* Seksjonen rett under toppen la sin egen --luft oppå toppens bunnluft,
+     og ga 158 til 243 px tomrom på /priser, /metode, /om og /kontakt ved
+     1440 (målt 12.11.2026, Aleksander: «for mye luft»). Nå står toppens
+     bunnluft alene, som på sidene som allerede brukte pt-0. */
+  .sidetopp:not(.casehode) + .seksjon,
+  .sidetopp:not(.casehode) + .hvit > .seksjon:first-child { padding-top: 0; }
 
   /* ----------------------------------------------------------------
      Introduksjon og nummererte lister
@@ -1160,10 +1166,62 @@
   /* ----------------------------------------------------------------
      Portrett og signatur
      ---------------------------------------------------------------- */
-  .portrettrad { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); align-items: center; }
+  /* Toppstilt fra 12.11.2026: midtstilt la teksten langt ned ved siden av
+     portrettet, og det så ut som luft under sidetoppen. */
+  .portrettrad { display: grid; gap: clamp(1.75rem, 4vw, 3.5rem); align-items: start; }
   @media (min-width: 52rem) { .portrettrad { grid-template-columns: minmax(0, 17rem) minmax(0, 1fr) } }
   .portrett { border-radius: var(--rund); overflow: hidden; background: var(--felt-dyp); aspect-ratio: 1; }
   .portrett img { width: 100%; height: 100%; object-fit: cover; }
+  /* Om meg (12.11.2026): én stor setning ved portrettet, resten i tre kort
+     under. Kortene bruker .tjeneste fra forsiden, uten løftet ved hover,
+     siden de ikke kan trykkes. */
+  .om-ingress {
+    font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem); line-height: 1.12; letter-spacing: var(--display-sperre);
+    max-width: 22ch;
+  }
+  .om-kort { list-style: none; padding: 0; margin: clamp(2rem, 4vw, 3rem) 0 0; }
+  .om-kort .tjeneste:hover, .statisk-kort .tjeneste:hover { transform: none; border-color: transparent; }
+  .statisk-kort { list-style: none; padding: 0; margin: 0; }
+  /* Fire kort står to og to, også på bred skjerm: tre kolonner ga ett kort alene. */
+  @media (min-width: 64rem) { .tjenester.statisk-kort { grid-template-columns: repeat(2, 1fr); } }
+  .om-kort .tjeneste h3, .statisk-kort .tjeneste h3 { font-weight: var(--display-vekt); font-size: clamp(1.25rem, 1.8vw, 1.5rem); letter-spacing: var(--display-sperre); }
+  /* SEO-siden (12.11.2026): pris og knapp i et kort i toppen, ved siden
+     av overskriften fra 56rem, rett under den på mobil. */
+  .seo-topp { display: grid; gap: clamp(1.75rem, 4vw, 4rem); align-items: start; }
+  @media (min-width: 56rem) { .seo-topp { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); } }
+  .seo-priskort {
+    padding: clamp(1.5rem, 3vw, 2.25rem); border-radius: var(--rund-stor);
+    background: var(--blekk); color: var(--kritt);
+  }
+  .sidetopp .seo-priskort p { margin-top: 0; max-width: none; color: inherit; }
+  .sidetopp .seo-priskort p.seo-priskort-navn { font-size: .875rem; color: var(--kritt-mykt); }
+  .seo-priskort-pris {
+    margin-top: .25rem; font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1; letter-spacing: var(--display-sperre-stor);
+  }
+  .sidetopp .seo-priskort-pris { color: var(--kritt); max-width: none; }
+  .seo-priskort-fra, .seo-priskort-enhet { font-size: 1rem; letter-spacing: 0; color: var(--kritt-mykt); }
+  .sidetopp .seo-priskort p.seo-priskort-vilkar { margin-top: .625rem; color: var(--kritt-mykt); font-size: .875rem; }
+  .seo-priskort ul { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: .625rem; }
+  .seo-priskort li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .625rem; font-size: .9375rem; line-height: 1.45; }
+  .seo-priskort li .ikon { margin-top: .2rem; color: var(--prikk-lys); }
+  .seo-priskort .seo-priskort-knapp {
+    margin-top: 1.5rem; width: 100%; justify-content: center;
+    background: var(--kritt); color: var(--blekk); border-color: var(--kritt);
+  }
+  .sidetopp .seo-priskort p.seo-priskort-smaa { margin-top: .875rem; text-align: center; font-size: .875rem; color: var(--kritt-mykt); }
+  .seo-priskort-smaa a { color: var(--kritt); text-decoration: underline; text-underline-offset: 3px; }
+  .seo-priskort :focus-visible { outline-color: var(--kritt); }
+  .leie-kort {
+    margin-top: 1.5rem; max-width: 52rem; padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    background: var(--kort); border-radius: var(--rund);
+  }
+  .leie-kort p { color: var(--blekk-mykt); font-size: .9375rem; line-height: 1.6; }
+  .leie-kort .leie-kort-tittel {
+    margin-bottom: .375rem; color: var(--blekk);
+    font-family: var(--displayfont); font-weight: var(--display-vekt); font-size: 1.25rem; letter-spacing: var(--display-sperre);
+  }
   .portrett-rund { border-radius: 50%; width: clamp(4.5rem, 9vw, 6rem); flex: none; }
   .signatur { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
   .signatur .navn { font-size: .9375rem; }
@@ -1273,6 +1331,81 @@
     line-height: .8; letter-spacing: -.055em;
     color: var(--kritt);
     margin-bottom: -.17em;
+  }
+
+  /* ----------------------------------------------------------------
+     Bransjesider (/nettside-for-<bransje>, 12.11.2026). Foto i toppen og
+     i den delte seksjonen, hvite flater veksler med feltet, og brødteksten
+     står i blekk-mykt (6,9:1 mot hvitt) i stedet for 70 % gjennomsiktig
+     blekk, som ble for blek på første versjon. --felt er hvit nå (DESIGN.md
+     sier periwinkle, men tokenene er byttet), så seksjonene skilles med ett
+     mørkt bånd (blekk) og ett grått (--kort).
+     ---------------------------------------------------------------- */
+  .bransje-topp { padding-block: clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 4.5rem); }
+  .bransje-topp-inn { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+  @media (min-width: 56rem) { .bransje-topp-inn { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); } }
+  .bransje-topp h1 {
+    margin-top: 1.25rem; max-width: 16ch;
+    font-weight: var(--display-vekt); font-size: clamp(2.125rem, 5.2vw, 3.75rem);
+    line-height: 1.02; letter-spacing: var(--display-sperre-stor); text-wrap: balance;
+  }
+  .bransje-topp h1 span { color: var(--blekk-mykt); }
+  .bransje-lede { margin-top: 1.5rem; max-width: 52ch; font-size: clamp(1rem, .4vw + .9rem, 1.125rem); line-height: 1.6; color: var(--blekk); }
+  .bransje-handling { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+  .bransje-bilde { margin: 0; border-radius: var(--rund-stor); overflow: hidden; background: var(--felt-dyp); aspect-ratio: 4 / 3; }
+  .bransje-bilde img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (min-width: 56rem) { .bransje-bilde-topp { aspect-ratio: 4 / 5; } }
+
+  .bransje-kort { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; counter-reset: none; }
+  @media (min-width: 60rem) { .bransje-kort { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .bransje-mork { background: var(--blekk); color: var(--kritt); }
+  .bransje-mork .seksjonstopp h2 { color: var(--kritt); }
+  .bransje-gra { background: var(--kort); }
+  .bransje-kort li {
+    background: var(--blekk-flate); border: 1px solid var(--blekk-kant); border-radius: var(--rund);
+    padding: clamp(1.5rem, 2.5vw, 2rem); display: grid; gap: .9rem; align-content: start;
+  }
+  .bransje-nr { font-size: .8125rem; color: var(--prikk-lys); }
+  .bransje-kort h3 {
+    font-weight: var(--display-vekt); font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    line-height: 1.15; letter-spacing: var(--display-sperre); text-wrap: balance;
+  }
+  .bransje-kort h3 { color: var(--kritt); }
+  .bransje-kort p { color: var(--kritt-mykt); line-height: 1.6; font-size: .9688rem; }
+
+  .bransje-delt { display: grid; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  @media (min-width: 56rem) { .bransje-delt { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } }
+  .bransje-liste h2 {
+    margin-top: .9rem; font-weight: var(--display-vekt); font-size: clamp(1.5rem, 3.2vw, 2.375rem);
+    line-height: 1.12; letter-spacing: var(--display-sperre);
+  }
+  .bransje-ingress { margin-top: 1rem; color: var(--blekk-mykt); max-width: 48ch; }
+  .bransje-liste ul {
+    list-style: none; padding: .5rem 1.5rem; margin: 1.75rem 0 0;
+    background: var(--hvit); border-radius: var(--rund);
+  }
+  .bransje-liste li {
+    display: flex; gap: .75rem; align-items: flex-start; padding: .85rem 0;
+    color: var(--blekk); line-height: 1.45; font-size: .9688rem;
+  }
+  .bransje-liste li + li { border-top: 1px solid var(--felt-kant); }
+  .bransje-liste li .ikon { margin-top: .2rem; color: var(--prikk); }
+  .bransje-lenke { text-decoration: underline; text-underline-offset: 4px; color: var(--blekk); }
+
+  .bransje-caser { list-style: none; padding: 0; margin: 0; display: grid; gap: clamp(1.5rem, 3vw, 2rem); }
+  @media (min-width: 40rem) { .bransje-caser { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .bransje-caser { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .bransje-case { display: grid; gap: .6rem; }
+  .bransje-case .ramme { display: block; aspect-ratio: 4 / 3; }
+  .bransje-case .ramme img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .bransje-case:hover .ramme { transform: translateY(-4px); }
+  .bransje-case-navn { margin-top: .4rem; font-size: .8125rem; color: var(--blekk-mykt); }
+  .bransje-case-tittel { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; color: var(--blekk); line-height: 1.35; }
+  .bransje-case:hover .pil { transform: translateX(.2rem); }
+  .bransje-case .pil { transition: transform .3s var(--e); flex: none; }
+  .bransje-eksempel { margin-top: 2rem; }
+  @media (prefers-reduced-motion: reduce) {
+    .bransje-case:hover .ramme, .bransje-case:hover .pil { transform: none; }
   }
 }
 

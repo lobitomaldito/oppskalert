@@ -4,7 +4,9 @@ import { ArrowRight, Check, ChevronDown } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp } from './Layout';
 import { cn } from '../lib/utils';
-import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
+import { alltidMed, driftNivaer, prisNotat, prismodeller, ruter } from '../lib/site';
+
+const seoPris = driftNivaer.find((n) => n.id === 'seo')?.fra;
 import { track } from '../lib/analytics';
 
 /* Alle tre kortene er hvite på feltet. Driftskortet var tidligere tonet mot
@@ -200,7 +202,21 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
           </>
         )}
         {!visAlltidMed && (
-          <p data-reveal className="font-body text-sm text-room-ink/70 mt-10 max-w-[52rem]">{prisNotat}</p>
+          <>
+            {/* SEO per måned sto bare på /priser, langt nede (Aleksander
+                12.11.2026). Prisen leses fra driftNivaer, ikke skrevet her. */}
+            <p data-reveal className="font-body text-sm text-room-ink mt-4 max-w-[52rem]">
+              Vil du bli funnet på flere søk, måned for måned?{' '}
+              <Link
+                to={ruter.seo}
+                onClick={() => track('seo_lenke_fra_priser', { side: window.location.pathname })}
+                className="font-bold underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                SEO fra {seoPris} kr/mnd
+              </Link>
+            </p>
+            <p data-reveal className="font-body text-sm text-room-ink/70 mt-10 max-w-[52rem]">{prisNotat}</p>
+          </>
         )}
 
         {visAlltidMed ? (

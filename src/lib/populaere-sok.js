@@ -109,7 +109,32 @@ export const populaereSok = [
         a: 'Sett opp Google Search Console og Google Bedriftsprofil. Begge er gratis, tar under en time til sammen, og Search Console er det eneste stedet du ser hva folk faktisk søkte på før de klikket. Skriv deretter én side per tjeneste du selger, med tjenesten og stedet i overskriften. De to grepene alene flytter de fleste småbedrifter forbi konkurrenter som aldri har rørt temaet.',
       },
     ],
-    relatert: ['synlig-i-chatgpt-og-ai-sok', 'google-bedriftsprofil'],
+    relatert: ['hva-koster-seo', 'synlig-i-chatgpt-og-ai-sok'],
+    til: { tekst: 'Søkemotoroptimalisering for bedrifter', rute: '/sokemotoroptimalisering' },
+  },
+  {
+    // «hva koster seo» 90/mnd KD 0 + «seo pris» 70/mnd KD 0 (OpenSEO 11.11.2026).
+    // Ingen av de fem øverste på «søkemotoroptimalisering» oppgir et kronebeløp.
+    slug: 'hva-koster-seo',
+    q: 'Hva koster SEO?',
+    tittel: 'Hva koster SEO? Fast pris fra 2 990 kr/mnd',
+    beskrivelse: 'SEO hos meg koster fra 2 990 kr i måneden uten binding: rapport, AI-sjekk, én ny side og retting hver måned. Her er hva prisene i markedet består av.',
+    a: 'SEO hos meg koster fra 2 990 kr i måneden eks. mva, uten binding. Da får du en månedlig rapport over hva folk søker på, en sjekk av om ChatGPT og Google AI nevner deg, én ny side eller artikkel, og retting av det rapporten finner. Trenger du bare én opprydding på en side du har, får du en fast pris etter at jeg har sett siden.',
+    utdyping: [
+      {
+        t: 'Hvorfor prisene spriker så mye',
+        a: 'Søker du på SEO-pris, finner du alt fra 5 000 til 200 000 kroner i måneden. Forskjellen ligger i hvor mange søkeord og sider som jobbes med, og om det skrives nytt innhold hver måned. For en liten bedrift med ett kontor og noen få tjenester er det sjelden mer enn en håndfull sider som avgjør om du blir funnet.',
+      },
+      {
+        t: 'Det du får for pengene, målt',
+        a: 'Før jeg begynner, måler jeg hvor du står i dag: plassen i Google på søkene som betyr noe for deg, kartet fra tre punkter rundt kontoret, og om AI-assistentene nevner deg. Samme måling gjøres etter 4 og 12 uker, så du ser hva arbeidet ga.',
+      },
+      {
+        t: 'Når SEO ikke lønner seg',
+        a: 'Får du alle kundene gjennom anbefalinger og har venteliste, gir SEO lite. Det samme gjelder bransjer der kundene kommer gjennom en mellommann, som takstmenn som får oppdragene fra meglere. Da gir det mer å bruke pengene på en side som gjør et godt inntrykk når folk googler navnet ditt.',
+      },
+    ],
+    relatert: ['hva-er-sokemotoroptimalisering', 'synlig-i-chatgpt-og-ai-sok'],
     til: { tekst: 'Søkemotoroptimalisering for bedrifter', rute: '/sokemotoroptimalisering' },
   },
   {

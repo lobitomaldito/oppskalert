@@ -6,9 +6,27 @@ import { ArbeidSeksjon } from '../components/Arbeider';
 import { ruter } from '../lib/site';
 import { tjenester } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
-import { PilOpp } from '../components/Ikon';
+import { Oye, Penn, PilOpp, Telefon } from '../components/Ikon';
 
 const PORTRETT = '/founders/aleksander.webp';
+
+const OM_KORT = [
+  {
+    Ikon: Telefon,
+    tittel: 'Ingen mellomledd',
+    tekst: 'Ingen prosjektkoordinatorer, ingen som skal videreformidle hva du sa i forrige møte. Ringer du klokka ni på en tirsdag, er det jeg som tar den.',
+  },
+  {
+    Ikon: Penn,
+    tittel: 'Jeg gjør alt selv',
+    tekst: 'Jeg tegner, koder, skriver tekstene og setter opp serveren selv. Det gjør at jeg kan si ja til små jobber uten at det blir dyrt.',
+  },
+  {
+    Ikon: Oye,
+    tittel: 'Utkastet først',
+    tekst: 'Det jeg liker best er å ta en side som ikke gjør noe, og gjøre den om til noe som faktisk ringer telefonen. Det er derfor jeg bygger utkastet først. Jeg vil heller vise deg forskjellen enn å forklare den.',
+  },
+];
 
 const OmPage = () => {
   const toppRef = useReveal(80);
@@ -36,24 +54,10 @@ const OmPage = () => {
               <img src={PORTRETT} alt="Aleksander MacKee" width="640" height="640" loading="lazy" />
             </div>
             <div>
-              <div className="intro-brod" style={{ marginTop: 0 }}>
-                <p>
-                  Jeg heter Aleksander MacKee og driver Oppskalert fra Oslo. Det er ingen
-                  andre her. Ingen mellomledd, ingen prosjektkoordinatorer, ingen som skal
-                  videreformidle hva du sa i forrige møte.
-                </p>
-                <p>
-                  Jeg tegner, koder, skriver tekstene og setter opp serveren selv. Det gjør
-                  at jeg kan si ja til små jobber uten at det blir dyrt, og at du snakker
-                  med den som faktisk gjør arbeidet. Ringer du klokka ni på en tirsdag,
-                  er det jeg som tar den.
-                </p>
-                <p>
-                  Det jeg liker best er å ta en side som ikke gjør noe, og gjøre den om til
-                  noe som faktisk ringer telefonen. Det er derfor jeg bygger utkastet først.
-                  Jeg vil heller vise deg forskjellen enn å forklare den.
-                </p>
-              </div>
+              <p className="om-ingress">
+                Jeg heter Aleksander MacKee og driver Oppskalert fra Oslo. Det er ingen
+                andre her.
+              </p>
               <div className="signatur">
                 <div className="portrett portrett-rund">
                   <img src={PORTRETT} alt="" width="640" height="640" loading="lazy" />
@@ -65,6 +69,22 @@ const OmPage = () => {
               </div>
             </div>
           </div>
+
+          {/* Teksten sto som tre avsnitt på hvit bunn. Fra 12.11.2026 står de
+              som tre kort (Aleksander: «bare tekst og hvit bakgrunn, jeg vil
+              bruke mer kort»). Ordene er de samme, bare fordelt på kortene. */}
+          <ul data-reveal className="tjenester om-kort inn" style={{ '--d': '80ms' }}>
+            {OM_KORT.map((k) => {
+              const Ikon = k.Ikon;
+              return (
+                <li key={k.tittel} className="tjeneste">
+                  <Ikon className="tjeneste-ikon" />
+                  <h3>{k.tittel}</h3>
+                  <p>{k.tekst}</p>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 

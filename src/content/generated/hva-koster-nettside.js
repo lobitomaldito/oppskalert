@@ -1,12 +1,12 @@
 export default {
   slug: "hva-koster-nettside",
   klynge: "pris",
-  title: "Hva koster en nettside i Norge i 2026? Her er tallene mine",
-  description: "Hva koster en nettside i Norge i 2026? Her er de ekte prisene mine per nivå, fra enkel landingsside til stor struktur, uten et vagt «fra»-tall.",
+  title: "Hva koster en nettside i 2027? Prisene mine",
+  description: "Hva koster en nettside i 2027? Her er de ekte prisene mine per nivå, fra enkel landingsside til stor struktur, uten et vagt «fra»-tall.",
   publishDate: "2026-08-20",
   keywords: ["hva koster en nettside", "pris på nettside", "nettside til bedrift pris"],
   hero: "",
-  updatedDate: "2026-11-11",
+  updatedDate: "2026-11-12",
   svar: "En nettside hos meg koster 6 990 kr for én landingsside, 12 900 kr for alle sidene du har i dag med tekster skrevet for Google, og fra 19 900 kr med booking eller priskalkulator og tre måneder oppfølging av søkene. Alle tall er eks. mva, og du får fast pris skriftlig før jeg begynner.",
   faq: [
     { q: "Er prisene med eller uten mva?", a: "Alle prisene er eks. mva. Du får en fast pris skriftlig før jeg begynner, og den endrer seg ikke underveis." },
@@ -28,6 +28,10 @@ Det som avgjør nivået, er tre ting: om én side holder, om du vil bli funnet n
 ## Engangspris eller leie til eie
 
 Medium kan kjøpes på to måter. Betaler du engangspris, eier du koden og innholdet fra dag én, uten bindingstid. Vil du heller betale 0 kroner i dag, kan du leie til eie: 1 590 kroner i måneden uten binding, med hosting, sikkerhet og vedlikehold inkludert, og siden er din når 12 måneder er betalt. Etter det kan du fortsette med [serviceavtale til 550 kroner i måneden](/drift), eller la være. Hostingen fortsetter uansett.
+
+## Hva koster nettsiden over tre år?
+
+Over tre år koster Medium kjøpt med serviceavtale 32 700 kroner: 12 900 i dag og 550 i måneden i 36 måneder. Leier du til eie, blir det 32 280 kroner: 1 590 i måneden det første året og 550 i måneden de to neste. Enkel koster 6 990 kroner over tre år, fordi hostingen er med og serviceavtalen er frivillig. Sammenligner du tilbud, regn ut totalen for hele perioden. Et abonnement på 600 kroner i måneden blir 21 600 kroner på tre år, og ofte eier du ikke siden når avtalen går ut.
 
 ## Hva andre i bransjen tar, og hvorfor det varierer så mye
 
