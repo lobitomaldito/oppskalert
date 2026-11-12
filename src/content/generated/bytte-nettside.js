@@ -7,7 +7,7 @@ export default {
   keywords: ["ny nettside", "bytte nettside"],
   hero: "",
   updatedDate: "2026-11-11",
-  svar: "Det er tid for ny nettside når to eller flere av disse stemmer: den laster over 2,5 sekunder på mobil, den ser eldre ut enn bransjen, du kan ikke endre tekst selv, færre besøkende tar kontakt enn før, eller den mangler funksjoner konkurrentene har. Mål før du bestemmer deg.",
+  svar: "Det er tid for ny nettside når to eller flere av disse stemmer: den laster over 2,5 sekunder på mobil, den ser eldre ut enn bransjen, du kan ikke endre tekst selv, færre besøkende tar kontakt enn før, eller den mangler funksjoner konkurrentene har. Mål før du bestemmer deg. Om det holder å pusse opp den du har, står i [ny nettside eller pusse opp?](/vanlige-sporsmal/ny-nettside-eller-pusse-opp).",
   faq: [
     { q: "Hvordan måler jeg om nettsiden er for treg?", a: "Skriv adressen inn i Google PageSpeed Insights og se på Largest Contentful Paint for mobil. Ligger tallet over 2,5 sekunder, mister du besøkende før de ser innholdet." },
     { q: "Holder det å oppgradere den gamle siden?", a: "Ofte, hvis problemet er teknisk og avgrenset. Er problemet både treghet, utseende og at du ikke kan oppdatere den selv, er en ny side som regel billigere enn å lappe." },
