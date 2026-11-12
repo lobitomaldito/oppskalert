@@ -5,7 +5,7 @@ export default {
   description: "Slik beholder du plasseringene i Google når du får ny nettside: kartlegg gamle adresser, sett opp 301-videresendinger, test før lansering og følg opp etterpå.",
   publishDate: "2026-11-12",
   keywords: ["beholde seo ny nettside", "flytte nettside", "ny nettside google"],
-  hero: "",
+  hero: "/blogg/ny-nettside-uten-a-miste-google.webp",
   svar: "Du beholder plasseringene i Google ved å gi hver gammel adresse en permanent videresending (301 eller 308) til siden som erstatter den, og la videresendingene stå i minst ett år. Før lansering fjerner du sperrer fra testmiljøet og sender inn et nytt nettstedskart. Etterpå følger du de samme sidene i Search Console i noen uker.",
   faq: [
     { q: "Hvor lenge skal videresendingene stå?", a: "Google anbefaler så lenge som mulig, og vanligvis minst ett år etter flyttingen." },

@@ -5,7 +5,7 @@ export default {
   description: "SEO eller Google-annonser, hva lønner seg egentlig for en liten bedrift? Konkrete tall på klikkpris, tidsbruk og hvilken kanal du bør velge først.",
   publishDate: "2026-08-27",
   keywords: ["google annonser", "seo eller annonser"],
-  hero: "",
+  hero: "/blogg/seo-eller-google-annonser.webp",
   updatedDate: "2026-11-11",
   svar: "Trenger du kunder innen fire uker, start med Google-annonser. Har du seks måneder eller mer og et stramt budsjett, prioriter SEO. De fleste små bedrifter får best resultat av begge: annonser mens SEO bygges opp, og mindre annonsebudsjett etter hvert som de organiske plasseringene kommer.",
   faq: [

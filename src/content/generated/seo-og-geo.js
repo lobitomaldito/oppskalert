@@ -15,7 +15,7 @@ export default {
   description: "SEO gir deg plass i Google-lista. GEO handler om å bli nevnt i svarene fra ChatGPT og Googles AI-oversikter. Slik henger de sammen, og hva du gjør selv.",
   publishDate: "2026-11-12",
   keywords: ["seo og geo", "hva er geo", "generative engine optimization", "forskjell på seo og geo"],
-  hero: "",
+  hero: "/blogg/seo-og-geo.webp",
   svar: "SEO er arbeidet med å komme høyt i lista med lenker Google viser. GEO, generative engine optimization, er arbeidet med å bli nevnt og sitert når ChatGPT, Googles AI-oversikter og lignende svarer. Begge bygger på det samme: en side robotene får lest, som sier tydelig hva du gjør, hvor og for hvem. Google skriver at det ikke finnes egne krav for å vises i AI-oversiktene.",
   faq: [
     { q: "Trenger jeg en egen GEO-avtale i tillegg til SEO?", a: "Nei. Grunnarbeidet er det samme, og AI-sjekken er med i SEO-avtalen min. Det du trenger, er at noen måler begge deler." },

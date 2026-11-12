@@ -43,7 +43,7 @@ export default {
   description: "En responsiv nettside, også kalt mobiltilpasset, tilpasser seg skjermen av seg selv. Slik ser du om din gjør det, med en test på egen telefon som tar ett minutt.",
   publishDate: "2026-08-10",
   keywords: ["responsiv nettside", "mobiltilpasset nettside", "mobilvennlig nettside", "responsiv hjemmeside"],
-  hero: "",
+  hero: "/blogg/responsiv-nettside.webp",
   updatedDate: "2026-11-12",
   svar: "En responsiv nettside endrer oppsettet etter skjermen den vises på. Det finnes én side for både mobil og PC, og teksten kan leses uten å zoome. Lenger ned viser jeg hvordan du sjekker din egen på ett minutt.",
   faq: [

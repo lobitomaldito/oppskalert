@@ -5,7 +5,7 @@ export default {
   description: "Trenger nettsiden et cookie-banner? Slik er reglene i ekomloven § 3-15 fra 2025, hva Consent Mode v2 er, og når en side klarer seg uten banner i det hele tatt.",
   publishDate: "2026-11-12",
   keywords: ["cookie banner", "informasjonskapsler nettside", "samtykke cookies"],
-  hero: "",
+  hero: "/blogg/cookie-banner-nettside.webp",
   svar: "En norsk nettside må ha samtykke før den lagrer eller leser informasjonskapsler og lignende på besøkendes enhet. Det følger av ekomloven § 3-15, som gjelder fra 1. januar 2025. Unntaket er det som er strengt nødvendig for tjenesten den besøkende har bedt om, så en side uten analyseverktøy, annonsepiksler og innebygd innhold fra andre trenger ofte ikke banner.",
   faq: [
     { q: "Trenger jeg cookie-banner hvis jeg bruker Google Analytics?", a: "Ja. Datatilsynet skriver at du i praksis må ha gyldig forhåndssamtykke fra de besøkende for å bruke sporingsverktøy. Verktøyet skal ikke lagre eller lese noe før den besøkende har sagt ja." },

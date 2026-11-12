@@ -5,7 +5,7 @@ export default {
   description: "Hva en grafisk profil består av, hva en liten bedrift faktisk trenger, og hvorfor det samme uttrykket overalt gjør at kundene stoler mer på deg.",
   publishDate: "2026-11-12",
   keywords: ["grafisk profil", "grafisk profil liten bedrift", "hva er en grafisk profil"],
-  hero: "",
+  hero: "/blogg/grafisk-profil.webp",
   svar: "En grafisk profil er reglene for hvordan bedriften ser ut: logo med varianter, et lite sett farger, én eller to skrifter, en bildestil og en tone. For en liten bedrift holder det med noen få sider som sier hvordan hver del brukes, så nettside, Google-profil, visittkort og bil ser ut som samme bedrift.",
   faq: [
     { q: "Hva er forskjellen på logo og grafisk profil?", a: "Logoen er ett element. Den grafiske profilen er reglene for hvordan logoen, fargene, skriftene og bildene brukes sammen, slik at alt ser ut som samme bedrift." },

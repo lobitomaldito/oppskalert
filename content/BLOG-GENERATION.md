@@ -33,8 +33,8 @@ skal måles først. 10.02.2027 slås overlappende innlegg sammen og de på plass
    eller i en eksisterende fil under `src/content/generated/`. Kollisjon → hopp
    til neste `pending`-oppføring.
 3. Skriv artikkelen (se skjema og stemmeregler under).
-4. Generer et hero-bilde med `image-gen`-skillen, 1600×900, lagre som
-   `public/blogg/<slug>.jpg` eller `.webp`.
+4. Generer et hero-bilde med `image-gen`-skillen i stilen fra `content/toppbilder/`
+   (README.md der har kommandoen), 1600×900, lagret som `public/blogg/<slug>.webp`.
 5. Lagre artikkelen som `src/content/generated/<slug>.js`, se skjema under.
 6. Oppdater `content/blog-queue.json`: sett `"status": "published"` og legg
    til `"publishedDate"` (samme dato som `publishDate` i artikkelen) på

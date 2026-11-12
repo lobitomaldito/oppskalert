@@ -5,7 +5,7 @@ export default {
   description: "Hvordan velge CMS til nettsiden? Skriv ned hva du endrer selv i løpet av et år. Den lista avgjør om du trenger WordPress eller et enkelt redigeringspanel.",
   publishDate: "2026-11-12",
   keywords: ["hvordan velge cms", "publiseringsverktøy nettside", "cms for småbedrift"],
-  hero: "",
+  hero: "/blogg/velge-publiseringsverktoy.webp",
   svar: "Velg CMS ut fra hva du faktisk skal endre selv. Bytter du tekst, bilder, priser og åpningstider, holder et enkelt redigeringspanel. Publiserer du ofte, er flere som skriver, eller trenger du utvidelser som medlemsområde og kurs, passer et fullt CMS som WordPress bedre. WordPress og en håndkodet side står side om side i [sammenligningen](/sammenlign/wordpress).",
   faq: [
     { q: "Trenger en liten bedrift et CMS?", a: "Du trenger et sted å endre tekst og bilder selv, ellers må du be leverandøren om hver endring. For de fleste tjenestebedrifter holder et enkelt redigeringspanel. Et fullt CMS lønner seg når du publiserer ofte eller er flere som skriver." },

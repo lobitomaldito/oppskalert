@@ -5,7 +5,7 @@ export default {
   description: "Hva er en AI-agent, og hva kan den gjøre for en småbedrift? Fire konkrete oppgaver, hva et menneske fortsatt må gjøre, og hva du sjekker om personvern først.",
   publishDate: "2026-11-12",
   keywords: ["ai-agenter", "ai for småbedrifter", "hva er en ai-agent"],
-  hero: "",
+  hero: "/blogg/ai-agenter-smabedrift.webp",
   svar: "En AI-agent er en språkmodell som får en oppgave, verktøy den kan bruke og lov til å jobbe i flere steg. For en småbedrift kan den skrive utkast til svar på e-post, sortere henvendelser, oppsummere lange tråder og lage førsteutkast til tekst. Et menneske bør fortsatt lese og godkjenne alt som går til kunder.",
   faq: [
     { q: "Hva er forskjellen på en chatbot og en AI-agent?", a: "En chatbot svarer på ett spørsmål om gangen. En agent får en oppgave, for eksempel å gå gjennom innboksen, og bruker verktøy i flere steg til den er ferdig." },

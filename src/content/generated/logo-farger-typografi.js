@@ -5,7 +5,7 @@ export default {
   description: "Slik virker logo, farger og typografi på nettsiden: kontrastkravene i WCAG, hvor mange skrifter du trenger, og hvorfor skriftene bør ligge på din egen server.",
   publishDate: "2026-11-12",
   keywords: ["typografi nettside", "farger logo", "kontrast nettside"],
-  hero: "",
+  hero: "/blogg/logo-farger-typografi.webp",
   svar: "Logo, farger og skrift avgjør om nettsiden er lett å lese og om den ser ut som din bedrift. Brødtekst skal ha et kontrastforhold på minst 4,5:1 mot bakgrunnen, og stor tekst minst 3:1. Skriftene bør ligge på din egen server, fordi Google Fonts lastet fra Google sender den besøkendes IP-adresse til Google.",
   faq: [
     { q: "Hvor mye kontrast må teksten på en nettside ha?", a: "Etter WCAG-standarden minst 4,5:1 for vanlig tekst og 3:1 for stor tekst, det vil si rundt 24 piksler, eller 18,5 piksler i fet skrift. Tekst som er del av en logo, har ikke noe kontrastkrav." },

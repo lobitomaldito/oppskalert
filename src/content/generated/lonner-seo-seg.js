@@ -15,7 +15,7 @@ export default {
   description: "SEO lønner seg når de nye kundene fra søk betaler mer enn arbeidet koster. Slik regner du det ut for din bedrift, og når SEO ikke er verdt pengene.",
   publishDate: "2026-11-12",
   keywords: ["lønner det seg med seo", "er seo verdt det", "hvorfor seo", "er søkemotoroptimalisering viktig"],
-  hero: "",
+  hero: "/blogg/lonner-seo-seg.webp",
   svar: "SEO lønner seg når kundene som finner deg i Google, er verdt mer enn arbeidet koster. Koster SEO 2 990 kr i måneden og en ny kunde gir deg 3 000 kr i fortjeneste, trenger du én ny kunde i måneden for å gå i null. Det lønner seg sjelden når du allerede har venteliste, eller når ingen søker etter det du selger.",
   faq: [
     { q: "Hvor lang tid tar det før SEO lønner seg?", a: "Regn med måneder, ikke uker. Google skriver at noen endringer virker i løpet av timer og andre tar flere måneder. Søk der siden din allerede vises på plass 8 til 30, flytter seg som regel raskest." },

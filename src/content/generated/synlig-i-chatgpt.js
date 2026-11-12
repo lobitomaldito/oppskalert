@@ -5,7 +5,7 @@ export default {
   description: "Slik blir bedriften synlig i ChatGPT: hvordan søket henter sider, hvilken robot som må slippe inn, hvordan du tester svaret og hva en liten bedrift kan gjøre.",
   publishDate: "2026-11-12",
   keywords: ["synlig i chatgpt", "ai-synlighet", "chatgpt bedrift"],
-  hero: "",
+  hero: "/blogg/synlig-i-chatgpt.webp",
   svar: "ChatGPT finner bedrifter ved å søke på nettet og lese sidene den finner, og oppgir sidene som kilder. For å bli med må nettsiden slippe inn OpenAIs søkerobot, OAI-SearchBot, og si tydelig hva du gjør, hvor og for hvem. Test det ved å stille ChatGPT det spørsmålet en kunde ville stilt, og se hvilke kilder svaret bygger på.",
   faq: [
     { q: "Hva er OAI-SearchBot?", a: "Det er roboten OpenAI bruker for å vise nettsider i ChatGPT-søk. Nettsteder som stenger den ute i robots.txt, vises ikke i søkesvarene til ChatGPT." },

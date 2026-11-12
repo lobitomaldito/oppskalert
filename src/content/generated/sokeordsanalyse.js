@@ -5,7 +5,7 @@ export default {
   description: "Søkeordsanalyse for tjenestebedrifter: slik finner du ordene kundene skriver i Google med gratis verktøy, og velger de søkene som gir henvendelser.",
   publishDate: "2026-11-12",
   keywords: ["søkeordsanalyse", "søkeordsanalyse gratis", "finne søkeord"],
-  hero: "",
+  hero: "/blogg/sokeordsanalyse.webp",
   svar: "En søkeordsanalyse for en tjenestebedrift starter med ordene kundene selv bruker når de ringer og skriver, og sjekkes mot Googles søkeforslag, Search Console, Google Trends og Keyword Planner. Alle fire er gratis. Velg søkene som ligger nærmest en bestilling, og gi hvert av dem sin egen side.",
   faq: [
     { q: "Hvilke gratis verktøy kan jeg bruke til søkeordsanalyse?", a: "Googles søkeforslag, Google Search Console og Google Trends er gratis. Keyword Planner er også gratis, men krever en Google Ads-konto med betalingsinformasjon." },

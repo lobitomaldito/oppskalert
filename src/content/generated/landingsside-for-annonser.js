@@ -5,7 +5,7 @@ export default {
   description: "En landingsside for Google Ads må gjenta det annonsen lovet, be om én handling, bygge tillit og måle hva som skjer. Slik setter du den opp for småbedrifter.",
   publishDate: "2026-11-12",
   keywords: ["landingsside", "landingsside google ads", "landingsside for annonser"],
-  hero: "",
+  hero: "/blogg/landingsside-for-annonser.webp",
   svar: "En landingsside for annonser er én side laget for ett søk og én handling. Overskriften gjentar det annonsen lovet, siden ber om én ting (ringe, sende skjema eller booke), viser hvorfor du er til å stole på, og måler hvor mange som tar kontakt. Hos meg koster en slik side 6 990 kr eks. mva.",
   faq: [
     { q: "Bør annonsene peke til forsiden?", a: "Sjelden. Forsiden svarer bredt på mange ærend, mens den som klikket på en annonse har ett. Google anbefaler en side som samsvarer med annonsen og søkeordene." },

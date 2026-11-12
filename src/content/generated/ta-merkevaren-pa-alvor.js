@@ -5,7 +5,7 @@ export default {
   description: "Hva merkevare betyr for en enkeltpraksis eller liten bedrift i praksis, og tre ting du kan starte med denne måneden uten reklamebyrå eller stort budsjett.",
   publishDate: "2026-11-12",
   keywords: ["merkevarebygging liten bedrift", "merkevare enkeltpraksis", "bygge merkevare"],
-  hero: "",
+  hero: "/blogg/ta-merkevaren-pa-alvor.webp",
   svar: "For en liten bedrift er merkevaren det kundene tenker og sier om deg, og den bygges av hver gang de møter bedriften. Start med tre ting: samme navn og samme opplysninger overalt, et lite og fast visuelt uttrykk, og omtaler fra ekte kunder som vises både på Google og på nettsiden.",
   faq: [
     { q: "Hva er forskjellen på merkevare og varemerke?", a: "Patentstyret skiller dem slik: en merkevare er inntrykket folk får av en bedrift, basert på assosiasjoner, verdier og erfaringer. Et varemerke er et juridisk beskyttet kjennetegn, som et navn, en logo eller et slagord." },

@@ -5,7 +5,7 @@ export default {
   description: "Vedlikehold av nettside handler om oppdateringer, sikkerhetskopier, domene, sertifikat og innhold. Her er hva du kan gjøre selv, og hva du bør sette bort.",
   publishDate: "2026-11-12",
   keywords: ["vedlikehold nettside", "vedlikehold av nettside", "vedlikeholde nettside"],
-  hero: "",
+  hero: "/blogg/vedlikehold-av-nettside.webp",
   svar: "Vedlikehold av en nettside er to jobber: den tekniske, med oppdateringer, sikkerhetskopier, domene og sertifikat, og innholdet, med priser, åpningstider, ansatte og kontaktskjema. Innholdet kan de fleste holde ved like selv. Den tekniske delen er lurt å sette bort hvis ingen har tid til å følge den opp hver måned.",
   faq: [
     { q: "Hvor ofte bør en nettside oppdateres?", a: "Programvare og utvidelser bør sjekkes hver måned, og sikkerhetsoppdateringer installeres så snart de kommer. Innhold som priser og åpningstider oppdateres når noe endrer seg." },

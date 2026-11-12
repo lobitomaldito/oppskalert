@@ -5,7 +5,7 @@ export default {
   description: "Markedsføring i sosiale medier: forskjellen på organisk og betalt, hvilke kanaler nordmenn faktisk bruker ifølge SSB, og hvorfor nettsiden må henge med.",
   publishDate: "2026-11-12",
   keywords: ["markedsføring i sosiale medier", "markedsføring på facebook", "sosiale medier for bedrifter"],
-  hero: "",
+  hero: "/blogg/markedsforing-sosiale-medier.webp",
   svar: "Markedsføring i sosiale medier er to jobber: gratis innlegg som holder kontakten med dem som allerede følger deg, og betalte annonser som når nye folk. Ifølge SSB brukte 82 prosent av nordmenn sosiale medier en gjennomsnittsdag i 2025, og Facebook var størst med 63 prosent. Velg kanal etter hvem kundene dine er, og send dem til en nettside som gjør det lett å ta kontakt.",
   faq: [
     { q: "Hvilket sosialt medium er mest brukt i Norge?", a: "Facebook, med 63 prosent av befolkningen en gjennomsnittsdag i 2025 ifølge SSBs mediebarometer. Snapchat fulgte med 58 prosent og Instagram med 46 prosent." },

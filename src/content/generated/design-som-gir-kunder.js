@@ -5,7 +5,7 @@ export default {
   description: "Besøkende vurderer hvor pen nettsiden din er på et halvt tidels sekund. Her er hva som avgjør om de stoler på deg, og hvordan du tester førsteinntrykket.",
   publishDate: "2026-11-12",
   keywords: ["førsteinntrykk nettside", "design nettside kunder"],
-  hero: "",
+  hero: "/blogg/design-som-gir-kunder.webp",
   svar: "Besøkende gjør seg opp en mening om hvordan nettsiden din ser ut på rundt 50 millisekunder, og den meningen endrer seg sjelden når de får mer tid. Om de deretter stoler på deg, avgjøres av fire ting: at siden ser ordentlig ut, at kontaktinfo og priser er lette å finne, at innholdet er oppdatert, og at andre steder på nettet bekrefter at du finnes.",
   faq: [
     { q: "Hvor lang tid bruker folk på å vurdere en nettside?", a: "En studie fra 2006 fant at folk dømmer hvor pen en nettside er etter rundt 50 millisekunder. Nielsen Norman Group påpeker at den dommen sjelden endrer seg når folk får mer tid." },

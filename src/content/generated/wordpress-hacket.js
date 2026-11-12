@@ -5,7 +5,7 @@ export default {
   description: "WordPress hacket? Tegnene du ser etter, hva du gjør de første timene, når du må melde til Datatilsynet og hvordan du hindrer at det skjer igjen.",
   publishDate: "2026-11-12",
   keywords: ["wordpress hacket", "hacket nettside", "wordpress hacket hva gjør jeg"],
-  hero: "",
+  hero: "/blogg/wordpress-hacket.webp",
   svar: "Tegn på at WordPress-siden er hacket er advarsler fra Google eller nettleseren, omdirigeringer til fremmede sider, innhold du ikke har lagt inn og ukjente administratorbrukere. Kontakt webhotellet, bytt alle passord, ta en kopi av siden slik den er, og rydd opp før du ber Google om ny vurdering i Search Console.",
   faq: [
     { q: "Hva er den vanligste grunnen til at WordPress blir hacket?", a: "Utvidelser og temaer som ikke er oppdatert. Av de 11 334 nye sårbarhetene Patchstack registrerte i 2025, lå 91 prosent i utvidelser og 9 prosent i temaer." },

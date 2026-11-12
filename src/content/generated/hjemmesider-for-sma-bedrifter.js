@@ -5,7 +5,7 @@ export default {
   description: "Hjemmesider for små bedrifter trenger sjelden mer enn fem sider. Her er hva du faktisk trenger, hva du kan droppe, og når det er verdt å bygge ut.",
   publishDate: "2026-08-31",
   keywords: ["hjemmesider for små bedrifter", "hjemmeside liten bedrift"],
-  hero: "",
+  hero: "/blogg/hjemmesider-for-sma-bedrifter.webp",
   updatedDate: "2026-11-11",
   svar: "En liten bedrift trenger sjelden mer enn fem sider: forside, tjenester, om og kontakt, eventuelt én side per hovedtjeneste. Alle trenger tydelig tilbud, synlig kontaktinfo og minst én kundeanmeldelse. Blogg, chat og flere språk kan vente til du ser et konkret behov.",
   faq: [

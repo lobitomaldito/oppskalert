@@ -5,7 +5,7 @@ export default {
   description: "Kan du lage logo selv? Ofte, ja. Her er verktøyene, filformatene du trenger, og fallgruvene med maler, opphavsrett og varemerke før logoen tas i bruk.",
   publishDate: "2026-11-12",
   keywords: ["lage logo selv", "lage logo gratis", "registrere logo"],
-  hero: "",
+  hero: "/blogg/lage-logo-selv.webp",
   svar: "Du kan fint lage logo selv hvis du holder den enkel, eier hele designet og får den ut som vektorfil (SVG). Bygger du den på en ferdig mal fra et designverktøy, kan lisensen forby deg å bruke den som varemerke, og vil du ha enerett til logoen i Norge, må den registreres hos Patentstyret, fra 3 800 kr for én klasse.",
   faq: [
     { q: "Kan jeg bruke en Canva-mal som logo?", a: "Lisensavtalen til Canva forbyr å bruke innhold fra Canva som del av et varemerke eller foretaksnavn, med unntak av skrifttyper. Bruk eventuelt verktøyet til å tegne fra bunnen av med egne former og tekst." },

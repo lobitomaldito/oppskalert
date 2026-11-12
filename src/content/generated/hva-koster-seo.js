@@ -5,7 +5,7 @@ export default {
   description: "Hva koster SEO for en liten bedrift? Dette styrer prisen, dette er med når du betaler meg fra 2 990 kr i måneden, og disse røde flaggene bør du se etter.",
   publishDate: "2026-11-12",
   keywords: ["hva koster seo", "pris på seo", "hva koster søkemotoroptimalisering"],
-  hero: "",
+  hero: "/blogg/hva-koster-seo.webp",
   svar: "SEO hos meg koster fra 2 990 kr i måneden eks. mva, uten binding. Da får du en månedlig rapport, en AI-sjekk av om ChatGPT og Google AI nevner deg, en ny side eller artikkel i måneden og retting av det rapporten finner. Prisen øker med omfanget: hvor mange tjenester og steder du vil bli funnet på, og hvor mye som må skrives.",
   faq: [
     { q: "Er det binding på SEO-avtalen?", a: "Nei. SEO hos meg koster fra 2 990 kr i måneden eks. mva, uten binding, og du kan avslutte når du vil." },

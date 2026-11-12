@@ -5,7 +5,7 @@ export default {
   description: "Hva koster Google Ads? Slik avgjør auksjonen klikkprisen, hvorfor kvaliteten på annonsen og landingssiden senker den, og hvordan du setter et startbudsjett.",
   publishDate: "2026-11-12",
   keywords: ["hva koster google ads", "pris på google ads", "google ads budsjett"],
-  hero: "",
+  hero: "/blogg/hva-koster-google-ads.webp",
   svar: "Google Ads har ingen fast pris. Du setter et dagsbudsjett selv, og en auksjon avgjør hva hvert klikk koster ut fra budet ditt, kvaliteten på annonsen og landingssiden, og hvor mange andre som byr på samme søk. Over en måned bruker Google aldri mer enn 30,4 ganger dagsbudsjettet ditt.",
   faq: [
     { q: "Betaler jeg alltid det maksimale budet jeg setter?", a: "Nei. Google tar som regel bare betalt det som trengs for å slå annonsen rett under deg, og det er ofte mindre enn makstaket ditt. Unntaket er automatiske budstrategier og budjusteringer, som kan gi en klikkpris over makstaket." },

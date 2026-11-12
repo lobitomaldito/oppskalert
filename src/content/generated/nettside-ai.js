@@ -5,7 +5,7 @@ export default {
   description: "AI kan sette opp kode og skrive utkast raskt, men kjenner ikke kundene dine. Her er hva AI faktisk klarer for en nettside i 2026, og hva den ikke gjør.",
   publishDate: "2026-08-17",
   keywords: ["nettside ai", "ai nettside"],
-  hero: "",
+  hero: "/blogg/nettside-ai.webp",
   updatedDate: "2026-11-11",
   svar: "AI gjør i 2026 oppsett, førsteutkast til tekst og analyse av besøksdata mye raskere. Det kjenner ikke kundene dine, så teksten og prioriteringene må fortsatt et menneske stå for. For å bli sitert i Googles AI-oversikter trenger siden tydelige overskrifter og konkrete svar tidlig i teksten.",
   faq: [

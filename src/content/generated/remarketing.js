@@ -5,7 +5,7 @@ export default {
   description: "Remarketing betyr annonser til folk som har besøkt nettsiden din. Her er hvor mye trafikk du trenger, når det lønner seg, og hva samtykkereglene krever.",
   publishDate: "2026-11-12",
   keywords: ["remarketing", "retargeting", "remarketing google ads"],
-  hero: "",
+  hero: "/blogg/remarketing.webp",
   svar: "Remarketing er annonser som vises til folk som allerede har vært på nettsiden din. Hos Google må en slik liste ha minst 100 aktive besøkende de siste 30 dagene før den kan brukes, og bare besøkende som har samtykket til sporing kan legges inn. Det lønner seg best når kundene bruker tid på å bestemme seg og en ny kunde er verdt mye.",
   faq: [
     { q: "Hvor mange besøkende trenger jeg for remarketing i Google Ads?", a: "Google krever minst 100 aktive besøkende eller brukere i listen de siste 30 dagene, både for Søk, Display og YouTube. Siden bare besøkende som har samtykket kommer med, trenger du flere besøk enn det." },

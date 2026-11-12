@@ -5,7 +5,7 @@ export default {
   description: "Hva koster en nettside i 2027? Her er de ekte prisene mine per nivå, fra enkel landingsside til stor struktur, uten et vagt «fra»-tall.",
   publishDate: "2026-08-20",
   keywords: ["hva koster en nettside", "pris på nettside", "nettside til bedrift pris"],
-  hero: "",
+  hero: "/blogg/hva-koster-nettside.webp",
   updatedDate: "2026-11-12",
   svar: "En nettside hos meg koster 6 990 kr for én landingsside, 12 900 kr for alle sidene du har i dag med tekster skrevet for Google, og fra 19 900 kr med booking eller priskalkulator og tre måneder oppfølging av søkene. Alle tall er eks. mva, og du får fast pris skriftlig før jeg begynner.",
   faq: [
