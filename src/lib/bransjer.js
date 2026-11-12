@@ -154,7 +154,7 @@ export const bransjer = [
       },
       {
         q: 'Kan siden kobles til timeboken jeg bruker?',
-        a: `Ja. Komplett, fra ${pris('komplett')} kr, har timebestilling. Skal siden kobles til en timebok du bruker i dag, får du prisen før jeg begynner.`,
+        a: `Ja. Jeg kobler siden til timeboken du bruker i dag, så pasientene ser ledige timer der. Det hører til Komplett, fra ${pris('komplett')} kr, og du får prisen før jeg begynner.`,
       },
     ],
   },
@@ -328,7 +328,7 @@ export const bransjer = [
       { q: 'Hva koster en nettside for et yogastudio?', a: prisSvar('timeplan fra bookingsystemet') },
       {
         q: 'Kan timeplanen hentes fra bookingsystemet jeg bruker?',
-        a: `Ofte, ja. Har bookingsystemet en åpen timeplan eller et vindu som kan bygges inn, kobler jeg det til siden. Det hører til Komplett, fra ${pris('komplett')} kr, og jeg sjekker systemet ditt før du får prisen.`,
+        a: `Ja. Jeg kobler siden til bookingsystemet du bruker i dag, så timeplanen hentes derfra. Det hører til Komplett, fra ${pris('komplett')} kr, og du får prisen før jeg begynner.`,
       },
     ],
   },

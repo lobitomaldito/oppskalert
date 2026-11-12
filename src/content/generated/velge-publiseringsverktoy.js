@@ -6,7 +6,7 @@ export default {
   publishDate: "2026-11-12",
   keywords: ["hvordan velge cms", "publiseringsverktøy nettside", "cms for småbedrift"],
   hero: "",
-  svar: "Velg CMS ut fra hva du faktisk skal endre selv. Bytter du tekst, bilder, priser og åpningstider, holder et enkelt redigeringspanel. Publiserer du ofte, er flere som skriver, eller trenger du utvidelser som medlemsområde og kurs, passer et fullt CMS som WordPress bedre.",
+  svar: "Velg CMS ut fra hva du faktisk skal endre selv. Bytter du tekst, bilder, priser og åpningstider, holder et enkelt redigeringspanel. Publiserer du ofte, er flere som skriver, eller trenger du utvidelser som medlemsområde og kurs, passer et fullt CMS som WordPress bedre. WordPress og en håndkodet side står side om side i [sammenligningen](/sammenlign/wordpress).",
   faq: [
     { q: "Trenger en liten bedrift et CMS?", a: "Du trenger et sted å endre tekst og bilder selv, ellers må du be leverandøren om hver endring. For de fleste tjenestebedrifter holder et enkelt redigeringspanel. Et fullt CMS lønner seg når du publiserer ofte eller er flere som skriver." },
     { q: "Påvirker valg av CMS hvor godt jeg rangerer i Google?", a: "Lite. Googles egen startguide for SEO peker ikke ut noen plattform som gir bedre plassering. Innholdet, adressene og hvor raskt siden laster betyr mer enn hvilket system den er laget i." },
