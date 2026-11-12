@@ -18,7 +18,7 @@ export default {
   publishDate: "2026-08-13",
   keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
   hero: "",
-  updatedDate: "2026-11-11",
+  updatedDate: "2026-11-12",
   svar: "Slik lager man en nettside: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. Gjør du det selv, går det med 20 til 40 timer. Setter du det bort til meg, tar det 1 til 2 uker fra du sier ja.",
   faq: [
     { q: "Hvor lang tid tar det å lage en nettside selv?", a: "Regn med 20 til 40 timer med et enkelt byggeverktøy, når research, tekst og design er med." },
@@ -64,6 +64,16 @@ De fleste byggeverktøy reklamerer med at du "ikke trenger å kunne kode". Det s
 ## Hva du egentlig betaler for når du setter det bort
 
 Når du leier inn noen til å bygge siden, betaler du ikke bare for koden. Du betaler for at noen andre bruker tiden sin på research, tekst, struktur og testing, tid du ellers måtte brukt selv, ofte uten samme erfaring. En enkel bedriftsside fra en frilanser eller en liten leverandør koster typisk 15 000 til 60 000 kroner, avhengig av omfang. Spør alltid hva som inngår: er tekst og bilder med, eller må du levere alt selv? Prisforskjellen mellom to tilbud handler ofte om nettopp dette, ikke om kvaliteten på selve koden.
+
+## Vil du at noen bygger nettsiden for deg?
+
+Da setter du bort steg 3 og 4, og gjør steg 1 og 2 sammen med den som bygger. Hos meg er prisen fast og avtalt før jeg begynner, eks. mva.:
+
+- **6 990 kr** for én landingsside med alt på ett sted.
+- **12 900 kr** for alle sidene du har i dag, med tekster skrevet for Google.
+- **Fra 19 900 kr** når du trenger booking, en priskalkulator eller et annet verktøy.
+
+Du får et ferdig utkast på 48 timer før du bestemmer deg, og siden er oppe 1 til 2 uker etter at du sier ja. Alt som inngår står på [prissiden](/priser).
 
 ## Tidsbruk: den skjulte kostnaden ved å gjøre det selv
 

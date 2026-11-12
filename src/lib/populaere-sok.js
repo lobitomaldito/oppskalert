@@ -86,7 +86,7 @@ export const populaereSok = [
       },
     ],
     relatert: ['byra-eller-frilanser', 'eier-jeg-nettsiden-selv'],
-    til: { tekst: 'Slik jobber jeg', rute: '/metode' },
+    til: { tekst: 'Fast pris på nettside, skrevet ned', rute: '/priser' },
   },
   {
     // «søkemotoroptimalisering» 590/mnd KD 9, størst volum med kjøpsintensjon

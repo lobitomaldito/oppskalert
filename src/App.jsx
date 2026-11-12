@@ -136,6 +136,7 @@ const Hero = () => {
           Se den nye nettsiden din <em className="aksent">før du betaler en krone.</em>
         </h1>
         <p data-reveal className="inn" style={{ '--d': '220ms' }}>
+          Webdesign og ny hjemmeside for bedrifter i hele Norge, fra 6 990 kr.
           Design, tekst, koding og lansering, gjort av én person du kan ringe.
           Utkastet er klart på 48 timer.
         </p>
@@ -462,11 +463,10 @@ const homeSchema = {
      /webdesign-oslo. To URL-er som meldte seg som samme foretak på samme
      adresse delte de lokale signalene i to. Målt 24. august 2026 lå forsiden
      på 17,7 og /webdesign-oslo på 61,6 for «webdesign i oslo». Nodene er
-     slått sammen her, der Google allerede rangerer foretaket. */
-  areaServed: [
-    { '@type': 'City', name: 'Oslo' },
-    { '@type': 'AdministrativeArea', name: 'Viken' },
-  ],
+     slått sammen her, der Google allerede rangerer foretaket.
+     12.11.2026: hele landet. Viken ble oppløst i 2024, og arbeidet krever
+     verken oppmøte eller kontor i nærheten. Adressen over står. */
+  areaServed: { '@type': 'Country', name: 'Norge' },
   priceRange: 'fra 6 990 kr',
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
@@ -502,11 +502,19 @@ const Home = () => (
         samme søket. Google har altså allerede valgt forsiden tre ganger, og
         halve førstesiden på «webdesign i Oslo» er byråenes rotdomener.
         Preposisjonen bærer også her, «for bedrifter i Oslo», aldri
-        særskriving. 57 tegn med suffikset. */}
+        særskriving. 57 tegn med suffikset.
+
+        «i Oslo» ut igjen 12. november 2026 (Aleksander). Search Console
+        12.8 til 9.11: forsiden sto i snitt på 24,0 på Oslo-søk (235
+        visninger, 0 klikk) og 12,2 på kjøpssøk uten by (576 visninger).
+        87 % av de kommersielle visningene på hele nettstedet er søk uten by,
+        og arbeidet selges i hele landet. /webdesign-oslo eier det lokale.
+        «webdesign» og «hjemmeside» står nå i første avsnitt under H1, der
+        «hjemmeside» (322 visninger, plass 12,8) manglet. */}
     <SEO
-      title="Webdesign for bedrifter i Oslo, til fast pris"
-      description="Webdesign for bedrifter i Oslo og resten av landet, til fast pris. Jeg bygger hjemmesiden ferdig, og du ser et gratis utkast før du betaler en krone."
-      keywords={['webdesign for bedrifter', 'webdesign i Oslo', 'webdesign firma', 'hjemmeside til bedrift', 'nettside til fast pris']}
+      title="Webdesign for bedrifter, til fast pris"
+      description="Webdesign og ny hjemmeside for bedrifter i hele Norge, til fast pris fra 6 990 kr. Jeg bygger siden ferdig, og du ser et gratis utkast før du betaler en krone."
+      keywords={['webdesign for bedrifter', 'webdesign firma', 'hjemmeside', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />

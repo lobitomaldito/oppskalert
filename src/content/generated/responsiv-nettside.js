@@ -44,7 +44,7 @@ export default {
   publishDate: "2026-08-10",
   keywords: ["responsiv nettside", "mobiltilpasset nettside", "mobilvennlig nettside", "responsiv hjemmeside"],
   hero: "",
-  updatedDate: "2026-11-11",
+  updatedDate: "2026-11-12",
   svar: "En responsiv nettside endrer oppsettet etter skjermen den vises på. Det finnes én side for både mobil og PC, og teksten kan leses uten å zoome. Lenger ned viser jeg hvordan du sjekker din egen på ett minutt.",
   faq: [
     { q: "Hvordan sjekker jeg om nettsiden min er responsiv?", a: "Åpne den på telefonen. Må du zoome for å lese, bommer du på knapper, eller dekker menyen hele skjermen uten en tydelig lukkeknapp, er den ikke bygget for mobil. Kjør også adressen gjennom Google PageSpeed Insights." },
@@ -81,5 +81,5 @@ En besøkende bruker under to sekunder på å bestemme seg for om de blir eller 
 
 ## Hva du bør gjøre denne uken
 
-Åpne nettsiden din på telefonen og gå gjennom den som om du var en ny kunde. Noter hvert sted du må zoome, bommer på en knapp, eller venter mer enn et par sekunder på at noe laster. Kjør deretter adressen gjennom Google PageSpeed Insights og se hvilken score du får for mobil spesifikt. Disse to stegene tar under 20 minutter og gir deg en konkret liste å jobbe videre med.\n\nEr listen lengre enn du hadde håpet, [ta kontakt](/kontakt), så ser jeg på siden din og sier hva som faktisk må gjøres.`,
+Åpne nettsiden din på telefonen og gå gjennom den som om du var en ny kunde. Noter hvert sted du må zoome, bommer på en knapp, eller venter mer enn et par sekunder på at noe laster. Kjør deretter adressen gjennom Google PageSpeed Insights og se hvilken score du får for mobil spesifikt. Disse to stegene tar under 20 minutter og gir deg en konkret liste å jobbe videre med.\n\nEr listen lengre enn du hadde håpet, [ta kontakt](/kontakt), så ser jeg på siden din og sier hva som faktisk må gjøres. Skal den gamle siden byttes ut, står det på [ny nettside uten å miste plassene i Google](/ny-nettside) hvordan jeg bytter den og tar vare på plassene du har i Google.`,
 };
