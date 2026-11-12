@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell, SideTopp, SeksjonTopp } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
+import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
-import { driftNivaer, driftNotat, ruter } from '../lib/site';
+import { driftNivaer, driftNotat, lagFaqSchema, ruter } from '../lib/site';
 
 const driftSchema = {
   '@context': 'https://schema.org',
@@ -18,6 +19,66 @@ const driftSchema = {
     priceCurrency: 'NOK',
     url: 'https://oppskalert.no/drift',
   })),
+};
+
+/* Teksten og spørsmålene under kom inn 12.11.2026. Siden hadde 360 ord og
+   tre H2, de fem øverste på «drift av nettside» 500 til 1 700 (seo/seo-klynger.md,
+   klynge 5). Alle dekker sikkerhet, oppdateringer, backup og hosting. Ingen
+   sier noe om en side som ikke trenger plugin-oppdateringer. */
+const driftFaq = [
+  {
+    q: 'Hva koster drift av nettside?',
+    a: 'På sider jeg bygger koster hostingen 0 kroner i måneden, den er med i prisen. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 550 kroner i måneden. SEO, med rapport og en ny side eller artikkel hver måned, koster fra 2 990 kroner. Alle priser eks. mva, uten binding.',
+  },
+  {
+    q: 'Hva er forskjellen på webhotell og drift?',
+    a: 'Webhotellet er plassen siden ligger på. Drift er alt rundt: backup, overvåking av at siden er oppe, sikkerhetsoppdateringer og endringer når noe skal byttes ut. Hos meg er plassen med i prisen, og serviceavtalen dekker resten.',
+  },
+  {
+    q: 'Hva skjer med siden hvis jeg sier opp serviceavtalen?',
+    a: 'Den blir liggende ute som før, og hostingen er fortsatt med. Du mister bare endringene og supporten fra meg. Det er ingen bindingstid, så du kan si opp når du vil.',
+  },
+  {
+    q: 'Har du driftsavtale for WordPress-sider?',
+    a: 'Ja. Har du en WordPress-side i dag, kan jeg ta den på serviceavtale fra 550 kroner i måneden, eller bygge den om hvis det lønner seg. Forskjellen på de to står i sammenligningen av WordPress og håndkodet side.',
+  },
+];
+
+const HvaDrift = () => {
+  const container = useReveal(70);
+  return (
+    <section ref={container} className="seksjon">
+      <div className="wrap max-w-[46rem]">
+        <SeksjonTopp tittel="Hva drift av nettside er," uthevet="og hva du slipper." />
+        <div data-reveal className="flex flex-col gap-5 font-body text-[1.02rem] text-room-ink/80 leading-relaxed">
+          <p>
+            Drift av nettside er det som holder siden oppe og trygg etter lansering: at den ligger på en
+            server som svarer, at det tas backup, at noen ser når den går ned, og at sikkerhetshull lukkes.
+            På sidene jeg bygger er hostingen med i prisen, med sikker forbindelse fra første dag.
+          </p>
+          <p>
+            Det meste av driften på en vanlig bedriftsside går med til oppdateringer. En WordPress-side har
+            kjernen, temaet og som regel flere programtillegg som alle må oppdateres, og som av og til
+            brekker hverandre. Sidene mine er bygget uten WordPress og programtillegg, så den lista finnes ikke.
+            Driftsavtaler for WordPress ligger ofte på 490 til 690 kroner i måneden, og det er den jobben du betaler for.
+          </p>
+          <p>
+            Serviceavtalen er for deg som vil sende en e-post og få endringen gjort: ny tekst, nye bilder,
+            nye priser eller åpningstider. Vil du heller vite hvor mye det koster over tid, står regnestykket
+            i{' '}
+            <Link to="/vanlige-sporsmal/hva-koster-drift-av-nettside" className="underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink">
+              hva drift og vedlikehold koster
+            </Link>
+            , og hva du kan gjøre selv i{' '}
+            <Link to="/blogg/vedlikehold-av-nettside" className="underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink">
+              vedlikehold av nettside
+            </Link>
+            .
+          </p>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 const DriftKort = ({ nivaa }) => (
@@ -124,7 +185,7 @@ const DriftPage = () => (
       description="Hosting er med i prisen på alle nettsider jeg bygger. Serviceavtale med endringer og support fra 550 kr/mnd, og SEO fra 2 990 kr/mnd. Ingen bindingstid."
       keywords={['webhosting', 'drift av nettside', 'support nettside abonnement', 'vedlikehold nettside']}
       canonical="https://oppskalert.no/drift"
-      jsonLd={driftSchema}
+      jsonLd={[driftSchema, lagFaqSchema(driftFaq)]}
     />
     <SideTopp
       tittel="Drift av nettside,"
@@ -139,6 +200,8 @@ const DriftPage = () => (
       </div>
     </section>
     <Sammenligning />
+    <HvaDrift />
+    <FAQ tittel="Spørsmål om drift" uthevet="og hosting." sporsmal={driftFaq} />
     <DemoSkjema
       tittel="Én ting mindre"
       uthevet="å tenke på."

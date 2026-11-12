@@ -45,6 +45,7 @@ Ikke stol på antakelser eller hva byrået ditt sa for to år siden. Gå til Goo
     publishDate: "2026-05-01",
     keywords: ["billig nettside norge", "AI nettside"],
     hero: "/blogg/myten-om-den-dyre-nettsiden-ai-prisbilde.jpg",
+    svar: "Nei, en nettside til en liten bedrift trenger ikke koste 100 000 kroner. Hos meg koster den fra 6 990 kr eks. mva. Om en billig side er verdt pengene, står i [er en billig nettside verdt det?](/vanlige-sporsmal/er-billig-nettside-verdt-det), og hva AI faktisk klarer i [AI og nettsider](/blogg/nettside-ai).",
     content: `En lokal rørleggerbedrift fikk nylig et tilbud fra et tradisjonelt byrå: 120 000 kroner for en ny nettside. Leveringstid? Tre måneder. Da jeg tok en titt på prosjektbeskrivelsen, så jeg 60 000 kroner i prosjektledelse, utallige timer med «strategiske avklaringer» og dyre lisenser. Sannheten er at en billig nettside i Norge i 2026 ikke lenger betyr dårlig kvalitet, det betyr bare at noen har sluttet å fakturere for unødvendig byråkrati.
 
 ## Timebruk er ikke lenger en målestokk for verdi
@@ -91,6 +92,7 @@ For å se hva som er mulig med en moderne, effektiv tilnærming til webutvikling
     publishDate: "2026-05-01",
     keywords: ["nettside konvertering", "hjemmeside til bedrift"],
     hero: "/blogg/hvordan-bygge-en-nettside-for-konvertering.jpg",
+    svar: "En nettside gir henvendelser når den besøkende raskt ser hva du tilbyr, hva det koster og hvordan de tar kontakt. Fem grep i designet står i [øke salget med design](/blogg/design-oker-salget).",
     content: `## Estetikk er den dyreste feilen du kan gjøre
 
 Bedriftseiere bruker ofte 100 000 kroner på en ny nettside fordi den gamle «ser utdatert ut». Seks måneder senere viser tallene at ingenting har endret seg. En studie viser at 70 % av de besøkende forlater en side med dårlig struktur før de i det hele tatt ser tilbudet ditt.
@@ -148,6 +150,21 @@ const [enkel, medium, komplett] = prismodeller;
 const [service, seo] = driftNivaer;
 const UTKAST = 'Jeg bygger et ferdig utkast med ditt innhold før du bestemmer deg. Liker du det ikke, koster det ingenting.';
 
+/* CTA-ene inne i teksten følger klyngen (12.11.2026). Før sto «Leter du
+   egentlig bare etter en pris? Se hva en nettside koster» også midt i
+   innlegg om Google Ads og sosiale medier, der leseren ikke ser etter
+   en nettside. `tidlig` er tekstlenken etter introen, `midt` boksen
+   halvveis. Den fylte knappen til slutt er avslutningen under. */
+const UTKAST_LENKE = { tekst: 'be om et gratis utkast', rute: ruter.kontakt };
+const SJEKK_LENKE = { tekst: 'sjekk siden din gratis', rute: ruter.nettsidesjekk };
+const MIDT_UTKAST = { tittel: 'Vil du se dette gjort på din egen side?', tekst: UTKAST, knapp: 'Få et gratis utkast', rute: ruter.kontakt };
+const MIDT_SJEKK = {
+  tittel: 'Hvordan står det til med din side?',
+  tekst: 'Skriv inn adressen, så får du en karakter fra A til F på noen sekunder. Gratis, uten e-post.',
+  knapp: 'Sjekk siden din gratis',
+  rute: ruter.nettsidesjekk,
+};
+
 export const klynger = {
   pris: {
     navn: 'Pris',
@@ -155,6 +172,8 @@ export const klynger = {
     tittel: 'Vil du vite hva din side koster?',
     tekst: `${pris(enkel)}, ${pris(medium)} og ${pris(komplett)}, alle eks. mva. Du får fast pris før jeg begynner.`,
     knapp: 'Se prisene',
+    tidlig: { tekst: 'Leter du egentlig bare etter en pris?', lenke: { tekst: 'Se prisene', rute: ruter.priser }, ogsa: UTKAST_LENKE },
+    midt: MIDT_UTKAST,
   },
   nettside: {
     navn: 'Ny nettside',
@@ -162,6 +181,8 @@ export const klynger = {
     tittel: 'Vil du se hvordan din nye side kan bli?',
     tekst: UTKAST,
     knapp: 'Slik lager jeg ny nettside',
+    tidlig: { tekst: 'Leter du egentlig bare etter en pris?', lenke: { tekst: 'Se hva en nettside koster', rute: ruter.priser }, ogsa: UTKAST_LENKE },
+    midt: MIDT_UTKAST,
   },
   design: {
     navn: 'Design',
@@ -169,6 +190,8 @@ export const klynger = {
     tittel: 'Vil du ha en side som ser ut som bedriften din?',
     tekst: UTKAST,
     knapp: 'Se hvordan jeg designer',
+    tidlig: { tekst: 'Vil du heller se hva jeg ville laget for deg?', lenke: { tekst: 'Be om et gratis utkast', rute: ruter.kontakt }, ogsa: { tekst: 'se sider jeg har laget', rute: ruter.arbeid } },
+    midt: MIDT_UTKAST,
   },
   seo: {
     navn: 'Synlighet',
@@ -176,6 +199,8 @@ export const klynger = {
     tittel: 'Vil du bli funnet på flere søk?',
     tekst: `SEO hos meg koster fra ${seo.fra} kr i måneden eks. mva, uten binding, med en rapport hver måned om hvem som fant deg.`,
     knapp: 'Les om søkemotoroptimalisering',
+    tidlig: { tekst: 'Vil du heller at jeg gjør jobben?', lenke: { tekst: `SEO fra ${seo.fra} kr i måneden`, rute: ruter.seo }, ogsa: SJEKK_LENKE },
+    midt: MIDT_SJEKK,
   },
   drift: {
     navn: 'Drift',
@@ -183,13 +208,19 @@ export const klynger = {
     tittel: 'Vil du slippe å passe på siden selv?',
     tekst: `Serviceavtalen koster ${service.fra} kr i måneden eks. mva, uten binding: endringer, backup, oppdateringer og support fra meg.`,
     knapp: 'Se drift og hosting',
+    tidlig: { tekst: 'Vil du slippe å passe på siden selv?', lenke: { tekst: `Serviceavtale fra ${service.fra} kr i måneden`, rute: ruter.drift }, ogsa: SJEKK_LENKE },
+    midt: MIDT_SJEKK,
   },
   markedsforing: {
     navn: 'Markedsføring',
     pengeside: ruter.kontakt,
-    tittel: 'Vil du at nettsiden skal gjøre mer av jobben?',
-    tekst: UTKAST,
-    knapp: 'Få et gratis utkast',
+    tittel: 'Vil du heller ha annonser som gir henvendelser?',
+    /* Facebook-annonsering fra ~/.claude/assets/tilbud/MAL.md. Ingen egen
+       side ennå, så knappen går til kontakt. */
+    tekst: 'Jeg setter opp Facebook- og Instagram-annonser for 2 990 kr, og passer på dem for 1 990 kr i måneden uten binding, eks. mva. Annonsebudsjettet betaler du selv, rett til Meta.',
+    knapp: 'Spør om annonser',
+    tidlig: { tekst: 'Vil du heller at noen andre tar annonsene?', lenke: { tekst: 'Spør meg om Facebook-annonser', rute: ruter.kontakt }, ogsa: SJEKK_LENKE },
+    midt: MIDT_SJEKK,
   },
 };
 

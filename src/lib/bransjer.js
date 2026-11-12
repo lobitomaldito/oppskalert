@@ -142,7 +142,7 @@ export const bransjer = [
       'Hvem som behandler, med utdanning og autorisasjon',
       'Adresse, parkering og kollektivtransport',
       'Google-profilen koblet til siden, med samme navn, adresse og telefon',
-      'Ingen sporing av besøkende uten samtykke',
+      'Ingen Meta-piksel, og ingen sporing av besøkende uten samtykke',
     ],
     caser: [],
     eksempel: { rute: '/eksempler/tannlege', tekst: 'Se et eksempel på en klinikkside' },
@@ -155,6 +155,10 @@ export const bransjer = [
       {
         q: 'Kan siden kobles til timeboken jeg bruker?',
         a: `Ja. Jeg kobler siden til timeboken du bruker i dag, så pasientene ser ledige timer der. Det hører til Komplett, fra ${pris('komplett')} kr, og du får prisen før jeg begynner.`,
+      },
+      {
+        q: 'Sender siden data om pasientene til Facebook?',
+        a: 'Nei. Sidene jeg lager har ingen Meta-piksel, og ingenting lagres i nettleseren før den besøkende har sagt ja. Helseopplysninger skal ikke til annonseplattformer.',
       },
     ],
   },

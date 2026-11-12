@@ -179,25 +179,18 @@ const breadcrumbSchema = (name, url) => ({
    cta-objekt ({ tidlig, midt: { tittel, tekst } }), men defaultene er skrevet
    så de passer enhver artikkel på dette nettstedet. Da gjelder de også for
    alt den ukentlige generatoren lager, uten at den må huske noe nytt. */
-const CTA_STANDARD = {
-  tidlig: 'Leter du egentlig bare etter en pris?',
-  midt: {
-    tittel: 'Vil du se dette gjort på din egen side?',
-    tekst: 'Jeg bygger et ferdig utkast med ditt innhold før du bestemmer deg. Liker du det ikke, koster det ingenting.',
-  },
-};
 
 /* 1. Tidlig. Ren tekstlenke rett etter introen, ingen boks og ingen knapp.
       For den som allerede vet hva de vil og ikke gidder å lese 3000 ord. */
-const TidligCta = ({ tekst }) => (
+const TidligCta = ({ tekst, lenke, ogsa }) => (
   <p className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed my-8 pl-5 border-l border-room-ink/15">
     {tekst}{' '}
-    <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
-      Se hva en nettside koster
+    <Link to={lenke.rute} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+      {lenke.tekst}
     </Link>
     , eller{' '}
-    <Link to={ruter.kontakt} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
-      be om et gratis utkast
+    <Link to={ogsa.rute} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+      {ogsa.tekst}
     </Link>
     .
   </p>
@@ -206,15 +199,15 @@ const TidligCta = ({ tekst }) => (
 /* 2. Midtveis. Bevisst en annen form enn slutt-CTA-en: venstrestilt, tonal
       fyll og kantlinje, tekstlenke i stedet for fylt knapp. Den fylte
       knappen er reservert til den siste. */
-const MidtCta = ({ tittel, tekst }) => (
+const MidtCta = ({ tittel, tekst, knapp, rute }) => (
   <aside className="my-12 rounded-kort border border-room-ink/10 bg-room-ink/[0.04] p-7 md:p-8">
     <h3 className="font-sans font-bold text-lg md:text-xl tracking-tight mb-2.5">{tittel}</h3>
     <p className="font-body text-[0.95rem] text-room-ink/70 leading-relaxed mb-5 max-w-[52ch]">{tekst}</p>
     <Link
-      to={ruter.kontakt}
+      to={rute}
       className="inline-flex items-center gap-2 font-sans font-bold text-sm text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors"
     >
-      Få et gratis utkast <ArrowRight className="w-4 h-4" />
+      {knapp} <ArrowRight className="w-4 h-4" />
     </Link>
   </aside>
 );
@@ -266,12 +259,11 @@ const LocalArticle = ({ article }) => {
     );
   }, []);
 
-  const cta = {
-    tidlig: article.cta?.tidlig || CTA_STANDARD.tidlig,
-    midt: { ...CTA_STANDARD.midt, ...(article.cta?.midt || {}) },
-  };
-
   const klynge = klynger[article.klynge] || klynger.nettside;
+  const cta = {
+    tidlig: { ...klynge.tidlig, ...(article.cta?.tidlig ? { tekst: article.cta.tidlig } : {}) },
+    midt: { ...klynge.midt, ...(article.cta?.midt || {}) },
+  };
   const relaterte = lesOgsa(article);
   const deler = mellomtitler(article.content);
   const medInnhold = deler.length >= INNHOLD_MIN_H2;
@@ -393,8 +385,8 @@ const LocalArticle = ({ article }) => {
             )}
 
             {renderContent(article.content, {
-              tidligCta: <TidligCta tekst={cta.tidlig} />,
-              midtCta: <MidtCta tittel={cta.midt.tittel} tekst={cta.midt.tekst} />,
+              tidligCta: <TidligCta {...cta.tidlig} />,
+              midtCta: <MidtCta {...cta.midt} />,
             })}
 
             <div className="mt-16 flex flex-wrap gap-2">

@@ -47,6 +47,13 @@ export const faqWix = [
 ];
 
 export const faqWordPress = [
+  /* «driftsavtale wordpress» og varianter: GSC 43 visninger på plass 9 til 14
+     (seo/seo-klynger.md, klynge 5). Prisene er lest i søkeresultatene på
+     «drift av nettside» 11.11.2026, tre WordPress-leverandører. */
+  {
+    q: 'Hva koster en driftsavtale for WordPress?',
+    a: 'Driftsavtaler for WordPress ligger ofte på 490 til 690 kroner i måneden. Det meste av jobben er å oppdatere WordPress og pluginene og rydde opp når en oppdatering brekker noe. En side uten WordPress og plugins har ikke den lista. Hos meg er hosting med i prisen, og serviceavtalen med endringer og support koster 550 kroner i måneden eks. mva, uten binding.',
+  },
   {
     q: 'Er WordPress fortsatt et godt valg?',
     a: 'Ja, hvis du har noen til å vedlikeholde det. WordPress driver rundt 40 prosent av verdens nettsteder og kan gjøre nesten hva som helst. Prisen er at pluginene må oppdateres og sikkerhetshull må tettes, og det er den jobben folk undervurderer.',
