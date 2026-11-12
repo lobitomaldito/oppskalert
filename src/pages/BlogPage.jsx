@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import BloggKort from '../components/BloggKort';
-import { articles } from '../lib/articles';
+// Bare listefeltene, uten brødteksten. Se scripts/lag-artikkel-meta.mjs.
+import articles from '../content/generated/meta.json';
 import { ruter } from '../lib/site';
 import { useReveal } from '../lib/useReveal';
 import { PilOpp } from '../components/Ikon';

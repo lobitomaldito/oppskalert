@@ -4,7 +4,8 @@ import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { ArbeidSeksjon } from '../components/Arbeider';
 import { ruter, kontakt } from '../lib/site';
-import { articles } from '../lib/articles';
+// Bare listefeltene, uten brødteksten. Se scripts/lag-artikkel-meta.mjs.
+import articles from '../content/generated/meta.json';
 import BloggKort from '../components/BloggKort';
 import { tjenester } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
