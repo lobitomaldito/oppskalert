@@ -171,20 +171,32 @@ async function main() {
   const server = await startServer();
   const { port } = server.address();
   const baseUrl = `http://127.0.0.1:${port}`;
-  const browser = await launchBrowser();
+
+  // Fire nettlesere side om side, én fane hver. Faner i samme nettleser går
+  // ikke: Chromium fryser timere og animasjoner i faner som ikke er i front,
+  // og da tas snapshotet før GSAP og useReveal er ferdige (målt 12.11.2026:
+  // 50 flere elementer med opacity 0). Hver rute venter fortsatt like lenge,
+  // de venter bare samtidig. 8 minutter ble rundt 2 på Vercel-maskinen.
+  const queue = [...ROUTES];
+  const worker = async () => {
+    const browser = await launchBrowser();
+    try {
+      for (let route; (route = queue.shift()) !== undefined; ) {
+        const html = await snapshotRoute(browser, baseUrl, route);
+        const outPath = outputPathFor(route);
+        await mkdir(path.dirname(outPath), { recursive: true });
+        await writeFile(outPath, html, 'utf-8');
+        console.log(`prerender: ${route} ... ok (${path.relative(distDir, outPath)})`);
+      }
+    } finally {
+      await browser.close();
+    }
+  };
 
   try {
-    for (const route of ROUTES) {
-      process.stdout.write(`prerender: ${route} ... `);
-      const html = await snapshotRoute(browser, baseUrl, route);
-      const outPath = outputPathFor(route);
-      await mkdir(path.dirname(outPath), { recursive: true });
-      await writeFile(outPath, html, 'utf-8');
-      console.log(`ok (${path.relative(distDir, outPath)})`);
-    }
+    await Promise.all(Array.from({ length: 4 }, worker));
     console.log(`prerender: done, ${ROUTES.length} routes snapshotted`);
   } finally {
-    await browser.close();
     server.close();
   }
 }
