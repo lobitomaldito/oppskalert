@@ -1,5 +1,6 @@
 import { articles } from '../src/lib/articles.js';
 import { caser } from '../src/lib/demo-innhold.js';
+import { bransjer, RUTE_BRANSJE } from '../src/lib/bransjer.js';
 import { populaereSok } from '../src/lib/populaere-sok.js';
 import { ordliste } from '../src/lib/ordliste.js';
 
@@ -21,6 +22,7 @@ const STATIC_PATHS = [
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
   '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
   '/metode', '/om', '/kontakt', '/blogg', '/personvern',
+  ...bransjer.map((b) => RUTE_BRANSJE(b.slug)),
   ...caser.map((c) => `/arbeid/${c.slug}`),
 ];
 

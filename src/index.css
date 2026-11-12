@@ -1332,6 +1332,81 @@
     color: var(--kritt);
     margin-bottom: -.17em;
   }
+
+  /* ----------------------------------------------------------------
+     Bransjesider (/nettside-for-<bransje>, 12.11.2026). Foto i toppen og
+     i den delte seksjonen, hvite flater veksler med feltet, og brødteksten
+     står i blekk-mykt (6,9:1 mot hvitt) i stedet for 70 % gjennomsiktig
+     blekk, som ble for blek på første versjon. --felt er hvit nå (DESIGN.md
+     sier periwinkle, men tokenene er byttet), så seksjonene skilles med ett
+     mørkt bånd (blekk) og ett grått (--kort).
+     ---------------------------------------------------------------- */
+  .bransje-topp { padding-block: clamp(2rem, 4vw, 3.5rem) clamp(3rem, 6vw, 4.5rem); }
+  .bransje-topp-inn { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+  @media (min-width: 56rem) { .bransje-topp-inn { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); } }
+  .bransje-topp h1 {
+    margin-top: 1.25rem; max-width: 16ch;
+    font-weight: var(--display-vekt); font-size: clamp(2.125rem, 5.2vw, 3.75rem);
+    line-height: 1.02; letter-spacing: var(--display-sperre-stor); text-wrap: balance;
+  }
+  .bransje-topp h1 span { color: var(--blekk-mykt); }
+  .bransje-lede { margin-top: 1.5rem; max-width: 52ch; font-size: clamp(1rem, .4vw + .9rem, 1.125rem); line-height: 1.6; color: var(--blekk); }
+  .bransje-handling { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .75rem; }
+  .bransje-bilde { margin: 0; border-radius: var(--rund-stor); overflow: hidden; background: var(--felt-dyp); aspect-ratio: 4 / 3; }
+  .bransje-bilde img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (min-width: 56rem) { .bransje-bilde-topp { aspect-ratio: 4 / 5; } }
+
+  .bransje-kort { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; counter-reset: none; }
+  @media (min-width: 60rem) { .bransje-kort { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .bransje-mork { background: var(--blekk); color: var(--kritt); }
+  .bransje-mork .seksjonstopp h2 { color: var(--kritt); }
+  .bransje-gra { background: var(--kort); }
+  .bransje-kort li {
+    background: var(--blekk-flate); border: 1px solid var(--blekk-kant); border-radius: var(--rund);
+    padding: clamp(1.5rem, 2.5vw, 2rem); display: grid; gap: .9rem; align-content: start;
+  }
+  .bransje-nr { font-size: .8125rem; color: var(--prikk-lys); }
+  .bransje-kort h3 {
+    font-weight: var(--display-vekt); font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    line-height: 1.15; letter-spacing: var(--display-sperre); text-wrap: balance;
+  }
+  .bransje-kort h3 { color: var(--kritt); }
+  .bransje-kort p { color: var(--kritt-mykt); line-height: 1.6; font-size: .9688rem; }
+
+  .bransje-delt { display: grid; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  @media (min-width: 56rem) { .bransje-delt { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); } }
+  .bransje-liste h2 {
+    margin-top: .9rem; font-weight: var(--display-vekt); font-size: clamp(1.5rem, 3.2vw, 2.375rem);
+    line-height: 1.12; letter-spacing: var(--display-sperre);
+  }
+  .bransje-ingress { margin-top: 1rem; color: var(--blekk-mykt); max-width: 48ch; }
+  .bransje-liste ul {
+    list-style: none; padding: .5rem 1.5rem; margin: 1.75rem 0 0;
+    background: var(--hvit); border-radius: var(--rund);
+  }
+  .bransje-liste li {
+    display: flex; gap: .75rem; align-items: flex-start; padding: .85rem 0;
+    color: var(--blekk); line-height: 1.45; font-size: .9688rem;
+  }
+  .bransje-liste li + li { border-top: 1px solid var(--felt-kant); }
+  .bransje-liste li .ikon { margin-top: .2rem; color: var(--prikk); }
+  .bransje-lenke { text-decoration: underline; text-underline-offset: 4px; color: var(--blekk); }
+
+  .bransje-caser { list-style: none; padding: 0; margin: 0; display: grid; gap: clamp(1.5rem, 3vw, 2rem); }
+  @media (min-width: 40rem) { .bransje-caser { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 64rem) { .bransje-caser { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .bransje-case { display: grid; gap: .6rem; }
+  .bransje-case .ramme { display: block; aspect-ratio: 4 / 3; }
+  .bransje-case .ramme img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .bransje-case:hover .ramme { transform: translateY(-4px); }
+  .bransje-case-navn { margin-top: .4rem; font-size: .8125rem; color: var(--blekk-mykt); }
+  .bransje-case-tittel { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; color: var(--blekk); line-height: 1.35; }
+  .bransje-case:hover .pil { transform: translateX(.2rem); }
+  .bransje-case .pil { transition: transform .3s var(--e); flex: none; }
+  .bransje-eksempel { margin-top: 2rem; }
+  @media (prefers-reduced-motion: reduce) {
+    .bransje-case:hover .ramme, .bransje-case:hover .pil { transform: none; }
+  }
 }
 
 /* ==================================================================
