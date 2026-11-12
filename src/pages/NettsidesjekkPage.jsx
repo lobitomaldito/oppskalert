@@ -145,7 +145,7 @@ const funnTekst = (p) => PUNKTER.find((x) => x.id === p.id).funn(p.verdi)[p.stat
 
 const Sjekk = () => {
   const [adresse, setAdresse] = useState('');
-  const [fase, setFase] = useState('start'); // start | sjekker | resultat | ikke_hentet | for_mange | nettverk
+  const [fase, setFase] = useState('start'); // start | sjekker | resultat | ikke_hentet | stengt | for_mange | nettverk
   const [adresseFeil, setAdresseFeil] = useState('');
   const [resultat, setResultat] = useState(null);
   const [domene, setDomene] = useState('');
@@ -203,7 +203,7 @@ const Sjekk = () => {
         setAdresseFeil('Jeg fant ikke den adressen. Sjekk at den er skrevet riktig, for eksempel dittfirma.no.');
         track('nettsidesjekk_ugyldig', { grunn: 'server', tekst: d.slice(0, 80) });
       } else {
-        const grunn = res.status === 429 ? 'for_mange' : 'ikke_hentet';
+        const grunn = res.status === 429 ? 'for_mange' : res.status === 503 ? 'stengt' : 'ikke_hentet';
         setFase(grunn);
         track('nettsidesjekk_feil', { domene: d, grunn });
       }
@@ -246,7 +246,9 @@ const Sjekk = () => {
           `Sjekket: ${resultat.url}`,
           ...sortert(resultat.punkter).map((p) => `${PUNKTER.find((x) => x.id === p.id).tittel}: ${STATUS[p.status]}. ${funnTekst(p)}`),
         ].join('\n')
-      : `Gratis nettsidesjekk: fikk ikke hentet ${domene}. Vil at du ser på siden selv.`;
+      : fase === 'stengt'
+        ? `Gratis nettsidesjekk: sjekken var stengt (døgntaket eller telleren), så ${domene} ble ikke sjekket. Vil at du ser på siden selv.`
+        : `Gratis nettsidesjekk: fikk ikke hentet ${domene}. Vil at du ser på siden selv.`;
     try {
       await submitDemoRequest({ navn, epost, firma: domene, melding, honeypot, msPaSkjema: Date.now() - apnetRef.current });
       // Samme sperre som de andre skjemaene: lokkefeltet skal aldri telles som konvertering.
@@ -411,14 +413,17 @@ const Sjekk = () => {
             </div>
           )}
 
-          {fase === 'ikke_hentet' && (
+          {(fase === 'ikke_hentet' || fase === 'stengt') && (
             <div className="velger-res">
               <div>
                 <p className="etikett">{domene}</p>
-                <h2 className="velger-res-tittel" ref={svarRef} tabIndex={-1}>Jeg fikk ikke hentet siden.</h2>
+                <h2 className="velger-res-tittel" ref={svarRef} tabIndex={-1}>
+                  {fase === 'stengt' ? 'Den automatiske sjekken tar pause.' : 'Jeg fikk ikke hentet siden.'}
+                </h2>
                 <p className="velger-res-tekst">
-                  Noen sider stenger ute alt som ikke er en vanlig nettleser, eller svarer for sakte. Sjekk at adressen
-                  er riktig, eller la meg se på siden selv.
+                  {fase === 'stengt'
+                    ? 'Den er stengt akkurat nå. Skriv navn og e-post, så ser jeg på siden selv og sender deg svaret.'
+                    : 'Noen sider stenger ute alt som ikke er en vanlig nettleser, eller svarer for sakte. Sjekk at adressen er riktig, eller la meg se på siden selv.'}
                 </p>
                 <p className="velger-res-lenker">
                   <button type="button" className="velger-tilbake" onClick={nyttForsok}>Prøv en annen adresse</button>
