@@ -36,6 +36,9 @@ skal måles først. 10.02.2027 slås overlappende innlegg sammen og de på plass
 4. Generer et hero-bilde med `image-gen`-skillen i stilen fra `content/toppbilder/`
    (README.md der har kommandoen), 1600×900, lagret som `public/blogg/<slug>.webp`.
 5. Lagre artikkelen som `src/content/generated/<slug>.js`, se skjema under.
+   `src/content/generated/meta.json` og `lastere.js` lages av `npm run build`
+   (`prebuild`, `scripts/lag-artikkel-meta.mjs`). Ikke rediger dem for hånd. Bygger du
+   med `npx vite build` direkte, kjør `node scripts/lag-artikkel-meta.mjs` først.
 6. Oppdater `content/blog-queue.json`: sett `"status": "published"` og legg
    til `"publishedDate"` (samme dato som `publishDate` i artikkelen) på
    oppføringen.

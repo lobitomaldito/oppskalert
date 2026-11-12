@@ -1,0 +1,429 @@
+[
+ {
+  "slug": "ai-agenter-smabedrift",
+  "klynge": "markedsforing",
+  "title": "AI-agenter for småbedrifter: hva de kan gjøre for deg i dag",
+  "description": "Hva er en AI-agent, og hva kan den gjøre for en småbedrift? Fire konkrete oppgaver, hva et menneske fortsatt må gjøre, og hva du sjekker om personvern først.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/ai-agenter-smabedrift.webp"
+ },
+ {
+  "slug": "ai-i-sosiale-medier",
+  "klynge": "markedsforing",
+  "title": "AI i sosiale medier: hva det klarer, og når du må merke",
+  "description": "AI i sosiale medier kan skrive utkast, foreslå ideer og lage bilder. Her er hvor det bommer, og hva Meta krever av merking når innholdet er laget med AI.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/ai-i-sosiale-medier.webp"
+ },
+ {
+  "slug": "ai-oversikter-google",
+  "klynge": "seo",
+  "title": "AI-oversikter i Google: hva de betyr for klikk og bedriften din",
+  "description": "Googles AI-oversikter vises nå i Norge og på norsk. Her er hva de er, hva de gjør med klikkene til nettsiden din, og hvordan en side blir brukt som kilde.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/ai-oversikter-google.webp"
+ },
+ {
+  "slug": "alternativer-til-wordpress",
+  "klynge": "nettside",
+  "title": "Alternativ til WordPress: når en håndkodet side passer bedre",
+  "description": "Alternativ til WordPress for småbedrifter: når WordPress er riktig valg, når en håndkodet side med redigeringspanel passer bedre, og fem spørsmål som avgjør.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/alternativer-til-wordpress.webp"
+ },
+ {
+  "slug": "cookie-banner-nettside",
+  "klynge": "nettside",
+  "title": "Cookie-banner på nettsiden: når må du be om samtykke?",
+  "description": "Trenger nettsiden et cookie-banner? Slik er reglene i ekomloven § 3-15 fra 2025, hva Consent Mode v2 er, og når en side klarer seg uten banner i det hele tatt.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/cookie-banner-nettside.webp"
+ },
+ {
+  "slug": "design-oker-salget",
+  "klynge": "design",
+  "title": "Øke salget med design: fem grep uten større annonsebudsjett",
+  "description": "Fem designgrep som gir flere henvendelser fra trafikken du alt har: tydelig hierarki, kontrast, knappetekst, luft og bilder av ekte folk. Med kildene bak.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/design-oker-salget.webp"
+ },
+ {
+  "slug": "design-som-gir-kunder",
+  "klynge": "design",
+  "title": "Førsteinntrykk på nettsiden: slik avgjør designet om kunden blir",
+  "description": "Besøkende vurderer hvor pen nettsiden din er på et halvt tidels sekund. Her er hva som avgjør om de stoler på deg, og hvordan du tester førsteinntrykket.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/design-som-gir-kunder.webp"
+ },
+ {
+  "slug": "gir-nettsiden-kunder",
+  "klynge": "nettside",
+  "title": "Måle nettsiden: slik ser du om den gir henvendelser og telefoner",
+  "description": "Slik måler du om nettsiden gir kunder: telefoner, skjema og henvendelser fra Google, med Search Console, Bedriftsprofilen og ett spørsmål til hver ny kunde.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/gir-nettsiden-kunder.webp"
+ },
+ {
+  "slug": "grafisk-profil",
+  "klynge": "design",
+  "title": "Grafisk profil: hva den består av, og hvorfor helhet gir tillit",
+  "description": "Hva en grafisk profil består av, hva en liten bedrift faktisk trenger, og hvorfor det samme uttrykket overalt gjør at kundene stoler mer på deg.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/grafisk-profil.webp"
+ },
+ {
+  "slug": "hva-koster-google-ads",
+  "klynge": "seo",
+  "title": "Hva koster Google Ads? Klikkpris og budsjett forklart",
+  "description": "Hva koster Google Ads? Slik avgjør auksjonen klikkprisen, hvorfor kvaliteten på annonsen og landingssiden senker den, og hvordan du setter et startbudsjett.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/hva-koster-google-ads.webp"
+ },
+ {
+  "slug": "hva-koster-seo",
+  "klynge": "seo",
+  "title": "Hva koster SEO? Hva som styrer prisen, og hva jeg tar",
+  "description": "Hva koster SEO for en liten bedrift? Dette styrer prisen, dette er med når du betaler meg fra 2 990 kr i måneden, og disse røde flaggene bør du se etter.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/hva-koster-seo.webp"
+ },
+ {
+  "slug": "hvor-lang-tid-tar-nettside",
+  "klynge": "pris",
+  "title": "Hvor lang tid tar det å lage en nettside? Mine egne tall",
+  "description": "Hvor lang tid tar det å lage en nettside? Utkastet mitt er klart på 48 timer, lansering en til to uker etter. Her er det som styrer tiden, og hva du kan gjøre.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/hvor-lang-tid-tar-nettside.webp"
+ },
+ {
+  "slug": "lage-logo-selv",
+  "klynge": "design",
+  "title": "Lage logo selv: når det holder, og fallgruvene du bør kjenne",
+  "description": "Kan du lage logo selv? Ofte, ja. Her er verktøyene, filformatene du trenger, og fallgruvene med maler, opphavsrett og varemerke før logoen tas i bruk.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/lage-logo-selv.webp"
+ },
+ {
+  "slug": "landingsside-for-annonser",
+  "klynge": "seo",
+  "title": "Landingsside for Google Ads: dette gjør klikk til henvendelser",
+  "description": "En landingsside for Google Ads må gjenta det annonsen lovet, be om én handling, bygge tillit og måle hva som skjer. Slik setter du den opp for småbedrifter.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/landingsside-for-annonser.webp"
+ },
+ {
+  "slug": "logo-farger-typografi",
+  "klynge": "design",
+  "title": "Typografi og farger på nettsiden: slik virker logo og skrift",
+  "description": "Slik virker logo, farger og typografi på nettsiden: kontrastkravene i WCAG, hvor mange skrifter du trenger, og hvorfor skriftene bør ligge på din egen server.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/logo-farger-typografi.webp"
+ },
+ {
+  "slug": "markedsforing-sosiale-medier",
+  "klynge": "markedsforing",
+  "title": "Markedsføring i sosiale medier for små bedrifter",
+  "description": "Markedsføring i sosiale medier: forskjellen på organisk og betalt, hvilke kanaler nordmenn faktisk bruker ifølge SSB, og hvorfor nettsiden må henge med.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/markedsforing-sosiale-medier.webp"
+ },
+ {
+  "slug": "moderne-nettside",
+  "klynge": "nettside",
+  "title": "Moderne nettside i 2026: fem krav en bedriftsside må oppfylle",
+  "description": "En moderne nettside i 2026 må fungere på mobil, laste raskt, følge kravene til universell utforming, spørre om samtykke og vise kontaktinfo tydelig.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/moderne-nettside.webp"
+ },
+ {
+  "slug": "ny-nettside-uten-a-miste-google",
+  "klynge": "nettside",
+  "title": "Ny nettside uten å miste Google: slik flytter du riktig",
+  "description": "Slik beholder du plasseringene i Google når du får ny nettside: kartlegg gamle adresser, sett opp 301-videresendinger, test før lansering og følg opp etterpå.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/ny-nettside-uten-a-miste-google.webp"
+ },
+ {
+  "slug": "pagespeed-score-forklart",
+  "klynge": "nettside",
+  "title": "PageSpeed Insights forklart: hva tallene betyr for bedriften",
+  "description": "PageSpeed Insights forklart for bedriftseiere: hva LCP, INP og CLS måler, grenseverdiene Google bruker, forskjellen på feltdata og labdata, og hva du gjør nå.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/pagespeed-score-forklart.webp"
+ },
+ {
+  "slug": "reklame-i-chatgpt",
+  "klynge": "seo",
+  "title": "Reklame i ChatGPT: dette gjelder i Norge nå",
+  "description": "Reklame i ChatGPT er kommet til Norge. Her er hvem som ser annonsene, hvordan de vises, hva annonsøren får vite, og hva det betyr for en liten bedrift i dag.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/reklame-i-chatgpt.webp"
+ },
+ {
+  "slug": "remarketing",
+  "klynge": "seo",
+  "title": "Remarketing: når lønner det seg for en liten bedrift?",
+  "description": "Remarketing betyr annonser til folk som har besøkt nettsiden din. Her er hvor mye trafikk du trenger, når det lønner seg, og hva samtykkereglene krever.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/remarketing.webp"
+ },
+ {
+  "slug": "seo-for-smabedrifter",
+  "klynge": "seo",
+  "title": "SEO for småbedrifter: hva du gjør først når tiden er knapp",
+  "description": "SEO for småbedrifter med lite tid: hva du bør gjøre først, hva du klarer selv og hva du trygt kan droppe. En prioritert liste du kan starte på i dag.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/seo-for-smabedrifter.webp"
+ },
+ {
+  "slug": "seo-optimalisert-nettside",
+  "klynge": "seo",
+  "title": "SEO-optimalisert nettside: dette må bygges inn fra start",
+  "description": "Hva gjør en nettside SEO-optimalisert? Dette må være bygget inn før lansering, og disse spørsmålene bør du stille leverandøren før du skriver under.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/seo-optimalisert-nettside.webp"
+ },
+ {
+  "slug": "sokeordsanalyse",
+  "klynge": "seo",
+  "title": "Søkeordsanalyse: finn ordene kundene bruker, gratis",
+  "description": "Søkeordsanalyse for tjenestebedrifter: slik finner du ordene kundene skriver i Google med gratis verktøy, og velger de søkene som gir henvendelser.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/sokeordsanalyse.webp"
+ },
+ {
+  "slug": "synlig-i-chatgpt",
+  "klynge": "seo",
+  "title": "Synlig i ChatGPT: slik finner og nevner AI-en bedriften din",
+  "description": "Slik blir bedriften synlig i ChatGPT: hvordan søket henter sider, hvilken robot som må slippe inn, hvordan du tester svaret og hva en liten bedrift kan gjøre.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/synlig-i-chatgpt.webp"
+ },
+ {
+  "slug": "synlig-i-google",
+  "klynge": "seo",
+  "title": "Synlig på Google: hvorfor nettsiden din ikke dukker opp",
+  "description": "Kommer ikke nettsiden opp på Google? Slik finner, leser og lagrer Google sider, og slik sjekker du i Search Console hva som holder din side ute.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/synlig-i-google.webp"
+ },
+ {
+  "slug": "ta-merkevaren-pa-alvor",
+  "klynge": "design",
+  "title": "Merkevarebygging for liten bedrift: tre ting å starte med",
+  "description": "Hva merkevare betyr for en enkeltpraksis eller liten bedrift i praksis, og tre ting du kan starte med denne måneden uten reklamebyrå eller stort budsjett.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/ta-merkevaren-pa-alvor.webp"
+ },
+ {
+  "slug": "teknisk-seo",
+  "klynge": "seo",
+  "title": "Teknisk SEO: sjekkliste med forklaring for bedriftseiere",
+  "description": "Teknisk SEO forklart som en sjekkliste: indeksering, Core Web Vitals, mobil, HTTPS, videresendinger, sitemap, robots.txt og strukturerte data.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/teknisk-seo.webp"
+ },
+ {
+  "slug": "tid-pa-sosiale-medier",
+  "klynge": "markedsforing",
+  "title": "Hvor mye tid på sosiale medier bør en bedrift bruke?",
+  "description": "Hvor mye tid på sosiale medier bør en liten bedrift bruke? Slik regner du ut timene, setter et tak, og kutter tiden med planlegging og gjenbruk av innhold.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/tid-pa-sosiale-medier.webp"
+ },
+ {
+  "slug": "treg-nettside",
+  "klynge": "nettside",
+  "title": "Treg nettside? De vanligste årsakene og hva du gjør selv",
+  "description": "Treg nettside? De vanligste årsakene er store bilder, skript fra andre, tunge utvidelser og en treg server. Slik måler du gratis og finner hva som bremser.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/treg-nettside.webp"
+ },
+ {
+  "slug": "vanlige-feil-pa-nettsider",
+  "klynge": "nettside",
+  "title": "Vanlige feil på nettsider: jeg målte 4 566 småbedriftssider",
+  "description": "Vanlige feil på nettsider, målt på 4 566 norske småbedriftssider: 90 % viser ingen priser og 78 % ingen kundeomtaler. Her er hva det koster deg.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/vanlige-feil-pa-nettsider.webp"
+ },
+ {
+  "slug": "vedlikehold-av-nettside",
+  "klynge": "drift",
+  "title": "Vedlikehold av nettside: hva du gjør selv og hva du setter bort",
+  "description": "Vedlikehold av nettside handler om oppdateringer, sikkerhetskopier, domene, sertifikat og innhold. Her er hva du kan gjøre selv, og hva du bør sette bort.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/vedlikehold-av-nettside.webp"
+ },
+ {
+  "slug": "velge-publiseringsverktoy",
+  "klynge": "nettside",
+  "title": "Hvordan velge CMS: start med hva du skal endre selv",
+  "description": "Hvordan velge CMS til nettsiden? Skriv ned hva du endrer selv i løpet av et år. Den lista avgjør om du trenger WordPress eller et enkelt redigeringspanel.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/velge-publiseringsverktoy.webp"
+ },
+ {
+  "slug": "wordpress-hacket",
+  "klynge": "drift",
+  "title": "WordPress hacket? Slik tar du det de første timene",
+  "description": "WordPress hacket? Tegnene du ser etter, hva du gjør de første timene, når du må melde til Datatilsynet og hvordan du hindrer at det skjer igjen.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/wordpress-hacket.webp"
+ },
+ {
+  "slug": "lage-nettside-gratis",
+  "klynge": "nettside",
+  "title": "Kan man lage en nettside gratis? Dette får du, og dette mangler",
+  "description": "Ja, Wix, WordPress.com og Google Sites lar deg lage en nettside gratis. Her er hva gratisversjonene gir, hva de mangler, og hva siden koster deg likevel.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/lage-nettside-gratis.webp"
+ },
+ {
+  "slug": "lonner-seo-seg",
+  "klynge": "seo",
+  "title": "Lønner det seg med SEO? Slik regner du det ut",
+  "description": "SEO lønner seg når de nye kundene fra søk betaler mer enn arbeidet koster. Slik regner du det ut for din bedrift, og når SEO ikke er verdt pengene.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/lonner-seo-seg.webp"
+ },
+ {
+  "slug": "seo-og-geo",
+  "klynge": "seo",
+  "title": "Hva er forskjellen på SEO og GEO?",
+  "description": "SEO gir deg plass i Google-lista. GEO handler om å bli nevnt i svarene fra ChatGPT og Googles AI-oversikter. Slik henger de sammen, og hva du gjør selv.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/seo-og-geo.webp"
+ },
+ {
+  "slug": "hva-koster-nettside-i-maneden",
+  "klynge": "pris",
+  "title": "Hva koster en nettside i måneden?",
+  "description": "En nettside kan koste fra rundt 13 kr til flere tusen kroner i måneden. Her er hva du betaler for: domene, hosting, drift og abonnement, med mine egne priser.",
+  "publishDate": "2026-11-12",
+  "hero": "/blogg/hva-koster-nettside-i-maneden.webp"
+ },
+ {
+  "slug": "hjemmesider-for-sma-bedrifter",
+  "klynge": "nettside",
+  "title": "Hjemmesider for små bedrifter: hva du trenger, og hva du kan droppe",
+  "description": "Hjemmesider for små bedrifter trenger sjelden mer enn fem sider. Her er hva du faktisk trenger, hva du kan droppe, og når det er verdt å bygge ut.",
+  "publishDate": "2026-08-31",
+  "updatedDate": "2026-11-11",
+  "hero": "/blogg/hjemmesider-for-sma-bedrifter.webp"
+ },
+ {
+  "slug": "seo-eller-google-annonser",
+  "klynge": "seo",
+  "title": "SEO eller Google-annonser: hva lønner seg for en liten bedrift?",
+  "description": "SEO eller Google-annonser, hva lønner seg egentlig for en liten bedrift? Konkrete tall på klikkpris, tidsbruk og hvilken kanal du bør velge først.",
+  "publishDate": "2026-08-27",
+  "updatedDate": "2026-11-11",
+  "hero": "/blogg/seo-eller-google-annonser.webp"
+ },
+ {
+  "slug": "bytte-nettside",
+  "klynge": "nettside",
+  "title": "Når bør du bytte nettside? Fem tegn på at den koster deg kunder",
+  "description": "Fem konkrete tegn på at nettsiden din har sluttet å prestere for bedriften, fra treg lasting til fallende konvertering, og hva du bør sjekke først.",
+  "publishDate": "2026-08-24",
+  "updatedDate": "2026-11-11",
+  "hero": "/blogg/bytte-nettside.webp"
+ },
+ {
+  "slug": "hva-koster-nettside",
+  "klynge": "pris",
+  "title": "Hva koster en nettside i 2027? Prisene mine",
+  "description": "Hva koster en nettside i 2027? Her er de ekte prisene mine per nivå, fra enkel landingsside til stor struktur, uten et vagt «fra»-tall.",
+  "publishDate": "2026-08-20",
+  "updatedDate": "2026-11-12",
+  "hero": "/blogg/hva-koster-nettside.webp"
+ },
+ {
+  "slug": "nettside-ai",
+  "klynge": "nettside",
+  "title": "AI og nettsider: hva verktøyene faktisk klarer i 2026",
+  "description": "AI kan sette opp kode og skrive utkast raskt, men kjenner ikke kundene dine. Her er hva AI faktisk klarer for en nettside i 2026, og hva den ikke gjør.",
+  "publishDate": "2026-08-17",
+  "updatedDate": "2026-11-11",
+  "hero": "/blogg/nettside-ai.webp"
+ },
+ {
+  "slug": "hvordan-lage-nettside",
+  "klynge": "nettside",
+  "title": "Lage nettside: 5 steg, selv eller med hjelp",
+  "description": "Slik lager du nettside i fem steg: domene, mål, tekst, bygging og måling. Pluss timene det tar selv, og når det lønner seg å sette det bort.",
+  "publishDate": "2026-08-13",
+  "updatedDate": "2026-11-12",
+  "hero": "/blogg/hvordan-lage-nettside.webp"
+ },
+ {
+  "slug": "responsiv-nettside",
+  "klynge": "nettside",
+  "title": "Hva er en responsiv nettside? Test din selv",
+  "description": "En responsiv nettside, også kalt mobiltilpasset, tilpasser seg skjermen av seg selv. Slik ser du om din gjør det, med en test på egen telefon som tar ett minutt.",
+  "publishDate": "2026-08-10",
+  "updatedDate": "2026-11-12",
+  "hero": "/blogg/responsiv-nettside.webp"
+ },
+ {
+  "slug": "google-min-bedrift",
+  "klynge": "seo",
+  "title": "Google Bedriftsprofil: slik blir bedriften synlig i lokale søk",
+  "description": "Google Bedriftsprofil avgjør om bedriften din vises i lokale søk. Her er feltene som faktisk påvirker rangeringen, og hva du bør fikse først.",
+  "publishDate": "2026-08-06",
+  "updatedDate": "2026-11-11",
+  "hero": "/blogg/google-min-bedrift.webp"
+ },
+ {
+  "slug": "norsk-domene",
+  "klynge": "drift",
+  "title": "Norsk domene: hva det er, hva det koster og hva du må passe på",
+  "description": "Hva et .no-domene er, hvorfor det er tryggere enn .com, hva det egentlig koster, og hvorfor du må stå oppført som eier selv.",
+  "publishDate": "2026-08-05",
+  "updatedDate": "2026-11-11",
+  "hero": "/blogg/norsk-domene.webp"
+ },
+ {
+  "slug": "utvikling-nettside",
+  "klynge": "nettside",
+  "title": "Utvikling av nettside: alt en liten bedrift trenger å vite",
+  "description": "Hva koster utvikling av nettside i Norge? Gjennomgang av pris, leveringstid, teknologivalg og hva du bør spørre webutvikleren om før du signerer.",
+  "publishDate": "2026-08-05",
+  "hero": "/blogg/utvikling-nettside.webp"
+ },
+ {
+  "slug": "webutvikler-oslo",
+  "klynge": "nettside",
+  "title": "Webutvikler i Oslo: Priser, alternativer og hva du bør spørre om",
+  "description": "Hva koster en webutvikler i Oslo i 2026? Priser, leverandørtyper og de rette spørsmålene å stille, forklart uten sjargong av Aleksander hos Oppskalert.",
+  "publishDate": "2026-08-04",
+  "updatedDate": "2026-11-12",
+  "hero": "/blogg/webutvikler-oslo.webp"
+ },
+ {
+  "slug": "mobilhastighet-nettside-koster-millioner",
+  "klynge": "nettside",
+  "title": "Mobilhastighet på nettside: Hvorfor 3 sekunder koster millioner",
+  "description": "Når nettsiden din laster tregt, forsvinner kundene. Her er hvorfor tre-sekundersregelen er kritisk for omsetningen, og hva du gjør med det.",
+  "publishDate": "2026-05-01",
+  "hero": "/blogg/mobilhastighet-nettside-koster-millioner.jpg"
+ },
+ {
+  "slug": "myten-om-den-dyre-nettsiden-ai-prisbilde",
+  "klynge": "pris",
+  "title": "Myten om den dyre nettsiden: Slik endrer AI prisbildet",
+  "description": "Må en nettside koste 100 000 kroner? Her er hvorfor prisene spriker, hva AI har endret, og tre spørsmål du bør stille før du signerer.",
+  "publishDate": "2026-05-01",
+  "updatedDate": "2026-11-12",
+  "hero": "/blogg/myten-om-den-dyre-nettsiden-ai-prisbilde.jpg"
+ },
+ {
+  "slug": "hvordan-bygge-en-nettside-for-konvertering",
+  "klynge": "design",
+  "title": "Nettside konvertering: Slik bygger du en ekte salgsmaskin",
+  "description": "Slutt å kaste penger på pent design som ikke selger. Slik gjør konverteringsarkitektur hjemmesiden din til en side som faktisk skaffer kunder.",
+  "publishDate": "2026-05-01",
+  "hero": "/blogg/hvordan-bygge-en-nettside-for-konvertering.jpg"
+ }
+]

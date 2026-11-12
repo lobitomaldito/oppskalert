@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/lag-artikkel-meta.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/lag-artikkel-meta.mjs",
     "build": "vite build",
     "postbuild": "node scripts/prerender.mjs && node scripts/indexnow.mjs --auto",
     "lint": "eslint .",

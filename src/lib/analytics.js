@@ -1,4 +1,4 @@
-import posthog from './posthog';
+import { hentPosthog, posthogNa } from './posthog';
 import { demoClient } from './demoRequest';
 
 // Én kilde til sannhet for sporing. Alle event-kall går gjennom track()/
@@ -15,7 +15,7 @@ import { demoClient } from './demoRequest';
 // hvis posthog.init() aldri kjørte (mangler token, eller prerender).
 const anonId = () => {
   try {
-    return posthog.get_distinct_id() || null;
+    return posthogNa()?.get_distinct_id() || null;
   } catch {
     return null;
   }
@@ -53,7 +53,7 @@ function sendToGa4(event, properties) {
 }
 
 export function track(event, properties = {}) {
-  posthog.capture(event, properties);
+  hentPosthog().then((ph) => ph?.capture(event, properties));
   logOwnEvent(event, properties);
   sendToGa4(event, properties);
 }
@@ -64,5 +64,5 @@ export function track(event, properties = {}) {
 // fra anonym til en profil.
 export function identify({ email, userId, ...traits } = {}) {
   if (!email) return;
-  posthog.identify(userId || email, { email, ...traits });
+  hentPosthog().then((ph) => ph?.identify(userId || email, { email, ...traits }));
 }

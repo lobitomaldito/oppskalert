@@ -1,9 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { use, useEffect, useRef } from 'react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { getArticleBySlug, klynger, lesOgsa } from '../lib/articles';
+import { klynger, lesOgsa } from '../lib/klynger';
+import alleInnlegg from '../content/generated/meta.json';
+import { lastere } from '../content/generated/lastere.js';
 import { ruter, kontakt, lagFaqSchema } from '../lib/site';
 import SEO from '../components/SEO';
 import { Navbar, Footer } from '../components/Layout';
@@ -264,7 +266,7 @@ const LocalArticle = ({ article }) => {
     tidlig: { ...klynge.tidlig, ...(article.cta?.tidlig ? { tekst: article.cta.tidlig } : {}) },
     midt: { ...klynge.midt, ...(article.cta?.midt || {}) },
   };
-  const relaterte = lesOgsa(article);
+  const relaterte = lesOgsa(article, alleInnlegg);
   const deler = mellomtitler(article.content);
   const medInnhold = deler.length >= INNHOLD_MIN_H2;
   /* Med «Innhold» får teksten en spalte ved siden av på stor skjerm, og
@@ -354,7 +356,7 @@ const LocalArticle = ({ article }) => {
         <div className="px-6 md:px-12 lg:px-24 mb-16">
           <div className={ramme}>
             <div className={`${spalte} rounded-flate overflow-hidden h-64 md:h-96`}>
-              <img src={article.hero} alt={article.title} className="w-full h-full object-cover" />
+              <img src={article.hero} alt={article.title} width="1600" height="900" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -455,12 +457,20 @@ const LocalArticle = ({ article }) => {
 /* Alt blogginnhold bor nå i src/content/generated/ og src/lib/articles.js.
    Opinly er ute, så en ukjent slug er en ekte 404 og ikke noe vi kan hente
    fra et API i etterkant. */
+/* Hvert innlegg lastes for seg (lastere.js). Løftet huskes per slug, så `use`
+   får samme løfte ved hver rendring og Suspense-grensen i main.jsx venter på det. */
+const hentet = new Map();
+const hentInnlegg = (slug) => {
+  if (!hentet.has(slug)) hentet.set(slug, lastere[slug] ? lastere[slug]() : Promise.resolve(null));
+  return hentet.get(slug);
+};
+
 const ArticlePage = () => {
   const { slug } = useParams();
-  const localArticle = getArticleBySlug(slug);
+  const localArticle = use(hentInnlegg(slug));
 
   if (!localArticle) return <Navigate to="/blogg" replace />;
-  return <LocalArticle article={localArticle} />;
+  return <LocalArticle key={slug} article={localArticle} />;
 };
 
 export default ArticlePage;
