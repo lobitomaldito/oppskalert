@@ -1,5 +1,6 @@
 export default {
   slug: "seo-for-smabedrifter",
+  klynge: "seo",
   title: "SEO for småbedrifter: hva du gjør først når tiden er knapp",
   description: "SEO for småbedrifter med lite tid: hva du bør gjøre først, hva du klarer selv og hva du trygt kan droppe. En prioritert liste du kan starte på i dag.",
   publishDate: "2026-11-12",

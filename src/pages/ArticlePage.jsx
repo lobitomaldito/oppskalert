@@ -3,7 +3,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { getArticleBySlug, articles } from '../lib/articles';
+import { getArticleBySlug, klynger, lesOgsa } from '../lib/articles';
 import { ruter, kontakt, lagFaqSchema } from '../lib/site';
 import SEO from '../components/SEO';
 import { Navbar, Footer } from '../components/Layout';
@@ -68,6 +68,27 @@ const renderInline = (text, keyPrefix) =>
 
 const tellOrd = (s) => s.trim().split(/\s+/).filter(Boolean).length;
 
+/* Anker til «Innhold». Markdown og tegnsetting ut, æøå til ascii, så
+   adressen kan limes inn i en e-post uten prosentkoder. */
+const ankerFor = (tekst) =>
+  tekst
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*?]/g, '')
+    .toLowerCase()
+    .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'a')
+    .normalize('NFD').replace(/[̀-ͯ]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+const mellomtitler = (content) =>
+  content.split('\n').filter((l) => l.startsWith('## ')).map((l) => {
+    const tekst = l.slice(3).replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/\*/g, '');
+    return { id: ankerFor(tekst), tekst };
+  });
+
+// «Innhold» vises fra fire mellomtitler, som i artikkel-format.md.
+const INNHOLD_MIN_H2 = 4;
+
 // Terskel: under dette er artikkelen for kort til at en midtveis-CTA gir
 // mening, da står de to andre alene.
 const MIDT_CTA_MIN_ORD = 800;
@@ -107,7 +128,7 @@ const renderContent = (content, { tidligCta = null, midtCta = null } = {}) => {
       );
     } else if (line.startsWith('## ')) {
       elements.push(
-        <h2 key={i} className="font-sans font-bold text-2xl md:text-3xl tracking-tight mt-12 mb-4 text-room-ink">
+        <h2 key={i} id={ankerFor(line.slice(3))} className="scroll-mt-28 font-sans font-bold text-2xl md:text-3xl tracking-tight mt-12 mb-4 text-room-ink">
           {renderInline(line.slice(3), i)}
         </h2>
       );
@@ -198,19 +219,21 @@ const MidtCta = ({ tittel, tekst }) => (
   </aside>
 );
 
-/* 3. Slutt. Den ene fylte knappen i artikkelen. */
-const CTA = () => (
-  <div className="mt-20 bg-surface/30 border border-room-ink/10 rounded-flate p-10 text-center">
-    <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink mb-3 block">Klar for neste steg?</span>
-    <h3 className="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-4">Jeg bygger din salgsmaskin.</h3>
+/* 3. Slutt. Den ene fylte knappen i artikkelen. Tittel, tekst og lenke
+      følger klyngen, så avslutningen peker på pengesiden for akkurat dette
+      temaet (artikkel-format.md punkt 9). */
+const CTA = ({ klynge }) => (
+  <div className="bg-surface/30 border border-room-ink/10 rounded-flate p-10 text-center">
+    <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink mb-3 block">Neste steg</span>
+    <h2 className="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-4">{klynge.tittel}</h2>
     <p className="font-body text-room-ink/70 text-[0.95rem] mb-8 max-w-md mx-auto leading-relaxed">
-      Ingen binding, ingen lange prosesser. Du ser et ferdig utkast før du bestemmer deg.
+      {klynge.tekst}
     </p>
-    <Link to="/kontakt" className="group relative inline-flex overflow-hidden bg-room-ink text-room px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
+    <Link to={klynge.pengeside} className="group relative inline-flex overflow-hidden bg-room-ink text-room px-8 py-4 rounded-full font-sans font-bold transition-transform hover:scale-[1.03] duration-300">
       {/* Teksten bytter til room-ink samtidig som det hvite panelet dekker knappen,
           samme varighet som glidningen (300ms), så den aldri blir hvit på hvitt. */}
       <span className="relative z-10 group-hover:text-room-ink transition-colors duration-300 flex items-center gap-2">
-        Få et gratis utkast <ArrowRight className="w-4 h-4" />
+        {klynge.knapp} <ArrowRight className="w-4 h-4" />
       </span>
       <div className="absolute inset-0 bg-surface translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"></div>
     </Link>
@@ -248,9 +271,15 @@ const LocalArticle = ({ article }) => {
     midt: { ...CTA_STANDARD.midt, ...(article.cta?.midt || {}) },
   };
 
-  const currentIndex = articles.findIndex((a) => a.slug === article.slug);
-  const prevArticle = currentIndex > 0 ? articles[currentIndex - 1] : null;
-  const nextArticle = currentIndex < articles.length - 1 ? articles[currentIndex + 1] : null;
+  const klynge = klynger[article.klynge] || klynger.nettside;
+  const relaterte = lesOgsa(article);
+  const deler = mellomtitler(article.content);
+  const medInnhold = deler.length >= INNHOLD_MIN_H2;
+  /* Med «Innhold» får teksten en spalte ved siden av på stor skjerm, og
+     tittelen flyttes til samme venstrekant som teksten. Uten står alt
+     midtstilt som før. */
+  const ramme = medInnhold ? 'max-w-3xl lg:max-w-6xl mx-auto' : 'max-w-3xl mx-auto';
+  const spalte = medInnhold ? 'lg:max-w-3xl' : '';
 
   const canonical = `https://oppskalert.no/blogg/${article.slug}`;
   const lesetid = Math.max(1, Math.round(tellOrd(article.content) / 200));
@@ -279,6 +308,8 @@ const LocalArticle = ({ article }) => {
       name: 'Oppskalert',
       logo: { '@type': 'ImageObject', url: 'https://oppskalert.no/oppskalert%20fav.png' },
     },
+    articleSection: klynge.navn,
+    inLanguage: 'nb-NO',
     mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
   };
 
@@ -300,58 +331,94 @@ const LocalArticle = ({ article }) => {
       <Navbar />
 
       <section ref={heroRef} className="pt-40 pb-0 px-6 md:px-12 lg:px-24">
-        <div className="max-w-3xl mx-auto">
-          <Link to="/blogg" className="hero-elem inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-room-ink/70 hover:text-room-ink transition-colors duration-300 mb-8">
-            <ArrowLeft className="w-3 h-3" /> Tilbake til blogg
-          </Link>
-          <h1 className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight leading-tight mb-6">
-            {article.title}
-          </h1>
-          <div className="hero-elem flex items-center gap-4 font-body text-xs uppercase tracking-widest text-room-ink/70 mb-12">
-            <Link to={ruter.om} className="hover:text-room-ink transition-colors">{kontakt.navn}</Link>
-            <span className="w-1 h-1 rounded-full bg-room-ink/20" />
-            <span>
-              {article.updatedDate ? `Oppdatert ${formatDate(article.updatedDate)}` : formatDate(article.publishDate)}
-            </span>
-            <span className="w-1 h-1 rounded-full bg-room-ink/20" />
-            <span>{lesetid} min lesing</span>
+        <div className={ramme}>
+          <div className={spalte}>
+            {/* Brødsmule og kategori over tittelen (artikkel-format.md punkt 1). */}
+            <nav aria-label="Brødsmule" className="hero-elem flex items-center gap-2 font-body text-xs uppercase tracking-widest text-room-ink/70 mb-8">
+              <Link to={ruter.blogg} className="inline-flex items-center gap-2 hover:text-room-ink transition-colors duration-300">
+                <ArrowLeft className="w-3 h-3" /> Blogg
+              </Link>
+              <span aria-hidden="true">/</span>
+              <span>{klynge.navn}</span>
+            </nav>
+            <h1 className="hero-elem font-sans font-bold text-3xl md:text-5xl tracking-tight leading-tight mb-6">
+              {article.title}
+            </h1>
+            <p className="hero-elem font-body text-lg md:text-xl text-room-ink/70 leading-relaxed mb-6">
+              {article.ingress || article.description}
+            </p>
+            <p className="hero-elem font-body text-sm text-room-ink/70 mb-12">
+              Skrevet av{' '}
+              <Link to={ruter.om} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">{kontakt.navn}</Link>
+              {' · '}{formatDate(article.publishDate)}
+              {article.updatedDate && ` · Oppdatert ${formatDate(article.updatedDate)}`}
+              {' · '}{lesetid} min å lese
+            </p>
           </div>
         </div>
       </section>
 
       {article.hero && (
         <div className="px-6 md:px-12 lg:px-24 mb-16">
-        <div className="max-w-3xl mx-auto rounded-flate overflow-hidden h-64 md:h-96">
-          <img src={article.hero} alt={article.title} className="w-full h-full object-cover" />
+          <div className={ramme}>
+            <div className={`${spalte} rounded-flate overflow-hidden h-64 md:h-96`}>
+              <img src={article.hero} alt={article.title} className="w-full h-full object-cover" />
+            </div>
+          </div>
         </div>
-      </div>
       )}
 
-      <article className="px-6 md:px-12 lg:px-24 pb-32">
-        <div className="max-w-3xl mx-auto">
-          {/* Svaret først, så både leseren og AI-søk får det uten å lese
-              hele artikkelen. Feltet er valgfritt per artikkel. */}
-          {article.svar && (
-            <aside className="mb-12 rounded-kort border border-room-ink/10 bg-room-ink/[0.04] p-7 md:p-8">
-              <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink/70 mb-3 block">Kort svar</span>
-              <p className="font-body text-room-ink leading-relaxed text-base md:text-lg">{renderInline(article.svar, 'svar')}</p>
-            </aside>
-          )}
+      <article className="px-6 md:px-12 lg:px-24 pb-24">
+        <div className={`${ramme} ${medInnhold ? 'lg:grid lg:grid-cols-[minmax(0,48rem)_minmax(0,1fr)] lg:gap-16' : ''}`}>
+          <div className="min-w-0">
+            {/* Svaret først, så både leseren og AI-søk får det uten å lese
+                hele artikkelen. Feltet er valgfritt per artikkel. */}
+            {article.svar && (
+              <aside className="mb-10 rounded-kort border border-room-ink/10 bg-room-ink/[0.04] p-7 md:p-8">
+                <span className="font-body text-xs uppercase tracking-[0.3em] text-room-ink/70 mb-3 block">Kort fortalt</span>
+                <p className="font-body text-room-ink leading-relaxed text-base md:text-lg">{renderInline(article.svar, 'svar')}</p>
+              </aside>
+            )}
 
-          {renderContent(article.content, {
-            tidligCta: <TidligCta tekst={cta.tidlig} />,
-            midtCta: <MidtCta tittel={cta.midt.tittel} tekst={cta.midt.tekst} />,
-          })}
+            {/* «Innhold» på mobil: sammenleggbar boks over teksten. */}
+            {medInnhold && (
+              <details className="lg:hidden mb-10 rounded-kort border border-room-ink/10 px-6 py-4">
+                <summary className="cursor-pointer font-sans font-bold text-base text-room-ink">Innhold</summary>
+                <ol className="mt-4 space-y-2 list-decimal list-inside font-body text-[0.95rem] text-room-ink/70">
+                  {deler.map((d) => (
+                    <li key={d.id}><a href={`#${d.id}`} className="hover:text-room-ink underline-offset-4 hover:underline">{d.tekst}</a></li>
+                  ))}
+                </ol>
+              </details>
+            )}
 
-          <div className="mt-16 flex flex-wrap gap-2">
-            {article.keywords.map((kw) => (
-              <span key={kw} className="font-body text-xs uppercase tracking-widest text-room-ink/70 border border-room-ink/10 px-4 py-2 rounded-full">
-                {kw}
-              </span>
-            ))}
+            {renderContent(article.content, {
+              tidligCta: <TidligCta tekst={cta.tidlig} />,
+              midtCta: <MidtCta tittel={cta.midt.tittel} tekst={cta.midt.tekst} />,
+            })}
+
+            <div className="mt-16 flex flex-wrap gap-2">
+              {article.keywords.map((kw) => (
+                <span key={kw} className="font-body text-xs uppercase tracking-widest text-room-ink/70 border border-room-ink/10 px-4 py-2 rounded-full">
+                  {kw}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <CTA />
+          {/* «Innhold» på stor skjerm: klebrig spalte ved siden av teksten. */}
+          {medInnhold && (
+            <nav aria-label="Innhold" className="hidden lg:block">
+              <div className="sticky top-28 border-l border-room-ink/10 pl-6">
+                <p className="font-body text-xs uppercase tracking-[0.3em] text-room-ink/70 mb-4">Innhold</p>
+                <ol className="space-y-3 font-body text-sm leading-snug text-room-ink/70">
+                  {deler.map((d) => (
+                    <li key={d.id}><a href={`#${d.id}`} className="hover:text-room-ink transition-colors">{d.tekst}</a></li>
+                  ))}
+                </ol>
+              </div>
+            </nav>
+          )}
         </div>
       </article>
 
@@ -361,25 +428,29 @@ const LocalArticle = ({ article }) => {
         <FAQ tittel="Vanlige spørsmål" uthevet="om dette temaet." sporsmal={article.faq} />
       )}
 
-      {(prevArticle || nextArticle) && (
+      <section className="px-6 md:px-12 lg:px-24 pb-24">
+        <div className="max-w-3xl mx-auto">
+          <CTA klynge={klynge} />
+        </div>
+      </section>
+
+      {relaterte.length > 0 && (
         <section className="px-6 md:px-12 lg:px-24 pb-32">
-          <div className="max-w-3xl mx-auto border-t border-room-ink/10 pt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {prevArticle ? (
-              <Link to={`/blogg/${prevArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-kort border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1">
-                <span className="font-body text-xs uppercase tracking-widest text-room-ink/70 flex items-center gap-2">
-                  <ArrowLeft className="w-3 h-3" /> Forrige
-                </span>
-                <span className="font-sans font-bold text-sm leading-snug group-hover:underline underline-offset-4 decoration-room-ink/40 transition-colors">{prevArticle.title}</span>
-              </Link>
-            ) : <div />}
-            {nextArticle ? (
-              <Link to={`/blogg/${nextArticle.slug}`} className="group flex flex-col gap-2 p-6 rounded-kort border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1 text-right md:items-end">
-                <span className="font-body text-xs uppercase tracking-widest text-room-ink/70 flex items-center gap-2">
-                  Neste <ArrowRight className="w-3 h-3" />
-                </span>
-                <span className="font-sans font-bold text-sm leading-snug group-hover:underline underline-offset-4 decoration-room-ink/40 transition-colors">{nextArticle.title}</span>
-              </Link>
-            ) : <div />}
+          <div className="max-w-6xl mx-auto border-t border-room-ink/10 pt-12">
+            <h2 className="font-sans font-bold text-2xl md:text-3xl tracking-tight mb-8">Les også</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relaterte.map((a) => (
+                <li key={a.slug}>
+                  <Link to={`/blogg/${a.slug}`} className="group flex h-full flex-col gap-3 p-6 rounded-kort border border-room-ink/10 hover:border-room-ink/20 transition-all duration-300 hover:-translate-y-1">
+                    <span className="font-body text-xs uppercase tracking-widest text-room-ink/70">{klynger[a.klynge]?.navn}</span>
+                    <h3 className="font-sans font-bold text-lg leading-snug group-hover:underline underline-offset-4 decoration-room-ink/40">{a.title}</h3>
+                    <span className="mt-auto inline-flex items-center gap-2 font-body text-xs uppercase tracking-widest text-room-ink/70 group-hover:text-room-ink transition-colors">
+                      Les innlegget <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}

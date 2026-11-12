@@ -1,5 +1,6 @@
 export default {
   slug: "sokeordsanalyse",
+  klynge: "seo",
   title: "Søkeordsanalyse: finn ordene kundene bruker, gratis",
   description: "Søkeordsanalyse for tjenestebedrifter: slik finner du ordene kundene skriver i Google med gratis verktøy, og velger de søkene som gir henvendelser.",
   publishDate: "2026-11-12",

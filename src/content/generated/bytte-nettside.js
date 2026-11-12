@@ -1,5 +1,6 @@
 export default {
   slug: "bytte-nettside",
+  klynge: "nettside",
   title: "Når bør du bytte nettside? Fem tegn på at den koster deg kunder",
   description: "Fem konkrete tegn på at nettsiden din har sluttet å prestere for bedriften, fra treg lasting til fallende konvertering, og hva du bør sjekke først.",
   publishDate: "2026-08-24",

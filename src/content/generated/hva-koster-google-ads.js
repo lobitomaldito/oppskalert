@@ -1,5 +1,6 @@
 export default {
   slug: "hva-koster-google-ads",
+  klynge: "seo",
   title: "Hva koster Google Ads? Klikkpris og budsjett forklart",
   description: "Hva koster Google Ads? Slik avgjør auksjonen klikkprisen, hvorfor kvaliteten på annonsen og landingssiden senker den, og hvordan du setter et startbudsjett.",
   publishDate: "2026-11-12",

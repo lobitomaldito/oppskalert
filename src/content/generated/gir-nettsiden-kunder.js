@@ -1,5 +1,6 @@
 export default {
   slug: "gir-nettsiden-kunder",
+  klynge: "nettside",
   title: "Måle nettsiden: slik ser du om den gir henvendelser og telefoner",
   description: "Slik måler du om nettsiden gir kunder: telefoner, skjema og henvendelser fra Google, med Search Console, Bedriftsprofilen og ett spørsmål til hver ny kunde.",
   publishDate: "2026-11-12",

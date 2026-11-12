@@ -1,5 +1,6 @@
 export default {
   slug: "velge-publiseringsverktoy",
+  klynge: "nettside",
   title: "Hvordan velge CMS: start med hva du skal endre selv",
   description: "Hvordan velge CMS til nettsiden? Skriv ned hva du endrer selv i løpet av et år. Den lista avgjør om du trenger WordPress eller et enkelt redigeringspanel.",
   publishDate: "2026-11-12",

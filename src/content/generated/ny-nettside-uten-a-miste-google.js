@@ -1,5 +1,6 @@
 export default {
   slug: "ny-nettside-uten-a-miste-google",
+  klynge: "nettside",
   title: "Ny nettside uten å miste Google: slik flytter du riktig",
   description: "Slik beholder du plasseringene i Google når du får ny nettside: kartlegg gamle adresser, sett opp 301-videresendinger, test før lansering og følg opp etterpå.",
   publishDate: "2026-11-12",

@@ -1,5 +1,6 @@
 export default {
   slug: "design-oker-salget",
+  klynge: "design",
   title: "Øke salget med design: fem grep uten større annonsebudsjett",
   description: "Fem designgrep som gir flere henvendelser fra trafikken du alt har: tydelig hierarki, kontrast, knappetekst, luft og bilder av ekte folk. Med kildene bak.",
   publishDate: "2026-11-12",

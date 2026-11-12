@@ -1,5 +1,6 @@
 export default {
   slug: "hva-koster-seo",
+  klynge: "seo",
   title: "Hva koster SEO? Hva som styrer prisen, og hva jeg tar",
   description: "Hva koster SEO for en liten bedrift? Dette styrer prisen, dette er med når du betaler meg fra 2 990 kr i måneden, og disse røde flaggene bør du se etter.",
   publishDate: "2026-11-12",

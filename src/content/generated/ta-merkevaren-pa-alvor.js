@@ -1,5 +1,6 @@
 export default {
   slug: "ta-merkevaren-pa-alvor",
+  klynge: "design",
   title: "Merkevarebygging for liten bedrift: tre ting å starte med",
   description: "Hva merkevare betyr for en enkeltpraksis eller liten bedrift i praksis, og tre ting du kan starte med denne måneden uten reklamebyrå eller stort budsjett.",
   publishDate: "2026-11-12",

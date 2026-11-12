@@ -1,5 +1,6 @@
 export default {
   slug: "nettside-ai",
+  klynge: "nettside",
   title: "AI og nettsider: hva verktøyene faktisk klarer i 2026",
   description: "AI kan sette opp kode og skrive utkast raskt, men kjenner ikke kundene dine. Her er hva AI faktisk klarer for en nettside i 2026, og hva den ikke gjør.",
   publishDate: "2026-08-17",

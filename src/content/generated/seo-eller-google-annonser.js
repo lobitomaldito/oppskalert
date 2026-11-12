@@ -1,5 +1,6 @@
 export default {
   slug: "seo-eller-google-annonser",
+  klynge: "seo",
   title: "SEO eller Google-annonser: hva lønner seg for en liten bedrift?",
   description: "SEO eller Google-annonser, hva lønner seg egentlig for en liten bedrift? Konkrete tall på klikkpris, tidsbruk og hvilken kanal du bør velge først.",
   publishDate: "2026-08-27",

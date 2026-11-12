@@ -1,5 +1,6 @@
 export default {
   slug: "synlig-i-chatgpt",
+  klynge: "seo",
   title: "Synlig i ChatGPT: slik finner og nevner AI-en bedriften din",
   description: "Slik blir bedriften synlig i ChatGPT: hvordan søket henter sider, hvilken robot som må slippe inn, hvordan du tester svaret og hva en liten bedrift kan gjøre.",
   publishDate: "2026-11-12",

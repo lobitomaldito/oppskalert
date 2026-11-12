@@ -1,5 +1,6 @@
 export default {
   slug: "vedlikehold-av-nettside",
+  klynge: "drift",
   title: "Vedlikehold av nettside: hva du gjør selv og hva du setter bort",
   description: "Vedlikehold av nettside handler om oppdateringer, sikkerhetskopier, domene, sertifikat og innhold. Her er hva du kan gjøre selv, og hva du bør sette bort.",
   publishDate: "2026-11-12",

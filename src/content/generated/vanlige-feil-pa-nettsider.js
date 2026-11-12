@@ -1,5 +1,6 @@
 export default {
   slug: "vanlige-feil-pa-nettsider",
+  klynge: "nettside",
   title: "Vanlige feil på nettsider: jeg målte 4 566 småbedriftssider",
   description: "Vanlige feil på nettsider, målt på 4 566 norske småbedriftssider: 90 % viser ingen priser og 78 % ingen kundeomtaler. Her er hva det koster deg.",
   publishDate: "2026-11-12",

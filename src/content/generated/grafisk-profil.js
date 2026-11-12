@@ -1,5 +1,6 @@
 export default {
   slug: "grafisk-profil",
+  klynge: "design",
   title: "Grafisk profil: hva den består av, og hvorfor helhet gir tillit",
   description: "Hva en grafisk profil består av, hva en liten bedrift faktisk trenger, og hvorfor det samme uttrykket overalt gjør at kundene stoler mer på deg.",
   publishDate: "2026-11-12",

@@ -1,5 +1,6 @@
 export default {
   slug: "alternativer-til-wordpress",
+  klynge: "nettside",
   title: "Alternativ til WordPress: når en håndkodet side passer bedre",
   description: "Alternativ til WordPress for småbedrifter: når WordPress er riktig valg, når en håndkodet side med redigeringspanel passer bedre, og fem spørsmål som avgjør.",
   publishDate: "2026-11-12",

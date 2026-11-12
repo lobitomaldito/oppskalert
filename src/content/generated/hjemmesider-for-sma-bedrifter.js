@@ -1,5 +1,6 @@
 export default {
   slug: "hjemmesider-for-sma-bedrifter",
+  klynge: "nettside",
   title: "Hjemmesider for små bedrifter: hva du trenger, og hva du kan droppe",
   description: "Hjemmesider for små bedrifter trenger sjelden mer enn fem sider. Her er hva du faktisk trenger, hva du kan droppe, og når det er verdt å bygge ut.",
   publishDate: "2026-08-31",

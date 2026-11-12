@@ -1,5 +1,6 @@
 export default {
   slug: "hvor-lang-tid-tar-nettside",
+  klynge: "pris",
   title: "Hvor lang tid tar det å lage en nettside? Mine egne tall",
   description: "Hvor lang tid tar det å lage en nettside? Utkastet mitt er klart på 48 timer, lansering en til to uker etter. Her er det som styrer tiden, og hva du kan gjøre.",
   publishDate: "2026-11-12",

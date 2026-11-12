@@ -1,5 +1,6 @@
 export default {
   slug: "tid-pa-sosiale-medier",
+  klynge: "markedsforing",
   title: "Hvor mye tid på sosiale medier bør en bedrift bruke?",
   description: "Hvor mye tid på sosiale medier bør en liten bedrift bruke? Slik regner du ut timene, setter et tak, og kutter tiden med planlegging og gjenbruk av innhold.",
   publishDate: "2026-11-12",
