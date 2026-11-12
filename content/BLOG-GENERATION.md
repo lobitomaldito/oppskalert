@@ -7,6 +7,12 @@ både i stemme og struktur.
 
 ## Arbeidsflyt
 
+**Pause for oppskalert.no til 10. februar 2027** (Aleksander, 12.11.2026). Før den datoen
+skrives ingen nye Oppskalert-innlegg, og ingen nye emner legges i `content/blog-queue.json`,
+selv om noen ber om det i en rutine. Grunnen: 48 innlegg, hvorav 34 publisert 12.11.2026,
+skal måles først. 10.02.2027 slås overlappende innlegg sammen og de på plass 8 til 30 løftes
+(`~/.claude/assets/seo/kilder-2026-11.md`, bloggkapitlet). Appstart-innleggene går som før.
+
 1. Åpne `content/blog-queue.json`. Finn første oppføring med `"status": "pending"`.
    Er køen tom, stopp uten å gjøre noe (ikke finn på et nytt tema selv).
 
