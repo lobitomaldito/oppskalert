@@ -166,6 +166,79 @@ const Trakt = ({ steg }) => {
   );
 };
 
+// Utkastvelgeren på forsiden og /priser. Trakten og pakkene kommer fra
+// PostHog (samme filtre som resten), innsendingene fra leads: velgeren
+// skriver «Utkastvelgeren anbefalte X.» og ett svar per linje i meldingen.
+const VELGER_PREFIKS = 'Utkastvelgeren anbefalte ';
+const PAKKENAVN = { enkel: 'Enkel', medium: 'Medium', komplett: 'Komplett' };
+
+const Utkastvelger = ({ velger, leads }) => {
+  const innsendinger = leads
+    .filter((l) => l.melding?.startsWith(VELGER_PREFIKS))
+    .map((l) => {
+      const [forste, ...svar] = l.melding.split('\n');
+      return { ...l, pakke: forste.slice(VELGER_PREFIKS.length).replace(/\.$/, ''), svar };
+    });
+  const steg = velger?.trakt ?? [];
+  const topp = Math.max(1, steg[0]?.personer || 0);
+  return (
+    <div className={kort}>
+      <h2 className="font-sans font-bold text-lg mb-1">Utkastvelgeren</h2>
+      <p className="font-body text-xs text-room-ink/60 mb-6">
+        Fire spørsmål, så en anbefalt pakke og skjemaet. Personer, delt på forsiden og /priser.
+      </p>
+      {!velger && <p className="font-body text-sm text-room-ink/60">PostHog svarte ikke, så trakten mangler.</p>}
+      {velger && (
+        <div className="flex flex-col gap-4">
+          {steg.map((s) => (
+            <div key={s.navn}>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 mb-1.5">
+                <span className="font-body text-sm text-room-ink/90">{s.navn}</span>
+                <span className="font-body text-xs text-room-ink/60">
+                  <span className="font-sans font-bold text-sm text-room-ink">{nb(s.personer)}</span>
+                  {` · forsiden ${nb(s.forside)} · /priser ${nb(s.priser)}`}
+                </span>
+              </div>
+              <div className="bg-room-ink/5 rounded-full h-3 overflow-hidden">
+                <div className="h-full bg-room-ink rounded-full transition-all" style={{ width: `${(s.personer / topp) * 100}%` }} />
+              </div>
+            </div>
+          ))}
+          <p className="font-body text-sm text-room-ink/80 mt-2">
+            Anbefalt:{' '}
+            {velger.pakker.map((p, i) => (
+              <span key={p.id}>
+                {i > 0 && ' · '}
+                {PAKKENAVN[p.id]} <span className="font-sans font-bold text-room-ink">{nb(p.personer)}</span>
+              </span>
+            ))}
+          </p>
+        </div>
+      )}
+
+      <h3 className="font-sans font-bold text-base mt-8 mb-4">Innsendt fra velgeren</h3>
+      <div className="flex flex-col gap-4">
+        {innsendinger.map((l) => (
+          <div key={l.id} className="border-b border-room-ink/10 last:border-b-0 pb-4 last:pb-0">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+              <span className="font-sans font-bold text-base text-room-ink">{l.navn} · {l.pakke}</span>
+              <span className="font-body text-xs text-room-ink/50">{datoTid(l.created_at)}</span>
+            </div>
+            <ul className="mt-1.5 flex flex-col gap-1">
+              {l.svar.map((linje) => (
+                <li key={linje} className="font-body text-sm text-room-ink/70 leading-relaxed">{linje}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        {innsendinger.length === 0 && (
+          <p className="font-body text-sm text-room-ink/60">Ingen har sendt inn fra velgeren i perioden.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 // Stolpen måler ekte personer, ikke sidevisninger. Skanneren som henter
 // /kontakt én gang skal ikke gi en like lang stolpe som noen som faktisk
 // leste siden. Den dempede teksten viser hvor mange økter kilden hadde
@@ -559,6 +632,7 @@ const DashboardPage = () => {
             <Feil feil={data.feil ?? { ekte: [], stoy: [] }} />
             <Trafikkgraf dager={data.dager ?? []} antallDager={dager} />
             <Trakt steg={data.trakt ?? []} />
+            <Utkastvelger velger={data.velger} leads={data.leads ?? []} />
             <Kildeliste
               tittel="Hvor folk kommer fra"
               lede="Kilden til hver økt, målt i ekte personer. En kilde med mange økter og null personer er roboter."
