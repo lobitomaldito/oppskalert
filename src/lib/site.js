@@ -37,6 +37,7 @@ export const ruter = {
 export const navLenker = [
   { label: 'Arbeid', to: ruter.arbeid },
   { label: 'Priser', to: ruter.priser },
+  { label: 'SEO', to: ruter.seo },
   { label: 'Metode', to: ruter.metode },
   { label: 'Om meg', to: ruter.om },
   { label: 'Blogg', to: ruter.blogg },
