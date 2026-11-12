@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
-    "api/nettsidesjekk.js": { "regions": ["arn1"] }
+    "api/nettsidesjekk.js": { "regions": ["arn1"], "maxDuration": 15 }
   },
   "redirects": [
     { "source": "/r", "destination": "https://oppskalert-ringeapp.vercel.app/api/track-klikk", "permanent": false },
