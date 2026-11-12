@@ -358,6 +358,24 @@ over (30 dager til 8.11.2026).
 
 ## Fakta vi mangler fra Aleksander
 
+**Svar 12.11.2026:**
+
+- **1 Nettbutikk:** sidene står som de er. Aleksander lager nettbutikk når noen spør. Ingen `noindex`.
+- **2 Caser:** vent til Terapihusene, Terapihjelp, Lillebekk og Byggeria er lansert.
+- **3 Timebøker:** han kobler mot alle timebøker. Bransjesidene sier det (PR 112). Om siden kan
+  love «ingen Meta-piksel» som fast standard, er fortsatt ubesvart.
+- **4 Nivåvelger:** utkastvelgeren ligger på `/priser` (PR 108).
+- **6 «Hvem kan lage en nettside for meg?»:** H2 i `/blogg/hvordan-lage-nettside` (PR 111).
+- **7 Dobbeltsider:** én side eier spørsmålet, de andre lenker dit (PR 112). Eiere:
+  `/blogg/hvor-lang-tid-tar-nettside`, `/blogg/synlig-i-chatgpt`, `/sammenlign/wordpress`,
+  `/blogg/treg-nettside` og `/vanlige-sporsmal/google-bedriftsprofil` (902 visninger på 90 dager
+  mot 588 på bloggen). `/vanlige-sporsmal/hva-koster-seo` var en dag gammel og er sendt til
+  `/blogg/hva-koster-seo` med 301.
+- **8 Forfatter:** Aleksander står som forfatter på alle innlegg.
+- **Parasite-testen** er droppet (Aleksander 12.11), så ingenting venter på 25.11 lenger.
+
+Opprinnelige spørsmål:
+
 1. **Nettbutikk:** skal `/lage-nettbutikk` og nettbutikk-spørsmålet ut av Google, eller selger du
    enkle nettbutikker likevel? (Klynge «nettbutikk», 1 591 visninger.)
 2. **Bransjer:** hvilke bransjer har faktisk kjøpt, og selger du til håndverkere? Kan Terapihusene,

@@ -10,6 +10,7 @@ const handwritten = [
     publishDate: "2026-05-01",
     keywords: ["mobilhastighet nettside", "nettside laster tregt"],
     hero: "/blogg/mobilhastighet-nettside-koster-millioner.jpg",
+    svar: "En side som bruker mer enn tre sekunder på mobil, mister mange av de besøkende før de har sett noe. De vanligste årsakene og hva du kan rette selv står i [treg nettside](/blogg/treg-nettside).",
     content: `Du har brukt titusenvis av kroner på annonser for å få besøkende til siden din. Men så snart de klikker, skjer det ingenting. Skjermen forblir hvit mens en liten sirkel spinner i det uendelige. Dette er ikke bare en irriterende teknisk detalj, det er et aktivt tap av penger. Når **mobilhastigheten på nettsiden din** faller under den magiske grensen på tre sekunder, har du allerede mistet over halvparten av de potensielle kundene dine.
 
 ## Hastighet er den viktigste konverteringsfaktoren du har

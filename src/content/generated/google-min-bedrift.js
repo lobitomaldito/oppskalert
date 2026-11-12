@@ -7,7 +7,7 @@ export default {
   keywords: ["google min bedrift", "google bedriftsprofil"],
   hero: "/blogg/google-min-bedrift.webp",
   updatedDate: "2026-11-11",
-  svar: "Google Bedriftsprofil er den gratis oppføringen som vises i kartet og i de tre lokale treffene øverst i mobilsøk. Du rangerer høyere med presis kategori, komplette åpningstider, samme adresse og telefonnummer som på nettsiden, bilder, og mange anmeldelser som du svarer på.",
+  svar: "Google Bedriftsprofil er den gratis oppføringen som vises i kartet og i de tre lokale treffene øverst i mobilsøk. Du rangerer høyere med presis kategori, komplette åpningstider, samme adresse og telefonnummer som på nettsiden, bilder, og mange anmeldelser som du svarer på. Hva profilen er, og hvordan du setter den opp, står kort i [Google Bedriftsprofil: spørsmål og svar](/vanlige-sporsmal/google-bedriftsprofil).",
   faq: [
     { q: "Er Google Bedriftsprofil gratis?", a: "Ja. Profilen er gratis å opprette og oppdatere." },
     { q: "Hvordan får jeg flere anmeldelser?", a: "Spør fornøyde kunder direkte, med en lenke på SMS eller e-post rett etter leveransen. Det gir langt flere svar enn å vente på at de husker det selv." },
