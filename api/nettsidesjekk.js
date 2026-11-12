@@ -17,7 +17,7 @@ const GRENSE_PER_TIME = 10;
 // grensen per IP, men ikke forbi denne, så antall hentinger og rader i basen
 // kan aldri bli større enn dette per døgn. Når taket er nådd, får besøkende
 // skjemaet for å få siden sjekket for hånd i stedet.
-const GRENSE_PER_DOGN = 300;
+const GRENSE_PER_DOGN = 100;
 
 // Spør Supabase om kallet slipper gjennom: 'ok', 'ip' eller 'dogn'
 // (supabase/migrations/20261112130000_nettsidesjekk_slipp.sql). Feiler basen,
