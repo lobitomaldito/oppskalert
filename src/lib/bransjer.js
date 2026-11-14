@@ -21,7 +21,7 @@ const pris = (id) => prismodeller.find((p) => p.id === id)?.fra;
 /* Prissvaret er likt i form for alle bransjer, men eksemplet i siste setning
    er bransjens eget. Tallene hentes fra prismodeller, så de følger prissiden. */
 const prisSvar = (hvaDeTrenger) =>
-  `Enkel, én side med det viktigste, koster ${pris('enkel')} kr eks. mva. Medium, med alle sidene du har i dag og tekster skrevet for Google og AI-søk, koster ${pris('medium')} kr. Komplett, med ${hvaDeTrenger} og tre måneder SEO, starter på ${pris('komplett')} kr. Hosting er med i prisen, du eier siden, og du ser et gratis utkast før du bestemmer deg.`;
+  `Enkel, én side med det viktigste, koster ${pris('enkel')} kr eks. mva. Medium, med alle sidene du har i dag og tekster skrevet for Google og AI-søk, koster ${pris('medium')} kr. Oppskaler, med ${hvaDeTrenger} og tre måneder SEO, starter på ${pris('komplett')} kr. Hosting er med i prisen, du eier siden, og du ser et gratis utkast før du bestemmer deg.`;
 
 /* Bildene er fra Pexels (gratis til kommersiell bruk). Fotografene står i
    public/bransjer/KREDITT.md. */
@@ -64,7 +64,7 @@ export const bransjer = [
         tittel: 'Timebestilling',
         uthevet: 'i systemet du bruker.',
         tekst: [
-          `Bruker du et bookingsystem, kan siden vise ledige timer derfra, så klientene slipper å ringe. Det hører til Komplett, fra ${pris('komplett')} kr. Skal siden kobles til en timebok du har fra før, får du prisen før jeg begynner.`,
+          `Bruker du et bookingsystem, kan siden vise ledige timer derfra, så klientene slipper å ringe. Det hører til Oppskaler, fra ${pris('komplett')} kr. Skal siden kobles til en timebok du har fra før, får du prisen før jeg begynner.`,
         ],
       },
     ],
@@ -154,7 +154,7 @@ export const bransjer = [
       },
       {
         q: 'Kan siden kobles til timeboken jeg bruker?',
-        a: `Ja. Jeg kobler siden til timeboken du bruker i dag, så pasientene ser ledige timer der. Det hører til Komplett, fra ${pris('komplett')} kr, og du får prisen før jeg begynner.`,
+        a: `Ja. Jeg kobler siden til timeboken du bruker i dag, så pasientene ser ledige timer der. Det hører til Oppskaler, fra ${pris('komplett')} kr, og du får prisen før jeg begynner.`,
       },
       {
         q: 'Sender siden data om pasientene til Facebook?',
@@ -332,7 +332,7 @@ export const bransjer = [
       { q: 'Hva koster en nettside for et yogastudio?', a: prisSvar('timeplan fra bookingsystemet') },
       {
         q: 'Kan timeplanen hentes fra bookingsystemet jeg bruker?',
-        a: `Ja. Jeg kobler siden til bookingsystemet du bruker i dag, så timeplanen hentes derfra. Det hører til Komplett, fra ${pris('komplett')} kr, og du får prisen før jeg begynner.`,
+        a: `Ja. Jeg kobler siden til bookingsystemet du bruker i dag, så timeplanen hentes derfra. Det hører til Oppskaler, fra ${pris('komplett')} kr, og du får prisen før jeg begynner.`,
       },
     ],
   },

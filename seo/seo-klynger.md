@@ -146,7 +146,7 @@ sidetall og tillegg, og prisen settes ikke slik. `/kalkulator` sender til `/pris
 øverst på «hva koster en nettside» (tennet.no) spør nettopp etter antall sider, som strider mot
 regelen i `MAL.md` om at antall undersider ikke styrer prisen. Forslaget er derfor en
 nivåvelger: tre ja/nei-spørsmål (holder én side, skal du bli funnet i søk, trenger du booking eller
-et verktøy) som peker på Enkel 6 990, Medium 12 900 eller Komplett fra 19 900, med regnestykket
+et verktøy) som peker på Enkel 6 990, Medium 12 900 eller Oppskaler fra 19 900, med regnestykket
 over tre år under. Den skal ligge **på `/priser`**, på samme adresse: i august tok en egen
 `/kalkulator` over prissøkene og lå på plass 94 til 100 (commit `1b01aaa`). Pengesiden i klyngen
 er fortsatt `/priser`. Bygges bare om Aleksander vil (spørsmål 4), og etter 25.11.
@@ -197,7 +197,7 @@ raskenettsider.no (best 6, 174 ord). Google er usikker på om søkeren vil ha te
 | Side | Søkeord (volum) | Status | Vei videre |
 |---|---|---|---|
 | **Pengeside:** `/nettside-for-terapeut` | nettside for terapeut, nettside for psykolog (tomt volum, GSC 0) | **ny**, etter 25.11 (testsøk) | `/priser`, gratis utkast |
-| H2 på pengesiden: «Hva koster en nettside for en terapeut?» | Enkel 6 990, Medium 12 900, Komplett fra 19 900 med booking. Prisen øker når siden kobles til en timebok kunden har fra før (`MAL.md`) | ny (seksjon) | `/priser` |
+| H2 på pengesiden: «Hva koster en nettside for en terapeut?» | Enkel 6 990, Medium 12 900, Oppskaler fra 19 900 med booking. Prisen øker når siden kobles til en timebok kunden har fra før (`MAL.md`) | ny (seksjon) | `/priser` |
 | `/vanlige-sporsmal/sporing-pa-nettside-for-terapeut` | hvorfor terapeutsider ikke bør ha Meta-piksel | **ny**, bare om spørsmål 3 gir fakta | `/nettside-for-terapeut` |
 | `/arbeid/samtaleverkstedet`, `/arbeid/katrin-brubakk` | case | finnes | `/nettside-for-terapeut` |
 | **Pengeside 2:** `/nettside-for-handverker` | lage hjemmeside til snekker (GSC 240 visninger på tre sider) | **ny**, venter på spørsmål 2 | `/priser` |

@@ -51,7 +51,7 @@ SEO-abonnementet koster fra 2 990 kr i måneden eks. mva, uten binding. Dette er
 - En ny side eller artikkel i måneden, valgt ut fra det rapporten viser.
 - Retting av det rapporten finner, samme måned.
 
-Search Console settes opp på ditt eget domene, så du kan følge tallene selv. Google Ads kan også inngå i avtalen. Skal du ha ny nettside samtidig, har Komplett, fra 19 900 kr, tre måneder SEO inkludert.
+Search Console settes opp på ditt eget domene, så du kan følge tallene selv. Google Ads kan også inngå i avtalen. Skal du ha ny nettside samtidig, har Oppskaler, fra 19 900 kr, tre måneder SEO inkludert.
 
 ## Røde flagg i et SEO-tilbud
 

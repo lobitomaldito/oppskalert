@@ -35,7 +35,7 @@ import { PilHoyre } from './Ikon';
    Andre runde samme dag: spørsmål 3 og 4 ble skrevet om. «Vil du at hver
    tjeneste skal ha sin egen side» spurte etter metoden, og svarene passet
    ikke til spørsmålet. «Vil du at siden skal skaffe kunder mens du er
-   opptatt» svarer alle ja på, og da fikk nesten alle Komplett. Begge er
+   opptatt» svarer alle ja på, og da fikk nesten alle Oppskaler. Begge er
    nå et øyeblikk kunden kjenner igjen fra sin egen hverdag. */
 const SPORSMAL = [
   {
@@ -78,8 +78,8 @@ const SPORSMAL = [
 
 const BOKSTAV = ['A', 'B', 'C'];
 
-/* Svarene er indekser 0–2 (A–C). Komplett når kundene må vente på svar
-   utenfor arbeidstid: priskalkulator eller booking er det Komplett har i
+/* Svarene er indekser 0–2 (A–C). Oppskaler når kundene må vente på svar
+   utenfor arbeidstid: priskalkulator eller booking er det Oppskaler har i
    tillegg. Medium når kundene ikke finner dem i søk, når de svarer på de
    samme spørsmålene hele tiden (tekstene på undersidene svarer for dem,
    og det er de svarene Google og ChatGPT siterer), eller når dagens side
