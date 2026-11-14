@@ -692,7 +692,7 @@ export const googleOmtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "En enkel landingsside koster 6 990 kroner eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900. Komplett, med priskalkulator eller booking og tre måneder SEO, begynner på 19 900. Uansett nivå eier du alt med en gang, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie Medium til eie: 1 590 i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
+    "En enkel landingsside koster 6 990 kroner eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900. Oppskaler, med priskalkulator eller booking og tre måneder SEO, begynner på 19 900. Uansett nivå eier du alt med en gang, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie Medium til eie: 1 590 i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",

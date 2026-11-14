@@ -51,13 +51,15 @@ export const navLenker = [
 export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.';
 
 /* Tre nivåer fra 4. november 2026 (var to fra 17. oktober). Enkel er nå én
-   landingsside. Medium er det som het Komplett: alle sidene kunden har i
-   dag, med tekstene skrevet om for Google og AI-søk. Komplett er Medium
+   landingsside. Medium er det som het Komplett 17. oktober til 3. november: alle sidene kunden har i
+   dag, med tekstene skrevet om for Google og AI-søk. Oppskaler er Medium
    pluss en lead-modul og tre måneder SEO, summert fra tilbud/MAL.md:
    6 990 + 4 900 + 3 900 + 3 x 1 490 = 20 260, rundet ned til 19 900.
    SEO gikk til 2 990 9. november 2026 (3 x 2 990 = 24 760), men
-   Komplett står fortsatt fra 19 900.
-   Komplett har «fra» og ingen makspris.
+   Oppskaler står fortsatt fra 19 900.
+   Oppskaler har «fra» og ingen makspris.
+   Toppnivået het Komplett til 14. november 2026, da Aleksander byttet
+   navn til Oppskaler.
 
    Hvert kort har en `verdi`: hva nivået gir kunden, uten fagord.
 
@@ -117,7 +119,7 @@ export const prismodeller = [
   },
   {
     id: 'komplett',
-    navn: 'Komplett',
+    navn: 'Oppskaler',
     fra: '19 900',
     enhet: 'kr',
     periode: 'engangspris, fast før jeg begynner',
@@ -316,7 +318,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'En enkel landingsside koster 6 990 kr eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900 kr. Komplett, med priskalkulator eller booking og tre måneder SEO, starter på 19 900 kr. Uansett nivå eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie Medium til eie: 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel landingsside koster 6 990 kr eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900 kr. Oppskaler, med priskalkulator eller booking og tre måneder SEO, starter på 19 900 kr. Uansett nivå eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie Medium til eie: 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -422,11 +424,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg er det tre nivåer. Enkel, 6 990 kr eks. mva, er én landingsside med godt design. Medium, 12 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Komplett, fra 19 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det tre nivåer. Enkel, 6 990 kr eks. mva, er én landingsside med godt design. Medium, 12 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Oppskaler, fra 19 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Komplett) én gang og eier siden med en gang. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Oppskaler) én gang og eier siden med en gang. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',

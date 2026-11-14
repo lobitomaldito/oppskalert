@@ -8,7 +8,7 @@
 - [Arbeid](https://oppskalert.no/arbeid): Ekte nettsider i drift for norske kunder, pluss bransjeeksempler.
 
 ## Priser
-- [Priser](https://oppskalert.no/priser): Enkel (én landingsside) 6 990 kr, Medium (alle sidene, tekster for Google og AI-søk) 12 900 kr, Komplett (pluss priskalkulator eller booking og tre måneder SEO) fra 19 900 kr. Redigeringspanel og hosting inkludert i alle. Medium kan leies til eie for 1 590 kr/mnd uten binding, siden er din etter 12 måneder. Fast pris før jeg begynner.
+- [Priser](https://oppskalert.no/priser): Enkel (én landingsside) 6 990 kr, Medium (alle sidene, tekster for Google og AI-søk) 12 900 kr, Oppskaler (pluss priskalkulator eller booking og tre måneder SEO) fra 19 900 kr. Redigeringspanel og hosting inkludert i alle. Medium kan leies til eie for 1 590 kr/mnd uten binding, siden er din etter 12 måneder. Fast pris før jeg begynner.
 - [Serviceavtale og SEO](https://oppskalert.no/drift): Hosting inkludert i alle sider. Serviceavtale 550 kr/mnd, SEO fra 2 990 kr/mnd, ingen binding.
 
 ## Sammenligning

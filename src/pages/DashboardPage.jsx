@@ -170,7 +170,7 @@ const Trakt = ({ steg }) => {
 // PostHog (samme filtre som resten), innsendingene fra leads: velgeren
 // skriver «Utkastvelgeren anbefalte X.» og ett svar per linje i meldingen.
 const VELGER_PREFIKS = 'Utkastvelgeren anbefalte ';
-const PAKKENAVN = { enkel: 'Enkel', medium: 'Medium', komplett: 'Komplett' };
+const PAKKENAVN = { enkel: 'Enkel', medium: 'Medium', komplett: 'Oppskaler' };
 
 const Utkastvelger = ({ velger, leads }) => {
   const innsendinger = leads

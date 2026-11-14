@@ -19,11 +19,11 @@ Søker du på dette spørsmålet, møter du svar fra 3 000 til 300 000 kroner, o
 
 ## Prisene mine, uten omveier
 
-Jeg har tre nivåer. Enkel koster 6 990 kroner: én landingsside med godt design. Medium koster 12 900 kroner: alle sidene du har i dag, med [tekstene skrevet om for Google og AI-søk](/sokemotoroptimalisering). Komplett starter på 19 900 kroner: alt i Medium, pluss interaktive moduler som priskalkulator eller booking, og tre måneder der jeg følger med på søkene og rapporterer hver måned. Admin-panelet, der du endrer tekst og bilder selv, er med i alle tre. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
+Jeg har tre nivåer. Enkel koster 6 990 kroner: én landingsside med godt design. Medium koster 12 900 kroner: alle sidene du har i dag, med [tekstene skrevet om for Google og AI-søk](/sokemotoroptimalisering). Oppskaler starter på 19 900 kroner: alt i Medium, pluss interaktive moduler som priskalkulator eller booking, og tre måneder der jeg følger med på søkene og rapporterer hver måned. Admin-panelet, der du endrer tekst og bilder selv, er med i alle tre. Chatbot, nettbutikk eller annen egen funksjonalitet prises etter omfang. Alle tallene er eks. mva, og du får en fast pris skriftlig før jeg begynner, ikke et anslag som endrer seg underveis. Full oversikt finner du på [prissiden min](/priser).
 
 ## Hva som avgjør hvilket nivå du havner på
 
-Det som avgjør nivået, er tre ting: om én side holder, om du vil bli funnet når noen søker på det du gjør, og om siden skal skaffe deg henvendelser du kan måle. Trenger du bare et sted å vise hva du gjør, holder Enkel. Har du flere tjenester og vil bli funnet på dem, er det Medium. Vil du ha et verktøy som gjør besøk til henvendelser, og se hver måned hva siden gir deg, er det Komplett. Egne integrasjoner og andre tillegg avtales med fast pris før jeg begynner.
+Det som avgjør nivået, er tre ting: om én side holder, om du vil bli funnet når noen søker på det du gjør, og om siden skal skaffe deg henvendelser du kan måle. Trenger du bare et sted å vise hva du gjør, holder Enkel. Har du flere tjenester og vil bli funnet på dem, er det Medium. Vil du ha et verktøy som gjør besøk til henvendelser, og se hver måned hva siden gir deg, er det Oppskaler. Egne integrasjoner og andre tillegg avtales med fast pris før jeg begynner.
 
 ## Engangspris eller leie til eie
 
@@ -43,5 +43,5 @@ Skal du ha et tall for akkurat din bedrift, [send meg en linje](/kontakt) om hva
 
 ## Hva du bør gjøre nå
 
-Still deg to spørsmål: holder det med én side, og skal siden skaffe deg kunder fra søk? Er svaret ja på det første og nei på det andre, holder Enkel til 6 990. Skal den bli funnet, budsjetter med Medium til 12 900, og med Komplett fra 19 900 hvis du vil ha et verktøy som tar imot henvendelser, og at jeg følger med på søkene hver måned.`,
+Still deg to spørsmål: holder det med én side, og skal siden skaffe deg kunder fra søk? Er svaret ja på det første og nei på det andre, holder Enkel til 6 990. Skal den bli funnet, budsjetter med Medium til 12 900, og med Oppskaler fra 19 900 hvis du vil ha et verktøy som tar imot henvendelser, og at jeg følger med på søkene hver måned.`,
 };
