@@ -437,6 +437,33 @@
           "nettify.no": 2
         },
         "notat": "Maaling 11. nov kl. 19 (scheduled). Alle fire 0 av 15 svar. Nye domener paa topp: skailandconsulting.no (AI Overview), box.no, kyt.no."
+      },
+      {
+        "runId": "2b3831f4-b5c8-46dc-bdff-7f41f35f355e",
+        "completedAt": "2026-11-18T19:15:15.532Z",
+        "completed": 15,
+        "noAnswer": 0,
+        "failed": 0,
+        "nevnt": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 2,
+          "webaas.no": 0
+        },
+        "sitert": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 2,
+          "webaas.no": 1
+        },
+        "kilderTopp": {
+          "nettsmed.no": 5,
+          "nettify.no": 3,
+          "prakto.no": 3,
+          "agencies.semrush.com": 2,
+          "billignettside.no": 2
+        },
+        "notat": "Maaling 18. nov kl. 19 (scheduled). oppskalert.no 0 av 15. raskweb.no nevnt i 2 (var 0 forrige maaling). Nye domener paa topp: prakto.no (ChatGPT), billignettside.no, agencies.semrush.com."
       }
     ]
   }

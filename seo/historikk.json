@@ -1938,6 +1938,83 @@
           "friksjon": null
         }
       ]
+    },
+    {
+      "dato": "2026-11-19T06:18:14.307Z",
+      "sider": [
+        {
+          "navn": "Oppskalert",
+          "klikk": 42,
+          "visninger": 15703,
+          "posisjon": 40,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Appstart",
+          "klikk": 6,
+          "visninger": 1231,
+          "posisjon": 32.2,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Katrin Brubakk",
+          "klikk": 10,
+          "visninger": 232,
+          "posisjon": 6.5,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Samtaleverkstedet",
+          "klikk": 47,
+          "visninger": 596,
+          "posisjon": 5.7,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Steinar Husby",
+          "klikk": 37,
+          "visninger": 185,
+          "posisjon": 3.8,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Progressive Diplomacy",
+          "klikk": 16,
+          "visninger": 179,
+          "posisjon": 5.2,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "Melanie Dahl",
+          "klikk": 12,
+          "visninger": 226,
+          "posisjon": 4.7,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        },
+        {
+          "navn": "AVRO",
+          "klikk": 49,
+          "visninger": 8482,
+          "posisjon": 24.3,
+          "ga4Okter": null,
+          "clarityOkter": null,
+          "friksjon": null
+        }
+      ]
     }
   ]
 }
