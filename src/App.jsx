@@ -256,7 +256,7 @@ const TJENESTER_FORSIDE = [
     Ikon: SokSjekk,
     til: ruter.seo,
     kort: 'Synlig i Google og i AI-søk som ChatGPT.',
-    mer: 'Tekstene skrives for det kundene dine søker på. Stein-Erik fikk en henvendelse fra en kunde som hadde funnet ham gjennom Claude, et par uker etter at sidene var KI-optimert.',
+    mer: 'Tekstene skrives for det kundene dine søker på.',
   },
 ];
 
