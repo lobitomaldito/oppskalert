@@ -232,7 +232,7 @@ export const populaereSok = [
       },
     ],
     relatert: ['hvor-lang-tid-tar-en-nettside'],
-    til: { tekst: 'Om nettbutikk', rute: '/lage-nettbutikk' },
+    til: { tekst: 'Lage nettbutikk: stegene fra samtale til første ordre', rute: '/lage-nettbutikk' },
   },
   {
     slug: 'wordpress-wix-eller-handkodet',
