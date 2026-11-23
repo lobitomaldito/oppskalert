@@ -115,7 +115,7 @@ const PriserPage = () => (
       <h1 className="inn" style={{ '--d': '60ms' }}>Fast pris på nettside og drift.</h1>
       <p className="inn" style={{ '--d': '140ms' }}>
         Du får en fast pris fra meg før jeg skriver en linje kode, og du ser utkastet
-        innen 48 timer. Ingen timepris som løper. Ingen overraskelser på slutten.
+        innen 48 timer. Prisen endrer seg ikke underveis.
       </p>
     </section>
 

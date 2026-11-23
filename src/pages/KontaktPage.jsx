@@ -41,7 +41,7 @@ const KontaktPage = () => {
               <div className="seksjonstopp" style={{ marginBottom: '1.5rem' }}>
                 <h2>Ring, skriv, eller send bare et navn</h2>
                 <p>
-                  Alt tre funker like bra. Det korteste svaret jeg har fått var to ord, og
+                  Alle tre funker like bra. Det korteste svaret jeg har fått var to ord, og
                   den siden er i drift nå. Er du i Oslo, tar vi det gjerne over en kaffe
                   i stedet.
                 </p>

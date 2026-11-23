@@ -27,7 +27,7 @@ const BransjeEksempler = () => {
           <SeksjonTopp
             tittel="Sider for"
             uthevet="din bransje."
-            lede="Jeg bygger hver side fra bunnen, for nettopp din bransje. Dette er konsept-eksempler jeg har laget. Trykk for å se en hel side i aksjon."
+            lede="Jeg bygger hver side fra bunnen, for nettopp din bransje. Dette er konsept-eksempler jeg har laget. Trykk for å se hele siden."
           />
         </div>
 

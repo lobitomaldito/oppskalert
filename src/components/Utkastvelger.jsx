@@ -214,7 +214,7 @@ const Utkastvelger = () => {
       <div className="wrap">
         <div className="seksjonstopp velger-topp">
           <p className="etikett">Gratis utkast</p>
-          <h2>Klar for en nettside som selger?</h2>
+          <h2>Finn pakken som passer deg</h2>
           <p>Svar på fire korte spørsmål, så ser du hvilken pakke som passer deg. Etterpå kan du be om et gratis utkast, klart på 48 timer.</p>
         </div>
 

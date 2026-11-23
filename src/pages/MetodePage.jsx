@@ -108,7 +108,7 @@ const MetodePage = () => (
   <Shell>
     <SEO
       title="Metode"
-      description="Slik jobber jeg: jeg bygger et ferdig utkast til din nye nettside gratis, du gir tilbakemelding, jeg lanserer. Null risiko før du har sett resultatet."
+      description="Slik jobber jeg: jeg bygger et ferdig utkast til din nye nettside gratis, du gir tilbakemelding, jeg lanserer. Du betaler ingenting før du har sett resultatet."
       keywords={['gratis nettside demo', 'prosess webutvikling', 'nettside uten binding']}
       canonical="https://oppskalert.no/metode"
     />
@@ -118,8 +118,8 @@ const MetodePage = () => (
       <h1 className="inn" style={{ '--d': '60ms' }}>Du ser resultatet før du betaler.</h1>
       <p className="inn" style={{ '--d': '140ms' }}>
         Fire steg. De tre første koster deg ingenting, og det første er ferdig innen
-        48 timer. Det er ikke et salgstriks, det er bare den eneste måten jeg vet å
-        bevise at det er verdt pengene, i stedet for å påstå det.
+        48 timer. Slik viser jeg at jobben er verdt pengene, i stedet for å påstå
+        det.
       </p>
     </section>
 

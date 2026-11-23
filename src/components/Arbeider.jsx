@@ -31,7 +31,7 @@ const ARBEIDER_TEKST = {
   'samtaleverkstedet': { bransje: 'Terapi', tittel: 'Terapi som tør å være varm i tonen' },
   'steinar-husby': { bransje: 'Foredrag', tittel: 'Én foredragsholder, ett tydelig løfte' },
   'progressive-diplomacy': { bransje: 'Rådgivning', tittel: 'Rådgivning over landegrenser, forklart enkelt' },
-  'tore-sunde-rasmussen': { bransje: 'Rådgivning', tittel: 'Fra visittkort til noe som faktisk ringer' },
+  'tore-sunde-rasmussen': { bransje: 'Rådgivning', tittel: 'Fra visittkort til en side som gir henvendelser' },
 };
 
 /* Portføljegridet på forsiden og på /arbeid. Egen fil, ikke Portfolio.jsx,

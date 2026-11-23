@@ -127,7 +127,7 @@ export const prismodeller = [
     verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
     passerDeg: [
       'Du vil ha flere henvendelser fra siden',
-      'Du vil se hva siden faktisk gir deg',
+      'Du vil se hva siden gir deg',
     ],
     inkludert: [
       'Alt i Medium, pluss:',
@@ -152,7 +152,7 @@ export const leieTilEie = {
 };
 
 export const alltidMed = [
-  'Skreddersydd design, håndkodet',
+  'Eget design, håndkodet',
   'Optimalisert for mobil og desktop',
   'Synlig i Google, og i AI-søk',
   'Tekster ferdigskrevet',
@@ -188,7 +188,7 @@ export const driftNivaer = [
       'Rimelige tekst- og bildeendringer, uten timeteller',
       'Backup og oppetidsovervåking',
       'Sikkerhets- og programvareoppdateringer',
-      'Support direkte fra meg, ikke en helpdesk',
+      'Support direkte fra meg',
     ],
     fremhevet: true,
   },
@@ -237,13 +237,13 @@ export const sammenlignOversikt = [
     slug: 'wordpress',
     navn: 'WordPress',
     rute: '/sammenlign/wordpress',
-    kort: 'Fleksibelt, men hvem vedlikeholder det? Sikkerhet, plugin-oppdateringer og hva det faktisk koster over tid.',
+    kort: 'Fleksibelt, men noen må vedlikeholde det. Sikkerhet, plugin-oppdateringer og hva det koster over tid.',
   },
 ];
 
 export const sammenlignWix = {
   navn: 'Wix',
-  intro: 'Wix er et solid verktøy for å bygge en nettside selv. Spørsmålet er ikke om det virker, men om det er din tid eller din nettside som skal betale for det.',
+  intro: 'Wix er et solid verktøy for å bygge en nettside selv. Det du betaler med, er timene du bruker på å bygge og vedlikeholde den selv.',
   rader: [
     ['Hvem bygger siden', 'Du, i byggeren deres', 'Jeg, fra første skisse til lansering'],
     /* Jeg selger selv leie til eie, så raden må si hva forskjellen
@@ -253,23 +253,23 @@ export const sammenlignWix = {
     ['Eierskap', 'Låst til Wix sin plattform', 'Du eier siden og kan ta den med deg videre'],
     ['Hastighet og SEO', 'Tyngre byggerkode, varierende', 'Håndkodet og lettvekt fra dag én'],
     ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner et gratis utkast først'],
-    ['Support', 'Generisk chat-support', 'Direkte med meg, ikke en helpdesk'],
+    ['Support', 'Generisk chat-support', 'Direkte med meg, på telefon og e-post'],
   ],
-  konklusjon: 'Har du tid og lyst til å lære et byggeverktøy, og bedriften tåler at nettsiden ser sånn ut, er Wix et fint sted å starte. Vil du ha en side som er bygget for å konvertere, uten at du selv må bli webdesigner, er det dette jeg gjør.',
+  konklusjon: 'Har du tid og lyst til å lære et byggeverktøy, og bedriften tåler at nettsiden ser sånn ut, er Wix et fint sted å starte. Vil du ha en side som gir henvendelser, uten at du selv må bli webdesigner, er det dette jeg gjør.',
 };
 
 export const sammenlignWordpress = {
   navn: 'WordPress',
-  intro: 'WordPress er gratis å laste ned. Det som koster er alt rundt: hosting, plugins, og noen som følger med når noe går galt, for noe går alltid galt før eller siden.',
+  intro: 'WordPress er gratis å laste ned. Det som koster er alt rundt: hosting, plugins og noen som følger med når en oppdatering brekker noe.',
   rader: [
     ['Grunnkostnad', 'Gratis kjerne, betal for hosting og plugins løpende', 'Fastpris inkluderer alt fra start'],
     ['Vedlikehold', 'Du eller en utvikler må oppdatere jevnlig', 'Håndkodet, uten plugins å holde ved like'],
-    ['Sikkerhet', 'Mest angrepne CMS i verden, krever årvåkenhet', 'Ingen CMS, ingen kjent angrepsflate'],
-    ['Ytelse', 'Kan bli tung med mange plugins', 'Lynrask fra første linje kode'],
+    ['Sikkerhet', 'Mest angrepne publiseringssystem i verden, må følges med på', 'Ingen WordPress eller plugins å bryte seg inn gjennom'],
+    ['Ytelse', 'Kan bli tung med mange plugins', 'Laster på under ett sekund'],
     ['Eierskap', 'Du eier siden, men trenger teknisk kompetanse for å drifte den', 'Du eier siden, jeg drifter den om du vil slippe'],
-    ['Fleksibilitet', 'Enormt plugin-økosystem for spesialbehov', 'Skreddersydd funksjonalitet bygget direkte inn'],
+    ['Fleksibilitet', 'Tusenvis av plugins for spesialbehov', 'Det du trenger, bygget rett inn i siden'],
   ],
-  konklusjon: 'Trenger du et enormt plugin-økosystem eller har en intern utvikler som følger med, kan WordPress være riktig. De fleste små bedrifter jeg møter vil heller ha en side som bare virker, uten en liste over oppdateringer som venter på dem hver måned.',
+  konklusjon: 'Trenger du mange plugins eller har en intern utvikler som følger med, kan WordPress være riktig. De fleste små bedrifter jeg møter vil heller ha en side som bare virker, uten en liste over oppdateringer som venter på dem hver måned.',
 };
 
 /* ---------------------------------------------------------------
@@ -285,8 +285,8 @@ export const stegene = [
   {
     tittel: 'Jeg bygger utkastet ditt',
     tid: '48 timer',
-    kort: 'Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse.',
-    desc: 'Du sender meg noen linjer om bedriften, eller bare navnet, så finner jeg resten selv. Så bygger jeg et ferdig utkast av den nye siden din. Ikke en skisse i PowerPoint, men en ekte side du kan åpne på mobilen og klikke rundt i.',
+    kort: 'Send meg navnet på bedriften, så finner jeg resten selv. Du får en ferdig side å klikke i.',
+    desc: 'Du sender meg noen linjer om bedriften, eller bare navnet, så finner jeg resten selv. Så bygger jeg et ferdig utkast av den nye siden din, som du kan åpne på mobilen og klikke rundt i.',
     punkter: ['Koster ingenting, uansett hva du lander på', 'Du trenger ikke levere noe på forhånd', 'Utkastet ligger på en privat lenke bare du får'],
   },
   {
@@ -300,7 +300,7 @@ export const stegene = [
     tittel: 'Jeg lanserer',
     tid: '1–2 uker',
     kort: 'Domene, hosting og sikker forbindelse ordner jeg. Har du en gammel side, byttes den uten nedetid.',
-    desc: 'Domene, lynrask hosting og sikker forbindelse, så nettleseren aldri varsler om usikker side. Har du en gammel side, flytter jeg deg over uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe.',
+    desc: 'Domene, hosting og sikker forbindelse, så nettleseren aldri varsler om usikker side. Har du en gammel side, flytter jeg deg over uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe.',
     punkter: ['Domene og sikker forbindelse ordner jeg', 'Søkemotor-oppsett fra dag én', 'Gammel side byttes uten nedetid'],
   },
   {
@@ -322,7 +322,7 @@ export const sporsmal = [
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
-    a: 'Absolutt ingenting. Jeg bygger et ferdig, klikkbart utkast av din nye nettside, med ditt innhold, helt uten kostnad. Liker du det ikke, sletter jeg det og du har ikke betalt en krone. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med.',
+    a: 'Ingenting. Jeg bygger et ferdig, klikkbart utkast av den nye nettsiden din, med ditt innhold. Liker du det ikke, sletter jeg det, og du har ikke betalt noe. Du betaler først når du har sagt ja.',
   },
   {
     q: 'Hvor lang tid tar det?',
@@ -338,15 +338,15 @@ export const sporsmal = [
   },
   {
     q: 'Hva om jeg ikke liker utkastet?',
-    a: 'Da sier du fra, så justerer vi. Eller vi avslutter der, helt uforpliktende. Det er hele poenget med å bygge utkastet først: du risikerer ingenting ved å la meg prøve.',
+    a: 'Da sier du fra, så justerer jeg det. Eller vi avslutter der, og du skylder ingenting.',
   },
   {
     q: 'Er siden optimalisert for Google og mobil?',
-    a: 'Ja, alltid. Riktig struktur, metadata og hastighet ligger i bunnen fra start, og alt jeg leverer er fullt responsivt. Det ser like bra ut på mobilen i bilen som på skjermen på kontoret. Jeg setter også opp Analytics og Search Console, så du kan se hva som faktisk skjer.',
+    a: 'Ja. Struktur, metadata og hastighet ligger i bunnen fra start, og siden ser like bra ut på mobilen i bilen som på skjermen på kontoret. Jeg setter også opp Analytics og Search Console, så du ser hvor mange som kommer inn og hva de søkte på.',
   },
   {
     q: 'Hvem er det egentlig jeg snakker med?',
-    a: 'Meg. Aleksander. Jeg designer, koder, skriver og setter opp serveren selv, så det er ingen prosjektleder i mellom og ingen kø. Sender du en e-post, leses den av personen som faktisk bygger siden din.',
+    a: 'Meg, Aleksander. Jeg designer, koder, skriver og setter opp serveren selv, så det er ingen prosjektleder i mellom og ingen kø. Sender du en e-post, er det jeg som leser den.',
   },
   {
     q: 'Hva skjer etter at siden er lansert?',
@@ -470,22 +470,22 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva koster søkemotoroptimalisering hos deg?',
-      a: 'SEO-abonnementet starter på 2 990 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Hver måned får du en rapport med vanlige ord, en AI-sjekk av om ChatGPT og de andre nevner deg, en ny side eller artikkel, og retting av det rapporten finner. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
+      a: 'SEO-abonnementet starter på 2 990 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Hver måned får du en rapport med vanlige ord, en AI-sjekk av om ChatGPT og de andre nevner deg, en ny side eller artikkel, og retting av det rapporten finner. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som står i veien.',
     },
   ],
 
   oslo: [
     {
       q: 'Må jeg møte deg fysisk?',
-      a: 'Nei, men du kan. Jeg holder til på Røa og tar gjerne en kaffe før vi begynner, hvis det gjør beslutningen lettere. Ellers går det meste på e-post og telefon. Uansett snakker du med meg hele veien, ikke med en prosjektkoordinator som videreformidler.',
+      a: 'Nei, men du kan. Jeg holder til på Røa og tar gjerne en kaffe før vi begynner, hvis det gjør beslutningen lettere. Ellers går det meste på e-post og telefon. Uansett snakker du med meg hele veien.',
     },
     {
       q: 'Jobber du bare med bedrifter i Oslo?',
-      a: 'Nei, jeg jobber over hele landet. Men søker noen etter webdesign i Oslo, leter de som regel etter noen de kan ringe og holde ansvarlig, og da spiller det inn at jeg faktisk sitter her. For selve jobben betyr geografien lite.',
+      a: 'Nei, jeg jobber over hele landet. Men søker noen etter webdesign i Oslo, leter de som regel etter noen de kan ringe og holde ansvarlig, og da hjelper det at jeg sitter her. For selve jobben betyr geografien lite.',
     },
     {
       q: 'Hvorfor spiller det inn for søk at bedriften ligger i Oslo?',
-      a: 'Fordi lokale søk rangeres på andre signaler enn vanlige søk. Google Bedriftsprofil må være koblet riktig, adressen må stå likt på tvers av oppføringer, og siden må gjøre det tydelig for søkemotorene hvor du holder til. Det bygger jeg inn fra start, ikke som et tillegg etterpå.',
+      a: 'Fordi lokale søk rangeres på andre signaler enn vanlige søk. Google Bedriftsprofil må være koblet riktig, adressen må stå likt på tvers av oppføringer, og siden må gjøre det tydelig for søkemotorene hvor du holder til. Det bygger jeg inn fra start.',
     },
     {
       q: 'Hvor lang tid tar det fra start til lansering?',
@@ -504,7 +504,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Får jeg se designet før jeg betaler?',
-      a: 'Ja, hele siden. Ikke en skisse i et presentasjonsverktøy, men en ekte side du kan åpne på mobilen og klikke rundt i, bygget med ditt innhold. Er retningen feil, sier du det, og det har ikke kostet deg noe.',
+      a: 'Ja, hele siden, bygget med ditt innhold. Du kan åpne den på mobilen og klikke rundt i den. Er retningen feil, sier du det, og det har ikke kostet deg noe.',
     },
     {
       q: 'Hva om jeg vil endre designet senere?',
@@ -550,18 +550,18 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hvor lang tid tar en ny nettside?',
-      a: 'Dager, ikke måneder. Du får en første versjon å se på kort tid etter at vi har snakket sammen, og du trenger bare å oppgi navnet på bedriften for at jeg skal komme i gang. Et byrå bruker gjerne seks til ti uker på det samme, og det er koordineringsleddene som tar tiden, ikke arbeidet.',
+      a: 'Utkastet er som regel klart på 48 timer, og den ferdige siden på en til to uker. Du trenger bare å oppgi navnet på bedriften for at jeg skal komme i gang. Et byrå bruker gjerne seks til ti uker på det samme, mest på møter og godkjenningsrunder.',
     },
   ],
 
   nettbutikk: [
     {
       q: 'Hva koster det å lage en nettbutikk?',
-      a: 'Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har snakket sammen. Fem produkter uten varianter og ti tusen produkter med lager, størrelser og regnskapsintegrasjon er to helt forskjellige jobber. Det du får er en fast pris før jeg skriver en linje kode, akkurat som på alt annet.',
+      a: 'Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har snakket sammen. Fem produkter uten varianter og ti tusen produkter med lager, størrelser og regnskapsintegrasjon er to helt forskjellige jobber. Du får likevel fast pris før jeg skriver en linje kode, som på alt annet.',
     },
     {
       q: 'Kan kundene betale med Vipps?',
-      a: 'Ja. I Norge er Vipps ikke et alternativ, det er forventningen. Vipps og kort settes opp og testes før butikken åpner, og Vipps er tilgjengelig fra første skjerm i kassen, ikke gjemt bak et valg lenger nede.',
+      a: 'Ja. Norske kunder forventer Vipps. Vipps og kort settes opp og testes før butikken åpner, og Vipps står på første skjerm i kassen.',
     },
     {
       q: 'Hvordan fungerer frakt?',
