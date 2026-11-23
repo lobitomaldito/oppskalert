@@ -80,7 +80,7 @@ export const bransjer = [
       'Taushetsplikt, og hva som skjer med det de skriver til deg',
       'Ingen sporing av besøkende uten samtykke',
     ],
-    caser: ['samtaleverkstedet', 'katrin-brubakk', 'melanie-dahl'],
+    caser: ['terapihusene', 'samtaleverkstedet', 'katrin-brubakk'],
     faq: [
       { q: 'Hva koster en nettside for en terapeut?', a: prisSvar('timebestilling') },
       {

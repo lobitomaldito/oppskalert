@@ -20,6 +20,7 @@ import { PilHoyre, PilOpp } from './Ikon';
    nøkkel kan lista sorteres om uten at noe glipper, og et prosjekt uten
    tekst her faller pent ut i stedet for å arve naboens. */
 const ARBEIDER_TEKST = {
+  'terapihusene': { bransje: 'Terapi', tittel: 'Tre terapihus på én side, med timebestilling hos hver terapeut' },
   'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
   'jakobsen-takst': { bransje: 'Takstmann', tittel: 'Takst i Harstad, med prisestimat før du ringer' },
   'woxen-hage': { bransje: 'Hagestell', tittel: 'Hagehjelp i Oslo, bestilt på under ett minutt' },
