@@ -417,7 +417,7 @@
   }
   .hero-galleri.er-pauset .galleri-spor { animation-play-state: paused; }
   @keyframes galleri-rull { to { transform: translate3d(-50%, 0, 0); } }
-  .galleri-spor img {
+  .galleri-spor img, .galleri-spor video {
     height: 100%; width: auto; flex: none;
     margin-right: var(--galleri-luft);
     border-radius: var(--rund); object-fit: cover;
@@ -637,6 +637,11 @@
      Fyrer ikke observeren, ruller alt, som er riktig feilmodus:
      motsatt oppsett gir kort som står stille for alltid. */
   .arbeid.utenfor .ramme-vindu img { animation-play-state: paused; }
+  /* Case-siden med film (Prana, 23.11.2026): bildet og filmen ruller
+     sammen i .rull, så prosenten i --til regnes av bildets høyde. */
+  .ramme-vindu .rull { position: relative; animation: rammerull 34s ease-in-out infinite alternate; will-change: transform; }
+  .ramme-vindu .rull img { animation: none; }
+  .ramme-film { position: absolute; top: 0; left: 0; width: 100%; height: auto; display: block; }
   /* will-change bare mens rammen faktisk ruller. Permanent på seks
      bilder holder seks komposittlag i live, også utenfor skjermen. */
   .arbeid:not(.utenfor) .ramme-vindu img { will-change: transform; }
@@ -1491,7 +1496,7 @@
     transform: none;
     transition: none;
   }
-  .ramme-vindu img { animation: none; transform: none; }
+  .ramme-vindu img, .ramme-vindu .rull { animation: none; transform: none; }
   *, *::before, *::after {
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;

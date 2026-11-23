@@ -9,6 +9,7 @@ import Utkastvelger from './components/Utkastvelger';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
+import Film from './components/Film';
 import {
   Hengelas, HengelasApen, LinkedIn, Nokkel, Pause, PilHoyre, PilOpp, SkjoldSjekk, SokSjekk, Skjermer, Spill,
 } from './components/Ikon';
@@ -89,8 +90,11 @@ const Vurdering = () => {
 
    Seksjonen «Sider som er i drift nå» sto rett under til 26.10.2026.
    Aleksander tok den ut: raden viser allerede eksemplene. */
+/* Tredje felt er en film som spilles i flisen i stedet for stillbildet.
+   Prana-filmen (23.11.2026) er et opptak av pranayogakristiansand.no på
+   390 px, lagt perspektivriktig inn i telefonskjermen i samme mockup. */
 const GALLERI = [
-  ['prana-yoga-mobil', 2 / 3],
+  ['prana-yoga-mobil', 2 / 3, '/websider/film/prana-yoga-vegg.mp4'],
   ['woxen-hage-pc', 1],
   ['melanie-dahl-mobil', 2 / 3],
   ['alpha-negotiations-pc', 4 / 5],
@@ -104,16 +108,28 @@ const HeroGalleri = () => {
   return (
     <div className={pause ? 'hero-galleri er-pauset' : 'hero-galleri'}>
       <div className="galleri-spor" aria-hidden="true">
-        {[...GALLERI, ...GALLERI].map(([fil, forhold], i) => (
-          <img
-            key={i}
-            src={`/websider/vegg/${fil}.webp`}
-            alt=""
-            width="480"
-            height={Math.round(480 / forhold)}
-            style={{ aspectRatio: forhold }}
-            decoding="async"
-          />
+        {[...GALLERI, ...GALLERI].map(([fil, forhold, film], i) => (
+          film ? (
+            <Film
+              key={i}
+              spill={!pause}
+              src={film}
+              poster={`/websider/vegg/${fil}.webp`}
+              width="480"
+              height={Math.round(480 / forhold)}
+              style={{ aspectRatio: forhold }}
+            />
+          ) : (
+            <img
+              key={i}
+              src={`/websider/vegg/${fil}.webp`}
+              alt=""
+              width="480"
+              height={Math.round(480 / forhold)}
+              style={{ aspectRatio: forhold }}
+              decoding="async"
+            />
+          )
         ))}
       </div>
       <button type="button" className="galleri-pause" aria-pressed={pause} onClick={() => setPause((p) => !p)}>
