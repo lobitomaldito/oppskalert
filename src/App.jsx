@@ -465,7 +465,7 @@ const homeSchema = {
   '@type': 'ProfessionalService',
   name: 'Oppskalert',
   image: 'https://oppskalert.no/oppskalert%20fav.png',
-  description: 'Jeg bygger lynraske nettsider som skalerer norske bedrifter. Gratis utkast før du betaler en krone.',
+  description: 'Webdesign og nye nettsider for norske bedrifter, til fast pris. Du ser et gratis utkast før du betaler.',
   url: 'https://oppskalert.no',
   telephone: kontakt.tel,
   founder: { '@type': 'Person', name: kontakt.navn },

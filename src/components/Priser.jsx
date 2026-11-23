@@ -131,7 +131,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         <SeksjonTopp
           tittel="Tre måter å"
           uthevet="komme i gang på."
-          lede="Alle tre starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
+          lede="Alle tre starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg når du har sett det."
           midtstilt={midtstilt}
         />
 

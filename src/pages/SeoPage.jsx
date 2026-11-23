@@ -20,7 +20,7 @@ const seoSchema = [
     name: 'Søkemotoroptimalisering',
     serviceType: 'Søkemotoroptimalisering (SEO)',
     description:
-      'Teknisk SEO, innhold og lenkebygging for norske bedrifter. Jeg måler først, fikser det som faktisk blokkerer, og rapporterer på synlighet i både Google og AI-assistenter.',
+      'Teknisk SEO, innhold og lenkebygging for norske bedrifter. Jeg måler først, fikser det som blokkerer, og rapporterer på synlighet i både Google og AI-assistenter.',
     areaServed: { '@type': 'Country', name: 'Norge' },
     provider: { '@type': 'Organization', name: 'Oppskalert', url: 'https://oppskalert.no' },
     url: 'https://oppskalert.no/sokemotoroptimalisering',
@@ -109,7 +109,7 @@ const metode = [
   },
   {
     navn: 'Ord kundene søker på',
-    tekst: 'Tekster om det kundene dine googler, med ekte søkevolum for bransjen din. Én side per søk, ikke én side som prøver å dekke alt.',
+    tekst: 'Tekster om det kundene dine googler, med ekte søkevolum for bransjen din. Én side per søk, så hver side svarer på ett spørsmål.',
   },
   {
     navn: 'Lenker fra andre nettsteder',

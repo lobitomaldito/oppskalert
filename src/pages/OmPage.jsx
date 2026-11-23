@@ -27,7 +27,7 @@ const OM_KORT = [
   {
     Ikon: Oye,
     tittel: 'Utkastet først',
-    tekst: 'Det jeg liker best er å ta en side som ikke gjør noe, og gjøre den om til noe som faktisk ringer telefonen. Det er derfor jeg bygger utkastet først. Jeg vil heller vise deg forskjellen enn å forklare den.',
+    tekst: 'Det jeg liker best er å ta en side som ikke gjør noe, og gjøre den om til en side som får telefonen til å ringe. Det er derfor jeg bygger utkastet først. Jeg vil heller vise deg forskjellen enn å forklare den.',
   },
 ];
 
@@ -62,7 +62,7 @@ const OmPage = () => {
     <Shell>
       <SEO
         title="Om meg"
-        description="Oppskalert er Aleksander MacKee. Ingen mellomledd, ingen prosjektkoordinatorer. Du snakker med den som faktisk bygger nettsiden din."
+        description="Oppskalert er Aleksander MacKee. Ingen mellomledd, ingen prosjektkoordinatorer. Du snakker med den som bygger nettsiden din."
         keywords={['om oppskalert', 'norsk webutvikler', 'frilans nettside']}
         canonical="https://oppskalert.no/om"
         jsonLd={PROFIL_LD}
