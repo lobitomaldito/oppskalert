@@ -623,7 +623,10 @@ export const prosjekter = [
   /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Skjermbildene er
      tatt på nytt 15. oktober 2026 fra jtob.no etter at siden gikk live,
      med heroen som viser Harstad sett fra Immelen. */
-  { img: '/websider/jakobsen-takst.webp', slug: 'jakobsen-takst', farge: '#b71817', full: '/websider/full/jakobsen-takst.webp', til: '-81%', navn: 'Jakobsen Takst & Bygg', bransje: 'Takst · Harstad', url: 'https://jtob.no/', domene: 'jtob.no' },
+  { img: '/websider/jakobsen-takst.webp', slug: 'jakobsen-takst', farge: '#b71817', full: '/websider/full/jakobsen-takst.webp', til: '-81%', navn: 'Jakobsen Takst & Bygg', bransje: 'Takst · Harstad', url: 'https://jtob.no/', domene: 'jtob.no',
+    /* Dronefilmen i toppen (23.11.2026). Skjermbildet i full/ er tatt på
+       nytt samme dag, så filmen treffer den nåværende siden. */
+    film: '/websider/film/jakobsen-takst-topp.mp4' },
   { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', farge: '#5d7f35', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
   /* Prana Yoga Studio. Lagt inn 9. november 2026, live på
      pranayogakristiansand.no. Tar plassen Katrin Brubakk hadde som fjerde

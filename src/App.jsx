@@ -92,13 +92,15 @@ const Vurdering = () => {
    Aleksander tok den ut: raden viser allerede eksemplene. */
 /* Tredje felt er en film som spilles i flisen i stedet for stillbildet.
    Prana-filmen (23.11.2026) er et opptak av pranayogakristiansand.no på
-   390 px, lagt perspektivriktig inn i telefonskjermen i samme mockup. */
+   390 px, lagt perspektivriktig inn i telefonskjermen i samme mockup.
+   Jakobsen-flisen er opptaket av jtob.no rett, og stillbildet er første
+   bilde i filmen, så plakaten og filmen er like. */
 const GALLERI = [
   ['prana-yoga-mobil', 2 / 3, '/websider/film/prana-yoga-vegg.mp4'],
   ['woxen-hage-pc', 1],
   ['melanie-dahl-mobil', 2 / 3],
   ['alpha-negotiations-pc', 4 / 5],
-  ['jakobsen-takst-mobil', 2 / 3],
+  ['jakobsen-takst-mobil', 2 / 3, '/websider/film/jakobsen-takst-vegg.mp4'],
   ['appstart-pc', 1],
   ['katrin-brubakk-mobil', 2 / 3],
 ];

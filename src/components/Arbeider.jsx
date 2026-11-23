@@ -1,3 +1,4 @@
+import Film from './Film';
 import { Link } from 'react-router-dom';
 import { prosjekter, ruter, toganger } from '../lib/site';
 import { caser } from '../lib/demo-innhold';
@@ -98,15 +99,23 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett
                 <p>{a.domene}</p>
               </div>
               <div className="ramme-vindu">
-                <img
-                  src={a.full}
-                  srcSet={toganger(a.full)}
-                  alt={`Nettsiden til ${a.navn}`}
-                  loading="lazy"
-                  width="620"
-                  height="2422"
-                  style={{ '--til': a.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` }}
-                />
+                {/* Med `film` (Prana og jtob, 23.11.2026) ruller bildet og
+                    filmen sammen i .rull, som på case-siden. */}
+                <div
+                  className={a.film ? 'rull' : undefined}
+                  style={a.film ? { '--til': a.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` } : undefined}
+                >
+                  <img
+                    src={a.full}
+                    srcSet={toganger(a.full)}
+                    alt={`Nettsiden til ${a.navn}`}
+                    loading="lazy"
+                    width="620"
+                    height="2422"
+                    style={a.film ? undefined : { '--til': a.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` }}
+                  />
+                  {a.film && <Film className="ramme-film" src={a.film} width="960" height="750" />}
+                </div>
               </div>
             </div>
             <p className="etikett">{a.bransje}</p>
