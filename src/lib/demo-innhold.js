@@ -16,6 +16,39 @@
    Feltet i peker pa indeksen i prosjekter i site.js, som eier bildene. */
 export const caser = [
   {
+    "slug": "terapihusene",
+    "i": 6,
+    "tittel": "Tre terapihus og nitten terapeuter på én side",
+    "ingress": "Parterapi, familieterapi, psykolog og psykiater i Stavanger, Bergen og Kristiansand, og på video. Den som leter vil vite hvilket hus som er nærmest, hvem som kan ta imot og hva en time koster.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Egen side for hver behandling i hver by",
+      "Profilside og timebestilling for hver terapeut",
+      "Flytting fra WordPress, gamle adresser beholdt",
+      "Søkeoppsett, hosting og drift"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Timebestilling i EasyPractice",
+      "Redigering rett på siden"
+    ],
+    "utfordring": {
+      "t": "Tre byer, seks behandlinger, nitten terapeuter",
+      "a": [
+        "Terapihusene har kontor i Stavanger, Bergen og Kristiansand, og flere av terapeutene tar også timer på video. Hver by har sitt eget telefonnummer, og tilbudet varierer litt fra hus til hus.",
+        "Den som søker skriver gjerne behandling og by, for eksempel «parterapi Bergen». Siden må ha et svar på akkurat det søket, med terapeutene som jobber der og nummeret som gjelder."
+      ]
+    },
+    "losning": {
+      "t": "Velg by først, så terapeut",
+      "a": [
+        "Første skjerm har fire valg: Stavanger, Bergen, Kristiansand og online. Hvert hus har sin egen side med terapeutene som jobber der, adresse, telefon og priser.",
+        "Hver behandling har <b>en egen side i hver by</b>, femten i alt. Et søk på «parterapi Bergen» lander dermed på parterapi i Bergen.",
+        "Hver terapeut har sin egen profil med utdanning, temaer og timebestilling i EasyPractice, systemet huset brukte fra før. Telefonnummeret på profilen følger byen terapeuten jobber i."
+      ]
+    }
+  },
+  {
     "slug": "woxen-hage",
     "i": 0,
     "tittel": "Hagehjelp bestilt på under ett minutt",

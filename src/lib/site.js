@@ -615,6 +615,13 @@ export const toganger = (src) => `${src} 1x, ${src.replace('.webp', '@2x.webp')}
    Aleksander fra en prøve med fire varianter. Nytt prosjekt: regn ut på
    samme måte, eller sett fargen for hånd. */
 export const prosjekter = [
+  /* Terapihusene. Lagt inn 23. november 2026 etter ønske fra Aleksander,
+     live på terapihusene.no fra 16. november. Ingen før-bilder på
+     case-siden (Aleksander: «du trenger ikke ha førbilde»). Fangsten er
+     vanlig 5000 px, så --til er -81%. Fargen er --c-accent fra kundens
+     egen styles.css, satt for hånd. Står først fordi terapi er nisjen som
+     svarer best på kald mail; flytt den hvis Aleksander vil ha Prana først. */
+  { img: '/websider/terapihusene.webp', slug: 'terapihusene', farge: '#8e5e52', full: '/websider/full/terapihusene.webp', til: '-81%', navn: 'Terapihusene', bransje: 'Terapi · tre byer', url: 'https://terapihusene.no/', domene: 'terapihusene.no' },
   /* Appstart. Lagt inn 29. september 2026. Aleksanders eget selskap
      sammen med Magnus, ikke et kundeoppdrag, derfor ingen case-side:
      kortet lenker rett ut til appstart.no. Fangsten er vanlig 5000 px
