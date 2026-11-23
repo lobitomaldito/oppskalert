@@ -636,10 +636,11 @@
      forlater skjermen, så seks animasjoner ikke maler i bakgrunnen.
      Fyrer ikke observeren, ruller alt, som er riktig feilmodus:
      motsatt oppsett gir kort som står stille for alltid. */
-  .arbeid.utenfor .ramme-vindu img { animation-play-state: paused; }
+  .arbeid.utenfor .ramme-vindu img, .arbeid.utenfor .ramme-vindu .rull { animation-play-state: paused; }
   /* Case-siden med film (Prana, 23.11.2026): bildet og filmen ruller
      sammen i .rull, så prosenten i --til regnes av bildets høyde. */
-  .ramme-vindu .rull { position: relative; animation: rammerull 34s ease-in-out infinite alternate; will-change: transform; }
+  .ramme-vindu .rull { position: relative; animation: rammerull 34s ease-in-out infinite alternate; }
+  .arbeid:not(.utenfor) .ramme-vindu .rull { will-change: transform; }
   .ramme-vindu .rull img { animation: none; }
   .ramme-film { position: absolute; top: 0; left: 0; width: 100%; height: auto; display: block; }
   /* will-change bare mens rammen faktisk ruller. Permanent på seks
