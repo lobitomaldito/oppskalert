@@ -1391,6 +1391,8 @@
     color: var(--kritt);
     margin-bottom: -.17em;
   }
+  /* Logoanimasjonen (Layout.jsx) trenger transform på bokstavene og punktumet. */
+  .bunn-merke > span, .topp .merke i { display: inline-block; }
 
   /* ----------------------------------------------------------------
      Bransjesider (/nettside-for-<bransje>, 12.11.2026). Foto i toppen og
