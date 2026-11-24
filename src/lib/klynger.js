@@ -6,7 +6,8 @@ import { prismodeller, driftNivaer, ruter } from './site.js';
    Prisene leses fra site.js, så avslutningene følger med når de endres. */
 const pris = (p) => `${p.navn} ${p.fast ? '' : 'fra '}${p.fra} kr`;
 const [enkel, medium, komplett] = prismodeller;
-const [service, seo] = driftNivaer;
+const service = driftNivaer.find((n) => n.id === 'service');
+const seo = driftNivaer.find((n) => n.id === 'seo');
 const UTKAST = 'Jeg bygger et ferdig utkast med ditt innhold før du bestemmer deg. Liker du det ikke, koster det ingenting.';
 
 /* CTA-ene inne i teksten følger klyngen (12.11.2026). Før sto «Leter du
