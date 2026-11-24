@@ -174,15 +174,17 @@ const PriserPage = () => (
       <div className="wrap">
         <div className="seksjonstopp inn">
           <p className="etikett">Etter lansering</p>
-          <h2>Serviceavtale og SEO</h2>
-          <p>Hosting er med i prisen på siden. Vil du at jeg gjør endringene, eller
-          jobber med søk hver måned, er dette tilleggene. Ingen oppsigelsestid.</p>
+          <h2>Drift, SEO og annonser</h2>
+          <p>Hosting og redigeringspanel er med i prisen på siden. Vil du at jeg gjør
+          endringene, jobber med søk eller tar annonsene, er dette trinnene. Ingen
+          oppsigelsestid.</p>
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
             «Få et gratis utkast» ville lovet et utkast av en driftsavtale. */}
-        <PrisRad className="lg:grid-cols-2 lg:max-w-[52rem]">
+        {/* Fire trinn fra 24.11.2026: to og to fra md, fire i linje fra xl. */}
+        <PrisRad className="lg:grid-cols-2 xl:grid-cols-4 lg:max-w-none">
           {driftNivaer.map((n) => (
-            <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
+            <Modell key={n.id} m={n} cta={n.cta ?? `Velg ${n.navn}`} />
           ))}
         </PrisRad>
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{driftNotat}</p>

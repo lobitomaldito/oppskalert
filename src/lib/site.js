@@ -175,7 +175,28 @@ export const alltidMed = [
    tillegg: serviceavtale og SEO. Tallene står også i tilbud/MAL.md.
    Serviceavtalen gikk fra 450 til 550 kr/mnd 10. november 2026. Kunder
    med avtale eller tilbud fra før beholder 450. */
+/* Fra 24. november 2026 er det fire trinn, hvert «alt i forrige, pluss»
+   (tilbud/driftsstige-forslag.md og MAL.md). Første trinn koster 0: det
+   som følger med alle sider jeg bygger. Ingen priser er endret. AI-assistent
+   kommer som eget tillegg når prisen er satt. Les nivåene med id, ikke med
+   plass i lista: klynger.js gjorde det før. */
 export const driftNivaer = [
+  {
+    id: 'inkludert',
+    navn: 'Med i prisen',
+    fra: '0',
+    fast: true,
+    enhet: 'kr/mnd',
+    periode: 'på alle sider jeg bygger',
+    tagline: 'Du endrer selv i redigeringspanelet. Dette følger med siden.',
+    inkludert: [
+      'Hosting og sikker forbindelse (SSL)',
+      'Redigeringspanel: bytt tekst og bilder selv',
+      'Feil fra min side rettes gratis',
+    ],
+    cta: 'Få et gratis utkast',
+    fremhevet: false,
+  },
   {
     id: 'service',
     navn: 'Serviceavtale',
@@ -185,12 +206,13 @@ export const driftNivaer = [
     periode: 'ingen binding',
     tagline: 'Jeg gjør endringene og passer på siden. Du sender en e-post.',
     inkludert: [
+      'Alt som er med i prisen, pluss:',
       'Rimelige tekst- og bildeendringer, uten timeteller',
       'Backup og oppetidsovervåking',
       'Sikkerhets- og programvareoppdateringer',
       'Support direkte fra meg',
     ],
-    fremhevet: true,
+    fremhevet: false,
   },
   {
     id: 'seo',
@@ -204,13 +226,29 @@ export const driftNivaer = [
       'Månedlig rapport med vanlige ord: hvem som fant deg, og på hva',
       'AI-sjekk: om ChatGPT og Google AI nevner deg',
       'En ny side eller artikkel i måneden',
+      'Google Ads, med budsjettet i din egen konto',
       'Retting av det rapporten finner',
+    ],
+    fremhevet: true,
+  },
+  {
+    id: 'annonser',
+    navn: 'SEO og annonser',
+    fra: '4 490',
+    enhet: 'kr/mnd',
+    periode: 'etter omfang, ingen binding',
+    tagline: 'For deg som også vil ha henvendelser fra Facebook og Instagram.',
+    inkludert: [
+      'Alt i SEO, pluss:',
+      'Nye Facebook- og Instagram-annonser hver måned',
+      'Justering underveis og kort rapport om henvendelser',
+      'Oppstart 2 990 kr: annonsekonto i ditt navn og plan for annonsene',
     ],
     fremhevet: false,
   },
 ];
 
-export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid, avslutt når du vil.';
+export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid, avslutt når du vil. Større ombygginger og nye sider avtales separat. Annonsebudsjettet betaler du selv, til Google og Meta.';
 
 /* Priskalkulatoren er fjernet 30. september 2026. Den regnet pris av
    sidetall, fem tillegg og hastepåslag, og hver variabel måtte legge noe

@@ -1,16 +1,17 @@
 import { Check, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { Modell, PrisRad } from '../components/Priser';
 import { Shell, SideTopp, SeksjonTopp } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
-import { driftNivaer, driftNotat, lagFaqSchema, ruter } from '../lib/site';
+import { driftNivaer, driftNotat, lagFaqSchema } from '../lib/site';
 
 const driftSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
-  name: 'Oppskalert serviceavtale og SEO',
+  name: 'Oppskalert drift, SEO og annonser',
   itemListElement: driftNivaer.map((n) => ({
     '@type': 'Offer',
     name: n.navn,
@@ -28,7 +29,7 @@ const driftSchema = {
 const driftFaq = [
   {
     q: 'Hva koster drift av nettside?',
-    a: 'På sider jeg bygger koster hostingen 0 kroner i måneden, den er med i prisen. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 550 kroner i måneden. SEO, med rapport og en ny side eller artikkel hver måned, koster fra 2 990 kroner. Alle priser eks. mva, uten binding.',
+    a: 'På sider jeg bygger koster hostingen 0 kroner i måneden, den er med i prisen sammen med redigeringspanelet. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 550 kroner i måneden. SEO, med rapport, Google Ads og en ny side eller artikkel hver måned, koster fra 2 990 kroner. Vil du også ha annonser på Facebook og Instagram, koster det fra 4 490 kroner i måneden, pluss 2 990 kroner i oppstart. Alle priser eks. mva, uten binding.',
   },
   {
     q: 'Hva er forskjellen på webhotell og drift?',
@@ -81,55 +82,23 @@ const HvaDrift = () => {
   );
 };
 
-const DriftKort = ({ nivaa }) => (
-  <div
-    data-reveal
-    className={`relative flex flex-col h-full rounded-kort p-7 md:p-8 border ${
-      nivaa.fremhevet ? 'border-room-ink/40 bg-surface' : 'border-room-ink/10 bg-surface'
-    }`}
-  >
-    {nivaa.fremhevet && (
-      <span className="absolute top-0 right-7 -translate-y-1/2 bg-room-ink text-room text-[11px] font-body uppercase tracking-widest px-3 py-1 rounded-full font-semibold">
-        Anbefalt
-      </span>
-    )}
-    <h3 className="font-sans font-bold text-xl">{nivaa.navn}</h3>
-    <p className="font-body text-[0.95rem] text-room-ink/70 mt-2.5 leading-relaxed min-h-[3em]">{nivaa.tagline}</p>
-    <div className="mt-6 flex items-baseline gap-1.5">
-      <span className="font-body text-sm text-room-ink/70">fra</span>
-      <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{nivaa.fra}</span>
-      <span className="font-body text-sm text-room-ink/70">{nivaa.enhet}</span>
-    </div>
-    <ul className="mt-6 flex flex-col gap-3 flex-1">
-      {nivaa.inkludert.map((f) => (
-        <li key={f} className="flex items-start gap-2.5 font-body text-[0.95rem] text-room-ink/70 leading-relaxed">
-          <Check className="w-4 h-4 text-room-ink mt-0.5 flex-shrink-0" aria-hidden="true" />
-          {f}
-        </li>
-      ))}
-    </ul>
-    <Link
-      to={ruter.kontakt}
-      className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] ${
-        nivaa.fremhevet ? 'bg-room-ink text-room' : 'bg-room-ink/10 hover:bg-room-ink/20'
-      }`}
-    >
-      Velg {nivaa.navn}
-    </Link>
-  </div>
-);
-
 // Funksjonsmatrisen svarer på det kortene ikke gjør alene: hva er
-// forskjellen rad for rad. Hosting står ikke her: den er med i prisen på
-// alle sider jeg bygger (fra 17. oktober 2026).
+// forskjellen rad for rad. Fra 24. november 2026 fire kolonner, i samme
+// rekkefølge som driftNivaer. Første kolonne er det som følger med siden.
 const rader = [
-  ['Rimelige tekst- og bildeendringer', true, true],
-  ['Backup og oppetidsovervåking', true, true],
-  ['Sikkerhets- og programvareoppdateringer', true, true],
-  ['Support direkte fra meg', true, true],
-  ['Månedlig rapport om hvem som fant deg', false, true],
-  ['En ny side eller artikkel i måneden', false, true],
-  ['Bindingstid', 'Ingen', 'Ingen'],
+  ['Hosting og sikker forbindelse (SSL)', true, true, true, true],
+  ['Redigeringspanel, endre tekst og bilder selv', true, true, true, true],
+  ['Feil fra min side rettes gratis', true, true, true, true],
+  ['Rimelige tekst- og bildeendringer', false, true, true, true],
+  ['Backup og oppetidsovervåking', false, true, true, true],
+  ['Sikkerhets- og programvareoppdateringer', false, true, true, true],
+  ['Support direkte fra meg', false, true, true, true],
+  ['Månedlig rapport om hvem som fant deg', false, false, true, true],
+  ['AI-sjekk i ChatGPT og Google AI', false, false, true, true],
+  ['En ny side eller artikkel i måneden', false, false, true, true],
+  ['Google Ads', false, false, true, true],
+  ['Facebook- og Instagram-annonser', false, false, false, true],
+  ['Bindingstid', 'Ingen', 'Ingen', 'Ingen', 'Ingen'],
 ];
 
 const Celle = ({ v }) => {
@@ -141,17 +110,19 @@ const Celle = ({ v }) => {
 const Sammenligning = () => {
   const container = useReveal(80);
   return (
-    <section ref={container} className="seksjon">
+    /* Skjult under md: fire kolonner blir sidelengs scroll på 390 px, og
+       kortene over sier det samme med «Se hva som er med» (regel 2). */
+    <section ref={container} className="seksjon hidden md:block">
       <div className="wrap">
         <SeksjonTopp tittel="Full oversikt," uthevet="rad for rad." />
         <div data-reveal className="overflow-x-auto rounded-kort border border-room-ink/10">
-          <table className="w-full border-collapse min-w-[36rem]">
-            <caption className="sr-only">Sammenligning av serviceavtale og SEO</caption>
+          <table className="w-full border-collapse min-w-[44rem]">
+            <caption className="sr-only">Sammenligning av de fire trinnene for drift, SEO og annonser</caption>
             <thead>
               <tr className="border-b border-room-ink/15 bg-room-ink/5">
                 <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Funksjon</th>
                 {driftNivaer.map((n) => (
-                  <th key={n.id} scope="col" className={`font-sans font-bold text-sm py-3.5 px-4 w-[9rem] ${n.fremhevet ? 'underline decoration-room-ink/40 underline-offset-4' : ''}`}>{n.navn}</th>
+                  <th key={n.id} scope="col" className={`font-sans font-bold text-sm py-3.5 px-4 w-[8.5rem] ${n.fremhevet ? 'underline decoration-room-ink/40 underline-offset-4' : ''}`}>{n.navn}</th>
                 ))}
               </tr>
             </thead>
@@ -182,7 +153,7 @@ const DriftPage = () => (
         noe sted. Se SEO.md punkt 12. */}
     <SEO
       title="Webhosting og drift av nettside"
-      description="Hosting er med i prisen på alle nettsider jeg bygger. Serviceavtale med endringer og support fra 550 kr/mnd, og SEO fra 2 990 kr/mnd. Ingen bindingstid."
+      description="Hosting er med i prisen på alle nettsider jeg bygger. Serviceavtale fra 550 kr/mnd, SEO fra 2 990 og SEO med annonser fra 4 490. Ingen bindingstid."
       keywords={['webhosting', 'drift av nettside', 'support nettside abonnement', 'vedlikehold nettside']}
       canonical="https://oppskalert.no/drift"
       jsonLd={[driftSchema, lagFaqSchema(driftFaq)]}
@@ -190,13 +161,17 @@ const DriftPage = () => (
     <SideTopp
       tittel="Drift av nettside,"
       uthevet="hosting inkludert."
-      lede="Hosting er med i prisen på alle sider jeg bygger. Serviceavtale fra 550 kr/mnd hvis du vil at jeg gjør endringene, og SEO fra 2 990 kr/mnd hvis du vil bli funnet på flere søk. Ingen bindingstid."
+      lede="Hosting og redigeringspanel er med i prisen på alle sider jeg bygger. Derfra går det tre trinn opp: serviceavtale fra 550 kr/mnd hvis du vil at jeg gjør endringene, SEO fra 2 990 kr/mnd for å bli funnet på flere søk, og SEO med annonser fra 4 490 kr/mnd. Ingen bindingstid."
     />
     <section className="seksjon pt-0">
       <div className="wrap">
-        <div data-reveal className="grid gap-5 md:grid-cols-2 items-stretch max-w-[52rem]">
-          {driftNivaer.map((n) => <DriftKort key={n.id} nivaa={n} />)}
-        </div>
+        {/* Samme priskort som /priser fra 24.11.2026. De gir «Se hva som er
+            med» på mobil, så fire trinn ikke blir fire lange lister. */}
+        <PrisRad className="lg:grid-cols-2 xl:grid-cols-4 lg:max-w-none">
+          {driftNivaer.map((n) => (
+            <Modell key={n.id} m={n} cta={n.cta ?? `Velg ${n.navn}`} />
+          ))}
+        </PrisRad>
       </div>
     </section>
     <Sammenligning />
