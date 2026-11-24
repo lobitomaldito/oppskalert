@@ -620,6 +620,16 @@ export const prosjekter = [
      kortet lenker rett ut til appstart.no. Fangsten er vanlig 5000 px
      (forsiden er 6370 px høy), så --til er -81% som Woxen Hage. */
   { img: '/websider/appstart.webp', slug: 'appstart', farge: '#114b35', full: '/websider/full/appstart.webp', til: '-81%', navn: 'Appstart', bransje: 'Apputvikling', url: 'https://appstart.no/', domene: 'appstart.no' },
+  /* GTI Karmøy AS. Lagt inn 24. november 2026 etter ønske fra Aleksander:
+     40 av 53 som klikket på /arbeid fra purringen i november var
+     håndverkere, og ingen av kortene var en håndverker. Kunden er solgt og
+     har sagt ja til å bli vist, men siden er ikke lansert ennå, så kortet
+     lenker til demoadressen. Bytt url og domene til gtikarmoy.no og skyt
+     bildene på nytt når domenet er flyttet. Skjermbildene er tatt fra
+     gti-demo.vercel.app med Design Lab-panelet (#lab) skjult. Fargen er
+     kundens --c-aksent, satt for hånd. Sidehøyden er over 5000 px, så
+     fangsten er vanlig 5000 px og --til er -81%. */
+  { img: '/websider/gti.webp', slug: 'gti', farge: '#ff8200', full: '/websider/full/gti.webp', til: '-81%', navn: 'GTI Karmøy', bransje: 'Grunnarbeid · Karmøy', url: 'https://gti-demo.vercel.app/', domene: 'gti-demo.vercel.app' },
   /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Skjermbildene er
      tatt på nytt 15. oktober 2026 fra jtob.no etter at siden gikk live,
      med heroen som viser Harstad sett fra Immelen. */
