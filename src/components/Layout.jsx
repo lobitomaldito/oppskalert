@@ -21,6 +21,29 @@ export const ScrollToTop = () => {
   return null;
 };
 
+/* Logoen viser «oppskalering» to steder (24.11.2026). Toppen: punktumet
+   dobles i harde hopp én gang per besøk. Bunnen: bokstavene vokser opp fra
+   grunnlinjen som søyler når de rulles inn. Ordet står lesbart hele tiden,
+   og uten JavaScript eller med redusert bevegelse står logoen stille. */
+const UT = 'cubic-bezier(.16, 1, .3, 1)';
+const rolig = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fontKlar = () => document.fonts.load('800 1em Merke');
+
+// Grunnlinjen (px fra toppen av et inline-block-element) og blekket i ett tegn.
+const maal = (el, tegn) => {
+  const cs = getComputedStyle(el);
+  const ctx = document.createElement('canvas').getContext('2d');
+  ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+  const m = ctx.measureText(tegn);
+  const grunn = (parseFloat(cs.lineHeight) - m.fontBoundingBoxAscent - m.fontBoundingBoxDescent) / 2
+    + m.fontBoundingBoxAscent;
+  return {
+    grunn,
+    venstre: -m.actualBoundingBoxLeft,
+    bunn: grunn + m.actualBoundingBoxDescent,
+  };
+};
+
 /* Toppnavigasjonen, portert ordrett fra studio-mal-demoen
    (mal3.src.html, linje 660 til 686). Alle klasser (.topp, .topp-nav,
    .merke, .knapp, .pil, .meny, .meny-liste) ligger ferdig i index.css.
@@ -45,12 +68,37 @@ export const Navbar = () => {
     return () => window.removeEventListener('keydown', lukkVedEscape);
   }, []);
 
+  // Punktumet dobles (1, 2, 4) og glir tilbake. Én gang per besøk: flagget
+  // settes først når animasjonen er ferdig, så en avbrutt kjøring teller ikke.
+  const merkeRef = useRef(null);
+  useEffect(() => {
+    const prikk = merkeRef.current?.querySelector('i');
+    if (!prikk || rolig()) return;
+    try { if (sessionStorage.getItem('merke-vist')) return; } catch { /* lagring sperret: spill */ }
+    let avbrutt = false, anim;
+    fontKlar().then(() => {
+      if (avbrutt) return;
+      const p = maal(prikk, '.');
+      prikk.style.transformOrigin = `${p.venstre}px ${p.bunn}px`;
+      const T = 1020, hopp = { easing: 'steps(1, end)' };
+      anim = prikk.animate([
+        { transform: 'scale(1)', offset: 0, ...hopp },
+        { transform: 'scale(2)', offset: 160 / T, ...hopp },
+        { transform: 'scale(4)', offset: 320 / T },
+        { transform: 'scale(4)', offset: 520 / T, easing: UT },
+        { transform: 'scale(1)', offset: 1 },
+      ], { duration: T, delay: 400 });
+      anim.onfinish = () => { try { sessionStorage.setItem('merke-vist', '1'); } catch { /* ok */ } };
+    });
+    return () => { avbrutt = true; anim?.cancel(); };
+  }, []);
+
   const navKlasse = ({ isActive }) => (isActive ? 'aktiv' : undefined);
 
   return (
     <header className="topp">
       <div className="wrap topp-inn">
-        <Link className="merke" to={ruter.hjem}>oppskalert<i>.</i></Link>
+        <Link className="merke" to={ruter.hjem} ref={merkeRef}>oppskalert<i>.</i></Link>
 
         <nav className="topp-nav" aria-label="Hovedmeny">
           {navLenker.map((lenke) => (
@@ -90,6 +138,47 @@ export const Navbar = () => {
    Verktøy-sidene, ni ruter demoens egen bunnmeny ikke kjente til. De
    lenkene bærer internlenking SEO-arbeidet er avhengig av, så de er
    lagt til i en egen rad over bunn-rad i stedet for droppet. */
+// Bokstavene står i hver sin span også uten JavaScript, så ordet ikke hopper
+// når animasjonen tar over.
+const BunnMerke = () => {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || rolig() || !('IntersectionObserver' in window)) return;
+    if (el.getBoundingClientRect().top < window.innerHeight) return; // synlig fra start
+    // Punktumet står under kanten (margin-bottom -.17em), så bare bokstavene animeres.
+    const bokstaver = [...el.querySelectorAll('span')];
+    // Skjult med en animasjon, ikke en klasse: prerenderen lagrer DOM-en etter
+    // effektene, og en klasse ville skjult ordet i den statiske HTML-en.
+    const skjul = bokstaver.map((b) => b.animate({ visibility: 'hidden' }, { fill: 'forwards' }));
+    let avbrutt = false;
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      io.disconnect();
+      fontKlar().then(() => {
+        if (avbrutt) return;
+        const { grunn } = maal(bokstaver[0], 'o');
+        skjul.forEach((a) => a.cancel());
+        bokstaver.forEach((b, n) => {
+          b.style.transformOrigin = `50% ${grunn}px`;
+          b.animate(
+            [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1.12)', offset: .6 }, { transform: 'scaleY(1)' }],
+            { duration: 620, delay: n * 60, easing: 'cubic-bezier(.33, 1, .68, 1)', fill: 'backwards' },
+          );
+        });
+      });
+    }, { threshold: .5 });
+    io.observe(el);
+    return () => { avbrutt = true; io.disconnect(); skjul.forEach((a) => a.cancel()); };
+  }, []);
+
+  return (
+    <span className="merke bunn-merke" aria-hidden="true" ref={ref}>
+      {[...'oppskalert'].map((c, n) => <span key={n}>{c}</span>)}<i>.</i>
+    </span>
+  );
+};
+
 export const Footer = ({ utenCta = false }) => (
   <footer className="bunn paa-blekk">
     <div className="wrap bunn-inn">
@@ -199,7 +288,7 @@ export const Footer = ({ utenCta = false }) => (
     </div>
 
     <div className="bunn-merke-boks">
-      <span className="merke bunn-merke" aria-hidden="true">oppskalert<i>.</i></span>
+      <BunnMerke />
     </div>
   </footer>
 );
