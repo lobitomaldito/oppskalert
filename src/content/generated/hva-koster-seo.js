@@ -1,22 +1,34 @@
 export default {
   slug: "hva-koster-seo",
   klynge: "seo",
-  title: "Hva koster SEO? Hva som styrer prisen, og hva jeg tar",
-  description: "Hva koster SEO for en liten bedrift? Dette styrer prisen, dette er med når du betaler meg fra 2 990 kr i måneden, og disse røde flaggene bør du se etter.",
+  title: "Hva koster søkemotoroptimalisering? SEO-priser i Norge",
+  description: "SEO koster fra 2 490 kr i måneden hos små norske leverandører. Fire publiserte priser, hva som styrer prisen, og hva du får hos meg fra 2 990 kr.",
   publishDate: "2026-11-12",
-  keywords: ["hva koster seo", "pris på seo", "hva koster søkemotoroptimalisering"],
+  updatedDate: "2026-11-24",
+  keywords: ["hva koster søkemotoroptimalisering", "hva koster seo", "seo pris", "søkemotoroptimalisering pris", "pris på seo"],
   hero: "/blogg/hva-koster-seo.webp",
-  svar: "SEO hos meg koster fra 2 990 kr i måneden eks. mva, uten binding. Da får du en månedlig rapport, en AI-sjekk av om ChatGPT og Google AI nevner deg, en ny side eller artikkel i måneden og retting av det rapporten finner. Prisen øker med omfanget: hvor mange tjenester og steder du vil bli funnet på, og hvor mye som må skrives.",
+  svar: "Hos små norske leverandører som oppgir prisen, starter SEO på 2 490 til 5 000 kr i måneden, og de største pakkene koster rundt 20 000 kr. Hos meg koster SEO fra 2 990 kr i måneden eks. mva, uten binding. Prisen øker med hvor mange tjenester og steder du vil bli funnet på.",
   faq: [
     { q: "Er det binding på SEO-avtalen?", a: "Nei. SEO hos meg koster fra 2 990 kr i måneden eks. mva, uten binding, og du kan avslutte når du vil." },
     { q: "Kan noen garantere førsteplass på Google?", a: "Nei. Google skriver selv at ingen kan garantere en førsteplass, og råder deg til å finne en annen leverandør hvis noen lover det." },
     { q: "Kan Google Ads være med i SEO-avtalen?", a: "Ja, Google Ads kan inngå i SEO-avtalen. Prisen settes etter omfanget, og du får den skriftlig før jeg starter." },
   ],
-  content: `## Hva koster SEO?
+  content: `## Hva koster søkemotoroptimalisering?
 
-SEO hos meg starter på 2 990 kr i måneden eks. mva, uten binding. Prisene du møter ellers, spriker mye, fordi «SEO» kan bety alt fra en automatisk rapport til full produksjon av tekster og sider hver måned. Før du sammenligner to tilbud, må du derfor vite hva som blir gjort hver måned, og hva du får se av det.
+Løpende søkemotoroptimalisering koster fra 2 490 kr i måneden hos de rimeligste norske leverandørene som oppgir pris, og opp mot 20 000 kr for de største pakkene. Hos meg starter SEO på 2 990 kr i måneden eks. mva, uten binding. Prisene spriker fordi «SEO» kan bety alt fra en automatisk rapport til full produksjon av tekster og sider hver måned. Før du sammenligner to tilbud, må du derfor vite hva som blir gjort hver måned, og hva du får se av det.
 
 Hva jeg gjør i SEO-arbeidet, står på siden om [søkemotoroptimalisering](/sokemotoroptimalisering). Alle prisene mine, også for nettsider og serviceavtale, står samlet på [prissiden](/priser).
+
+## Hva tar andre for SEO?
+
+Jeg leste prissidene til fire små norske leverandører som oppgir SEO-prisen på nettsiden sin, 24. november 2026. Prisene er per måned, slik de står der:
+
+- Et byrå i Trondheim: 2 490 kr, med minst tre måneders binding.
+- En nettsidetjeneste på Lillestrøm: 3 200 kr for fire publiseringer i måneden, og 5 000 kr for åtte med lokal SEO.
+- Et SEO-byrå i Sandnes: 4 999, 9 999 og 19 999 kr. Siden sier ikke om mva er med.
+- Et byrå i Bergen: 5 000, 10 000 og 20 000 kr, med tre måneders oppstartsperiode.
+
+Pakken til 2 490 kr lister søkeordsanalyse, innholdsplan, teknisk SEO og rapport, uten nye sider. Pakkene rundt 10 000 kr har én til to nye artikler eller landingssider i måneden. Prisguidene fra større byråer oppgir gjerne 8 000 til 50 000 kr i måneden. Hos meg er én ny side eller artikkel med fra 2 990 kr.
 
 ## Hva du betaler for
 
