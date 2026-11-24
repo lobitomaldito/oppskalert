@@ -23,6 +23,7 @@ import { PilHoyre, PilOpp } from './Ikon';
 const ARBEIDER_TEKST = {
   'terapihusene': { bransje: 'Terapi', tittel: 'Tre terapihus på én side, med timebestilling hos hver terapeut' },
   'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
+  'gti': { bransje: 'Maskinentreprenør', tittel: 'Grunnarbeid på Karmøy, med prosjektbilder og telefonen øverst' },
   'jakobsen-takst': { bransje: 'Takstmann', tittel: 'Takst i Harstad, med prisestimat før du ringer' },
   'woxen-hage': { bransje: 'Hagestell', tittel: 'Hagehjelp i Oslo, bestilt på under ett minutt' },
   'prana-yoga': { bransje: 'Yoga', tittel: 'Yoga i Kristiansand, med dagens timer på forsiden' },
