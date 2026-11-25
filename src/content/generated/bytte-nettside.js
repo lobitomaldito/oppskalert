@@ -1,3 +1,6 @@
+/* SEO-rutinen 23. nov 2026, GSC 28 dager: artikkelen lå på pos 20,1 på «drift av nettside» (228 visninger),
+   foran FAQ-siden (pos 22,4) og /drift, uten å handle om drift. Lenke til /drift og FAQ lagt inn i tegn 3
+   så lenkeverdien havner på siden som skal eie søket. Mål igjen rundt 21. des. */
 export default {
   slug: "bytte-nettside",
   klynge: "nettside",
@@ -28,6 +31,8 @@ Design dateres i praksis over tre til fem år, ikke fordi teknologien blir dårl
 ## Tegn 3: Du kan ikke oppdatere den selv lenger
 
 Krever hver eneste tekstendring at du kontakter noen andre og venter dager på svar, er det et driftsmessig problem, ikke bare et irritasjonsmoment. En nettside bør la deg endre åpningstider, priser og enkel tekst selv, uten å måtte betale timepris for det. Sitter du fast med en løsning der selv en liten endring krever en utvikler, betaler du reelt sett en skjult avgift hver gang bedriften din endrer seg, og det skjer oftere enn de fleste tror.
+
+Slipper du å bytte side og bare trenger at noen passer på den, er [drift av nettside](/drift) det billigere svaret: hosting, backup og endringer for 550 kroner i måneden. Se [hva drift og vedlikehold koster](/vanlige-sporsmal/hva-koster-drift-av-nettside) før du bestemmer deg.
 
 ## Tegn 4: Den konverterer dårligere enn før
 
