@@ -565,6 +565,38 @@ export const caser = [
         "Én setning midt på siden navngir tilstanden leseren er i. Det er den setningen folk husker, og den gjør mer for konverteringen enn noen knapp."
       ]
     }
+  },
+  {
+    "slug": "appstart",
+    "tittel": "Apper til fast pris, med prisen på forsiden",
+    "ingress": "Appstart er mitt eget selskap, sammen med Magnus. Vi bygger apper for folk som har gått med en idé i årevis og har hørt at en app koster flere hundre tusen.",
+    "gjort": [
+      "Nettside fra bunnen",
+      "Tekster og prisstruktur",
+      "Idéskjema steg for steg",
+      "Blogg med fast publiseringsrutine",
+      "Søkeoppsett"
+    ],
+    "tek": [
+      "Next.js",
+      "Forhåndsrendret på Vercel",
+      "Samtykke før sporing"
+    ],
+    "utfordring": {
+      "t": "Kjøperen tror en app koster 300 000 kr",
+      "a": [
+        "Appstart selger til folk med én idé og ingen utviklere: privatpersoner og små bedrifter. Tallet de har hørt fra bransjen, er flere hundre tusen kroner. Der stopper de fleste før de har spurt noen.",
+        "De er også redde for to ting: at idéen blir tatt, og at regningen vokser underveis. Begge deler må være besvart før de tør å fortelle hva idéen er."
+      ]
+    },
+    "losning": {
+      "t": "Prisen står før alt annet",
+      "a": [
+        "Siden sier rett ut at en app kostet 300 000 kr før, og at Appstart bygger <b>fra 15 000 kr</b>. Alle priser står eks. mva.",
+        "Skjemaet spør om én ting av gangen. Under står det at idéen behandles konfidensielt og at du eier den.",
+        "Siden sier også hva vi ikke bygger: «neste Facebook», datingapper og apper med sensitive helsedata. Den som har en slik idé, får vite det før praten."
+      ]
+    }
   }
 ];
 
