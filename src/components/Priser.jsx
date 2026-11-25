@@ -144,9 +144,10 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
             Dyreste først, også på mobil (tilbud/MAL.md 3e punkt 2). Fram til
             4. november 2026 sto det anbefalte kortet først på mobil.
 
-            lg:items-start: med lik høyde fikk Engangspris rundt 250 px
-            tomrom over knappen på 1440 og så uferdig ut. */}
-        <PrisRad className="lg:items-start">
+            Like høye kort med knappene på samme linje (Aleksander 25.11.2026:
+            ujevne kort så usymmetriske ut). lg:items-start fra før er tatt ut;
+            punktlisten har flex-1, så luften havner over knappen. */}
+        <PrisRad>
           {prismodeller.map((m, i) => (
             <Modell
               key={m.id}
