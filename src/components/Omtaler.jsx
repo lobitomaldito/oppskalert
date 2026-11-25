@@ -22,8 +22,8 @@ const Omtaler = ({ flate = '' }) => {
     <section ref={container} className={cn('seksjon', flate)}>
       <div className="wrap">
         <SeksjonTopp
-          tittel="Ikke ta mitt ord for det."
-          uthevet="Hør på kundene."
+          tittel="Dette sier"
+          uthevet="kundene."
         />
 
         {/* Mobil: horisontal scroll-snap via KortRad, holder seksjonen kort

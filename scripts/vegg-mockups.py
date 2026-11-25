@@ -75,6 +75,7 @@ JOBBER = {
     "katrin-brubakk-pc": ("1:1", "an open dark graphite laptop seen from a three-quarter angle on a matte near-black ink-coloured surface (#12111d), moody low-key light with one soft warm peach (#ffb17a) rim light from the left."),
     "jakobsen-takst-mobil": ("2:3", "a smartphone leaning upright against a rough dark slate stone block on a pale limestone surface, with a soft lilac (#e6e5f6) wall behind, soft cool daylight from the right."),
     "woxen-hage-mobil": ("2:3", "a smartphone leaning upright against two stacked pale limestone blocks, with a warm peach (#ffb17a) wall behind, hard late-afternoon sunlight casting a crisp diagonal shadow."),
+    "prana-yoga-mobil": ("2:3", "a smartphone standing upright on a low round podium painted terracotta clay (#b8551a), in front of a seamless soft lilac (#e6e5f6) backdrop, soft daylight from the right casting a long soft shadow."),
 }
 
 

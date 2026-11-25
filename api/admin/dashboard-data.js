@@ -370,6 +370,64 @@ async function hentTrakt(dager) {
   return steg.map((s) => ({ ...s, andel: besok ? s.personer / besok : 0 }));
 }
 
+// Utkastvelgeren (forsiden fra 11.11.2026, /priser fra 12.11.2026). Hvert
+// klikk går gjennom track() til PostHog, så samme filtre som resten av
+// dashbordet gjelder: bare oppskalert.no, og ingen nettleser som har åpnet
+// /admin. utkastvelger_startet sendes ved første svar, så det steget er
+// «svarte på spørsmål 1». Delt på siden velgeren sto på.
+async function hentVelger(dager) {
+  const rader = await posthogSporring(
+    `
+    SELECT
+      multiIf(
+        event = 'utkastvelger_startet', 'startet',
+        event = 'utkastvelger_svar', concat('svar', toString(properties.sporsmal)),
+        event = 'utkastvelger_resultat', 'resultat',
+        'sendt'
+      ) AS steg,
+      if(startsWith(coalesce(properties.$pathname, '/'), '/priser'), 'priser', 'forside') AS side,
+      coalesce(toString(properties.pakke), '') AS pakke,
+      uniq(distinct_id) AS personer
+    FROM events
+    WHERE timestamp > now() - INTERVAL ${dager} DAY
+      AND ${PRODUKSJONSVERT}
+      AND ${IKKE_EIER}
+      AND (
+        event IN ('utkastvelger_startet', 'utkastvelger_svar', 'utkastvelger_resultat')
+        OR (event = 'demo_request_submitted' AND properties.type = 'utkastvelger')
+      )
+    GROUP BY steg, side, pakke
+    `,
+    'velger-spørring',
+  );
+  if (!rader) return null;
+
+  // Summen av sidene teller en person som brukte velgeren begge steder to
+  // ganger. Med noen titalls personer i måneden er det ikke verdt en egen
+  // spørring.
+  const telling = {};
+  const pakker = {};
+  for (const [steg, side, pakke, personer] of rader) {
+    telling[steg] ??= { forside: 0, priser: 0 };
+    telling[steg][side] += personer;
+    if (steg === 'resultat' && pakke) pakker[pakke] = (pakker[pakke] || 0) + personer;
+  }
+  const STEG = [
+    ['startet', 'Svarte på spørsmål 1'],
+    ['svar2', 'Svarte på spørsmål 2'],
+    ['svar3', 'Svarte på spørsmål 3'],
+    ['resultat', 'Fikk en anbefalt pakke'],
+    ['sendt', 'Sendte inn'],
+  ];
+  return {
+    trakt: STEG.map(([nokkel, navn]) => {
+      const t = telling[nokkel] || { forside: 0, priser: 0 };
+      return { navn, forside: t.forside, priser: t.priser, personer: t.forside + t.priser };
+    }),
+    pakker: ['enkel', 'medium', 'komplett'].map((id) => ({ id, personer: pakker[id] || 0 })),
+  };
+}
+
 export default async function handler(req, res) {
   const expectedPin = process.env.DASHBOARD_PIN;
   if (!expectedPin) {
@@ -437,11 +495,12 @@ export default async function handler(req, res) {
   const ekteLeads = alleLeads.filter((l) => !l.erSpam);
   const spamLeads = alleLeads.filter((l) => l.erSpam && iPerioden(l));
 
-  const [trafikk, feil, trakt, besokende] = await Promise.all([
+  const [trafikk, feil, trakt, besokende, velger] = await Promise.all([
     hentSesjoner(dager),
     hentFeil(dager),
     hentTrakt(dager),
     hentBesokende(dager),
+    hentVelger(dager),
   ]);
 
   // Trakten må måle mot samme nevner som «Ekte besøkende» over. Ellers står
@@ -476,6 +535,7 @@ export default async function handler(req, res) {
     sider: trafikk?.sider ?? [],
     besokende_liste: besokende ?? [],
     trakt: traktMotEngasjerte(trakt, trafikk?.engasjerte?.na) ?? [],
+    velger: velger ?? null,
     feil: feil ?? { ekte: [], stoy: [] },
     leads: ekteLeads.filter(iPerioden),
     spam: spamLeads,

@@ -4,7 +4,10 @@ import { ArrowRight, Check, ChevronDown } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { SeksjonTopp } from './Layout';
 import { cn } from '../lib/utils';
-import { alltidMed, prisNotat, prismodeller, ruter } from '../lib/site';
+import { alltidMed, driftNivaer, prisNotat, prismodeller, ruter } from '../lib/site';
+
+const seoPris = driftNivaer.find((n) => n.id === 'seo')?.fra;
+import { track } from '../lib/analytics';
 
 /* Alle tre kortene er hvite på feltet. Driftskortet var tidligere tonet mot
    feltfargen for å skille seg fra engangsprisen, men denne seksjonen står
@@ -31,8 +34,8 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
     <div
       data-reveal
       className={cn(
-        'relative flex flex-col rounded-kort p-5 md:p-8 border bg-surface text-room-ink',
-        m.fremhevet ? 'border-room-ink' : 'border-room-ink/20',
+        'relative flex flex-col rounded-kort p-5 md:p-8 bg-room-deep text-room-ink',
+        m.fremhevet && 'prisvalg-svart',
         className,
       )}
     >
@@ -57,10 +60,15 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
 
       <div className="mt-4 md:mt-6 flex items-baseline gap-1.5 md:min-h-[2.75rem]">
         {!m.fast && <span className="font-body text-base text-room-ink">fra</span>}
-        <span className="font-display font-light text-[2.75rem] leading-none tracking-[-0.022em]">{m.fra}</span>
+        <span className="font-display font-medium text-[2.75rem] leading-none tracking-[-0.03em]">{m.fra}</span>
         <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
       </div>
       <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>
+
+      {/* Hva nivået gir kunden, i vanlige ord. Bare engangsnivåene har den. */}
+      {m.verdi && (
+        <p className="font-body text-[0.95rem] mt-4 md:mt-5 leading-relaxed text-room-ink">{m.verdi}</p>
+      )}
 
       {visPasserDeg && (
         <ul className="mt-6 pt-5 border-t flex flex-col gap-2.5 border-room-ink/20">
@@ -95,7 +103,7 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
 
       <Link
         to={ruter.kontakt}
-        className="mt-4 md:mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] bg-room-ink text-surface"
+        className="mt-4 md:mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 ease-lett [@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.03] active:scale-[.97] active:duration-150 bg-room-ink text-surface"
       >
         {cta} <ArrowRight className="w-4 h-4" />
       </Link>
@@ -123,7 +131,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
         <SeksjonTopp
           tittel="Tre måter å"
           uthevet="komme i gang på."
-          lede="Alle tre starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg etterpå, ikke før."
+          lede="Alle tre starter med et gratis utkast, ferdig innen 48 timer. Du bestemmer deg når du har sett det."
           midtstilt={midtstilt}
         />
 
@@ -133,8 +141,8 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
             et kort som ble til overs. Chatbot eller app er tatt ut av
             prislisten 17. oktober 2026: ingen spurte etter det der.
 
-            Anbefalt kort først på mobil, der kortene står under hverandre.
-            Fra md står de i rutenettets egen rekkefølge.
+            Dyreste først, også på mobil (tilbud/MAL.md 3e punkt 2). Fram til
+            4. november 2026 sto det anbefalte kortet først på mobil.
 
             lg:items-start: med lik høyde fikk Engangspris rundt 250 px
             tomrom over knappen på 1440 og så uferdig ut. */}
@@ -146,11 +154,23 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
               visPasserDeg={visPasserDeg}
               className={cn(
                 i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1',
-                m.fremhevet && 'order-first md:order-none',
               )}
             />
           ))}
         </PrisRad>
+
+        {/* Lenke til utkastvelgeren på forsiden (Aleksander 11.11.2026), for
+            den som har lest tre kort og fortsatt ikke vet hvilket. Vanlig
+            <a> og ikke <Link>: på /priser skal den laste forsiden og hoppe
+            til modulen, og på forsiden bare rulle ned. */}
+        <a
+          data-reveal
+          href="/#bestill-demo"
+          onClick={() => track('utkastvelger_lenke_fra_priser', { side: window.location.pathname })}
+          className="mt-8 inline-flex items-center gap-1.5 font-sans font-bold text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+        >
+          Sjekk hvilken pakke som passer for deg <ArrowRight className="w-4 h-4" aria-hidden="true" />
+        </a>
 
         {/* Hva som IKKE er med. Uten denne listen ser fastprisen ut som om
             den dekker alt, og da blir hver samtale en forhandling om hvor
@@ -182,7 +202,21 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
           </>
         )}
         {!visAlltidMed && (
-          <p data-reveal className="font-body text-sm text-room-ink/70 mt-10 max-w-[52rem]">{prisNotat}</p>
+          <>
+            {/* SEO per måned sto bare på /priser, langt nede (Aleksander
+                12.11.2026). Prisen leses fra driftNivaer, ikke skrevet her. */}
+            <p data-reveal className="font-body text-sm text-room-ink mt-4 max-w-[52rem]">
+              Vil du bli funnet på flere søk, måned for måned?{' '}
+              <Link
+                to={ruter.seo}
+                onClick={() => track('seo_lenke_fra_priser', { side: window.location.pathname })}
+                className="font-bold underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                SEO fra {seoPris} kr/mnd
+              </Link>
+            </p>
+            <p data-reveal className="font-body text-sm text-room-ink/70 mt-10 max-w-[52rem]">{prisNotat}</p>
+          </>
         )}
 
         {visAlltidMed ? (

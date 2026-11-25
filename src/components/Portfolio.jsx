@@ -134,7 +134,7 @@ const Portfolio = ({ limit = null, visAlleLenke = false, mobilScroll = false, fl
         <SeksjonTopp
           tittel={tittel}
           uthevet={uthevet}
-          lede="Ekte sider i drift for norske bedrifter. Trykk deg inn på hvilken som helst av dem, de er alle live akkurat nå."
+          lede="Ekte sider i drift for norske bedrifter. Trykk deg inn på hvilken som helst av dem, alle er i drift nå."
         />
 
         {mobilScroll ? (

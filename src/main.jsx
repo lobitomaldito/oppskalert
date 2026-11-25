@@ -59,12 +59,15 @@ import BegrepPage from './pages/BegrepPage';
 const VsWixPage = lazySide(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazySide(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 const SeoPage = lazySide(() => import('./pages/SeoPage.jsx'))
+const BransjePage = lazySide(() => import('./pages/BransjePage.jsx'))
+import { bransjer, RUTE_BRANSJE } from './lib/bransjer.js'
 const WebdesignOsloPage = lazySide(() => import('./pages/WebdesignOsloPage.jsx'))
 const NettsideDesignPage = lazySide(() => import('./pages/NettsideDesignPage.jsx'))
 const NettsideBedriftPage = lazySide(() => import('./pages/NettsideBedriftPage.jsx'))
 const NyNettsidePage = lazySide(() => import('./pages/NyNettsidePage.jsx'))
 const NettbutikkPage = lazySide(() => import('./pages/NettbutikkPage.jsx'))
 const PersonvernPage = lazySide(() => import('./pages/PersonvernPage.jsx'))
+const NettsidesjekkPage = lazySide(() => import('./pages/NettsidesjekkPage.jsx'))
 const DashboardPage = lazySide(() => import('./pages/DashboardPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
@@ -92,12 +95,16 @@ createRoot(document.getElementById('root')).render(
           <Route path="/webdesign-oslo" element={<WebdesignOsloPage />} />
           <Route path="/nettside-design" element={<NettsideDesignPage />} />
           <Route path="/nettside-til-bedrift" element={<NettsideBedriftPage />} />
+          {bransjer.map((b) => (
+            <Route key={b.slug} path={RUTE_BRANSJE(b.slug)} element={<BransjePage b={b} />} />
+          ))}
           <Route path="/ny-nettside" element={<NyNettsidePage />} />
           <Route path="/lage-nettbutikk" element={<NettbutikkPage />} />
           <Route path="/metode" element={<MetodePage />} />
           <Route path="/om" element={<OmPage />} />
           <Route path="/kontakt" element={<KontaktPage />} />
           <Route path="/personvern" element={<PersonvernPage />} />
+          <Route path="/gratis-nettsidesjekk" element={<NettsidesjekkPage />} />
           {/* /kom-i-gang redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/blogg" element={<BlogPage />} />
           <Route path="/blogg/:slug" element={<ArticlePage />} />

@@ -1,25 +1,33 @@
+import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './components/SEO';
 import { Shell } from './components/Layout';
-import { ArbeidSeksjon } from './components/Arbeider';
-import Sitatkort from './components/Sitatkort';
+import Sitatkort, { Stjerner } from './components/Sitatkort';
 import Priser from './components/Priser';
-import DemoSkjema from './components/DemoSkjema';
-import Vegg from './components/Vegg';
-import { faqSchema, heroBevis, kontakt, ruter, vurdering } from './lib/site';
-import { omtaler, sporsmal, tjenester } from './lib/demo-innhold';
+import BredtSitat from './components/BredtSitat';
+import PultMockup from './components/PultMockup';
+import Utkastvelger from './components/Utkastvelger';
+import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
+import { sporsmal } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
+import Film from './components/Film';
+import {
+  Hengelas, HengelasApen, LinkedIn, Nokkel, Pause, PilHoyre, PilOpp, SkjoldSjekk, SokSjekk, Skjermer, Spill,
+} from './components/Ikon';
+import { track } from './lib/analytics';
 
 /* Studio-mal-forsiden, portert ord for ord fra demoen (mal3.src.html,
    linje 693 til 797, se inspirasjon/demo-studio-mal.md). Alt CSS ligger
    allerede i index.css, denne fila bygger bare den samme markupen i
-   React: .hero blir en H1-seksjon på det lyse feltet med vannmerket bak,
-   .statuslinje blir en enkel "se mer"-pille, og resten følger demoens
-   seksjoner i samme rekkefølge.
+   React. 26.10.2026 ble skallet hvitt etter Solid Media-retningen: sentrert
+   hero med kundesidene i en rad under, og en Om meg-seksjon med portrett
+   rett etter heroen.
 
-   Forsiden følger demoens rekkefølge. Priser og DemoSkjema er de eneste
+   Forsiden følger demoens rekkefølge. Priser og skjemaet er de eneste
    tilleggene: prisen fordi den er det folk leter etter, skjemaet fordi
-   det er hovedkonverteringen. Skjemaet skal alltid stå sist.
+   det er hovedkonverteringen. Skjemaet skal alltid stå sist. Fra
+   11.11.2026 er skjemaet Utkastvelger, de andre sidene har DemoSkjema.
 
    Tre seksjoner er bevisst tatt ut igjen etter at de først ble lagt til:
    - Hvorfor og Metode, fordi demoen ikke hadde dem. Metode lever videre
@@ -47,16 +55,6 @@ import { useReveal } from './lib/useReveal';
    Stjernene er dekorative og skjult for skjermlesere, siden hele
    opplysningen allerede står i teksten ved siden av. Uten det leses
    «stjerne stjerne stjerne stjerne stjerne 5 av 5» opp. */
-const Stjerner = ({ score }) => (
-  <span className="stjerner" aria-hidden="true">
-    {[1, 2, 3, 4, 5].map((n) => (
-      <svg key={n} viewBox="0 0 24 24" className={n <= Math.round(score) ? 'fylt' : ''}>
-        <path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5-5.8-3-5.8 3 1.1-6.5L2.6 9.4l6.5-.9z" />
-      </svg>
-    ))}
-  </span>
-);
-
 const Vurdering = () => {
   if (!vurdering) return null;
   // Norsk desimalskille er komma. 5 skal stå som «5», ikke «5,0».
@@ -67,8 +65,7 @@ const Vurdering = () => {
     <p data-reveal className="vurdering inn" style={{ '--d': '400ms' }}>
       <Stjerner score={vurdering.score} />
       <span>
-        {score} av 5 fra {vurdering.antall}{' '}
-        {vurdering.antall === 1 ? 'vurdering' : 'vurderinger'} på{' '}
+        {score} av 5 på{' '}
         <a href={vurdering.url} target="_blank" rel="noopener noreferrer">
           {vurdering.kilde}
           <span className="skjult"> (åpnes i ny fane)</span>
@@ -78,118 +75,210 @@ const Vurdering = () => {
   );
 };
 
-/* Én navngitt kundeuttalelse under knappen, som sosialt bevis i heroen.
+/* Kundesidene i én rad under heroen, slik solidmedia.no viser
+   kundecasene sine rett under folden. Bildene er de ferdige flisene i
+   public/websider/vegg (laget av scripts/vegg-mockups.py), med det ekte
+   skjermbildet av kundens side på skjermen.
 
-   Står her i stedet for en stjernescore så lenge Bedriftsprofilen har
-   for få anmeldelser til at et snitt sier noe. Se heroBevis i site.js
-   for hele begrunnelsen. Vises `vurdering` (altså er den ikke null),
-   viker sitatet, siden to bevis på rad i heroen blir støy.
+   Raden ruller sakte mot venstre (ønsket av Aleksander 26.10.2026). Sporet
+   har bildene to ganger og flyttes halve bredden sin, så sløyfen er sømløs
+   uten JavaScript. JavaScript styrer bare pauseknappen: WCAG 2.2.2 krever
+   at bevegelse som varer over fem sekunder kan stoppes. Dekor for skjermlesere:
+   knappen «Se hva jeg har laget» rett over går til /arbeid, der de samme
+   prosjektene står med navn og lenke.
 
-   Sitatet hentes fra samme liste som omtaleseksjonen lenger nede, så
-   de to aldri kan komme ut av synk. */
-/* Én fast omtale, valgt med heroBevis.indeks. Den tonet gjennom alle
-   fire en periode, men de samme fire står i omtaleseksjonen lenger nede,
-   så leseren så samme sitat to ganger. Nå står én her, og seksjonen viser
-   de andre (se utenom i Sitatkort). */
-const HeroBevis = () => {
-  const o = heroBevis && omtaler[heroBevis.indeks];
-  if (vurdering || !o) return null;
-  const kilde = <span className="hero-bevis-kilde">{o.navn}, {o.rolle}</span>;
+   Prana Yoga Studio fikk første plass 9.11.2026, og Katrin Brubakk ble
+   flyttet bakerst, begge etter ønske fra Aleksander.
 
+   Seksjonen «Sider som er i drift nå» sto rett under til 26.10.2026.
+   Aleksander tok den ut: raden viser allerede eksemplene. */
+/* Tredje felt er en film som spilles i flisen i stedet for stillbildet.
+   Prana-filmen (23.11.2026) er et opptak av pranayogakristiansand.no på
+   390 px, lagt perspektivriktig inn i telefonskjermen i samme mockup.
+   Jakobsen-flisen er opptaket av jtob.no rett, og stillbildet er første
+   bilde i filmen, så plakaten og filmen er like. */
+const GALLERI = [
+  ['prana-yoga-mobil', 2 / 3, '/websider/film/prana-yoga-vegg.mp4'],
+  ['woxen-hage-pc', 1],
+  ['melanie-dahl-mobil', 2 / 3],
+  ['alpha-negotiations-pc', 4 / 5],
+  ['jakobsen-takst-mobil', 2 / 3, '/websider/film/jakobsen-takst-vegg.mp4'],
+  ['appstart-pc', 1],
+  ['katrin-brubakk-mobil', 2 / 3],
+];
+
+const HeroGalleri = () => {
+  const [pause, setPause] = useState(false);
   return (
-    <figure data-reveal className="hero-bevis inn" style={{ '--d': '400ms' }}>
-      <blockquote>«{o.sitat}»</blockquote>
-      <figcaption>
-        {heroBevis.url ? (
-          <a href={heroBevis.url} target="_blank" rel="noopener noreferrer">
-            {kilde}
-            <span className="skjult"> (åpnes i ny fane)</span>
-          </a>
-        ) : (
-          kilde
-        )}
-      </figcaption>
-    </figure>
+    <div className={pause ? 'hero-galleri er-pauset' : 'hero-galleri'}>
+      <div className="galleri-spor" aria-hidden="true">
+        {[...GALLERI, ...GALLERI].map(([fil, forhold, film], i) => (
+          film ? (
+            <Film
+              key={i}
+              spill={!pause}
+              src={film}
+              poster={`/websider/vegg/${fil}.webp`}
+              width="480"
+              height={Math.round(480 / forhold)}
+              style={{ aspectRatio: forhold }}
+            />
+          ) : (
+            <img
+              key={i}
+              src={`/websider/vegg/${fil}.webp`}
+              alt=""
+              width="480"
+              height={Math.round(480 / forhold)}
+              style={{ aspectRatio: forhold }}
+              decoding="async"
+            />
+          )
+        ))}
+      </div>
+      <button type="button" className="galleri-pause" aria-pressed={pause} onClick={() => setPause((p) => !p)}>
+        {pause ? <><Spill /> Spill av</> : <><Pause /> Pause</>}
+      </button>
+    </div>
   );
 };
 
 const Hero = () => {
   const container = useReveal(100);
   return (
-    <section ref={container} className="hero hero-vegg">
+    <section ref={container} className="hero">
       <div className="wrap">
-        <div className="hero-tekst">
-          {/* Overskriften selger det kunden får, søkeordene står i etiketten.
-
-              Til 17. oktober 2026 var H1 «Webdesign for bedrifter. Basert i
-              Oslo. Alltid gratis utkast.», skrevet for de tre ordene Search
-              Console måler forsiden på. «Basert i Oslo» sa ingenting til en
-              kunde i Harstad. Nå bærer etiketten «webdesign» og «bedrifter»,
-              og title-taggen bærer alle tre, som er det sterkeste signalet
-              uansett. Se SEO.md, punkt 12.
-
-              To spans: ved siden av galleriveggen står de på hver sin linje,
-              se .hero-vegg h1 span i index.css. */}
-          <p data-reveal className="etikett hero-etikett inn" style={{ '--d': '60ms' }}>Webdesign for bedrifter</p>
-          <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
-            <span>Se den nye nettsiden din</span>{' '}
-            <span>før du betaler en krone.</span>
-          </h1>
-          {/* Ingressen sier bevisst noe annet enn overskriften.
-
-              Den forrige gjentok «bedrifter», «Oslo» og «gratis demo», altså
-              alt overskriften og knappen allerede sa, innenfor 400 piksler.
-              Nå bærer den det de tre setningene over ikke rekker: hva som
-              faktisk inngår, hvem som gjør det, og hvor lang tid det tar.
-
-              Malen er den målte: konkret liste, hvem, så én setning som
-              fjerner den største friksjonen. 19 ord mot en målt norm på 18. */}
-          <p data-reveal className="inn" style={{ '--d': '220ms' }}>
-            Design, tekst, koding og lansering, gjort av én person du kan ringe.
-            Utkastet er klart på 48 timer.
-          </p>
-          <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
-            <Link className="knapp" to={ruter.kontakt}>
-              Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
-            </Link>
-          </div>
-          <Vurdering />
-          <HeroBevis />
+        {/* Overskriften selger det kunden får, søkeordene står i etiketten
+            og i title-taggen. Se SEO.md, punkt 12. Aksentfargen ligger på
+            løftet, ikke på «nettsiden». */}
+        <p data-reveal className="etikett hero-etikett inn" style={{ '--d': '60ms' }}>Webdesign for bedrifter</p>
+        <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
+          Se den nye nettsiden din <em className="aksent">før du betaler en krone.</em>
+        </h1>
+        <p data-reveal className="inn" style={{ '--d': '220ms' }}>
+          Webdesign og ny hjemmeside for bedrifter i hele Norge, fra 6 990 kr.
+          Design, tekst, koding og lansering, gjort av én person du kan ringe.
+          Utkastet er klart på 48 timer.
+        </p>
+        <div data-reveal className="hero-handling inn" style={{ '--d': '320ms' }}>
+          <Link className="knapp" to={ruter.kontakt}>
+            Få et gratis utkast <PilOpp className="pil" />
+          </Link>
+          <Link className="knapp knapp-tom" to={ruter.arbeid}>Se hva jeg har laget</Link>
         </div>
-        <Vegg />
+        {/* Ansiktet bak siden, rett under knappene. Hele salgsargumentet er
+            at det er én person, og da skal personen synes før folden. */}
+        <p data-reveal className="hero-person inn" style={{ '--d': '400ms' }}>
+          <img src="/founders/aleksander-160.webp" alt="" width="80" height="80" />
+          <span><b>{kontakt.navn}</b> Jeg bygger siden og tar telefonen selv.</span>
+        </p>
+        <Vurdering />
+      </div>
+      <HeroGalleri />
+    </section>
+  );
+};
+
+/* Fire korte fakta under kunderaden. Grepet er fra en konkurrents
+   gratis-SEO-side (lest 11.11.2026): en stripe som svarer på det folk
+   lurer på før de leser videre. Her er det skepsisen mot en leverandør
+   som er én person og ny.
+
+   21 er prospects med stage='sold' i ringeappen, talt 11.11.2026. Tallet
+   oppdateres for hånd, og det skal være talt, aldri rundet opp. */
+const FAKTA = [
+  ['48 timer', 'til du ser utkastet'],
+  ['Fast pris', 'avtalt før jeg begynner'],
+  ['Ingen binding', 'på noen av avtalene'],
+  ['21 bedrifter', 'har valgt Oppskalert'],
+];
+
+const FaktaStripe = () => (
+  <div className="wrap">
+    <ul className="faktastripe">
+      {FAKTA.map(([tall, tekst]) => (
+        <li key={tall}><b>{tall}</b> {tekst}</li>
+      ))}
+    </ul>
+  </div>
+);
+
+/* Om meg. Portrettet i stort format ved siden av ett langt utsagn, der
+   siste del er tonet ned i grått. Grepet er fra solidmedia.no («Bak alt
+   vi leverer sitter …»): første halvdel er påstanden, andre halvdel er
+   det den betyr for kunden. */
+const OmMegSeksjon = () => {
+  const container = useReveal(100);
+  return (
+    <section ref={container} className="seksjon">
+      <div className="wrap ommeg">
+        <figure data-reveal className="ommeg-bilde inn">
+          <img src="/founders/aleksander.webp" alt={`${kontakt.navn}, som driver Oppskalert`} width="1792" height="2400" loading="lazy" />
+        </figure>
+        <div data-reveal className="inn" style={{ '--d': '100ms' }}>
+          <p className="etikett">Om meg</p>
+          <h2 className="utsagn">
+            Jeg heter Aleksander og bygger hver side selv.{' '}
+            <span>Du får ett telefonnummer og samme person fra første skisse til siden er oppe.</span>
+          </h2>
+          <p className="ommeg-lenke">
+            <Link className="knapp knapp-tom" to={ruter.om}>Mer om meg <PilHoyre className="pil" /></Link>
+            <a
+              className="knapp knapp-tom"
+              href={kontakt.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track('linkedin_clicked', { sted: 'forside' })}
+            >
+              <LinkedIn /> LinkedIn<span className="skjult"> (åpner i ny fane)</span>
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );
 };
 
-const Statuslinje = () => (
-  <div className="wrap statuslinje">
-    <a className="pille" href="#arbeid">Se mer ↓</a>
-  </div>
-);
-
 /* «Kom i gang»-blokken som sto her (Arbeid / Pris / Prosess / Neste) er
    fjernet 17. oktober 2026. Den gjentok toppmenyen og skjøv de første
-   kundesidene 1,6 skjermhøyder ned på mobil. «Se mer» går rett til
-   arbeidet nå. */
+   kundesidene 1,6 skjermhøyder ned på mobil. */
 
 const SitatSeksjon = () => {
   const container = useReveal(100);
   return (
-    /* Uten egen luft: seksjonene over og under står på samme felt og har
-       luften sin allerede. Med begge ble hullet over 250 px på 1440. */
-    <section ref={container} className="sitatblokk" style={{ paddingBlock: 0 }}>
-      <div className="wrap"><Sitatkort utenom={heroBevis?.indeks} /></div>
+    /* Eget grått bånd med hvite kort, så omtalene leses som en egen del
+       av siden (ønsket av Aleksander 26.10.2026). */
+    <section ref={container} className="sitatblokk">
+      <div className="wrap"><Sitatkort /></div>
     </section>
   );
 };
 
-/* Tre tjenester som en linjert liste, ikke seks like kort. Kortgitteret
-   var den mest malaktige seksjonen på siden (regel 7 i byggereglene), og
-   seks like tunge valg ga øyet ingenting å stoppe på. Chatbot og drift
-   står allerede som egne priskort rett under. Knappen «Ta kontakt» ved
-   siden av etiketten er tatt ut: headeren har den samme rett over. */
-const TJENESTER_FORSIDE = ['Ny nettside', 'Nettbutikk', 'Bli funnet i Google'];
+/* To tjenester i grå kort, som tjenestekortene på solidmedia.no. Chatbot
+   og drift står som egne priskort rett under. Nettbutikk ble tatt ut av
+   forsiden 26.10.2026 etter ønske fra Aleksander.
+
+   11.11.2026: hvert kort lover noe og lenker til sin egen side, og hele
+   kortet kan trykkes. Før var det én linje uten lenke, og tjenestesidene
+   var bare å finne i bunnteksten. `kort` vises alltid, `mer` først fra
+   40rem, så mobil får ikon, navn og én linje (regel 2). Teksten står her
+   og ikke i `tjenester`, fordi den lista brukes på andre sider også. */
+const TJENESTER_FORSIDE = [
+  {
+    navn: 'Ny nettside',
+    Ikon: Skjermer,
+    til: ruter.nyNettside,
+    kort: 'Utkast på 48 timer, ferdig side på en til to uker.',
+    mer: 'Du ser utkastet før du bestemmer deg, og siden laster på under ett sekund.',
+  },
+  {
+    navn: 'Bli funnet i Google',
+    Ikon: SokSjekk,
+    til: ruter.seo,
+    kort: 'Synlig i Google og i AI-søk som ChatGPT.',
+    mer: 'Tekstene skrives for det kundene dine søker på.',
+  },
+];
 
 const TjenesteSeksjon = () => {
   const container = useReveal(80);
@@ -199,16 +288,149 @@ const TjenesteSeksjon = () => {
         <div data-reveal className="seksjonstopp inn">
           <p className="etikett">Tjenester</p>
           <h2>Dette kan jeg hjelpe deg med</h2>
-          <p>Bare meg, hele veien fra første skisse til siden er oppe og går.</p>
         </div>
-        <ul data-reveal className="tjenesteliste inn" style={{ '--d': '80ms' }}>
-          {tjenester.filter((t) => TJENESTER_FORSIDE.includes(t.navn)).map((t) => (
-            <li key={t.navn}>
-              <h3>{t.navn}</h3>
-              <p>{t.tekst}</p>
-            </li>
-          ))}
+        <ul data-reveal className="tjenester tjenester-forside inn" style={{ '--d': '80ms' }}>
+          {TJENESTER_FORSIDE.map((t) => {
+            const Ikon = t.Ikon;
+            return (
+              <li key={t.navn} className="tjeneste">
+                <Ikon className="tjeneste-ikon" />
+                <h3><Link className="tjeneste-lenke" to={t.til}>{t.navn}</Link></h3>
+                <p>{t.kort} <span className="tjeneste-mer">{t.mer}</span></p>
+                <span className="tjeneste-les" aria-hidden="true">Les mer <PilHoyre className="pil" /></span>
+              </li>
+            );
+          })}
         </ul>
+      </div>
+    </section>
+  );
+};
+
+/* Trygghetslisten (11.11.2026). Grepet er fra en konkurrents tjenesteside,
+   der en liste med fet etikett tar frykten for hacking og driftsstans.
+
+   «Hva skjer hvis du blir borte?» står bevisst ikke her, bare i FAQ-en
+   (Aleksander 11.11.2026): lista skal ikke minne folk på en tanke de ikke
+   har tenkt. Av samme grunn nevner ledeteksten ikke at Oppskalert er én
+   person.
+
+   Vilkårene er fra ~/.claude/assets/tilbud/MAL.md: domenet står i kundens
+   navn, filene får kunden når de vil flytte (på forespørsel, ikke
+   automatisk), leie til eie blir kundens etter 12 måneder. Endres
+   vilkårene der, må lista endres her.
+
+   Ordet SSL står ikke: ingen kunder vet hva det er (Aleksander
+   11.11.2026). Hengelåsen er det de har sett.
+
+   Mobil får etiketten og første setning, resten fra 40rem (regel 2):
+   med alt synlig var lista 875 px høy på 375 px bredde. */
+const TRYGGHET = [
+  {
+    Ikon: Nokkel,
+    tittel: 'Du eier siden',
+    kort: 'Domenet står i ditt navn.',
+    mer: 'Vil du flytte siden, får du koden når du ber om det. Leier du til eie, blir siden din når 12 måneder er betalt.',
+  },
+  {
+    Ikon: Hengelas,
+    tittel: 'Hengelåsen i adressefeltet',
+    kort: 'Nettleseren varsler aldri besøkende om en usikker side.',
+    mer: 'Sikker forbindelse er med fra første dag, og hosting er med i prisen.',
+  },
+  {
+    Ikon: SkjoldSjekk,
+    tittel: 'Lite å bryte seg inn i',
+    kort: 'Siden er bygget uten WordPress og programtillegg.',
+    mer: 'Det finnes ingen tillegg som må oppdateres hver uke for å holde den sikker.',
+  },
+  {
+    Ikon: HengelasApen,
+    tittel: 'Ingen binding',
+    kort: 'Ingen av pakkene eller avtalene har bindingstid.',
+    mer: 'Serviceavtalen sier du opp når du vil.',
+  },
+];
+
+const TrygghetSeksjon = () => {
+  const container = useReveal(80);
+  return (
+    <section ref={container} className="seksjon trygghet-seksjon">
+      <div className="wrap trygghet">
+        <div data-reveal className="seksjonstopp inn">
+          <p className="etikett">Trygghet</p>
+          <h2>Siden er din, og den står trygt</h2>
+          <p>Dette er på plass uansett hvilken pakke du velger.</p>
+        </div>
+        <ul data-reveal className="trygghet-liste inn" style={{ '--d': '80ms' }}>
+          {TRYGGHET.map((t) => {
+            const Ikon = t.Ikon;
+            return (
+              <li key={t.tittel}>
+                <Ikon className="trygghet-ikon" />
+                <p><b>{t.tittel}.</b> {t.kort} <span className="tjeneste-mer">{t.mer}</span></p>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  );
+};
+
+/* Redigeringspanelet følger med i alle pakkene, men sto ingen steder på
+   forsiden. Opptaket er tatt lokalt med `oppskalert-admin dev` på
+   Jakobsen-prosjektet, så ingen endring nådde kundens ekte side.
+   Videoen spilles bare mens den er synlig, og står stille med kontroller
+   ved prefers-reduced-motion. */
+const RedigeringSeksjon = () => {
+  const container = useReveal(80);
+  const video = useRef(null);
+  useEffect(() => {
+    const v = video.current;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.controls = true; return; }
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+    });
+    io.observe(v);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <section ref={container} className="seksjon">
+      <div className="wrap redigering">
+        <div data-reveal className="seksjonstopp inn">
+          <p className="etikett">Redigering</p>
+          <h2>Du endrer siden selv</h2>
+          <p>Klikk på teksten du vil bytte, skriv det nye og trykk Publiser. Rundt ett minutt senere ser alle den nye versjonen.</p>
+          <p>Du logger inn med en PIN-kode og redigerer rett på siden, slik kundene ser den. Priser, åpningstider, bilder og nye kundeomtaler bytter du uten å ringe meg.</p>
+          <p>Redigeringspanelet følger med i alle pakkene. Vil du heller at jeg gjør endringene, dekker serviceavtalen det for 550 kr i måneden.</p>
+        </div>
+        <figure data-reveal className="inn" style={{ '--d': '80ms' }}>
+          <div className="ramme">
+            <div className="ramme-topp">
+              <i aria-hidden="true" /><i aria-hidden="true" /><i aria-hidden="true" />
+              <p>jtob.no</p>
+            </div>
+            <video
+              ref={video}
+              className="ramme-video"
+              poster="/redigering/jakobsen-redigering.webp"
+              width="960"
+              height="660"
+              muted
+              loop
+              playsInline
+              preload="none"
+              aria-label="Opptak av redigeringspanelet: prisen i et tjenestekort markeres, skrives om og publiseres."
+            >
+              {/* Utsnitt for mobil: hele vinduet på 390 px gjør teksten i
+                  opptaket uleselig, så mobil får bare kortet og panelet. */}
+              <source src="/redigering/jakobsen-redigering-mobil.mp4" type="video/mp4" media="(max-width: 40rem)" />
+              <source src="/redigering/jakobsen-redigering.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <figcaption>Redigeringspanelet på siden til Jakobsen Takst &amp; Bygg i Harstad.</figcaption>
+        </figure>
       </div>
     </section>
   );
@@ -245,7 +467,7 @@ const homeSchema = {
   '@type': 'ProfessionalService',
   name: 'Oppskalert',
   image: 'https://oppskalert.no/oppskalert%20fav.png',
-  description: 'Jeg bygger lynraske nettsider som skalerer norske bedrifter. Gratis utkast før du betaler en krone.',
+  description: 'Webdesign og nye nettsider for norske bedrifter, til fast pris. Du ser et gratis utkast før du betaler.',
   url: 'https://oppskalert.no',
   telephone: kontakt.tel,
   founder: { '@type': 'Person', name: kontakt.navn },
@@ -261,11 +483,10 @@ const homeSchema = {
      /webdesign-oslo. To URL-er som meldte seg som samme foretak på samme
      adresse delte de lokale signalene i to. Målt 24. august 2026 lå forsiden
      på 17,7 og /webdesign-oslo på 61,6 for «webdesign i oslo». Nodene er
-     slått sammen her, der Google allerede rangerer foretaket. */
-  areaServed: [
-    { '@type': 'City', name: 'Oslo' },
-    { '@type': 'AdministrativeArea', name: 'Viken' },
-  ],
+     slått sammen her, der Google allerede rangerer foretaket.
+     12.11.2026: hele landet. Viken ble oppløst i 2024, og arbeidet krever
+     verken oppmøte eller kontor i nærheten. Adressen over står. */
+  areaServed: { '@type': 'Country', name: 'Norge' },
   priceRange: 'fra 6 990 kr',
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
@@ -301,26 +522,37 @@ const Home = () => (
         samme søket. Google har altså allerede valgt forsiden tre ganger, og
         halve førstesiden på «webdesign i Oslo» er byråenes rotdomener.
         Preposisjonen bærer også her, «for bedrifter i Oslo», aldri
-        særskriving. 57 tegn med suffikset. */}
+        særskriving. 57 tegn med suffikset.
+
+        «i Oslo» ut igjen 12. november 2026 (Aleksander). Search Console
+        12.8 til 9.11: forsiden sto i snitt på 24,0 på Oslo-søk (235
+        visninger, 0 klikk) og 12,2 på kjøpssøk uten by (576 visninger).
+        87 % av de kommersielle visningene på hele nettstedet er søk uten by,
+        og arbeidet selges i hele landet. /webdesign-oslo eier det lokale.
+        «webdesign» og «hjemmeside» står nå i første avsnitt under H1, der
+        «hjemmeside» (322 visninger, plass 12,8) manglet. */}
     <SEO
-      title="Webdesign for bedrifter i Oslo, til fast pris"
-      description="Webdesign for bedrifter i Oslo og resten av landet, til fast pris. Jeg bygger hjemmesiden ferdig, og du ser et gratis utkast før du betaler en krone."
-      keywords={['webdesign for bedrifter', 'webdesign i Oslo', 'webdesign firma', 'hjemmeside til bedrift', 'nettside til fast pris']}
+      title="Webdesign for bedrifter, til fast pris"
+      description="Webdesign og ny hjemmeside for bedrifter i hele Norge, fast pris fra 6 990 kr. Du ser et gratis utkast før du betaler en krone."
+      keywords={['webdesign for bedrifter', 'webdesign firma', 'hjemmeside', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}
     />
     <Hero />
-    <Statuslinje />
-    <ArbeidSeksjon id="arbeid" tett />
+    <FaktaStripe />
+    {/* Om meg flyttet ned etter omtalene 12.11.2026 (Aleksander): ansiktet
+        står allerede i heroen, og «én person» leses som en fordel først
+        etter at leseren har sett tjenestene, tryggheten og omtalene. */}
     <TjenesteSeksjon />
+    <TrygghetSeksjon />
+    <PultMockup />
     <SitatSeksjon />
+    <OmMegSeksjon />
+    <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
+    <BredtSitat />
     <FaqSeksjon />
-    <DemoSkjema
-      tittel="Klar for en nettside"
-      uthevet="som selger?"
-      lede="Legg igjen navn og e-post, så bygger jeg et gratis utkast til din nye side. Uforpliktende, og klart på 48 timer."
-    />
+    <Utkastvelger />
   </Shell>
 );
 

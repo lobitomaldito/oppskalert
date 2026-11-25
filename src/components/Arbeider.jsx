@@ -1,7 +1,9 @@
+import Film from './Film';
 import { Link } from 'react-router-dom';
 import { prosjekter, ruter, toganger } from '../lib/site';
 import { caser } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
+import { PilHoyre, PilOpp } from './Ikon';
 
 /* Bransje og tittel er hentet ordrett fra ARBEIDER-konstanten i
    studio-mal-demoen (mal3.src.html, linje 1162), ikke fra prosjekter i
@@ -19,9 +21,12 @@ import { useReveal } from '../lib/useReveal';
    nøkkel kan lista sorteres om uten at noe glipper, og et prosjekt uten
    tekst her faller pent ut i stedet for å arve naboens. */
 const ARBEIDER_TEKST = {
+  'terapihusene': { bransje: 'Terapi', tittel: 'Tre terapihus på én side, med timebestilling hos hver terapeut' },
   'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
+  'gti': { bransje: 'Maskinentreprenør', tittel: 'Grunnarbeid på Karmøy, med prosjektbilder og telefonen øverst' },
   'jakobsen-takst': { bransje: 'Takstmann', tittel: 'Takst i Harstad, med prisestimat før du ringer' },
   'woxen-hage': { bransje: 'Hagestell', tittel: 'Hagehjelp i Oslo, bestilt på under ett minutt' },
+  'prana-yoga': { bransje: 'Yoga', tittel: 'Yoga i Kristiansand, med dagens timer på forsiden' },
   'katrin-brubakk': { bransje: 'Psykolog', tittel: 'Foredrag og terapi samlet på én rolig side' },
   'melanie-dahl': { bransje: 'Skuespill · mental trening', tittel: 'To yrker, to innganger, én rolig side' },
   'alpha-negotiations': { bransje: 'Forhandling', tittel: 'En forhandlingsekspert, forklart på ett kvarter' },
@@ -29,7 +34,7 @@ const ARBEIDER_TEKST = {
   'samtaleverkstedet': { bransje: 'Terapi', tittel: 'Terapi som tør å være varm i tonen' },
   'steinar-husby': { bransje: 'Foredrag', tittel: 'Én foredragsholder, ett tydelig løfte' },
   'progressive-diplomacy': { bransje: 'Rådgivning', tittel: 'Rådgivning over landegrenser, forklart enkelt' },
-  'tore-sunde-rasmussen': { bransje: 'Rådgivning', tittel: 'Fra visittkort til noe som faktisk ringer' },
+  'tore-sunde-rasmussen': { bransje: 'Rådgivning', tittel: 'Fra visittkort til en side som gir henvendelser' },
 };
 
 /* Portføljegridet på forsiden og på /arbeid. Egen fil, ikke Portfolio.jsx,
@@ -95,19 +100,27 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett
                 <p>{a.domene}</p>
               </div>
               <div className="ramme-vindu">
-                <img
-                  src={a.full}
-                  srcSet={toganger(a.full)}
-                  alt={`Nettsiden til ${a.navn}`}
-                  loading="lazy"
-                  width="620"
-                  height="2422"
-                  style={{ '--til': a.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` }}
-                />
+                {/* Med `film` (Prana og jtob, 23.11.2026) ruller bildet og
+                    filmen sammen i .rull, som på case-siden. */}
+                <div
+                  className={a.film ? 'rull' : undefined}
+                  style={a.film ? { '--til': a.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` } : undefined}
+                >
+                  <img
+                    src={a.full}
+                    srcSet={toganger(a.full)}
+                    alt={`Nettsiden til ${a.navn}`}
+                    loading="lazy"
+                    width="620"
+                    height="2422"
+                    style={a.film ? undefined : { '--til': a.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` }}
+                  />
+                  {a.film && <Film className="ramme-film" src={a.film} width="960" height="750" />}
+                </div>
               </div>
             </div>
             <p className="etikett">{a.bransje}</p>
-            <Tittel>{a.tittel} <span className="ut" aria-hidden="true">→</span></Tittel>
+            <Tittel>{a.tittel} <PilHoyre className="ut" /></Tittel>
           </ConditionalLink>
         </article>
       ))}
@@ -142,7 +155,7 @@ export const ArbeidSeksjon = ({ hvit = true, kompakt = false, tett = false, id }
         </div>
         <Arbeider antall={tett ? 8 : 4} kompakt={kompakt} tett={tett} />
         <p style={{ marginTop: 'clamp(2.5rem,5vw,3.5rem)' }}>
-          <Link className="knapp" to={ruter.arbeid}>Se flere sider <span className="pil" aria-hidden="true">↗</span></Link>
+          <Link className="knapp" to={ruter.arbeid}>Se flere sider <PilOpp className="pil" /></Link>
         </p>
       </div>
     </section>

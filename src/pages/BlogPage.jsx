@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import BloggKort from '../components/BloggKort';
-import { articles } from '../lib/articles';
+// Bare listefeltene, uten brødteksten. Se scripts/lag-artikkel-meta.mjs.
+import articles from '../content/generated/meta.json';
 import { ruter } from '../lib/site';
 import { useReveal } from '../lib/useReveal';
+import { PilOpp } from '../components/Ikon';
 
 /* Alt innhold kommer fra src/lib/articles.js (håndskrevne) og
    src/content/generated/ (migrert ut av Opinly). Ingen henting ved
@@ -78,7 +80,7 @@ const BlogPage = () => {
           </p>
           <p style={{ marginTop: '2rem' }}>
             <Link className="knapp" to={ruter.kontakt}>
-              Få et gratis utkast <span className="pil" aria-hidden="true">↗</span>
+              Få et gratis utkast <PilOpp className="pil" />
             </Link>
           </p>
         </div>

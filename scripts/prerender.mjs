@@ -30,6 +30,7 @@ import { articles } from '../src/lib/articles.js';
 // i CLAUDE.md: en rute som ikke står her serveres som forsidens HTML til
 // crawlere, og Google ser den nye casen som en duplikat av forsiden.
 import { caser } from '../src/lib/demo-innhold.js';
+import { bransjer, RUTE_BRANSJE } from '../src/lib/bransjer.js';
 
 // Femten spørsmålssider utledes herfra, så et nytt spørsmål i arrayen
 // automatisk blir en snapshottet rute. Fila er ren ESM uten Vite-API-er,
@@ -46,8 +47,9 @@ const ROUTES = [
   ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sokemotoroptimalisering', '/webdesign-oslo', '/nettside-design',
   '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
+  ...bransjer.map((b) => RUTE_BRANSJE(b.slug)),
   ...caser.map((c) => `/arbeid/${c.slug}`),
-  '/blogg', '/personvern',
+  '/blogg', '/personvern', '/gratis-nettsidesjekk',
   ...articles.map((a) => `/blogg/${a.slug}`),
   '/eksempler/frisor', '/eksempler/handverker', '/eksempler/restaurant', '/eksempler/tannlege',
   '/admin/dashboard',
@@ -103,6 +105,10 @@ async function startServer() {
 // needs (the same class of problem the Lambda runtime has). Branch on the
 // VERCEL env var (set automatically in Vercel's build environment) to use
 // a build-friendly Chromium there, and plain puppeteer for local iteration.
+// executablePath() pakker ut Chromium til /tmp. Fire samtidige kall skriver
+// over samme fil mens en annen starter den (spawn ETXTBSY på Vercel), så
+// utpakkingen skjer én gang og alle nettleserne deler stien.
+let chromiumPath;
 async function launchBrowser() {
   const sandboxArgs = ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'];
   if (process.env.VERCEL) {
@@ -110,7 +116,7 @@ async function launchBrowser() {
     const puppeteerCore = await import('puppeteer-core');
     return puppeteerCore.launch({
       args: [...chromium.args, ...sandboxArgs],
-      executablePath: await chromium.executablePath(),
+      executablePath: await (chromiumPath ??= chromium.executablePath()),
       headless: chromium.headless,
     });
   }
@@ -169,20 +175,32 @@ async function main() {
   const server = await startServer();
   const { port } = server.address();
   const baseUrl = `http://127.0.0.1:${port}`;
-  const browser = await launchBrowser();
+
+  // Fire nettlesere side om side, én fane hver. Faner i samme nettleser går
+  // ikke: Chromium fryser timere og animasjoner i faner som ikke er i front,
+  // og da tas snapshotet før GSAP og useReveal er ferdige (målt 12.11.2026:
+  // 50 flere elementer med opacity 0). Hver rute venter fortsatt like lenge,
+  // de venter bare samtidig. 8 minutter ble rundt 2 på Vercel-maskinen.
+  const queue = [...ROUTES];
+  const worker = async () => {
+    const browser = await launchBrowser();
+    try {
+      for (let route; (route = queue.shift()) !== undefined; ) {
+        const html = await snapshotRoute(browser, baseUrl, route);
+        const outPath = outputPathFor(route);
+        await mkdir(path.dirname(outPath), { recursive: true });
+        await writeFile(outPath, html, 'utf-8');
+        console.log(`prerender: ${route} ... ok (${path.relative(distDir, outPath)})`);
+      }
+    } finally {
+      await browser.close();
+    }
+  };
 
   try {
-    for (const route of ROUTES) {
-      process.stdout.write(`prerender: ${route} ... `);
-      const html = await snapshotRoute(browser, baseUrl, route);
-      const outPath = outputPathFor(route);
-      await mkdir(path.dirname(outPath), { recursive: true });
-      await writeFile(outPath, html, 'utf-8');
-      console.log(`ok (${path.relative(distDir, outPath)})`);
-    }
+    await Promise.all(Array.from({ length: 4 }, worker));
     console.log(`prerender: done, ${ROUTES.length} routes snapshotted`);
   } finally {
-    await browser.close();
     server.close();
   }
 }

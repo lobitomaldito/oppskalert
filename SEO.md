@@ -426,21 +426,24 @@ med fem spørsmål på nesten hver eneste tjenesteside.
 
 ### Backlinks fra kundesider, målt
 
-Alle sju kundesider lenker tilbake, ingen med `nofollow`. Men **fire av sju har
-tom ankertekst**, altså ren logolenke:
+Alle sju kundesider lenker tilbake, ingen med `nofollow`. Målt i prod
+9. november 2026 med curl mot hver forside:
 
-| Kundeside | Ankertekst |
-| --- | --- |
-| katrinbrubakk.no | «oppskalert.» |
-| steinarhusby.no | «Oppskalert» |
-| toresunderasmussen.no | «Oppskalert» |
-| woxenhage.no | tom |
-| samtaleverkstedet.no | tom |
-| progressivediplomacy.com | tom |
-| melaniedahl.com | tom |
+| Kundeside | Ankertekst | Lenker til |
+| --- | --- | --- |
+| woxenhage.no | «Laget av Oppskalert, webdesign for bedrifter.» | `/` |
+| steinarhusby.no | «Nettside av Oppskalert, webdesign for bedrifter» | `/arbeid/steinar-husby` |
+| progressivediplomacy.com | «Nettside av Oppskalert, webdesign i Oslo» | `/arbeid/progressive-diplomacy` |
+| melaniedahl.com | «Design og utvikling: oppskalert.» | `/arbeid/melanie-dahl` |
+| samtaleverkstedet.no | «Laget med kjærlighet av oppskalert.» | `/arbeid/samtaleverkstedet` |
+| katrinbrubakk.no | «oppskalert.» | `/` |
+| toresunderasmussen.no | «Oppskalert» | `/` |
 
-En logolenke teller, men gir Google null ord å knytte til domenet. Fire sider vi
-selv drifter, fire enkle endringer.
+De fire logolenkene fra 22. august har fått tekst, og tre av sju bærer nå et
+fagord. Katrin Brubakk og Tore Sunde-Rasmussen står igjen med bare navnet.
+Begge er Lovable-prosjekter uten GitHub-repo, så de må rettes i Lovable.
+Forslag: «Nettside av Oppskalert, webdesign for bedrifter» og lenke til
+`/arbeid/katrin-brubakk` og `/arbeid/tore-sunde-rasmussen`, som finnes.
 
 ### Nytt: `/vanlige-sporsmal`
 

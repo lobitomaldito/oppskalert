@@ -52,7 +52,11 @@ const punkter = [
 const NettbutikkPage = () => (
   <Shell>
     <SEO
-      title="Lage nettbutikk for norske småbedrifter"
+      /* SEO-rutinen 9. nov 2026, GSC 28 dager: «lage nettbutikk» 166 visninger,
+         FAQ-siden hva-koster-nettbutikk pos 15,4 mot denne siden pos 28,4. Topptreffene
+         er steg-for-steg-guider, så title tar stegene og lovkravet først. Mål igjen
+         rundt 7. desember. */
+      title="Lage nettbutikk: stegene, lovkrav og Vipps"
       description="Skal du lage nettbutikk? Stegene fra samtale til første ordre, det loven krever før lansering, og Vipps og frakt som stemmer i kassen."
       keywords={['lage nettbutikk', 'nettbutikk', 'starte nettbutikk', 'nettbutikk pris']}
       canonical={CANONICAL}
@@ -129,7 +133,12 @@ const NettbutikkPage = () => (
           Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har
           snakket sammen. Ikke for å være vag, men fordi spennet er reelt: fem
           produkter uten varianter og ti tusen produkter med lager, størrelser og
-          regnskapsintegrasjon er to helt forskjellige jobber.
+          regnskapsintegrasjon er to helt forskjellige jobber.{' '}
+          {/* SEO 16.11.2026: «lage nettbutikk» 211 visninger/28 d, FAQ-en pos 16,9 vs denne siden pos 35,8. FAQ-en eier prisspørsmålet, denne lenker dit. */}
+          <Link to="/vanlige-sporsmal/hva-koster-nettbutikk" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+            Hva det koster å lage nettbutikk, i grove trekk
+          </Link>
+          .
         </p>
         <p>
           Det du får er en fast pris før jeg skriver en linje kode, akkurat som på
@@ -137,7 +146,13 @@ const NettbutikkPage = () => (
           <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             prisene på vanlige nettsider
           </Link>{' '}
-          for hvordan jeg jobber med pris, og{' '}
+          for hvordan jeg jobber med pris,{' '}
+          {/* Lenken gir prisspørsmålet én eier. GSC 12. okt 2026: FAQ-siden
+              tok «lage nettbutikk» (pos 12,3) fra denne (pos 21,6). */}
+          <Link to="/vanlige-sporsmal/hva-koster-nettbutikk" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+            hva en nettbutikk koster i drift
+          </Link>
+          , og{' '}
           <Link to={ruter.metode} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             metoden
           </Link>{' '}

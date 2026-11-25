@@ -4,6 +4,8 @@ import { Shell } from '../components/Layout';
 import { useReveal } from '../lib/useReveal';
 import { caser, omtaleForCase } from '../lib/demo-innhold';
 import { prosjekter, toganger, lagBrodsmuleSchema } from '../lib/site';
+import { PilOpp } from '../components/Ikon';
+import Film from '../components/Film';
 
 /* Casesiden er ordrett fra studio-mal-demoen (mal3.src.html, byggCase-
    funksjonen rundt linje 1465), portet til React i stedet for innerHTML.
@@ -169,15 +171,21 @@ const CasePage = () => {
                     <p>{prosjekt.domene}</p>
                   </div>
                   <div className="ramme-vindu">
-                    <img
-                      src={prosjekt.full}
-                  srcSet={toganger(prosjekt.full)}
-                      alt={`Nettsiden til ${prosjekt.navn}`}
-                      loading="lazy"
-                      width="620"
-                      height="2422"
-                      style={{ '--til': prosjekt.til, animationDuration: '38s' }}
-                    />
+                    {/* Med `film` ruller bildet og filmen sammen i .rull, og
+                        filmen dekker toppen av skjermbildet (samme 1280 px
+                        bredde, så den treffer på pikselen). */}
+                    <div className={prosjekt.film ? 'rull' : undefined} style={prosjekt.film ? { '--til': prosjekt.til, animationDuration: '38s' } : undefined}>
+                      <img
+                        src={prosjekt.full}
+                        srcSet={toganger(prosjekt.full)}
+                        alt={`Nettsiden til ${prosjekt.navn}`}
+                        loading="lazy"
+                        width="620"
+                        height="2422"
+                        style={prosjekt.film ? undefined : { '--til': prosjekt.til, animationDuration: '38s' }}
+                      />
+                      {prosjekt.film && <Film className="ramme-film" src={prosjekt.film} width="960" height="750" />}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -268,7 +276,7 @@ const CasePage = () => {
         <section className="wrap" style={{ paddingBottom: 'var(--luft)' }}>
           <div className="casebunn">
             <Link className="knapp" to="/kontakt">
-              Vil du ha noe lignende? <span className="pil" aria-hidden="true">↗</span>
+              Vil du ha noe lignende? <PilOpp className="pil" />
             </Link>
             <Link className="etikett" to={`/arbeid/${neste.slug}`}>
               Neste: {nesteProsjekt.navn} →

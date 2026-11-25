@@ -3,24 +3,69 @@ import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import { ArbeidSeksjon } from '../components/Arbeider';
-import { ruter } from '../lib/site';
+import { ruter, kontakt } from '../lib/site';
+// Bare listefeltene, uten brødteksten. Se scripts/lag-artikkel-meta.mjs.
+import articles from '../content/generated/meta.json';
+import BloggKort from '../components/BloggKort';
 import { tjenester } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
+import { Oye, Penn, PilOpp, Telefon } from '../components/Ikon';
 
 const PORTRETT = '/founders/aleksander.webp';
+
+const OM_KORT = [
+  {
+    Ikon: Telefon,
+    tittel: 'Ingen mellomledd',
+    tekst: 'Ingen prosjektkoordinatorer, ingen som skal videreformidle hva du sa i forrige møte. Ringer du klokka ni på en tirsdag, er det jeg som tar den.',
+  },
+  {
+    Ikon: Penn,
+    tittel: 'Jeg gjør alt selv',
+    tekst: 'Jeg tegner, koder, skriver tekstene og setter opp serveren selv. Det gjør at jeg kan si ja til små jobber uten at det blir dyrt.',
+  },
+  {
+    Ikon: Oye,
+    tittel: 'Utkastet først',
+    tekst: 'Det jeg liker best er å ta en side som ikke gjør noe, og gjøre den om til en side som får telefonen til å ringe. Det er derfor jeg bygger utkastet først. Jeg vil heller vise deg forskjellen enn å forklare den.',
+  },
+];
+
+/* Forfattersiden. ArticlePage peker author.url hit, så /om er siden Google
+   knytter artiklene til. Seks nyeste som kort, resten ett trykk unna (regel 2). */
+const SISTE = articles.slice(0, 6).map((a) => ({
+  slug: a.slug, title: a.title, description: a.description, image: a.hero, date: a.publishDate,
+}));
+
+const PROFIL_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  url: 'https://oppskalert.no/om',
+  mainEntity: {
+    '@type': 'Person',
+    name: kontakt.navn,
+    jobTitle: 'Grunnlegger',
+    url: 'https://oppskalert.no/om',
+    image: `https://oppskalert.no${PORTRETT}`,
+    sameAs: [kontakt.linkedin],
+    worksFor: { '@type': 'Organization', name: 'Oppskalert', url: 'https://oppskalert.no' },
+  },
+};
 
 const OmPage = () => {
   const toppRef = useReveal(80);
   const portrettRef = useReveal(80);
   const tjenesteRef = useReveal(80);
+  const artikkelRef = useReveal(80);
 
   return (
     <Shell>
       <SEO
         title="Om meg"
-        description="Oppskalert er Aleksander MacKee. Ingen mellomledd, ingen prosjektkoordinatorer. Du snakker med den som faktisk bygger nettsiden din."
+        description="Oppskalert er Aleksander MacKee. Ingen mellomledd, ingen prosjektkoordinatorer. Du snakker med den som bygger nettsiden din."
         keywords={['om oppskalert', 'norsk webutvikler', 'frilans nettside']}
         canonical="https://oppskalert.no/om"
+        jsonLd={PROFIL_LD}
       />
 
       <section ref={toppRef} className="wrap sidetopp">
@@ -35,24 +80,10 @@ const OmPage = () => {
               <img src={PORTRETT} alt="Aleksander MacKee" width="640" height="640" loading="lazy" />
             </div>
             <div>
-              <div className="intro-brod" style={{ marginTop: 0 }}>
-                <p>
-                  Jeg heter Aleksander MacKee og driver Oppskalert fra Oslo. Det er ingen
-                  andre her. Ingen mellomledd, ingen prosjektkoordinatorer, ingen som skal
-                  videreformidle hva du sa i forrige møte.
-                </p>
-                <p>
-                  Jeg tegner, koder, skriver tekstene og setter opp serveren selv. Det gjør
-                  at jeg kan si ja til små jobber uten at det blir dyrt, og at du snakker
-                  med den som faktisk gjør arbeidet. Ringer du klokka ni på en tirsdag,
-                  er det jeg som tar den.
-                </p>
-                <p>
-                  Det jeg liker best er å ta en side som ikke gjør noe, og gjøre den om til
-                  noe som faktisk ringer telefonen. Det er derfor jeg bygger utkastet først.
-                  Jeg vil heller vise deg forskjellen enn å forklare den.
-                </p>
-              </div>
+              <p className="om-ingress">
+                Jeg heter Aleksander MacKee og driver Oppskalert fra Oslo. Det er ingen
+                andre her.
+              </p>
               <div className="signatur">
                 <div className="portrett portrett-rund">
                   <img src={PORTRETT} alt="" width="640" height="640" loading="lazy" />
@@ -64,6 +95,22 @@ const OmPage = () => {
               </div>
             </div>
           </div>
+
+          {/* Teksten sto som tre avsnitt på hvit bunn. Fra 12.11.2026 står de
+              som tre kort (Aleksander: «bare tekst og hvit bakgrunn, jeg vil
+              bruke mer kort»). Ordene er de samme, bare fordelt på kortene. */}
+          <ul data-reveal className="tjenester om-kort inn" style={{ '--d': '80ms' }}>
+            {OM_KORT.map((k) => {
+              const Ikon = k.Ikon;
+              return (
+                <li key={k.tittel} className="tjeneste">
+                  <Ikon className="tjeneste-ikon" />
+                  <h3>{k.tittel}</h3>
+                  <p>{k.tekst}</p>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       </section>
 
@@ -76,7 +123,7 @@ const OmPage = () => {
           <div data-reveal className="tjeneste-side inn">
             <p className="etikett">Tjenester</p>
             <Link className="knapp" to={ruter.kontakt}>
-              Ta kontakt <span className="pil" aria-hidden="true">↗</span>
+              Ta kontakt <PilOpp className="pil" />
             </Link>
           </div>
           <div>
@@ -95,6 +142,25 @@ const OmPage = () => {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <section ref={artikkelRef} className="hvit">
+        <div className="wrap seksjon">
+          <div data-reveal className="seksjonstopp inn">
+            <h2>Artikler</h2>
+            <p>Jeg skriver alle artiklene på bloggen selv, {articles.length} så langt.</p>
+          </div>
+          <div data-reveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 inn max-md:[&>*:nth-child(n+4)]:hidden" style={{ '--d': '80ms' }}>
+            {SISTE.map((a, i) => (
+              <BloggKort key={a.slug} article={a} index={i} />
+            ))}
+          </div>
+          <p data-reveal className="inn" style={{ marginTop: '2rem' }}>
+            <Link className="knapp" to={ruter.blogg}>
+              Alle artiklene <PilOpp className="pil" />
+            </Link>
+          </p>
         </div>
       </section>
 
