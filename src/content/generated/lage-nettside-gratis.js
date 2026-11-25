@@ -4,6 +4,7 @@ export default {
   title: "Kan man lage en nettside gratis? Dette får du, og dette mangler",
   description: "Ja, Wix, WordPress.com og Google Sites lar deg lage en nettside gratis. Her er hva gratisversjonene gir, hva de mangler, og hva siden koster deg likevel.",
   publishDate: "2026-11-12",
+  updatedDate: "2026-12-02",
   keywords: ["lage nettside gratis", "gratis nettside", "lage hjemmeside gratis"],
   hero: "/blogg/lage-nettside-gratis.webp",
   svar: "Ja. Wix, WordPress.com og Google Sites lar deg lage en nettside uten å betale for verktøyet. Til gjengjeld får siden en adresse på leverandørens domene, som navn.wixsite.com, og på Wix og WordPress.com viser siden reklame for leverandøren. Eget domene krever et betalt abonnement hos Wix og WordPress.com. Det som koster mest, er tiden: regn med 20 til 40 timer for en enkel bedriftsside.",
@@ -52,7 +53,7 @@ Den holder dårligere når siden skal skaffe kunder. Da skal den bli funnet i Go
 
 ## Hva er alternativet til å gjøre det selv?
 
-Alternativet er å la noen andre bygge siden, mot en fast pris. Hos meg koster en enkel nettside på én side 6 990 kr eks. mva, én gang. Hosting og sikker forbindelse er med, så det kommer ingen månedspris, og domenet står i ditt navn.
+Alternativet er å la noen andre bygge siden, mot en fast pris. Hos meg koster en enkel nettside på én side 8 990 kr eks. mva, én gang. Hosting og sikker forbindelse er med, så det kommer ingen månedspris, og domenet står i ditt navn.
 
 Du trenger heller ikke bestemme deg før du har sett noe. Jeg bygger et ferdig utkast med ditt innhold først, og liker du det ikke, koster det ingenting. Hvordan det foregår, står på siden om [ny nettside](/ny-nettside).`,
 };

@@ -4,6 +4,7 @@ export default {
   title: "SEO-optimalisert nettside: dette må bygges inn fra start",
   description: "Hva gjør en nettside SEO-optimalisert? Dette må være bygget inn før lansering, og disse spørsmålene bør du stille leverandøren før du skriver under.",
   publishDate: "2026-11-12",
+  updatedDate: "2026-12-02",
   keywords: ["seo-optimalisert nettside", "nettside optimalisert for google", "seo-vennlig nettside"],
   hero: "/blogg/seo-optimalisert-nettside.webp",
   svar: "En SEO-optimalisert nettside har én side per tjeneste med egen tittel og beskrivelse, tekst som står på mobilversjonen, god fart målt med Core Web Vitals, en sitemap og permanente videresendinger fra gamle adresser. Alt dette er billigst å bygge inn før lansering. Spør leverandøren konkret om hvert punkt før du skriver under.",
@@ -65,5 +66,5 @@ Et ja uten forklaring er lite verdt. Be om å få se det på en side de har leve
 
 Jeg håndkoder sidene i stedet for å bruke WordPress, fontene er selvhostet, og sidene laster raskt. Struktur, metadata og fart ligger i bunnen fra start, og jeg setter opp Search Console og Analytics så du ser hva som skjer. Du endrer tekst og bilder selv i et redigeringspanel.
 
-Medium koster 12 900 kr eks. mva og gir deg alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Du får et gratis utkast før du bestemmer deg, som regel klart på 48 timer. Alle nivåene står på [prissiden](/priser). Uansett hvem du velger: ta med spørsmålslista over til neste møte med en leverandør, også om det er meg.`,
+Medium koster 15 900 kr eks. mva og gir deg alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Du får et gratis utkast før du bestemmer deg, som regel klart på 48 timer. Alle nivåene står på [prissiden](/priser). Uansett hvem du velger: ta med spørsmålslista over til neste møte med en leverandør, også om det er meg.`,
 };

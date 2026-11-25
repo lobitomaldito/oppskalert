@@ -142,7 +142,7 @@ export const populaereSok = [
     q: 'Er en billig nettside verdt det?',
     tittel: 'Er en billig nettside verdt det?',
     beskrivelse: 'Noen ganger, ja. Trenger du bare åpningstider og et telefonnummer, holder en enkel side lenge. Problemet er når den er treg, låst til leverandøren eller ulesbar for Google.',
-    a: 'Noen ganger, ja. Den enkleste siden jeg lager koster 6 990 kr eks. mva. Trenger du bare et sted å vise åpningstider og et telefonnummer, holder det lenge med en enkel side. Problemet oppstår når den billige siden er treg, ikke kan endres uten leverandøren, eller er bygget slik at Google ikke får lest den. Da har du betalt lite for noe som ikke gjør en jobb, og det er dyrere enn å gjøre det riktig en gang.',
+    a: 'Noen ganger, ja. Den enkleste siden jeg lager koster 8 990 kr eks. mva. Trenger du bare et sted å vise åpningstider og et telefonnummer, holder det lenge med en enkel side. Problemet oppstår når den billige siden er treg, ikke kan endres uten leverandøren, eller er bygget slik at Google ikke får lest den. Da har du betalt lite for noe som ikke gjør en jobb, og det er dyrere enn å gjøre det riktig en gang.',
     utdyping: [
       {
         t: 'Når billig faktisk er riktig valg',
@@ -161,8 +161,8 @@ export const populaereSok = [
     slug: 'hva-koster-webdesign-i-oslo',
     q: 'Hva koster webdesign i Oslo?',
     tittel: 'Hva koster webdesign i Oslo?',
-    beskrivelse: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 6 990 kroner eks. mva.',
-    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 6 990 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
+    beskrivelse: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 8 990 kroner eks. mva.',
+    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 8 990 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
     utdyping: [
       {
         t: 'Hvorfor Oslo-prisene ligger høyere',

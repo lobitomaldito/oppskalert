@@ -4,6 +4,7 @@ export default {
   title: "Alternativ til WordPress: når en håndkodet side passer bedre",
   description: "Alternativ til WordPress for småbedrifter: når WordPress er riktig valg, når en håndkodet side med redigeringspanel passer bedre, og fem spørsmål som avgjør.",
   publishDate: "2026-11-12",
+  updatedDate: "2026-12-02",
   keywords: ["alternativ til wordpress", "wordpress alternativ", "nettside uten wordpress"],
   hero: "/blogg/alternativer-til-wordpress.webp",
   svar: "WordPress passer når du publiserer ofte, er flere som skriver, eller trenger utvidelser som medlemsområde og kurs. Har du en tjenestebedrift med noen få sider og endrer mest tekst, bilder og priser, er en håndkodet side med redigeringspanel enklere å eie, fordi det ikke finnes utvidelser som må oppdateres.",
@@ -42,7 +43,7 @@ En håndkodet side består av ferdige filer. Det finnes ingen utvidelser og inge
 
 Du endrer tekst, bilder og lister i redigeringspanelet, direkte på siden. Legger du til en ny ansatt eller et nytt prosjekt, gjør du det selv.
 
-Du eier siden. Betaler du engangspris, er den din med en gang, og koden får du når du ber om det. Vil du heller betale månedlig, kan Medium leies til eie for 1 590 kroner i måneden uten binding, og siden blir din når tolv måneder er betalt. Tekstene, bildene og domenet er dine hele veien.
+Du eier siden. Betaler du engangspris, er den din med en gang, og koden får du når du ber om det. Vil du heller betale månedlig, kan Medium leies til eie for 1 940 kroner i måneden uten binding, og siden blir din når tolv måneder er betalt. Tekstene, bildene og domenet er dine hele veien.
 
 Begrensningen er like viktig å kjenne til: du bygger ikke nye sidetyper selv. Vil du ha en ny seksjon eller en booking, er det en jobb for meg, enten på serviceavtalen til 550 kroner i måneden uten binding, eller til fast pris avtalt før jeg begynner.
 

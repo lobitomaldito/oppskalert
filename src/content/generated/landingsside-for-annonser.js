@@ -4,9 +4,10 @@ export default {
   title: "Landingsside for Google Ads: dette gjør klikk til henvendelser",
   description: "En landingsside for Google Ads må gjenta det annonsen lovet, be om én handling, bygge tillit og måle hva som skjer. Slik setter du den opp for småbedrifter.",
   publishDate: "2026-11-12",
+  updatedDate: "2026-12-02",
   keywords: ["landingsside", "landingsside google ads", "landingsside for annonser"],
   hero: "/blogg/landingsside-for-annonser.webp",
-  svar: "En landingsside for annonser er én side laget for ett søk og én handling. Overskriften gjentar det annonsen lovet, siden ber om én ting (ringe, sende skjema eller booke), viser hvorfor du er til å stole på, og måler hvor mange som tar kontakt. Hos meg koster en slik side 6 990 kr eks. mva.",
+  svar: "En landingsside for annonser er én side laget for ett søk og én handling. Overskriften gjentar det annonsen lovet, siden ber om én ting (ringe, sende skjema eller booke), viser hvorfor du er til å stole på, og måler hvor mange som tar kontakt. Hos meg koster en slik side 8 990 kr eks. mva.",
   faq: [
     { q: "Bør annonsene peke til forsiden?", a: "Sjelden. Forsiden svarer bredt på mange ærend, mens den som klikket på en annonse har ett. Google anbefaler en side som samsvarer med annonsen og søkeordene." },
     { q: "Hva er landingssideopplevelse i Google Ads?", a: "Det er én av tre deler av kvalitetspoengene, ved siden av forventet klikkfrekvens og annonserelevans. Google vurderer hvor relevant og nyttig siden er for dem som klikker på annonsen." },
@@ -20,7 +21,7 @@ Når du betaler for hvert klikk, er det siden som avgjør om pengene blir til he
 
 Annonserer du for to tjenester, lag to sider. En side om både takrenner og terrasse svarer halvveis på begge søkene. Med én side per tjeneste kan overskriften, bildene og omtalene handle om akkurat det personen lette etter, og du ser i målingen hvilken tjeneste som gir henvendelser.
 
-Hos meg er Enkel én slik landingsside, med kontaktskjema og redigeringspanel, til 6 990 kroner eks. mva. Alle nivåene står på [prissiden](/priser).
+Hos meg er Enkel én slik landingsside, med kontaktskjema og redigeringspanel, til 8 990 kroner eks. mva. Alle nivåene står på [prissiden](/priser).
 
 ## Overskriften skal gjenta det annonsen lovet
 

@@ -5,7 +5,7 @@ import StigendeOrd from '../components/StigendeOrd';
 import { Shell } from '../components/Layout';
 import Utkastvelger from '../components/Utkastvelger';
 import { ArbeidSeksjon } from '../components/Arbeider';
-import { Modell, PrisRad } from '../components/Priser';
+import { Modell, PrisKort, PrisRad } from '../components/Priser';
 import Sitatkort from '../components/Sitatkort';
 import { track } from '../lib/analytics';
 import { lagFaqSchema, prisNotat, prismodeller, leieTilEie, driftNivaer, driftNotat, ruter } from '../lib/site';
@@ -52,7 +52,7 @@ const rader = [
   ['Du eier siden', true, true, true],
   ['Hosting og sikker forbindelse', true, true, true],
   ['Serviceavtale: endringer, backup og support', '550 kr/mnd', '550 kr/mnd', 'Med i tre måneder, så 550 kr/mnd'],
-  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura, eller 1 590 kr/mnd som leie til eie', 'Én faktura når du er fornøyd'],
+  ['Betaling', 'Én faktura, eller 1 350 kr/mnd i 12 mnd', 'Én faktura, eller 1 940 kr/mnd i 12 mnd', 'Én faktura, eller fra 2 690 kr/mnd i 12 mnd'],
 ];
 
 const Celle = ({ v }) => {
@@ -105,7 +105,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: landingsside 6 990 kr, alle sidene dine med tekster for Google 12 900 kr, Oppskaler fra 19 900 kr. Hosting inkludert, fast pris og gratis utkast før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: landingsside 8 990 kr, alle sidene dine med tekster for Google 15 900 kr, Oppskaler fra 24 900 kr. Hosting inkludert, fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -154,15 +154,7 @@ const PriserPage = () => (
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme
             data, to ulike produkter for den som så begge rutene. */}
-        <PrisRad>
-          {prismodeller.map((m, i) => (
-            <Modell
-              key={m.id}
-              m={m}
-              className={[i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1'].filter(Boolean).join(' ') || undefined}
-            />
-          ))}
-        </PrisRad>
+        <PrisKort />
         {/* Samme lenke som under prisene på forsiden, men her hopper den bare
             ned til velgeren nederst på siden (12.11.2026). */}
         <a

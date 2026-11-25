@@ -733,6 +733,29 @@
     from { clip-path: inset(16% 16% 16% 16% round var(--rund)); transform: scale(1.15); }
     to   { clip-path: inset(0 round var(--rund)); transform: scale(1); }
   }
+  /* Bryteren fast/månedlig over priskortene (Priser.jsx). Tommelen glir
+     under det valgte ordet. Begge knappene er like brede, så tommelen
+     flyttes nøyaktig én knappebredde. */
+  .prisbryter {
+    position: relative; display: inline-grid; grid-template-columns: 1fr 1fr;
+    padding: .25rem; border-radius: 999px; background: var(--kort);
+    border: 1px solid var(--felt-kant);
+  }
+  .prisbryter button {
+    position: relative; z-index: 1; min-height: 2.75rem; padding: 0 1.25rem;
+    border-radius: 999px; font-size: .875rem; font-weight: 600;
+    color: var(--blekk-mykt); transition: color .25s var(--e);
+  }
+  .prisbryter button[aria-pressed="true"] { color: var(--kritt); }
+  .prisbryter-tommel {
+    position: absolute; top: .25rem; bottom: .25rem; left: .25rem;
+    width: calc(50% - .25rem); border-radius: 999px; background: var(--blekk);
+    transition: transform .25s var(--e);
+  }
+  .prisbryter[data-modus="mnd"] .prisbryter-tommel { transform: translateX(100%); }
+  /* Tallet i priskortet kommer inn nedenfra når bryteren byttes. */
+  @keyframes pris-inn { from { opacity: 0; transform: translateY(.3em); } }
+  .pris-tall { display: inline-block; animation: pris-inn .22s var(--e); }
 
   /* Synlig kun for skjermlesere. Sier at en lenke åpner i ny fane,
      som ellers bare er en pil ingen skjermleser kan tolke. */
