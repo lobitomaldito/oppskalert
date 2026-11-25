@@ -137,7 +137,13 @@ const NettbutikkPage = () => (
           <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             prisene på vanlige nettsider
           </Link>{' '}
-          for hvordan jeg jobber med pris, og{' '}
+          for hvordan jeg jobber med pris,{' '}
+          {/* Lenken gir prisspørsmålet én eier. GSC 12. okt 2026: FAQ-siden
+              tok «lage nettbutikk» (pos 12,3) fra denne (pos 21,6). */}
+          <Link to="/vanlige-sporsmal/hva-koster-nettbutikk" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+            hva en nettbutikk koster i drift
+          </Link>
+          , og{' '}
           <Link to={ruter.metode} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             metoden
           </Link>{' '}
