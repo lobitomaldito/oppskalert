@@ -110,13 +110,29 @@ const PriserPage = () => (
       jsonLd={[prisFaqSchema, priserSchema]}
     />
 
-    <section className="wrap sidetopp">
-      <p className="etikett inn">Priser</p>
-      <h1 className="inn" style={{ '--d': '60ms' }}>Fast pris på nettside og drift.</h1>
-      <p className="inn" style={{ '--d': '140ms' }}>
-        Du får en fast pris fra meg før jeg skriver en linje kode, og du ser utkastet
-        innen 48 timer. Prisen endrer seg ikke underveis.
-      </p>
+    {/* Toppen fikk et bilde i høyre spalte 25.11.2026: på 1440 sto halve
+        bredden tom (Aleksander: «kaldt og dødt og masse tomrom»). Pexels
+        461064 med Prana-siden lagt inn på skjermen. */}
+    <section className="wrap sidetopp sidetopp-med-bilde">
+      <div>
+        <p className="etikett inn">Priser</p>
+        <h1 className="inn" style={{ '--d': '60ms' }}>Fast pris på nettside og drift.</h1>
+        <p className="inn" style={{ '--d': '140ms' }}>
+          Du får en fast pris fra meg før jeg skriver en linje kode, og du ser utkastet
+          innen 48 timer. Prisen endrer seg ikke underveis.
+        </p>
+      </div>
+      <figure className="sidetopp-bilde inn" style={{ '--d': '200ms' }}>
+        <img
+          src="/mockup/pult-prana-900.webp"
+          srcSet="/mockup/pult-prana-900.webp 900w, /mockup/pult-prana-1400.webp 1400w"
+          sizes="(min-width: 64rem) 36rem, 100vw"
+          width="900"
+          height="675"
+          alt="Nettsiden til Prana Yoga Studio på en laptop, sett ovenfra, med kaffe og en plante på pulten."
+          fetchPriority="high"
+        />
+      </figure>
     </section>
 
     <section className="hvit">

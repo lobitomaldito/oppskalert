@@ -478,6 +478,12 @@
     max-width: 17ch; margin-top: 1.25rem; text-wrap: balance;
   }
   .sidetopp p { margin-top: 1.25rem; max-width: 52ch; color: var(--blekk-mykt); }
+  /* Topp med bilde i høyre spalte (/priser). Under lg står bildet under
+     teksten. */
+  .sidetopp-med-bilde { display: grid; gap: clamp(2rem, 4vw, 3.5rem); align-items: center; }
+  @media (min-width: 64rem) { .sidetopp-med-bilde { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+  .sidetopp-bilde { margin: 0; }
+  .sidetopp-bilde img { display: block; width: 100%; height: auto; border-radius: var(--rund); }
   /* Seksjonen rett under toppen la sin egen --luft oppå toppens bunnluft,
      og ga 158 til 243 px tomrom på /priser, /metode, /om og /kontakt ved
      1440 (målt 12.11.2026, Aleksander: «for mye luft»). Nå står toppens
