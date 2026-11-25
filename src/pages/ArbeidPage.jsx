@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import Arbeider from '../components/Arbeider';
 import BransjeEksempler from '../components/BransjeEksempler';
 import DemoSkjema from '../components/DemoSkjema';
+import SitatKarusell from '../components/SitatKarusell';
 import { useReveal } from '../lib/useReveal';
-import { omtaler } from '../lib/demo-innhold';
 import { kontakt, prosjekter } from '../lib/site';
 import { track } from '../lib/analytics';
 import { PilHoyre } from '../components/Ikon';
@@ -24,45 +23,6 @@ const arbeidSchema = {
       url: p.url,
     })),
   },
-};
-
-/* Sitatkortet fra studio-mal-demoen (mal3.src.html rundt linje 1425).
-   Teksten kommer fra demo-innhold.js sin omtaler-liste, ordrett. Kortet
-   sykler gjennom listen med de to rundknappene, akkurat som i demoen. */
-const SitatKort = () => {
-  const [indeks, setIndeks] = useState(0);
-  const n = ((indeks % omtaler.length) + omtaler.length) % omtaler.length;
-  const o = omtaler[n];
-  const initial = o.navn.split(' ').map((d) => d[0]).slice(0, 2).join('');
-
-  return (
-    <div className="sitatkort paa-blekk" data-reveal>
-      <div className="sitat-topp">
-        <div className="sitat-styring">
-          <button type="button" onClick={() => setIndeks((i) => i - 1)} aria-label="Forrige omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="M14 5 7 12l7 7" />
-            </svg>
-          </button>
-          <button type="button" onClick={() => setIndeks((i) => i + 1)} aria-label="Neste omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="m10 5 7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-        <p className="sitat-teller">{n + 1} / {omtaler.length}</p>
-        <p className="etikett" style={{ marginLeft: 'auto' }}>Fra kundene</p>
-      </div>
-      <blockquote>«{o.sitat}»</blockquote>
-      <div className="sitat-kilde">
-        <span className="initial" aria-hidden="true">{initial}</span>
-        <div>
-          <p className="navn">{o.navn}</p>
-          <p className="rolle">{o.rolle}</p>
-        </div>
-      </div>
-    </div>
-  );
 };
 
 const ArbeidPage = () => {
@@ -112,7 +72,7 @@ const ArbeidPage = () => {
 
         <section className="sitatblokk" style={{ paddingTop: 'var(--luft)' }}>
           <div className="wrap">
-            <SitatKort />
+            <SitatKarusell className="paa-blekk" data-reveal />
           </div>
         </section>
       </div>
