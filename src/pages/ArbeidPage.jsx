@@ -6,7 +6,9 @@ import BransjeEksempler from '../components/BransjeEksempler';
 import DemoSkjema from '../components/DemoSkjema';
 import { useReveal } from '../lib/useReveal';
 import { omtaler } from '../lib/demo-innhold';
-import { prosjekter } from '../lib/site';
+import { kontakt, prosjekter } from '../lib/site';
+import { track } from '../lib/analytics';
+import { PilHoyre } from '../components/Ikon';
 
 const arbeidSchema = {
   '@context': 'https://schema.org',
@@ -88,6 +90,23 @@ const ArbeidPage = () => {
             {/* Alle prosjekter med en fangst, ikke bare de seks med case-side.
                 h2 fordi seksjonen ikke har noen egen H2 over rutenettet. */}
             <Arbeider antall={prosjekter.length} nivaa={2} reveal />
+            {/* Handling rett under rutenettet (25.11.2026). De fleste kommer hit
+                fra lenken i purringen, og skjemaet nederst ligger bak sitatet og
+                bransjeeksemplene. Knappen hopper ned til skjemaet, telefonen er
+                for håndverkerne, som er de fleste som klikker. */}
+            <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <p className="font-sans font-bold text-lg w-full sm:w-auto">Vil du ha et gratis utkast av din side?</p>
+              <a href="#bestill-demo" className="knapp" onClick={() => track('arbeid_cta_klikket', { knapp: 'utkast' })}>
+                Få et gratis utkast <PilHoyre className="pil" />
+              </a>
+              <a
+                href={`tel:${kontakt.tel}`}
+                onClick={() => track('arbeid_cta_klikket', { knapp: 'ring' })}
+                className="min-h-11 inline-flex items-center font-sans text-sm underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                eller ring {kontakt.telefon}
+              </a>
+            </div>
           </div>
         </section>
 
