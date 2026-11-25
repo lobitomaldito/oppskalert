@@ -46,7 +46,7 @@ Bruker du analyse eller annonsepiksler, trenger du altså et banner som er satt 
 
 ## Kontaktinformasjonen skal synes på hver side
 
-Den som har bestemt seg for å ringe, skal slippe å lete. Sett telefonnummer og e-post i bunnen av hver side, og gjør nummeret trykkbart på mobil. Har du et kontaktskjema, spør bare om det du trenger for å svare: navn, telefon eller e-post, og hva det gjelder. Skriv hva som skjer etter at skjemaet er sendt, for eksempel at du ringer tilbake samme dag.
+Den som har bestemt seg for å ringe, skal slippe å lete. Sett telefonnummer og e-post i bunnen av hver side, og gjør nummeret trykkbart på mobil. Har du et kontaktskjema, spør bare om det du trenger for å svare: navn, telefon eller e-post, og hva det gjelder. Skriv hva som skjer etter at skjemaet er sendt, for eksempel at du ringer tilbake samme dag. På en [nettside for en klinikk](/nettside-for-klinikk) gjelder det samme for timebestillingen: den skal kunne nås fra hver side.
 
 Lokale kunder finner deg ofte via kartet før de kommer til nettsiden. Sørg for at adresse, telefon og åpningstider er like der og på siden. Slik gjør du det i [Google Bedriftsprofil](/blogg/google-min-bedrift).
 

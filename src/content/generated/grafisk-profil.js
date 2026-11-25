@@ -41,7 +41,7 @@ De fleste små bedrifter klarer seg uten en tykk profilmanual. To eller tre side
 
 Begynn med logoen i riktige filformater. Vektorformatet SVG kan ifølge [MDN, Mozillas dokumentasjon for webutviklere](https://developer.mozilla.org/en-US/docs/Web/SVG), vises i alle størrelser uten å miste kvalitet, noe PNG og JPEG ikke kan. Har du bare logoen som et lite bilde fra en gammel nettside, er det første som bør fikses. Deretter fargekodene og skriftnavnene skrevet ned på ett ark. Det alene gjør at neste trykksak, annonse eller nettside blir lik den forrige.
 
-Neste steg er maler for det du lager oftest. For en håndverker er det gjerne tilbud og faktura, for en klinikk timebekreftelser og innlegg i sosiale medier. Når malen finnes, bruker du den i stedet for å begynne på nytt hver gang, og uttrykket holder seg likt uten at du må tenke på det. Profilen kan godt vokse etter hvert, så lenge det du har, brukes likt.
+Neste steg er maler for det du lager oftest. For en håndverker er det gjerne tilbud og faktura, for en klinikk timebekreftelser og innlegg i sosiale medier. For en terapeut er det timebekreftelsen og nettsiden klienten ser først. Hva en [nettside for terapeuter](/nettside-for-terapeut) bør ha med, har jeg samlet på én side. Når malen finnes, bruker du den i stedet for å begynne på nytt hver gang, og uttrykket holder seg likt uten at du må tenke på det. Profilen kan godt vokse etter hvert, så lenge det du har, brukes likt.
 
 ## Grafisk profil og nettsiden
 

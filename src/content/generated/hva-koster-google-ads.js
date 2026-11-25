@@ -20,7 +20,7 @@ Det betyr at to bedrifter med samme budsjett kan få svært ulik pris per klikk.
 
 ## Hva som avgjør prisen på et klikk
 
-Google regner ut en annonserangering for hver annonse i auksjonen. Ifølge [Googles egen forklaring](https://support.google.com/google-ads/answer/1722122) bygger den på seks ting: budet ditt, kvaliteten på annonsen og landingssiden, minstekravene Google setter for å vises, hvor tøff konkurransen er i akkurat den auksjonen, sammenhengen søket gjøres i (sted, tidspunkt, enhet), og hva tilleggene dine som telefonnummer og ekstra lenker forventes å gi.
+Google regner ut en annonserangering for hver annonse i auksjonen. Ifølge [Googles egen forklaring](https://support.google.com/google-ads/answer/1722122) bygger den på seks ting: budet ditt, kvaliteten på annonsen og landingssiden, minstekravene Google setter for å vises, hvor tøff konkurransen er i akkurat den auksjonen, sammenhengen søket gjøres i (sted, tidspunkt, enhet), og hva tilleggene dine som telefonnummer og ekstra lenker forventes å gi. For en [nettside for en klinikk](/nettside-for-klinikk) betyr det at hver behandling du annonserer for, trenger en egen landingsside.
 
 Budet ditt er et tak. Du betaler som regel bare det som trengs for å slå annonsen rett under deg, og ofte er det klart lavere enn taket. Google skriver selv at du ikke belastes mer enn maksbudet, med unntak for automatiske budstrategier og budjusteringer. Bedre kvalitet gir altså lavere pris for samme plassering. Det er her en liten bedrift med en god side kan slå en større konkurrent med mer penger.
 

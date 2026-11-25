@@ -14,7 +14,7 @@ export default {
   ],
   content: `## Kan du lage logo selv?
 
-Ja, og for mange små bedrifter holder det lenge. En frisør, en snekker eller en fysioterapeut med navnet sitt i en god skrift og én farge har en logo som fungerer på nettsiden, på bilen og på fakturaen. Det som skiller en brukbar egenlaget logo fra en som skaper problemer senere, er tre ting: at du eier designet, at du har riktige filer, og at ingen andre har noe som ligner for mye.
+Ja, og for mange små bedrifter holder det lenge. En frisør, en snekker eller en fysioterapeut med navnet sitt i en god skrift og én farge har en logo som fungerer på nettsiden, på bilen og på fakturaen. Logoen skal stå like tydelig på [nettsiden til en klinikk](/nettside-for-klinikk) som på døra. Det som skiller en brukbar egenlaget logo fra en som skaper problemer senere, er tre ting: at du eier designet, at du har riktige filer, og at ingen andre har noe som ligner for mye.
 
 Logoen er bare én del av hvordan bedriften framstår. Hvordan den spiller sammen med farger og skrift, har jeg skrevet om i innlegget om [hva en grafisk profil består av](/blogg/grafisk-profil).
 

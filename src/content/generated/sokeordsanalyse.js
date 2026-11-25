@@ -20,7 +20,7 @@ Det er også dette jeg starter med når jeg tar på meg [søkemotoroptimaliserin
 
 ## Start med det kundene sier til deg
 
-Den beste kilden har du allerede: telefonene, e-postene og spørsmålene kundene stiller før de bestiller. Kundene bruker sjelden fagordene dine. Elektrikeren skriver «sikringsskap» på nettsiden, kunden søker «sikringen går hele tiden». Tannlegen skriver «endodontisk behandling», kunden søker «rotfylling pris».
+Den beste kilden har du allerede: telefonene, e-postene og spørsmålene kundene stiller før de bestiller. Kundene bruker sjelden fagordene dine. Elektrikeren skriver «sikringsskap» på nettsiden, kunden søker «sikringen går hele tiden». Tannlegen skriver «endodontisk behandling», kunden søker «rotfylling pris». Det er det vanligste avviket jeg ser på en [nettside for en klinikk](/nettside-for-klinikk): fagordet står på siden, hverdagsordet står i søket.
 
 Skriv ned ordrett hvordan de tre siste kundene beskrev problemet sitt. Legg til stedsnavnene de nevner, og hvilke ord de brukte om tjenesten. Det tar ti minutter, og lista blir som regel bedre enn den du ville fått fra et verktøy alene.
 

@@ -51,7 +51,7 @@ Det er fem ting som avgjør hvor mye arbeid en bedrift trenger:
 - Hvor mye tekst som må skrives, og om du leverer noe av den selv.
 - Om du vil bli funnet lokalt eller i hele landet.
 
-En frisør i én by med fem tjenester trenger mindre enn en bedrift som vil bli funnet i ti byer. Derfor er prisen min et fra-tall.
+En frisør i én by med fem tjenester trenger mindre enn en bedrift som vil bli funnet i ti byer. Det samme gjelder en [nettside for en klinikk](/nettside-for-klinikk) med én adresse og en håndfull behandlinger. Derfor er prisen min et fra-tall.
 
 ## Prisen min, og hva som er med
 

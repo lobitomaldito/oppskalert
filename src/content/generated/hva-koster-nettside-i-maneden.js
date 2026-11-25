@@ -45,7 +45,7 @@ Hos meg koster serviceavtalen 550 kr i måneden uten binding. Da sender du en e-
 
 ## Hva koster det å leie en nettside?
 
-Nettsidebyggere og flere byråer tar betalt per måned for selve siden. På første side i Google lå abonnementene på nettsidebyggere på 399 til 800 kr i måneden, og noen pakker hadde en oppstartspris i tillegg. Slutter du å betale, forsvinner som regel siden.
+Nettsidebyggere og flere byråer tar betalt per måned for selve siden. På første side i Google lå abonnementene på nettsidebyggere på 399 til 800 kr i måneden, og noen pakker hadde en oppstartspris i tillegg. Slutter du å betale, forsvinner som regel siden. Hva som bør være med i prisen for en enkeltpraksis, står på siden om [nettside for terapeuter](/nettside-for-terapeut).
 
 Hos meg kan Medium leies til eie: 0 kr i dag og 1 590 kr i måneden uten binding. Serviceavtalen er med det første året, og siden er din når tolv måneder er betalt. Etter det betaler du 550 kr i måneden for serviceavtalen, eller ingenting.
 

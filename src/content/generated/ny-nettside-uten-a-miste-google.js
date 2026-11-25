@@ -20,7 +20,7 @@ Google rangerer adresser. Når du bytter nettside, får mange sider nye adresser
 
 ## Lag listen over gamle adresser først
 
-Før noe nytt tegnes, trenger du en liste over alle adressene dagens side har. Ta med sider som ikke står i menyen: gamle tjenestesider, artikler, PDF-er og kampanjesider. Search Console viser hvilke sider som får klikk fra Google, og det er dem som haster mest.
+Før noe nytt tegnes, trenger du en liste over alle adressene dagens side har. Ta med sider som ikke står i menyen: gamle tjenestesider, artikler, PDF-er og kampanjesider. Search Console viser hvilke sider som får klikk fra Google, og det er dem som haster mest. På en [nettside for håndverkere](/nettside-for-handverker) er det ofte gamle prosjektsider og PDF-er med tilbud som blir glemt.
 
 Gi hver adresse én av tre beslutninger: den beholdes med samme adresse, den flyttes til en ny adresse, eller den fjernes. En side med få besøk kan likevel være viktig hvis besøkene kommer fra folk som skal kjøpe. Når jeg lager en [ny nettside](/ny-nettside) for noen som allerede har en, er denne listen det første jeg gjør, før designet. Den gamle siden står oppe til du har sagt ja til den nye.
 

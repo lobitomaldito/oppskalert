@@ -24,7 +24,7 @@ Google har i tillegg AI-modus, en egen søkemodus som ifølge Google passer best
 
 Når svaret står øverst i søket, trenger noen ikke å klikke videre. Det er mest sannsynlig på de enkle spørsmålene: hva noe er, hvordan noe fungerer, hva et ord betyr. En artikkel som forklarer et begrep kan få like mange visninger som før og færre klikk.
 
-Søk der folk skal velge en leverandør, ser annerledes ut. Den som søker etter en tannlege eller en elektriker i nærheten, skal fortsatt ringe noen. Google skriver selv at klikk fra søkesider med AI-oversikter er av høyere kvalitet, i betydningen at folk blir lenger på siden. Det er Googles egen påstand, og du kan sjekke den mot dine egne tall.
+Søk der folk skal velge en leverandør, ser annerledes ut. Den som søker etter en tannlege eller en elektriker i nærheten, skal fortsatt ringe noen. For en elektriker eller rørlegger er det Google-profilen og en [nettside for håndverkere](/nettside-for-handverker) med tydelig telefonnummer som får den samtalen. Google skriver selv at klikk fra søkesider med AI-oversikter er av høyere kvalitet, i betydningen at folk blir lenger på siden. Det er Googles egen påstand, og du kan sjekke den mot dine egne tall.
 
 Det betyr at de sidene som selger, tjenestesidene, blir viktigere enn før. Den som klikker etter å ha lest sammendraget, vil vite pris, sted og hvordan man tar kontakt. Står det ikke tydelig, er klikket bortkastet. Hvordan dette henger sammen med resten av synligheten, er grunnlaget i en [plan for søkemotoroptimalisering](/sokemotoroptimalisering).
 
