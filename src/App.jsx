@@ -5,6 +5,8 @@ import SEO from './components/SEO';
 import { Shell } from './components/Layout';
 import Sitatkort, { Stjerner } from './components/Sitatkort';
 import Priser from './components/Priser';
+import BredtSitat from './components/BredtSitat';
+import PultMockup from './components/PultMockup';
 import Utkastvelger from './components/Utkastvelger';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal } from './lib/demo-innhold';
@@ -543,10 +545,12 @@ const Home = () => (
         etter at leseren har sett tjenestene, tryggheten og omtalene. */}
     <TjenesteSeksjon />
     <TrygghetSeksjon />
+    <PultMockup />
     <SitatSeksjon />
     <OmMegSeksjon />
     <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
+    <BredtSitat />
     <FaqSeksjon />
     <Utkastvelger />
   </Shell>

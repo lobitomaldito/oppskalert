@@ -103,7 +103,7 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
 
       <Link
         to={ruter.kontakt}
-        className="mt-4 md:mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 hover:scale-[1.03] bg-room-ink text-surface"
+        className="mt-4 md:mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-sans font-bold text-sm transition-transform duration-300 ease-lett [@media(hover:hover)_and_(pointer:fine)]:hover:scale-[1.03] active:scale-[.97] active:duration-150 bg-room-ink text-surface"
       >
         {cta} <ArrowRight className="w-4 h-4" />
       </Link>

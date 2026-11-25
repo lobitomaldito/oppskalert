@@ -246,20 +246,26 @@
     background: var(--blekk); color: var(--kritt);
     font-size: .875rem; font-weight: 600; line-height: 1; white-space: nowrap;
     border: 1px solid var(--blekk); cursor: pointer;
-    transition: color .25s var(--e);
+    transition: color .25s var(--e), transform 160ms var(--e);
   }
+  /* Trykkrespons (25.11.2026): knappen gir litt etter når den trykkes, så
+     trykket merkes også på mobil, der hover ikke finnes. */
+  .knapp:active { transform: scale(.97); }
   .knapp::before {
     content: ""; position: absolute; inset: 0; z-index: -1;
     background: var(--hvit);
     transform: translateY(var(--slide));
     transition: transform .4s var(--e);
   }
-  .knapp:hover { color: var(--blekk); }
-  .knapp:hover::before { transform: translateY(0); }
+  /* Hover bare med mus: på mobil ble knappen stående hvit etter et trykk. */
+  @media (hover: hover) and (pointer: fine) {
+    .knapp:hover { color: var(--blekk); }
+    .knapp:hover::before { transform: translateY(0); }
+    .knapp:hover .pil { transform: translateX(.2rem); }
+  }
   /* Lucide-ikonene fra Ikon.jsx. 1em, så de følger teksten de står i. */
   .ikon { width: 1em; height: 1em; flex: none; display: inline-block; vertical-align: -.125em; }
   .knapp .pil { transition: transform .3s var(--e); }
-  .knapp:hover .pil { transform: translateX(.2rem); }
   .paa-blekk .knapp { background: var(--kritt); color: var(--blekk); border-color: var(--kritt); }
   .paa-blekk .knapp::before { background: var(--prikk-lys); }
   .paa-blekk .knapp:hover { color: var(--blekk); }
@@ -653,6 +659,39 @@
     pointer-events: none;
   }
 
+  /* Laptop i verkstedet med rullende kundeside (PultMockup.jsx). Skjermen
+     er bygget i fotoets koordinater (1600 x 1067, utsnitt av Pexels
+     6446678) og skalert med --s, som JavaScript setter. Hjørnene ble målt
+     i fotoet 25.11.2026: (415,429) (1083,433) (1074,864) (396,836). */
+  .pult { position: relative; overflow: hidden; border-radius: var(--rund); background: var(--kort); }
+  .pult > img { display: block; width: 100%; height: auto; }
+  .pult-lag {
+    display: none; position: absolute; top: 0; left: 0;
+    width: 1600px; height: 1067px;
+    transform-origin: 0 0; transform: scale(var(--s, 0));
+    pointer-events: none;
+  }
+  .pult-klar .pult-lag { display: block; }
+  .pult-skjerm {
+    position: absolute; top: 0; left: 0; width: 668px; height: 420px;
+    overflow: hidden; /* gjennomsiktig: bunnbildet viser toppen til skjermbildet er lastet */
+    transform-origin: 0 0;
+    transform: matrix3d(0.911351, -0.0294552, 0, -8.1855e-05, -0.0598289, 0.938245, 0, -3.68455e-05, 0, 0, 1, 0, 415, 429, 0, 1);
+  }
+  .pult-skjerm img {
+    display: block; width: 100%; height: auto;
+    --til: -83.9%;
+    animation: rammerull 40s ease-in-out infinite alternate;
+  }
+  .pult.utenfor .pult-skjerm img { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .pult-lag, .pult-klar .pult-lag { display: none; } }
+  .pult-tekst {
+    margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem;
+    font-size: .875rem; color: var(--blekk-mykt);
+  }
+  .pult-tekst a { color: var(--blekk); border-bottom: 1px solid var(--felt-kant); transition: border-color .2s var(--e); }
+  @media (hover: hover) and (pointer: fine) { .pult-tekst a:hover { border-color: var(--blekk); } }
+
   /* Synlig kun for skjermlesere. Sier at en lenke åpner i ny fane,
      som ellers bare er en pil ingen skjermleser kan tolke. */
   .skjult {
@@ -951,6 +990,48 @@
   /* Grått bånd i full bredde med hvite kort, så omtalene skiller seg
      fra seksjonene over og under. */
   .sitatblokk { background: var(--kort); padding-block: var(--luft); }
+
+  /* Ett sitat i full bredde under prisene (BredtSitat.jsx). Ingen ramme,
+     ingen stjerner: skriften bærer det, som på vivr.no. */
+  .bredt-sitat { padding-block: var(--luft); }
+  .bredt-sitat blockquote { margin: 0; }
+  .bredt-sitat blockquote p {
+    font-family: var(--displayfont);
+    font-weight: 400;
+    font-size: clamp(1.85rem, 4.6vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: var(--display-sperre-stor);
+    text-wrap: pretty;
+    color: var(--blekk);
+  }
+  .bredt-sitat-kilde {
+    margin-top: clamp(2rem, 4vw, 3.5rem);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem;
+  }
+  .bredt-sitat .sitat-kilde .initial { background: var(--kort); }
+  .bredt-sitat-case {
+    display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem;
+    font-size: .875rem; font-weight: 600;
+    border-bottom: 1px solid var(--felt-kant); transition: border-color .2s var(--e);
+  }
+  .bredt-sitat-case .pil { transition: transform .3s var(--e); }
+  @media (hover: hover) and (pointer: fine) {
+    .bredt-sitat-case:hover { border-color: var(--blekk); }
+    .bredt-sitat-case:hover .pil { transform: translateX(.2rem); }
+  }
+  /* Ordene fylles inn mens sitatet rulles fra nedre del av skjermen mot
+     midten. --p er ordets plass i sitatet (0 til 1). */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .bredt-sitat blockquote { view-timeline-name: --bredt-sitat; }
+      .bredt-sitat .ord {
+        animation: ord-fyll linear both;
+        animation-timeline: --bredt-sitat;
+        animation-range: cover calc(12% + var(--p) * 34%) cover calc(20% + var(--p) * 34%);
+      }
+    }
+  }
+  @keyframes ord-fyll { from { opacity: .14; } to { opacity: 1; } }
   .sitatblokk .omtale { background: var(--hvit); }
   .sitatblokk .sitat-kilde .initial { background: var(--kort); }
   /* Kortet var blekk-svart. Det er sidens største flate etter bunnteksten,
@@ -1328,6 +1409,16 @@
   .faq .tegn::after { width: 1.5px; height: 1.125rem; }
   .faq details[open] .tegn::after { transform: scaleY(0); opacity: 0; }
   .faq details[open] summary { padding-bottom: .5rem; }
+  /* Svaret glir opp i stedet for å hoppe fram (25.11.2026). Bare der
+     nettleseren kan animere til auto-høyde; ellers åpner det som før. */
+  @supports (interpolate-size: allow-keywords) {
+    .faq details { interpolate-size: allow-keywords; }
+    .faq details::details-content {
+      block-size: 0; overflow-y: clip;
+      transition: block-size .3s var(--e), content-visibility .3s var(--e) allow-discrete;
+    }
+    .faq details[open]::details-content { block-size: auto; }
+  }
   .faq .svar { padding: 0 3rem 1.6rem .25rem; color: var(--blekk-mykt); max-width: 62ch; font-size: .9375rem; }
 
   /* ----------------------------------------------------------------
@@ -1490,6 +1581,20 @@
 .reveal-armed [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* /drift: hakene i sammenligningen kommer kolonne for kolonne, etter at
+   tabellen selv har tont inn. Skjult bare når useReveal har armert siden,
+   så de står synlige uten JavaScript (regel 5). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-armed .drift-tabell .drift-hake { opacity: 0; transform: scale(.9); }
+  /* Overgangen står bare på vei inn, så hakene ikke først toner ut når
+     siden armeres. */
+  .reveal-armed .drift-tabell.is-visible .drift-hake {
+    opacity: 1; transform: none;
+    transition: opacity .2s var(--e), transform .2s var(--e);
+    transition-delay: calc(350ms + var(--k, 0) * 80ms);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
