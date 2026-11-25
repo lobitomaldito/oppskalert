@@ -133,7 +133,12 @@ const NettbutikkPage = () => (
           Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har
           snakket sammen. Ikke for å være vag, men fordi spennet er reelt: fem
           produkter uten varianter og ti tusen produkter med lager, størrelser og
-          regnskapsintegrasjon er to helt forskjellige jobber.
+          regnskapsintegrasjon er to helt forskjellige jobber.{' '}
+          {/* SEO 16.11.2026: «lage nettbutikk» 211 visninger/28 d, FAQ-en pos 16,9 vs denne siden pos 35,8. FAQ-en eier prisspørsmålet, denne lenker dit. */}
+          <Link to="/vanlige-sporsmal/hva-koster-nettbutikk" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+            Hva det koster å lage nettbutikk, i grove trekk
+          </Link>
+          .
         </p>
         <p>
           Det du får er en fast pris før jeg skriver en linje kode, akkurat som på
