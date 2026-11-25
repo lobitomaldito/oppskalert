@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Minus } from 'lucide-react';
 import SEO from '../components/SEO';
+import StigendeOrd from '../components/StigendeOrd';
 import { Shell } from '../components/Layout';
 import Utkastvelger from '../components/Utkastvelger';
 import { ArbeidSeksjon } from '../components/Arbeider';
@@ -116,13 +117,13 @@ const PriserPage = () => (
     <section className="wrap sidetopp sidetopp-med-bilde">
       <div>
         <p className="etikett inn">Priser</p>
-        <h1 className="inn" style={{ '--d': '60ms' }}>Fast pris på nettside og drift.</h1>
+        <h1><StigendeOrd tekst="Fast pris på nettside og drift." /></h1>
         <p className="inn" style={{ '--d': '140ms' }}>
           Du får en fast pris fra meg før jeg skriver en linje kode, og du ser utkastet
           innen 48 timer. Prisen endrer seg ikke underveis.
         </p>
       </div>
-      <figure className="sidetopp-bilde inn" style={{ '--d': '200ms' }}>
+      <figure className="sidetopp-bilde">
         <img
           src="/mockup/pult-prana-900.webp"
           srcSet="/mockup/pult-prana-900.webp 900w, /mockup/pult-prana-1400.webp 1400w"

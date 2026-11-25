@@ -40,6 +40,8 @@ const PultMockup = () => {
     <section className="seksjon pult-seksjon">
       <figure className="wrap">
         <div ref={ref} className="pult">
+          {/* Innholdet zoomer sakte ut mens laptopen rulles inn, se .pult-innhold. */}
+          <div className="pult-innhold">
           <img
             src="/mockup/atelier-prana-1200.webp"
             srcSet="/mockup/atelier-prana-1200.webp 1200w, /mockup/atelier-prana-1600.webp 1600w"
@@ -61,6 +63,7 @@ const PultMockup = () => {
                 decoding="async"
               />}
             </div>
+          </div>
           </div>
         </div>
         <figcaption className="pult-tekst">
