@@ -53,36 +53,16 @@ export const RUTE_VANLIGE_SPORSMAL = '/vanlige-sporsmal';
 
 export const populaereSok = [
   {
-    // «hva koster en nettside» 70/mnd KD 0, pluss prisklyngen på 720/mnd samlet
-    slug: 'hva-koster-en-nettside',
-    q: 'Hva koster en nettside i Norge?',
-    tittel: 'Hva koster en nettside i Norge?',
-    beskrivelse: 'Malbasert side ligger på 5 000 til 15 000 kroner, byråer fra bunnen på 25 000 og oppover. Hos meg starter en håndbygd side på 9 999 kroner eks. mva.',
-    a: 'Regn med 5 000 til 15 000 kroner for en malbasert side, og fra 25 000 og oppover hos de fleste byråer som bygger fra bunnen. Hos meg starter en håndbygd nettside på 9 999 kroner eks. mva som engangspris, eller 1 290 kroner i måneden på abonnement med 12 måneders binding. Prisen avhenger av hvor mange sider og funksjoner du trenger, men du får den fast og skriftlig før jeg begynner.',
-    utdyping: [
-      {
-        t: 'Hva er det du faktisk betaler for?',
-        a: 'Ikke koden. Selve byggingen er den minste posten. Det meste av tiden går til å bestemme hva siden skal få folk til å gjøre, skrive teksten som får dem til å gjøre det, og finne bilder som ikke ser ut som stockfoto. En side med ferdig tekst og ferdige bilder er billigere enn en der jeg må lage begge deler, og det er der spennet mellom to tilbud som ser like ut som regel ligger.',
-      },
-      {
-        t: 'Hvorfor spriker prisene så mye?',
-        a: 'Fordi «nettside» dekker alt fra en ferdig mal du fyller inn selv på en kveld, til noe som er tegnet, skrevet og kodet for deg alene. Et byrå har i tillegg prosjektleder, designer og utvikler på samme jobb, og kontorleie på toppen. Jeg er én person uten mellomledd, og det er hele forklaringen på at samme leveranse kan koste 9 999 hos meg og 40 000 et annet sted.',
-      },
-      {
-        t: 'Hva bør du ha skriftlig før du sier ja?',
-        a: 'Fire ting: totalprisen, ikke et timeestimat. Hva som skjer hvis omfanget endrer seg underveis. At du eier filene når siden er levert. Og hva det koster å drifte den etterpå. Mangler ett av de fire i tilbudet, er det verdt å spørre om det før du signerer, ikke etter.',
-      },
-    ],
-    relatert: ['hva-koster-drift-av-nettside', 'er-billig-nettside-verdt-det'],
-    til: { tekst: 'Se hele prislisten', rute: '/priser' },
-  },
-  {
     // «nettsideleverandør» 90/mnd KD 0, høyest CPC i tabellen
+    // 28. okt 2026, GSC 28 dager: posisjon 10,6, 119 visninger, 0 klikk. SERP-en
+    // (mobil, Norge) er leverandørsider og guider med nummererte råd. Title leder
+    // nå med søkeordet og et tall, og siden har fått det fjerde kravet
+    // (bindingstid) og spørsmålene å stille. Mål igjen rundt 25. november.
     slug: 'krav-til-nettsideleverandor',
     q: 'Hva bør jeg kreve av en nettsideleverandør?',
-    tittel: 'Hva bør du kreve av en nettsideleverandør?',
-    beskrivelse: 'Fast pris før arbeidet starter, eierskap til kode og innhold, ingen bindingstid, og noe ferdig å se på før du betaler. Klarer ikke leverandøren alle fire, spør hvorfor.',
-    a: 'Fire ting: fast pris før arbeidet starter, at du eier koden og innholdet etterpå, ingen bindingstid, og at du får se noe ferdig før du betaler. Klarer ikke leverandøren å love alle fire, er det verdt å spørre hvorfor. Selv bygger jeg hele demoen ferdig innen 48 timer, og du bestemmer deg etterpå.',
+    tittel: 'Nettsideleverandør: fire krav før du signerer',
+    beskrivelse: 'Fast pris, eierskap til kode og innhold, ingen bindingstid, og noe ferdig å se på før du betaler. Fire krav til en nettsideleverandør, og spørsmålene som avslører svaret.',
+    a: 'Av en nettsideleverandør bør du kreve fire ting: fast pris før arbeidet starter, at du eier koden og innholdet etterpå, ingen bindingstid, og at du får se noe ferdig før du betaler. Klarer ikke leverandøren å love alle fire, er det verdt å spørre hvorfor. Selv bygger jeg hele utkastet ferdig innen 48 timer, og du bestemmer deg etterpå.',
     utdyping: [
       {
         t: 'Fast pris, ikke timeestimat',
@@ -96,9 +76,17 @@ export const populaereSok = [
         t: 'Se noe ferdig før du betaler',
         a: 'En skisse i PowerPoint sier lite om hvordan siden føles å bruke. Be om noe du kan åpne på mobilen og klikke rundt i. Klarer ikke leverandøren å vise deg det uten forskudd, har du ingen måte å vurdere kvaliteten på før pengene er ute.',
       },
+      {
+        t: 'Ingen bindingstid',
+        a: 'Mange nettsideleverandører tar lite for selve siden og henter resten inn på en avtale med 12, 24 eller 36 måneders binding. Regn ut totalen for hele perioden, ikke månedsprisen. Og spør hva som skjer med siden den dagen avtalen går ut: får du den med deg, eller slutter den å virke? En leverandør som er trygg på jobben sin, trenger ikke binde deg for å beholde deg.',
+      },
+      {
+        t: 'Fem spørsmål å stille før du signerer',
+        a: 'Hva er totalprisen, skrevet ned? Hvem eier domenet, koden og teksten etter levering? Hvor lang er bindingstiden, og hva koster det å si opp? Kan jeg se noe ferdig før jeg betaler? Hvem ringer jeg når noe er galt, og hvor raskt svarer dere? Får du et klart svar på alle fem i første samtale, har du en leverandør som har tenkt gjennom det. Blir svarene runde, vet du hvor du skal grave videre.',
+      },
     ],
     relatert: ['byra-eller-frilanser', 'eier-jeg-nettsiden-selv'],
-    til: { tekst: 'Slik jobber jeg', rute: '/metode' },
+    til: { tekst: 'Fast pris på nettside, skrevet ned', rute: '/priser' },
   },
   {
     // «søkemotoroptimalisering» 590/mnd KD 9, størst volum med kjøpsintensjon
@@ -122,7 +110,7 @@ export const populaereSok = [
       },
     ],
     relatert: ['synlig-i-chatgpt-og-ai-sok', 'google-bedriftsprofil'],
-    til: { tekst: 'Mer om søkemotoroptimalisering', rute: '/sokemotoroptimalisering' },
+    til: { tekst: 'Søkemotoroptimalisering for bedrifter', rute: '/sokemotoroptimalisering' },
   },
   {
     // «nettside ai» 140/mnd KD 0. Spørsmålet er også selve AEO-argumentet.
@@ -146,34 +134,7 @@ export const populaereSok = [
       },
     ],
     relatert: ['hva-er-sokemotoroptimalisering', 'krav-til-nettsideleverandor'],
-    til: { tekst: 'Slik jobber jeg med søk', rute: '/sokemotoroptimalisering' },
-  },
-  {
-    // «hvordan lage nettside» 210/mnd KD 15
-    slug: 'hvordan-lage-nettside',
-    q: 'Hvordan lager man en nettside?',
-    tittel: 'Hvordan lager man en nettside?',
-    beskrivelse: 'Sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, koble på måling. Rekkefølgen betyr mer enn verktøyet.',
-    a: 'Kort fortalt: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. De fleste begynner med design og oppdager for sent at de mangler tekst. Skal du gjøre det selv, sett av noen kvelder. Skal jeg gjøre det, tar det 1 til 2 uker fra du sier ja.',
-    utdyping: [
-      {
-        t: 'Domenet først, alltid',
-        a: 'Kjøp domenet før du bestemmer navnet endelig. Det koster rundt 150 kroner i året hos en norsk registrar, og et navn du ikke får domenet til er et navn du kommer til å angre på. Sjekk samtidig at det er ledig på Facebook og Instagram hvis du skal bruke dem. Sett opp e-post på domenet med en gang: en henvendelse fra post@dittfirma.no leses annerledes enn en fra en gratis e-postadresse.',
-      },
-      {
-        t: 'Teksten er flaskehalsen, ikke designet',
-        a: 'Nesten alle nettsideprosjekter som stopper opp, stopper på tekst. Designet er ferdig, og så ligger prosjektet stille i seks uker fordi ingen har skrevet hva bedriften faktisk gjør. Skriv derfor teksten før du tegner noe. Trenger du et sted å starte: hva selger du, hvem er det til, hva koster det, og hva skal folk gjøre nå. Fire spørsmål, fire avsnitt, så har du en forside.',
-      },
-      {
-        t: 'Koble på måling fra dag én',
-        a: 'Uten måling vet du ikke om siden virker, og da har du ingen grunnlag for å endre den. Du trenger to ting: Google Search Console, som viser hva folk søkte på før de fant deg, og et enkelt besøksverktøy som viser hvilke sider som leses. Begge er gratis. Kobler du dem på i etterkant, mister du historikken fra de første månedene, som er akkurat den perioden du kommer til å ville sammenligne mot senere.',
-      },
-    ],
-    relatert: ['hvor-lang-tid-tar-en-nettside', 'wordpress-wix-eller-handkodet'],
-    // 28. sep 2026: denne siden og /blogg/hvordan-lage-nettside delte 81 søk (ca. 3 000
-    // visninger, 28 dager). Artikkelen rangerer 20-30 plasser høyere og skal eie
-    // klyngen, så lenkemålet peker dit i stedet for til /metode.
-    til: { tekst: 'Les hele guiden, steg for steg', rute: '/blogg/hvordan-lage-nettside' },
+    til: { tekst: 'Synlig i ChatGPT, steg for steg', rute: '/blogg/synlig-i-chatgpt' },
   },
   {
     // «billig nettside» 70/mnd KD 0, høy CPC
@@ -181,7 +142,7 @@ export const populaereSok = [
     q: 'Er en billig nettside verdt det?',
     tittel: 'Er en billig nettside verdt det?',
     beskrivelse: 'Noen ganger, ja. Trenger du bare åpningstider og et telefonnummer, holder en enkel side lenge. Problemet er når den er treg, låst til leverandøren eller ulesbar for Google.',
-    a: 'Noen ganger, ja. Trenger du bare et sted å vise åpningstider og et telefonnummer, holder det lenge med en enkel side. Problemet oppstår når den billige siden er treg, ikke kan endres uten leverandøren, eller er bygget slik at Google ikke får lest den. Da har du betalt lite for noe som ikke gjør en jobb, og det er dyrere enn å gjøre det riktig en gang.',
+    a: 'Noen ganger, ja. Den enkleste siden jeg lager koster 6 990 kr eks. mva. Trenger du bare et sted å vise åpningstider og et telefonnummer, holder det lenge med en enkel side. Problemet oppstår når den billige siden er treg, ikke kan endres uten leverandøren, eller er bygget slik at Google ikke får lest den. Da har du betalt lite for noe som ikke gjør en jobb, og det er dyrere enn å gjøre det riktig en gang.',
     utdyping: [
       {
         t: 'Når billig faktisk er riktig valg',
@@ -192,7 +153,7 @@ export const populaereSok = [
         a: 'Tiden din, når du må mase på noen for å endre et telefonnummer. Kundene som ikke ringte, fordi siden brukte fem sekunder på å laste på mobil. Og regningen for å bygge alt på nytt om to år, fordi den gamle siden ikke kan flyttes. Ingen av de tre står i prisen du sammenligner på. De dukker opp etterpå, og til sammen er de nesten alltid større enn det du sparte.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'wordpress-wix-eller-handkodet'],
+    relatert: ['wordpress-wix-eller-handkodet'],
     til: { tekst: 'Sammenlign alternativene', rute: '/sammenlign' },
   },
   {
@@ -200,8 +161,8 @@ export const populaereSok = [
     slug: 'hva-koster-webdesign-i-oslo',
     q: 'Hva koster webdesign i Oslo?',
     tittel: 'Hva koster webdesign i Oslo?',
-    beskrivelse: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 9 999 kroner eks. mva.',
-    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 9 999 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
+    beskrivelse: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 6 990 kroner eks. mva.',
+    a: 'Prisnivået i Oslo ligger typisk fra 25 000 kroner og oppover for en skreddersydd bedriftsside. Jeg holder til i Oslo og starter på 6 990 kroner, fordi jeg er én person uten kontorleie og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Du kan møte meg fysisk hvis du vil, men de fleste tar det på telefon.',
     utdyping: [
       {
         t: 'Hvorfor Oslo-prisene ligger høyere',
@@ -209,18 +170,18 @@ export const populaereSok = [
       },
       {
         t: 'Trenger du å møte noen fysisk?',
-        a: 'Sjelden, men det er greit å ha muligheten. De fleste prosjektene mine går på telefon og e-post, og siden demoen er noe du kan åpne på mobilen, er det lite som må forklares i et møte. Vil du likevel ta en kaffe før du bestemmer deg, holder jeg til i Oslo og stiller opp. Er du utenfor byen, endrer det verken pris eller leveringstid.',
+        a: 'Sjelden, men det er greit å ha muligheten. De fleste prosjektene mine går på telefon og e-post, og siden utkastet er noe du kan åpne på mobilen, er det lite som må forklares i et møte. Vil du likevel ta en kaffe før du bestemmer deg, holder jeg til i Oslo og stiller opp. Er du utenfor byen, endrer det verken pris eller leveringstid.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'byra-eller-frilanser'],
+    relatert: ['byra-eller-frilanser'],
     til: { tekst: 'Webdesign i Oslo', rute: '/webdesign-oslo' },
   },
   {
     slug: 'hvor-lang-tid-tar-en-nettside',
     q: 'Hvor lang tid tar det å lage en nettside?',
     tittel: 'Hvor lang tid tar det å lage en nettside?',
-    beskrivelse: 'Demoen er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker.',
-    a: 'Demoen din er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker. Det som styrer tempoet er nesten alltid hvor fort du rekker å svare, ikke hvor fort jeg jobber. Større løsninger med nettbutikk eller innlogging tar lenger, og da sier jeg fra på forhånd.',
+    beskrivelse: 'Utkastet er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker.',
+    a: 'Utkastet ditt er ferdig innen 48 timer. Fra du sier ja til at siden står live på ditt eget domene går det som regel 1 til 2 uker. Det som styrer tempoet er nesten alltid hvor fort du rekker å svare, ikke hvor fort jeg jobber. Større løsninger med nettbutikk eller innlogging tar lenger, og da sier jeg fra på forhånd.',
     utdyping: [
       {
         t: 'Hva som faktisk styrer tempoet',
@@ -231,8 +192,8 @@ export const populaereSok = [
         a: 'Nettbutikk med betaling, frakt og lager tar 3 til 6 uker fordi tre systemer skal snakke sammen og alle må testes. Innlogging og kundeportaler tar lenger igjen. Skal siden flyttes fra en gammel leverandør, kommer det som regel en uke på toppen til å sette opp videresendinger, slik at gamle lenker ikke dør og rangeringen i Google følger med over.',
       },
     ],
-    relatert: ['hvordan-lage-nettside', 'hva-koster-nettbutikk'],
-    til: { tekst: 'Slik går det til', rute: '/metode' },
+    relatert: ['ny-nettside-eller-pusse-opp', 'hva-koster-nettbutikk'],
+    til: { tekst: 'Hvor lang tid det tar, med mine egne tall', rute: '/blogg/hvor-lang-tid-tar-nettside' },
   },
   {
     slug: 'ny-nettside-eller-pusse-opp',
@@ -250,14 +211,19 @@ export const populaereSok = [
         a: 'Siden er bygget på en plattform som ikke støttes lenger, og ingen tør å røre den. Den er treg på mobil uansett hva som fjernes. Eller den er bygget slik at innholdet ikke finnes i kildekoden, som betyr at både Google og AI-modeller ser en tom side. Det siste er det dyreste å leve med, fordi det ikke synes for deg og likevel koster deg alle besøkende du kunne fått fra søk.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'synlig-i-chatgpt-og-ai-sok'],
-    til: { tekst: 'Ta kontakt', rute: '/kontakt' },
+    relatert: ['synlig-i-chatgpt-og-ai-sok'],
+    til: { tekst: 'Ny nettside uten å miste plassene i Google', rute: '/ny-nettside' },
   },
   {
     // «lage nettbutikk» 210/mnd KD 15
+    // GSC 28 dager til 12. okt 2026: «lage nettbutikk» delt mellom denne
+    // (pos 12,3, 7 visninger) og /lage-nettbutikk (pos 21,6, 108). Samtidig
+    // «nettbutikk pris» pos 44,6 (61) og «hva koster en nettbutikk» pos 18,2
+    // (33). «lage» ut av title og spørsmål: denne eier prisen,
+    // /lage-nettbutikk eier «lage».
     slug: 'hva-koster-nettbutikk',
-    q: 'Hva koster det å lage nettbutikk?',
-    tittel: 'Hva koster det å lage nettbutikk?',
+    q: 'Hva koster en nettbutikk?',
+    tittel: 'Hva koster en nettbutikk? Pris og drift',
     beskrivelse: 'En nettbutikk starter et sted mellom 2 og 3 ganger prisen på en vanlig nettside, fordi betaling, frakt og lager må virke sammen.',
     a: 'En nettbutikk koster mer enn en vanlig nettside, fordi betaling, frakt og lager må virke sammen. Regn med at det starter et sted mellom 2 og 3 ganger prisen på en vanlig side. Til gjengjeld er det ett av få nettsideprosjekter der du kan regne hjem investeringen direkte, siden butikken selger mens du sover.',
     utdyping: [
@@ -270,8 +236,8 @@ export const populaereSok = [
         a: 'Betalingsløsningen tar en andel av hvert salg, typisk rundt 2 prosent pluss et fast beløp per transaksjon. Kommer det en fraktintegrasjon eller et regnskapssystem på toppen, har de egne månedspriser. Regn ut hva de faste kostnadene blir ved null salg før du starter, så vet du hva butikken må omsette for bare for å gå i null.',
       },
     ],
-    relatert: ['hvor-lang-tid-tar-en-nettside', 'hva-koster-en-nettside'],
-    til: { tekst: 'Om nettbutikk', rute: '/lage-nettbutikk' },
+    relatert: ['hvor-lang-tid-tar-en-nettside'],
+    til: { tekst: 'Lage nettbutikk: stegene fra samtale til første ordre', rute: '/lage-nettbutikk' },
   },
   {
     slug: 'wordpress-wix-eller-handkodet',
@@ -294,7 +260,7 @@ export const populaereSok = [
       },
     ],
     relatert: ['er-billig-nettside-verdt-det', 'hva-koster-drift-av-nettside'],
-    til: { tekst: 'Se sammenligningen', rute: '/sammenlign' },
+    til: { tekst: 'WordPress og håndkodet side, sammenlignet', rute: '/sammenlign/wordpress' },
   },
   {
     // «google min bedrift» 590/mnd KD 16
@@ -320,8 +286,8 @@ export const populaereSok = [
     slug: 'eier-jeg-nettsiden-selv',
     q: 'Eier jeg nettsiden og koden min selv?',
     tittel: 'Eier du nettsiden og koden din selv?',
-    beskrivelse: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert. Velger du drift, eier du fortsatt innhold og design, og kan ta det med deg når du vil.',
-    a: 'Ja, alltid. Betaler du engangspris, får du alle filene overlevert og eier hele greia med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. På ren drift er det 0 måneders bindingstid og 0 dagers oppsigelsestid. Det er verdt å spørre enhver leverandør om dette skriftlig før du signerer.',
+    beskrivelse: 'Ja, alltid. Betaler du engangspris, eier du siden med en gang. Velger du drift, eier du fortsatt innhold og design, og kan ta det med deg når du vil.',
+    a: 'Ja, alltid. Betaler du engangspris, eier du siden med en gang, og koden får du når du ber om det. Velger du leie til eie, er tekstene, bildene og domenet dine hele veien, og siden blir din når 12 måneder er betalt. På ren drift er det 0 måneders bindingstid og 0 dagers oppsigelsestid. Det er verdt å spørre enhver leverandør om dette skriftlig før du signerer.',
     utdyping: [
       {
         t: 'Hva eierskap betyr i praksis',
@@ -358,8 +324,8 @@ export const populaereSok = [
     slug: 'hva-koster-drift-av-nettside',
     q: 'Hva koster drift og vedlikehold av en nettside?',
     tittel: 'Hva koster drift og vedlikehold av en nettside?',
-    beskrivelse: 'Fra 149 kroner i måneden for hosting, domene, SSL, backup og oppdateringer. 690 i måneden hvis jeg også gjør innholdsendringer for deg. Ingen bindingstid.',
-    a: 'Fra 149 kroner i måneden hos meg for hosting, domene, SSL, backup og oppdateringer. Vil du at jeg også skal gjøre innholdsendringer for deg, koster det 690 i måneden. Til sammenligning starter driftsavtaler hos byråer flest rundt 2 500 i måneden. Alt uten bindingstid, så du kan bytte nivå eller avslutte når du vil.',
+    beskrivelse: 'Hosting er med i prisen på sidene jeg bygger. Serviceavtale med endringer, backup og support koster 550 i måneden. Ingen bindingstid.',
+    a: 'Drift av nettside koster 0 kr i måneden hos meg, fordi hosting er med i prisen på sidene jeg bygger. Vil du at jeg gjør endringene og passer på siden, koster serviceavtalen 550 i måneden. Til sammenligning starter driftsavtaler hos byråer flest rundt 2 500 i måneden. Alt uten bindingstid, så du kan avslutte når du vil.',
     utdyping: [
       {
         t: 'Hva som ligger i drift',
@@ -370,8 +336,8 @@ export const populaereSok = [
         a: 'Sjelden noe, i lang tid. Så utløper domenet en fredag, eller et sikkerhetshull i en plugin blir utnyttet, og siden er borte eller full av lenker du ikke har lagt inn. Google fjerner den fra søkeresultatene raskt når det skjer, og å komme tilbake tar lenger tid enn å falle ut. Kjøper du ikke drift av meg, sørg for at noen har ansvaret. Det viktigste er at det ikke er ingen.',
       },
     ],
-    relatert: ['hva-koster-en-nettside', 'eier-jeg-nettsiden-selv'],
-    til: { tekst: 'Se driftsnivåene', rute: '/drift' },
+    relatert: ['eier-jeg-nettsiden-selv'],
+    til: { tekst: 'Se serviceavtalen', rute: '/drift' },
   },
 ];
 

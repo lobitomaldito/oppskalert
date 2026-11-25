@@ -1,4 +1,4 @@
-/* FAQ for de fire rutene som manglet en, og som samtidig lå under 310 ord
+/* FAQ for rutene som manglet en, og som samtidig lå under 310 ord
  * i rå HTML. Begge problemene løses av det samme grepet.
  *
  * Egen fil fordi site.js var under arbeid i en annen sesjon. Slå den
@@ -8,29 +8,6 @@
  * tall, og ingen særskriving.
  */
 
-export const faqKalkulator = [
-  {
-    q: 'Hvor nøyaktig er kalkulatoren?',
-    a: 'Den treffer som regel innenfor et par tusen kroner, fordi den regner på de samme faktorene jeg selv bruker: antall sider, om du trenger nettbutikk eller booking, og om teksten finnes fra før. Den vet derimot ingenting om bedriften din, så tallet er et anslag og ikke et tilbud. Prisen du får skriftlig fra meg er fast.',
-  },
-  {
-    q: 'Må jeg oppgi e-post for å se prisen?',
-    a: 'Nei. Du får tallet på skjermen med en gang, uten skjema og uten at jeg vet at du var her. Jeg synes det er rart å kreve kontaktinfo for å svare på hva noe koster.',
-  },
-  {
-    q: 'Hvorfor er prisen lavere enn hos andre?',
-    a: 'Fordi jeg er én person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide å gå med til førsteutkast og standardkode. Det er hele forklaringen på at en håndbygd side starter på 9 999 kroner og ikke 25 000.',
-  },
-  {
-    q: 'Hva er ikke med i prisen?',
-    a: 'Domenet ditt, som koster rundt 100 til 200 kroner i året hos registraren, og innhold jeg ikke kan lage selv, som profesjonell fotografering. Hosting, SSL, oppsett og tekstene er med. Trenger du noe utover det, sier jeg fra før vi starter, ikke etterpå.',
-  },
-  {
-    q: 'Hva om jeg vil ha noe kalkulatoren ikke dekker?',
-    a: 'Send meg en linje om hva det er, så regner jeg på det. Kalkulatoren dekker det de fleste trenger, men innlogging, integrasjon mot et fagsystem eller flerspråklig innhold krever at jeg ser på det konkret. Du får uansett fast pris før jeg begynner.',
-  },
-];
-
 export const faqSammenlign = [
   {
     q: 'Hvorfor anbefaler du noen ganger andre enn deg selv?',
@@ -38,7 +15,7 @@ export const faqSammenlign = [
   },
   {
     q: 'Hva koster de ulike alternativene over tid?',
-    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 9 999 kroner én gang, og så 0 hvis du hoster den selv. Krysningspunktet ligger typisk mellom år 2 og år 4, avhengig av hvilken plan du velger.',
+    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 6 990 kroner én gang, og så 0, for hostingen er med i prisen. Krysningspunktet ligger typisk mellom år 2 og år 5, avhengig av hvilken plan du velger.',
   },
   {
     q: 'Kan jeg flytte siden min bort fra deg senere?',
@@ -46,7 +23,7 @@ export const faqSammenlign = [
   },
   {
     q: 'Hvor mye tid må jeg regne med å bruke selv?',
-    a: 'Bygger du selv, regn med 20 til 40 timer for en enkel bedriftsside, og at du fortsatt eier vedlikeholdet etterpå. Bygger jeg den, bruker du typisk 1 til 2 timer til sammen: du sender meg navnet på bedriften, ser på demoen, og sier hva du vil endre.',
+    a: 'Bygger du selv, regn med 20 til 40 timer for en enkel bedriftsside, og at du fortsatt eier vedlikeholdet etterpå. Bygger jeg den, bruker du typisk 1 til 2 timer til sammen: du sender meg navnet på bedriften, ser på utkastet, og sier hva du vil endre.',
   },
 ];
 
@@ -57,7 +34,7 @@ export const faqWix = [
   },
   {
     q: 'Kan jeg flytte en Wix-side til deg?',
-    a: 'Innholdet ja, selve siden nei. Wix-sider kan ikke eksporteres, så en flytting betyr i praksis at jeg bygger på nytt med teksten og bildene dine som utgangspunkt. Det er mindre arbeid enn det høres ut, og det tar de samme 3 virkedagene til demoen står klar.',
+    a: 'Innholdet ja, selve siden nei. Wix-sider kan ikke eksporteres, så en flytting betyr i praksis at jeg bygger på nytt med teksten og bildene dine som utgangspunkt. Det er mindre arbeid enn det høres ut, og det tar de samme 3 virkedagene til utkastet står klart.',
   },
   {
     q: 'Blir en Wix-side funnet i Google?',
@@ -65,11 +42,18 @@ export const faqWix = [
   },
   {
     q: 'Hva koster Wix egentlig i året?',
-    a: 'Planene ligger typisk mellom 1 500 og 4 000 kroner i året avhengig av nivå, pluss domenet. Det høres lite ut, men over 5 år er det 7 500 til 20 000 kroner du aldri eier noe for. En håndbygd side koster 9 999 én gang.',
+    a: 'Planene ligger typisk mellom 1 500 og 4 000 kroner i året avhengig av nivå, pluss domenet. Det høres lite ut, men over 5 år er det 7 500 til 20 000 kroner du aldri eier noe for. En håndbygd side koster 6 990 én gang.',
   },
 ];
 
 export const faqWordPress = [
+  /* «driftsavtale wordpress» og varianter: GSC 43 visninger på plass 9 til 14
+     (seo/seo-klynger.md, klynge 5). Prisene er lest i søkeresultatene på
+     «drift av nettside» 11.11.2026, tre WordPress-leverandører. */
+  {
+    q: 'Hva koster en driftsavtale for WordPress?',
+    a: 'Driftsavtaler for WordPress ligger ofte på 490 til 690 kroner i måneden. Det meste av jobben er å oppdatere WordPress og pluginene og rydde opp når en oppdatering brekker noe. En side uten WordPress og plugins har ikke den lista. Hos meg er hosting med i prisen, og serviceavtalen med endringer og support koster 550 kroner i måneden eks. mva, uten binding.',
+  },
   {
     q: 'Er WordPress fortsatt et godt valg?',
     a: 'Ja, hvis du har noen til å vedlikeholde det. WordPress driver rundt 40 prosent av verdens nettsteder og kan gjøre nesten hva som helst. Prisen er at pluginene må oppdateres og sikkerhetshull må tettes, og det er den jobben folk undervurderer.',
@@ -80,7 +64,7 @@ export const faqWordPress = [
   },
   {
     q: 'Kan du overta WordPress-siden jeg allerede har?',
-    a: 'Ja. Jeg kan enten drifte den som den er fra 149 kroner i måneden, eller bygge den om hvis det lønner seg. Send meg adressen, så ser jeg over den gratis og sier ærlig fra hva jeg ville gjort. Det tar meg under 30 minutter.',
+    a: 'Ja. Jeg kan ta den på serviceavtale fra 550 kroner i måneden, eller bygge den om hvis det lønner seg. Send meg adressen, så ser jeg over den gratis og sier ærlig fra hva jeg ville gjort. Det tar meg under 30 minutter.',
   },
   {
     q: 'Hvorfor bygger du ikke i WordPress?',

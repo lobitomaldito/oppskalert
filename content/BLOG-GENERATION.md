@@ -7,6 +7,12 @@ både i stemme og struktur.
 
 ## Arbeidsflyt
 
+**Pause for oppskalert.no til 10. februar 2027** (Aleksander, 12.11.2026). Før den datoen
+skrives ingen nye Oppskalert-innlegg, og ingen nye emner legges i `content/blog-queue.json`,
+selv om noen ber om det i en rutine. Grunnen: 48 innlegg, hvorav 34 publisert 12.11.2026,
+skal måles først. 10.02.2027 slås overlappende innlegg sammen og de på plass 8 til 30 løftes
+(`~/.claude/assets/seo/kilder-2026-11.md`, bloggkapitlet). Appstart-innleggene går som før.
+
 1. Åpne `content/blog-queue.json`. Finn første oppføring med `"status": "pending"`.
    Er køen tom, stopp uten å gjøre noe (ikke finn på et nytt tema selv).
 
@@ -27,9 +33,12 @@ både i stemme og struktur.
    eller i en eksisterende fil under `src/content/generated/`. Kollisjon → hopp
    til neste `pending`-oppføring.
 3. Skriv artikkelen (se skjema og stemmeregler under).
-4. Generer et hero-bilde med `image-gen`-skillen, 1600×900, lagre som
-   `public/blogg/<slug>.jpg` eller `.webp`.
+4. Generer et hero-bilde med `image-gen`-skillen i stilen fra `content/toppbilder/`
+   (README.md der har kommandoen), 1600×900, lagret som `public/blogg/<slug>.webp`.
 5. Lagre artikkelen som `src/content/generated/<slug>.js`, se skjema under.
+   `src/content/generated/meta.json` og `lastere.js` lages av `npm run build`
+   (`prebuild`, `scripts/lag-artikkel-meta.mjs`). Ikke rediger dem for hånd. Bygger du
+   med `npx vite build` direkte, kjør `node scripts/lag-artikkel-meta.mjs` først.
 6. Oppdater `content/blog-queue.json`: sett `"status": "published"` og legg
    til `"publishedDate"` (samme dato som `publishDate` i artikkelen) på
    oppføringen.
@@ -47,11 +56,16 @@ både i stemme og struktur.
 ```js
 export default {
   slug: "din-slug",
+  klynge: "nettside",
   title: "Tittel som matcher content/blog-queue.json",
   description: "Meta-beskrivelse, 140-160 tegn, samme funksjon som en SEO snippet.",
   publishDate: "ÅÅÅÅ-MM-DD",
   keywords: ["søkeord 1", "søkeord 2"],
   hero: "/blogg/din-slug.jpg",
+  svar: "Kort svar på søket i 2-3 setninger, med tallet leseren leter etter.",
+  faq: [
+    { q: "Spørsmål folk faktisk søker på?", a: "Svar i 1-3 setninger." },
+  ],
   content: `## Første seksjon
 
 Brødtekst...
@@ -65,6 +79,35 @@ Mer brødtekst...`,
 Feltene må matche nøyaktig det de tre håndskrevne artiklene bruker (se
 `src/lib/articles.js`), samme nøkler, samme typer. `getArticleBySlug` og
 sorteringen i `articles.js` forventer dette uendret.
+
+### Artikkelformatet (fra 12. november 2026, `~/.claude/assets/seo/artikkel-format.md`)
+
+- **`klynge`** (påkrevd): én av `pris`, `nettside`, `design`, `seo`, `drift`,
+  `markedsforing` (definert i `klynger` i `src/lib/articles.js`). Gir
+  kategorien over tittelen, avslutningen med lenke til pengesiden og «Les
+  også» med tre innlegg fra samme klynge. Hvilket spørsmål som hører til
+  hvilken klynge, står i `seo/seo-klynger.md` under «Spørsmålsinnlegg».
+- **H1 er spørsmålet** slik folk skriver det i Google, og hver `##` er et
+  spørsmål med svaret i første setning. Fire `##` eller flere gir
+  «Innhold» (klebrig spalte på stor skjerm, sammenleggbar boks på mobil).
+- **`svar`** (påkrevd for nye innlegg): 2-3 setninger som svarer på søket
+  direkte. Vises som «Kort fortalt» øverst. Ikke start `content` med en egen
+  «Kort svar»-linje i tillegg.
+- **`faq`** (påkrevd, 3 spørsmål): spørsmål leseren har etter å ha lest,
+  besvart med fakta som står i artikkelen eller i `src/lib/site.js`. Aldri
+  samme spørsmål som standardsettet i `sporsmal` i `site.js`: samme FAQ på to
+  ruter gir duplisert FAQPage, og Google forkaster den ene. Settet rendres
+  under artikkelen og går som FAQPage-schema.
+- **`updatedDate`** (valgfritt): settes når en publisert artikkel endres
+  vesentlig. Gir «Oppdatert»-dato på siden og `dateModified` i schemaet.
+- **Lenke til tjenestesiden i første eller andre seksjon.** Hvert innlegg
+  lenker til den landingssiden som selger det innlegget handler om
+  (`/sokemotoroptimalisering`, `/nettside-til-bedrift`, `/ny-nettside`,
+  `/drift`, `/nettside-design`, `/priser`). Det er den lenken som gjør at
+  bloggen hjelper sidene som får henvendelser.
+
+Forfatter er alltid Aleksander (Person i schemaet, lenket til `/om`). Det
+settes i `ArticlePage.jsx`, ikke i artikkelfilen.
 
 ### Valgfritt: egne CTA-tekster
 

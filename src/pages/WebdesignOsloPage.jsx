@@ -96,8 +96,8 @@ const Innhold = () => {
         <Avsnitt tittel="Du ser resultatet" uthevet="før du betaler.">
           <p>
             De fleste byråer ber om en signatur før de viser deg noe. Jeg gjør det
-            motsatte: du får en ferdig demo av din egen side, med ditt innhold, helt
-            uforpliktende. Liker du den ikke, koster den ingenting.
+            motsatte: du får et ferdig utkast til din egen side, med ditt innhold, helt
+            uforpliktende. Liker du det ikke, koster det ingenting.
           </p>
           <p>
             Det er mulig fordi jeg jobber alene med moderne verktøy, uten
@@ -108,10 +108,6 @@ const Innhold = () => {
             Prisen er fast og oppgitt på forhånd. Se{' '}
             <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
               hva en nettside koster
-            </Link>{' '}
-            eller regn det ut selv i{' '}
-            <Link to={ruter.kalkulator} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
-              kalkulatoren
             </Link>
             .
           </p>
@@ -172,7 +168,7 @@ const WebdesignOsloPage = () => (
         skrives om. Se kommentaren øverst i fila. */}
     <SEO
       title="Webdesign i Oslo til fast pris"
-      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 9 999 kr, og en gratis demo før du bestemmer deg."
+      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 6 990 kr, og et gratis utkast før du bestemmer deg."
       keywords={['webdesign oslo', 'webdesigner oslo', 'webdesign firma', 'webdesign bedrift']}
       canonical={CANONICAL}
       jsonLd={webdesignOsloSchema}
@@ -180,7 +176,7 @@ const WebdesignOsloPage = () => (
     <SideTopp
       tittel="Webdesign i Oslo,"
       uthevet="til fast pris."
-      lede="Håndkodede nettsider for små bedrifter i Oslo-området. Du snakker med meg hele veien, og du ser en ferdig demo før du bestemmer deg for noe som helst."
+      lede="Håndkodede nettsider for små bedrifter i Oslo-området, til fast pris fra 6 990 kr eks. mva. Du snakker med meg hele veien, og du ser et ferdig utkast før du bestemmer deg for noe som helst."
     />
     <Innhold />
     <Portfolio tittel="Sider jeg" uthevet="har levert." limit={6} visAlleLenke />

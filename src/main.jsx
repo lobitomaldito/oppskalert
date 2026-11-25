@@ -50,7 +50,6 @@ const FrisorDemo = lazySide(() => import('./pages/eksempler/FrisorDemo.jsx'))
 const HandverkerDemo = lazySide(() => import('./pages/eksempler/HandverkerDemo.jsx'))
 const RestaurantDemo = lazySide(() => import('./pages/eksempler/RestaurantDemo.jsx'))
 const TannlegeDemo = lazySide(() => import('./pages/eksempler/TannlegeDemo.jsx'))
-const KalkulatorPage = lazySide(() => import('./pages/KalkulatorPage.jsx'))
 const DriftPage = lazySide(() => import('./pages/DriftPage.jsx'))
 const SammenlignPage = lazySide(() => import('./pages/SammenlignPage.jsx'))
 import PopulaereSokPage from './pages/PopulaereSokPage';
@@ -60,12 +59,15 @@ import BegrepPage from './pages/BegrepPage';
 const VsWixPage = lazySide(() => import('./pages/sammenlign/VsWixPage.jsx'))
 const VsWordPressPage = lazySide(() => import('./pages/sammenlign/VsWordPressPage.jsx'))
 const SeoPage = lazySide(() => import('./pages/SeoPage.jsx'))
+const BransjePage = lazySide(() => import('./pages/BransjePage.jsx'))
+import { bransjer, RUTE_BRANSJE } from './lib/bransjer.js'
 const WebdesignOsloPage = lazySide(() => import('./pages/WebdesignOsloPage.jsx'))
 const NettsideDesignPage = lazySide(() => import('./pages/NettsideDesignPage.jsx'))
 const NettsideBedriftPage = lazySide(() => import('./pages/NettsideBedriftPage.jsx'))
 const NyNettsidePage = lazySide(() => import('./pages/NyNettsidePage.jsx'))
 const NettbutikkPage = lazySide(() => import('./pages/NettbutikkPage.jsx'))
 const PersonvernPage = lazySide(() => import('./pages/PersonvernPage.jsx'))
+const NettsidesjekkPage = lazySide(() => import('./pages/NettsidesjekkPage.jsx'))
 const DashboardPage = lazySide(() => import('./pages/DashboardPage.jsx'))
 
 createRoot(document.getElementById('root')).render(
@@ -81,7 +83,6 @@ createRoot(document.getElementById('root')).render(
           <Route path="/arbeid/:slug" element={<CasePage />} />
           {/* /vårt-arbeid redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/priser" element={<PriserPage />} />
-          <Route path="/kalkulator" element={<KalkulatorPage />} />
           <Route path="/drift" element={<DriftPage />} />
           <Route path="/sammenlign" element={<SammenlignPage />} />
         <Route path="/vanlige-sporsmal" element={<PopulaereSokPage />} />
@@ -94,12 +95,16 @@ createRoot(document.getElementById('root')).render(
           <Route path="/webdesign-oslo" element={<WebdesignOsloPage />} />
           <Route path="/nettside-design" element={<NettsideDesignPage />} />
           <Route path="/nettside-til-bedrift" element={<NettsideBedriftPage />} />
+          {bransjer.map((b) => (
+            <Route key={b.slug} path={RUTE_BRANSJE(b.slug)} element={<BransjePage b={b} />} />
+          ))}
           <Route path="/ny-nettside" element={<NyNettsidePage />} />
           <Route path="/lage-nettbutikk" element={<NettbutikkPage />} />
           <Route path="/metode" element={<MetodePage />} />
           <Route path="/om" element={<OmPage />} />
           <Route path="/kontakt" element={<KontaktPage />} />
           <Route path="/personvern" element={<PersonvernPage />} />
+          <Route path="/gratis-nettsidesjekk" element={<NettsidesjekkPage />} />
           {/* /kom-i-gang redirecter nå på Vercel-nivå (vercel.json), ekte 308 */}
           <Route path="/blogg" element={<BlogPage />} />
           <Route path="/blogg/:slug" element={<ArticlePage />} />

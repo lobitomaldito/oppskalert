@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
-import { Check, Minus } from 'lucide-react';
+import { ArrowRight, Check, Minus } from 'lucide-react';
 import SEO from '../components/SEO';
-import { Shell, KortRad } from '../components/Layout';
-import DemoSkjema from '../components/DemoSkjema';
-import { Modell } from '../components/Priser';
-import { lagFaqSchema, prisNotat, prismodeller, driftNivaer, driftNotat, ruter } from '../lib/site';
+import { Shell } from '../components/Layout';
+import Utkastvelger from '../components/Utkastvelger';
+import { ArbeidSeksjon } from '../components/Arbeider';
+import { Modell, PrisRad } from '../components/Priser';
+import Sitatkort from '../components/Sitatkort';
+import { track } from '../lib/analytics';
+import { lagFaqSchema, prisNotat, prismodeller, leieTilEie, driftNivaer, driftNotat, ruter } from '../lib/site';
 import { sporsmal } from '../lib/demo-innhold';
 
 /* Skjemaet bygges av nøyaktig de spørsmålene som vises lenger nede på
@@ -17,18 +20,6 @@ import { sporsmal } from '../lib/demo-innhold';
    med sitt eget skjema, så det er fortsatt to ulike FAQPage-sett på to
    URLer. Det var hele poenget med å skille dem 13. august: identiske
    skjemaer på to ruter gjør at Google beholder bare den ene. */
-/* Nøyaktig samme rutenett som forsiden bruker i Priser.jsx: tre kort i
-   linje fra lg, to fra md, og vannrett sveip på mobil. Sto det med egne
-   verdier her, ville radene sprikt igjen første gang én av dem ble endret. */
-const KortRadPris = ({ children }) => (
-  <KortRad
-    gridKlasser="md:grid-cols-2 lg:grid-cols-3"
-    kortBredde="w-[86%]"
-    className="gap-5 items-stretch max-w-[52rem] lg:max-w-[72rem]"
-  >
-    {children}
-  </KortRad>
-);
 
 const prisFaqSchema = lagFaqSchema(sporsmal.map(([q, a]) => ({ q, a })));
 
@@ -36,17 +27,12 @@ const priserSchema = {
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
   name: 'Oppskalert prismodeller',
-  /* Modeller uten fast pris får ikke price-felt. Schema.org tillater et
-     Offer uten pris, men ikke en pris som ikke er et tall: «Forespør pris»
-     ville blitt sendt som price: "Forespørpris", og det er ugyldig
-     strukturert data Google kan flagge. */
-  itemListElement: prismodeller.map((p) => ({
+  itemListElement: [...prismodeller, leieTilEie].map((p) => ({
     '@type': 'Offer',
     name: p.navn,
-    description: p.tagline,
-    ...(p.erForesporsel
-      ? {}
-      : { price: p.fra.replace(/\s/g, ''), priceCurrency: 'NOK' }),
+    description: p.tagline || p.tekst,
+    price: p.fra.replace(/\s/g, ''),
+    priceCurrency: 'NOK',
     url: 'https://oppskalert.no/priser',
   })),
 };
@@ -54,19 +40,18 @@ const priserSchema = {
 /* Sammenligningen svarer på det ene spørsmålet prismodellene ikke gjør
    alene: hva er egentlig forskjellen, rad for rad. */
 const rader = [
-  ['Gratis demo før du bestemmer deg', true, true],
-  ['Design og utvikling av komplett nettside', true, true],
-  ['Håndkodet, uten tunge plugins', true, true],
-  ['Søkemotor-grunnoppsett', true, true],
-  ['Du eier alle filene', true, 'Ja, også her'],
-  ['Hosting, domene og SSL', 'Eget ansvar', true],
-  ['Rimelige innholdsendringer inkludert', false, true],
-  ['Backup og oppetidsovervåking', false, true],
-  ['Support direkte fra meg', false, true],
-  /* Den raden som gjør at tabellen faktisk sammenligner to ulike
-     avtaler og ikke bare to funksjonslister. Uten den ser abonnementet
-     ut som engangsprisen med flere haker. */
-  ['Bindingstid', 'Ingen', '12 måneder, deretter ingen'],
+  ['Gratis utkast før du bestemmer deg', true, true, true],
+  ['Sider', 'Én landingsside', 'Alle du har i dag', 'Alle du har i dag'],
+  ['Håndbygd nettside, uten tunge plugins', true, true, true],
+  ['Søkemotor-grunnoppsett', true, true, true],
+  ['Tekstene skrevet om for Google og AI-søk', false, true, true],
+  ['Interaktive moduler: priskalkulator, booking', false, false, true],
+  ['SEO med månedlig rapport', false, false, 'Tre måneder'],
+  ['Admin-panel, endre tekst og bilder selv', true, true, true],
+  ['Du eier siden', true, true, true],
+  ['Hosting og sikker forbindelse', true, true, true],
+  ['Serviceavtale: endringer, backup og support', '550 kr/mnd', '550 kr/mnd', 'Med i tre måneder, så 550 kr/mnd'],
+  ['Betaling', 'Én faktura når du er fornøyd', 'Én faktura, eller 1 590 kr/mnd som leie til eie', 'Én faktura når du er fornøyd'],
 ];
 
 const Celle = ({ v }) => {
@@ -80,31 +65,36 @@ const Sammenligning = () => (
     <div className="wrap">
       <div className="seksjonstopp inn">
         <p className="etikett">Sammenligning</p>
-        <h2>Hva inngår i hver modell?</h2>
+        <h2>Hva inngår i hvert nivå?</h2>
       </div>
+      {/* På mobil er tabellen bredere enn skjermen. Radnavnene står fast
+          til venstre, og Medium stikker halvveis inn som hint om å sveipe. */}
+      <p className="md:hidden font-body text-sm text-room-ink/70 mb-3" aria-hidden="true">Sveip sidelengs for Medium og Oppskaler →</p>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
-        <table className="w-full border-collapse min-w-[34rem]">
-          <caption className="sr-only">Sammenligning av engangspris og nettside på abonnement</caption>
+        <table className="w-full border-collapse min-w-[35.5rem] md:min-w-[42rem]">
+          <caption className="sr-only">Sammenligning av Enkel, Medium og Oppskaler</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
-              <th scope="col" className="text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Engangspris</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Nettside på abonnement</th>
+              <th scope="col" className="sticky left-0 z-10 bg-room shadow-[inset_0_0_0_999px_rgb(var(--room-ink)/0.05)] border-r border-room-ink/10 md:static md:border-r-0 w-[8.5rem] md:w-auto text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Enkel</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Medium</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Oppskaler</th>
             </tr>
           </thead>
           <tbody>
-            {rader.map(([navn, a, b]) => (
+            {rader.map(([navn, a, b, c]) => (
               <tr key={navn} className="border-b border-room-ink/10 last:border-b-0">
-                <th scope="row" className="text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
+                <th scope="row" className="sticky left-0 z-10 bg-room border-r border-room-ink/10 md:static md:border-r-0 text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
                 <td className="text-center py-3.5 px-4"><Celle v={a} /></td>
                 <td className="text-center py-3.5 px-4"><Celle v={b} /></td>
+                <td className="text-center py-3.5 px-4"><Celle v={c} /></td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">
-        Begge modellene gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter, ikke disse to. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
+        Alle tre nivåene gjelder nye nettsider, og hva som skjer med Google, domenet og e-posten når du bytter, står på <Link to={ruter.nyNettside} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">ny nettside</Link>. Har du allerede en side som står der, er det drift du ser etter. Har du en eksisterende side du vil pusse opp, ta kontakt, så finner vi riktig løp for den.
       </p>
     </div>
   </section>
@@ -114,7 +104,7 @@ const PriserPage = () => (
   <Shell>
     <SEO
       title="Pris på nettside, fast og uten overraskelser"
-      description="Pris på hjemmeside og nettside: engangspris fra 9 999 kr, eller abonnement fra 1 290 kr/mnd med 12 måneders binding. Fast pris og gratis demo før du bestemmer deg."
+      description="Pris på hjemmeside og nettside: landingsside 6 990 kr, alle sidene dine med tekster for Google 12 900 kr, Oppskaler fra 19 900 kr. Hosting inkludert, fast pris og gratis utkast før du bestemmer deg."
       keywords={['nettside pris', 'pris på hjemmeside', 'hjemmesider pris', 'priser for hjemmeside']}
       canonical="https://oppskalert.no/priser"
       jsonLd={[prisFaqSchema, priserSchema]}
@@ -124,54 +114,88 @@ const PriserPage = () => (
       <p className="etikett inn">Priser</p>
       <h1 className="inn" style={{ '--d': '60ms' }}>Fast pris på nettside og drift.</h1>
       <p className="inn" style={{ '--d': '140ms' }}>
-        Du får en fast pris fra meg før jeg skriver en linje kode, og du ser demoen
-        innen 48 timer. Ingen timepris som løper. Ingen overraskelser på slutten.
+        Du får en fast pris fra meg før jeg skriver en linje kode, og du ser utkastet
+        innen 48 timer. Prisen endrer seg ikke underveis.
       </p>
     </section>
 
     <section className="hvit">
       <div className="wrap seksjon">
         <div className="seksjonstopp inn">
-          <p className="etikett">Tre modeller</p>
-          <h2>Eie den selv, betale månedlig, eller be om noe eget</h2>
+          <p className="etikett">Tre nivåer</p>
+          <h2>Enkel, Medium eller Oppskaler</h2>
+          {/* Ett løfte, og bevisene for det (tilbud/MAL.md 3e punkt 5):
+              før-og-etter-målingene på casene under /arbeid. */}
+          <p>Uansett nivå skal siden gjøre det lettere å finne deg på Google.
+          Se hva som ble målt før og etter for{' '}
+          <Link to="/arbeid/steinar-husby" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Steinar Husby</Link>,{' '}
+          <Link to="/arbeid/melanie-dahl" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Mélanie Dahl</Link>,{' '}
+          <Link to="/arbeid/alpha-negotiations" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Alpha Negotiations</Link> og{' '}
+          <Link to="/arbeid/jakobsen-takst" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Jakobsen Takst</Link>.</p>
         </div>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme
             data, to ulike produkter for den som så begge rutene. */}
-        <KortRadPris>
-          {prismodeller.map((m) => (
+        <PrisRad>
+          {prismodeller.map((m, i) => (
             <Modell
               key={m.id}
               m={m}
-              className={m.erForesporsel ? 'md:col-span-2 lg:col-span-1' : undefined}
+              className={[i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1'].filter(Boolean).join(' ') || undefined}
             />
           ))}
-        </KortRadPris>
-        <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{prisNotat}</p>
+        </PrisRad>
+        {/* Samme lenke som under prisene på forsiden, men her hopper den bare
+            ned til velgeren nederst på siden (12.11.2026). */}
+        <a
+          href="#bestill-demo"
+          onClick={() => track('utkastvelger_lenke_fra_priser', { side: window.location.pathname })}
+          className="mt-6 min-h-11 inline-flex items-center gap-1.5 font-sans font-bold text-sm text-room-ink underline underline-offset-4 hover:opacity-70 transition-opacity"
+        >
+          Sjekk hvilken pakke som passer for deg <ArrowRight className="w-4 h-4" aria-hidden="true" />
+        </a>
+        {/* Leie til eie som eget kort fra 12.11.2026, ikke løs tekst under prisene. */}
+        <div className="leie-kort">
+          <p className="leie-kort-tittel">{leieTilEie.navn}</p>
+          <p>{leieTilEie.tekst}</p>
+        </div>
+        <p className="font-body text-sm text-room-ink/70 mt-4 max-w-[52rem]">{prisNotat}</p>
+        {/* Omtalene står ved prisene (tilbud/MAL.md 3e punkt 4), ordrett
+            fra demo-innhold.js, samme kort som på forsiden. */}
+        <div className="mt-12"><Sitatkort /></div>
       </div>
     </section>
 
-    <Sammenligning />
-
-    <section className="seksjon">
+    {/* Serviceavtale og SEO sto under sammenligningen, langt nede på siden.
+        Fra 12.11.2026 står de rett etter nettsideprisene (Aleksander: «seo og
+        pris bare på priser undersiden langt nede»). */}
+    <section id="seo-og-service" className="seksjon">
       <div className="wrap">
         <div className="seksjonstopp inn">
-          <p className="etikett">Drift</p>
-          <h2>Tre nivåer, bytt når du vil</h2>
-          <p>Velger du at jeg skal passe på siden, er dette nivåene. Du kan gå opp eller
-          ned, eller avslutte, uten oppsigelsestid.</p>
+          <p className="etikett">Etter lansering</p>
+          <h2>Drift, SEO og annonser</h2>
+          <p>Hosting og redigeringspanel er med i prisen på siden. Vil du at jeg gjør
+          endringene, jobber med søk eller tar annonsene, er dette trinnene. Ingen
+          oppsigelsestid.</p>
         </div>
         {/* Samme kort som over, bare med driftsnivåenes egen knappetekst:
-            «Bestill gratis demo» ville lovet en demo av en driftsavtale. */}
-        <KortRadPris>
+            «Få et gratis utkast» ville lovet et utkast av en driftsavtale. */}
+        {/* Fire trinn fra 24.11.2026: to og to fra md, fire i linje fra xl. */}
+        <PrisRad className="lg:grid-cols-2 xl:grid-cols-4 lg:max-w-none">
           {driftNivaer.map((n) => (
-            <Modell key={n.id} m={n} cta={`Velg ${n.navn}`} />
+            <Modell key={n.id} m={n} cta={n.cta ?? `Velg ${n.navn}`} />
           ))}
-        </KortRadPris>
+        </PrisRad>
         <p className="font-body text-sm text-room-ink/70 mt-6 max-w-[52rem]">{driftNotat}</p>
       </div>
     </section>
+
+    {/* Eksemplene står rett etter prisene: først hva det koster, så hva
+        prisen kjøper. */}
+    <ArbeidSeksjon hvit={false} kompakt />
+
+    <Sammenligning />
 
     <section className="hvit">
       <div className="wrap seksjon">
@@ -180,7 +204,8 @@ const PriserPage = () => (
             <p className="etikett" style={{ marginBottom: '1.25rem' }}>Spørsmål</p>
             <h2>Greit å vite</h2>
             <p className="faq-intro">Er det noe jeg ikke har svart på, er det bare å{' '}
-            <Link to={ruter.kontakt}>ta kontakt</Link>. Jeg svarer selv.</p>
+            <Link to={ruter.kontakt}>ta kontakt</Link>. Jeg svarer selv. Hva andre tar, og hvorfor prisene spriker, står i{' '}
+            <Link to="/blogg/hva-koster-nettside">hva koster en nettside i Norge</Link>.</p>
           </div>
           {/* Disse seks spørsmålene er studio-mal-demoens egne, ordrett fra
               demo-innhold.js, og FAQPage-skjemaet over bygges av nøyaktig
@@ -206,11 +231,10 @@ const PriserPage = () => (
       </div>
     </section>
 
-    <DemoSkjema
-      tittel="Vil du se hva"
-      uthevet="din ville kostet?"
-      lede="Fortell meg kort om bedriften, så får du en fast pris, og en gratis demo før du bestemmer deg."
-    />
+    {/* Utkastvelgeren erstatter DemoSkjema her også (12.11.2026, som på
+        forsiden 11.11): fire spørsmål gir pakken og prisen før e-posten.
+        Sporingen skiller sidene på path, som track() lagrer selv. */}
+    <Utkastvelger />
   </Shell>
 );
 

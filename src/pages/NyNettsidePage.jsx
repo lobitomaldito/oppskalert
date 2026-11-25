@@ -37,7 +37,7 @@ const nyNettsideSchema = [
     name: 'Ny nettside',
     serviceType: 'Ny nettside for små og mellomstore bedrifter',
     description:
-      'Ny nettside til fast pris, med flytting fra den gamle uten nedetid og uten å miste plasseringene i Google. Ferdig demo før du bestemmer deg.',
+      'Ny nettside til fast pris, med flytting fra den gamle uten nedetid og uten å miste plasseringene i Google. Ferdig utkast før du bestemmer deg.',
     areaServed: { '@type': 'Country', name: 'Norge' },
     provider: { '@type': 'Organization', name: 'Oppskalert', url: 'https://oppskalert.no' },
     url: CANONICAL,
@@ -56,18 +56,18 @@ const nyNettsideSchema = [
 const punkter = [
   'Alle gamle adresser sendes videre, så ingen lenke utenfra ender i en feilside',
   'Domenet beholdes og står i ditt navn, uansett hvem som eide det før',
-  'Innholdet som allerede rangerer blir med over, ikke skrevet om for moro skyld',
+  'Innholdet som allerede rangerer blir med over uendret',
   'E-post på domenet flyttes først, så den aldri er nede',
   'Den gamle siden står live til den nye er testet og godkjent av deg',
   'Ny side lastes på under ett sekund, håndkodet uten maler og plugins',
-  'Du ser en ferdig demo med ditt eget innhold før du betaler noe',
+  'Du ser et ferdig utkast med ditt eget innhold før du betaler noe',
 ];
 
 const NyNettsidePage = () => (
   <Shell>
     <SEO
       title="Ny nettside til fast pris, uten nedetid"
-      description="Ny nettside for små bedrifter. Jeg flytter deg fra den gamle uten nedetid og uten å miste plasseringene i Google, og du ser en ferdig demo før du betaler."
+      description="Ny nettside for små bedrifter. Jeg flytter deg fra den gamle uten nedetid og uten å miste plasseringene i Google, og du ser et ferdig utkast før du betaler."
       keywords={['ny nettside', 'nye nettsider', 'ny hjemmeside', 'bytte nettside']}
       canonical={CANONICAL}
       jsonLd={nyNettsideSchema}
@@ -80,8 +80,8 @@ const NyNettsidePage = () => (
     <Brodtekst>
       <Avsnitt tittel="Når en side har" uthevet="gjort seg ferdig.">
         <p>
-          En nettside slutter sjelden å virke. Den slutter å prestere, og det
-          skjer så langsomt at ingen legger merke til dagen det snudde. Den
+          En gammel nettside virker som regel fortsatt. Den gir bare færre
+          henvendelser år for år, så langsomt at ingen merker når det snudde. Den
           laster tregere enn den gjorde, den ser ut som årstallet den ble laget,
           og du må sende en e-post til noen for å rette en skrivefeil.
         </p>
@@ -97,8 +97,8 @@ const NyNettsidePage = () => (
 
       <Avsnitt tittel="Flyttingen er der" uthevet="det pleier å gå galt.">
         <p>
-          Den vanligste skaden jeg rydder opp i er ikke et stygt design. Det er
-          en bedrift som fikk en ny side og mistet halve trafikken sin i samme
+          Den vanligste skaden jeg rydder opp i, er en bedrift som fikk en ny
+          side og mistet halve trafikken sin i samme
           slengen, fordi ingen tok vare på adressene de gamle sidene hadde.
         </p>
         <p>
@@ -118,12 +118,12 @@ const NyNettsidePage = () => (
         </p>
       </Avsnitt>
 
-      <Avsnitt tittel="Dager," uthevet="ikke måneder.">
+      <Avsnitt tittel="Ferdig på" uthevet="en til to uker.">
         <p>
-          Et byrå bruker gjerne seks til ti uker på en ny nettside. Det er ikke
-          fordi arbeidet tar så lang tid, men fordi prosessen er full av ledd:
-          briefmøter, interne godkjenningsrunder og en prosjektleder som
-          videreformidler mellom deg og den som faktisk bygger.
+          Et byrå bruker gjerne seks til ti uker på en ny nettside. Mesteparten
+          av tiden går til ledd i prosessen: briefmøter, interne
+          godkjenningsrunder og en prosjektleder som videreformidler mellom deg
+          og den som bygger.
         </p>
         <p>
           Her finnes ikke de leddene. Du snakker med meg fra første samtale til
@@ -152,11 +152,7 @@ const NyNettsidePage = () => (
           <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             prissiden
           </Link>
-          . Vil du regne på ditt eget omfang først, tar{' '}
-          <Link to={ruter.kalkulator} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
-            kalkulatoren
-          </Link>{' '}
-          under ett minutt og krever ingen e-postadresse.
+          .
         </p>
       </Avsnitt>
     </Brodtekst>
@@ -164,7 +160,7 @@ const NyNettsidePage = () => (
     <Punktliste
       tittel="Hva som følger med"
       uthevet="når du bytter."
-      lede="Dette er ikke tillegg som prises separat. Det er det som må til for at en ny side ikke koster deg det den gamle hadde bygget opp."
+      lede="Alt dette er med i prisen. Det må til for at en ny side ikke skal koste deg det den gamle hadde bygget opp."
       punkter={punkter}
     />
 

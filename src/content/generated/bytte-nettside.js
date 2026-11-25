@@ -1,10 +1,21 @@
+/* SEO-rutinen 23. nov 2026, GSC 28 dager: artikkelen lå på pos 20,1 på «drift av nettside» (228 visninger),
+   foran FAQ-siden (pos 22,4) og /drift, uten å handle om drift. Lenke til /drift og FAQ lagt inn i tegn 3
+   så lenkeverdien havner på siden som skal eie søket. Mål igjen rundt 21. des. */
 export default {
   slug: "bytte-nettside",
+  klynge: "nettside",
   title: "Når bør du bytte nettside? Fem tegn på at den koster deg kunder",
   description: "Fem konkrete tegn på at nettsiden din har sluttet å prestere for bedriften, fra treg lasting til fallende konvertering, og hva du bør sjekke først.",
   publishDate: "2026-08-24",
   keywords: ["ny nettside", "bytte nettside"],
-  hero: "",
+  hero: "/blogg/bytte-nettside.webp",
+  updatedDate: "2026-11-11",
+  svar: "Det er tid for ny nettside når to eller flere av disse stemmer: den laster over 2,5 sekunder på mobil, den ser eldre ut enn bransjen, du kan ikke endre tekst selv, færre besøkende tar kontakt enn før, eller den mangler funksjoner konkurrentene har. Mål før du bestemmer deg. Om det holder å pusse opp den du har, står i [ny nettside eller pusse opp?](/vanlige-sporsmal/ny-nettside-eller-pusse-opp).",
+  faq: [
+    { q: "Hvordan måler jeg om nettsiden er for treg?", a: "Skriv adressen inn i Google PageSpeed Insights og se på Largest Contentful Paint for mobil. Ligger tallet over 2,5 sekunder, mister du besøkende før de ser innholdet." },
+    { q: "Holder det å oppgradere den gamle siden?", a: "Ofte, hvis problemet er teknisk og avgrenset. Er problemet både treghet, utseende og at du ikke kan oppdatere den selv, er en ny side som regel billigere enn å lappe." },
+    { q: "Hvor ofte bør en bedrift bytte nettside?", a: "Design oppleves som utdatert etter omtrent tre til fem år. Bytt når tallene viser at siden presterer dårligere." },
+  ],
   content: `## Nettsiden slutter ikke å virke, den slutter å prestere
 
 En nettside slutter sjelden å fungere helt. Den blir bare gradvis dårligere til å faktisk skaffe deg kunder, uten at noe konkret går i stykker som varsler deg om det. Det gjør det vanskelig å vite når det er på tide å bytte, fordi siden fortsatt "virker" i teknisk forstand. Problemet er ikke om siden laster i nettleseren, men om den fortsatt gjør jobben den skal gjøre: overbevise en fremmed om å ta kontakt. Fem konkrete tegn avslører som regel om du nærmer deg det punktet.
@@ -15,11 +26,13 @@ Sjekk Largest Contentful Paint på Google PageSpeed Insights. Ligger tallet over
 
 ## Tegn 2: Den ser utdatert ut sammenlignet med bransjen
 
-Design dateres i praksis over tre til fem år, ikke fordi teknologien blir dårlig, men fordi besøkerforventningene endrer seg. Sammenlign forsiden din med tre andre nettsider i din bransje, publisert det siste året. Skiller din seg tydelig ut i negativ retning, altså tregere animasjoner, eldre skrifttyper eller en layout som ikke tilpasser seg mobil skjermbredde, leser besøkende det som et signal om at bedriften selv ikke er oppdatert. Det er sjelden rettferdig, men det er hvordan et førsteinntrykk fungerer.
+Design dateres i praksis over tre til fem år, ikke fordi teknologien blir dårlig, men fordi besøkerforventningene endrer seg. Sammenlign forsiden din med tre andre nettsider i din bransje, publisert det siste året. Skiller din seg tydelig ut i negativ retning, altså tregere animasjoner, eldre skrifttyper eller en layout som ikke tilpasser seg mobil skjermbredde, leser besøkende det som et signal om at bedriften selv ikke er oppdatert. Det er sjelden rettferdig, men det er hvordan et førsteinntrykk fungerer. Hva kundene forventer i håndverksbransjen, har jeg samlet på siden om [nettside for håndverkere](/nettside-for-handverker).
 
 ## Tegn 3: Du kan ikke oppdatere den selv lenger
 
 Krever hver eneste tekstendring at du kontakter noen andre og venter dager på svar, er det et driftsmessig problem, ikke bare et irritasjonsmoment. En nettside bør la deg endre åpningstider, priser og enkel tekst selv, uten å måtte betale timepris for det. Sitter du fast med en løsning der selv en liten endring krever en utvikler, betaler du reelt sett en skjult avgift hver gang bedriften din endrer seg, og det skjer oftere enn de fleste tror.
+
+Slipper du å bytte side og bare trenger at noen passer på den, er [drift av nettside](/drift) det billigere svaret: hosting, backup og endringer for 550 kroner i måneden. Se [hva drift og vedlikehold koster](/vanlige-sporsmal/hva-koster-drift-av-nettside) før du bestemmer deg.
 
 ## Tegn 4: Den konverterer dårligere enn før
 
@@ -31,5 +44,5 @@ Booking direkte på siden, live chat, eller en enkel kalkulator er blitt normale
 
 ## Hva du bør gjøre hvis du kjenner deg igjen
 
-Kjenner du igjen to eller flere av disse tegnene, er det ikke nødvendigvis tid for en full ombygging med det samme. Start med å måle: kjør PageSpeed Insights, se på konverteringstallene dine de siste seks månedene, og noter hvor lang tid siste tekstendring tok. Med de tre tallene foran deg vet du om problemet er teknisk, visuelt eller driftsmessig, og det avgjør om løsningen er en oppgradering eller en helt ny side.`,
+Kjenner du igjen to eller flere av disse tegnene, er det ikke nødvendigvis tid for en full ombygging med det samme. Start med å måle: kjør PageSpeed Insights, se på konverteringstallene dine de siste seks månedene, og noter hvor lang tid siste tekstendring tok. Med de tre tallene foran deg vet du om problemet er teknisk, visuelt eller driftsmessig, og det avgjør om løsningen er en oppgradering eller [en helt ny side](/ny-nettside).`,
 };

@@ -4,8 +4,8 @@
    skrevet av for hand, sa teksten er identisk med den som ble godkjent.
    Kilden er mal3.src.html, se inspirasjon/demo-studio-mal.md.
 
-   Prisene er det ene unntaket: demoen sier 9 999, og den er hevet til 9 999
-   etter beslutning 19. august 2026.
+   Prisene er det ene unntaket: demoen sier 9 999, siden har tre nivåer
+   (6 990, 12 900 og fra 19 900) fra 4. november 2026, se prismodeller i site.js.
 
    Feltet ikon er ra SVG-innmat og settes med dangerouslySetInnerHTML. Det er
    trygt her fordi strengene er vare egne konstanter i denne fila, ikke noe
@@ -16,34 +16,35 @@
    Feltet i peker pa indeksen i prosjekter i site.js, som eier bildene. */
 export const caser = [
   {
-    "slug": "appstart",
-    "tittel": "Apper til fast pris, med prisen på forsiden",
-    "ingress": "Appstart er mitt eget selskap, sammen med Magnus. Vi bygger apper for folk som har gått med en idé i årevis og har hørt at en app koster flere hundre tusen.",
+    "slug": "terapihusene",
+    "i": 6,
+    "tittel": "Tre terapihus og nitten terapeuter på én side",
+    "ingress": "Parterapi, familieterapi, psykolog og psykiater i Stavanger, Bergen og Kristiansand, og på video. Den som leter vil vite hvilket hus som er nærmest, hvem som kan ta imot og hva en time koster.",
     "gjort": [
-      "Nettside fra bunnen",
-      "Tekster og prisstruktur",
-      "Idéskjema i fire steg",
-      "Blogg med fast publiseringsrutine",
-      "Søkeoppsett"
+      "Ny nettside fra bunnen",
+      "Egen side for hver behandling i hver by",
+      "Profilside og timebestilling for hver terapeut",
+      "Flytting fra WordPress, gamle adresser beholdt",
+      "Søkeoppsett, hosting og drift"
     ],
     "tek": [
-      "Next.js",
-      "Forhåndsrendret på Vercel",
-      "Samtykke før sporing"
+      "Håndkodet front-end",
+      "Timebestilling i EasyPractice",
+      "Redigering rett på siden"
     ],
     "utfordring": {
-      "t": "Kjøperen tror en app koster 300 000 kr",
+      "t": "Tre byer, seks behandlinger, nitten terapeuter",
       "a": [
-        "Appstart selger til folk med én idé og ingen utviklere: privatpersoner og små bedrifter. Tallet de har hørt fra bransjen, er flere hundre tusen kroner. Der stopper de fleste før de har spurt noen.",
-        "De er også redde for to ting: at idéen blir tatt, og at regningen vokser underveis. Begge deler må være besvart før de tør å fortelle hva idéen er."
+        "Terapihusene har kontor i Stavanger, Bergen og Kristiansand, og flere av terapeutene tar også timer på video. Hver by har sitt eget telefonnummer, og tilbudet varierer litt fra hus til hus.",
+        "Den som søker skriver gjerne behandling og by, for eksempel «parterapi Bergen». Siden må ha et svar på akkurat det søket, med terapeutene som jobber der og nummeret som gjelder."
       ]
     },
     "losning": {
-      "t": "Prisen står før alt annet",
+      "t": "Velg by først, så terapeut",
       "a": [
-        "Rett under heroen står det gamle tallet, 300 000 kr, strøket over, og ved siden av <b>fra 15 000 kr</b>. Hva som er med, står i en liste under prisen, merket eks. mva.",
-        "Skjemaet spør om én ting av gangen, i fire steg. Det første spørsmålet er hva slags idé du har, med fire valg å trykke på. Under står det at idéen behandles konfidensielt og at du eier den.",
-        "Siden sier også hva vi ikke bygger: sosiale nettverk, datingapper og apper med sensitive helsedata. Den som har en slik idé, får vite det før praten."
+        "Første skjerm har fire valg: Stavanger, Bergen, Kristiansand og online. Hvert hus har sin egen side med terapeutene som jobber der, adresse, telefon og priser.",
+        "Hver behandling har <b>en egen side i hver by</b>, femten i alt. Et søk på «parterapi Bergen» lander dermed på parterapi i Bergen.",
+        "Hver terapeut har sin egen profil med utdanning, temaer og timebestilling i EasyPractice, systemet huset brukte fra før. Telefonnummeret på profilen følger byen terapeuten jobber i."
       ]
     }
   },
@@ -81,6 +82,78 @@ export const caser = [
     }
   },
   {
+    "slug": "prana-yoga",
+    "i": 3,
+    "tittel": "Timeplanen fra bookingen, rett på forsiden",
+    "ingress": "Iyengar yoga, pilates og reformer i Kristiansand sentrum, med tolv lærere og åpent sju dager i uken. Den som vurderer en prøvetime vil vite hva som går i dag, og hvordan man melder seg på.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Timeplan hentet fra bookingsystemet",
+      "Redigering av tekst, bilder og arrangementer",
+      "Søkeoppsett for Kristiansand",
+      "Hosting og drift"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Redigering rett på siden"
+    ],
+    "utfordring": {
+      "t": "Timene lå i et eget system",
+      "a": [
+        "Prana har timer fra morgen til kveld, alle dager. Påmeldingen skjer i bookingsystemet Momoyoga, og den gamle siden sendte folk dit for å se hva som gikk. For en som bare lurer på om det er en time i kveld, er det ett steg for mye.",
+        "I tillegg endrer tilbudet seg hele tiden. Workshops, utdanninger, yogahelger og turer kommer og går, og studioet ville legge dem inn selv uten å vente på noen."
+      ]
+    },
+    "losning": {
+      "t": "Dagens timer rett under filmen",
+      "a": [
+        "Siden henter timeplanen fra Momoyoga og viser den dag for dag rett under toppen, med en <b>bookingknapp på hver time</b>. Bookingsystemet er det samme som før, så studioet slapp å bytte ut noe de allerede bruker.",
+        "Toppen er en film tatt i studioet, med tauveggen Iyengar-yogaen bruker. Du ser hvordan det ser ut der før du har lest et ord.",
+        "Arrangementene ligger i en egen liste som studioet fyller selv, rett fra siden, med dato, sted og bilde. Det samme gjelder tekstene og bildene ellers på siden."
+      ]
+    },
+    "forEtter": {
+      "for": {
+        "bilde": "/websider/for/prana-yoga.webp",
+        "tatt": "oktober 2026"
+      },
+      "kilde": "Den gamle siden er frosset 5. oktober 2026. Den nye er målt 9. november 2026.",
+      "rader": [
+        {
+          "punkt": "Hvor du ser dagens timer",
+          "for": "I bookingsystemet, via en lenke",
+          "na": "På forsiden, dag for dag, med bookingknapp på hver time",
+          "hvorfor": "Den som lurer på om det går en time i kveld, får svaret uten å forlate siden."
+        },
+        {
+          "punkt": "Andre selskaper som får beskjed om hvert besøk",
+          "for": "15 adresser, blant dem Facebook og Google",
+          "na": "Ingen",
+          "hvorfor": "Hver av dem ser IP-adressen til den som åpner siden."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "Fem, blant dem en tom og «B.K.S. Iyengar»",
+          "na": "Én: «Prana Yoga Studio, Iyengar yoga og pilates i Kristiansand»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. Fem overskrifter gir fem svar."
+        },
+        {
+          "punkt": "Filer som hentes før forsiden vises",
+          "for": "20",
+          "na": "8",
+          "hvorfor": "Færre filer gir kortere ventetid på mobilnett."
+        },
+        {
+          "punkt": "Språket siden sier den er skrevet på",
+          "for": "Engelsk",
+          "na": "Norsk",
+          "hvorfor": "Skjermlesere for blinde og svaksynte leser teksten med engelsk uttale når siden sier at den er engelsk."
+        }
+      ]
+    }
+  },
+  {
     "slug": "katrin-brubakk",
     "i": 1,
     "tittel": "Foredrag og terapi samlet på én rolig side",
@@ -114,39 +187,6 @@ export const caser = [
     }
   },
   {
-    "slug": "samtaleverkstedet",
-    "i": 2,
-    "tittel": "Terapi som tør å være varm i tonen",
-    "ingress": "Veiledning for ledere og folk i omsorgsyrker. Den som leter er som regel sliten når hun leter, og da betyr tonen mer enn tjenestelista.",
-    "gjort": [
-      "Ny nettside fra bunnen",
-      "Tekster og struktur",
-      "Portrettfoto satt inn",
-      "Søkeoppsett",
-      "Hosting og drift"
-    ],
-    "tek": [
-      "Håndkodet front-end",
-      "Statisk hosting",
-      "Kontaktskjema"
-    ],
-    "utfordring": {
-      "t": "Kjøperen er sliten når hun kommer",
-      "a": [
-        "Folk som søker etter veiledning for utbrenthet er ikke i humør til å bli solgt til. En side med store løfter og aggressive knapper skyver dem bort.",
-        "Samtidig må siden fortsatt gjøre en jobb. Det hjelper ikke å være vennlig hvis ingen forstår hva som tilbys eller hvordan man tar kontakt."
-      ]
-    },
-    "losning": {
-      "t": "Rolig først, tydelig rett etterpå",
-      "a": [
-        "Fargene er varme og dempede, og portrettet kommer tidlig. Du ser hvem du skal snakke med før du ser hva det koster.",
-        "I stedet for en tjenesteliste er innholdet delt i <b>tre navngitte veier</b>, så leseren kjenner seg igjen i én av dem i stedet for å måtte velge fra en meny.",
-        "Én setning midt på siden navngir tilstanden leseren er i. Det er den setningen folk husker, og den gjør mer for konverteringen enn noen knapp."
-      ]
-    }
-  },
-  {
     "slug": "steinar-husby",
     "i": 3,
     "tittel": "Én foredragsholder, ett tydelig løfte",
@@ -176,6 +216,35 @@ export const caser = [
         "Rett under heroen står <b>logostripa</b> med de som allerede har booket ham. Det er det raskeste svaret på det første spørsmålet.",
         "Så kommer tre harde tall: land besøkt, bøker solgt, score på Talerlisten. Målte tall, ikke adjektiver.",
         "Selve foredraget er delt i tre navngitte temaer i et trekkspill, så en kurskomité kan lese akkurat det de lurer på uten å lese alt. Anmeldelsene nederst er signert med navn og stilling."
+      ]
+    },
+    "forEtter": {
+      "kilde": "Den gamle siden lå på medutlagtsjarm.no og er hentet fra nettarkivet slik den sto 14. mars 2025. Den nye er målt 30. september 2026.",
+      "rader": [
+        {
+          "punkt": "Adresse",
+          "for": "medutlagtsjarm.no",
+          "na": "steinarhusby.no",
+          "hvorfor": "Den som har hørt ham, søker på navnet hans. Den gamle adressen sender videre."
+        },
+        {
+          "punkt": "Tittelen i søketreffet",
+          "for": "«Start - Steinar Husby»",
+          "na": "Navnet, yrket og hva foredraget heter",
+          "hvorfor": "Tittelen er den blå lenken folk klikker på. «Start» sier ingenting om hva han gjør."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "Ingen",
+          "na": "«Steinar Husby holder humørfylte foredrag om livsmestring og positiv holdning. Book ham til ditt neste arrangement.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "Fem, to av dem tomme",
+          "na": "Én",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. Fem stykker gir fem ulike svar."
+        }
       ]
     }
   },
@@ -245,6 +314,289 @@ export const caser = [
         "Tallene står som en rad rett under heroen: to Everest-turer, seks av sju topper, score på Talerlisten. Bookingknappen følger med hele veien ned."
       ]
     }
+  },
+  /* Melanie Dahl og Alpha Negotiations. Lagt inn 30. september 2026, de
+     to første casene med før og etter.
+
+     forEtter er valgfritt. Hvert tall under er målt: den gamle
+     siden fra nettarkivet (web.archive.org) på datoen i `kilde`, den nye
+     direkte samme dag, begge med ~/.claude/assets/for-etter/ta-for.mjs.
+     `for.bilde` er de øverste 1440 x 1080 px av den gamle forsiden, og
+     finnes bare der arkivet hadde siden med stilarket i behold. Steinar
+     Husby over har derfor tabell uten bilde.
+
+     Hver rad har en `hvorfor` uten fagord. Klarer du ikke å skrive den,
+     skal raden ut. Og spør kunden før en gammel side vises her. */
+  {
+    "slug": "melanie-dahl",
+    "tittel": "To yrker, to innganger, én rolig side",
+    "ingress": "Skuespiller og mental trener for scenekunstnere. De to yrkene henger sammen, men de har hver sin kjøper: den ene skal booke en forestilling, den andre leter etter en coach.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Innholdsstruktur med to innganger",
+      "Redigering rett på siden",
+      "Domenet flyttet, 56 gamle adresser sendt videre",
+      "Hosting"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Innebygd redigering"
+    ],
+    "utfordring": {
+      "t": "43 undersider og to helt ulike besøkende",
+      "a": [
+        "Den gamle siden hadde vokst med karrieren. Hver forestilling, hvert kurs og hver film hadde fått sin egen side, og fra forsiden gikk det lenker til 43 av dem.",
+        "En teatersjef som vil se hva hun har spilt, og en skuespiller som sliter med prestasjonsangst, kom inn samme sted og måtte finne fram selv."
+      ]
+    },
+    "losning": {
+      "t": "To dører på forsiden",
+      "a": [
+        "Forsiden er delt i to: <b>Coaching</b> til venstre og <b>Scenekunst</b> til høyre. Du velger side før du har lest en eneste setning, og derfra handler alt om det du kom for.",
+        "Scenearbeidet er det som gir coachingen troverdighet, så de to halvdelene ligger under samme navn. Coachingsiden er lys, scenesiden er mørk.",
+        "Melanie endrer tekst og bilder selv, rett på siden. De 56 gamle adressene sender videre til riktig ny side, så ingen lenke fra før ender i en feilmelding."
+      ]
+    },
+    "forEtter": {
+      "for": { "bilde": "/websider/for/melanie-dahl.webp", "tatt": "mars 2025" },
+      "kilde": "Den gamle siden er hentet fra nettarkivet slik den sto 16. mars 2025. Den nye er målt 30. september 2026.",
+      "rader": [
+        {
+          "punkt": "Undersider lenket fra forsiden",
+          "for": "43",
+          "na": "5",
+          "hvorfor": "Den som leter etter en coach, slipper å lete seg forbi tretti teaterforestillinger først."
+        },
+        {
+          "punkt": "Sideadresser med navn som «new-page-5»",
+          "for": "5",
+          "na": "Ingen",
+          "hvorfor": "Adressen står i søketreffet og i hver lenke som deles. Den skal si hva siden handler om."
+        },
+        {
+          "punkt": "Hovedoverskrift på forsiden",
+          "for": "Sto som vanlig tekst",
+          "na": "«Hva kan jeg hjelpe deg med?»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "«Melanie Dahl, skuespiller, skuespillerinne, oslo»",
+          "na": "«Skuespiller på scenen, mental trener bak den. Melanie Dahl hjelper scenekunstnere gjennom prestasjonsangst, usikkerhet og frykten for ikke å være god nok.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        },
+        {
+          "punkt": "Filer som hentes før forsiden vises",
+          "for": "12",
+          "na": "6",
+          "hvorfor": "Færre filer gir kortere ventetid på mobilnett."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "alpha-negotiations",
+    "tittel": "En forhandlingsekspert, forklart på ett kvarter",
+    "ingress": "Kurs og foredrag om forhandlinger, holdt av en foreleser ved Handelshøyskolen BI med bakgrunn fra Nordea, HSBC London og Danske Markets. Den gamle siden viste lite av det.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Innholdsstruktur",
+      "Presseside og e-bok",
+      "Søkeoppsett",
+      "Hosting"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Selvhostede fonter"
+    ],
+    "utfordring": {
+      "t": "Tung fagbakgrunn i en ferdig mal",
+      "a": [
+        "Stein-Erik Mellemseter foreleser ved Handelshøyskolen BI og har skrevet om forhandlinger i E24. Den gamle siden var en ferdig WordPress-mal med arkivbilder av håndtrykk, og hovedoverskriften på forsiden var «Hjem».",
+        "Den som vurderer en foredragsholder til ledergruppa, bruker noen minutter på å avgjøre om han er verdt en telefon. På den gamle siden gikk de minuttene med til å lete."
+      ]
+    },
+    "losning": {
+      "t": "Bevisene først",
+      "a": [
+        "Rett under overskriften står <b>tolv logoer</b> fra kunder og samarbeidspartnere, og portrettet er tatt foran BI. Svaret på om han er verdt en telefon kommer før du har rullet.",
+        "Anmeldelsene følger rett etter, signert med navn og arbeidsgiver.",
+        "Fagstoffet har fått egne sider: 52 forhandlingsråd som hver svarer på ett spørsmål, i tillegg til presseoppslag og e-bok."
+      ]
+    },
+    "forEtter": {
+      "for": { "bilde": "/websider/for/alpha-negotiations.webp", "tatt": "april 2026" },
+      "kilde": "Den gamle siden er hentet fra nettarkivet slik den sto 12. april 2026. Den nye er målt 30. september 2026.",
+      "rader": [
+        {
+          "punkt": "Filer som hentes før forsiden vises",
+          "for": "54",
+          "na": "6",
+          "hvorfor": "Færre filer gir kortere ventetid på mobilnett."
+        },
+        {
+          "punkt": "Andre selskaper som får beskjed om hvert besøk",
+          "for": "To: Google og HubSpot",
+          "na": "Ingen",
+          "hvorfor": "Hver av dem ser IP-adressen til den som åpner siden."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "To: «Hjem» og «Alpha Negotiations»",
+          "na": "Én: «Skap større verdi i forhandlinger.»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. «Hjem» forteller ingenting."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "«Enda bedre forhandlinger»",
+          "na": "«Kurs og foredrag om forhandlinger. Mange års erfaring fra Nordea, HSBC London og Danske Markets. Foreleser ved Handelshøyskolen BI.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        },
+        {
+          "punkt": "Bilde når lenken deles",
+          "for": "Ingen",
+          "na": "Eget bilde",
+          "hvorfor": "En lenke uten bilde blir lett oversett på LinkedIn og i en melding."
+        }
+      ]
+    }
+  },
+  /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Forsiden på jtob.no
+     tar opp igjen den gamle, men med Harstad sett fra Immelen bak (15. okt). Robert
+     har sagt ja til at den gamle siden vises. Hele den frosne kopien ligger
+     i kunderepoet under arkiv/gammel-side-2026-09-30. */
+  {
+    "slug": "jakobsen-takst",
+    "tittel": "Takst i Harstad, med prisestimat før du ringer",
+    "ingress": "Robert Jakobsen er sertifisert takstmann i Norsk Takst og tømrermester, og har taksert boliger i Harstad-regionen siden 2015. Oppdragene kommer fra boligselgere, meglere, advokater og banker.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Prisestimat med spesifikasjon",
+      "Egen side for hver tjeneste",
+      "Søkeoppsett for lokale søk",
+      "Hosting"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Selvhostede fonter",
+      "Redigering rett på siden"
+    ],
+    "utfordring": {
+      "t": "Prisen lå på en egen side, med «fra» foran",
+      "a": [
+        "Den gamle siden var bygget på et ferdig WordPress-tema. Prislista lå på en underside, og nesten hver linje endte med «avhengig av størrelse og type, be om tilbud». Reisetid, kilometer og ferje sto i et eget avsnitt over.",
+        "Den som skal selge bolig, vil vite omtrent hva taksten koster før de ringer. På den gamle siden måtte de regne det ut selv."
+      ]
+    },
+    "losning": {
+      "t": "Kjent forside, prisen regnet ut",
+      "a": [
+        "Forsiden beholder det kundene kjenner fra før: logomerket, overskriften og den røde knappen. Bildet bak er Harstad sett fra Immelen. Det nye ligger under.",
+        "Rett etter tjenestene står et <b>prisestimat</b>. Du velger oppdrag, boligtype, areal og antall våtrom, og får en pris med hver linje spesifisert. Reise og energimerking står forklart der de gjelder.",
+        "Hver av de fem tjenestene har fått sin egen side, og uttalelsene står med fullt navn, blant dem to fra DNB Eiendom og en advokat."
+      ]
+    },
+    "forEtter": {
+      "for": {
+        "bilde": "/websider/for/jakobsen-takst.webp",
+        "tatt": "september 2026"
+      },
+      "kilde": "Den gamle siden er frosset 30. september 2026. Den nye er målt 9. oktober 2026.",
+      "rader": [
+        {
+          "punkt": "Hvor du finner prisen",
+          "for": "På en egen side, med «fra» og «be om tilbud»",
+          "na": "Regnes ut på forsiden, linje for linje",
+          "hvorfor": "Den som skal selge bolig, vil vite omtrent hva taksten koster før de tar kontakt."
+        },
+        {
+          "punkt": "Andre selskaper som får beskjed om hvert besøk",
+          "for": "To: Google Fonts og BootstrapCDN",
+          "na": "Ingen",
+          "hvorfor": "Hver av dem ser IP-adressen til den som åpner siden."
+        },
+        {
+          "punkt": "Hovedoverskrifter på forsiden",
+          "for": "To: «Din Takstmann i Harstad Regionen» og «Viktighet av tilstandsrapporten»",
+          "na": "Én: «Din takstmann i Harstad-regionen»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om. To overskrifter gir to svar."
+        },
+        {
+          "punkt": "Teksten siden ber Google vise i søketreffet",
+          "for": "«Din Takstmann i Harstad Regionen Tjenester En grundig og detaljert beskrivelse av boligens status. En vurdering av markedsverdien på boligen/eiendommen. Vur ...»",
+          "na": "«Sertifisert takstmann i Harstad. Tilstandsrapport, verditakst, forhåndstakst og skadetakst for bolig, tomt og fritidsbolig. Ring 928 42 296.»",
+          "hvorfor": "Det er disse linjene folk leser før de velger hvilket treff de klikker på."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "samtaleverkstedet",
+    "i": 2,
+    "tittel": "Terapi som tør å være varm i tonen",
+    "ingress": "Veiledning for ledere og folk i omsorgsyrker. Den som leter er som regel sliten når hun leter, og da betyr tonen mer enn tjenestelista.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Tekster og struktur",
+      "Portrettfoto satt inn",
+      "Søkeoppsett",
+      "Hosting og drift"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Statisk hosting",
+      "Kontaktskjema"
+    ],
+    "utfordring": {
+      "t": "Kjøperen er sliten når hun kommer",
+      "a": [
+        "Folk som søker etter veiledning for utbrenthet er ikke i humør til å bli solgt til. En side med store løfter og aggressive knapper skyver dem bort.",
+        "Samtidig må siden fortsatt gjøre en jobb. Det hjelper ikke å være vennlig hvis ingen forstår hva som tilbys eller hvordan man tar kontakt."
+      ]
+    },
+    "losning": {
+      "t": "Rolig først, tydelig rett etterpå",
+      "a": [
+        "Fargene er varme og dempede, og portrettet kommer tidlig. Du ser hvem du skal snakke med før du ser hva det koster.",
+        "I stedet for en tjenesteliste er innholdet delt i <b>tre navngitte veier</b>, så leseren kjenner seg igjen i én av dem i stedet for å måtte velge fra en meny.",
+        "Én setning midt på siden navngir tilstanden leseren er i. Det er den setningen folk husker, og den gjør mer for konverteringen enn noen knapp."
+      ]
+    }
+  },
+  {
+    "slug": "appstart",
+    "tittel": "Apper til fast pris, med prisen på forsiden",
+    "ingress": "Appstart er mitt eget selskap, sammen med Magnus. Vi bygger apper for folk som har gått med en idé i årevis og har hørt at en app koster flere hundre tusen.",
+    "gjort": [
+      "Nettside fra bunnen",
+      "Tekster og prisstruktur",
+      "Idéskjema steg for steg",
+      "Blogg med fast publiseringsrutine",
+      "Søkeoppsett"
+    ],
+    "tek": [
+      "Next.js",
+      "Forhåndsrendret på Vercel",
+      "Samtykke før sporing"
+    ],
+    "utfordring": {
+      "t": "Kjøperen tror en app koster 300 000 kr",
+      "a": [
+        "Appstart selger til folk med én idé og ingen utviklere: privatpersoner og små bedrifter. Tallet de har hørt fra bransjen, er flere hundre tusen kroner. Der stopper de fleste før de har spurt noen.",
+        "De er også redde for to ting: at idéen blir tatt, og at regningen vokser underveis. Begge deler må være besvart før de tør å fortelle hva idéen er."
+      ]
+    },
+    "losning": {
+      "t": "Prisen står før alt annet",
+      "a": [
+        "Siden sier rett ut at en app kostet 300 000 kr før, og at Appstart bygger <b>fra 15 000 kr</b>. Alle priser står eks. mva.",
+        "Skjemaet spør om én ting av gangen. Under står det at idéen behandles konfidensielt og at du eier den.",
+        "Siden sier også hva vi ikke bygger: «neste Facebook», datingapper og apper med sensitive helsedata. Den som har en slik idé, får vite det før praten."
+      ]
+    }
   }
 ];
 
@@ -290,7 +642,7 @@ export const tjenester = [
 export const stegene = [
   {
     "tid": "48 timer",
-    "navn": "Jeg bygger demoen din",
+    "navn": "Jeg bygger utkastet ditt",
     "tekst": "Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse i PowerPoint. Den ligger på en privat lenke bare du får."
   },
   {
@@ -301,12 +653,12 @@ export const stegene = [
   {
     "tid": "1–2 uker",
     "navn": "Jeg lanserer",
-    "tekst": "Domene, SSL og hosting ordner jeg. Har du en gammel side, byttes den uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe."
+    "tekst": "Domene, hosting og sikker forbindelse ordner jeg. Har du en gammel side, byttes den uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe."
   },
   {
     "tid": "Løpende",
     "navn": "Jeg passer på, hvis du vil",
-    "tekst": "Med driftsavtale følger jeg med videre. Trenger du en endring, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, får du alle filene og hjelp til å komme i gang selv."
+    "tekst": "Med driftsavtale følger jeg med videre. Trenger du en endring, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, eier du siden og får hjelp til å komme i gang selv."
   }
 ];
 
@@ -325,6 +677,12 @@ export const stegene = [
    står den rett under arbeidet den beskriver. */
 export const omtaler = [
   {
+    "sitat": "Jeg opplever å ha fått en hel ny og spennende hjemmeside - som viser tydelig hva jeg jobber med og hva jeg tilbyr av tjenester. Aleks var lyttende til mine ønsker og kom også med gode forslag.",
+    "navn": "Mélanie Dahl",
+    "rolle": "melaniedahl.com, omtale på Google",
+    "caseSlug": "melanie-dahl"
+  },
+  {
     "sitat": "Jeg fikk en vennlig henvendelse fra Aleksander i Oppskalert, og ble raskt imponert over kunnskapen og kompetansen deres. Det var lett å si ja.",
     "navn": "Guro Brakestad",
     "rolle": "Familieterapeut og foredragsholder"
@@ -342,9 +700,56 @@ export const omtaler = [
     "caseSlug": "progressive-diplomacy"
   },
   {
-    "sitat": "Kjempefornøyd :)",
+    "sitat": "Kjempefornøyd",
     "navn": "Irmelin Drake",
     "rolle": "irmelindrake.no"
+  }
+];
+
+/* Google-omtalene, ordrett fra Bedriftsprofilen (hentet 4. november 2026
+   via OpenSEO, place_id ChIJ4Z_t3dJtQUYRQEAv4cXLWXM). Åtte vurderinger,
+   seks med tekst. De to uten tekst (bare stjerner) er med i snittet i
+   heroen, men har ingenting å vise her. Nyeste først.
+
+   Teksten er ikke rettet, heller ikke skrivefeil: det er kundens ord.
+   Signaturen Birgitta skrev nederst i sin er flyttet til rolle. */
+export const googleOmtaler = [
+  {
+    "sitat": "Aleksander er positiv, grundig og opptatt av å gi god service! Han er strukturert, målbevisst og lytter samtidig som han forstår at hver kunde har behov for sitt eget unike særpreg. Dessuten er han rask - og DET er ikle alltid ellers forbundet med kvalitet, men det får du her!",
+    "navn": "Birgitta Strobel",
+    "rolle": "Kunstner og forfatter",
+    "stjerner": 5
+  },
+  {
+    "sitat": "God faglig kompetanse og rask hjelp til utforming og design av nettsiden som nå er oppdatert anno 2026. Veldig fornøyd med resultatet!",
+    "navn": "Kirstine Hansen",
+    "rolle": "Omtale på Google",
+    "stjerner": 5
+  },
+  {
+    "sitat": "Aleksander i Oppskalert har vært svært behagelig å jobbe med, og han har gjort en formidabel jobb med å oppgradere hjemmesidene våre. Allerede en par uker etter at han KI-optimerte sidene, tok en kunde kontakt etter et søk / en prompt på Claude! :)",
+    "navn": "Stein-Erik",
+    "rolle": "alphanegotiations.com, omtale på Google",
+    "caseSlug": "alpha-negotiations",
+    "stjerner": 5
+  },
+  {
+    "sitat": "Servicevennlig og god assistanse når jeg skulle koble en bestillingsside til betaling og gi meg adressene til de som bestiller bøker. :-)",
+    "navn": "Steinar Husby",
+    "rolle": "medutlagtsjarm.no, omtale på Google",
+    "stjerner": 5
+  },
+  {
+    "sitat": "Veldig fornøyd med ny nettside! Alltid hyggelig dialog og behjelpelige med endringer. Finner gode løsninger og møter behov. Kan anbefales! 🌟",
+    "navn": "Guro Brakestad",
+    "rolle": "Familieterapeut og foredragsholder, omtale på Google",
+    "stjerner": 4
+  },
+  {
+    "sitat": "Jeg opplever å ha fått en hel ny og spennende hjemmeside - som viser tydelig hva jeg jobber med og hva jeg tilbyr av tjenester. Aleks var lyttende til mine ønsker og kom også med gode forslag som gjør at jeg syns det var et gøy og solid samarbeid. Anbefaler Oppskalert videre til deg som ønsker en tydelig hjemmeside!",
+    "navn": "Mélanie Dahl",
+    "rolle": "melaniedahl.com, omtale på Google",
+    "stjerner": 5
   }
 ];
 
@@ -352,23 +757,27 @@ export const omtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "Engangspris begynner på 9 999 kroner eks. mva, og da eier du alt selv med en gang. Vil du heller fordele det over året, starter abonnementet på 1 290 i måneden med 12 måneders binding, og etterpå går du over på drift til 690 i måneden uten binding. Hva det ender på hos akkurat deg kommer an på hvor mange sider og funksjoner du trenger, men du får alltid en fast pris fra meg før jeg begynner. Og du får se demoen først, så du vet nøyaktig hva du betaler for."
+    "En enkel landingsside koster 6 990 kroner eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900. Oppskaler, med priskalkulator eller booking og tre måneder SEO, begynner på 19 900. Uansett nivå eier du alt med en gang, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie Medium til eie: 1 590 i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",
-    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Det er hele forklaringen p\u00e5 at en h\u00e5ndbygd side starter p\u00e5 9 999 kroner og ikke 25 000."
+    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Derfor koster alle sidene du har i dag, med tekster skrevet for Google og AI-søk, 12 900 kroner hos meg, der mange byr\u00e5er starter p\u00e5 25 000."
   ],
   [
-    "Hva forplikter en gratis demo meg til?",
-    "Ingenting i det hele tatt. Jeg lager et ferdig utkast av siden din, med ditt innhold, og sender deg en privat lenke. Liker du den ikke, sier du fra, så sletter jeg den. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med."
+    "Hva forplikter et gratis utkast meg til?",
+    "Ingenting i det hele tatt. Jeg lager et ferdig utkast av siden din, med ditt innhold, og sender deg en privat lenke. Liker du det ikke, sier du fra, så sletter jeg det. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med."
   ],
   [
     "Hvor lang tid tar det?",
-    "Demoen er klar innen 48 timer. Fra du sier ja til at siden står på ditt eget domene, går det stort sett en til to uker. Det som styrer tempoet er som regel hvor fort du rekker å svare meg, ikke hvor fort jeg jobber."
+    "Utkastet er klart innen 48 timer. Fra du sier ja til at siden står på ditt eget domene, går det stort sett en til to uker. Det som styrer tempoet er som regel hvor fort du rekker å svare meg, ikke hvor fort jeg jobber."
   ],
   [
     "Eier jeg siden selv etterpå?",
-    "Ja. Betaler du engangspris, får du alle filene og eier hele greia med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. På ren drift er det ingen binding og ingen oppsigelsestid, og uansett modell låser jeg ingenting inne."
+    "Ja. Betaler du engangspris, eier du siden med en gang, og domenet står i ditt navn. Vil du flytte den, får du koden når du ber om det. Velger du leie til eie, er tekstene, bildene og domenet dine hele veien, og siden blir din når 12 måneder er betalt. Ingen av modellene har binding, og jeg låser ingenting inne."
+  ],
+  [
+    "Hva hvis det skjer noe med deg?",
+    "Siden går videre som før. Den ligger hos Vercel, en stor driftsleverandør, så oppetiden hviler ikke på meg alene. Domenet står i ditt navn, og ber du om koden, får du den, så en annen utvikler kan ta over der jeg slapp."
   ],
   [
     "Jeg har allerede en nettside. Trenger jeg ny?",
@@ -381,5 +790,8 @@ export const sporsmal = [
 ];
 
 /* Slår opp omtalen som hører til én casesiden. Returnerer undefined for
-   de casene som ikke har en, og da vises ingen sitatblokk. */
-export const omtaleForCase = (slug) => omtaler.find((o) => o.caseSlug === slug);
+   de casene som ikke har en, og da vises ingen sitatblokk. Google-omtalene
+   er med fra 12.11.2026, så Stein-Eriks omtale (kunden som fant ham
+   gjennom Claude) står på Alpha Negotiations-casen. */
+export const omtaleForCase = (slug) =>
+  omtaler.find((o) => o.caseSlug === slug) || googleOmtaler.find((o) => o.caseSlug === slug);

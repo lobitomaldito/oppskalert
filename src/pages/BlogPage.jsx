@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import BloggKort from '../components/BloggKort';
-import { articles } from '../lib/articles';
+// Bare listefeltene, uten brødteksten. Se scripts/lag-artikkel-meta.mjs.
+import articles from '../content/generated/meta.json';
 import { ruter } from '../lib/site';
 import { useReveal } from '../lib/useReveal';
+import { PilOpp } from '../components/Ikon';
 
 /* Alt innhold kommer fra src/lib/articles.js (håndskrevne) og
    src/content/generated/ (migrert ut av Opinly). Ingen henting ved
@@ -73,12 +75,12 @@ const BlogPage = () => {
             La oss bygge din salgsmaskin.
           </h2>
           <p style={{ marginTop: '1rem', color: 'var(--blekk-mykt)' }}>
-            Ingen langvarige strategiprosesser. Du får se en fungerende demo før du
+            Ingen langvarige strategiprosesser. Du får se et fungerende utkast før du
             bestemmer deg.
           </p>
           <p style={{ marginTop: '2rem' }}>
             <Link className="knapp" to={ruter.kontakt}>
-              Bestill gratis demo <span className="pil" aria-hidden="true">↗</span>
+              Få et gratis utkast <PilOpp className="pil" />
             </Link>
           </p>
         </div>

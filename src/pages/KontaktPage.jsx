@@ -4,6 +4,7 @@ import DemoSkjema from '../components/DemoSkjema';
 import { kontakt } from '../lib/site';
 import { useReveal } from '../lib/useReveal';
 import { track } from '../lib/analytics';
+import { PilHoyre } from '../components/Ikon';
 
 const PORTRETT = '/founders/aleksander.webp';
 
@@ -15,7 +16,7 @@ const KontaktPage = () => {
     <Shell>
       <SEO
         title="Kontakt"
-        description="Be om en gratis demo av din nye nettside. Jeg svarer innen 24 timer. Ingen selgere, ingen kø."
+        description="Be om et gratis utkast til din nye nettside. Jeg svarer innen 24 timer. Ingen selgere, ingen kø."
         keywords={['kontakt webutvikler', 'gratis nettside demo', 'bestill nettside']}
         canonical="https://oppskalert.no/kontakt"
       />
@@ -40,7 +41,7 @@ const KontaktPage = () => {
               <div className="seksjonstopp" style={{ marginBottom: '1.5rem' }}>
                 <h2>Ring, skriv, eller send bare et navn</h2>
                 <p>
-                  Alt tre funker like bra. Det korteste svaret jeg har fått var to ord, og
+                  Alle tre funker like bra. Det korteste svaret jeg har fått var to ord, og
                   den siden er i drift nå. Er du i Oslo, tar vi det gjerne over en kaffe
                   i stedet.
                 </p>
@@ -48,12 +49,12 @@ const KontaktPage = () => {
               <ol className="nummerert" style={{ maxWidth: 'none' }}>
                 <li>
                   <a href={`tel:${kontakt.tel}`} onClick={() => track('contact_phone_clicked')}>
-                    <span className="nr">Ring</span> {kontakt.telefon} <span className="pil" aria-hidden="true">→</span>
+                    <span className="nr">Ring</span> {kontakt.telefon} <PilHoyre className="pil" />
                   </a>
                 </li>
                 <li>
                   <a href={`mailto:${kontakt.epost}`} onClick={() => track('contact_email_clicked')}>
-                    <span className="nr">E-post</span> {kontakt.epost} <span className="pil" aria-hidden="true">→</span>
+                    <span className="nr">E-post</span> {kontakt.epost} <PilHoyre className="pil" />
                   </a>
                 </li>
                 <li>
@@ -65,7 +66,7 @@ const KontaktPage = () => {
                   >
                     <span className="nr">LinkedIn</span> Aleksander MacKee
                     <span className="skjult"> (åpner i ny fane)</span>{' '}
-                    <span className="pil" aria-hidden="true">→</span>
+                    <PilHoyre className="pil" />
                   </a>
                 </li>
               </ol>

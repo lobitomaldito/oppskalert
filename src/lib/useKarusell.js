@@ -11,16 +11,18 @@ import { useEffect, useState } from 'react';
  *    på syv sekunder hvis du akkurat har begynt.
  * 3. Går i ring begge veier, så pilene aldri står i en blindvei.
  */
-export function useKarusell(antall, ms = 7000, start = 0) {
+export function useKarusell(antall, ms = 7000, start = 0, av = false) {
   const [i, setI] = useState(start);
   const [pause, settPause] = useState(false);
 
   useEffect(() => {
-    if (antall < 2 || pause) return undefined;
+    if (antall < 2 || pause || av) return undefined;
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return undefined;
-    const id = setInterval(() => setI((n) => (n + 1) % antall), ms);
-    return () => clearInterval(id);
-  }, [antall, ms, pause]);
+    // Én timeout per sitat: lange sitater får stå lenger (ms kan være en
+    // funksjon av indeksen), og et klikk på pilene starter klokka på nytt.
+    const id = setTimeout(() => setI((n) => (n + 1) % antall), typeof ms === 'function' ? ms(i) : ms);
+    return () => clearTimeout(id);
+  }, [antall, ms, pause, av, i]);
 
   const gaa = (retning) => setI((n) => (n + retning + antall) % antall);
 
