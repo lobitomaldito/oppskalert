@@ -1064,6 +1064,11 @@
   }
   .sitat-slide.aktiv { opacity: 1; }
   @media (prefers-reduced-motion: reduce) { .sitat-slide { transition: none; } }
+  /* Ord for ord (SitatKarusell). Forsinkelsen gjelder bare på vei inn, så et
+     sitat som byttes ut forsvinner samlet med sliden. */
+  .sitat-slide .ord { opacity: 0; transition: opacity .3s var(--e); }
+  .sitat-slide.aktiv .ord { opacity: 1; transition-delay: calc(var(--i) * var(--ord)); }
+  @media (prefers-reduced-motion: reduce) { .sitat-slide .ord { opacity: 1; transition: none; } }
   .sitat-topp { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
   .sitat-styring { display: flex; gap: .4rem; }
   .sitat-styring button {

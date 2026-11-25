@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import { Check, X } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import Metode from '../components/Metode';
+import SitatKarusell from '../components/SitatKarusell';
 import { useReveal } from '../lib/useReveal';
-import { omtaler } from '../lib/demo-innhold';
 
 /* De to listene under er ordrett fra den gamle MetodePage.jsx (før
    studio-mal-redesignet), git show origin/master:src/pages/MetodePage.jsx.
@@ -65,45 +64,6 @@ const Kontrast = () => {
   );
 };
 
-/* Sitatkort med to piler som blar gjennom omtaler. Samme data og samme
-   frem/tilbake-logikk som studio-mal-demoen sin data-sitatkort, portert
-   til React state i stedet for direkte DOM-manipulasjon. */
-const SitatKort = () => {
-  const [n, setN] = useState(0);
-  const omtale = omtaler[n];
-  const initial = omtale.navn.split(' ').map((d) => d[0]).slice(0, 2).join('');
-  const skift = (retning) => setN((i) => (i + retning + omtaler.length) % omtaler.length);
-
-  return (
-    <div className="sitatkort paa-blekk inn">
-      <div className="sitat-topp">
-        <div className="sitat-styring">
-          <button type="button" onClick={() => skift(-1)} aria-label="Forrige omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="M14 5 7 12l7 7" />
-            </svg>
-          </button>
-          <button type="button" onClick={() => skift(1)} aria-label="Neste omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="m10 5 7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-        <p className="sitat-teller">{n + 1} / {omtaler.length}</p>
-        <p className="etikett" style={{ marginLeft: 'auto' }}>Fra kundene</p>
-      </div>
-      <blockquote>«{omtale.sitat}»</blockquote>
-      <div className="sitat-kilde">
-        <span className="initial" aria-hidden="true">{initial}</span>
-        <div>
-          <p className="navn">{omtale.navn}</p>
-          <p className="rolle">{omtale.rolle}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const MetodePage = () => (
   <Shell>
     <SEO
@@ -138,7 +98,7 @@ const MetodePage = () => (
 
     <section className="sitatblokk" style={{ paddingTop: 'var(--luft)' }}>
       <div className="wrap">
-        <SitatKort />
+        <SitatKarusell className="paa-blekk inn" />
       </div>
     </section>
 
