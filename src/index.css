@@ -659,6 +659,39 @@
     pointer-events: none;
   }
 
+  /* Laptop i verkstedet med rullende kundeside (PultMockup.jsx). Skjermen
+     er bygget i fotoets koordinater (1600 x 1067, utsnitt av Pexels
+     6446678) og skalert med --s, som JavaScript setter. Hjørnene ble målt
+     i fotoet 25.11.2026: (415,429) (1083,433) (1074,864) (396,836). */
+  .pult { position: relative; overflow: hidden; border-radius: var(--rund); background: var(--kort); }
+  .pult > img { display: block; width: 100%; height: auto; }
+  .pult-lag {
+    display: none; position: absolute; top: 0; left: 0;
+    width: 1600px; height: 1067px;
+    transform-origin: 0 0; transform: scale(var(--s, 0));
+    pointer-events: none;
+  }
+  .pult-klar .pult-lag { display: block; }
+  .pult-skjerm {
+    position: absolute; top: 0; left: 0; width: 668px; height: 420px;
+    overflow: hidden; /* gjennomsiktig: bunnbildet viser toppen til skjermbildet er lastet */
+    transform-origin: 0 0;
+    transform: matrix3d(0.911351, -0.0294552, 0, -8.1855e-05, -0.0598289, 0.938245, 0, -3.68455e-05, 0, 0, 1, 0, 415, 429, 0, 1);
+  }
+  .pult-skjerm img {
+    display: block; width: 100%; height: auto;
+    --til: -83.9%;
+    animation: rammerull 40s ease-in-out infinite alternate;
+  }
+  .pult.utenfor .pult-skjerm img { animation-play-state: paused; }
+  @media (prefers-reduced-motion: reduce) { .pult-lag, .pult-klar .pult-lag { display: none; } }
+  .pult-tekst {
+    margin-top: 1rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem;
+    font-size: .875rem; color: var(--blekk-mykt);
+  }
+  .pult-tekst a { color: var(--blekk); border-bottom: 1px solid var(--felt-kant); transition: border-color .2s var(--e); }
+  @media (hover: hover) and (pointer: fine) { .pult-tekst a:hover { border-color: var(--blekk); } }
+
   /* Synlig kun for skjermlesere. Sier at en lenke åpner i ny fane,
      som ellers bare er en pil ingen skjermleser kan tolke. */
   .skjult {
