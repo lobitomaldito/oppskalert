@@ -21,7 +21,7 @@ const Metode = ({ utdypet = false }) => {
       data-reveal
       className={
         utdypet
-          ? 'md:grid md:grid-cols-[auto_1fr] md:gap-8'
+          ? 'rounded-kort bg-room-deep p-6 md:p-9'
           : 'relative rounded-kort border border-room-ink/20 bg-room-ink/10 p-6'
       }
     >
@@ -33,19 +33,19 @@ const Metode = ({ utdypet = false }) => {
           {i + 1}
         </span>
         {utdypet && (
-          <span className="md:hidden font-body text-sm text-room-ink/70">{s.tid}</span>
+          <span className="font-body text-sm text-room-ink/70">{s.tid}</span>
         )}
       </div>
 
-      <div className={utdypet ? 'md:pt-1' : ''}>
+      <div>
         <h3 className="font-sans font-bold text-lg md:text-xl">
           <span className="sr-only">Steg {i + 1}: </span>{s.tittel}
         </h3>
         {/* Tiden sto i versaler med sperring. Den er opplysning, ikke en
             etikett som skal rope, så den er nå vanlig småtekst. */}
-        <span className={`block font-body text-sm text-room-ink/70 mt-1 ${utdypet ? 'hidden md:block' : ''}`}>
-          {s.tid}
-        </span>
+        {!utdypet && (
+          <span className="block font-body text-sm text-room-ink/70 mt-1">{s.tid}</span>
+        )}
 
         {/* Kortene sto nesten tomme. I en horisontal scroller koster høyde
             ingenting, så her er det plass til å faktisk si hva steget er. */}
@@ -90,7 +90,7 @@ const Metode = ({ utdypet = false }) => {
       <div className="wrap">
         <div className="mb-12 md:mb-16">
           <h2 className="font-display font-light text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.022em]">
-            Demoen kommer først. Regningen kommer sist.
+            Utkastet kommer først. Regningen kommer sist.
           </h2>
           <p className="font-body text-sm md:text-base mt-4 max-w-[54ch] leading-relaxed text-room-ink/80">
             De fleste vil ha møter, tilbud og forskudd før du ser noe som helst. Jeg snur på det: du får en ferdig side å klikke i før du har betalt en krone.
@@ -98,7 +98,9 @@ const Metode = ({ utdypet = false }) => {
         </div>
 
         {utdypet ? (
-          <ol className="flex flex-col gap-10 md:gap-14">{steg}</ol>
+          /* Stegene som kort fra 12.11.2026 (Aleksander: «bare tekst og hvit
+             bakgrunn»), to og to fra lg. Tallet og tiden står øverst i kortet. */
+          <ol className="grid gap-4 lg:grid-cols-2">{steg}</ol>
         ) : (
           /* Fire steg stablet på mobil spiste for mye høyde. Samme
              horisontale scroller som resten av forsiden, kun her fordi

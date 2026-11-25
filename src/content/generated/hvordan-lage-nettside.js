@@ -1,13 +1,57 @@
 export default {
   slug: "hvordan-lage-nettside",
-  title: "Hvordan lage nettside: gjøre det selv, eller sette det bort?",
-  description: "Bør du lage nettsiden selv med et byggeverktøy, eller sette den bort? Her er tidsbruken, kostnadene og spørsmålene som avgjør hva som lønner seg.",
+  klynge: "nettside",
+  /* SEO-rutinen 28. sep 2026, GSC 28 dager: denne artikkelen og
+     /vanlige-sporsmal/hvordan-lage-nettside delte 81 søk i «lage nettside»-klyngen,
+     ca. 3 000 visninger. Her snitt pos 30-55, FAQ-siden 60-85, 0 klikk på begge.
+     Norske topptreff er steg-for-steg-guider («8 steg», «6 steg»), artikkelen var en
+     valgartikkel. Stegene er lagt inn, title har «lage nettside» først (176 visninger,
+     pos 52), og FAQ-siden lenker hit. Mål igjen om 4 uker.
+
+     28. okt 2026: målt igjen. Google valgte FAQ-siden likevel, den fikk nesten
+     hele klyngen (153 visninger på «lage nettside», pos 42-62) mens artikkelen
+     fikk en håndfull. FAQ-siden er slått sammen hit med 301 i vercel.json, og
+     kortsvaret derfra står nå øverst her, så «hvordan lager man en nettside»
+     (pos 15) har et svar i første avsnitt. Mål igjen rundt 25. november. */
+  title: "Lage nettside: 5 steg, selv eller med hjelp",
+  description: "Slik lager du nettside i fem steg: domene, mål, tekst, bygging og måling. Pluss timene det tar selv, og når det lønner seg å sette det bort.",
   publishDate: "2026-08-13",
-  keywords: ["hvordan lage nettside", "lage nettside selv"],
-  hero: "",
+  keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
+  hero: "/blogg/hvordan-lage-nettside.webp",
+  updatedDate: "2026-11-12",
+  svar: "Slik lager man en nettside: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. Gjør du det selv, går det med 20 til 40 timer. Setter du det bort til meg, tar det 1 til 2 uker fra du sier ja.",
+  faq: [
+    { q: "Hvor lang tid tar det å lage en nettside selv?", a: "Regn med 20 til 40 timer med et enkelt byggeverktøy, når research, tekst og design er med." },
+    { q: "Hva koster et .no-domene?", a: "Rundt 150 kroner i året hos en norsk registrar. Domenet skal stå registrert på deg eller bedriften din, aldri på leverandøren." },
+    { q: "Hvilke gratis verktøy bør jeg koble på?", a: "Google Search Console, som viser hva folk søkte på før de fant deg, og et enkelt besøksverktøy. Send inn sitemapen samme dag som siden går live." },
+  ],
   content: `## Tre veier til en nettside i dag
 
 Du har i praksis tre valg når bedriften din trenger nettside. Du kan bygge den selv med et byggeverktøy som Wix eller Squarespace, du kan leie inn en frilanser eller et byrå, eller du kan kombinere begge deler ved å starte selv og hente inn hjelp der du står fast. Ingen av alternativene er feil i seg selv. Det som avgjør riktig valg er hvor mye tid du faktisk har, hvor teknisk du er fra før, og hvor mye nettsiden skal bety for inntektene dine det første året.
+
+## Slik lager du en nettside, steg for steg
+
+Rekkefølgen under gjelder uansett om du bruker et byggeverktøy eller setter jobben bort. De fleste som står fast, har gjort steg 4 før steg 3.
+
+### 1. Sikre domenet
+
+Kjøp domenet før du bestemmer navnet endelig. Et .no-domene koster rundt 150 kroner i året hos en norsk registrar, og det skal stå registrert på deg eller bedriften din, aldri på leverandøren. Sjekk samtidig at navnet er ledig på Facebook og Instagram, og sett opp e-post på domenet med en gang. En henvendelse fra post@dittfirma.no leses annerledes enn en fra en gratisadresse.
+
+### 2. Bestem hva siden skal få folk til å gjøre
+
+Skriv én setning: hva skal en besøkende gjøre når de har lest siden? Ringe, bestille time, sende en forespørsel eller finne veien til butikken. Den setningen avgjør hvilke sider du trenger. For de fleste små bedrifter holder fire: forside, tjenester, om og kontakt.
+
+### 3. Skriv teksten før du tegner noe
+
+Nesten alle nettsideprosjekter som stopper opp, stopper på tekst. Designet står ferdig, og så ligger prosjektet stille i seks uker fordi ingen har skrevet hva bedriften faktisk gjør. Start med fire spørsmål: hva selger du, hvem er det til, hva koster det, og hva skal folk gjøre nå. Fire svar gir fire avsnitt, og da har du en forside.
+
+### 4. Bygg siden
+
+Nå velger du verktøy: et byggeverktøy som Wix eller Squarespace, WordPress, eller [en leverandør som bygger for deg](/nettside-til-bedrift). Test på mobil før alt annet, for der kommer de fleste besøkende. Siden bør laste på under to sekunder på 4G, og telefonnummeret bør kunne trykkes på.
+
+### 5. Koble på måling og meld siden inn til Google
+
+Legg inn Google Search Console, som viser hva folk søkte på før de fant deg, og et enkelt besøksverktøy. Begge er gratis. Send inn sitemapen i Search Console samme dag som siden går live. Kobler du på måling i etterkant, mister du tallene fra de første månedene, og det er akkurat den perioden du vil sammenligne mot senere.
 
 ## Når gjør-det-selv faktisk er riktig valg
 
@@ -20,6 +64,16 @@ De fleste byggeverktøy reklamerer med at du "ikke trenger å kunne kode". Det s
 ## Hva du egentlig betaler for når du setter det bort
 
 Når du leier inn noen til å bygge siden, betaler du ikke bare for koden. Du betaler for at noen andre bruker tiden sin på research, tekst, struktur og testing, tid du ellers måtte brukt selv, ofte uten samme erfaring. En enkel bedriftsside fra en frilanser eller en liten leverandør koster typisk 15 000 til 60 000 kroner, avhengig av omfang. Spør alltid hva som inngår: er tekst og bilder med, eller må du levere alt selv? Prisforskjellen mellom to tilbud handler ofte om nettopp dette, ikke om kvaliteten på selve koden.
+
+## Vil du at noen bygger nettsiden for deg?
+
+Da setter du bort steg 3 og 4, og gjør steg 1 og 2 sammen med den som bygger. Hos meg er prisen fast og avtalt før jeg begynner, eks. mva.:
+
+- **6 990 kr** for én landingsside med alt på ett sted.
+- **12 900 kr** for alle sidene du har i dag, med tekster skrevet for Google.
+- **Fra 19 900 kr** når du trenger booking, en priskalkulator eller et annet verktøy.
+
+Du får et ferdig utkast på 48 timer før du bestemmer deg, og siden er oppe 1 til 2 uker etter at du sier ja. Alt som inngår står på [prissiden](/priser).
 
 ## Tidsbruk: den skjulte kostnaden ved å gjøre det selv
 

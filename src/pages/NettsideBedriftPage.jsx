@@ -24,7 +24,7 @@ const bedriftSchema = [
     name: 'Nettside til bedrift',
     serviceType: 'Nettside for små og mellomstore bedrifter',
     description:
-      'Nettside til bedrift med fast pris og gratis demo først. Bygget for at kunder skal finne deg, forstå hva du selger og ta kontakt.',
+      'Nettside til bedrift med fast pris og gratis utkast først. Bygget for at kunder skal finne deg, forstå hva du selger og ta kontakt.',
     areaServed: { '@type': 'Country', name: 'Norge' },
     provider: { '@type': 'Organization', name: 'Oppskalert', url: 'https://oppskalert.no' },
     url: CANONICAL,
@@ -54,8 +54,8 @@ const punkter = [
 const NettsideBedriftPage = () => (
   <Shell>
     <SEO
-      title="Nettside til bedrift, fast pris og gratis demo"
-      description="Trenger bedriften din en ny nettside? Slik ser en side ut som faktisk skaffer kunder, hva den må inneholde for å være lovlig, og hva den koster. Demo før du bestemmer deg."
+      title="Nettside til bedrift, fast pris og gratis utkast"
+      description="Trenger bedriften din en ny nettside? Slik ser en side ut som faktisk skaffer kunder, hva den må inneholde for å være lovlig, og hva den koster. Utkast før du bestemmer deg."
       keywords={['nettside for bedrift', 'hjemmeside bedrift', 'nettside til bedrift', 'bedriftsnettside']}
       canonical={CANONICAL}
       jsonLd={bedriftSchema}

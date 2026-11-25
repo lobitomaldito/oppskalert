@@ -1,5 +1,6 @@
 import { articles } from '../src/lib/articles.js';
 import { caser } from '../src/lib/demo-innhold.js';
+import { bransjer, RUTE_BRANSJE } from '../src/lib/bransjer.js';
 import { populaereSok } from '../src/lib/populaere-sok.js';
 import { ordliste } from '../src/lib/ordliste.js';
 
@@ -13,14 +14,15 @@ const SITE_URL = 'https://oppskalert.no';
 // SEO.jsx), og skal derfor ikke stå i sitemapen — Googles egne retningslinjer
 // sier en noindex'et URL ikke hører hjemme her.
 const STATIC_PATHS = [
-  '/', '/arbeid', '/priser', '/kalkulator', '/drift', '/vanlige-sporsmal',
+  '/', '/arbeid', '/priser', '/drift', '/vanlige-sporsmal',
   '/sammenlign',
   ...populaereSok.map((s) => `/vanlige-sporsmal/${s.slug}`),
   '/ordliste',
   ...ordliste.map((o) => `/ordliste/${o.slug}`),
   '/sammenlign/wix', '/sammenlign/wordpress', '/sokemotoroptimalisering',
   '/webdesign-oslo', '/nettside-design', '/nettside-til-bedrift', '/ny-nettside', '/lage-nettbutikk',
-  '/metode', '/om', '/kontakt', '/blogg', '/personvern',
+  '/metode', '/om', '/kontakt', '/blogg', '/personvern', '/gratis-nettsidesjekk',
+  ...bransjer.map((b) => RUTE_BRANSJE(b.slug)),
   ...caser.map((c) => `/arbeid/${c.slug}`),
 ];
 

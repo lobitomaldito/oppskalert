@@ -1,4 +1,4 @@
-import posthog from './posthog';
+import { hentPosthog, posthogNa } from './posthog';
 import { demoClient } from './demoRequest';
 
 // Én kilde til sannhet for sporing. Alle event-kall går gjennom track()/
@@ -15,7 +15,7 @@ import { demoClient } from './demoRequest';
 // hvis posthog.init() aldri kjørte (mangler token, eller prerender).
 const anonId = () => {
   try {
-    return posthog.get_distinct_id() || null;
+    return posthogNa()?.get_distinct_id() || null;
   } catch {
     return null;
   }
@@ -36,9 +36,26 @@ async function logOwnEvent(event, properties) {
   }
 }
 
+// GA4-taggen ligger i index.html (G-ZK79YPLLX8), men fikk fram til nå bare
+// sidevisninger. Google Ads kan ikke måle konverteringer selv uten en egen
+// AW-tagg, så veien inn dit går via GA4: hendelsen sendes hit, markeres som
+// nøkkelhendelse i GA4, og importeres som konvertering i Google Ads.
+//
+// Guarden er ikke pynt. `track()` kalles også under prerenderingen, og der
+// finnes verken window eller gtag før taggen har rukket å laste.
+function sendToGa4(event, properties) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+  try {
+    window.gtag('event', event, properties);
+  } catch {
+    /* GA4 skal aldri kunne velte et skjema som ellers ville gått gjennom */
+  }
+}
+
 export function track(event, properties = {}) {
-  posthog.capture(event, properties);
+  hentPosthog().then((ph) => ph?.capture(event, properties));
   logOwnEvent(event, properties);
+  sendToGa4(event, properties);
 }
 
 // Identifiser bare når vi faktisk har fått e-posten fra brukeren, altså
@@ -47,5 +64,5 @@ export function track(event, properties = {}) {
 // fra anonym til en profil.
 export function identify({ email, userId, ...traits } = {}) {
   if (!email) return;
-  posthog.identify(userId || email, { email, ...traits });
+  hentPosthog().then((ph) => ph?.identify(userId || email, { email, ...traits }));
 }

@@ -1,12 +1,13 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
+import Arbeider from '../components/Arbeider';
 import BransjeEksempler from '../components/BransjeEksempler';
 import DemoSkjema from '../components/DemoSkjema';
+import SitatKarusell from '../components/SitatKarusell';
 import { useReveal } from '../lib/useReveal';
-import { caser, omtaler } from '../lib/demo-innhold';
-import { prosjekter, toganger } from '../lib/site';
+import { kontakt, prosjekter } from '../lib/site';
+import { track } from '../lib/analytics';
+import { PilHoyre } from '../components/Ikon';
 
 const arbeidSchema = {
   '@context': 'https://schema.org',
@@ -24,91 +25,6 @@ const arbeidSchema = {
   },
 };
 
-/* Sitatkortet fra studio-mal-demoen (mal3.src.html rundt linje 1425).
-   Teksten kommer fra demo-innhold.js sin omtaler-liste, ordrett. Kortet
-   sykler gjennom listen med de to rundknappene, akkurat som i demoen. */
-const SitatKort = () => {
-  const [indeks, setIndeks] = useState(0);
-  const n = ((indeks % omtaler.length) + omtaler.length) % omtaler.length;
-  const o = omtaler[n];
-  const initial = o.navn.split(' ').map((d) => d[0]).slice(0, 2).join('');
-
-  return (
-    <div className="sitatkort paa-blekk" data-reveal>
-      <div className="sitat-topp">
-        <div className="sitat-styring">
-          <button type="button" onClick={() => setIndeks((i) => i - 1)} aria-label="Forrige omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="M14 5 7 12l7 7" />
-            </svg>
-          </button>
-          <button type="button" onClick={() => setIndeks((i) => i + 1)} aria-label="Neste omtale">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-              <path d="m10 5 7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-        <p className="sitat-teller">{n + 1} / {omtaler.length}</p>
-        <p className="etikett" style={{ marginLeft: 'auto' }}>Fra kundene</p>
-      </div>
-      <blockquote>«{o.sitat}»</blockquote>
-      <div className="sitat-kilde">
-        <span className="initial" aria-hidden="true">{initial}</span>
-        <div>
-          <p className="navn">{o.navn}</p>
-          <p className="rolle">{o.rolle}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/* Arbeidsrutenettet fra studio-mal-demoen (data-arbeider, mal3.src.html
-   rundt linje 1360). H-nivået er h2 på denne siden (data-nivaa="2" i
-   demoen), fordi seksjonen selv ikke har noen egen H2 over rutenettet.
-   Kortets tittel er case-tittelen fra demo-innhold.js: i demoen har
-   ARBEIDER-oppføringene sin egen (nesten identiske) tagline, men den
-   teksten er ikke del av det ordrett uthentede innholdet, så case-
-   tittelen brukes her for begge steder teksten vises. */
-/* Prosjektet slås opp på slug, ikke på indeksen c.i.
-
-   c.i var en posisjon inn i prosjekter-arrayen, og den brøt stille da et
-   nytt prosjekt ble satt inn midt i lista 21. august: case-sidene pekte
-   da på nabo-prosjektets bilder og domene, uten noen feilmelding. */
-const ArbeiderGrid = () => (
-  <div className="arbeider">
-    {caser.map((c, i) => {
-      const p = prosjekter.find((rad) => rad.slug === c.slug);
-      if (!p) return null;
-      return (
-        <article className="arbeid" key={c.slug} data-reveal>
-          <Link to={`/arbeid/${c.slug}`}>
-            <div className="ramme">
-              <div className="ramme-topp">
-                <i aria-hidden="true" /><i aria-hidden="true" /><i aria-hidden="true" />
-                <p>{p.domene}</p>
-              </div>
-              <div className="ramme-vindu">
-                <img
-                  src={p.full}
-                  srcSet={toganger(p.full)}
-                  alt={`Nettsiden til ${p.navn}`}
-                  loading="lazy"
-                  width="620"
-                  height="2422"
-                  style={{ '--til': p.til, animationDelay: `${0.6 + i * 0.7}s`, animationDuration: `${30 + i * 2}s` }}
-                />
-              </div>
-            </div>
-            <p className="etikett">{p.bransje}</p>
-            <h2>{c.tittel} <span className="ut" aria-hidden="true">→</span></h2>
-          </Link>
-        </article>
-      );
-    })}
-  </div>
-);
-
 const ArbeidPage = () => {
   const container = useReveal(80);
 
@@ -123,26 +39,40 @@ const ArbeidPage = () => {
       />
 
       <div ref={container}>
-        <section className="wrap sidetopp">
-          <p className="etikett" data-reveal>Arbeid</p>
-          <h1 data-reveal>Sider jeg har bygget.</h1>
-          <p data-reveal>
-            Hagestell, psykologi, foredrag, terapi og rådgivning. Alle sammen norske
-            småbedrifter, alle sammen i drift akkurat nå. Rammene ruller gjennom sidene
-            slik de står, så du slipper å ta mitt ord for det. Klikk deg gjerne innom,
-            de tåler et besøk.
-          </p>
-        </section>
+        {/* Sidetoppen med stor overskrift og ingress er tatt ut: den skjøv
+            det første prosjektet under folden, og siden er til for å vise
+            prosjektene. H1-en står igjen for skjermlesere og søkemotorer,
+            så siden fortsatt har en overskrift over h2-ene i rutenettet. */}
+        <h1 className="skjult">Sider jeg har bygget</h1>
 
         <section className="hvit">
           <div className="wrap seksjon">
-            <ArbeiderGrid />
+            {/* Alle prosjekter med en fangst, ikke bare de seks med case-side.
+                h2 fordi seksjonen ikke har noen egen H2 over rutenettet. */}
+            <Arbeider antall={prosjekter.length} nivaa={2} reveal />
+            {/* Handling rett under rutenettet (25.11.2026). De fleste kommer hit
+                fra lenken i purringen, og skjemaet nederst ligger bak sitatet og
+                bransjeeksemplene. Knappen hopper ned til skjemaet, telefonen er
+                for håndverkerne, som er de fleste som klikker. */}
+            <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <p className="font-sans font-bold text-lg w-full sm:w-auto">Vil du ha et gratis utkast av din side?</p>
+              <a href="#bestill-demo" className="knapp" onClick={() => track('arbeid_cta_klikket', { knapp: 'utkast' })}>
+                Få et gratis utkast <PilHoyre className="pil" />
+              </a>
+              <a
+                href={`tel:${kontakt.tel}`}
+                onClick={() => track('arbeid_cta_klikket', { knapp: 'ring' })}
+                className="min-h-11 inline-flex items-center font-sans text-sm underline underline-offset-4 hover:opacity-70 transition-opacity"
+              >
+                eller ring {kontakt.telefon}
+              </a>
+            </div>
           </div>
         </section>
 
         <section className="sitatblokk" style={{ paddingTop: 'var(--luft)' }}>
           <div className="wrap">
-            <SitatKort />
+            <SitatKarusell className="paa-blekk" data-reveal />
           </div>
         </section>
       </div>

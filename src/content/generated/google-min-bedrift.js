@@ -1,10 +1,18 @@
 export default {
   slug: "google-min-bedrift",
+  klynge: "seo",
   title: "Google Bedriftsprofil: slik blir bedriften synlig i lokale søk",
   description: "Google Bedriftsprofil avgjør om bedriften din vises i lokale søk. Her er feltene som faktisk påvirker rangeringen, og hva du bør fikse først.",
   publishDate: "2026-08-06",
   keywords: ["google min bedrift", "google bedriftsprofil"],
   hero: "/blogg/google-min-bedrift.webp",
+  updatedDate: "2026-11-11",
+  svar: "Google Bedriftsprofil er den gratis oppføringen som vises i kartet og i de tre lokale treffene øverst i mobilsøk. Du rangerer høyere med presis kategori, komplette åpningstider, samme adresse og telefonnummer som på nettsiden, bilder, og mange anmeldelser som du svarer på. Hva profilen er, og hvordan du setter den opp, står kort i [Google Bedriftsprofil: spørsmål og svar](/vanlige-sporsmal/google-bedriftsprofil).",
+  faq: [
+    { q: "Er Google Bedriftsprofil gratis?", a: "Ja. Profilen er gratis å opprette og oppdatere." },
+    { q: "Hvordan får jeg flere anmeldelser?", a: "Spør fornøyde kunder direkte, med en lenke på SMS eller e-post rett etter leveransen. Det gir langt flere svar enn å vente på at de husker det selv." },
+    { q: "Er Google Min Bedrift og Google Bedriftsprofil det samme?", a: "Ja. Google Bedriftsprofil er det nye navnet på Google Min Bedrift." },
+  ],
   content: `## Hva Google Bedriftsprofil faktisk er
 
 Google Bedriftsprofil, tidligere kalt Google Min Bedrift, er den gratis oppføringen som dukker opp når noen søker etter bedriften din, eller etter en tjeneste du tilbyr, i nærheten av der de befinner seg. Den vises i kartet, i "lokalpakken" med tre treff øverst på mobilsøk, og som en informasjonsboks til høyre på skjermen ved søk på PC. For en bedrift med fysisk adresse eller et geografisk nedslagsfelt er dette ofte den første kontakten en potensiell kunde har med deg, før de i det hele tatt besøker nettsiden. En ufullstendig eller feil profil er dermed et førsteinntrykk du taper penger på hver eneste dag.
@@ -19,7 +27,7 @@ Google vurderer tre ting når den bestemmer hvem som vises i lokalpakken: releva
 
 ## Anmeldelser veier tyngre enn du tror
 
-Antall anmeldelser og gjennomsnittlig vurdering er blant de sterkeste signalene Google bruker for lokal rangering. En bedrift med 40 anmeldelser og 4,7 i snitt slår som regel en konkurrent med fem anmeldelser, selv om begge leverer like god kvalitet. Det som ofte overrasker er hvor lite som skal til: å spørre fornøyde kunder direkte, gjerne med en lenke sendt på SMS eller e-post rett etter leveransen, gir langt flere svar enn å håpe noen husker å gjøre det selv uken etter. Svar også på anmeldelsene du får, både positive og negative. Det viser at noen faktisk driver bedriften.
+Antall anmeldelser og gjennomsnittlig vurdering er blant de sterkeste signalene Google bruker for lokal rangering. En bedrift med 40 anmeldelser og 4,7 i snitt slår som regel en konkurrent med fem anmeldelser, selv om begge leverer like god kvalitet. Det som ofte overrasker er hvor lite som skal til: å spørre fornøyde kunder direkte, gjerne med en lenke sendt på SMS eller e-post rett etter leveransen, gir langt flere svar enn å håpe noen husker å gjøre det selv uken etter. Svar også på anmeldelsene du får, både positive og negative. Det viser at noen faktisk driver bedriften. Omtalene kan også stå som tekst på nettsiden, slik jeg gjør på hver [nettside for terapeuter](/nettside-for-terapeut).
 
 ## Bilder og oppdateringer holder profilen aktiv
 
@@ -31,5 +39,5 @@ Den vanligste feilen er å sette opp profilen én gang og aldri røre den igjen.
 
 ## Hva du bør gjøre denne uken
 
-Logg inn på Google Bedriftsprofil og gå gjennom hvert eneste felt: kategori, åpningstider, adresse og beskrivelse. Sammenlign telefonnummer og adresse mot det som står på nettsiden din. Send deretter en direkte lenke til de siste fem kundene dine og be om en ærlig anmeldelse. Disse to grepene tar under en time samlet, og er ofte det raskeste du kan gjøre for å bli mer synlig i søk denne måneden.`,
+Logg inn på Google Bedriftsprofil og gå gjennom hvert eneste felt: kategori, åpningstider, adresse og beskrivelse. Sammenlign telefonnummer og adresse mot det som står på nettsiden din. Send deretter en direkte lenke til de siste fem kundene dine og be om en ærlig anmeldelse. Disse to grepene tar under en time samlet, og er ofte det raskeste du kan gjøre for å [bli mer synlig i søk](/sokemotoroptimalisering) denne måneden.`,
 };

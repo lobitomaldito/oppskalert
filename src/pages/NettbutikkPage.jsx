@@ -52,8 +52,12 @@ const punkter = [
 const NettbutikkPage = () => (
   <Shell>
     <SEO
-      title="Lage nettbutikk for norske småbedrifter"
-      description="Skal du lage nettbutikk? Slik ser en butikk ut som faktisk selger: Vipps og kort, frakt som stemmer i kassen, og produktsider som blir funnet i søk. Pris etter en kort samtale."
+      /* SEO-rutinen 9. nov 2026, GSC 28 dager: «lage nettbutikk» 166 visninger,
+         FAQ-siden hva-koster-nettbutikk pos 15,4 mot denne siden pos 28,4. Topptreffene
+         er steg-for-steg-guider, så title tar stegene og lovkravet først. Mål igjen
+         rundt 7. desember. */
+      title="Lage nettbutikk: stegene, lovkrav og Vipps"
+      description="Skal du lage nettbutikk? Stegene fra samtale til første ordre, det loven krever før lansering, og Vipps og frakt som stemmer i kassen."
       keywords={['lage nettbutikk', 'nettbutikk', 'starte nettbutikk', 'nettbutikk pris']}
       canonical={CANONICAL}
       jsonLd={nettbutikkSchema}
@@ -93,12 +97,48 @@ const NettbutikkPage = () => (
         </p>
       </Avsnitt>
 
+      {/* Lagt til 21. sep 2026 av SEO-rutinen. Search Console, 28 dager:
+          «lage nettbutikk» 404 visninger, denne siden pos 30, 0 klikk.
+          Topp 10 er i hovedsak veiledninger med steg og sjekklister, og
+          siden hadde ingen av delene. De to avsnittene under svarer på
+          den halvdelen av søket uten å gjøre siden om til en guide. */}
+      <Avsnitt tittel="Slik lager jeg" uthevet="en nettbutikk, steg for steg.">
+        <ol className="list-decimal pl-5 flex flex-col gap-2">
+          <li>En samtale om hva du selger: antall produkter, varianter som størrelse og farge, og hvordan varene sendes. Du får en fast pris etterpå.</li>
+          <li>Kassen og betalingen settes opp først, med Vipps og kort, og testes med ekte betalinger.</li>
+          <li>Frakt kobles mot Bring eller Posten, så prisen kunden ser stemmer med det du betaler.</li>
+          <li>Produktsidene bygges, hver med egen tittel, beskrivelse og strukturerte data med pris og lagerstatus.</li>
+          <li>Vilkår, angrerett og personvernerklæring legges inn.</li>
+          <li>En testordre går hele veien fra handlekurv til pakke, før butikken åpner.</li>
+        </ol>
+      </Avsnitt>
+
+      <Avsnitt tittel="Det loven krever" uthevet="før første ordre.">
+        <p>
+          En nettbutikk som selger til forbrukere har flere plikter enn en vanlig
+          nettside. Dette må være på plass fra dag én:
+        </p>
+        <ul className="list-disc pl-5 flex flex-col gap-2">
+          <li>14 dagers angrerett etter angrerettloven, med angreskjema kunden får tilsendt.</li>
+          <li>Navn, adresse, e-post og organisasjonsnummer synlig i butikken, etter ehandelsloven.</li>
+          <li>Totalpris med mva og frakt vist før kunden bekrefter kjøpet.</li>
+          <li>Salgsbetingelser. Forbrukertilsynet har standardvilkår for netthandel som er et trygt utgangspunkt.</li>
+          <li>Personvernerklæring, og samtykke før informasjonskapsler til analyse eller annonser settes.</li>
+          <li>MVA-registrering når omsetningen passerer 50 000 kroner i løpet av tolv måneder.</li>
+        </ul>
+      </Avsnitt>
+
       <Avsnitt tittel="Hva det koster," uthevet="og hvorfor jeg ikke sier det her.">
         <p>
           Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har
           snakket sammen. Ikke for å være vag, men fordi spennet er reelt: fem
           produkter uten varianter og ti tusen produkter med lager, størrelser og
-          regnskapsintegrasjon er to helt forskjellige jobber.
+          regnskapsintegrasjon er to helt forskjellige jobber.{' '}
+          {/* SEO 16.11.2026: «lage nettbutikk» 211 visninger/28 d, FAQ-en pos 16,9 vs denne siden pos 35,8. FAQ-en eier prisspørsmålet, denne lenker dit. */}
+          <Link to="/vanlige-sporsmal/hva-koster-nettbutikk" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+            Hva det koster å lage nettbutikk, i grove trekk
+          </Link>
+          .
         </p>
         <p>
           Det du får er en fast pris før jeg skriver en linje kode, akkurat som på
@@ -106,7 +146,13 @@ const NettbutikkPage = () => (
           <Link to={ruter.priser} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             prisene på vanlige nettsider
           </Link>{' '}
-          for hvordan jeg jobber med pris, og{' '}
+          for hvordan jeg jobber med pris,{' '}
+          {/* Lenken gir prisspørsmålet én eier. GSC 12. okt 2026: FAQ-siden
+              tok «lage nettbutikk» (pos 12,3) fra denne (pos 21,6). */}
+          <Link to="/vanlige-sporsmal/hva-koster-nettbutikk" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
+            hva en nettbutikk koster i drift
+          </Link>
+          , og{' '}
           <Link to={ruter.metode} className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">
             metoden
           </Link>{' '}

@@ -13,9 +13,16 @@ const formatDate = (dateStr) => {
 
 // Delt artikkelkort for blogg-oversikten, kategorisider og forfattersider,
 // slik at de tre listevisningene ser identiske ut.
+/* De tre første kortene ligger over bretten på de fleste skjermer. De hentes med
+   en gang og glir ikke inn: et bilde med loading="lazy" øverst på /blogg ventet
+   3,9 s før nettleseren i det hele tatt ba om det (Lighthouse mobil, 12.11.2026). */
+const OVER_BRETTEN = 3;
+
 const BloggKort = ({ article, index = 0 }) => {
   const cardRef = useRef(null);
+  const tidlig = index < OVER_BRETTEN;
   useEffect(() => {
+    if (tidlig) return;
     gsap.fromTo(cardRef.current,
       { y: 40, opacity: 0 },
       {
@@ -32,7 +39,10 @@ const BloggKort = ({ article, index = 0 }) => {
           <img
             src={article.image}
             alt={article.title}
-            loading="lazy"
+            loading={tidlig ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : 'auto'}
+            width="1600"
+            height="900"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />

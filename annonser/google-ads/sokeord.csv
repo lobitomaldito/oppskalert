@@ -1,0 +1,31 @@
+Campaign,Ad Group,Keyword,Criterion Type,Max CPC,Final URL
+OPP-Sok-Norge,Pris,nettside pris,Exact,14,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,pris på nettside,Exact,14,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,hjemmesider pris,Exact,10,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,pris på hjemmeside,Exact,10,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,priser for hjemmeside,Exact,10,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,hva koster en nettside,Exact,14,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,hva koster en hjemmeside,Exact,12,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,billig nettside,Exact,22,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,rimelig nettside,Exact,18,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,hva koster nettside,Phrase,14,https://oppskalert.no/priser
+OPP-Sok-Norge,Pris,pris nettside bedrift,Phrase,14,https://oppskalert.no/priser
+OPP-Sok-Norge,Ny nettside,ny nettside,Exact,16,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Ny nettside,trenger nettside,Exact,16,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Ny nettside,lage ny nettside,Exact,16,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Ny nettside,lage nettside,Exact,16,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Ny nettside,ny hjemmeside,Exact,14,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Ny nettside,nye nettsider,Exact,22,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Ny nettside,ny nettside til bedrift,Phrase,16,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Nettside til bedrift,nettside for bedrift,Exact,12,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Nettside til bedrift,nettside til bedrift,Exact,12,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Nettside til bedrift,hjemmeside bedrift,Exact,12,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Nettside til bedrift,hjemmesider for små bedrifter,Exact,10,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Nettside til bedrift,nettsideleverandør,Exact,18,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Nettside til bedrift,profesjonell nettside,Exact,12,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Nettside til bedrift,nettside for små bedrifter,Phrase,12,https://oppskalert.no/nettside-til-bedrift
+OPP-Sok-Norge,Webdesign Oslo,webdesign oslo,Exact,20,https://oppskalert.no/webdesign-oslo
+OPP-Sok-Norge,Webdesign Oslo,webutvikler oslo,Exact,12,https://oppskalert.no/webdesign-oslo
+OPP-Sok-Norge,Webdesign Oslo,webdesigner oslo,Exact,20,https://oppskalert.no/webdesign-oslo
+OPP-Sok-Norge,Webdesign Oslo,nettside oslo,Exact,18,https://oppskalert.no/webdesign-oslo
+OPP-Sok-Norge,Webdesign Oslo,lage nettside oslo,Phrase,18,https://oppskalert.no/webdesign-oslo

@@ -21,7 +21,6 @@ export const ruter = {
   om: '/om',
   kontakt: '/kontakt',
   blogg: '/blogg',
-  kalkulator: '/kalkulator',
   drift: '/drift',
   sammenlign: '/sammenlign',
   sammenlignWix: '/sammenlign/wix',
@@ -33,224 +32,229 @@ export const ruter = {
   nyNettside: '/ny-nettside',
   nettbutikk: '/lage-nettbutikk',
   personvern: '/personvern',
+  nettsidesjekk: '/gratis-nettsidesjekk',
 };
 
 export const navLenker = [
   { label: 'Arbeid', to: ruter.arbeid },
   { label: 'Priser', to: ruter.priser },
+  { label: 'SEO', to: ruter.seo },
   { label: 'Metode', to: ruter.metode },
   { label: 'Om meg', to: ruter.om },
   { label: 'Blogg', to: ruter.blogg },
 ];
 
 /* ---------------------------------------------------------------
-   PRISER. To modeller. Tallene er plassholdere; endre dem her,
+   PRISER. Tre nivåer. Tallene er plassholdere; endre dem her,
    så følger forsiden, prissiden og FAQ-en etter av seg selv.
    --------------------------------------------------------------- */
 export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.';
 
+/* Tre nivåer fra 4. november 2026 (var to fra 17. oktober). Enkel er nå én
+   landingsside. Medium er det som het Komplett 17. oktober til 3. november: alle sidene kunden har i
+   dag, med tekstene skrevet om for Google og AI-søk. Oppskaler er Medium
+   pluss en lead-modul og tre måneder SEO, summert fra tilbud/MAL.md:
+   6 990 + 4 900 + 3 900 + 3 x 1 490 = 20 260, rundet ned til 19 900.
+   SEO gikk til 2 990 9. november 2026 (3 x 2 990 = 24 760), men
+   Oppskaler står fortsatt fra 19 900.
+   Oppskaler har «fra» og ingen makspris.
+   Toppnivået het Komplett til 14. november 2026, da Aleksander byttet
+   navn til Oppskaler.
+
+   Hvert kort har en `verdi`: hva nivået gir kunden, uten fagord.
+
+   Rekkefølgen på siden er billigste først, Enkel til venstre
+   (Aleksander, 9. november 2026). I tilbud og på telefon gjelder
+   fortsatt dyreste først, se tilbud/MAL.md 3e punkt 2.
+
+   Leie til eie (1 590 kr/mnd) er ikke et eget kort lenger, men en
+   betalingsmåte for Medium, se `leieTilEie` under. 1 590 x 12 = 19 080
+   er regnet mot Medium 12 900 pluss serviceavtalen det første året.
+   Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
-    id: 'engangs',
-    navn: 'Engangspris',
-    fra: '9 999',
+    id: 'enkel',
+    navn: 'Enkel',
+    fra: '6 990',
+    fast: true,
     enhet: 'kr',
-    // Tom med vilje: navnet er allerede «Engangspris», så en periode som
-    // sier «engangspris» ble til «Engangspris · engangspris» på kortet.
-    periode: '',
-    tagline: 'Du eier alt. Én faktura, så er du ferdig.',
+    periode: 'fast pris, én gang',
+    tagline: 'For deg som ønsker en enkel landingsside med godt design.',
+    verdi: 'Kundene ser hva du tilbyr og tar kontakt, alt fra én side.',
     passerDeg: [
-      'Du vil eie løsningen hundre prosent',
-      'Du har eget hosting, eller noen som fikser det',
+      'Du trenger én side som viser hva du gjør',
+      'Du har tekst og bilder klare',
       'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Komplett nettside, håndbygd for deg',
-      'Alle filer overlevert, du eier dem',
+      'Én håndbygd landingsside med godt design',
+      'Tilpasset mobil, med kontaktskjema',
       'SEO-grunnoppsett fra dag én',
-      'Hjelp med oppsett på ditt eget hosting',
+      'Hosting og sikker forbindelse inkludert, ingen månedspris',
+      'Eget redigeringspanel: endre tekst og bilder selv',
+      'Du eier siden, og domenet står i ditt navn',
     ],
     fremhevet: false,
   },
   {
-    /* Endret 26. august 2026, og grunnen bør stå her så den ikke blir
-       reversert i god tro. Modellen het «Driftet av meg» og kostet 690
-       kr/mnd, nøyaktig samme navn og samme pris som driftsnivået lenger
-       nede i denne fila. Forskjellen var at lista her begynte med «Alt i
-       engangspris, pluss:». Hele nettsiden fulgte altså med til samme
-       pris som rent vedlikehold på en side kunden allerede hadde betalt
-       9 999 for. Byggingen var i praksis gratis, og «ingen binding» gjorde
-       at avtalen kunne sies opp etter én måned.
-
-       Nå er det en nedbetaling, og den heter det: 1 290 kr/mnd i 12
-       måneder (15 480 kr), så går kunden over på Driftet av meg til 690
-       kr/mnd uten binding. Bindingen er et vilkår, ikke en detalj, så den
-       står som `periode` rett under tallet på kortet. Drift og abonnement
-       er to ulike ting, og skal aldri bære samme navn igjen. */
-    id: 'abonnement',
-    navn: 'Nettside på abonnement',
-    fra: '1 290',
-    enhet: 'kr/mnd',
-    periode: '12 måneders binding',
-    tagline: 'Hele nettsiden fordelt over året. Jeg passer på alt underveis.',
+    id: 'medium',
+    navn: 'Medium',
+    fra: '12 900',
+    fast: true,
+    enhet: 'kr',
+    periode: 'fast pris, én gang',
+    tagline: 'Alle sidene du har i dag, med tekster skrevet for Google og AI-søk.',
+    verdi: 'Flere finner deg når de søker på det du gjør, uten at du betaler for annonser.',
     passerDeg: [
-      'Du vil ha nettsiden nå, ikke når budsjettet tillater det',
-      'Du vil bruke tiden på bedriften, ikke på nettsiden',
-      'Du vil ha én forutsigbar månedskostnad',
+      'Du har flere tjenester eller undersider',
+      'Du vil bli funnet når noen søker på det du gjør',
     ],
     inkludert: [
-      'Alt i engangspris, pluss:',
-      'Hosting, domene og SSL',
-      'Rimelige innholdsendringer inkludert',
-      'Backup og oppetidsovervåking',
-      'Support direkte fra meg, ikke en helpdesk',
-      'Etter 12 måneder: 690 kr/mnd, oppsigelig når du vil',
+      'Alt i Enkel, pluss:',
+      'Alle undersidene du har i dag',
+      'Tekstene skrevet om for Google og AI-søk',
+      'Kan også leies til eie: 0 kr i dag, 1 590 kr/mnd',
     ],
     fremhevet: true,
   },
   {
-    /* Tredje modell, lagt til 21. august 2026. To grunner.
-
-       Kommersielt: chatbot og web-app er tjenester som skal selges, og de
-       sto bare nevnt i tjenestekortene uten noe sted å be om pris.
-
-       Visuelt: to kort i et 1fr 1fr-rutenett stod tynt på brede skjermer,
-       og drift-rutenettet rett under har allerede tre. Nå er de like.
-
-       `fra` er en tekst og ikke et tall her, med vilje. Disse prosjektene
-       har ikke en meningsfull startpris: en chatbot trent på fem sider og
-       en app med innlogging er ikke samme jobb. Å oppgi et «fra»-tall
-       ville vært et tall jeg ikke kan stå for, og prissiden finnes for å
-       unngå nettopp det. Se `erForesporsel` der kortet rendres. */
-    id: 'skreddersom',
-    navn: 'Chatbot eller app',
-    fra: 'Forespør pris',
-    erForesporsel: true,
-    enhet: '',
-    periode: 'etter omfang',
-    tagline: 'Skal siden svare for deg, eller skal kundene logge inn?',
+    id: 'komplett',
+    navn: 'Oppskaler',
+    fra: '19 900',
+    enhet: 'kr',
+    periode: 'engangspris, fast før jeg begynner',
+    tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
+    verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
     passerDeg: [
-      'Du får de samme spørsmålene om og om igjen',
-      'Du taster det samme inn i to systemer',
-      'Kundene dine skal bestille eller følge noe over tid',
+      'Du vil ha flere henvendelser fra siden',
+      'Du vil se hva siden gir deg',
     ],
     inkludert: [
-      'Chatbot trent på din egen bedrift',
-      'Automatikk mellom verktøyene du har fra før',
-      'App til iPhone og Android, hvis du faktisk trenger en',
-      'Fast pris før jeg begynner, som ellers',
+      'Alt i Medium, pluss:',
+      'Interaktive moduler etter behov, som priskalkulator eller booking',
+      'Tre måneder SEO: månedlig rapport med vanlige ord, AI-sjekk og én ny side eller artikkel i måneden',
+      'Retting av det rapporten finner',
     ],
     fremhevet: false,
   },
 ];
 
+/* Leie til eie: grunnene til modellen står i git-historikken for denne
+   fila (26. august og 9. oktober 2026). Kort fortalt: ingen binding, og
+   filene blir kundens først når 12 måneder er betalt. Sier kunden opp
+   før, gjør vi opp resten av byggesummen, eller siden tas ned når betalt
+   periode er slutt. Drift og leie til eie skal aldri bære samme navn. */
+export const leieTilEie = {
+  navn: 'Leie til eie',
+  fra: '1 590',
+  enhet: 'kr/mnd',
+  tekst: 'Vil du heller betale månedlig? Medium kan leies til eie: 0 kr i dag og 1 590 kr/mnd uten binding. Serviceavtalen er med det første året, og siden er din når tolv måneder er betalt.',
+};
+
 export const alltidMed = [
-  'Skreddersydd design, håndkodet',
+  'Eget design, håndkodet',
   'Optimalisert for mobil og desktop',
   'Synlig i Google, og i AI-søk',
   'Tekster ferdigskrevet',
   'Kontaktskjema',
-  'Domene- og SSL-oppsett',
+  'Hosting, sikker forbindelse og domeneoppsett',
   'Google Analytics og Search Console',
   'Lynrask, uten tunge plugins',
 ];
 
 /* ---------------------------------------------------------------
    DRIFT. Vedlikehold av en side som allerede står der, ikke en måte
-   å få bygget en. Det er abonnementsmodellen over som bygger. Prisene her
+   å få bygget en. Det er leie til eie over som bygger. Prisene her
    er den eneste kilden. /drift, forsidens Priser-kort og FAQ leser
    alle herfra, så en prisjustering skjer på ett sted.
    --------------------------------------------------------------- */
+/* Fra 17. oktober 2026 er hosting med i prisen på alle sider jeg bygger
+   (statiske sider på Vercel koster meg nesten ingenting per kunde, og 80
+   kr/mnd var en årlig faktura kunden måtte ta stilling til). Grunndrift
+   (149), Driftet av meg (690) og Prioritert (1 490) er erstattet av to
+   tillegg: serviceavtale og SEO. Tallene står også i tilbud/MAL.md.
+   Serviceavtalen gikk fra 450 til 550 kr/mnd 10. november 2026. Kunder
+   med avtale eller tilbud fra før beholder 450. */
+/* Fra 24. november 2026 er det fire trinn, hvert «alt i forrige, pluss»
+   (tilbud/driftsstige-forslag.md og MAL.md). Første trinn koster 0: det
+   som følger med alle sider jeg bygger. Ingen priser er endret. AI-assistent
+   kommer som eget tillegg når prisen er satt. Les nivåene med id, ikke med
+   plass i lista: klynger.js gjorde det før. */
 export const driftNivaer = [
   {
-    id: 'grunn',
-    navn: 'Grunndrift',
-    fra: '149',
+    id: 'inkludert',
+    navn: 'Med i prisen',
+    fra: '0',
+    fast: true,
     enhet: 'kr/mnd',
-    tagline: 'Du redigerer selv. Jeg passer på det tekniske i bakgrunnen.',
+    periode: 'på alle sider jeg bygger',
+    tagline: 'Du endrer selv i redigeringspanelet. Dette følger med siden.',
     inkludert: [
-      'Hosting, domene og SSL',
-      'Månedlig backup',
+      'Hosting og sikker forbindelse (SSL)',
+      'Redigeringspanel: bytt tekst og bilder selv',
+      'Feil fra min side rettes gratis',
+    ],
+    cta: 'Få et gratis utkast',
+    fremhevet: false,
+  },
+  {
+    id: 'service',
+    navn: 'Serviceavtale',
+    fra: '550',
+    fast: true,
+    enhet: 'kr/mnd',
+    periode: 'ingen binding',
+    tagline: 'Jeg gjør endringene og passer på siden. Du sender en e-post.',
+    inkludert: [
+      'Alt som er med i prisen, pluss:',
+      'Rimelige tekst- og bildeendringer, uten timeteller',
+      'Backup og oppetidsovervåking',
       'Sikkerhets- og programvareoppdateringer',
-      'E-post support innen 3 virkedager',
+      'Support direkte fra meg',
     ],
     fremhevet: false,
   },
   {
-    id: 'drift',
-    navn: 'Driftet av meg',
-    fra: '690',
+    id: 'seo',
+    navn: 'SEO',
+    fra: '2 990',
     enhet: 'kr/mnd',
-    tagline: 'Jeg passer på alt. Du slipper å tenke teknisk igjen.',
+    periode: 'etter omfang, ingen binding',
+    tagline: 'For deg som vil bli funnet på flere søk, måned for måned.',
     inkludert: [
-      'Alt i Grunndrift, pluss:',
-      'Rimelige innholdsendringer inkludert',
-      'Backup og oppetidsovervåking hyppigere',
-      'Support direkte fra meg, ikke en helpdesk',
+      'Alt i serviceavtalen, pluss:',
+      'Månedlig rapport med vanlige ord: hvem som fant deg, og på hva',
+      'AI-sjekk: om ChatGPT og Google AI nevner deg',
+      'En ny side eller artikkel i måneden',
+      'Google Ads, med budsjettet i din egen konto',
+      'Retting av det rapporten finner',
     ],
     fremhevet: true,
   },
   {
-    /* Hevet fra 1 290 til 1 490 den 27. august 2026, og det er en
-       lesbarhetsendring før det er en prisendring: Nettside på abonnement
-       koster 1 290 kr/mnd, og de to sto to blokker fra hverandre på
-       /priser med samme tall. To ulike produkter til samme pris på samme
-       side er den samme forvekslingen som «Driftet av meg» skapte med
-       navn. Tallene på prissiden skal ikke gjenbrukes på tvers. */
-    id: 'prioritert',
-    navn: 'Prioritert',
-    fra: '1 490',
+    id: 'annonser',
+    navn: 'SEO og annonser',
+    fra: '4 490',
     enhet: 'kr/mnd',
-    tagline: 'For deg som vil ha raskest svar og en side som stadig forbedres.',
+    periode: 'etter omfang, ingen binding',
+    tagline: 'For deg som også vil ha henvendelser fra Facebook og Instagram.',
     inkludert: [
-      'Alt i Driftet av meg, pluss:',
-      'Raskere responstid på endringer',
-      'Flere endringer inkludert per måned',
-      'Kvartalsvis SEO-gjennomgang',
+      'Alt i SEO, pluss:',
+      'Nye Facebook- og Instagram-annonser hver måned',
+      'Justering underveis og kort rapport om henvendelser',
+      'Oppstart 2 990 kr: annonsekonto i ditt navn og plan for annonsene',
     ],
     fremhevet: false,
   },
 ];
 
-export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid. Bytt nivå eller avslutt når du vil.';
+export const driftNotat = 'Alle priser eks. mva. Ingen bindingstid, avslutt når du vil. Større ombygginger og nye sider avtales separat. Annonsebudsjettet betaler du selv, til Google og Meta.';
 
-/* ---------------------------------------------------------------
-   KALKULATOR. Selvbetjent prisestimat. Grunnpris etter omfang,
-   pluss flate påslag per funksjon. Alt er fortsatt skreddersydd og
-   håndkodet. Det finnes bevisst ingen "mal"-tier, siden det ville
-   motsagt alltidMed over. Tallene er godkjent 2026-08-03; endre kun
-   her, så følger kalkulatoren automatisk med.
-
-   manedspris er det veiledende "eller X kr/mnd"-alternativet til
-   engangsestimatet, altså Nettside på abonnement skalert med omfang,
-   siden ett flatt tall uansett prosjektstørrelse ville undervurdert et
-   stort nettbutikk-prosjekt kraftig. Upåvirket av tillegg/haster, med
-   vilje: et enkelt tall er lettere å stå for enn et utregnet ett.
-
-   Tallene ble hevet 26. august 2026, fra 690/890/1190/1590. Den gamle
-   skalaen var den samme som driftsnivåene koster alene, altså uten at
-   selve byggingen var betalt. Den nye holder samme form som den gamle
-   (+31 %, +70 %, +132 % over startnivået), men er forankret i 1 290,
-   prisen på abonnementsmodellen. Etter de 12 bundne månedene går kunden
-   uansett over på driftsprisen, ikke på dette tallet. */
-export const kalkulatorOmfang = [
-  { id: '1', label: '1 side', beskrivelse: 'Landingsside eller digitalt visittkort', min: 9999, max: 12900, manedspris: 1290 },
-  { id: '2-5', label: '2–5 sider', beskrivelse: 'Den vanlige bedriftsnettsiden', min: 12900, max: 16900, manedspris: 1690 },
-  { id: '6-10', label: '6–10 sider', beskrivelse: 'Flere tjenester, mer innhold', min: 18900, max: 24900, manedspris: 2190 },
-  { id: '10+', label: '10+ sider', beskrivelse: 'Stor struktur eller egen funksjonalitet', min: 27900, max: 36900, manedspris: 2990 },
-];
-
-export const kalkulatorTillegg = [
-  { id: 'booking', label: 'Booking-løsning', min: 3500, max: 4500 },
-  { id: 'nettbutikk', label: 'Nettbutikk / betaling', min: 5500, max: 7500 },
-  { id: 'sprak', label: 'Flere språk', min: 2500, max: 3500 },
-  { id: 'seo', label: 'Utvidet SEO-pakke', min: 3000, max: 4000 },
-  { id: 'integrasjon', label: 'Integrasjoner (CRM/regnskap)', min: 4000, max: 5500 },
-];
-
-// Haster-tillegget er en hastighetspremie, ikke en funksjon, derfor
-// prosent på totalen i stedet for et flatt kronebeløp.
-export const kalkulatorHaster = { minFaktor: 1.15, maxFaktor: 1.20 };
+/* Priskalkulatoren er fjernet 30. september 2026. Den regnet pris av
+   sidetall, fem tillegg og hastepåslag, og hver variabel måtte legge noe
+   på summen. Jeg priser ikke slik: prisen settes per kunde etter en prat
+   og en demo. /kalkulator sender videre til /priser i vercel.json.
+   Prisstigen står igjen som tekst i svaret om hva en nettside koster. */
 
 /* ---------------------------------------------------------------
    SAMMENLIGN. Ærlige side-mot-side med de vanligste DIY-alternativene
@@ -271,39 +275,39 @@ export const sammenlignOversikt = [
     slug: 'wordpress',
     navn: 'WordPress',
     rute: '/sammenlign/wordpress',
-    kort: 'Fleksibelt, men hvem vedlikeholder det? Sikkerhet, plugin-oppdateringer og hva det faktisk koster over tid.',
+    kort: 'Fleksibelt, men noen må vedlikeholde det. Sikkerhet, plugin-oppdateringer og hva det koster over tid.',
   },
 ];
 
 export const sammenlignWix = {
   navn: 'Wix',
-  intro: 'Wix er et solid verktøy for å bygge en nettside selv. Spørsmålet er ikke om det virker, men om det er din tid eller din nettside som skal betale for det.',
+  intro: 'Wix er et solid verktøy for å bygge en nettside selv. Det du betaler med, er timene du bruker på å bygge og vedlikeholde den selv.',
   rader: [
     ['Hvem bygger siden', 'Du, i byggeren deres', 'Jeg, fra første skisse til lansering'],
-    /* Jeg selger selv et abonnement nå, så raden må si hva forskjellen
+    /* Jeg selger selv leie til eie, så raden må si hva forskjellen
        faktisk er: deres løper så lenge siden skal stå, mitt slutter
-       etter 12 måneder og faller ned på drift du kan si opp. */
-    ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller abonnement som ender etter 12 måneder'],
-    ['Eierskap', 'Låst til Wix sin plattform', 'Du eier filene, kan ta dem med deg videre'],
+       etter 12 måneder, og da er siden din. */
+    ['Pris', 'Abonnement, hver måned, for alltid', 'Fastpris én gang, eller leie til eie som ender etter 12 måneder'],
+    ['Eierskap', 'Låst til Wix sin plattform', 'Du eier siden og kan ta den med deg videre'],
     ['Hastighet og SEO', 'Tyngre byggerkode, varierende', 'Håndkodet og lettvekt fra dag én'],
-    ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner en gratis demo først'],
-    ['Support', 'Generisk chat-support', 'Direkte med meg, ikke en helpdesk'],
+    ['Din tid', 'Du bygger og vedlikeholder selv', 'Jeg bygger, du godkjenner et gratis utkast først'],
+    ['Support', 'Generisk chat-support', 'Direkte med meg, på telefon og e-post'],
   ],
-  konklusjon: 'Har du tid og lyst til å lære et byggeverktøy, og bedriften tåler at nettsiden ser sånn ut, er Wix et fint sted å starte. Vil du ha en side som er bygget for å konvertere, uten at du selv må bli webdesigner, er det dette jeg gjør.',
+  konklusjon: 'Har du tid og lyst til å lære et byggeverktøy, og bedriften tåler at nettsiden ser sånn ut, er Wix et fint sted å starte. Vil du ha en side som gir henvendelser, uten at du selv må bli webdesigner, er det dette jeg gjør.',
 };
 
 export const sammenlignWordpress = {
   navn: 'WordPress',
-  intro: 'WordPress er gratis å laste ned. Det som koster er alt rundt: hosting, plugins, og noen som følger med når noe går galt, for noe går alltid galt før eller siden.',
+  intro: 'WordPress er gratis å laste ned. Det som koster er alt rundt: hosting, plugins og noen som følger med når en oppdatering brekker noe.',
   rader: [
     ['Grunnkostnad', 'Gratis kjerne, betal for hosting og plugins løpende', 'Fastpris inkluderer alt fra start'],
     ['Vedlikehold', 'Du eller en utvikler må oppdatere jevnlig', 'Håndkodet, uten plugins å holde ved like'],
-    ['Sikkerhet', 'Mest angrepne CMS i verden, krever årvåkenhet', 'Ingen CMS, ingen kjent angrepsflate'],
-    ['Ytelse', 'Kan bli tung med mange plugins', 'Lynrask fra første linje kode'],
+    ['Sikkerhet', 'Mest angrepne publiseringssystem i verden, må følges med på', 'Ingen WordPress eller plugins å bryte seg inn gjennom'],
+    ['Ytelse', 'Kan bli tung med mange plugins', 'Laster på under ett sekund'],
     ['Eierskap', 'Du eier siden, men trenger teknisk kompetanse for å drifte den', 'Du eier siden, jeg drifter den om du vil slippe'],
-    ['Fleksibilitet', 'Enormt plugin-økosystem for spesialbehov', 'Skreddersydd funksjonalitet bygget direkte inn'],
+    ['Fleksibilitet', 'Tusenvis av plugins for spesialbehov', 'Det du trenger, bygget rett inn i siden'],
   ],
-  konklusjon: 'Trenger du et enormt plugin-økosystem eller har en intern utvikler som følger med, kan WordPress være riktig. De fleste små bedrifter jeg møter vil heller ha en side som bare virker, uten en liste over oppdateringer som venter på dem hver måned.',
+  konklusjon: 'Trenger du mange plugins eller har en intern utvikler som følger med, kan WordPress være riktig. De fleste små bedrifter jeg møter vil heller ha en side som bare virker, uten en liste over oppdateringer som venter på dem hver måned.',
 };
 
 /* ---------------------------------------------------------------
@@ -317,11 +321,11 @@ export const sammenlignWordpress = {
    --------------------------------------------------------------- */
 export const stegene = [
   {
-    tittel: 'Jeg bygger demoen din',
+    tittel: 'Jeg bygger utkastet ditt',
     tid: '48 timer',
-    kort: 'Send meg navnet på bedriften, så finner jeg resten selv. Du får en ekte side å klikke i, ikke en skisse.',
-    desc: 'Du sender meg noen linjer om bedriften, eller bare navnet, så finner jeg resten selv. Så bygger jeg et ferdig utkast av den nye siden din. Ikke en skisse i PowerPoint, men en ekte side du kan åpne på mobilen og klikke rundt i.',
-    punkter: ['Koster ingenting, uansett hva du lander på', 'Du trenger ikke levere noe på forhånd', 'Demoen ligger på en privat lenke bare du får'],
+    kort: 'Send meg navnet på bedriften, så finner jeg resten selv. Du får en ferdig side å klikke i.',
+    desc: 'Du sender meg noen linjer om bedriften, eller bare navnet, så finner jeg resten selv. Så bygger jeg et ferdig utkast av den nye siden din, som du kan åpne på mobilen og klikke rundt i.',
+    punkter: ['Koster ingenting, uansett hva du lander på', 'Du trenger ikke levere noe på forhånd', 'Utkastet ligger på en privat lenke bare du får'],
   },
   {
     tittel: 'Du sier hva du synes',
@@ -333,15 +337,15 @@ export const stegene = [
   {
     tittel: 'Jeg lanserer',
     tid: '1–2 uker',
-    kort: 'Domene, SSL og hosting ordner jeg. Har du en gammel side, byttes den uten nedetid.',
-    desc: 'Domene, SSL og lynrask hosting. Har du en gammel side, flytter jeg deg over uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe.',
-    punkter: ['Domene og SSL ordner jeg', 'Søkemotor-oppsett fra dag én', 'Gammel side byttes uten nedetid'],
+    kort: 'Domene, hosting og sikker forbindelse ordner jeg. Har du en gammel side, byttes den uten nedetid.',
+    desc: 'Domene, hosting og sikker forbindelse, så nettleseren aldri varsler om usikker side. Har du en gammel side, flytter jeg deg over uten nedetid. Jeg kobler på Google, tester på ekte mobiler, og sier fra når alt er oppe.',
+    punkter: ['Domene og sikker forbindelse ordner jeg', 'Søkemotor-oppsett fra dag én', 'Gammel side byttes uten nedetid'],
   },
   {
     tittel: 'Jeg passer på, hvis du vil',
     tid: 'Løpende',
     kort: 'Med driftsavtale følger jeg med videre. Trenger du en endring, sender du en e-post.',
-    desc: 'Velger du driftsavtale, følger jeg med videre: hosting, backup, overvåking og support. Trenger du å bytte et bilde eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, får du alle filene og hjelp til å komme i gang selv.',
+    desc: 'Velger du driftsavtale, følger jeg med videre: hosting, backup, overvåking og support. Trenger du å bytte et bilde eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Velger du engangspris, eier du siden og får hjelp til å komme i gang selv.',
     punkter: ['Rimelige endringer inkludert i driftsavtalen', 'Du eier innholdet uansett modell', 'Bytt modell senere om behovet endrer seg'],
   },
 ];
@@ -352,31 +356,35 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'Engangspris starter på 9 999 kr eks. mva, og da eier du alt fra dag én. Vil du heller fordele det over året, starter Nettside på abonnement på 1 290 kr i måneden med 12 måneders binding, og etter det går du over på drift til 690 kr i måneden uten binding. Endelig pris avhenger av antall sider og funksjoner, men du får alltid en fast pris før jeg begynner, og en gratis demo først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel landingsside koster 6 990 kr eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900 kr. Oppskaler, med priskalkulator eller booking og tre måneder SEO, starter på 19 900 kr. Uansett nivå eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie Medium til eie: 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
-    q: 'Hva er en gratis demo, og hva forplikter det meg til?',
-    a: 'Absolutt ingenting. Jeg bygger et ferdig, klikkbart utkast av din nye nettside, med ditt innhold, helt uten kostnad. Liker du den ikke, sletter jeg den og du har ikke betalt en krone. Du betaler først når du har sagt ja til noe du faktisk er fornøyd med.',
+    q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
+    a: 'Ingenting. Jeg bygger et ferdig, klikkbart utkast av den nye nettsiden din, med ditt innhold. Liker du det ikke, sletter jeg det, og du har ikke betalt noe. Du betaler først når du har sagt ja.',
   },
   {
     q: 'Hvor lang tid tar det?',
-    a: 'Demoen er som regel klar på 48 timer. Fra du godkjenner den til siden er oppe på ditt eget domene, går det vanligvis en til to uker. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding. Jeg er sjelden flaskehalsen.',
+    a: 'Utkastet er som regel klart på 48 timer. Fra du godkjenner det til siden er oppe på ditt eget domene, går det vanligvis en til to uker. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding. Jeg er sjelden flaskehalsen.',
   },
   {
     q: 'Eier jeg nettsiden selv?',
-    a: 'Ja. Med engangspris får du alle filene overlevert og eier hele løsningen med en gang. Velger du abonnement, eier du innholdet og designet hele veien, og filene er dine når de 12 avtalte månedene er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
+    a: 'Ja. Med engangspris eier du siden med en gang, og domenet står i ditt navn. Vil du flytte den, får du koden når du ber om det. Med leie til eie er tekstene, bildene og domenet dine hele veien, og siden blir din når 12 måneder er betalt. Du står aldri fast hos meg teknisk, og jeg låser ingenting inne.',
+  },
+  {
+    q: 'Hva hvis det skjer noe med deg?',
+    a: 'Siden går videre som før. Den ligger hos Vercel, en stor driftsleverandør, så oppetiden hviler ikke på meg alene. Domenet står i ditt navn, og ber du om koden, får du den, så en annen utvikler kan ta over der jeg slapp.',
   },
   {
     q: 'Hva om jeg ikke liker utkastet?',
-    a: 'Da sier du fra, så justerer vi. Eller vi avslutter der, helt uforpliktende. Det er hele poenget med å bygge demoen først: du risikerer ingenting ved å la meg prøve.',
+    a: 'Da sier du fra, så justerer jeg det. Eller vi avslutter der, og du skylder ingenting.',
   },
   {
     q: 'Er siden optimalisert for Google og mobil?',
-    a: 'Ja, alltid. Riktig struktur, metadata og hastighet ligger i bunnen fra start, og alt jeg leverer er fullt responsivt. Det ser like bra ut på mobilen i bilen som på skjermen på kontoret. Jeg setter også opp Analytics og Search Console, så du kan se hva som faktisk skjer.',
+    a: 'Ja. Struktur, metadata og hastighet ligger i bunnen fra start, og siden ser like bra ut på mobilen i bilen som på skjermen på kontoret. Jeg setter også opp Analytics og Search Console, så du ser hvor mange som kommer inn og hva de søkte på.',
   },
   {
     q: 'Hvem er det egentlig jeg snakker med?',
-    a: 'Meg. Aleksander. Jeg designer, koder, skriver og setter opp serveren selv, så det er ingen prosjektleder i mellom og ingen kø. Sender du en e-post, leses den av personen som faktisk bygger siden din.',
+    a: 'Meg, Aleksander. Jeg designer, koder, skriver og setter opp serveren selv, så det er ingen prosjektleder i mellom og ingen kø. Sender du en e-post, er det jeg som leser den.',
   },
   {
     q: 'Hva skjer etter at siden er lansert?',
@@ -454,11 +462,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg starter en enkel landingsside på 9 999 kr eks. mva. En vanlig bedriftsnettside på to til fem sider ligger mellom 12 900 og 16 900 kr, seks til ti sider mellom 18 900 og 24 900 kr, og over ti sider fra 27 900 kr. Du får alltid en fast pris før jeg skriver en linje kode, og du kan regne ut ditt eget estimat i kalkulatoren.',
+    a: 'Hos meg er det tre nivåer. Enkel, 6 990 kr eks. mva, er én landingsside med godt design. Medium, 12 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Oppskaler, fra 19 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 9 999 kr én gang, får alle filene og eier hele løsningen. Abonnement: jeg bygger den samme siden, du betaler 1 290 kr i måneden i 12 måneder, og selve byggingen nedbetales over det året. Drift: siden står allerede der, og jeg passer på den for fra 149 kr i måneden, uten binding. Drift alene bygger altså ingen ny nettside, det er de to første som gjør det.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Oppskaler) én gang og eier siden med en gang. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
@@ -466,11 +474,11 @@ export const prisSporsmal = [
   },
   {
     q: 'Hva koster det å endre noe etter at siden er lansert?',
-    a: 'Har du driftsavtale, er rimelige endringer inkludert. Skal du bytte et bilde, rette en tekst eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Har du engangspris, avtaler vi pris per jobb, eller du gjør det selv i filene du allerede eier.',
+    a: 'Har du driftsavtale, er rimelige endringer inkludert. Skal du bytte et bilde, rette en tekst eller legge til en ansatt, sender du en e-post, og som regel er det gjort samme dag. Har du engangspris, avtaler vi pris per jobb, eller du gjør det selv i redigeringspanelet.',
   },
   {
     q: 'Kan jeg bytte mellom modellene senere?',
-    a: 'Ja. På ren drift er det ingen bindingstid, så du kan bytte nivå eller si opp når du vil. På abonnement løper de 12 første månedene, siden det er der byggingen nedbetales, og etterpå står du fritt. Vil du gå fra abonnement til engangspris før tiden, gjør vi opp resten av byggesummen og setter strek. Innholdet og designet er ditt uansett.',
+    a: 'Ja. På ren drift er det ingen bindingstid, så du kan bytte nivå eller si opp når du vil. Leie til eie har heller ingen binding. Sier du opp før 12 måneder, gjør vi opp resten av byggesummen og siden blir din, eller siden tas ned når den betalte perioden er slutt. Tekstene, bildene og domenet er dine uansett.',
   },
   {
     q: 'Hvorfor fast pris og ikke timepris?',
@@ -500,26 +508,26 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva koster søkemotoroptimalisering hos deg?',
-      a: 'Det er ikke et eget abonnement. Søkemotoroptimalisering ligger inne som grunnarbeid i alle nye sider jeg bygger, og som en kvartalsvis gjennomgang i det øverste driftsnivået. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som faktisk står i veien.',
+      a: 'SEO-abonnementet starter på 2 990 kroner i måneden, og omfanget avtaler vi etter hva du vil bli funnet på. Hver måned får du en rapport med vanlige ord, en AI-sjekk av om ChatGPT og de andre nevner deg, en ny side eller artikkel, og retting av det rapporten finner. Grunnarbeidet ligger dessuten inne i alle nye sider jeg bygger. Trenger du en engangsjobb på en side du allerede har, avtaler vi fast pris etter at jeg har sett hva som står i veien.',
     },
   ],
 
   oslo: [
     {
       q: 'Må jeg møte deg fysisk?',
-      a: 'Nei, men du kan. Jeg holder til på Røa og tar gjerne en kaffe før vi begynner, hvis det gjør beslutningen lettere. Ellers går det meste på e-post og telefon. Uansett snakker du med meg hele veien, ikke med en prosjektkoordinator som videreformidler.',
+      a: 'Nei, men du kan. Jeg holder til på Røa og tar gjerne en kaffe før vi begynner, hvis det gjør beslutningen lettere. Ellers går det meste på e-post og telefon. Uansett snakker du med meg hele veien.',
     },
     {
       q: 'Jobber du bare med bedrifter i Oslo?',
-      a: 'Nei, jeg jobber over hele landet. Men søker noen etter webdesign i Oslo, leter de som regel etter noen de kan ringe og holde ansvarlig, og da spiller det inn at jeg faktisk sitter her. For selve jobben betyr geografien lite.',
+      a: 'Nei, jeg jobber over hele landet. Men søker noen etter webdesign i Oslo, leter de som regel etter noen de kan ringe og holde ansvarlig, og da hjelper det at jeg sitter her. For selve jobben betyr geografien lite.',
     },
     {
       q: 'Hvorfor spiller det inn for søk at bedriften ligger i Oslo?',
-      a: 'Fordi lokale søk rangeres på andre signaler enn vanlige søk. Google Bedriftsprofil må være koblet riktig, adressen må stå likt på tvers av oppføringer, og siden må gjøre det tydelig for søkemotorene hvor du holder til. Det bygger jeg inn fra start, ikke som et tillegg etterpå.',
+      a: 'Fordi lokale søk rangeres på andre signaler enn vanlige søk. Google Bedriftsprofil må være koblet riktig, adressen må stå likt på tvers av oppføringer, og siden må gjøre det tydelig for søkemotorene hvor du holder til. Det bygger jeg inn fra start.',
     },
     {
       q: 'Hvor lang tid tar det fra start til lansering?',
-      a: 'Demoen er som regel klar på 48 timer. Fra du godkjenner den til siden er oppe på ditt eget domene går det vanligvis en til to uker. Har du en gammel side, byttes den uten nedetid. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding.',
+      a: 'Utkastet er som regel klart på 48 timer. Fra du godkjenner det til siden er oppe på ditt eget domene går det vanligvis en til to uker. Har du en gammel side, byttes den uten nedetid. Tempoet styres mest av hvor raskt du rekker å gi tilbakemelding.',
     },
   ],
 
@@ -534,11 +542,11 @@ export const landingsSporsmal = {
     },
     {
       q: 'Får jeg se designet før jeg betaler?',
-      a: 'Ja, hele siden. Ikke en skisse i et presentasjonsverktøy, men en ekte side du kan åpne på mobilen og klikke rundt i, bygget med ditt innhold. Er retningen feil, sier du det, og det har ikke kostet deg noe.',
+      a: 'Ja, hele siden, bygget med ditt innhold. Du kan åpne den på mobilen og klikke rundt i den. Er retningen feil, sier du det, og det har ikke kostet deg noe.',
     },
     {
       q: 'Hva om jeg vil endre designet senere?',
-      a: 'Det går fint. Siden er håndkodet uten maler og plugins under, så en endring ett sted knekker sjelden noe et annet sted. Har du driftsavtale, sender du en e-post. Har du engangspris, eier du filene og kan gjøre det selv eller sette det bort til hvem du vil.',
+      a: 'Det går fint. Siden er håndkodet uten maler og plugins under, så en endring ett sted knekker sjelden noe et annet sted. Har du driftsavtale, sender du en e-post. Har du engangspris, eier du siden og kan gjøre det selv i redigeringspanelet, eller sette det bort til hvem du vil.',
     },
   ],
 
@@ -549,7 +557,7 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hva trenger jeg å ha klart før vi setter i gang?',
-      a: 'Navnet på bedriften. Resten finner jeg selv, og jeg bygger demoen før du har levert noe som helst. Har du bilder, tekster eller en logo du vil bruke, tar jeg gjerne imot det, men det er ikke noe du trenger å vente på før vi kommer i gang.',
+      a: 'Navnet på bedriften. Resten finner jeg selv, og jeg bygger utkastet før du har levert noe som helst. Har du bilder, tekster eller en logo du vil bruke, tar jeg gjerne imot det, men det er ikke noe du trenger å vente på før vi kommer i gang.',
     },
     {
       q: 'Kan du flytte nettsiden vi har i dag?',
@@ -580,18 +588,18 @@ export const landingsSporsmal = {
     },
     {
       q: 'Hvor lang tid tar en ny nettside?',
-      a: 'Dager, ikke måneder. Du får en første versjon å se på kort tid etter at vi har snakket sammen, og du trenger bare å oppgi navnet på bedriften for at jeg skal komme i gang. Et byrå bruker gjerne seks til ti uker på det samme, og det er koordineringsleddene som tar tiden, ikke arbeidet.',
+      a: 'Utkastet er som regel klart på 48 timer, og den ferdige siden på en til to uker. Du trenger bare å oppgi navnet på bedriften for at jeg skal komme i gang. Et byrå bruker gjerne seks til ti uker på det samme, mest på møter og godkjenningsrunder.',
     },
   ],
 
   nettbutikk: [
     {
       q: 'Hva koster det å lage en nettbutikk?',
-      a: 'Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har snakket sammen. Fem produkter uten varianter og ti tusen produkter med lager, størrelser og regnskapsintegrasjon er to helt forskjellige jobber. Det du får er en fast pris før jeg skriver en linje kode, akkurat som på alt annet.',
+      a: 'Nettbutikk er den ene leveransen jeg ikke oppgir fastpris på før vi har snakket sammen. Fem produkter uten varianter og ti tusen produkter med lager, størrelser og regnskapsintegrasjon er to helt forskjellige jobber. Du får likevel fast pris før jeg skriver en linje kode, som på alt annet.',
     },
     {
       q: 'Kan kundene betale med Vipps?',
-      a: 'Ja. I Norge er Vipps ikke et alternativ, det er forventningen. Vipps og kort settes opp og testes før butikken åpner, og Vipps er tilgjengelig fra første skjerm i kassen, ikke gjemt bak et valg lenger nede.',
+      a: 'Ja. Norske kunder forventer Vipps. Vipps og kort settes opp og testes før butikken åpner, og Vipps står på første skjerm i kassen.',
     },
     {
       q: 'Hvordan fungerer frakt?',
@@ -637,9 +645,54 @@ export const landingsSporsmal = {
    laste den tunge fila. Legger du inn et nytt prosjekt, skyt begge to. */
 export const toganger = (src) => `${src} 1x, ${src.replace('.webp', '@2x.webp')} 2x`;
 
+/* `farge` er kundens farge på toppstripen i nettleserrammene (se
+   .ramme-topp.merket i index.css). Regnet ut 17. oktober 2026 fra
+   skjermbildet i public/websider/full: snittet av den vanligste sterke
+   fargetonen øverst på siden. Det gir en mørkere og roligere farge enn
+   knappefargene på kundenes sider. Valgt av
+   Aleksander fra en prøve med fire varianter. Nytt prosjekt: regn ut på
+   samme måte, eller sett fargen for hånd. */
 export const prosjekter = [
-  { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
-  { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
+  /* Appstart. Lagt inn 29. september 2026. Aleksanders eget selskap
+     sammen med Magnus, ikke et kundeoppdrag, derfor ingen case-side:
+     kortet lenker rett ut til appstart.no. Fangsten er vanlig 5000 px
+     (forsiden er 6370 px høy), så --til er -81% som Woxen Hage. */
+  { img: '/websider/appstart.webp', slug: 'appstart', farge: '#114b35', full: '/websider/full/appstart.webp', til: '-81%', navn: 'Appstart', bransje: 'Apputvikling', url: 'https://appstart.no/', domene: 'appstart.no' },
+  /* GTI Karmøy AS. Lagt inn 24. november 2026 etter ønske fra Aleksander:
+     40 av 53 som klikket på /arbeid fra purringen i november var
+     håndverkere, og ingen av kortene var en håndverker. Kunden er solgt og
+     har sagt ja til å bli vist, men siden er ikke lansert ennå, så kortet
+     lenker til demoadressen. Bytt url og domene til gtikarmoy.no og skyt
+     bildene på nytt når domenet er flyttet. Skjermbildene er tatt fra
+     gti-demo.vercel.app med Design Lab-panelet (#lab) skjult. Fargen er
+     kundens --c-aksent, satt for hånd. Sidehøyden er over 5000 px, så
+     fangsten er vanlig 5000 px og --til er -81%. */
+  { img: '/websider/gti.webp', slug: 'gti', farge: '#ff8200', full: '/websider/full/gti.webp', til: '-81%', navn: 'GTI Karmøy', bransje: 'Grunnarbeid · Karmøy', url: 'https://gti-demo.vercel.app/', domene: 'gti-demo.vercel.app' },
+  /* Jakobsen Takst & Bygg. Lagt inn 9. oktober 2026. Skjermbildene er
+     tatt på nytt 15. oktober 2026 fra jtob.no etter at siden gikk live,
+     med heroen som viser Harstad sett fra Immelen. */
+  { img: '/websider/jakobsen-takst.webp', slug: 'jakobsen-takst', farge: '#b71817', full: '/websider/full/jakobsen-takst.webp', til: '-81%', navn: 'Jakobsen Takst & Bygg', bransje: 'Takst · Harstad', url: 'https://jtob.no/', domene: 'jtob.no',
+    /* Dronefilmen i toppen (23.11.2026). Skjermbildet i full/ er tatt på
+       nytt samme dag, så filmen treffer den nåværende siden. */
+    film: '/websider/film/jakobsen-takst-topp.mp4' },
+  { img: '/websider/woxen-hage.webp', slug: 'woxen-hage', farge: '#5d7f35', full: '/websider/full/woxen-hage.webp', til: '-81%', navn: 'Woxen Hage', bransje: 'Hagestell · Oslo', url: 'https://www.woxenhage.no/', domene: 'woxenhage.no' },
+  /* Prana Yoga Studio. Lagt inn 9. november 2026, live på
+     pranayogakristiansand.no. Tar plassen Katrin Brubakk hadde som fjerde
+     kort, og dermed plassen på /priser og /om (fire kort). Katrin er
+     flyttet til etter Alpha Negotiations og Samtaleverkstedet til sist,
+     begge etter ønske fra Aleksander. Fargen er skiferen fra logoen (#4C6971), målt da siden ble
+     bygget, se research/KILDER.md i prana-yoga-studio. */
+  { img: '/websider/prana-yoga.webp', slug: 'prana-yoga', farge: '#4c6971', full: '/websider/full/prana-yoga.webp', til: '-81%', navn: 'Prana Yoga Studio', bransje: 'Yoga · Kristiansand', url: 'https://www.pranayogakristiansand.no/', domene: 'pranayogakristiansand.no',
+    /* Toppen av siden i bevegelse på case-siden (23.11.2026): opptak av
+       heroen på 1280 x 1000, samme mål som skjermbildet i full/. */
+    film: '/websider/film/prana-yoga-topp.mp4' },
+  /* Terapihusene. Lagt inn 23. november 2026 etter ønske fra Aleksander,
+     live på terapihusene.no fra 16. november. Ingen før-bilder på
+     case-siden (Aleksander: «du trenger ikke ha førbilde»). Fangsten er
+     vanlig 5000 px, så --til er -81%. Fargen er --c-accent fra kundens
+     egen styles.css, satt for hånd. Står rett bak Prana etter ønske fra Aleksander
+     (23.11.2026), så den er femte kort og ikke med på /priser og /om. */
+  { img: '/websider/terapihusene.webp', slug: 'terapihusene', farge: '#8e5e52', full: '/websider/full/terapihusene.webp', til: '-81%', navn: 'Terapihusene', bransje: 'Terapi · tre byer', url: 'https://terapihusene.no/', domene: 'terapihusene.no' },
   /* Melanie Dahl. Lagt inn 21. august 2026, hentet fra arbeid en annen
      sesjon hadde liggende ukommittert i hovedtreet.
 
@@ -649,7 +702,7 @@ export const prosjekter = [
      Scenekunst, ikke en lang side. Vinduet viser derfor 67 % av bildet av
      gangen i stedet for 19 %, og rullelengden må regnes ut fra det.
      Kopierer man -79% hit, ruller kortet langt forbi bunnen av bildet. */
-  { img: '/websider/melanie-dahl.webp', slug: 'melanie-dahl', full: '/websider/full/melanie-dahl.webp', til: '-34%', navn: 'Melanie Dahl', bransje: 'Skuespill · mental trening', url: 'https://www.melaniedahl.com/', domene: 'melaniedahl.com' },
+  { img: '/websider/melanie-dahl.webp', slug: 'melanie-dahl', farge: '#3d6516', full: '/websider/full/melanie-dahl.webp', til: '-34%', navn: 'Melanie Dahl', bransje: 'Skuespill · mental trening', url: 'https://www.melaniedahl.com/', domene: 'melaniedahl.com' },
   /* Alpha Negotiations. Satt tilbake 25. august 2026. Sto ute av arrayen
      siden 21. august fordi siden svarte HTTP 500 og footeren krediterte
      et annet byrå, se CLAUDE.md. Begge var feil ved ny måling: siden
@@ -661,11 +714,21 @@ export const prosjekter = [
      Til er -71%, ikke -79% som de fleste andre: forsiden er 3319 px høy,
      ikke lang nok til å fylle den vanlige 5000 px-fangsten, så bildet er
      640 x 1660, samme prinsipp som Melanie Dahl over. */
-  { img: '/websider/alpha-negotiations.webp', slug: 'alpha-negotiations', full: '/websider/full/alpha-negotiations.webp', til: '-71%', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
-  { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
-  { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
-  { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
-  { img: '/websider/tore-sunde-rasmussen.webp', slug: 'tore-sunde-rasmussen', full: '/websider/full/tore-sunde-rasmussen.webp', til: '-74%', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
+  { img: '/websider/alpha-negotiations.webp', slug: 'alpha-negotiations', farge: '#0d1d55', full: '/websider/full/alpha-negotiations.webp', til: '-71%', navn: 'Alpha Negotiations', bransje: 'Forhandling', url: 'https://alphanegotiations.com', domene: 'alphanegotiations.com' },
+  { img: '/websider/katrin-brubakk.webp', slug: 'katrin-brubakk', farge: '#461823', full: '/websider/full/katrin-brubakk.webp', til: '-81%', navn: 'Katrin Brubakk', bransje: 'Psykolog · foredrag', url: 'https://katrinbrubakk.no', domene: 'katrinbrubakk.no' },
+  { img: '/websider/steinar-husby.webp', slug: 'steinar-husby', farge: '#1c304d', full: '/websider/full/steinar-husby.webp', til: '-81%', navn: 'Steinar Husby', bransje: 'Foredrag', url: 'https://steinarhusby.no', domene: 'steinarhusby.no' },
+  { img: '/websider/progressive-diplomacy.webp', slug: 'progressive-diplomacy', farge: '#418bbf', full: '/websider/full/progressive-diplomacy.webp', til: '-79%', navn: 'Progressive Diplomacy', bransje: 'Rådgivning', url: 'https://progressivediplomacy.com', domene: 'progressivediplomacy.com' },
+  { img: '/websider/tore-sunde-rasmussen.webp', slug: 'tore-sunde-rasmussen', farge: '#2a3a60', full: '/websider/full/tore-sunde-rasmussen.webp', til: '-74%', navn: 'Tore Sunde-Rasmussen', bransje: 'Rådgivning', url: 'https://toresunderasmussen.no', domene: 'toresunderasmussen.no' },
+  /* Tor Magnus Kolflaath. Lagt inn 30. september 2026. Levert og satt
+     live 10. august, men aldri ført opp her. Ingen case-side, så kortet
+     lenker rett ut til kolflaath.com. Samtaleverkstedet står etter, sist
+     av dem med fangst, fordi Aleksander vil nedprioritere den (9.11.2026).
+
+     Til er -67%: forsiden er 2912 px høy, så bildet er 640 x 1456 og
+     vinduet viser 480 / 1456 = 33 % av det av gangen. Samme prinsipp som
+     Melanie Dahl og Alpha Negotiations over. */
+  { img: '/websider/kolflaath.webp', slug: 'kolflaath', farge: '#2a6372', full: '/websider/full/kolflaath.webp', til: '-67%', navn: 'Tor Magnus Kolflaath', bransje: 'Investor', url: 'https://kolflaath.com', domene: 'kolflaath.com' },
+  { img: '/websider/samtaleverkstedet.webp', slug: 'samtaleverkstedet', farge: '#815c39', full: '/websider/full/samtaleverkstedet.webp', til: '-79%', navn: 'Samtaleverkstedet', bransje: 'Terapi', url: 'https://samtaleverkstedet.no', domene: 'samtaleverkstedet.no' },
   { img: '/websider/oppskalert.webp', navn: 'Oppskalert', bransje: 'Denne siden', url: 'https://oppskalert.no', domene: 'oppskalert.no' },
   { img: '/websider/irmelin-drake-ny.webp', navn: 'Irmelin Drake', bransje: 'Ledelse', url: 'https://irmelindrake.no', domene: 'irmelindrake.no' },
 ];
@@ -708,7 +771,18 @@ export const omtaler = [
    «self-serving», og de er ikke kvalifisert for stjerner i søkeresultatet.
    Ligger vurderingene på Google Bedriftsprofil, viser Google dem uansett
    selv i kartoppføringen, uten at vi trenger å merke dem opp her. */
-export const vurdering = null;
+/* Fylt ut 4. november 2026: 4,9 er tallet Google selv viser på
+   profilen (snittet er 4,875 av åtte, Google runder til én desimal).
+   Antallet vises ikke på siden (Aleksander 4.11.2026: åtte er for få til
+   å skilte med). Lenken til profilen står alltid ved siden av snittet,
+   så antallet kan etterprøves der. Fjern aldri lenken uten å ta antallet
+   tilbake. Oppdater begge feltene når det kommer nye vurderinger. */
+export const vurdering = {
+  score: 4.9,
+  antall: 8,
+  kilde: 'Google',
+  url: 'https://www.google.com/search?kgmid=/g/11z60rck3w',
+};
 
 /* ---------------------------------------------------------------
    HERO-BEVIS. Én navngitt kundeuttalelse rett under knappen.
@@ -731,7 +805,9 @@ export const vurdering = null;
    Bytt til `vurdering`-visningen når profilen har nok anmeldelser til
    at snittet betyr noe. Rundt ti er der tallet begynner å bære. */
 export const heroBevis = {
-  indeks: 1,
+  /* Katrin. Mélanie Dahl ble lagt først i omtaler 17. oktober 2026, så
+     indeksen flyttet seg fra 1 til 2. */
+  indeks: 2,
   /* Google Bedriftsprofilen. kgmid-formen er kanonisk og knyttet til
      oppføringen selv, i motsetning til en share.google-lenke, som er en
      delingslenke og kan slutte å virke.

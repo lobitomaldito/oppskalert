@@ -1,6 +1,10 @@
 # Sperre før lansering: to fonter må lisensieres
 
-**Status: IKKE klarert for produksjon.** Denne branchen bruker to fonter som
+**Oppdatert 26.10.2026:** Suisse Int'l er byttet ut med Cabinet Grotesk og
+Switzer (ITF, fri kommersiell bruk) og fjernet fra repoet. Bare GT Sectra Fine
+gjenstår, og bare på frisør-demoen under /eksempler.
+
+**Opprinnelig status: IKKE klarert for produksjon.** Denne branchen bruker to fonter som
 ikke er lisensiert for kommersiell bruk. De må kjøpes før `redesign/studio-mal`
 merges til master og deployes.
 

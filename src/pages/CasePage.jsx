@@ -4,10 +4,12 @@ import { Shell } from '../components/Layout';
 import { useReveal } from '../lib/useReveal';
 import { caser, omtaleForCase } from '../lib/demo-innhold';
 import { prosjekter, toganger, lagBrodsmuleSchema } from '../lib/site';
+import { PilOpp } from '../components/Ikon';
+import Film from '../components/Film';
 
 /* Casesiden er ordrett fra studio-mal-demoen (mal3.src.html, byggCase-
    funksjonen rundt linje 1465), portet til React i stedet for innerHTML.
-   Alle seks casene bruker samme mal, så de ikke kan skli fra hverandre
+   Alle casene bruker samme mal, så de ikke kan skli fra hverandre
    når innholdet i demo-innhold.js endres.
 
    utfordring.a og losning.a kan inneholde <b>-tagger (demoen har dem for
@@ -25,6 +27,79 @@ const kuttBeskrivelse = (tekst) => {
   const sisteMellomrom = kutt.lastIndexOf(' ');
   return `${kutt.slice(0, sisteMellomrom > 0 ? sisteMellomrom : 155).trimEnd()}…`;
 };
+
+/* Før og etter. Vises bare for caser som har `forEtter` i
+   demo-innhold.js, altså der den gamle siden faktisk er målt.
+
+   Ikke en <table>. Tre kolonner med lange sitater blir uleselige på
+   390 px, og en tabell som rulles sidelengs gjemmer «Ny side» utenfor
+   skjermen. Hver rad er derfor et listepunkt som står i tre kolonner på
+   bred skjerm og stables på smal. Merkelappene «Gammel side» og «Ny side»
+   ligger i hver celle: synlige på mobil, skjult for øyet på bred skjerm
+   der kolonnehodet gjør jobben, og alltid lest opp av en skjermleser.
+
+   Bildene står stille med vilje. De to skal sammenlignes, og to rammer
+   som ruller i hver sin takt kan ikke sammenlignes. */
+const Forside = ({ domene, src, srcSet, alt, tekst }) => (
+  <figure>
+    <div className="ramme">
+      <div className="ramme-topp">
+        <i aria-hidden="true" /><i aria-hidden="true" /><i aria-hidden="true" />
+        <p>{domene}</p>
+      </div>
+      <div className="ramme-vindu stille">
+        <img src={src} srcSet={srcSet} alt={alt} loading="lazy" width="720" height="540" />
+      </div>
+    </div>
+    <figcaption>{tekst}</figcaption>
+  </figure>
+);
+
+const ForEtter = ({ data, prosjekt }) => (
+  <section className="seksjon">
+    <div className="wrap casedel" data-reveal>
+      <h2>Før og etter</h2>
+      <div className="foretter">
+        {data.for && (
+          <div className="foretter-bilder">
+            <Forside
+              domene={prosjekt.domene}
+              src={data.for.bilde}
+              srcSet={toganger(data.for.bilde)}
+              alt={`Den gamle forsiden til ${prosjekt.navn}`}
+              tekst={`Før, ${data.for.tatt}`}
+            />
+            <Forside
+              domene={prosjekt.domene}
+              src={prosjekt.full}
+              srcSet={toganger(prosjekt.full)}
+              alt={`Den nye forsiden til ${prosjekt.navn}`}
+              tekst="Nå"
+            />
+          </div>
+        )}
+        <div className="foretter-rader">
+          <p className="foretter-hode" aria-hidden="true">
+            <span>Punkt</span><span>Gammel side</span><span>Ny side</span>
+          </p>
+          <ul>
+            {data.rader.map((rad) => (
+              <li key={rad.punkt}>
+                <div>
+                  <h3>{rad.punkt}</h3>
+                  <p>{rad.hvorfor}</p>
+                </div>
+                <p className="for"><span>Gammel side: </span>{rad.for}</p>
+                <p className="na"><span>Ny side: </span>{rad.na}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p className="foretter-kilde">{data.kilde}</p>
+      </div>
+    </div>
+  </section>
+);
 
 const IkkeFunnet = () => (
   <Shell>
@@ -72,7 +147,7 @@ const CasePage = () => {
       />
 
       <div ref={container}>
-        <section className="wrap sidetopp">
+        <section className="wrap sidetopp casehode">
           <nav className="brodsmuler" aria-label="Brødsmuler" data-reveal>
             <Link to="/">Forside</Link>
             <span aria-hidden="true">/</span>
@@ -81,16 +156,13 @@ const CasePage = () => {
             <span>{prosjekt.navn}</span>
           </nav>
           <div className="casetopp">
-            <div data-reveal>
-              <p className="etikett" style={{ marginBottom: '1rem' }}>{prosjekt.navn}</p>
-              <h1>{c.tittel}</h1>
-            </div>
+            <h1 data-reveal>{c.tittel}</h1>
             <p className="ingress" data-reveal>{c.ingress}</p>
           </div>
         </section>
 
         <section className="hvit">
-          <div className="wrap seksjon">
+          <div className="wrap seksjon casebilde">
             <div className="caseramme" data-reveal>
               <article className="arbeid">
                 <div className="ramme">
@@ -99,15 +171,21 @@ const CasePage = () => {
                     <p>{prosjekt.domene}</p>
                   </div>
                   <div className="ramme-vindu">
-                    <img
-                      src={prosjekt.full}
-                  srcSet={toganger(prosjekt.full)}
-                      alt={`Nettsiden til ${prosjekt.navn}`}
-                      loading="lazy"
-                      width="620"
-                      height="2422"
-                      style={{ '--til': prosjekt.til, animationDuration: '38s' }}
-                    />
+                    {/* Med `film` ruller bildet og filmen sammen i .rull, og
+                        filmen dekker toppen av skjermbildet (samme 1280 px
+                        bredde, så den treffer på pikselen). */}
+                    <div className={prosjekt.film ? 'rull' : undefined} style={prosjekt.film ? { '--til': prosjekt.til, animationDuration: '38s' } : undefined}>
+                      <img
+                        src={prosjekt.full}
+                        srcSet={toganger(prosjekt.full)}
+                        alt={`Nettsiden til ${prosjekt.navn}`}
+                        loading="lazy"
+                        width="620"
+                        height="2422"
+                        style={prosjekt.film ? undefined : { '--til': prosjekt.til, animationDuration: '38s' }}
+                      />
+                      {prosjekt.film && <Film className="ramme-film" src={prosjekt.film} width="960" height="750" />}
+                    </div>
                   </div>
                 </div>
               </article>
@@ -162,10 +240,12 @@ const CasePage = () => {
           </div>
         </section>
 
+        {c.forEtter && <ForEtter data={c.forEtter} prosjekt={prosjekt} />}
+
         {/* Omtalen står her, etter løsningen og før neste-lenken, fordi
             det er punktet der leseren nettopp har lest hva som ble gjort
-            og lurer på om det stemmer. To av seks caser har en omtale i
-            dag. De fire andre viser ingenting her, heller enn en tom
+            og lurer på om det stemmer. To caser har en omtale i
+            dag. De andre viser ingenting her, heller enn en tom
             ramme eller et sitat fra et annet prosjekt.
 
             Ingen Review-oppmerking. Google regner vurderinger en
@@ -196,7 +276,7 @@ const CasePage = () => {
         <section className="wrap" style={{ paddingBottom: 'var(--luft)' }}>
           <div className="casebunn">
             <Link className="knapp" to="/kontakt">
-              Vil du ha noe lignende? <span className="pil" aria-hidden="true">↗</span>
+              Vil du ha noe lignende? <PilOpp className="pil" />
             </Link>
             <Link className="etikett" to={`/arbeid/${neste.slug}`}>
               Neste: {nesteProsjekt.navn} →

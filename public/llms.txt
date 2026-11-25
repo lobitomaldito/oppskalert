@@ -1,16 +1,15 @@
 # Oppskalert
 
-> Norsk webutvikling – én person, hele jobben. Aleksander MacKee bygger håndkodede, konverteringsoptimaliserte nettsider for norske bedrifter. Du ser en ferdig, gratis demo før du bestemmer deg for om du vil betale noe.
+> Norsk webutvikling – én person, hele jobben. Aleksander MacKee bygger håndkodede, konverteringsoptimaliserte nettsider for norske bedrifter. Du ser et ferdig, gratis utkast før du bestemmer deg for om du vil betale noe.
 
 ## Om
 - [Om meg](https://oppskalert.no/om): Hvem som bygger sidene, og hvorfor det ikke er noe mellomledd.
-- [Metode](https://oppskalert.no/metode): Fra gratis demo til lansering, i fire steg.
+- [Metode](https://oppskalert.no/metode): Fra gratis utkast til lansering, i fire steg.
 - [Arbeid](https://oppskalert.no/arbeid): Ekte nettsider i drift for norske kunder, pluss bransjeeksempler.
 
 ## Priser
-- [Priser](https://oppskalert.no/priser): Engangspris fra 9 999 kr, eller drift fra 690 kr/mnd. Fast pris, ingen binding.
-- [Priskalkulator](https://oppskalert.no/kalkulator): Selvbetjent prisestimat basert på omfang og tilleggsfunksjoner.
-- [Drift og support](https://oppskalert.no/drift): Tre driftsnivåer fra 149 kr/mnd, ingen bindingstid.
+- [Priser](https://oppskalert.no/priser): Enkel (én landingsside) 6 990 kr, Medium (alle sidene, tekster for Google og AI-søk) 12 900 kr, Oppskaler (pluss priskalkulator eller booking og tre måneder SEO) fra 19 900 kr. Redigeringspanel og hosting inkludert i alle. Medium kan leies til eie for 1 590 kr/mnd uten binding, siden er din etter 12 måneder. Fast pris før jeg begynner.
+- [Serviceavtale og SEO](https://oppskalert.no/drift): Hosting inkludert i alle sider. Serviceavtale 550 kr/mnd, SEO fra 2 990 kr/mnd, ingen binding.
 
 ## Sammenligning
 - [Sammenlign](https://oppskalert.no/sammenlign): Oppskalert mot Wix og WordPress, side om side.
