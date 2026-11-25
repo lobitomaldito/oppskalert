@@ -32,7 +32,7 @@ Google Sites er enklest å komme i gang med, men har færrest valg for utseendet
 
 Det viktigste som mangler for en bedrift, er en egen adresse. Hos Wix og WordPress.com kreves et betalt abonnement for å koble til et domene som dittfirma.no. En adresse som slutter på wixsite.com eller wordpress.com, er vanskeligere å huske, passer dårlig på et visittkort og forteller kunden at siden er laget gratis.
 
-Det neste er reklamen. På gratisplanene til Wix og WordPress.com ser de besøkende reklame for leverandøren, og du bestemmer ikke selv hvor den står. For en håndverker eller en klinikk som vil virke seriøs, er det et dårlig førsteinntrykk.
+Det neste er reklamen. På gratisplanene til Wix og WordPress.com ser de besøkende reklame for leverandøren, og du bestemmer ikke selv hvor den står. For en håndverker eller en klinikk som vil virke seriøs, er det et dårlig førsteinntrykk. Hva kundene ser etter på en [nettside for håndverkere](/nettside-for-handverker), har jeg samlet i en egen sjekkliste.
 
 Det tredje er verktøyene. Gratisplanen hos Wix har verken nettbetaling eller Google Analytics, og gratisplanen hos WordPress.com lar deg ikke installere utvidelser, som er det mange bruker til booking og nettbutikk. Vil du ha dem, må du over på et betalt abonnement.
 

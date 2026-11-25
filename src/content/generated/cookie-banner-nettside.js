@@ -44,7 +44,7 @@ Consent Mode samler ikke inn samtykke selv. Du trenger fortsatt et banner eller 
 
 ## Når siden klarer seg uten banner
 
-En side som bare setter strengt nødvendige informasjonskapsler, eller ingen i det hele tatt, trenger ikke be om samtykke etter § 3-15. For mange små bedrifter er det fullt mulig: tekst, bilder, kontaktskjema og telefonnummer krever ingen sporing.
+En side som bare setter strengt nødvendige informasjonskapsler, eller ingen i det hele tatt, trenger ikke be om samtykke etter § 3-15. For mange små bedrifter er det fullt mulig: tekst, bilder, kontaktskjema og telefonnummer krever ingen sporing. En [nettside for terapeuter](/nettside-for-terapeut) trenger som regel ingen sporing, og dermed ikke noe banner.
 
 Det forutsetter at siden ikke henter noe fra andre som setter informasjonskapsler. Fonter er et eksempel verdt å kjenne til. Google oppgir at Google Fonts ikke setter informasjonskapsler, men den besøkendes IP-adresse sendes til Google hver gang fontene lastes fra Googles servere. Det er et personvernspørsmål, og det slipper du helt ved å legge fontfilene på din egen server. Det gjør jeg på alle sidene jeg lager.
 

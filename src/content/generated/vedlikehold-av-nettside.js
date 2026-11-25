@@ -44,7 +44,7 @@ Sertifikatet er det som gir hengelåsen i nettleseren. Sertifikater fra Let's En
 
 ## Innhold, skjema og Google
 
-Innholdsdelen er den som oftest blir glemt. Gå gjennom siden én gang i måneden og se etter priser som har endret seg, ansatte som har sluttet, tjenester du ikke tilbyr lenger og åpningstider som ikke stemmer med Google-profilen din.
+Innholdsdelen er den som oftest blir glemt. Gå gjennom siden én gang i måneden og se etter priser som har endret seg, ansatte som har sluttet, tjenester du ikke tilbyr lenger og åpningstider som ikke stemmer med Google-profilen din. På en [nettside for en klinikk](/nettside-for-klinikk) er det oftest behandlerlista og prisene som går ut på dato.
 
 Send deg selv en melding gjennom kontaktskjemaet samme dag. Et skjema som slutter å levere e-post, gir ingen feilmelding. Du merker det bare ved at henvendelsene uteblir.
 

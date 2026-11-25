@@ -27,7 +27,7 @@ Google vurderer tre ting når den bestemmer hvem som vises i lokalpakken: releva
 
 ## Anmeldelser veier tyngre enn du tror
 
-Antall anmeldelser og gjennomsnittlig vurdering er blant de sterkeste signalene Google bruker for lokal rangering. En bedrift med 40 anmeldelser og 4,7 i snitt slår som regel en konkurrent med fem anmeldelser, selv om begge leverer like god kvalitet. Det som ofte overrasker er hvor lite som skal til: å spørre fornøyde kunder direkte, gjerne med en lenke sendt på SMS eller e-post rett etter leveransen, gir langt flere svar enn å håpe noen husker å gjøre det selv uken etter. Svar også på anmeldelsene du får, både positive og negative. Det viser at noen faktisk driver bedriften.
+Antall anmeldelser og gjennomsnittlig vurdering er blant de sterkeste signalene Google bruker for lokal rangering. En bedrift med 40 anmeldelser og 4,7 i snitt slår som regel en konkurrent med fem anmeldelser, selv om begge leverer like god kvalitet. Det som ofte overrasker er hvor lite som skal til: å spørre fornøyde kunder direkte, gjerne med en lenke sendt på SMS eller e-post rett etter leveransen, gir langt flere svar enn å håpe noen husker å gjøre det selv uken etter. Svar også på anmeldelsene du får, både positive og negative. Det viser at noen faktisk driver bedriften. Omtalene kan også stå som tekst på nettsiden, slik jeg gjør på hver [nettside for terapeuter](/nettside-for-terapeut).
 
 ## Bilder og oppdateringer holder profilen aktiv
 

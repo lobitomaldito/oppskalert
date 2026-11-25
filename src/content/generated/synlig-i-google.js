@@ -53,7 +53,7 @@ En misforståelse er verdt å rydde opp i. Mange tror robots.txt er måten å ho
 
 ## Indeksert, men fortsatt usynlig
 
-Viser URL-inspeksjonen at siden er med, men ingen finner den, er problemet et annet. Da handler det om hvor godt siden svarer på søket sammenlignet med de andre treffene. Sjekk resultatrapporten. Vises du på søk med mange visninger, men ligger langt nede, må teksten på siden bli bedre. Vises du ikke på søkene du vil ha, mangler du sannsynligvis en egen side om akkurat det.
+Viser URL-inspeksjonen at siden er med, men ingen finner den, er problemet et annet. Da handler det om hvor godt siden svarer på søket sammenlignet med de andre treffene. Sjekk resultatrapporten. Vises du på søk med mange visninger, men ligger langt nede, må teksten på siden bli bedre. Vises du ikke på søkene du vil ha, mangler du sannsynligvis en egen side om akkurat det. For en terapeut betyr det ofte én side per tema, slik jeg beskriver på siden om [nettside for terapeuter](/nettside-for-terapeut).
 
 For lokale bedrifter teller kartet i tillegg, og der er det [Google Bedriftsprofil](/blogg/google-min-bedrift) som avgjør. Fart, mobilvisning og resten av det tekniske går jeg gjennom i innlegget om [teknisk SEO](/blogg/teknisk-seo).
 

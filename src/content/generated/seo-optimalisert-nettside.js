@@ -20,7 +20,7 @@ Google sier det samme i sin egen veiledning om å leie inn SEO-hjelp: et godt ti
 
 ## Én side per tjeneste, med adresser som sier noe
 
-Strukturen er det første som må på plass. Hver tjeneste du vil bli funnet på, trenger en egen side med en egen adresse, for eksempel /baderom-drammen i stedet for /side?id=14. Google skriver at deler av adressen kan vises i søkeresultatet, og at folk bruker den til å vurdere om treffet er nyttig.
+Strukturen er det første som må på plass. Hver tjeneste du vil bli funnet på, trenger en egen side med en egen adresse, for eksempel /baderom-drammen i stedet for /side?id=14. Google skriver at deler av adressen kan vises i søkeresultatet, og at folk bruker den til å vurdere om treffet er nyttig. Det er derfor en [nettside for håndverkere](/nettside-for-handverker) bør ha én side for bad, én for tak og én for hver annen jobb du vil ha mer av.
 
 Hver side trenger også sin egen tittel og beskrivelse. Tittelen er den klikkbare overskriften i søkeresultatet, og Google anbefaler at den er unik for siden og beskriver innholdet presist. Det finnes ingen fast lengdegrense, men lange titler kuttes for å passe skjermen. Beskrivelsen, også kalt [metabeskrivelse](/ordliste/metabeskrivelse), brukes av og til som teksten under lenken, så den bør skrives for hver side.
 

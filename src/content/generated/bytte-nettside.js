@@ -26,7 +26,7 @@ Sjekk Largest Contentful Paint på Google PageSpeed Insights. Ligger tallet over
 
 ## Tegn 2: Den ser utdatert ut sammenlignet med bransjen
 
-Design dateres i praksis over tre til fem år, ikke fordi teknologien blir dårlig, men fordi besøkerforventningene endrer seg. Sammenlign forsiden din med tre andre nettsider i din bransje, publisert det siste året. Skiller din seg tydelig ut i negativ retning, altså tregere animasjoner, eldre skrifttyper eller en layout som ikke tilpasser seg mobil skjermbredde, leser besøkende det som et signal om at bedriften selv ikke er oppdatert. Det er sjelden rettferdig, men det er hvordan et førsteinntrykk fungerer.
+Design dateres i praksis over tre til fem år, ikke fordi teknologien blir dårlig, men fordi besøkerforventningene endrer seg. Sammenlign forsiden din med tre andre nettsider i din bransje, publisert det siste året. Skiller din seg tydelig ut i negativ retning, altså tregere animasjoner, eldre skrifttyper eller en layout som ikke tilpasser seg mobil skjermbredde, leser besøkende det som et signal om at bedriften selv ikke er oppdatert. Det er sjelden rettferdig, men det er hvordan et førsteinntrykk fungerer. Hva kundene forventer i håndverksbransjen, har jeg samlet på siden om [nettside for håndverkere](/nettside-for-handverker).
 
 ## Tegn 3: Du kan ikke oppdatere den selv lenger
 
