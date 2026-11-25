@@ -101,8 +101,11 @@ const rader = [
   ['Bindingstid', 'Ingen', 'Ingen', 'Ingen', 'Ingen'],
 ];
 
-const Celle = ({ v }) => {
-  if (v === true) return <Check className="w-4 h-4 text-room-ink mx-auto" aria-label="Inkludert" />;
+/* Hakene tones inn kolonne for kolonne fra venstre første gang tabellen
+   vises (25.11.2026), så det synes at hvert trinn har alt fra trinnet før,
+   og litt til. `k` er kolonnen. CSS-en står under .drift-tabell i index.css. */
+const Celle = ({ v, k }) => {
+  if (v === true) return <Check className="drift-hake w-4 h-4 text-room-ink mx-auto" style={{ '--k': k }} aria-label="Inkludert" />;
   if (v === false) return <Minus className="w-4 h-4 text-room-ink/50 mx-auto" aria-label="Ikke inkludert" />;
   return <span className="font-body text-xs text-room-ink/70">{v}</span>;
 };
@@ -115,7 +118,7 @@ const Sammenligning = () => {
     <section ref={container} className="seksjon hidden md:block">
       <div className="wrap">
         <SeksjonTopp tittel="Full oversikt," uthevet="rad for rad." />
-        <div data-reveal className="overflow-x-auto rounded-kort border border-room-ink/10">
+        <div data-reveal className="drift-tabell overflow-x-auto rounded-kort border border-room-ink/10">
           <table className="w-full border-collapse min-w-[44rem]">
             <caption className="sr-only">Sammenligning av de fire trinnene for drift, SEO og annonser</caption>
             <thead>
@@ -131,7 +134,7 @@ const Sammenligning = () => {
                 <tr key={navn} className="border-b border-room-ink/10 last:border-b-0">
                   <th scope="row" className="text-left font-body text-[0.9rem] text-room-ink/70 py-3.5 px-4 font-normal">{navn}</th>
                   {verdier.map((v, i) => (
-                    <td key={i} className="text-center py-3.5 px-4"><Celle v={v} /></td>
+                    <td key={i} className="text-center py-3.5 px-4"><Celle v={v} k={i} /></td>
                   ))}
                 </tr>
               ))}

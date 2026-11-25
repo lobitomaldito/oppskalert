@@ -5,6 +5,7 @@ import SEO from './components/SEO';
 import { Shell } from './components/Layout';
 import Sitatkort, { Stjerner } from './components/Sitatkort';
 import Priser from './components/Priser';
+import BredtSitat from './components/BredtSitat';
 import Utkastvelger from './components/Utkastvelger';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal } from './lib/demo-innhold';
@@ -547,6 +548,7 @@ const Home = () => (
     <OmMegSeksjon />
     <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
+    <BredtSitat />
     <FaqSeksjon />
     <Utkastvelger />
   </Shell>

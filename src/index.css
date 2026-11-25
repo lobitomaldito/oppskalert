@@ -246,20 +246,26 @@
     background: var(--blekk); color: var(--kritt);
     font-size: .875rem; font-weight: 600; line-height: 1; white-space: nowrap;
     border: 1px solid var(--blekk); cursor: pointer;
-    transition: color .25s var(--e);
+    transition: color .25s var(--e), transform 160ms var(--e);
   }
+  /* Trykkrespons (25.11.2026): knappen gir litt etter når den trykkes, så
+     trykket merkes også på mobil, der hover ikke finnes. */
+  .knapp:active { transform: scale(.97); }
   .knapp::before {
     content: ""; position: absolute; inset: 0; z-index: -1;
     background: var(--hvit);
     transform: translateY(var(--slide));
     transition: transform .4s var(--e);
   }
-  .knapp:hover { color: var(--blekk); }
-  .knapp:hover::before { transform: translateY(0); }
+  /* Hover bare med mus: på mobil ble knappen stående hvit etter et trykk. */
+  @media (hover: hover) and (pointer: fine) {
+    .knapp:hover { color: var(--blekk); }
+    .knapp:hover::before { transform: translateY(0); }
+    .knapp:hover .pil { transform: translateX(.2rem); }
+  }
   /* Lucide-ikonene fra Ikon.jsx. 1em, så de følger teksten de står i. */
   .ikon { width: 1em; height: 1em; flex: none; display: inline-block; vertical-align: -.125em; }
   .knapp .pil { transition: transform .3s var(--e); }
-  .knapp:hover .pil { transform: translateX(.2rem); }
   .paa-blekk .knapp { background: var(--kritt); color: var(--blekk); border-color: var(--kritt); }
   .paa-blekk .knapp::before { background: var(--prikk-lys); }
   .paa-blekk .knapp:hover { color: var(--blekk); }
@@ -951,6 +957,48 @@
   /* Grått bånd i full bredde med hvite kort, så omtalene skiller seg
      fra seksjonene over og under. */
   .sitatblokk { background: var(--kort); padding-block: var(--luft); }
+
+  /* Ett sitat i full bredde under prisene (BredtSitat.jsx). Ingen ramme,
+     ingen stjerner: skriften bærer det, som på vivr.no. */
+  .bredt-sitat { padding-block: var(--luft); }
+  .bredt-sitat blockquote { margin: 0; }
+  .bredt-sitat blockquote p {
+    font-family: var(--displayfont);
+    font-weight: 400;
+    font-size: clamp(1.85rem, 4.6vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: var(--display-sperre-stor);
+    text-wrap: pretty;
+    color: var(--blekk);
+  }
+  .bredt-sitat-kilde {
+    margin-top: clamp(2rem, 4vw, 3.5rem);
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem;
+  }
+  .bredt-sitat .sitat-kilde .initial { background: var(--kort); }
+  .bredt-sitat-case {
+    display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem;
+    font-size: .875rem; font-weight: 600;
+    border-bottom: 1px solid var(--felt-kant); transition: border-color .2s var(--e);
+  }
+  .bredt-sitat-case .pil { transition: transform .3s var(--e); }
+  @media (hover: hover) and (pointer: fine) {
+    .bredt-sitat-case:hover { border-color: var(--blekk); }
+    .bredt-sitat-case:hover .pil { transform: translateX(.2rem); }
+  }
+  /* Ordene fylles inn mens sitatet rulles fra nedre del av skjermen mot
+     midten. --p er ordets plass i sitatet (0 til 1). */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .bredt-sitat blockquote { view-timeline-name: --bredt-sitat; }
+      .bredt-sitat .ord {
+        animation: ord-fyll linear both;
+        animation-timeline: --bredt-sitat;
+        animation-range: cover calc(12% + var(--p) * 34%) cover calc(20% + var(--p) * 34%);
+      }
+    }
+  }
+  @keyframes ord-fyll { from { opacity: .14; } to { opacity: 1; } }
   .sitatblokk .omtale { background: var(--hvit); }
   .sitatblokk .sitat-kilde .initial { background: var(--kort); }
   /* Kortet var blekk-svart. Det er sidens største flate etter bunnteksten,
@@ -1328,6 +1376,16 @@
   .faq .tegn::after { width: 1.5px; height: 1.125rem; }
   .faq details[open] .tegn::after { transform: scaleY(0); opacity: 0; }
   .faq details[open] summary { padding-bottom: .5rem; }
+  /* Svaret glir opp i stedet for å hoppe fram (25.11.2026). Bare der
+     nettleseren kan animere til auto-høyde; ellers åpner det som før. */
+  @supports (interpolate-size: allow-keywords) {
+    .faq details { interpolate-size: allow-keywords; }
+    .faq details::details-content {
+      block-size: 0; overflow-y: clip;
+      transition: block-size .3s var(--e), content-visibility .3s var(--e) allow-discrete;
+    }
+    .faq details[open]::details-content { block-size: auto; }
+  }
   .faq .svar { padding: 0 3rem 1.6rem .25rem; color: var(--blekk-mykt); max-width: 62ch; font-size: .9375rem; }
 
   /* ----------------------------------------------------------------
@@ -1490,6 +1548,20 @@
 .reveal-armed [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* /drift: hakene i sammenligningen kommer kolonne for kolonne, etter at
+   tabellen selv har tont inn. Skjult bare når useReveal har armert siden,
+   så de står synlige uten JavaScript (regel 5). */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-armed .drift-tabell .drift-hake { opacity: 0; transform: scale(.9); }
+  /* Overgangen står bare på vei inn, så hakene ikke først toner ut når
+     siden armeres. */
+  .reveal-armed .drift-tabell.is-visible .drift-hake {
+    opacity: 1; transform: none;
+    transition: opacity .2s var(--e), transform .2s var(--e);
+    transition-delay: calc(350ms + var(--k, 0) * 80ms);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
