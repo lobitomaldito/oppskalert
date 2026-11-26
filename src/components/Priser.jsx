@@ -97,6 +97,13 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
         </span>
       )}
 
+      {/* Hva kunden får ut av nivået, over navnet (Aleksander 25.11.2026,
+          etter merkelappene på vivr.no). */}
+      {m.merkelapp && (
+        <p className={cn('font-body text-xs uppercase tracking-[0.12em] font-semibold mb-2', m.fremhevet ? 'text-current opacity-70' : 'text-room-ink/60')}>
+          {m.merkelapp}
+        </p>
+      )}
       <h3 className="font-sans font-bold text-xl">{m.navn}</h3>
       <p className="font-body text-[0.95rem] mt-1.5 md:mt-2.5 leading-relaxed md:min-h-[3em] text-room-ink/70">
         {m.tagline}
