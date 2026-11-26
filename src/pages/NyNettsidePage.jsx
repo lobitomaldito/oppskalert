@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Shell, SideTopp } from '../components/Layout';
+import { SideVeksler } from '../components/TjenesteBilder';
 import { Avsnitt, Brodtekst, Punktliste } from '../components/Landingsside';
 import Omtaler from '../components/Omtaler';
 import DemoSkjema from '../components/DemoSkjema';
@@ -76,6 +77,7 @@ const NyNettsidePage = () => (
       tittel="Ny nettside,"
       uthevet="uten at du mister det du har."
       lede="De fleste utsetter en ny side fordi de er redde for hva som skjer med Google, e-posten og domenet. Det er den delen jeg tar meg av, og den er ferdig før du merker noe."
+      bilde={<SideVeksler />}
     />
     <Brodtekst>
       <Avsnitt tittel="Når en side har" uthevet="gjort seg ferdig.">

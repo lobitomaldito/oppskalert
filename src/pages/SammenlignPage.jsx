@@ -29,13 +29,13 @@ const SammenlignPage = () => {
       />
       <section ref={container} className="seksjon pt-0">
         <div className="wrap">
-          <div className="grid sm:grid-cols-2 gap-5 max-w-[46rem]">
+          <div className="grid sm:grid-cols-2 gap-5 max-w-[46rem] farget">
             {sammenlignOversikt.map((s) => (
               <Link
                 key={s.slug}
                 to={s.rute}
                 data-reveal
-                className="group flex flex-col justify-between rounded-kort border border-room-ink/10 bg-room-ink/[0.03] hover:border-room-ink/40 transition-colors duration-300 p-7"
+                className="group flex flex-col justify-between rounded-kort border border-transparent hover:border-room-ink/30 transition-colors duration-300 p-7"
               >
                 <div>
                   <h2 className="font-sans font-bold text-xl">Meg vs. {s.navn}</h2>

@@ -89,6 +89,13 @@
     --prikk:     #b8551a;
     --prikk-lys: #ffb17a;
 
+    /* Varme flater laget av aksentfargen (26.11.2026, Aleksander: «mer
+       farge, fargede runde kort»). Tre toner av samme familie, så sidene
+       får farge uten å bli brokete. Blekk-mykt holder over 5:1 på alle. */
+    --fersken: #fde7d9;
+    --sand:    #f6eee3;
+    --leire:   #f6d8c3;
+
     /* Samme palett som RGB-tripler, for Tailwind */
     --bg:          17 17 19;      /* blekk */
     --bg-deep:     10 10 12;
@@ -1243,6 +1250,73 @@
   .sjekk-punkter h3 { font-weight: 600; font-size: 1rem; }
   .sjekk-punkter p { margin-top: .25rem; font-size: .9375rem; color: var(--blekk-mykt); }
   .sjekk-nr { flex: none; min-width: 1.5rem; font-size: .8125rem; color: var(--blekk-mykt); font-variant-numeric: tabular-nums; padding-top: .125rem; }
+
+  /* ----------------------------------------------------------------
+     Fargede runde kort (26.11.2026, etter headspace.com og gusto.com).
+     .farget på en liste eller et rutenett gir barna fersken, sand og
+     leire etter tur. .farget-panel er en stor farget flate rundt en
+     seksjon med tekst og bilde. Ingen skygger: dybden kommer fra fargen.
+     ---------------------------------------------------------------- */
+  .farget > * { background: var(--fersken); border-color: transparent; }
+  .farget > :nth-child(3n+2) { background: var(--sand); }
+  .farget > :nth-child(3n+3) { background: var(--leire); }
+  /* «Slik jeg gjør det» skal være den varme, «den vanlige veien» den rolige. */
+  .farget.omvendt > :nth-child(1) { background: var(--sand); }
+  .farget.omvendt > :nth-child(2) { background: var(--fersken); }
+
+  /* Punktlista på landingssidene: hvert punkt er et lite rundt kort. */
+  .punkt-kort { display: grid; gap: .75rem; max-width: 62rem; padding: 0; list-style: none; }
+  @media (min-width: 48rem) { .punkt-kort { grid-template-columns: 1fr 1fr; } }
+  .punkt-kort li {
+    display: flex; align-items: flex-start; gap: .75rem;
+    padding: 1rem 1.15rem; border-radius: var(--rund);
+    font-size: .95rem; line-height: 1.55; color: var(--blekk-mykt);
+  }
+  .punkt-kort svg { width: 1rem; height: 1rem; margin-top: .2rem; flex: none; color: var(--prikk); }
+
+  /* Sju ting-lista på nettsidesjekken får samme kortform. */
+  .sjekk-punkter.farget { gap: .75rem; }
+  .sjekk-punkter.farget li { padding: 1.1rem 1.25rem; border-top: 0; border-radius: var(--rund); }
+  .sjekk-punkter.farget .sjekk-nr { color: var(--prikk); font-weight: 600; }
+
+  /* Bildet i sidetoppen står i en farget ramme. */
+  .sidetopp-bilde.farget-ramme {
+    background: var(--fersken); padding: clamp(.75rem, 2vw, 1.25rem);
+    border-radius: var(--rund-stor); overflow: hidden;
+  }
+  .sidetopp-bilde.farget-ramme img { aspect-ratio: 4 / 3; object-fit: cover; }
+  /* Sidebyttet fra forsiden (TjenesteBilder.jsx) i samme ramme. */
+  .farget-ramme .tjeneste-bilde, .farget-panel .tjeneste-bilde {
+    aspect-ratio: 4 / 3; min-height: 0; background: transparent; border-radius: var(--rund);
+  }
+  .farget-ramme .nettleser { left: 6%; right: 6%; top: 8%; }
+  /* Mobil (under 64rem, der bildet står under teksten): lavere bilde og
+     tynnere ramme, så toppen ikke dytter innholdet en skjermhøyde ned. */
+  @media (max-width: 63.99rem) {
+    .sidetopp-bilde.farget-ramme { padding: .5rem; }
+    .sidetopp-bilde.farget-ramme img, .farget-ramme .tjeneste-bilde { aspect-ratio: 16 / 9; }
+    .sidetopp-med-bilde { gap: 1.5rem; }
+    .punkt-kort { gap: .5rem; }
+    .punkt-kort li { padding: .75rem .9rem; font-size: .9rem; line-height: 1.5; }
+    .sjekk-punkter.farget { gap: .5rem; }
+    .sjekk-punkter.farget li { padding: .85rem 1rem; }
+  }
+
+  .farget-panel {
+    display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center;
+    padding: clamp(1.5rem, 4vw, 3.5rem); border-radius: var(--rund-stor);
+    background: var(--fersken);
+  }
+  .farget-panel.sand { background: var(--sand); }
+  .farget-panel.leire { background: var(--leire); }
+  @media (min-width: 56rem) { .farget-panel { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+  .farget-panel .farget-panel-tekst > * + * { margin-top: 1rem; }
+  .farget-panel h2 {
+    font-weight: var(--display-vekt); font-size: clamp(1.5rem, 3.2vw, 2.15rem);
+    line-height: 1.1; letter-spacing: var(--display-sperre);
+  }
+  .farget-panel p { color: var(--blekk-mykt); max-width: 52ch; }
+  .farget-panel .sok-demo { background: var(--hvit); border-radius: var(--rund); }
 
   /* ----------------------------------------------------------------
      Sitat.

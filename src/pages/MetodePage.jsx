@@ -1,6 +1,6 @@
 import { Check, X } from 'lucide-react';
 import SEO from '../components/SEO';
-import { Shell } from '../components/Layout';
+import { Foto, Shell } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import Metode from '../components/Metode';
 import SitatKarusell from '../components/SitatKarusell';
@@ -37,7 +37,7 @@ const Kontrast = () => {
           <h2>Hvorfor jeg gjør det motsatt vei.</h2>
           <p>De fleste vil ha betalt for å tenke. Jeg vil heller bygge noe du kan se på, og la det avgjøre.</p>
         </div>
-        <div data-reveal className="grid gap-5 md:grid-cols-2 max-w-[52rem] inn" style={{ '--d': '80ms' }}>
+        <div data-reveal className="grid gap-5 md:grid-cols-2 max-w-[52rem] farget omvendt inn" style={{ '--d': '80ms' }}>
           <div className="tjeneste">
             <h3>Den vanlige veien</h3>
             <ul className="flex flex-col gap-3">
@@ -73,14 +73,19 @@ const MetodePage = () => (
       canonical="https://oppskalert.no/metode"
     />
 
-    <section className="wrap sidetopp">
-      <p className="etikett inn">Metode</p>
-      <h1 className="inn" style={{ '--d': '60ms' }}>Du ser resultatet før du betaler.</h1>
-      <p className="inn" style={{ '--d': '140ms' }}>
-        Fire steg. De tre første koster deg ingenting, og det første er ferdig innen
-        48 timer. Slik viser jeg at jobben er verdt pengene, i stedet for å påstå
-        det.
-      </p>
+    <section className="wrap sidetopp sidetopp-med-bilde">
+      <div>
+        <p className="etikett inn">Metode</p>
+        <h1 className="inn" style={{ '--d': '60ms' }}>Du ser resultatet før du betaler.</h1>
+        <p className="inn" style={{ '--d': '140ms' }}>
+          Fire steg. De tre første koster deg ingenting, og det første er ferdig innen
+          48 timer. Slik viser jeg at jobben er verdt pengene, i stedet for å påstå
+          det.
+        </p>
+      </div>
+      <figure className="sidetopp-bilde farget-ramme inn" style={{ '--d': '200ms' }}>
+        <Foto navn="metode" alt="En notatbok med skisser av nettsider ved siden av en mobil og to penner." />
+      </figure>
     </section>
 
     {/* Den utdypede stegvisningen, ikke demoens korte liste.

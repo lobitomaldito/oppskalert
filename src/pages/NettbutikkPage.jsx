@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { Shell, SideTopp } from '../components/Layout';
+import { Foto, Shell, SideTopp } from '../components/Layout';
 import { Avsnitt, Brodtekst, Punktliste } from '../components/Landingsside';
 import DemoSkjema from '../components/DemoSkjema';
 import FAQ from '../components/FAQ';
@@ -66,6 +66,7 @@ const NettbutikkPage = () => (
       tittel="Lage nettbutikk"
       uthevet="som faktisk selger."
       lede="En nettbutikk er ikke en nettside med en handlekurv. Den har noen få steder der penger forsvinner, og de stedene er verdt å bygge riktig fra start."
+      bilde={<Foto navn="nettbutikk" alt="Hender som legger et takkekort i en pakke på et trebord." />}
     />
     <Brodtekst>
       <Avsnitt tittel="Kassen er der" uthevet="pengene forsvinner.">

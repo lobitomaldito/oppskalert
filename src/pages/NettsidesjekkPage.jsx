@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { Shell, SeksjonTopp } from '../components/Layout';
+import { Foto, Shell, SeksjonTopp } from '../components/Layout';
 import FAQ from '../components/FAQ';
 import { PilHoyre } from '../components/Ikon';
 import { submitDemoRequest } from '../lib/demoRequest';
@@ -476,13 +476,18 @@ const NettsidesjekkPage = () => {
         jsonLd={lagFaqSchema(SPORSMAL)}
       />
 
-      <section ref={toppRef} className="wrap sidetopp">
-        <p data-reveal className="etikett inn">Gratis verktøy</p>
-        <h1 data-reveal className="inn" style={{ '--d': '60ms' }}>Gratis nettsidesjekk.</h1>
-        <p data-reveal className="inn" style={{ '--d': '140ms' }}>
-          Skriv inn adressen til nettsiden din, så får du en karakter fra A til F på noen sekunder. Jeg måler sju
-          ting som avgjør om de som finner deg, faktisk tar kontakt.
-        </p>
+      <section ref={toppRef} className="wrap sidetopp sidetopp-med-bilde">
+        <div>
+          <p data-reveal className="etikett inn">Gratis verktøy</p>
+          <h1 data-reveal className="inn" style={{ '--d': '60ms' }}>Gratis nettsidesjekk.</h1>
+          <p data-reveal className="inn" style={{ '--d': '140ms' }}>
+            Skriv inn adressen til nettsiden din, så får du en karakter fra A til F på noen sekunder. Jeg måler sju
+            ting som avgjør om de som finner deg, faktisk tar kontakt.
+          </p>
+        </div>
+        <figure data-reveal className="sidetopp-bilde farget-ramme inn" style={{ '--d': '200ms' }}>
+          <Foto navn="sjekk" alt="En kvinne ser på mobilen ved et vindusbord med en kopp ved siden av." />
+        </figure>
       </section>
 
       <Sjekk />
@@ -494,7 +499,7 @@ const NettsidesjekkPage = () => {
             uthevet="som avgjør om de tar kontakt."
             lede="Alt måles på forsiden din, slik Google og ChatGPT henter den. De to første teller mest i karakteren, fordi de stopper folk før de har lest noe."
           />
-          <ol data-reveal className="sjekk-punkter">
+          <ol data-reveal className="sjekk-punkter farget">
             {PUNKTER.map((p, i) => (
               <li key={p.id}>
                 <span className="sjekk-nr" aria-hidden="true">{i + 1}</span>

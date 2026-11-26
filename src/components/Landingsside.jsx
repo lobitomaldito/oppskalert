@@ -45,10 +45,11 @@ export const Punktliste = ({ tittel, uthevet, lede, punkter, fotnote }) => {
     <section ref={container} className="seksjon">
       <div className="wrap">
         <SeksjonTopp tittel={tittel} uthevet={uthevet} lede={lede} />
-        <ul data-reveal className="grid gap-3.5 md:grid-cols-2 max-w-[62rem]">
+        {/* Fargede runde kort fra 26.11.2026, var en ren hakeliste. */}
+        <ul data-reveal className="punkt-kort farget">
           {punkter.map((p) => (
-            <li key={p} className="flex items-start gap-3 font-body text-[0.95rem] text-room-ink/70 leading-relaxed">
-              <Check className="w-4 h-4 text-room-ink mt-1 flex-shrink-0" aria-hidden="true" />
+            <li key={p}>
+              <Check aria-hidden="true" />
               {p}
             </li>
           ))}
@@ -58,6 +59,25 @@ export const Punktliste = ({ tittel, uthevet, lede, punkter, fotnote }) => {
             {fotnote}
           </p>
         )}
+      </div>
+    </section>
+  );
+};
+
+/* Stor farget flate med tekst og bilde side om side (26.11.2026, etter
+   headspace.com). Brukes der en side trenger et bilde midt i teksten. */
+export const FargeSeksjon = ({ tittel, uthevet, farge = '', bilde, children }) => {
+  const container = useReveal(70);
+  return (
+    <section ref={container} className="seksjon pt-0">
+      <div className="wrap">
+        <div data-reveal className={`farget-panel ${farge}`}>
+          <div className="farget-panel-tekst">
+            <h2>{tittel}{uthevet && <> {uthevet}</>}</h2>
+            {children}
+          </div>
+          <div>{bilde}</div>
+        </div>
       </div>
     </section>
   );
