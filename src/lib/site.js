@@ -693,6 +693,14 @@ export const prosjekter = [
      egen styles.css, satt for hånd. Står rett bak Prana etter ønske fra Aleksander
      (23.11.2026), så den er femte kort og ikke med på /priser og /om. */
   { img: '/websider/terapihusene.webp', slug: 'terapihusene', farge: '#8e5e52', full: '/websider/full/terapihusene.webp', til: '-81%', navn: 'Terapihusene', bransje: 'Terapi · tre byer', url: 'https://terapihusene.no/', domene: 'terapihusene.no' },
+  /* Terapihjelp. Lagt inn 24. november 2026 etter ønske fra Aleksander, rett
+     bak Terapihusene. Skjermbildene er tatt fra terapihjelpdemo.oppskalert.no
+     samme dag, med filmen i toppen stoppet på første bilde (midt i en
+     overtoning ble ansiktene doble). Siden er den samme som skal på
+     terapihjelp.no, så denne oppføringen publiseres først når domenet er
+     flyttet. Fangsten er vanlig 5000 px, så --til er -81%. Fargen er
+     tekstaksenten #2F6A73 fra kundens egen design system-blokk. */
+  { img: '/websider/terapihjelp.webp', slug: 'terapihjelp', farge: '#2f6a73', full: '/websider/full/terapihjelp.webp', til: '-81%', navn: 'Terapihjelp', bransje: 'Terapi · Tønsberg', url: 'https://www.terapihjelp.no/', domene: 'terapihjelp.no' },
   /* Melanie Dahl. Lagt inn 21. august 2026, hentet fra arbeid en annen
      sesjon hadde liggende ukommittert i hovedtreet.
 

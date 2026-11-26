@@ -49,6 +49,39 @@ export const caser = [
     }
   },
   {
+    "slug": "terapihjelp",
+    "i": 5,
+    "tittel": "Parterapi i Tønsberg, med pris og terapeut før du tar kontakt",
+    "ingress": "Erik Hovden og Elisabeth Røst er gestaltterapeuter i Tønsberg og tar imot par, enkeltpersoner og grupper. Den som tar kontakt vil gjerne vite hva en time koster og hvem de skal snakke med før de ringer.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Egen side for hver behandling og hver samtalegruppe",
+      "Tre spørsmål som finner riktig time, pris og terapeut",
+      "Flytting fra Wix, gamle adresser sendes videre",
+      "Hosting, synlighet og Google Ads"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Kontaktskjema og påmelding til gruppene",
+      "Redigering rett på siden"
+    ],
+    "utfordring": {
+      "t": "Seks tilbud, to terapeuter",
+      "a": [
+        "Terapihjelp tilbyr parterapi, individuell terapi, relasjonsterapi, coaching, veiledning og samtalegrupper. Prisen avhenger av tilbud og timelengde, og klienten kan velge Erik, Elisabeth eller begge.",
+        "På den gamle siden sto prisene på en egen underside, og den besøkende måtte selv finne ut hvilket tilbud som passet."
+      ]
+    },
+    "losning": {
+      "t": "Tre spørsmål før timebestillingen",
+      "a": [
+        "Forsiden har en velger med tre spørsmål: hvem det gjelder, hva det gjelder og hvilken terapeut man vil snakke med. Svaret er et tilbud med pris, terapeut og et skjema for å bestille time.",
+        "Prisen står også <b>på kortet for hvert tilbud</b>, rett under navnet, og hver behandling har sin egen side.",
+        "Erik endrer tekst og priser selv, rett på siden. Samtalegruppene har egne påmeldingsskjemaer som sendes på e-post til terapeutene."
+      ]
+    }
+  },
+  {
     "slug": "woxen-hage",
     "i": 0,
     "tittel": "Hagehjelp bestilt på under ett minutt",
