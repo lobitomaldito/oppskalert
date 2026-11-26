@@ -45,7 +45,7 @@ Ikke stol på antakelser eller hva byrået ditt sa for to år siden. Gå til Goo
     publishDate: "2026-05-01",
     keywords: ["billig nettside norge", "AI nettside"],
     hero: "/blogg/myten-om-den-dyre-nettsiden-ai-prisbilde.jpg",
-    svar: "Nei, en nettside til en liten bedrift trenger ikke koste 100 000 kroner. Hos meg koster den fra 6 990 kr eks. mva. Om en billig side er verdt pengene, står i [er en billig nettside verdt det?](/vanlige-sporsmal/er-billig-nettside-verdt-det), og hva AI faktisk klarer i [AI og nettsider](/blogg/nettside-ai).",
+    svar: "Nei, en nettside til en liten bedrift trenger ikke koste 100 000 kroner. Hos meg koster den fra 8 990 kr eks. mva. Om en billig side er verdt pengene, står i [er en billig nettside verdt det?](/vanlige-sporsmal/er-billig-nettside-verdt-det), og hva AI faktisk klarer i [AI og nettsider](/blogg/nettside-ai).",
     /* Skrevet om 12.11.2026. Den gamle teksten (mai 2026) hadde påstander uten
        kilde: et rørleggertilbud på 120 000 kr, «fra 40 til under 5 timer», «80 %»
        av timene, «53 %» som forlater en treg side og «30 % overskredet». Prisspennet
@@ -61,7 +61,7 @@ En fast pris snur det. Da har leverandøren regnet på omfanget før arbeidet st
 
 ## Hva har AI endret?
 
-Jeg bruker AI-verktøy til de delene av jobben som gjentar seg: oppsett, struktur, første utkast av tekstene ut fra det du har fra før, og kontroll av koden. Jeg leser, retter og tester alt selv før du ser det. Det er det som gjør at et ferdig utkast er klart på 48 timer, og at prisen kan være fast fra 6 990 kr eks. mva.
+Jeg bruker AI-verktøy til de delene av jobben som gjentar seg: oppsett, struktur, første utkast av tekstene ut fra det du har fra før, og kontroll av koden. Jeg leser, retter og tester alt selv før du ser det. Det er det som gjør at et ferdig utkast er klart på 48 timer, og at prisen kan være fast fra 8 990 kr eks. mva.
 
 Hva AI-verktøyene klarer alene, og hva de ikke klarer, står i [AI og nettsider](/blogg/nettside-ai).
 

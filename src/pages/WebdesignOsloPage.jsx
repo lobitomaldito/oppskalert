@@ -196,7 +196,7 @@ const WebdesignOsloPage = () => (
         skrives om. Se kommentaren øverst i fila. */}
     <SEO
       title="Webdesign i Oslo til fast pris"
-      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 6 990 kr, og et gratis utkast før du bestemmer deg."
+      description="Webdesign i Oslo for små bedrifter. Håndkodede nettsider som laster på under ett sekund, fast pris fra 8 990 kr, og et gratis utkast før du bestemmer deg."
       keywords={['webdesign oslo', 'webdesigner oslo', 'webdesign firma', 'webdesign bedrift']}
       canonical={CANONICAL}
       jsonLd={webdesignOsloSchema}
@@ -204,7 +204,7 @@ const WebdesignOsloPage = () => (
     <SideTopp
       tittel="Webdesign i Oslo,"
       uthevet="til fast pris."
-      lede="Håndkodede nettsider for små bedrifter i Oslo-området, til fast pris fra 6 990 kr eks. mva. Du snakker med meg hele veien, og du ser et ferdig utkast før du bestemmer deg for noe som helst."
+      lede="Håndkodede nettsider for små bedrifter i Oslo-området, til fast pris fra 8 990 kr eks. mva. Du snakker med meg hele veien, og du ser et ferdig utkast før du bestemmer deg for noe som helst."
     />
     <Innhold />
     <Portfolio tittel="Sider jeg" uthevet="har levert." limit={6} visAlleLenke />

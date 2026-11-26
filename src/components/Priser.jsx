@@ -28,8 +28,52 @@ import { track } from '../lib/analytics';
    med full liste var hvert kort rundt 600 px høyt. Fra md står listen
    alltid åpen. Listen ligger i DOM-en uansett, så den prerendrede HTML-en
    har den med. */
-export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', className }) => {
+/* Bryteren fast/månedlig (fra 26.11.2026, Aleksander 25.11.2026).
+   Fast er standard, så prisene som står i HTML-en og søkeresultatene er
+   engangsprisene. Månedlig er leie til eie: 12 måneder med serviceavtalen
+   inkludert, så er siden kundens. Tallene står som `mnd` i prismodeller.
+   To vanlige knapper med aria-pressed: lettere å treffe på mobil enn en
+   radiogruppe, og de virker med Tab og Enter. */
+export const Prisbryter = ({ modus, settModus }) => (
+  <div className="prisbryter" data-modus={modus}>
+    <span className="prisbryter-tommel" aria-hidden="true" />
+    <button type="button" aria-pressed={modus === 'fast'} onClick={() => settModus('fast')}>Fast pris</button>
+    <button
+      type="button"
+      aria-pressed={modus === 'mnd'}
+      onClick={() => { settModus('mnd'); track('prisbryter_maanedlig', { side: window.location.pathname }); }}
+    >
+      Månedlig
+    </button>
+  </div>
+);
+
+/* Bryteren og kortene sammen, brukt på forsiden og /priser. */
+export const PrisKort = ({ visPasserDeg = false }) => {
+  const [modus, settModus] = useState('fast');
+  return (
+    <>
+      <div data-reveal className="mb-8"><Prisbryter modus={modus} settModus={settModus} /></div>
+      <PrisRad>
+        {prismodeller.map((m, i) => (
+          <Modell
+            key={m.id}
+            m={m}
+            modus={modus}
+            visPasserDeg={visPasserDeg}
+            className={cn(i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1')}
+          />
+        ))}
+      </PrisRad>
+    </>
+  );
+};
+
+export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', className, modus = 'fast' }) => {
   const [apen, setApen] = useState(false);
+  const mnd = modus === 'mnd' && m.mnd;
+  const tall = mnd ? m.mnd : m.fra;
+  const fra = mnd ? m.id === 'komplett' : !m.fast;
   return (
     <div
       data-reveal
@@ -53,17 +97,26 @@ export const Modell = ({ m, visPasserDeg = false, cta = 'Få et gratis utkast', 
         </span>
       )}
 
+      {/* Hva kunden får ut av nivået, over navnet (Aleksander 25.11.2026,
+          etter merkelappene på vivr.no). */}
+      {m.merkelapp && (
+        <p className={cn('font-body text-xs uppercase tracking-[0.12em] font-semibold mb-2', m.fremhevet ? 'text-current opacity-70' : 'text-room-ink/60')}>
+          {m.merkelapp}
+        </p>
+      )}
       <h3 className="font-sans font-bold text-xl">{m.navn}</h3>
       <p className="font-body text-[0.95rem] mt-1.5 md:mt-2.5 leading-relaxed md:min-h-[3em] text-room-ink/70">
         {m.tagline}
       </p>
 
       <div className="mt-4 md:mt-6 flex items-baseline gap-1.5 md:min-h-[2.75rem]">
-        {!m.fast && <span className="font-body text-base text-room-ink">fra</span>}
-        <span className="font-display font-medium text-[2.75rem] leading-none tracking-[-0.03em]">{m.fra}</span>
-        <span className="font-body text-sm text-room-ink/70">{m.enhet}</span>
+        {fra && <span className="font-body text-base text-room-ink">fra</span>}
+        {/* key monterer tallet på nytt ved bytte, så .pris-tall spiller
+            inn-animasjonen hver gang. */}
+        <span key={tall} className="pris-tall font-display font-medium text-[2.75rem] leading-none tracking-[-0.03em]">{tall}</span>
+        <span className="font-body text-sm text-room-ink/70">{mnd ? 'kr/mnd' : m.enhet}</span>
       </div>
-      <span className="font-body text-sm mt-1.5 text-room-ink/70">{m.periode}</span>
+      <span className="font-body text-sm mt-1.5 text-room-ink/70">{mnd ? '0 kr i dag, din etter 12 måneder' : m.periode}</span>
 
       {/* Hva nivået gir kunden, i vanlige ord. Bare engangsnivåene har den. */}
       {m.verdi && (
@@ -147,18 +200,7 @@ const Priser = ({ visPasserDeg = false, visAlltidMed = true, midtstilt = false }
             Like høye kort med knappene på samme linje (Aleksander 25.11.2026:
             ujevne kort så usymmetriske ut). lg:items-start fra før er tatt ut;
             punktlisten har flex-1, så luften havner over knappen. */}
-        <PrisRad>
-          {prismodeller.map((m, i) => (
-            <Modell
-              key={m.id}
-              m={m}
-              visPasserDeg={visPasserDeg}
-              className={cn(
-                i === prismodeller.length - 1 && 'md:col-span-2 lg:col-span-1',
-              )}
-            />
-          ))}
-        </PrisRad>
+        <PrisKort visPasserDeg={visPasserDeg} />
 
         {/* Lenke til utkastvelgeren på forsiden (Aleksander 11.11.2026), for
             den som har lest tre kort og fortsatt ikke vet hvilket. Vanlig

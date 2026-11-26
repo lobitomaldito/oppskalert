@@ -158,7 +158,7 @@ const Hero = () => {
           <em className="aksent"><StigendeOrd tekst="før du betaler en krone." start={5} /></em>
         </h1>
         <p data-reveal className="inn" style={{ '--d': '220ms' }}>
-          Webdesign og ny hjemmeside for bedrifter i hele Norge, fra 6 990 kr.
+          Webdesign og ny hjemmeside for bedrifter i hele Norge, fra 8 990 kr.
           Design, tekst, koding og lansering, gjort av én person du kan ringe.
           Utkastet er klart på 48 timer.
         </p>
@@ -489,7 +489,7 @@ const homeSchema = {
      12.11.2026: hele landet. Viken ble oppløst i 2024, og arbeidet krever
      verken oppmøte eller kontor i nærheten. Adressen over står. */
   areaServed: { '@type': 'Country', name: 'Norge' },
-  priceRange: 'fra 6 990 kr',
+  priceRange: 'fra 8 990 kr',
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
@@ -535,7 +535,7 @@ const Home = () => (
         «hjemmeside» (322 visninger, plass 12,8) manglet. */}
     <SEO
       title="Webdesign for bedrifter, til fast pris"
-      description="Webdesign og ny hjemmeside for bedrifter i hele Norge, fast pris fra 6 990 kr. Du ser et gratis utkast før du betaler en krone."
+      description="Webdesign og ny hjemmeside for bedrifter i hele Norge, fast pris fra 8 990 kr. Du ser et gratis utkast før du betaler en krone."
       keywords={['webdesign for bedrifter', 'webdesign firma', 'hjemmeside', 'hjemmeside til bedrift', 'nettside til fast pris']}
       canonical="https://oppskalert.no/"
       jsonLd={homeJsonLd}

@@ -5,7 +5,8 @@
    Kilden er mal3.src.html, se inspirasjon/demo-studio-mal.md.
 
    Prisene er det ene unntaket: demoen sier 9 999, siden har tre nivåer
-   (6 990, 12 900 og fra 19 900) fra 4. november 2026, se prismodeller i site.js.
+   (6 990, 12 900 og fra 19 900) fra 4. november 2026, og 8 990, 15 900 og fra 24 900
+   fra 26.11.2026, se prismodeller i site.js.
 
    Feltet ikon er ra SVG-innmat og settes med dangerouslySetInnerHTML. Det er
    trygt her fordi strengene er vare egne konstanter i denne fila, ikke noe
@@ -757,11 +758,11 @@ export const googleOmtaler = [
 export const sporsmal = [
   [
     "Hva kommer dette til å koste meg?",
-    "En enkel landingsside koster 6 990 kroner eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900. Oppskaler, med priskalkulator eller booking og tre måneder SEO, begynner på 19 900. Uansett nivå eier du alt med en gang, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie Medium til eie: 1 590 i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
+    "En enkel landingsside koster 8 990 kroner eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 15 900. Oppskaler, med priskalkulator eller booking og tre måneder SEO, begynner på 24 900. Uansett nivå eier du alt med en gang, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kroner i dag, kan du leie siden til eie, fra 1 350 i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris fra meg før jeg begynner. Og du får se utkastet først, så du vet nøyaktig hva du betaler for."
   ],
   [
     "Hvorfor er prisen lavere enn hos andre?",
-    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Derfor koster alle sidene du har i dag, med tekster skrevet for Google og AI-søk, 12 900 kroner hos meg, der mange byr\u00e5er starter p\u00e5 25 000."
+    "Fordi jeg er \u00e9n person uten kontorleie, selgere eller prosjektledere, og fordi jeg bygger med AI som fjerner ukene som pleide \u00e5 g\u00e5 med til f\u00f8rsteutkast og standardkode. Derfor koster alle sidene du har i dag, med tekster skrevet for Google og AI-søk, 15 900 kroner hos meg, der mange byr\u00e5er starter p\u00e5 25 000."
   ],
   [
     "Hva forplikter et gratis utkast meg til?",

@@ -15,7 +15,7 @@ export const faqSammenlign = [
   },
   {
     q: 'Hva koster de ulike alternativene over tid?',
-    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 6 990 kroner én gang, og så 0, for hostingen er med i prisen. Krysningspunktet ligger typisk mellom år 2 og år 5, avhengig av hvilken plan du velger.',
+    a: 'En byggeklossløsning koster lite i starten og fortsetter å koste hver måned så lenge siden lever. En håndbygd side fra meg koster 8 990 kroner én gang, og så 0, for hostingen er med i prisen. Krysningspunktet ligger typisk mellom år 2 og år 5, avhengig av hvilken plan du velger.',
   },
   {
     q: 'Kan jeg flytte siden min bort fra deg senere?',
@@ -42,7 +42,7 @@ export const faqWix = [
   },
   {
     q: 'Hva koster Wix egentlig i året?',
-    a: 'Planene ligger typisk mellom 1 500 og 4 000 kroner i året avhengig av nivå, pluss domenet. Det høres lite ut, men over 5 år er det 7 500 til 20 000 kroner du aldri eier noe for. En håndbygd side koster 6 990 én gang.',
+    a: 'Planene ligger typisk mellom 1 500 og 4 000 kroner i året avhengig av nivå, pluss domenet. Det høres lite ut, men over 5 år er det 7 500 til 20 000 kroner du aldri eier noe for. En håndbygd side koster 8 990 én gang.',
   },
 ];
 

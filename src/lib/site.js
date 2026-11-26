@@ -55,8 +55,10 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    dag, med tekstene skrevet om for Google og AI-søk. Oppskaler er Medium
    pluss en lead-modul og tre måneder SEO, summert fra tilbud/MAL.md:
    6 990 + 4 900 + 3 900 + 3 x 1 490 = 20 260, rundet ned til 19 900.
-   SEO gikk til 2 990 9. november 2026 (3 x 2 990 = 24 760), men
-   Oppskaler står fortsatt fra 19 900.
+   SEO gikk til 2 990 9. november 2026 (3 x 2 990 = 24 760).
+   Ny stige fra 26.11.2026 (Aleksander 25.11.2026): 8 990, 15 900 og
+   fra 24 900. Prutekundene tok mest tid, og noen leads syntes prisen var så
+   lav at de ble skeptiske. Se tilbud/MAL.md.
    Oppskaler har «fra» og ingen makspris.
    Toppnivået het Komplett til 14. november 2026, da Aleksander byttet
    navn til Oppskaler.
@@ -67,15 +69,20 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    (Aleksander, 9. november 2026). I tilbud og på telefon gjelder
    fortsatt dyreste først, se tilbud/MAL.md 3e punkt 2.
 
-   Leie til eie (1 590 kr/mnd) er ikke et eget kort lenger, men en
-   betalingsmåte for Medium, se `leieTilEie` under. 1 590 x 12 = 19 080
-   er regnet mot Medium 12 900 pluss serviceavtalen det første året.
+   Leie til eie er ikke et eget kort, men en betalingsmåte. Fra 26.11.2026
+   har alle tre nivåene den (`mnd` på hvert kort, vist med bryteren
+   fast/månedlig): 1 350, 1 940 og fra 2 690 kr i 12 måneder, med
+   serviceavtalen inkludert. Regelen fra MAL.md: over tre år skal leie
+   koste 600 til 800 kr mer enn kjøp pluss serviceavtale (550 kr/mnd).
+   Enkel 610, Medium 780, Oppskaler 780.
    Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
     id: 'enkel',
     navn: 'Enkel',
-    fra: '6 990',
+    merkelapp: 'Vis hva du gjør',
+    fra: '8 990',
+    mnd: '1 350',
     fast: true,
     enhet: 'kr',
     periode: 'fast pris, én gang',
@@ -87,10 +94,13 @@ export const prismodeller = [
       'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Én håndbygd landingsside med godt design',
-      'Tilpasset mobil, med kontaktskjema',
+      'Ferdig utkast på 48 timer, før du betaler noe',
+      'Én håndbygd landingsside med kontaktskjema',
+      'Google-omtalene dine lagt inn på siden',
+      'Kart og åpningstider hvis du har adresse',
       'SEO-grunnoppsett fra dag én',
-      'Hosting og sikker forbindelse inkludert, ingen månedspris',
+      'Sjekket på mobil og PC før lansering',
+      'Hosting og sikker forbindelse, ingen hostingavgift',
       'Eget redigeringspanel: endre tekst og bilder selv',
       'Du eier siden, og domenet står i ditt navn',
     ],
@@ -99,7 +109,9 @@ export const prismodeller = [
   {
     id: 'medium',
     navn: 'Medium',
-    fra: '12 900',
+    merkelapp: 'Bli funnet på Google',
+    fra: '15 900',
+    mnd: '1 940',
     fast: true,
     enhet: 'kr',
     periode: 'fast pris, én gang',
@@ -113,14 +125,16 @@ export const prismodeller = [
       'Alt i Enkel, pluss:',
       'Alle undersidene du har i dag',
       'Tekstene skrevet om for Google og AI-søk',
-      'Kan også leies til eie: 0 kr i dag, 1 590 kr/mnd',
+      'Gamle adresser sendes videre, så plasseringen i Google ikke går tapt',
     ],
     fremhevet: true,
   },
   {
     id: 'komplett',
     navn: 'Oppskaler',
-    fra: '19 900',
+    merkelapp: 'Få flere henvendelser',
+    fra: '24 900',
+    mnd: '2 690',
     enhet: 'kr',
     periode: 'engangspris, fast før jeg begynner',
     tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
@@ -131,8 +145,10 @@ export const prismodeller = [
     ],
     inkludert: [
       'Alt i Medium, pluss:',
-      'Interaktive moduler etter behov, som priskalkulator eller booking',
-      'Tre måneder SEO: månedlig rapport med vanlige ord, AI-sjekk og én ny side eller artikkel i måneden',
+      'Priskalkulator, booking eller et annet verktøy for henvendelser',
+      'Rapport hver måned med vanlige ord, i tre måneder',
+      'Sjekk av om ChatGPT og Google AI nevner deg',
+      'Én ny side eller artikkel i måneden',
       'Retting av det rapporten finner',
     ],
     fremhevet: false,
@@ -146,9 +162,9 @@ export const prismodeller = [
    periode er slutt. Drift og leie til eie skal aldri bære samme navn. */
 export const leieTilEie = {
   navn: 'Leie til eie',
-  fra: '1 590',
+  fra: '1 350',
   enhet: 'kr/mnd',
-  tekst: 'Vil du heller betale månedlig? Medium kan leies til eie: 0 kr i dag og 1 590 kr/mnd uten binding. Serviceavtalen er med det første året, og siden er din når tolv måneder er betalt.',
+  tekst: 'Vil du heller betale månedlig? Alle nivåene kan leies til eie: 0 kr i dag og fra 1 350 kr/mnd uten binding. Serviceavtalen er med det første året, og siden er din når tolv måneder er betalt.',
 };
 
 export const alltidMed = [
@@ -356,7 +372,7 @@ export const stegene = [
 export const sporsmal = [
   {
     q: 'Hva koster en nettside for en liten bedrift?',
-    a: 'En enkel landingsside koster 6 990 kr eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 12 900 kr. Oppskaler, med priskalkulator eller booking og tre måneder SEO, starter på 19 900 kr. Uansett nivå eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie Medium til eie: 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
+    a: 'En enkel landingsside koster 8 990 kr eks. mva. Alle sidene du har i dag, med tekstene skrevet for Google og AI-søk, koster 15 900 kr. Oppskaler, med priskalkulator eller booking og tre måneder SEO, starter på 24 900 kr. Uansett nivå eier du alt fra dag én, du endrer tekst og bilder selv i et redigeringspanel, og hosting er med i prisen. Vil du heller betale 0 kr i dag, kan du leie siden til eie, fra 1 350 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Du får alltid en fast pris før jeg begynner, og et gratis utkast først, så du ser resultatet før du betaler noe.',
   },
   {
     q: 'Hva er et gratis utkast, og hva forplikter det meg til?',
@@ -462,11 +478,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg er det tre nivåer. Enkel, 6 990 kr eks. mva, er én landingsside med godt design. Medium, 12 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Oppskaler, fra 19 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det tre nivåer. Enkel, 8 990 kr eks. mva, er én landingsside med godt design. Medium, 15 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Oppskaler, fra 24 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 6 990 kr (Enkel), 12 900 kr (Medium) eller fra 19 900 kr (Oppskaler) én gang og eier siden med en gang. Leie til eie: jeg bygger Medium, du betaler 1 590 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 8 990 kr (Enkel), 15 900 kr (Medium) eller fra 24 900 kr (Oppskaler) én gang og eier siden med en gang. Leie til eie: jeg bygger siden, du betaler fra 1 350 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',
