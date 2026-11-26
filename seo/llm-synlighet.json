@@ -464,6 +464,33 @@
           "billignettside.no": 2
         },
         "notat": "Maaling 18. nov kl. 19 (scheduled). oppskalert.no 0 av 15. raskweb.no nevnt i 2 (var 0 forrige maaling). Nye domener paa topp: prakto.no (ChatGPT), billignettside.no, agencies.semrush.com."
+      },
+      {
+        "runId": "c825d21a-e883-4534-9de4-e90e02ab3074",
+        "completedAt": "2026-11-25T19:06:10.699Z",
+        "completed": 15,
+        "noAnswer": 0,
+        "failed": 0,
+        "nevnt": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 1,
+          "webaas.no": 0
+        },
+        "sitert": {
+          "oppskalert.no": 0,
+          "ndw.no": 0,
+          "raskweb.no": 1,
+          "webaas.no": 0
+        },
+        "kilderTopp": {
+          "nettify.no": 3,
+          "nettsmed.no": 3,
+          "innovena.no": 3,
+          "agencies.semrush.com": 2,
+          "no.wix.com": 2
+        },
+        "notat": "Maaling 25. nov kl. 19 (scheduled). oppskalert.no 0 av 15. raskweb.no nevnt i 1 (var 2). Nye domener paa topp: innovena.no, no.wix.com, nbweb.no, webhuset.no."
       }
     ]
   }
