@@ -6,6 +6,7 @@ import { Shell } from './components/Layout';
 import Sitatkort, { Stjerner } from './components/Sitatkort';
 import Priser from './components/Priser';
 import BredtSitat from './components/BredtSitat';
+import StigendeOrd from './components/StigendeOrd';
 import PultMockup from './components/PultMockup';
 import Utkastvelger from './components/Utkastvelger';
 import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
@@ -152,8 +153,9 @@ const Hero = () => {
             og i title-taggen. Se SEO.md, punkt 12. Aksentfargen ligger på
             løftet, ikke på «nettsiden». */}
         <p data-reveal className="etikett hero-etikett inn" style={{ '--d': '60ms' }}>Webdesign for bedrifter</p>
-        <h1 data-reveal className="inn" style={{ '--d': '120ms' }}>
-          Se den nye nettsiden din <em className="aksent">før du betaler en krone.</em>
+        <h1>
+          <StigendeOrd tekst="Se den nye nettsiden din" />{' '}
+          <em className="aksent"><StigendeOrd tekst="før du betaler en krone." start={5} /></em>
         </h1>
         <p data-reveal className="inn" style={{ '--d': '220ms' }}>
           Webdesign og ny hjemmeside for bedrifter i hele Norge, fra 6 990 kr.

@@ -7,6 +7,7 @@ import { cn } from '../lib/utils';
 import { LinkedIn, PilOpp } from './Ikon';
 import { track } from '../lib/analytics';
 import { bransjer, RUTE_BRANSJE } from '../lib/bransjer';
+import StigendeOrd from './StigendeOrd';
 
 /* Uten dette beholder React Router scrollposisjonen mellom ruter, så du
    lander midt på prissiden når du klikker deg dit fra bunnen av forsiden.
@@ -311,7 +312,7 @@ export const Shell = ({ children, utenBunnCta = false }) => (
 export const SideTopp = ({ tittel, uthevet, lede, etikett }) => (
   <header className="wrap sidetopp">
     {etikett && <p className="etikett">{etikett}</p>}
-    <h1>{tittel}{uthevet && <> {uthevet}</>}</h1>
+    <h1><StigendeOrd tekst={tittel} />{uthevet && <> <StigendeOrd tekst={uthevet} start={typeof tittel === 'string' ? tittel.split(' ').length : 0} /></>}</h1>
     {lede && <p>{lede}</p>}
   </header>
 );
