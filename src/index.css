@@ -1372,6 +1372,20 @@
   @keyframes ord-fyll { from { opacity: .14; } to { opacity: 1; } }
   .sitatblokk .omtale { background: var(--hvit); }
   .sitatblokk .sitat-kilde .initial { background: var(--kort); }
+
+  /* ----------------------------------------------------------------
+     Seksjonsbånd på forsiden (26.11.2026). Aleksander: hver seksjon skal
+     ha et klart skille, ikke bare ting på hvit bakgrunn. Rekkefølgen er
+     hvit, sand, mørk (trygghet), hvit, fersken, hvit, sand, hvit,
+     fersken, hvit, sand, så to like bånd aldri står ved siden av
+     hverandre. Grå flater inni et bånd blir hvite, så de ikke blir grumsete.
+     ---------------------------------------------------------------- */
+  section.band-sand, .band-sand > section { background: var(--sand); }
+  section.band-fersken, .band-fersken > section { background: var(--fersken); }
+  .band-sand .tjenester-forside .tjeneste,
+  .band-fersken .omtale,
+  .band-sand .velger { background: var(--hvit); }
+  .band-sand .tjeneste-bilde { background: var(--felt-dyp); }
   /* Kortet var blekk-svart. Det er sidens største flate etter bunnteksten,
      og som eneste mørke blokk midt i en lys side dro den blikket til seg
      hardere enn innholdet fortjener. Nå er det et hvitt kort på feltet, som
