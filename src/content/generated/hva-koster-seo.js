@@ -4,7 +4,7 @@ export default {
   title: "Hva koster søkemotoroptimalisering? SEO-priser i Norge",
   description: "SEO koster fra 2 490 kr i måneden hos små norske leverandører. Fire publiserte priser, hva som styrer prisen, og hva du får hos meg fra 2 990 kr.",
   publishDate: "2026-11-12",
-  updatedDate: "2026-12-02",
+  updatedDate: "2026-11-26",
   keywords: ["hva koster søkemotoroptimalisering", "hva koster seo", "seo pris", "søkemotoroptimalisering pris", "pris på seo"],
   hero: "/blogg/hva-koster-seo.webp",
   svar: "Hos små norske leverandører som oppgir prisen, starter SEO på 2 490 til 5 000 kr i måneden, og de største pakkene koster rundt 20 000 kr. Hos meg koster SEO fra 2 990 kr i måneden eks. mva, uten binding. Prisen øker med hvor mange tjenester og steder du vil bli funnet på.",

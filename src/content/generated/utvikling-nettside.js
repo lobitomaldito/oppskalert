@@ -15,7 +15,7 @@ export default {
   title: "Utvikling av nettside: alt en liten bedrift trenger å vite",
   description: "Hva koster utvikling av nettside i Norge? Gjennomgang av pris, leveringstid, teknologivalg og hva du bør spørre webutvikleren om før du signerer.",
   publishDate: "2026-08-05",
-  updatedDate: "2026-12-02",
+  updatedDate: "2026-11-26",
   keywords: ["utvikling av nettside","nettside for bedrift"],
   hero: "/blogg/utvikling-nettside.webp",
   svar: "Utvikling av nettside er jobben med å planlegge, skrive, designe og bygge siden. Hos meg koster det fra 8 990 kr eks. mva. med fast pris, og du ser et ferdig utkast før du betaler. Hva som er med for en bedrift, står på [nettside til bedrift](/nettside-til-bedrift).",

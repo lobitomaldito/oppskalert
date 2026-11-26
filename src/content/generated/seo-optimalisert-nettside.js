@@ -4,7 +4,7 @@ export default {
   title: "SEO-optimalisert nettside: dette må bygges inn fra start",
   description: "Hva gjør en nettside SEO-optimalisert? Dette må være bygget inn før lansering, og disse spørsmålene bør du stille leverandøren før du skriver under.",
   publishDate: "2026-11-12",
-  updatedDate: "2026-12-02",
+  updatedDate: "2026-11-26",
   keywords: ["seo-optimalisert nettside", "nettside optimalisert for google", "seo-vennlig nettside"],
   hero: "/blogg/seo-optimalisert-nettside.webp",
   svar: "En SEO-optimalisert nettside har én side per tjeneste med egen tittel og beskrivelse, tekst som står på mobilversjonen, god fart målt med Core Web Vitals, en sitemap og permanente videresendinger fra gamle adresser. Alt dette er billigst å bygge inn før lansering. Spør leverandøren konkret om hvert punkt før du skriver under.",

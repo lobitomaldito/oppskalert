@@ -15,7 +15,7 @@ export default {
   title: "Hva koster en nettside i måneden?",
   description: "En nettside kan koste fra rundt 13 kr til flere tusen kroner i måneden. Her er hva du betaler for: domene, hosting, drift og abonnement, med mine egne priser.",
   publishDate: "2026-11-12",
-  updatedDate: "2026-12-02",
+  updatedDate: "2026-11-26",
   keywords: ["hva koster en nettside i måneden", "hva koster det å ha en nettside", "månedspris nettside", "nettside abonnement"],
   hero: "/blogg/hva-koster-nettside-i-maneden.webp",
   svar: "Det minste en nettside koster i måneden, er domenet: et .no-domene koster rundt 150 kr i året, altså 13 kr i måneden. Hos de fleste leverandører kommer hosting i tillegg. Hos meg er hostingen med i prisen, serviceavtalen med endringer koster 550 kr i måneden, og vil du heller betale månedlig for selve siden, koster leie til eie 1 940 kr i måneden. Alle priser eks. mva.",

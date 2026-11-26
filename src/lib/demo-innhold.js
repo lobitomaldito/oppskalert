@@ -6,7 +6,7 @@
 
    Prisene er det ene unntaket: demoen sier 9 999, siden har tre nivåer
    (6 990, 12 900 og fra 19 900) fra 4. november 2026, og 8 990, 15 900 og fra 24 900
-   fra 2. desember 2026, se prismodeller i site.js.
+   fra 26.11.2026, se prismodeller i site.js.
 
    Feltet ikon er ra SVG-innmat og settes med dangerouslySetInnerHTML. Det er
    trygt her fordi strengene er vare egne konstanter i denne fila, ikke noe

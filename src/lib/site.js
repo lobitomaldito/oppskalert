@@ -56,7 +56,7 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    pluss en lead-modul og tre måneder SEO, summert fra tilbud/MAL.md:
    6 990 + 4 900 + 3 900 + 3 x 1 490 = 20 260, rundet ned til 19 900.
    SEO gikk til 2 990 9. november 2026 (3 x 2 990 = 24 760).
-   Ny stige fra 2. desember 2026 (Aleksander 25.11.2026): 8 990, 15 900 og
+   Ny stige fra 26.11.2026 (Aleksander 25.11.2026): 8 990, 15 900 og
    fra 24 900. Prutekundene tok mest tid, og noen leads syntes prisen var så
    lav at de ble skeptiske. Se tilbud/MAL.md.
    Oppskaler har «fra» og ingen makspris.
@@ -69,8 +69,8 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    (Aleksander, 9. november 2026). I tilbud og på telefon gjelder
    fortsatt dyreste først, se tilbud/MAL.md 3e punkt 2.
 
-   Leie til eie er ikke et eget kort, men en betalingsmåte. Fra 2. desember
-   2026 har alle tre nivåene den (`mnd` på hvert kort, vist med bryteren
+   Leie til eie er ikke et eget kort, men en betalingsmåte. Fra 26.11.2026
+   har alle tre nivåene den (`mnd` på hvert kort, vist med bryteren
    fast/månedlig): 1 350, 1 940 og fra 2 690 kr i 12 måneder, med
    serviceavtalen inkludert. Regelen fra MAL.md: over tre år skal leie
    koste 600 til 800 kr mer enn kjøp pluss serviceavtale (550 kr/mnd).

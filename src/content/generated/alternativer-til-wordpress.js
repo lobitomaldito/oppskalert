@@ -4,7 +4,7 @@ export default {
   title: "Alternativ til WordPress: når en håndkodet side passer bedre",
   description: "Alternativ til WordPress for småbedrifter: når WordPress er riktig valg, når en håndkodet side med redigeringspanel passer bedre, og fem spørsmål som avgjør.",
   publishDate: "2026-11-12",
-  updatedDate: "2026-12-02",
+  updatedDate: "2026-11-26",
   keywords: ["alternativ til wordpress", "wordpress alternativ", "nettside uten wordpress"],
   hero: "/blogg/alternativer-til-wordpress.webp",
   svar: "WordPress passer når du publiserer ofte, er flere som skriver, eller trenger utvidelser som medlemsområde og kurs. Har du en tjenestebedrift med noen få sider og endrer mest tekst, bilder og priser, er en håndkodet side med redigeringspanel enklere å eie, fordi det ikke finnes utvidelser som må oppdateres.",

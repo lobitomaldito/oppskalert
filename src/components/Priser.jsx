@@ -28,7 +28,7 @@ import { track } from '../lib/analytics';
    med full liste var hvert kort rundt 600 px høyt. Fra md står listen
    alltid åpen. Listen ligger i DOM-en uansett, så den prerendrede HTML-en
    har den med. */
-/* Bryteren fast/månedlig (fra 2. desember 2026, Aleksander 25.11.2026).
+/* Bryteren fast/månedlig (fra 26.11.2026, Aleksander 25.11.2026).
    Fast er standard, så prisene som står i HTML-en og søkeresultatene er
    engangsprisene. Månedlig er leie til eie: 12 måneder med serviceavtalen
    inkludert, så er siden kundens. Tallene står som `mnd` i prismodeller.

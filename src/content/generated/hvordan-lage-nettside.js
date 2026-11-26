@@ -18,7 +18,7 @@ export default {
   publishDate: "2026-08-13",
   keywords: ["lage nettside", "hvordan lage nettside", "lage nettside selv", "lage hjemmeside"],
   hero: "/blogg/hvordan-lage-nettside.webp",
-  updatedDate: "2026-12-02",
+  updatedDate: "2026-11-26",
   svar: "Slik lager man en nettside: sikre domenet, bestem hva siden skal få folk til å gjøre, skriv teksten, bygg den, og koble på måling. Rekkefølgen betyr mer enn verktøyet. Gjør du det selv, går det med 20 til 40 timer. Setter du det bort til meg, tar det 1 til 2 uker fra du sier ja.",
   faq: [
     { q: "Hvor lang tid tar det å lage en nettside selv?", a: "Regn med 20 til 40 timer med et enkelt byggeverktøy, når research, tekst og design er med." },
