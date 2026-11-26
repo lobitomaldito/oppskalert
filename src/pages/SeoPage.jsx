@@ -1,4 +1,5 @@
-import { Check } from 'lucide-react';
+import { useId, useState } from 'react';
+import { Check, Plus } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
 import { FargeSeksjon } from '../components/Landingsside';
@@ -8,6 +9,7 @@ import { track } from '../lib/analytics';
 import DemoSkjema from '../components/DemoSkjema';
 import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
+import { cn } from '../lib/utils';
 import { driftNivaer, kontakt, lagFaqSchema, landingsSporsmal } from '../lib/site';
 
 /* Dedikert landingsside for søkeordet «søkemotoroptimalisering» (590 søk/mnd,
@@ -125,6 +127,9 @@ const metode = [
 
 const KortSeksjon = ({ etikett, tittel, lede, kort, pt0 = false }) => {
   const container = useReveal(60);
+  // Under 640 px står bare titlene, to og to, til knappen trykkes (regel 2).
+  const [apen, setApen] = useState(false);
+  const listeId = useId();
   return (
     <section ref={container} className={pt0 ? 'seksjon pt-0' : 'seksjon'}>
       <div className="wrap">
@@ -133,7 +138,7 @@ const KortSeksjon = ({ etikett, tittel, lede, kort, pt0 = false }) => {
           <h2>{tittel}</h2>
           {lede && <p>{lede}</p>}
         </div>
-        <ul data-reveal className="tjenester statisk-kort farget inn" style={{ '--d': '80ms' }}>
+        <ul id={listeId} data-reveal className={cn('tjenester statisk-kort farget inn', !apen && 'kort-titler')} style={{ '--d': '80ms' }}>
           {kort.map((k) => (
             <li key={k.navn} className="tjeneste">
               <h3>{k.navn}</h3>
@@ -141,6 +146,10 @@ const KortSeksjon = ({ etikett, tittel, lede, kort, pt0 = false }) => {
             </li>
           ))}
         </ul>
+        <button type="button" className="mer-knapp sm:hidden mt-3" aria-expanded={apen} aria-controls={listeId} onClick={() => setApen(!apen)}>
+          {apen ? 'Vis mindre' : 'Les hva hvert punkt er'}
+          <Plus aria-hidden="true" className={apen ? 'rotate-45' : ''} />
+        </button>
       </div>
     </section>
   );

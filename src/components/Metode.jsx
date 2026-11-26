@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { useReveal } from '../lib/useReveal';
 import { KortRad, SeksjonTopp } from './Layout';
 import { ruter, stegene } from '../lib/site';
+import MerPaaMobil from './MerPaaMobil';
 
 /* Her er nummerering fortjent: dette ER en sekvens, og rekkefølgen bærer
    informasjon leseren trenger. Derfor tall her, og ingen andre steder. */
@@ -21,11 +22,11 @@ const Metode = ({ utdypet = false }) => {
       data-reveal
       className={
         utdypet
-          ? 'rounded-kort bg-room-deep p-6 md:p-9'
+          ? 'rounded-kort bg-room-deep p-5 md:p-9'
           : 'relative rounded-kort border border-room-ink/20 bg-room-ink/10 p-6'
       }
     >
-      <div className="flex items-center gap-4 mb-4">
+      <div className={utdypet ? 'flex items-center gap-4 mb-3 md:mb-4' : 'flex items-center gap-4 mb-4'}>
         <span
           className="flex items-center justify-center w-11 h-11 rounded-full font-sans font-bold text-base flex-shrink-0 bg-room-ink text-room"
           aria-hidden="true"
@@ -53,16 +54,21 @@ const Metode = ({ utdypet = false }) => {
           <p className="font-body text-[0.95rem] leading-relaxed mt-3 text-room-ink/80">{s.kort}</p>
         )}
 
+        {/* På mobil står den korte teksten fra forsiden, og den lange med
+            punktene ligger bak «Les mer» (regel 2): uten det var /metode
+            590 px høyere på 390 px enn på 1440 px. */}
         {utdypet && (
-          <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/80 max-w-[58ch]">{s.desc}</p>
-        )}
-
-        {utdypet && (
-          <ul className="mt-4 flex flex-col gap-1.5">
-            {s.punkter.map((p) => (
-              <li key={p} className="font-body text-[0.95rem] leading-relaxed text-room-ink/80">– {p}</li>
-            ))}
-          </ul>
+          <MerPaaMobil
+            etikett="Les mer om steget"
+            forhand={<p className="font-body text-[0.95rem] leading-relaxed mt-3 text-room-ink/80">{s.kort}</p>}
+          >
+            <p className="font-body text-[0.95rem] md:text-base leading-[1.75] mt-3 text-room-ink/80 max-w-[58ch]">{s.desc}</p>
+            <ul className="mt-4 flex flex-col gap-1.5">
+              {s.punkter.map((p) => (
+                <li key={p} className="font-body text-[0.95rem] leading-relaxed text-room-ink/80">– {p}</li>
+              ))}
+            </ul>
+          </MerPaaMobil>
         )}
 
         {i === 0 && !utdypet && (
@@ -88,7 +94,7 @@ const Metode = ({ utdypet = false }) => {
   return (
     <section id="metode" ref={container} className="seksjon bg-room text-room-ink rom">
       <div className="wrap">
-        <div className="mb-12 md:mb-16">
+        <div className="mb-8 md:mb-16">
           <h2 className="font-display font-light text-[clamp(1.9rem,4.2vw,3rem)] leading-[1.06] tracking-[-0.022em]">
             Utkastet kommer først. Regningen kommer sist.
           </h2>

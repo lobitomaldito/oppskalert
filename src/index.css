@@ -1778,6 +1778,23 @@
   }
   .faq .svar { padding: 0 3rem 1.6rem .25rem; color: var(--blekk-mykt); max-width: 62ch; font-size: .9375rem; }
 
+  /* «Les mer» på mobil (MerPaaMobil.jsx, regel 2). Arver fargen fra
+     flaten den står på, så den virker på både lys og mørk bunn. */
+  .mer-knapp {
+    display: inline-flex; align-items: center; gap: .5rem;
+    min-height: 44px; margin-top: .25rem; width: fit-content;
+    font-weight: 600; font-size: .9375rem; color: inherit;
+    text-decoration: underline; text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  }
+  .mer-knapp svg { width: 1rem; height: 1rem; transition: transform .3s var(--e); }
+  /* Kortlister med tittel og tekst: under 640 px bare titlene, to og to,
+     til «Les hva hvert punkt er» trykkes (SeoPage.jsx, MetodePage.jsx). */
+  @media (max-width: 39.99rem) {
+    .kort-titler { grid-template-columns: 1fr 1fr; }
+    .kort-titler > li > :not(h3) { display: none; }
+  }
+
   /* ----------------------------------------------------------------
      Bunn. Ordmerket i full bredde, beskåret av skjermkanten.
      ---------------------------------------------------------------- */
