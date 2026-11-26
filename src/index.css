@@ -783,9 +783,6 @@
   .tjeneste h3 { font-weight: 600; font-size: 1.0625rem; letter-spacing: -.012em; }
   /* Forsidens tre kort: større tittel og mer luft, som solidmedia.no. */
   .tjenester-forside { list-style: none; padding: 0; margin: 0; }
-  /* Side om side også på 390: to korte kort stablet kostet en halv
-     skjermhøyde for to setninger. */
-  .tjenester-forside { grid-template-columns: 1fr 1fr; }
   .tjenester-forside .tjeneste { padding: clamp(1.125rem, 2.5vw, 2rem); gap: clamp(.35rem, 1vw, .75rem); }
   /* Ikonet står i en hvit rute over tittelen, i aksentfargen. */
   .tjeneste svg.tjeneste-ikon {
@@ -852,26 +849,155 @@
   }
 
   /* ----------------------------------------------------------------
-     Trygghet (11.11.2026). En liste med fet etikett i stedet for enda et
-     kortgitter (regel 7): tittelen står til venstre og blir stående mens
-     lista ruller forbi på desktop.
+     Forsidens tjenestekort med bilde (26.11.2026, etter designjoy.co).
+     Øvre del av kortet viser det kunden får i stedet for et ikon. Mobil
+     legger bildet til venstre og teksten til høyre, så to kort tar
+     omtrent samme høyde som før (regel 2).
      ---------------------------------------------------------------- */
-  .trygghet-seksjon { padding-top: 0; }
-  .trygghet { display: grid; gap: clamp(1.5rem, 4vw, 4rem); }
-  .trygghet .seksjonstopp { margin-bottom: 0; }
+  .tjenester-forside { grid-template-columns: 1fr; }
+  @media (min-width: 40rem) { .tjenester-forside { grid-template-columns: 1fr 1fr; } }
+  .tjenester-forside .tjeneste {
+    padding: 0; gap: 0; overflow: hidden; border-radius: var(--rund-stor);
+    grid-template-rows: auto; grid-template-columns: 9.5rem minmax(0, 1fr);
+  }
+  @media (min-width: 40rem) {
+    .tjenester-forside .tjeneste { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  }
+  .tjeneste-tekst {
+    display: grid; grid-template-rows: auto auto 1fr; gap: clamp(.35rem, 1vw, .6rem);
+    padding: 1rem 1.125rem;
+  }
+  @media (min-width: 40rem) { .tjeneste-tekst { padding: clamp(1.25rem, 2.5vw, 2rem); padding-top: clamp(1rem, 2vw, 1.5rem); } }
+
+  .tjeneste-bilde { position: relative; overflow: hidden; background: var(--felt-dyp); min-height: 8.5rem; }
+  @media (min-width: 40rem) { .tjeneste-bilde { aspect-ratio: 16 / 10; } }
+
+  /* Kundesiden stikker opp fra bunnen av ruten, som et vindu. */
+  .tjeneste-bilde-side img {
+    position: absolute; left: 10%; top: 12%; width: 80%; height: auto;
+    border-radius: var(--rund-liten) var(--rund-liten) 0 0;
+    border: 1px solid var(--felt-kant);
+  }
+
+  /* Søkeresultatet er tegnet i HTML, så teksten er skarp og kan byttes. */
+  .tjeneste-bilde-sok {
+    display: flex; flex-direction: column; justify-content: center; gap: .6rem;
+    padding: .75rem;
+  }
+  @media (min-width: 40rem) { .tjeneste-bilde-sok { padding: 7% 9%; gap: .75rem; } }
+  .sok-felt {
+    display: flex; align-items: center; gap: .5rem; min-width: 0;
+    background: var(--hvit); border: 1px solid var(--felt-kant); border-radius: 999px;
+    padding: .45rem .7rem; font-size: .6875rem; color: var(--blekk);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .sok-felt svg { width: 1rem; height: 1rem; flex: none; color: var(--blekk-mykt); }
+  .sok-treff {
+    display: grid; gap: .25rem; background: var(--hvit); border-radius: var(--rund-liten);
+    border: 1px solid var(--felt-kant); padding: .7rem .8rem;
+  }
+  .sok-adresse { display: flex; align-items: center; gap: .4rem; font-size: .6875rem; color: var(--blekk-mykt); }
+  .sok-adresse i {
+    flex: none; display: grid; place-items: center; width: 1rem; height: 1rem; border-radius: 50%;
+    background: var(--prikk); color: var(--hvit); font-style: normal; font-size: .5625rem; font-weight: 600;
+  }
+  .sok-tittel { font-size: .75rem; font-weight: 600; line-height: 1.3; color: var(--blekk); }
+  .sok-tekst, .sok-plass { display: none; }
+  /* Smal rute på mobil: adressen kuttes med prikker, tittelen får tre linjer. */
+  .sok-treff { min-width: 0; overflow: hidden; }
+  .sok-adresse { min-width: 0; white-space: nowrap; }
+  .sok-adresse span { overflow: hidden; text-overflow: ellipsis; }
+  .sok-felt span { overflow: hidden; text-overflow: ellipsis; }
+  .sok-tittel { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; overflow-wrap: anywhere; }
+  @media (min-width: 40rem) {
+    .sok-felt { font-size: .875rem; padding: .6rem 1rem; }
+    .sok-treff { padding: .9rem 1rem; }
+    .sok-adresse { font-size: .75rem; }
+    .sok-tittel { font-size: .9375rem; }
+    .sok-tekst { display: block; font-size: .8125rem; line-height: 1.45; color: var(--blekk-mykt); }
+    .sok-plass { display: flex; align-items: center; gap: .45rem; font-size: .75rem; color: var(--blekk-mykt); }
+    .sok-plass::before { content: ""; width: .4rem; height: .4rem; border-radius: 50%; background: var(--prikk); }
+  }
+  /* Bildet glir litt opp med kortet. Bare med mus, og ikke ved redusert
+     bevegelse. 300 ms, samme kurve som løftet på kortet. */
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .tjeneste-bilde-side img, .sok-treff { transition: transform .3s var(--e); }
+    .tjeneste:hover .tjeneste-bilde-side img, .tjeneste:hover .sok-treff { transform: translateY(-.25rem); }
+  }
+
+  /* ----------------------------------------------------------------
+     Trygghet (ny form 26.11.2026, etter mercury.com). Mørkt bånd som
+     bryter de hvite seksjonene. Fire løfter i <details name>, ett åpent om
+     gangen, og et bevis til høyre som byttes med :has(). Ingen ikoner i
+     lista (regel 7). Mobil får bare lista.
+     ---------------------------------------------------------------- */
+  .trygghet-band { background: var(--blekk); color: var(--kritt); }
+  .trygghet { display: grid; gap: clamp(2rem, 5vw, 5rem); }
+  .trygghet .seksjonstopp { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .trygghet .seksjonstopp h2 { color: var(--kritt); }
   @media (min-width: 56rem) {
-    .trygghet { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; }
-    .trygghet .seksjonstopp { position: sticky; top: 7rem; }
+    .trygghet { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; }
   }
-  .trygghet-liste { list-style: none; padding: 0; margin: 0; }
-  .trygghet-liste li {
-    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem;
-    padding-block: 1.25rem; border-top: 1px solid var(--felt-kant);
+  .trygghet-liste { border-bottom: 1px solid var(--blekk-kant); }
+  .trygghet-liste details { border-top: 1px solid var(--blekk-kant); }
+  .trygghet-liste summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; gap: .75rem;
+    padding-block: 1.1rem; font-family: var(--displayfont); font-weight: var(--display-vekt);
+    font-size: clamp(1.0625rem, 1.5vw, 1.25rem); letter-spacing: var(--display-sperre);
+    color: var(--kritt-mykt); transition: color .2s var(--e);
   }
-  .trygghet-liste li:last-child { border-bottom: 1px solid var(--felt-kant); }
-  .trygghet-liste .trygghet-ikon { width: 1.25rem; height: 1.25rem; margin-top: .2rem; color: var(--prikk); }
-  .trygghet-liste p { max-width: 60ch; color: var(--blekk-mykt); font-size: .9375rem; line-height: 1.6; text-wrap: pretty; }
-  .trygghet-liste b { color: var(--blekk); font-weight: 600; }
+  .trygghet-liste summary::-webkit-details-marker { display: none; }
+  .trygghet-liste summary::before {
+    content: ""; width: .45rem; height: .45rem; border-radius: 50%; flex: none;
+    background: var(--blekk-kant); transition: background-color .2s var(--e);
+  }
+  .trygghet-liste summary:hover, .trygghet-liste details[open] summary { color: var(--kritt); }
+  .trygghet-liste details[open] summary::before { background: var(--prikk-lys); }
+  .trygghet-liste details p {
+    padding: 0 0 1.25rem 1.2rem; max-width: 52ch;
+    color: var(--kritt-mykt); font-size: .9375rem; line-height: 1.6;
+  }
+
+  /* Beviset til høyre: fire lag oppå hverandre, det åpne punktet vises.
+     Er ingen åpne, står det første. Det gamle går ut på 150 ms før det
+     nye kommer inn, så de to kortene aldri ligger synlig oppå hverandre.
+     Bare opasitet, så redusert bevegelse beholder overgangen. */
+  .trygghet-bevis { display: none; }
+  @media (min-width: 56rem) {
+    .trygghet-bevis {
+      display: grid; aspect-ratio: 5 / 4; border-radius: var(--rund-stor);
+      background: var(--blekk-flate); border: 1px solid var(--blekk-kant);
+    }
+  }
+  .bevis {
+    grid-area: 1 / 1; display: grid; place-items: center; padding: 10%;
+    opacity: 0; visibility: hidden;
+    transition: opacity .15s ease-out, visibility 0s linear .15s;
+  }
+  .trygghet:not(:has(details[open])) .bevis:nth-child(1),
+  .trygghet:has(details:nth-child(1)[open]) .bevis:nth-child(1),
+  .trygghet:has(details:nth-child(2)[open]) .bevis:nth-child(2),
+  .trygghet:has(details:nth-child(3)[open]) .bevis:nth-child(3),
+  .trygghet:has(details:nth-child(4)[open]) .bevis:nth-child(4) {
+    opacity: 1; visibility: visible; transition: opacity .2s var(--e) .08s, visibility 0s;
+  }
+  .bevis-kort {
+    width: min(100%, 22rem); display: grid; gap: 1rem;
+    background: var(--hvit); color: var(--blekk); border-radius: var(--rund);
+    padding: 1.5rem 1.75rem;
+  }
+  .bevis-stor { font-family: var(--displayfont); font-weight: var(--display-vekt); font-size: 1.75rem; letter-spacing: var(--display-sperre); }
+  .bevis-tall { font-family: var(--displayfont); font-weight: var(--display-vekt); font-size: 4.5rem; line-height: 1; letter-spacing: var(--display-sperre-stor); }
+  .bevis-kort dl { display: grid; gap: .6rem; }
+  .bevis-kort dl div { display: flex; justify-content: space-between; gap: 1rem; padding-top: .6rem; border-top: 1px solid var(--felt-kant); font-size: .875rem; }
+  .bevis-kort dt { color: var(--blekk-mykt); }
+  .bevis-kort dd { font-weight: 600; text-align: right; }
+  .bevis-adresse {
+    display: flex; align-items: center; gap: .5rem; padding: .65rem 1rem;
+    background: var(--felt-dyp); border-radius: 999px; font-size: .9375rem;
+  }
+  .bevis-linje { display: flex; align-items: center; gap: .5rem; font-size: .875rem; color: var(--blekk-mykt); }
+  .bevis-kort svg { width: 1rem; height: 1rem; flex: none; color: var(--blekk); }
 
   /* ----------------------------------------------------------------
      Utkastvelgeren (11.11.2026). Mønsteret er karrieresjekken i

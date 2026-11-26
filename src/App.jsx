@@ -14,7 +14,7 @@ import { sporsmal } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
 import Film from './components/Film';
 import {
-  Hengelas, HengelasApen, LinkedIn, Nokkel, Pause, PilHoyre, PilOpp, SkjoldSjekk, SokSjekk, Skjermer, Spill,
+  Hengelas, LinkedIn, Pause, PilHoyre, PilOpp, SokSjekk, Spill,
 } from './components/Ikon';
 import { track } from './lib/analytics';
 
@@ -256,29 +256,52 @@ const SitatSeksjon = () => {
   );
 };
 
-/* To tjenester i grå kort, som tjenestekortene på solidmedia.no. Chatbot
-   og drift står som egne priskort rett under. Nettbutikk ble tatt ut av
-   forsiden 26.10.2026 etter ønske fra Aleksander.
+/* To tjenester i grå kort. Chatbot og drift står som egne priskort rett
+   under. Nettbutikk ble tatt ut av forsiden 26.10.2026 etter ønske fra
+   Aleksander.
 
-   11.11.2026: hvert kort lover noe og lenker til sin egen side, og hele
-   kortet kan trykkes. Før var det én linje uten lenke, og tjenestesidene
-   var bare å finne i bunnteksten. `kort` vises alltid, `mer` først fra
-   40rem, så mobil får ikon, navn og én linje (regel 2). Teksten står her
+   26.11.2026: ikonruten er byttet mot et bilde av det kunden får, etter
+   designjoy.co (referansen står i MANIFEST.md). Aleksander syntes kortene
+   så generiske ut. «Ny nettside» viser en levert kundeside, «Bli funnet i
+   Google» et ekte treff: Prana Yoga ligger øverst på google.no for «hot
+   yoga kristiansand» (sett i Chrome 26.11.2026, snitt plass 1,5 i Search
+   Console de 30 dagene til 20.11). Faller Prana ned, skal søket byttes.
+
+   `kort` vises alltid, `mer` først fra 40rem (regel 2). Teksten står her
    og ikke i `tjenester`, fordi den lista brukes på andre sider også. */
 const TJENESTER_FORSIDE = [
   {
     navn: 'Ny nettside',
-    Ikon: Skjermer,
     til: ruter.nyNettside,
-    kort: 'Utkast på 48 timer, ferdig side på en til to uker.',
-    mer: 'Du ser utkastet før du bestemmer deg, og siden laster på under ett sekund.',
+    kort: 'Du ser utkastet om 48 timer.',
+    mer: 'Liker du det, er siden ute på en til to uker.',
+    bilde: (
+      <div className="tjeneste-bilde tjeneste-bilde-side" aria-hidden="true">
+        <img
+          src="/websider/kort/katrin-brubakk.webp"
+          srcSet="/websider/kort/katrin-brubakk.webp 640w, /websider/kort/katrin-brubakk@2x.webp 1280w"
+          sizes="(min-width: 64rem) 30rem, (min-width: 40rem) 40vw, 8rem"
+          width="640" height="500" alt="" loading="lazy" decoding="async"
+        />
+      </div>
+    ),
   },
   {
     navn: 'Bli funnet i Google',
-    Ikon: SokSjekk,
     til: ruter.seo,
-    kort: 'Synlig i Google og i AI-søk som ChatGPT.',
-    mer: 'Tekstene skrives for det kundene dine søker på.',
+    kort: 'Sidene skrives for det kundene dine søker etter.',
+    mer: 'Da dukker du opp i Google og i ChatGPT.',
+    bilde: (
+      <div className="tjeneste-bilde tjeneste-bilde-sok" aria-hidden="true">
+        <div className="sok-felt"><SokSjekk /> <span>hot yoga kristiansand</span></div>
+        <div className="sok-treff">
+          <p className="sok-adresse"><i>P</i> <span>pranayogakristiansand.no</span></p>
+          <p className="sok-tittel">Prana Yoga Studio | Iyengar yoga og pilates i Kristiansand</p>
+          <p className="sok-tekst">Vi har varm og hot yoga, og vi holder til midt i Kristiansand sentrum.</p>
+        </div>
+        <p className="sok-plass">Øverst på google.no, 26.11.2026</p>
+      </div>
+    ),
   },
 ];
 
@@ -288,93 +311,108 @@ const TjenesteSeksjon = () => {
     <section ref={container} className="seksjon">
       <div className="wrap">
         <div data-reveal className="seksjonstopp inn">
-          <p className="etikett">Tjenester</p>
-          <h2>Dette kan jeg hjelpe deg med</h2>
+          <h2>Ny side, eller flere kunder fra Google</h2>
         </div>
         <ul data-reveal className="tjenester tjenester-forside inn" style={{ '--d': '80ms' }}>
-          {TJENESTER_FORSIDE.map((t) => {
-            const Ikon = t.Ikon;
-            return (
-              <li key={t.navn} className="tjeneste">
-                <Ikon className="tjeneste-ikon" />
+          {TJENESTER_FORSIDE.map((t) => (
+            <li key={t.navn} className="tjeneste">
+              {t.bilde}
+              <div className="tjeneste-tekst">
                 <h3><Link className="tjeneste-lenke" to={t.til}>{t.navn}</Link></h3>
                 <p>{t.kort} <span className="tjeneste-mer">{t.mer}</span></p>
                 <span className="tjeneste-les" aria-hidden="true">Les mer <PilHoyre className="pil" /></span>
-              </li>
-            );
-          })}
+              </div>
+            </li>
+          ))}
         </ul>
       </div>
     </section>
   );
 };
 
-/* Trygghetslisten (11.11.2026). Grepet er fra en konkurrents tjenesteside,
-   der en liste med fet etikett tar frykten for hacking og driftsstans.
+/* Trygghet (11.11.2026, ny form 26.11.2026). Mørkt bånd etter
+   mercury.com: fire løfter som en liste der ett står åpent om gangen, og
+   et bilde til høyre som bytter med det åpne punktet. Lista er
+   <details name>, så den virker uten JavaScript, og bildet byttes med
+   :has() i CSS. Mobil får bare lista (regel 2).
 
    «Hva skjer hvis du blir borte?» står bevisst ikke her, bare i FAQ-en
    (Aleksander 11.11.2026): lista skal ikke minne folk på en tanke de ikke
-   har tenkt. Av samme grunn nevner ledeteksten ikke at Oppskalert er én
+   har tenkt. Av samme grunn nevner teksten ikke at Oppskalert er én
    person.
 
    Vilkårene er fra ~/.claude/assets/tilbud/MAL.md: domenet står i kundens
-   navn, filene får kunden når de vil flytte (på forespørsel, ikke
-   automatisk), leie til eie blir kundens etter 12 måneder. Endres
-   vilkårene der, må lista endres her.
-
-   Ordet SSL står ikke: ingen kunder vet hva det er (Aleksander
-   11.11.2026). Hengelåsen er det de har sett.
-
-   Mobil får etiketten og første setning, resten fra 40rem (regel 2):
-   med alt synlig var lista 875 px høy på 375 px bredde. */
+   navn, siden får kunden når de vil flytte, leie til eie blir kundens
+   etter 12 måneder, ingen binding. Endres vilkårene der, må lista endres
+   her. Ordet SSL står ikke (Aleksander 11.11.2026): hengelåsen er det
+   folk har sett. */
 const TRYGGHET = [
   {
-    Ikon: Nokkel,
-    tittel: 'Du eier siden',
-    kort: 'Domenet står i ditt navn.',
-    mer: 'Vil du flytte siden, får du koden når du ber om det. Leier du til eie, blir siden din når 12 måneder er betalt.',
+    tittel: 'Domenet står i ditt navn',
+    tekst: 'Vil du flytte, får du hele siden med deg. Leier du til eie, er den din når 12 måneder er betalt.',
+    bilde: (
+      <div className="bevis-kort">
+        <p className="bevis-stor">dittfirma.no</p>
+        <dl>
+          <div><dt>Eier</dt><dd>Ditt Firma AS</dd></div>
+          <div><dt>Siden</dt><dd>Din, også om du flytter</dd></div>
+        </dl>
+      </div>
+    ),
   },
   {
-    Ikon: Hengelas,
-    tittel: 'Hengelåsen i adressefeltet',
-    kort: 'Nettleseren varsler aldri besøkende om en usikker side.',
-    mer: 'Sikker forbindelse er med fra første dag, og hosting er med i prisen.',
+    tittel: 'Hengelåsen er på fra dag én',
+    tekst: 'Ingen besøkende får advarsel om usikker side. Sikker forbindelse og hosting er med i prisen.',
+    bilde: (
+      <div className="bevis-kort">
+        <p className="bevis-adresse"><Hengelas /> dittfirma.no</p>
+        <p className="bevis-linje"><Hengelas /> Tilkoblingen er sikker</p>
+      </div>
+    ),
   },
   {
-    Ikon: SkjoldSjekk,
-    tittel: 'Lite å bryte seg inn i',
-    kort: 'Siden er bygget uten WordPress og programtillegg.',
-    mer: 'Det finnes ingen tillegg som må oppdateres hver uke for å holde den sikker.',
+    tittel: 'Ingen WordPress å oppdatere',
+    tekst: 'Siden er bygget uten WordPress og programtillegg, så det finnes færre veier inn for den som vil bryte seg inn.',
+    bilde: (
+      <div className="bevis-kort">
+        <p className="bevis-tall">0</p>
+        <p className="bevis-linje">programtillegg som må oppdateres</p>
+      </div>
+    ),
   },
   {
-    Ikon: HengelasApen,
-    tittel: 'Ingen binding',
-    kort: 'Ingen av pakkene eller avtalene har bindingstid.',
-    mer: 'Serviceavtalen sier du opp når du vil.',
+    tittel: 'Ingen bindingstid',
+    tekst: 'Ingen av pakkene har bindingstid. Serviceavtalen sier du opp når du vil.',
+    bilde: (
+      <div className="bevis-kort">
+        <dl>
+          <div><dt>Bindingstid</dt><dd>Ingen</dd></div>
+          <div><dt>Serviceavtale</dt><dd>Sies opp når du vil</dd></div>
+        </dl>
+      </div>
+    ),
   },
 ];
 
 const TrygghetSeksjon = () => {
   const container = useReveal(80);
   return (
-    <section ref={container} className="seksjon trygghet-seksjon">
+    <section ref={container} className="seksjon trygghet-band paa-blekk">
       <div className="wrap trygghet">
-        <div data-reveal className="seksjonstopp inn">
-          <p className="etikett">Trygghet</p>
-          <h2>Siden er din, og den står trygt</h2>
-          <p>Dette er på plass uansett hvilken pakke du velger.</p>
+        <div data-reveal className="inn trygghet-venstre">
+          <div className="seksjonstopp"><h2>Du eier siden.<br /> Du kan gå når du vil.</h2></div>
+          <div className="trygghet-liste">
+            {TRYGGHET.map((t, i) => (
+              <details key={t.tittel} name="trygghet" open={i === 0}>
+                <summary>{t.tittel}</summary>
+                <p>{t.tekst}</p>
+              </details>
+            ))}
+          </div>
         </div>
-        <ul data-reveal className="trygghet-liste inn" style={{ '--d': '80ms' }}>
-          {TRYGGHET.map((t) => {
-            const Ikon = t.Ikon;
-            return (
-              <li key={t.tittel}>
-                <Ikon className="trygghet-ikon" />
-                <p><b>{t.tittel}.</b> {t.kort} <span className="tjeneste-mer">{t.mer}</span></p>
-              </li>
-            );
-          })}
-        </ul>
+        <div data-reveal className="inn trygghet-bevis" aria-hidden="true" style={{ '--d': '80ms' }}>
+          {TRYGGHET.map((t) => <div key={t.tittel} className="bevis">{t.bilde}</div>)}
+        </div>
       </div>
     </section>
   );
