@@ -251,7 +251,7 @@ const SitatSeksjon = () => {
   return (
     /* Eget grått bånd med hvite kort, så omtalene leses som en egen del
        av siden (ønsket av Aleksander 26.10.2026). */
-    <section ref={container} className="sitatblokk">
+    <section ref={container} className="sitatblokk band-fersken">
       <div className="wrap"><Sitatkort /></div>
     </section>
   );
@@ -289,7 +289,7 @@ const TJENESTER_FORSIDE = [
 const TjenesteSeksjon = () => {
   const container = useReveal(80);
   return (
-    <section ref={container} className="seksjon">
+    <section ref={container} className="seksjon band-sand">
       <div className="wrap">
         <div data-reveal className="seksjonstopp inn">
           <h2>Ny side, eller flere kunder fra Google</h2>
@@ -417,7 +417,7 @@ const RedigeringSeksjon = () => {
     return () => io.disconnect();
   }, []);
   return (
-    <section ref={container} className="seksjon">
+    <section ref={container} className="seksjon band-sand">
       <div className="wrap redigering">
         <div data-reveal className="seksjonstopp inn">
           <p className="etikett">Redigering</p>
@@ -571,9 +571,10 @@ const Home = () => (
     <OmMegSeksjon />
     <RedigeringSeksjon />
     <Priser visAlltidMed={false} />
-    <BredtSitat />
+    {/* Båndene rundt to delte komponenter, så fargen bare gjelder forsiden. */}
+    <div className="band-fersken"><BredtSitat /></div>
     <FaqSeksjon />
-    <Utkastvelger />
+    <div className="band-sand"><Utkastvelger /></div>
   </Shell>
 );
 
