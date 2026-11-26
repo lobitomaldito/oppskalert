@@ -138,18 +138,10 @@ const PriserPage = () => (
 
     <section className="hvit">
       <div className="wrap seksjon">
-        <div className="seksjonstopp inn">
-          <p className="etikett">Tre nivåer</p>
-          <h2>Enkel, Medium eller Oppskaler</h2>
-          {/* Ett løfte, og bevisene for det (tilbud/MAL.md 3e punkt 5):
-              før-og-etter-målingene på casene under /arbeid. */}
-          <p>Uansett nivå skal siden gjøre det lettere å finne deg på Google.
-          Se hva som ble målt før og etter for{' '}
-          <Link to="/arbeid/steinar-husby" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Steinar Husby</Link>,{' '}
-          <Link to="/arbeid/melanie-dahl" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Mélanie Dahl</Link>,{' '}
-          <Link to="/arbeid/alpha-negotiations" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Alpha Negotiations</Link> og{' '}
-          <Link to="/arbeid/jakobsen-takst" className="text-room-ink underline underline-offset-4 decoration-room-ink/40 hover:decoration-room-ink transition-colors">Jakobsen Takst</Link>.</p>
-        </div>
+        {/* «Tre nivåer / Enkel, Medium eller Oppskaler» og lenkene til
+            før-og-etter-casene er fjernet 26.11.2026 (Aleksander: kortene
+            forklarer det selv). Overskriften står for skjermlesere. */}
+        <h2 className="sr-only">Tre nivåer: Enkel, Medium og Oppskaler</h2>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme

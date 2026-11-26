@@ -94,12 +94,11 @@ export const prismodeller = [
       'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Ferdig utkast på 48 timer, før du betaler noe',
+      // Kortet: seks punkter (26.11.2026, var ni). Kart, SEO-grunnoppsett
+      // og mobilsjekk er tatt ut; tabellen på /priser viser resten.
+      'Utkast innen 48 timer, før du betaler noe',
       'Én håndbygd landingsside med kontaktskjema',
       'Google-omtalene dine lagt inn på siden',
-      'Kart og åpningstider hvis du har adresse',
-      'SEO-grunnoppsett fra dag én',
-      'Sjekket på mobil og PC før lansering',
       'Hosting og sikker forbindelse, ingen hostingavgift',
       'Eget redigeringspanel: endre tekst og bilder selv',
       'Du eier siden, og domenet står i ditt navn',
