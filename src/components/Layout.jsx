@@ -1,4 +1,5 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef } from 'react';
+import { Children, cloneElement, isValidElement, useEffect, useId, useRef, useState } from 'react';
+import { Plus } from 'lucide-react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { kontakt, navLenker, ruter } from '../lib/site';
 import { RUTE_VANLIGE_SPORSMAL } from '../lib/populaere-sok';
@@ -180,6 +181,31 @@ const BunnMerke = () => {
   );
 };
 
+/* Én lenkegruppe i bunnteksten. Fra md en vanlig kolonne med overskrift,
+   under md en knapp som åpner lista. */
+const BunnGruppe = ({ tittel, children }) => {
+  const [apen, setApen] = useState(false);
+  const id = useId();
+  return (
+    <div className="flex flex-col md:gap-3 max-md:border-b max-md:border-[color:var(--blekk-kant)]">
+      <span className="hidden md:block text-ink/70 font-semibold mb-1">{tittel}</span>
+      <button
+        type="button"
+        className="md:hidden flex items-center justify-between py-3.5 text-ink/70 font-semibold text-left"
+        aria-expanded={apen}
+        aria-controls={id}
+        onClick={() => setApen(!apen)}
+      >
+        {tittel}
+        <Plus aria-hidden="true" className={cn('w-4 h-4 transition-transform duration-300', apen && 'rotate-45')} />
+      </button>
+      <div id={id} className={cn('flex flex-col md:gap-3', !apen && 'max-md:hidden', apen && 'pb-2')}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 export const Footer = ({ utenCta = false }) => (
   <footer className="bunn paa-blekk">
     <div className="wrap bunn-inn">
@@ -231,9 +257,11 @@ export const Footer = ({ utenCta = false }) => (
         </a>
       </div>
 
-      <div className="flex flex-wrap gap-x-14 gap-y-8 pt-10 font-body text-sm">
-        <div className="flex flex-col md:gap-3">
-          <span className="text-ink/70 font-semibold mb-1">Tjenester</span>
+      {/* Tre lenkegrupper som lukkede knapper på mobil (regel 2): stablet var de
+          18 lenker à 44 px, rundt 900 px bunntekst. Lenkene ligger i DOM-en hele
+          tiden, så Googlebot finner dem like godt som før. */}
+      <div className="flex flex-col md:flex-row md:flex-wrap md:gap-x-14 md:gap-y-8 pt-6 md:pt-10 font-body text-sm">
+        <BunnGruppe tittel="Tjenester">
           <Link to={ruter.nettsideDesign} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Nettsidedesign</Link>
           <Link to={ruter.nettsideBedrift} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Nettside til bedrift</Link>
           <Link to={ruter.nyNettside} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Ny nettside</Link>
@@ -241,15 +269,13 @@ export const Footer = ({ utenCta = false }) => (
           <Link to={ruter.webdesignOslo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Webdesign i Oslo</Link>
           <Link to={ruter.seo} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Søkemotoroptimalisering</Link>
           <Link to={ruter.drift} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Drift og hosting</Link>
-        </div>
-        <div className="flex flex-col md:gap-3">
-          <span className="text-ink/70 font-semibold mb-1">Bransjer</span>
+        </BunnGruppe>
+        <BunnGruppe tittel="Bransjer">
           {bransjer.map((b) => (
             <Link key={b.slug} to={RUTE_BRANSJE(b.slug)} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">{b.meny}</Link>
           ))}
-        </div>
-        <div className="flex flex-col md:gap-3">
-          <span className="text-ink/70 font-semibold mb-1">Verktøy</span>
+        </BunnGruppe>
+        <BunnGruppe tittel="Verktøy">
           <Link to={ruter.nettsidesjekk} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Gratis nettsidesjekk</Link>
           <Link to={ruter.sammenlign} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Sammenlign</Link>
           {/* De to undersidene lenkes herfra, ikke bare fra /sammenlign.
@@ -264,7 +290,7 @@ export const Footer = ({ utenCta = false }) => (
           <Link to={ruter.sammenlignWordpress} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Meg mot WordPress</Link>
           <Link to={RUTE_VANLIGE_SPORSMAL} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Vanlige spørsmål</Link>
           <Link to={RUTE_ORDLISTE} className="py-3 md:py-0 text-ink/70 hover:text-ink transition-colors">Ordliste</Link>
-        </div>
+        </BunnGruppe>
       </div>
 
       <div className="bunn-rad">

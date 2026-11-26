@@ -1,5 +1,7 @@
+import { Children } from 'react';
 import { Check } from 'lucide-react';
 import { SeksjonTopp } from './Layout';
+import MerPaaMobil from './MerPaaMobil';
 import { useReveal } from '../lib/useReveal';
 
 /* Delte byggeklosser for de søkeordsdrevne landingssidene
@@ -22,7 +24,14 @@ export const Avsnitt = ({ tittel, uthevet, children }) => (
       {tittel} {uthevet}
     </h2>
     <div className="font-body text-[0.98rem] md:text-base text-room-ink/70 leading-relaxed flex flex-col gap-4">
-      {children}
+      {/* Første avsnitt står alltid. Resten ligger bak «Les mer» på mobil
+          (regel 2), og vises som før fra md. */}
+      {Children.toArray(children)[0]}
+      {Children.count(children) > 1 && (
+        <MerPaaMobil className="flex flex-col gap-4">
+          {Children.toArray(children).slice(1)}
+        </MerPaaMobil>
+      )}
     </div>
   </div>
 );
