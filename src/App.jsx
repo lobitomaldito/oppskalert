@@ -273,7 +273,7 @@ const TJENESTER_FORSIDE = [
   {
     navn: 'Ny nettside',
     til: ruter.nyNettside,
-    kort: 'Du ser utkastet om 48 timer.',
+    kort: 'Du får et utkast innen 48 timer.',
     mer: 'Liker du det, er siden ute på en til to uker.',
     bilde: <SideVeksler />,
   },
