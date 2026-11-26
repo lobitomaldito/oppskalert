@@ -69,16 +69,16 @@ const Sammenligning = () => (
         <h2>Hva inngår i hvert nivå?</h2>
       </div>
       {/* På mobil er tabellen bredere enn skjermen. Radnavnene står fast
-          til venstre, og Medium stikker halvveis inn som hint om å sveipe. */}
-      <p className="md:hidden font-body text-sm text-room-ink/70 mb-3" aria-hidden="true">Sveip sidelengs for Medium og Oppskaler →</p>
+          til venstre, og Synlig stikker halvveis inn som hint om å sveipe. */}
+      <p className="md:hidden font-body text-sm text-room-ink/70 mb-3" aria-hidden="true">Sveip sidelengs for Synlig og Oppskaler →</p>
       <div className="inn overflow-x-auto rounded-kort border border-room-ink/15" style={{ '--d': '80ms' }}>
         <table className="w-full border-collapse min-w-[35.5rem] md:min-w-[42rem]">
-          <caption className="sr-only">Sammenligning av Enkel, Medium og Oppskaler</caption>
+          <caption className="sr-only">Sammenligning av Enkel, Synlig og Oppskaler</caption>
           <thead>
             <tr className="border-b border-room-ink/15 bg-room-ink/5">
               <th scope="col" className="sticky left-0 z-10 bg-room shadow-[inset_0_0_0_999px_rgb(var(--room-ink)/0.05)] border-r border-room-ink/10 md:static md:border-r-0 w-[8.5rem] md:w-auto text-left font-body text-xs uppercase tracking-widest text-room-ink/70 py-3.5 px-4 font-semibold">Inkludert</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Enkel</th>
-              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Medium</th>
+              <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem] underline decoration-room-ink/40 underline-offset-4">Synlig</th>
               <th scope="col" className="font-sans font-bold text-sm py-3.5 px-4 w-[9rem]">Oppskaler</th>
             </tr>
           </thead>
@@ -138,10 +138,10 @@ const PriserPage = () => (
 
     <section className="hvit">
       <div className="wrap seksjon">
-        {/* «Tre nivåer / Enkel, Medium eller Oppskaler» og lenkene til
+        {/* «Tre nivåer / Enkel, Synlig eller Oppskaler» og lenkene til
             før-og-etter-casene er fjernet 26.11.2026 (Aleksander: kortene
             forklarer det selv). Overskriften står for skjermlesere. */}
-        <h2 className="sr-only">Tre nivåer: Enkel, Medium og Oppskaler</h2>
+        <h2 className="sr-only">Tre nivåer: Enkel, Synlig og Oppskaler</h2>
         {/* Kortene bygges fra prismodeller i site.js, og rendres av det
             samme Modell-kortet som forsiden. De hadde tidligere sin egen
             CSS-utgave her: serif-tall, punktumliste, ingen knapp. Samme

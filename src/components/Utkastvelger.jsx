@@ -80,7 +80,7 @@ const BOKSTAV = ['A', 'B', 'C'];
 
 /* Svarene er indekser 0–2 (A–C). Oppskaler når kundene må vente på svar
    utenfor arbeidstid: priskalkulator eller booking er det Oppskaler har i
-   tillegg. Medium når kundene ikke finner dem i søk, når de svarer på de
+   tillegg. Synlig når kundene ikke finner dem i søk, når de svarer på de
    samme spørsmålene hele tiden (tekstene på undersidene svarer for dem,
    og det er de svarene Google og ChatGPT siterer), eller når dagens side
    ikke gir henvendelser. Enkel bare for den som alt dukker opp først og

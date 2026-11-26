@@ -66,5 +66,5 @@ Et ja uten forklaring er lite verdt. Be om å få se det på en side de har leve
 
 Jeg håndkoder sidene i stedet for å bruke WordPress, fontene er selvhostet, og sidene laster raskt. Struktur, metadata og fart ligger i bunnen fra start, og jeg setter opp Search Console og Analytics så du ser hva som skjer. Du endrer tekst og bilder selv i et redigeringspanel.
 
-Medium koster 15 900 kr eks. mva og gir deg alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Du får et gratis utkast før du bestemmer deg, som regel klart på 48 timer. Alle nivåene står på [prissiden](/priser). Uansett hvem du velger: ta med spørsmålslista over til neste møte med en leverandør, også om det er meg.`,
+Synlig koster 15 900 kr eks. mva og gir deg alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Du får et gratis utkast før du bestemmer deg, som regel klart på 48 timer. Alle nivåene står på [prissiden](/priser). Uansett hvem du velger: ta med spørsmålslista over til neste møte med en leverandør, også om det er meg.`,
 };

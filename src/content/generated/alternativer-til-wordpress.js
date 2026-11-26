@@ -43,7 +43,7 @@ En håndkodet side består av ferdige filer. Det finnes ingen utvidelser og inge
 
 Du endrer tekst, bilder og lister i redigeringspanelet, direkte på siden. Legger du til en ny ansatt eller et nytt prosjekt, gjør du det selv.
 
-Du eier siden. Betaler du engangspris, er den din med en gang, og koden får du når du ber om det. Vil du heller betale månedlig, kan Medium leies til eie for 1 940 kroner i måneden uten binding, og siden blir din når tolv måneder er betalt. Tekstene, bildene og domenet er dine hele veien.
+Du eier siden. Betaler du engangspris, er den din med en gang, og koden får du når du ber om det. Vil du heller betale månedlig, kan Synlig leies til eie for 1 940 kroner i måneden uten binding, og siden blir din når tolv måneder er betalt. Tekstene, bildene og domenet er dine hele veien.
 
 Begrensningen er like viktig å kjenne til: du bygger ikke nye sidetyper selv. Vil du ha en ny seksjon eller en booking, er det en jobb for meg, enten på serviceavtalen til 550 kroner i måneden uten binding, eller til fast pris avtalt før jeg begynner.
 
