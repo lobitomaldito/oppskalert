@@ -13,8 +13,9 @@ import { faqSchema, kontakt, ruter, vurdering } from './lib/site';
 import { sporsmal } from './lib/demo-innhold';
 import { useReveal } from './lib/useReveal';
 import Film from './components/Film';
+import { SideVeksler, SokDemo } from './components/TjenesteBilder';
 import {
-  Hengelas, LinkedIn, Pause, PilHoyre, PilOpp, SokSjekk, Spill,
+  Hengelas, LinkedIn, Pause, PilHoyre, PilOpp, Spill,
 } from './components/Ikon';
 import { track } from './lib/analytics';
 
@@ -262,10 +263,9 @@ const SitatSeksjon = () => {
 
    26.11.2026: ikonruten er byttet mot et bilde av det kunden får, etter
    designjoy.co (referansen står i MANIFEST.md). Aleksander syntes kortene
-   så generiske ut. «Ny nettside» viser en levert kundeside, «Bli funnet i
-   Google» et ekte treff: Prana Yoga ligger øverst på google.no for «hot
-   yoga kristiansand» (sett i Chrome 26.11.2026, snitt plass 1,5 i Search
-   Console de 30 dagene til 20.11). Faller Prana ned, skal søket byttes.
+   så generiske ut. Samme kveld ba han om bevegelse: «Ny nettside» bytter
+   mellom de nyeste sidene, «Bli funnet i Google» skriver ut søk og viser
+   treffet. Begge ligger i components/TjenesteBilder.jsx.
 
    `kort` vises alltid, `mer` først fra 40rem (regel 2). Teksten står her
    og ikke i `tjenester`, fordi den lista brukes på andre sider også. */
@@ -275,33 +275,14 @@ const TJENESTER_FORSIDE = [
     til: ruter.nyNettside,
     kort: 'Du ser utkastet om 48 timer.',
     mer: 'Liker du det, er siden ute på en til to uker.',
-    bilde: (
-      <div className="tjeneste-bilde tjeneste-bilde-side" aria-hidden="true">
-        <img
-          src="/websider/kort/katrin-brubakk.webp"
-          srcSet="/websider/kort/katrin-brubakk.webp 640w, /websider/kort/katrin-brubakk@2x.webp 1280w"
-          sizes="(min-width: 64rem) 30rem, (min-width: 40rem) 40vw, 8rem"
-          width="640" height="500" alt="" loading="lazy" decoding="async"
-        />
-      </div>
-    ),
+    bilde: <SideVeksler />,
   },
   {
     navn: 'Bli funnet i Google',
     til: ruter.seo,
     kort: 'Sidene skrives for det kundene dine søker etter.',
     mer: 'Da dukker du opp i Google og i ChatGPT.',
-    bilde: (
-      <div className="tjeneste-bilde tjeneste-bilde-sok" aria-hidden="true">
-        <div className="sok-felt"><SokSjekk /> <span>hot yoga kristiansand</span></div>
-        <div className="sok-treff">
-          <p className="sok-adresse"><i>P</i> <span>pranayogakristiansand.no</span></p>
-          <p className="sok-tittel">Prana Yoga Studio | Iyengar yoga og pilates i Kristiansand</p>
-          <p className="sok-tekst">Vi har varm og hot yoga, og vi holder til midt i Kristiansand sentrum.</p>
-        </div>
-        <p className="sok-plass">Øverst på google.no, 26.11.2026</p>
-      </div>
-    ),
+    bilde: <SokDemo />,
   },
 ];
 
