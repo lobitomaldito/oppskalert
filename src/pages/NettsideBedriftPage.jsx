@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { Shell, SideTopp } from '../components/Layout';
+import { Foto, Shell, SideTopp } from '../components/Layout';
 import { Avsnitt, Brodtekst, Punktliste } from '../components/Landingsside';
 import Omtaler from '../components/Omtaler';
 import DemoSkjema from '../components/DemoSkjema';
@@ -64,6 +64,7 @@ const NettsideBedriftPage = () => (
       tittel="Nettside til bedriften,"
       uthevet="uten prosjektet."
       lede="De fleste småbedrifter trenger ikke en stor prosess. De trenger en side som svarer på hva du gjør, viser at du er til å stole på, og gjør det enkelt å ta kontakt."
+      bilde={<Foto navn="bedrift" alt="En kvinne står bak disken i en liten kafé og ordner varer." />}
     />
     <Brodtekst>
       <Avsnitt tittel="Hva siden faktisk" uthevet="skal utrette.">

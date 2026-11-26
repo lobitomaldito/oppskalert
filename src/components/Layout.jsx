@@ -309,12 +309,39 @@ export const Shell = ({ children, utenBunnCta = false }) => (
 /* Sidetopp. Samme anslag på alle undersider, klassen er demoens egen
    .sidetopp (se mal3.src.html linje 803 til 812). Det uthevede ordet
    er fortsatt bare typografisk, ikke farget, skallet har ingen aksent. */
-export const SideTopp = ({ tittel, uthevet, lede, etikett }) => (
-  <header className="wrap sidetopp">
-    {etikett && <p className="etikett">{etikett}</p>}
-    <h1><StigendeOrd tekst={tittel} />{uthevet && <> <StigendeOrd tekst={uthevet} start={typeof tittel === 'string' ? tittel.split(' ').length : 0} /></>}</h1>
-    {lede && <p>{lede}</p>}
-  </header>
+export const SideTopp = ({ tittel, uthevet, lede, etikett, bilde }) => {
+  const tekst = (
+    <>
+      {etikett && <p className="etikett">{etikett}</p>}
+      <h1><StigendeOrd tekst={tittel} />{uthevet && <> <StigendeOrd tekst={uthevet} start={typeof tittel === 'string' ? tittel.split(' ').length : 0} /></>}</h1>
+      {lede && <p>{lede}</p>}
+    </>
+  );
+  if (!bilde) return <header className="wrap sidetopp">{tekst}</header>;
+  /* Med bilde (26.11.2026): tekst til venstre, bildet i en fersken ramme
+     til høyre fra 64rem, under teksten på mobil. */
+  return (
+    <header className="wrap sidetopp sidetopp-med-bilde">
+      <div>{tekst}</div>
+      <figure className="sidetopp-bilde farget-ramme">{bilde}</figure>
+    </header>
+  );
+};
+
+/* Fotoene i /bilder/sider er Pexels-bilder (gratis kommersielt) beskåret
+   til 4:3 i 800 og 1600 px, lagt inn 26.11.2026:
+   nettbutikk  RDNE Stock project   pexels.com/photo/7310209
+   bedrift     Nguyễn Tiến Thịnh    pexels.com/photo/34654336
+   metode      picjumbo.com         pexels.com/photo/196644
+   drift       Ono Kosuki           pexels.com/photo/5973962
+   sjekk       Dương Nhân           pexels.com/photo/1510154 */
+export const Foto = ({ navn, alt }) => (
+  <img
+    src={`/bilder/sider/${navn}.webp`}
+    srcSet={`/bilder/sider/${navn}.webp 800w, /bilder/sider/${navn}@2x.webp 1600w`}
+    sizes="(min-width: 64rem) 36rem, 100vw"
+    width="800" height="600" alt={alt} fetchPriority="high"
+  />
 );
 
 /* Seksjonstopp, demoens egen .seksjonstopp-klasse (se mal3.src.html

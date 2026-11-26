@@ -1,6 +1,8 @@
 import { Check } from 'lucide-react';
 import SEO from '../components/SEO';
 import { Shell } from '../components/Layout';
+import { FargeSeksjon } from '../components/Landingsside';
+import { SokDemo } from '../components/TjenesteBilder';
 import { PilHoyre } from '../components/Ikon';
 import { track } from '../lib/analytics';
 import DemoSkjema from '../components/DemoSkjema';
@@ -131,7 +133,7 @@ const KortSeksjon = ({ etikett, tittel, lede, kort, pt0 = false }) => {
           <h2>{tittel}</h2>
           {lede && <p>{lede}</p>}
         </div>
-        <ul data-reveal className="tjenester statisk-kort inn" style={{ '--d': '80ms' }}>
+        <ul data-reveal className="tjenester statisk-kort farget inn" style={{ '--d': '80ms' }}>
           {kort.map((k) => (
             <li key={k.navn} className="tjeneste">
               <h3>{k.navn}</h3>
@@ -160,6 +162,15 @@ const SeoPage = () => (
       tittel="Det du får hver måned"
       kort={maanedlig}
     />
+    {/* Søket fra forsiden i et farget panel (26.11.2026). Første treff er
+        ekte, resten er merket «Eksempel» i selve animasjonen. */}
+    <FargeSeksjon tittel="Målet er å ligge" uthevet="øverst når kundene søker." bilde={<SokDemo />}>
+      <p>
+        Prana Yoga Studio fikk ny side hos meg og ligger øverst på google.no når noen
+        søker «hot yoga kristiansand» (sjekket 26.11.2026).
+      </p>
+      <p>Søkene etter det er tenkte eksempler, for å vise hvordan det ser ut i din bransje.</p>
+    </FargeSeksjon>
     <KortSeksjon
       etikett="Slik jobber jeg"
       tittel="Det jeg ser etter"

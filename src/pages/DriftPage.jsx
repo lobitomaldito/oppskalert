@@ -2,7 +2,7 @@ import { Check, Minus } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { Modell, PrisRad } from '../components/Priser';
-import { Shell, SideTopp, SeksjonTopp } from '../components/Layout';
+import { Foto, Shell, SideTopp, SeksjonTopp } from '../components/Layout';
 import DemoSkjema from '../components/DemoSkjema';
 import FAQ from '../components/FAQ';
 import { useReveal } from '../lib/useReveal';
@@ -165,6 +165,7 @@ const DriftPage = () => (
       tittel="Drift av nettside,"
       uthevet="hosting inkludert."
       lede="Hosting og redigeringspanel er med i prisen på alle sider jeg bygger. Derfra går det tre trinn opp: serviceavtale fra 550 kr/mnd hvis du vil at jeg gjør endringene, SEO fra 2 990 kr/mnd for å bli funnet på flere søk, og SEO med annonser fra 4 490 kr/mnd. Ingen bindingstid."
+      bilde={<Foto navn="drift" alt="En håndverker skriver på en laptop på arbeidsbenken, med verktøy rundt." />}
     />
     <section className="seksjon pt-0">
       <div className="wrap">
