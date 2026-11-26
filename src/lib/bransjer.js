@@ -21,7 +21,7 @@ const pris = (id) => prismodeller.find((p) => p.id === id)?.fra;
 /* Prissvaret er likt i form for alle bransjer, men eksemplet i siste setning
    er bransjens eget. Tallene hentes fra prismodeller, så de følger prissiden. */
 const prisSvar = (hvaDeTrenger) =>
-  `Enkel, én side med det viktigste, koster ${pris('enkel')} kr eks. mva. Medium, med alle sidene du har i dag og tekster skrevet for Google og AI-søk, koster ${pris('medium')} kr. Oppskaler, med ${hvaDeTrenger} og tre måneder SEO, starter på ${pris('komplett')} kr. Hosting er med i prisen, du eier siden, og du ser et gratis utkast før du bestemmer deg.`;
+  `Enkel, én side med det viktigste, koster ${pris('enkel')} kr eks. mva. Synlig, med alle sidene du har i dag og tekster skrevet for Google og AI-søk, koster ${pris('medium')} kr. Oppskaler, med ${hvaDeTrenger} og tre måneder SEO, starter på ${pris('komplett')} kr. Hosting er med i prisen, du eier siden, og du ser et gratis utkast før du bestemmer deg.`;
 
 /* Bildene er fra Pexels (gratis til kommersiell bruk). Fotografene står i
    public/bransjer/KREDITT.md. */

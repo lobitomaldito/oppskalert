@@ -51,8 +51,9 @@ export const navLenker = [
 export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før jeg skriver en linje kode.';
 
 /* Tre nivåer fra 4. november 2026 (var to fra 17. oktober). Enkel er nå én
-   landingsside. Medium er det som het Komplett 17. oktober til 3. november: alle sidene kunden har i
-   dag, med tekstene skrevet om for Google og AI-søk. Oppskaler er Medium
+   landingsside. Synlig (het Medium 4.–26. november og Komplett 17. oktober
+   til 3. november) er alle sidene kunden har i dag, med tekstene skrevet
+   om for Google og AI-søk. Oppskaler er Synlig
    pluss en lead-modul og tre måneder SEO, summert fra tilbud/MAL.md:
    6 990 + 4 900 + 3 900 + 3 x 1 490 = 20 260, rundet ned til 19 900.
    SEO gikk til 2 990 9. november 2026 (3 x 2 990 = 24 760).
@@ -74,7 +75,7 @@ export const prisNotat = 'Alle priser er eks. mva. Du får alltid fast pris før
    fast/månedlig): 1 350, 1 940 og fra 2 690 kr i 12 måneder, med
    serviceavtalen inkludert. Regelen fra MAL.md: over tre år skal leie
    koste 600 til 800 kr mer enn kjøp pluss serviceavtale (550 kr/mnd).
-   Enkel 610, Medium 780, Oppskaler 780.
+   Enkel 610, Synlig 780, Oppskaler 780.
    Endres et tall her, endres MAL.md også. */
 export const prismodeller = [
   {
@@ -94,12 +95,11 @@ export const prismodeller = [
       'Du vil bli ferdig og videre',
     ],
     inkludert: [
-      'Ferdig utkast på 48 timer, før du betaler noe',
+      // Kortet: seks punkter (26.11.2026, var ni). Kart, SEO-grunnoppsett
+      // og mobilsjekk er tatt ut; tabellen på /priser viser resten.
+      'Utkast innen 48 timer, før du betaler noe',
       'Én håndbygd landingsside med kontaktskjema',
       'Google-omtalene dine lagt inn på siden',
-      'Kart og åpningstider hvis du har adresse',
-      'SEO-grunnoppsett fra dag én',
-      'Sjekket på mobil og PC før lansering',
       'Hosting og sikker forbindelse, ingen hostingavgift',
       'Eget redigeringspanel: endre tekst og bilder selv',
       'Du eier siden, og domenet står i ditt navn',
@@ -108,7 +108,7 @@ export const prismodeller = [
   },
   {
     id: 'medium',
-    navn: 'Medium',
+    navn: 'Synlig',
     merkelapp: 'Bli funnet på Google',
     fra: '15 900',
     mnd: '1 940',
@@ -137,14 +137,14 @@ export const prismodeller = [
     mnd: '2 690',
     enhet: 'kr',
     periode: 'engangspris, fast før jeg begynner',
-    tagline: 'Alt i Medium, pluss et verktøy for henvendelser og tre måneder SEO.',
+    tagline: 'Alt i Synlig, pluss et verktøy for henvendelser og tre måneder SEO.',
     verdi: 'Besøkende blir til henvendelser, og hver måned ser du hva som virker.',
     passerDeg: [
       'Du vil ha flere henvendelser fra siden',
       'Du vil se hva siden gir deg',
     ],
     inkludert: [
-      'Alt i Medium, pluss:',
+      'Alt i Synlig, pluss:',
       'Priskalkulator, booking eller et annet verktøy for henvendelser',
       'Rapport hver måned med vanlige ord, i tre måneder',
       'Sjekk av om ChatGPT og Google AI nevner deg',
@@ -478,11 +478,11 @@ export const lagBrodsmuleSchema = (steg) => ({
 export const prisSporsmal = [
   {
     q: 'Hva koster en nettside i Norge i 2026?',
-    a: 'Hos meg er det tre nivåer. Enkel, 8 990 kr eks. mva, er én landingsside med godt design. Medium, 15 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Oppskaler, fra 24 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
+    a: 'Hos meg er det tre nivåer. Enkel, 8 990 kr eks. mva, er én landingsside med godt design. Synlig, 15 900 kr, er alle sidene du har i dag, med tekstene skrevet for Google og AI-søk. Oppskaler, fra 24 900 kr, har i tillegg interaktive moduler som priskalkulator eller booking, og tre måneder SEO med månedlig rapport. Redigeringspanelet, der du endrer tekst og bilder selv, og hosting er med i alle tre. Du får alltid en fast pris før jeg skriver en linje kode.',
   },
   {
     q: 'Hva er forskjellen på engangspris og driftsavtale?',
-    a: 'Det er tre ting, ikke to. Engangspris: du betaler 8 990 kr (Enkel), 15 900 kr (Medium) eller fra 24 900 kr (Oppskaler) én gang og eier siden med en gang. Leie til eie: jeg bygger siden, du betaler fra 1 350 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
+    a: 'Det er tre ting, ikke to. Engangspris: du betaler 8 990 kr (Enkel), 15 900 kr (Synlig) eller fra 24 900 kr (Oppskaler) én gang og eier siden med en gang. Leie til eie: jeg bygger siden, du betaler fra 1 350 kr i måneden uten binding, og siden er din når 12 måneder er betalt. Serviceavtale: siden står allerede der, og jeg gjør endringene og passer på den for 550 kr i måneden, uten binding. Hosting er med i prisen på siden uansett.',
   },
   {
     q: 'Kommer det noe på toppen av prisen?',

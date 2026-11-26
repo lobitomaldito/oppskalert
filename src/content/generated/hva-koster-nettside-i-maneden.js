@@ -22,7 +22,7 @@ export default {
   faq: [
     { q: "Kan jeg ha en nettside uten månedskostnad?", a: "Nesten. Kjøper du siden for en fast sum og hostingen er med, betaler du bare for domenet, rundt 150 kr i året for et .no-domene." },
     { q: "Hva skjer med siden hvis jeg slutter å betale for drift?", a: "Hos meg blir siden liggende ute, fordi hostingen er med i prisen. Du mister endringene og supporten. Hos leverandører der hosting og abonnement henger sammen, kan siden bli tatt ned." },
-    { q: "Er det billigere å leie enn å kjøpe en nettside?", a: "Hos meg koster de nesten det samme over tre år: Medium kjøpt med serviceavtale 35 700 kr, leie til eie 36 480 kr. Trenger du ikke serviceavtale etter kjøpet, er kjøp billigst: 15 900 kr, uansett hvor lenge siden står." },
+    { q: "Er det billigere å leie enn å kjøpe en nettside?", a: "Hos meg koster de nesten det samme over tre år: Synlig kjøpt med serviceavtale 35 700 kr, leie til eie 36 480 kr. Trenger du ikke serviceavtale etter kjøpet, er kjøp billigst: 15 900 kr, uansett hvor lenge siden står." },
   ],
   content: `## Hva koster en nettside i måneden?
 
@@ -48,11 +48,11 @@ Hos meg koster serviceavtalen 550 kr i måneden uten binding. Da sender du en e-
 
 Nettsidebyggere og flere byråer tar betalt per måned for selve siden. På første side i Google lå abonnementene på nettsidebyggere på 399 til 800 kr i måneden, og noen pakker hadde en oppstartspris i tillegg. Slutter du å betale, forsvinner som regel siden. Hva som bør være med i prisen for en enkeltpraksis, står på siden om [nettside for terapeuter](/nettside-for-terapeut).
 
-Hos meg kan Medium leies til eie: 0 kr i dag og 1 940 kr i måneden uten binding. Serviceavtalen er med det første året, og siden er din når tolv måneder er betalt. Etter det betaler du 550 kr i måneden for serviceavtalen, eller ingenting.
+Hos meg kan Synlig leies til eie: 0 kr i dag og 1 940 kr i måneden uten binding. Serviceavtalen er med det første året, og siden er din når tolv måneder er betalt. Etter det betaler du 550 kr i måneden for serviceavtalen, eller ingenting.
 
 ## Hva er billigst over tid?
 
-Hos meg koster Medium kjøpt for 15 900 kr med serviceavtale 35 700 kr over tre år, og leie til eie 36 480 kr. Uten serviceavtale koster Medium 15 900 kr, uansett hvor lenge den står. En enkel side på 8 990 kr uten serviceavtale koster 8 990 kr pluss domenet, uansett hvor lenge den står. Hele regnestykket står i [hva koster en nettside](/blogg/hva-koster-nettside).
+Hos meg koster Synlig kjøpt for 15 900 kr med serviceavtale 35 700 kr over tre år, og leie til eie 36 480 kr. Uten serviceavtale koster Synlig 15 900 kr, uansett hvor lenge den står. En enkel side på 8 990 kr uten serviceavtale koster 8 990 kr pluss domenet, uansett hvor lenge den står. Hele regnestykket står i [hva koster en nettside](/blogg/hva-koster-nettside).
 
 Spør alltid leverandøren hva du betaler i måneden, hva som er med, og hva som skjer med siden og domenet den dagen du slutter å betale.`,
 };
