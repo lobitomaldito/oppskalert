@@ -709,6 +709,14 @@ export const prosjekter = [
      egen styles.css, satt for hånd. Står rett bak Prana etter ønske fra Aleksander
      (23.11.2026), så den er femte kort og ikke med på /priser og /om. */
   { img: '/websider/terapihusene.webp', slug: 'terapihusene', farge: '#8e5e52', full: '/websider/full/terapihusene.webp', til: '-81%', navn: 'Terapihusene', bransje: 'Terapi · tre byer', url: 'https://terapihusene.no/', domene: 'terapihusene.no' },
+  /* Lillebekk Osteopati. Lagt inn 27. november 2026 etter ønske fra
+     Aleksander, live på lillebekkosteopati.no fra 24. november. Står rett
+     bak Terapihusene, sammen med de andre helsesidene. Skjermbildene er
+     tatt 27.11 med samme oppsett som scripts/skjermbilder.mjs, før-bildet
+     er fra frysingen 20.11 (~/.claude/assets/for-etter/lillebekkosteopati.no).
+     Fargen er kundens --c-dyp (marine), satt for hånd. Siden er 7075 px
+     høy, så fangsten er vanlig 5000 px og --til er -81%. */
+  { img: '/websider/lillebekk.webp', slug: 'lillebekk', farge: '#1b2738', full: '/websider/full/lillebekk.webp', til: '-81%', navn: 'Lillebekk Osteopati', bransje: 'Osteopat · Lysaker', url: 'https://lillebekkosteopati.no/', domene: 'lillebekkosteopati.no' },
   /* Melanie Dahl. Lagt inn 21. august 2026, hentet fra arbeid en annen
      sesjon hadde liggende ukommittert i hovedtreet.
 
