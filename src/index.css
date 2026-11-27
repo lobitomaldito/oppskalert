@@ -609,6 +609,30 @@
   }
   .arbeid a:hover .ut { transform: translate(.15rem, -.15rem); color: var(--blekk); }
 
+  /* Omtaleruter i rutenettet på /arbeid (SitatRute i Arbeider.jsx). Ruten
+     tar en celle som et prosjekt, men flaten er grå og innholdet er
+     sitatet. Fra 52rem er den minst like høy som vinduet i rammen ved
+     siden av, så raden står jevnt. Mobil viser to (regel 20.6). */
+  .sitatrute {
+    background: var(--kort); border-radius: var(--rund-stor);
+    padding: clamp(1.5rem, 2.6vw, 2.25rem);
+    display: flex; flex-direction: column; gap: 1.25rem;
+  }
+  .sitatrute blockquote {
+    font-weight: 400; font-size: clamp(1.125rem, 1.55vw, 1.375rem);
+    line-height: 1.42; letter-spacing: -.012em; text-wrap: pretty;
+  }
+  .sitatrute figcaption {
+    margin-top: auto; display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: .5rem 1.5rem;
+  }
+  .arbeid.sitatrute a { display: inline-flex; }
+  .sitatrute.kun-bred { display: none; }
+  @media (min-width: 52rem) {
+    .sitatrute { aspect-ratio: 4 / 3; }
+    .sitatrute.kun-bred { display: flex; }
+  }
+
   /* Nettleserramme. Ekte fullsides-fangst som ruller sakte inni.
 
      Fangstene er tatt med en vanlig 1280 x 900 viewport og beskåret til
