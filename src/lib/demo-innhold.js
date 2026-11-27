@@ -50,6 +50,77 @@ export const caser = [
     }
   },
   {
+    "slug": "lillebekk",
+    "tittel": "Osteopat på Lysaker, med en egen side for hver plage",
+    "ingress": "John Lillebekk er autorisert osteopat ved Lysaker stasjon. Den som leter har vondt et sted, og vil vite hva en time koster, om de trenger henvisning og om forsikringen dekker behandlingen.",
+    "gjort": [
+      "Ny nettside fra bunnen",
+      "Egen side for sju plager og for trykkbølgebehandling",
+      "Side om behandlingsforsikring med tretten selskaper",
+      "Fem fagartikler, lest gjennom av John",
+      "Søkeoppsett, domeneflytting, hosting og drift"
+    ],
+    "tek": [
+      "Håndkodet front-end",
+      "Timebestilling i bestille.no, som før",
+      "Måling av trykk på ring og bestill, uten informasjonskapsler"
+    ],
+    "utfordring": {
+      "t": "Nettsiden var timeboken",
+      "a": [
+        "Lillebekk Osteopati hadde ingen egen nettside. Adressen viste bookingsiden fra bestille.no, med en sommerhilsen og en knapp for å finne time. Google fant én side uten tittel, og hovedoverskriften var «LOADING.....».",
+        "Pasienter søker på det som gjør vondt, som «vondt i nakken», eller på behandlingen, som trykkbølge. Uten sider om plagene kom klinikken ikke opp på de søkene."
+      ]
+    },
+    "losning": {
+      "t": "En side per plage, med pris og forsikring",
+      "a": [
+        "Forsiden viser pris for første time, at du ikke trenger henvisning, og telefonnummeret før du har rullet. Rett under velger du hvor det gjør vondt.",
+        "Hver plage og trykkbølgebehandlingen har <b>sin egen side</b>, med hva John gjør, hvor mange behandlinger det vanligvis tar og når du heller bør gå til lege. Teksten er skrevet sammen med John og lest gjennom av ham.",
+        "En egen side forklarer behandlingsforsikring: hvilke selskaper pasientene kan bruke, og hva du må ordne før første time. Bestill time går fortsatt til bestille.no, timeboken John brukte fra før."
+      ]
+    },
+    "forEtter": {
+      "for": {
+        "bilde": "/websider/for/lillebekk.webp",
+        "tatt": "november 2026"
+      },
+      "kilde": "Den gamle siden er frosset 20. november 2026. Den nye er målt 27. november 2026.",
+      "rader": [
+        {
+          "punkt": "Sider Google kan finne",
+          "for": "Én, bookingsiden",
+          "na": "19, blant dem sju plagesider og fem fagartikler",
+          "hvorfor": "Hver side kan komme opp på sitt eget søk, som «osteopat nakkesmerter»."
+        },
+        {
+          "punkt": "Tittelen i søkeresultatet",
+          "for": "Ingen",
+          "na": "«Osteopat på Lysaker | Lillebekk Osteopati»",
+          "hvorfor": "Tittelen er den blå linja folk klikker på i Google."
+        },
+        {
+          "punkt": "Hovedoverskrift på forsiden",
+          "for": "«LOADING.....»",
+          "na": "«Osteopat på Lysaker»",
+          "hvorfor": "Google bruker hovedoverskriften til å forstå hva siden handler om."
+        },
+        {
+          "punkt": "Andre selskaper som får beskjed om hvert besøk",
+          "for": "Ni adresser, blant dem Facebook og Google",
+          "na": "Ingen",
+          "hvorfor": "Hver av dem ser IP-adressen til den som åpner siden."
+        },
+        {
+          "punkt": "Språket siden sier den er skrevet på",
+          "for": "Engelsk",
+          "na": "Norsk",
+          "hvorfor": "Skjermlesere for blinde og svaksynte leser teksten med engelsk uttale når siden sier at den er engelsk."
+        }
+      ]
+    }
+  },
+  {
     "slug": "woxen-hage",
     "i": 0,
     "tittel": "Hagehjelp bestilt på under ett minutt",

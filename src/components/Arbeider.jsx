@@ -22,6 +22,7 @@ import { PilHoyre, PilOpp } from './Ikon';
    tekst her faller pent ut i stedet for å arve naboens. */
 const ARBEIDER_TEKST = {
   'terapihusene': { bransje: 'Terapi', tittel: 'Tre terapihus på én side, med timebestilling hos hver terapeut' },
+  'lillebekk': { bransje: 'Osteopat', tittel: 'Osteopat på Lysaker, med en egen side for hver plage' },
   'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
   'gti': { bransje: 'Maskinentreprenør', tittel: 'Grunnarbeid på Karmøy, med prosjektbilder og telefonen øverst' },
   'jakobsen-takst': { bransje: 'Takstmann', tittel: 'Takst i Harstad, med prisestimat før du ringer' },

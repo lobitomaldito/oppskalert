@@ -144,7 +144,7 @@ export const bransjer = [
       'Google-profilen koblet til siden, med samme navn, adresse og telefon',
       'Ingen Meta-piksel, og ingen sporing av besøkende uten samtykke',
     ],
-    caser: [],
+    caser: ['lillebekk'],
     eksempel: { rute: '/eksempler/tannlege', tekst: 'Se et eksempel på en klinikkside' },
     faq: [
       { q: 'Hva koster en nettside for en klinikk?', a: prisSvar('timebestilling') },
