@@ -717,6 +717,14 @@ export const prosjekter = [
      Fargen er kundens --c-dyp (marine), satt for hånd. Siden er 7075 px
      høy, så fangsten er vanlig 5000 px og --til er -81%. */
   { img: '/websider/lillebekk.webp', slug: 'lillebekk', farge: '#1b2738', full: '/websider/full/lillebekk.webp', til: '-81%', navn: 'Lillebekk Osteopati', bransje: 'Osteopat · Lysaker', url: 'https://lillebekkosteopati.no/', domene: 'lillebekkosteopati.no' },
+  /* Homeopati for deg (Kate Iren Feby) og Gunn K. Finnby. Lagt inn
+     27. november 2026 etter ønske fra Aleksander, begge levert og live.
+     Står bak Lillebekk, sammen med de andre helsesidene. Skjermbildene er
+     tatt 27.11 med oppsettet i scripts/skjermbilder.mjs. Fargene er
+     kundenes egne (--c-hav og --c-oliven), satt for hånd. hfordeg.no er
+     4781 px høy, så --til er -80%; gunnfinnby.com fyller 5000 px, -81%. */
+  { img: '/websider/hfordeg.webp', slug: 'hfordeg', farge: '#0d3540', full: '/websider/full/hfordeg.webp', til: '-80%', navn: 'Homeopati for deg', bransje: 'Homeopat · Lillestrøm', url: 'https://hfordeg.no/', domene: 'hfordeg.no' },
+  { img: '/websider/gunn-finnby.webp', slug: 'gunn-finnby', farge: '#6a6756', full: '/websider/full/gunn-finnby.webp', til: '-81%', navn: 'Gunn K. Finnby', bransje: 'Familieterapi og homeopati · Lier', url: 'https://www.gunnfinnby.com/', domene: 'gunnfinnby.com' },
   /* Melanie Dahl. Lagt inn 21. august 2026, hentet fra arbeid en annen
      sesjon hadde liggende ukommittert i hovedtreet.
 
