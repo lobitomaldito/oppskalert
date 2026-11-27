@@ -1,9 +1,10 @@
 import Film from './Film';
 import { Link } from 'react-router-dom';
 import { prosjekter, ruter, toganger } from '../lib/site';
-import { caser } from '../lib/demo-innhold';
+import { caser, googleOmtaler, omtaler } from '../lib/demo-innhold';
 import { useReveal } from '../lib/useReveal';
 import { PilHoyre, PilOpp } from './Ikon';
+import { Stjerner } from './Sitatkort';
 
 /* Bransje og tittel er hentet ordrett fra ARBEIDER-konstanten i
    studio-mal-demoen (mal3.src.html, linje 1162), ikke fra prosjekter i
@@ -71,7 +72,55 @@ const lys = (hex) => {
 };
 const tekstPaa = (hex) => (1.05 / (lys(hex) + 0.05) >= (lys(hex) + 0.05) / 0.0574 ? '#fff' : 'var(--blekk)');
 
-const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett = false }) => {
+/* Omtaler som egne ruter mellom prosjektene på /arbeid (Aleksander
+   27.11.2026). Karusellen som sto under rutenettet, viste én av fem om
+   gangen. De fleste kommer hit fra lenken i purringen og blar nedover, og
+   nå står en kunde og sier noe på annenhver rad.
+
+   Nøkkelen er hvor mange prosjekter som står foran ruten. Med 15 prosjekter
+   gir 2, 6, 8, 12 og 14 ti fulle rader, og rutene veksler mellom venstre og
+   høyre spalte. Mobil viser de to første (regel 20 i byggereglene).
+
+   Står kunden både i googleOmtaler og omtaler, vinner det korte utdraget i
+   omtaler, og stjernene og case-lenken følger med. Utdraget er hentet fra
+   den samme Google-omtalen. */
+const SITAT_ETTER = { 2: 'Stein-Erik', 6: 'Birgitta Strobel', 8: 'Mélanie Dahl', 12: 'Thoralf Stenvold', 14: 'Kirstine Hansen' };
+const SITAT_PLASSER = Object.keys(SITAT_ETTER).map(Number);
+const finnOmtale = (navn) => {
+  const google = googleOmtaler.find((o) => o.navn === navn);
+  const direkte = omtaler.find((o) => o.navn === navn);
+  return google || direkte ? { ...google, ...direkte } : null;
+};
+
+const SitatRute = ({ o, reveal, kunBred }) => (
+  <figure className={kunBred ? 'arbeid sitatrute kun-bred' : 'arbeid sitatrute'} data-reveal={reveal ? '' : undefined}>
+    {o.stjerner && (
+      <p className="omtale-stjerner">
+        <Stjerner score={o.stjerner} />
+        <span className="skjult">{o.stjerner} av 5 stjerner</span>
+      </p>
+    )}
+    <blockquote>«{o.sitat}»</blockquote>
+    <figcaption>
+      <div className="sitat-kilde">
+        <span className="initial" aria-hidden="true">
+          {o.navn.split(/[\s-]/).map((d) => d[0]).slice(0, 2).join('')}
+        </span>
+        <div>
+          <p className="navn">{o.navn}</p>
+          <p className="rolle">{o.rolle}</p>
+        </div>
+      </div>
+      {o.caseSlug && (
+        <Link className="bredt-sitat-case" to={`/arbeid/${o.caseSlug}`}>
+          Se siden jeg laget <PilHoyre className="pil" />
+        </Link>
+      )}
+    </figcaption>
+  </figure>
+);
+
+const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett = false, sitater = false }) => {
   const Tittel = `h${nivaa}`;
   const kort = prosjekter
     .filter((p) => p.slug && ARBEIDER_TEKST[p.slug])
@@ -86,7 +135,10 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett
 
   return (
     <div className={['arbeider', kompakt && 'kompakt', tett && 'tett'].filter(Boolean).join(' ')} data-antall={kort.length} data-nivaa={nivaa}>
-      {kort.map((a, i) => (
+      {kort.flatMap((a, i) => {
+        const omtale = sitater && finnOmtale(SITAT_ETTER[i]);
+        return [
+        omtale && <SitatRute key={`sitat-${i}`} o={omtale} reveal={reveal} kunBred={SITAT_PLASSER.indexOf(i) > 1} />,
         <article className="arbeid" key={a.domene} data-reveal={reveal ? '' : undefined}>
           {/* Har prosjektet en case-side, går kortet dit. Har det ikke
               det, går det ut til kundens egen side. Uten dette ville et
@@ -123,8 +175,9 @@ const Arbeider = ({ antall = 4, nivaa = 3, reveal = false, kompakt = false, tett
             <p className="etikett">{a.bransje}</p>
             <Tittel>{a.tittel} <PilHoyre className="ut" /></Tittel>
           </ConditionalLink>
-        </article>
-      ))}
+        </article>,
+        ];
+      })}
     </div>
   );
 };

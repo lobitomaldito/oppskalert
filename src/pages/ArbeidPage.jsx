@@ -3,7 +3,6 @@ import { Shell } from '../components/Layout';
 import Arbeider from '../components/Arbeider';
 import BransjeEksempler from '../components/BransjeEksempler';
 import DemoSkjema from '../components/DemoSkjema';
-import SitatKarusell from '../components/SitatKarusell';
 import { useReveal } from '../lib/useReveal';
 import { kontakt, prosjekter } from '../lib/site';
 import { track } from '../lib/analytics';
@@ -49,9 +48,12 @@ const ArbeidPage = () => {
           <div className="wrap seksjon">
             {/* Alle prosjekter med en fangst, ikke bare de seks med case-side.
                 h2 fordi seksjonen ikke har noen egen H2 over rutenettet. */}
-            <Arbeider antall={prosjekter.length} nivaa={2} reveal />
+            {/* Omtalene står som ruter mellom prosjektene (27.11.2026), se
+                SitatRute i Arbeider.jsx. Karusellen under rutenettet er tatt
+                ut her, den står fortsatt på /metode. */}
+            <Arbeider antall={prosjekter.length} nivaa={2} reveal sitater />
             {/* Handling rett under rutenettet (25.11.2026). De fleste kommer hit
-                fra lenken i purringen, og skjemaet nederst ligger bak sitatet og
+                fra lenken i purringen, og skjemaet nederst ligger bak
                 bransjeeksemplene. Knappen hopper ned til skjemaet, telefonen er
                 for håndverkerne, som er de fleste som klikker. */}
             <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -67,12 +69,6 @@ const ArbeidPage = () => {
                 eller ring {kontakt.telefon}
               </a>
             </div>
-          </div>
-        </section>
-
-        <section className="sitatblokk" style={{ paddingTop: 'var(--luft)' }}>
-          <div className="wrap">
-            <SitatKarusell className="paa-blekk" data-reveal />
           </div>
         </section>
       </div>
