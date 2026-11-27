@@ -23,6 +23,8 @@ import { PilHoyre, PilOpp } from './Ikon';
 const ARBEIDER_TEKST = {
   'terapihusene': { bransje: 'Terapi', tittel: 'Tre terapihus på én side, med timebestilling hos hver terapeut' },
   'lillebekk': { bransje: 'Osteopat', tittel: 'Osteopat på Lysaker, med en egen side for hver plage' },
+  'hfordeg': { bransje: 'Homeopat', tittel: 'Klassisk homeopati i Lillestrøm, med timer på klinikken og på Zoom' },
+  'gunn-finnby': { bransje: 'Familieterapeut', tittel: 'Familieterapi og homeopati i Lier, med telefonen øverst' },
   'appstart': { bransje: 'Apputvikling', tittel: 'Apper til fast pris, med prisen på forsiden' },
   'gti': { bransje: 'Maskinentreprenør', tittel: 'Grunnarbeid på Karmøy, med prosjektbilder og telefonen øverst' },
   'jakobsen-takst': { bransje: 'Takstmann', tittel: 'Takst i Harstad, med prisestimat før du ringer' },
